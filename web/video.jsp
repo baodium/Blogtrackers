@@ -1,0 +1,314 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Meta, title, CSS, favicons, etc. -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Blog Trackers&reg; |</title>
+
+<!-- Bootstrap -->
+<link
+	href="${pageContext.request.contextPath}/vendors/bootstrap/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<!-- Font Awesome -->
+<link
+	href="${pageContext.request.contextPath}/vendors/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet">
+<!-- NProgress -->
+<link
+	href="${pageContext.request.contextPath}/vendors/nprogress/nprogress.css"
+	rel="stylesheet">
+
+<!-- Custom Theme Style -->
+<link href="${pageContext.request.contextPath}/build/css/custom.min.css"
+	rel="stylesheet">
+</head>
+
+<body class="nav-md">
+	<div class="container body">
+		<div class="main_container">
+			<div class="col-md-3 left_col">
+				<div class="left_col scroll-view">
+					<div class="navbar nav_title" style="border: 0;">
+						<a href="index.html" class="site_title"><img
+							src="images/cosmos.jpg"></i> <span>Blogtrackers</span></a>
+					</div>
+
+					<div class="clearfix"></div>
+
+					<!-- menu profile quick info -->
+					<div class="profile">
+						<div class="profile_pic">
+							<img src="images/img.jpg" alt="..."
+								class="img-circle profile_img">
+						</div>
+						<div class="profile_info">
+							<span>Welcome,</span>
+							<h2>User Name</h2>
+						</div>
+					</div>
+					<!-- /menu profile quick info -->
+
+					<br />
+
+					<!-- sidebar menu -->
+					<div id="sidebar-menu"
+						class="main_menu_side hidden-print main_menu">
+						<div class="menu_section">
+							<h3>Plan Name</h3>
+							<ul class="nav side-menu">
+								<li><a><i class="fa fa-home"></i> Home <span
+										class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="<%=request.getContextPath()%>/Datasource">
+												Setup Tracker </a></li>
+										<li><a href="<%=request.getContextPath()%>/Dashboard">Dashboard
+										</a></li>
+									</ul></li>
+								<ul class="nav side-menu">
+									<li><a
+										href="${pageContext.request.contextPath}/posting_frequencey.jsp"><i
+											class="fa fa-line-chart"></i>Posting Frequencey<span
+											class="fa fa-chevron-right"></span></a></li>
+								</ul>
+								<ul class="nav side-menu">
+									<li><a
+										href="${pageContext.request.contextPath}/keyword_trends.jsp"><i
+											class="fa fa-key"></i>Keyword Trends<span
+											class="fa fa-chevron-right"></span></a></li>
+								</ul>
+								<ul class="nav side-menu">
+									<li><a
+										href="${pageContext.request.contextPath}/additional_blog_info.jsp"><i
+											class="fa fa-edit"></i>Additional Blog Info<span
+											class="fa fa-chevron-right"></span></a></li>
+								</ul>
+								<ul class="nav side-menu">
+									<li><a
+										href="${pageContext.request.contextPath}/topic_models.jsp"><i
+											class="fa fa-language"></i>Topic Models<span
+											class="fa fa-chevron-right"></span></a></li>
+								</ul>
+								<ul class="nav side-menu">
+									<li><a
+										href="${pageContext.request.contextPath}/sentiments.jsp"><i
+											class="fa fa-puzzle-piece"></i>Sentiments<span
+											class="fa fa-chevron-right"></span></a></li>
+								</ul>
+								<ul class="nav side-menu">
+									<li><a
+										href="${pageContext.request.contextPath}/influence.jsp"><i
+											class="fa fa-newspaper-o"></i>Influence<span
+											class="fa fa-chevron-right"></span></a></li>
+								</ul>
+								<ul class="nav side-menu">
+									<li><a
+										href="${pageContext.request.contextPath}/cyber_forensics.jsp"><i
+											class="fa fa-code-fork"></i>Cyber Forensics<span
+											class="fa fa-chevron-right"></span></a></li>
+								</ul>
+								<ul class="nav side-menu">
+									<li><a><i class="fa fa-desktop"></i> Network Analysis
+											<span class="fa fa-chevron-down"></span></a>
+										<ul class="nav child_menu">
+											<li><a
+												href="${pageContext.request.contextPath}/blog_network.jsp">Blog
+													Network</a></li>
+											<li><a href="${pageContext.request.contextPath}/x.jsp">Network
+													Structural Measures</a></li>
+											<li><a href="${pageContext.request.contextPath}/x.jsp">Blogger-blog
+													Network</a></li>
+											<li><a href="${pageContext.request.contextPath}/x.jsp">Blog-cited
+													domains</a></li>
+										</ul></li>
+									<li><a><i class="fa fa-bar-chart-o"></i> Data
+											Presentation <span class="fa fa-chevron-down"></span></a>
+										<ul class="nav child_menu">
+											<li><a href="${pageContext.request.contextPath}/x.jsp"></a></li>
+											<li><a href="${pageContext.request.contextPath}/x.jsp"></a></li>
+											<li><a href="${pageContext.request.contextPath}/x.jsp"></a></li>
+											<li><a href="${pageContext.request.contextPath}/x.jsp"></a></li>
+										</ul></li>
+								</ul>
+						</div>
+						<div class="menu_section">
+							<h3>Services</h3>
+							<ul class="nav side-menu">
+								<li><a><i class="fa fa-windows"></i> Upgrade Options <span
+										class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="${pageContext.request.contextPath}/x.jsp">Plans</a></li>
+										<li><a href="${pageContext.request.contextPath}/x.jsp">testimonials</a></li>
+									</ul></li>
+								<li><a><i class="fa fa-video-camera"></i> Training <span
+										class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a
+											href="${pageContext.request.contextPath}/video.jsp">Video
+												Tutorials</a></li>
+										<li><a
+											href="${pageContext.request.contextPath}/page_404.jsp">Download
+												PDF</a></li>
+									</ul></li>
+								<li><a><i class="fa fa-sitemap"></i> Customer Support <span
+										class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="${pageContext.request.contextPath}/x.jsp"></a>
+									</ul>
+						</div>
+
+					</div>
+					<!-- /sidebar menu -->
+
+					<!-- /menu footer buttons -->
+					<div class="sidebar-footer hidden-small">
+						<a data-toggle="tooltip" data-placement="top" title="Settings">
+							<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+						</a> <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+							<span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+						</a> <a data-toggle="tooltip" data-placement="top" title="Lock"> <span
+							class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+						</a> <a data-toggle="tooltip" data-placement="top" title="Logout">
+							<span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+						</a>
+					</div>
+					<!-- /menu footer buttons -->
+				</div>
+			</div>
+
+			<!-- top navigation -->
+			<div class="top_nav">
+				<div class="nav_menu">
+					<nav>
+						<div class="nav toggle">
+							<a id="menu_toggle"><i class="fa fa-bars"></i></a>
+						</div>
+
+						<ul class="nav navbar-nav navbar-right">
+							<li class=""><a href="javascript:;"
+								class="user-profile dropdown-toggle" data-toggle="dropdown"
+								aria-expanded="false"> <img src="images/img.jpg" alt="">User
+									<span class=" fa fa-angle-down"></span>
+							</a>
+								<ul class="dropdown-menu dropdown-usermenu pull-right">
+									<li><a href="javascript:;"> Profile</a></li>
+									<li><a href="javascript:;"> <span
+											class="badge bg-red pull-right"></span> <span>Settings</span>
+									</a></li>
+									<li><a href="javascript:;">Help</a></li>
+									<li><a
+										href="${pageContext.request.contextPath}/test_logout.jsp"><i
+											class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+								</ul></li>
+				</div>
+				</li>
+				</ul>
+				</li>
+				</ul>
+				</nav>
+			</div>
+		</div>
+		<!-- /top navigation -->
+
+		<!-- page content -->
+		<div class="right_col" role="main">
+			<div class="">
+				<div class="row top_tiles"></div>
+				<h2>
+					COSMOS<small> Introduction</small>
+				</h2>
+				<iframe width="640" height="360"
+					src="https://www.youtube.com/embed/EXcRMXiMGYI?rel=0"
+					frameborder="0" allowfullscreen></iframe>
+				<h2>
+					Blogtrackers<small> Tutorial</small>
+				</h2>
+				<iframe width="640" height="480"
+					src="https://www.youtube.com/embed/YkJVs6QqF9A?rel=0"
+					frameborder="0" allowfullscreen></iframe>
+				<!-- /page content -->
+
+				<!-- footer content -->
+				<footer>
+					<div class="pull-right">
+						Blogtrackers <a href="https://www.facebook.com/cosmographers/">COSMOS</a>
+					</div>
+					<div class="clearfix"></div>
+				</footer>
+				<!-- /footer content -->
+			</div>
+		</div>
+
+		<!-- jQuery -->
+		<script
+			src="${pageContext.request.contextPath}/vendors/jquery/dist/jquery.min.js"></script>
+		<!-- Bootstrap -->
+		<script
+			src="${pageContext.request.contextPath}/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+		<!-- FastClick -->
+		<script
+			src="${pageContext.request.contextPath}/vendors/fastclick/lib/fastclick.js"></script>
+		<!-- NProgress -->
+		<script
+			src="${pageContext.request.contextPath}/vendors/nprogress/nprogress.js"></script>
+		<!-- Chart.js -->
+		<script
+			src="${pageContext.request.contextPath}/vendors/Chart.js/dist/Chart.min.js"></script>
+		<!-- jQuery Sparklines -->
+		<script
+			src="${pageContext.request.contextPath}/vendors/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+		<!-- Flot -->
+		<script
+			src="${pageContext.request.contextPath}/vendors/Flot/jquery.flot.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/vendors/Flot/jquery.flot.pie.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/vendors/Flot/jquery.flot.time.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/vendors/Flot/jquery.flot.stack.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/vendors/Flot/jquery.flot.resize.js"></script>
+		<!-- Flot plugins -->
+		<script
+			src="${pageContext.request.contextPath}/production/js/flot/jquery.flot.orderBars.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/production/js/flot/date.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/production/js/flot/jquery.flot.spline.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/production/js/flot/curvedLines.js"></script>
+		<!-- bootstrap-daterangepicker -->
+		<script
+			src="${pageContext.request.contextPath}/production/js/moment/moment.min.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/production/js/datepicker/daterangepicker.js"></script>
+
+		<!-- Custom Theme Scripts -->
+		<script
+			src="${pageContext.request.contextPath}/build/js/custom.min.js"></script>
+
+		<!-- Flot -->
+
+		</script>
+		<!-- /Flot -->
+
+		<!-- jQuery Sparklines -->
+
+		<!-- /jQuery Sparklines -->
+
+		<!-- Doughnut Chart -->
+
+		<!-- /Doughnut Chart -->
+
+		<!-- bootstrap-daterangepicker -->
+
+		<!-- /bootstrap-daterangepicker -->
+</body>
+</html>
