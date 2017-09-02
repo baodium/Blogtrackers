@@ -41,6 +41,7 @@
         
         	<!-- Theme JS files -->
 	<script type="text/javascript" src="assets/js/plugins/forms/validation/validate.min.js"></script>
+        <script type="text/javascript" src="assets/js/plugins/fileinput.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>
 
 	<script type="text/javascript" src="assets/js/core/app.js"></script>
@@ -160,7 +161,7 @@
 				<li class="dropdown dropdown-user">
 					<a class="dropdown-toggle" data-toggle="dropdown">
 						<img src="assets/images/placeholder.jpg" alt="">
-						<span><%=session.getAttribute("user")%></span>
+						<span><%=session.getAttribute("username")%></span>
 						<i class="caret"></i>
 					</a>
 

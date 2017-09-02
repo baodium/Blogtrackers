@@ -16,6 +16,58 @@
 
   <jsp:include page="include_top.jsp"></jsp:include>
 	<!-- Page header -->
+        <style>
+            input[type="file"] {
+    display: block;
+}
+
+.btn-file > input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    font-size: 23px;
+    direction: ltr;
+    border:1px solid #ccc !important;
+    cursor: pointer;
+}
+ .fileinput-exists .fileinput-new, .fileinput-new .fileinput-exists {
+    display: none;
+}
+
+.btn{
+    margin:5px;
+}
+.fileinput .btn {
+    vertical-align: middle;
+}
+
+.btn-orange {
+    color: #ffffff;
+    background-color: #ff9600;
+    border-color: #ff9600;
+}
+
+.btn-white {
+    color: #303641;
+    background-color: #ffffff;
+    border-color: #ffffff;
+    border-color: #ebebeb;
+}
+
+.fileinput .btn {
+    vertical-align: middle;
+}
+
+.btn-white {
+    color: #303641;
+    background-color: #ffffff;
+    border-color: #ccc;
+    border-color: #ebebeb;
+} 
+        </style>
 	<div class="page-header">
 		<div class="page-header-content">
 			<div class="page-title">
@@ -173,15 +225,36 @@
 
 
 							<!-- Tabs content -->
-							<div class="tab-content" style="text-align:center"><br/>
-								<img src="assets/images/placeholder.jpg" style="width:150px; height:150px" /><br/><br/>
-                                                                <div class="" style="text-align:center">
-                                                                    <center><input type="file" class="btn btn-primary" /></center>
-                                                                </div><br/><br/>
-							</div>
+					<div class="tab-content" style="text-align:center"><br/>
+						        <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                              
+                                                                  <div class="fileinput-new thumbnail"  data-trigger="fileinput" >
+                                                                      <img class="img" src="assets/images/placeholder.jpg" style="width:150px; height:150px" />
+                                                
+                                                                  </div>
+
+                                                            
+                                                                  <center>
+                                                                     <div class="fileinput-preview fileinput-exists thumbnail" style="max-width:151px; max-height:151px; text-align:center"></div>
+                 
+                                                                       </center>
+                                                                  <div >
+                                                                
+                                                                                              
+                                                                      <span class="btn btn-white btn-file" >
+
+                                                                          <span class="fileinput-new">Select</span>
+                                                                          <span class="fileinput-exists">Change</span>
+                                                                          <input type="file" name="userfile" accept="image/*">
+                                                                      </span>
+                                                                      <a href="#" class="btn btn-orange fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                                                  </div>
+
+                                                                     </div>	
+                                                                    <button type="submit" class="btn btn-info">upload</button><br/> <br/>              
 							<!-- /tabs content -->
 
-						</div>
+					</div>
 						<!-- /my messages -->
                                                 </form>
 
