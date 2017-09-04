@@ -13,7 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import blogtracker.gui.blogtrackers.BlogSites2;
-import blogtracker.util.Common;
+import blogtracker.util.*;
+import authentication.DBConnector;
 
 /**
  * Servlet implementation class Login
@@ -42,6 +43,9 @@ public class Resetpassword extends HttpServlet {
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextjsp);
 		dispatcher.forward(request,response);
 		*/
+                HttpSession session = request.getSession();
+                session.setAttribute("error_message","");
+                session.setAttribute("success_message","");
 		response.setContentType("text/html");
 		response.sendRedirect("recover_password.jsp");
 	}
@@ -53,10 +57,39 @@ public class Resetpassword extends HttpServlet {
 	{
 
 		//authentication.Login auth = new authentication.Login();
-		String password = request.getParameter("password");
-		String password2 = request.getParameter("new_password");
-		String password3 = request.getParameter("new_password2");
-		response.sendRedirect("data.jsp");
+		String submitted = request.getParameter("recover");
+		PrintWriter pww = response.getWriter();
+                HttpSession session = request.getSession();
+		String app_url = "http://localhost:1010/Tracker/";
+                //pww.write(email+":"+username+":"+pass+":"+submitted);
+                    if(submitted!=null && submitted.equals("yes")){
+			String email = request.getParameter("email");
+                        ArrayList prev = new DBConnector().query("SELECT * FROM usercredentials WHERE Email = '"+email+"'");
+                        prev = (ArrayList)prev.get(0);
+                        String[] receivers = {email,"oaadedayo@gmail.com","baodium@gmail.com"};
+                        if(prev.size()>0){
+                            double ran = Math.random();
+                            String pass = new DBConnector().md5Funct(ran+"");
+                            pass = pass.substring(0,8);
+                            boolean updated = new DBConnector().updateTable("UPDATE usercredentials SET password  = '"+pass+"' WHERE Email = '"+email+"'");
+                                if(updated){
+                                session.setAttribute("success_message","A mail has been sent to "+email+" containing your login information");
+                                try{
+                                    new Mailing().postMail(receivers, "Blogtrackers password change request", "Hello "+prev.get(0)+", Please note that your password has been changed to <b>"+pass+"</b>. <br/>You are strongly advised to change your password after first login. <br/>Kindly login at <a href='"+app_url+"'>"+app_url+"</a><br/><br/> Thanks for using Blogtrackers"); 
+                                }catch(Exception e){
+                                    
+                                }
+                            }else{
+                                 session.setAttribute("error_message","invalid operation");
+                                
+                            }
+                        }else{
+                            session.setAttribute("error_message","invalid email address");
+ 
+                        }
+                        response.setContentType("text/html");
+                        response.sendRedirect("recover_password.jsp");
+                    }
 		
 	}
 }

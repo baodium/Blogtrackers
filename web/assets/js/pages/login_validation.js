@@ -8,7 +8,7 @@
 *  Latest update: Aug 1, 2015
 *
 * ---------------------------------------------------------------------------- */
-var baseurl="http://localhost:1010/Tracker/";
+var baseurl=app_url;//"http://localhost:1010/Tracker/";
 $(function() {
 
 	// Style checkboxes and radios
@@ -125,6 +125,8 @@ $(function() {
         submitHandler: function(ev)
 			{
 			console.log("submitted");
+                        $("#error_message-box").html('<img src="assets/images/loading.gif" >');
+                       // return false;
                         $.ajax({
 						url: baseurl+'Login',
 						method: 'POST',

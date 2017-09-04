@@ -101,7 +101,7 @@
 							<select name="user_type" class="form-control" placeholder="user type" required="required">
                                                             <option value="">-User Type-</option>
                                                             <option value="basic">Basic</option>
-                                                            <option value="premium">Premium</option>
+                                                            <!--<option value="premium">Premium</option>-->
                                                         </select>
 							<div class="form-control-feedback">
 								<i class="icon-add text-muted"></i>
