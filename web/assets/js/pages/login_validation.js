@@ -8,7 +8,11 @@
 *  Latest update: Aug 1, 2015
 *
 * ---------------------------------------------------------------------------- */
+<<<<<<< HEAD
 
+=======
+var baseurl=app_url;//"http://localhost:1010/Tracker/";
+>>>>>>> 24be98068c766af2f18ff4a1434ce0060b214fd0
 $(function() {
 
 	// Style checkboxes and radios
@@ -75,11 +79,52 @@ $(function() {
         },
         messages: {
             username: "Enter your username",
+<<<<<<< HEAD
             password: {
             	required: "Enter your password",
             	minlength: jQuery.validator.format("At least {0} characters required")
             }
         }
+=======
+            password: "Enter your password"
+        },
+        
+        submitHandler: function(ev)
+			{
+			console.log("submitted");
+                        $("#error_message-box").html('<img src="assets/images/loading.gif" >');
+                       // return false;
+                        $.ajax({
+						url: baseurl+'Login',
+						method: 'POST',
+						//dataType: 'json',
+						data: {
+							email: $("input#username").val(),
+							password: $("input#password").val(),
+                                                        login: "yes",
+						},
+						error: function(response)
+						{						
+							console.log(response);
+                                                        $("#error_message-box").html('Invalid username/password');
+							//alert("An error occoured!");
+						},
+						success: function(response)
+						{       
+                                                        console.log(response);
+							var login_status = response;//.responseText;
+                                                        console.log(login_status);
+							if(login_status === "invalid"){
+                                                                        $("#error_message-box").html('Invalid username/password');
+							}else if(login_status === "success"){
+                                                            window.location.href = baseurl+"dashboard.jsp";
+                                                        }
+                                                }
+                                    });
+
+
+			}
+>>>>>>> 24be98068c766af2f18ff4a1434ce0060b214fd0
     });
 
 });

@@ -1,5 +1,17 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.io.File"%>
 <!DOCTYPE html>
+<%
+    String path=application.getRealPath("/").replace('\\', '/')+"profile_images/";
+    path = path.replace("build/", "");
+    String filename = path+session.getAttribute("username")+".jpg";
+    String pimage = "assets/images/placeholder.jpg";
+    File f = new File(filename);
+    if(f.exists() && !f.isDirectory()) { 
+       pimage = "profile_images/"+session.getAttribute("username")+".jpg";
+   }
+                                                            //pimage = pimage.replace("build/", "");
+%>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -157,10 +169,10 @@
 						</div>
 					</div>
 				</li>
-
+                                       
 				<li class="dropdown dropdown-user">
 					<a class="dropdown-toggle" data-toggle="dropdown">
-						<img src="assets/images/placeholder.jpg" alt="">
+						<img src="<%=pimage%>" alt="">
 						<span><%=session.getAttribute("username")%></span>
 						<i class="caret"></i>
 					</a>
@@ -169,8 +181,8 @@
 						<li><a href="<%=request.getContextPath()%>/profile"><i class="icon-user-plus"></i> My profile</a></li>
 						<li><a href="#"><span class="badge badge-warning pull-right">58</span> <i class="icon-comment-discussion"></i> Messages</a></li>
 						<li class="divider"></li>
-						<li><a href="<%=request.getContextPath()%>/settings"><i class="icon-cog5"></i> Account settings</a></li>
-						<li><a href="index.jsp"><i class="icon-switch2"></i> Logout</a></li>
+						<li><a href="<%=request.getContextPath()%>/profile"><i class="icon-cog5"></i> Account settings</a></li>
+						<li><a href="<%=request.getContextPath()%>/logout"><i class="icon-switch2"></i> Logout</a></li>
 					</ul>
 				</li>
 			</ul>

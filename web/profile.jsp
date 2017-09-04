@@ -4,6 +4,8 @@
     Author     : Omnibus_03
 --%>
 <%@page import="java.util.*"%>
+<%@page import="java.io.File"%>
+<%@page import="authentication.DBConnector"%>
 <%
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
@@ -11,9 +13,13 @@
 		response.sendRedirect("index.jsp");
 	}
         
-        ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
+        //try{
+        ArrayList userinfo = new DBConnector().query("SELECT *  FROM usercredentials WHERE UserName='"+username+"'");          
+        userinfo = (ArrayList)userinfo.get(0);
+        //}catch(Exception e){
+          //  response.sendRedirect("index.jsp");
+        //}
 %>
-
   <jsp:include page="include_top.jsp"></jsp:include>
 	<!-- Page header -->
         <style>
@@ -126,6 +132,7 @@
 					</div>
 
 	                <div class="panel-body">
+   
 	                	<form class="form-horizontal" action="<%=request.getContextPath()%>/profile" method="post" class="form-validate" >
 							<div class="form-group">
 								<label class="col-lg-2 control-label">Profile</label>
@@ -167,7 +174,7 @@
                                                                                         </div>
 
 			                                <div class="form-group">
-				                                <input type="text" name="address" class="form-control" placeholder="Address" value = "<%=userinfo.get(6)%>">
+				                                <input type="text" name="address" class="form-control" placeholder="Address" value = "<%=userinfo.get(7)%>">
 			                                </div>
 										</div>
 
@@ -203,7 +210,7 @@
 						
 
                                             
-                                        <form class="form-horizontal" action="#">
+                                        <form class="form-horizontal" name="upload_form" enctype="multipart/form-data" action="fileupload.jsp" method="POST">
 						<!-- My messages -->
 						<div class="panel panel-flat">
 							
@@ -227,9 +234,19 @@
 							<!-- Tabs content -->
 					<div class="tab-content" style="text-align:center"><br/>
 						        <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                              
+                                                            <%
+                                                            String path=application.getRealPath("/").replace('\\', '/')+"profile_images/";
+                                                            path = path.replace("build/", "");
+                                                            String filename = path+userinfo.get(0).toString()+".jpg";
+                                                            String pimage = "assets/images/placeholder.jpg";
+                                                            File f = new File(filename);
+                                                            if(f.exists() && !f.isDirectory()) { 
+                                                                pimage = "profile_images/"+userinfo.get(0).toString()+".jpg";
+                                                            }
+                                                            //pimage = pimage.replace("build/", "");
+                                                            %>
                                                                   <div class="fileinput-new thumbnail"  data-trigger="fileinput" >
-                                                                      <img class="img" src="assets/images/placeholder.jpg" style="width:150px; height:150px" />
+                                                                      <img class="img" src="<%=pimage%>" style="width:150px; height:150px" />
                                                 
                                                                   </div>
 
@@ -250,8 +267,10 @@
                                                                       <a href="#" class="btn btn-orange fileinput-exists" data-dismiss="fileinput">Remove</a>
                                                                   </div>
 
-                                                                     </div>	
-                                                                    <button type="submit" class="btn btn-info">upload</button><br/> <br/>              
+                                                                     </div>
+                                                                    <input type="hidden" class="form-control" required="required" name="username"  value = "<%=userinfo.get(0)%>">
+			                           
+                                                                    <input type="submit" name="upload_image" value="upload" class="btn btn-info"><br/> <br/>              
 							<!-- /tabs content -->
 
 					</div>

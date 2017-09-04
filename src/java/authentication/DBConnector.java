@@ -148,7 +148,8 @@ public class DBConnector {
 		return inserted;
 	}
 
-	private String md5Funct(String userNamePass) {
+	
+        public String md5Funct(String userNamePass) {
 		try {
 
 			MessageDigest md = MessageDigest.getInstance("MD5");

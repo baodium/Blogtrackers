@@ -7,6 +7,8 @@ package blogtracker.util;
 import javax.mail.*;
 import javax.mail.internet.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Shamanth
@@ -62,16 +64,17 @@ public static void postMail( String[] recipients, String subject, String message
     msg.setContent(message, "text/html");
     Transport.send(msg);
 }
-//public static void main(String[] args)
-//{
-//    String[] recipient = new String[1];
-//    recipient[0] = "shamanth00@gmail.com";
-//    String subject = "test mail";
-//    String message = "This is a test message.";
-//        try {
-//            Mailing.postMail(recipient, subject, message);
-//        } catch (MessagingException ex) {
-//            Logger.getLogger(Mailing.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//}
+
+public static void main(String[] args)
+{
+    String[] recipient = new String[1];
+   recipient[0] = "oaadedayo@gmail.com";
+    String subject = "test mail";
+   String message = "This is a test message.";
+       try {
+           Mailing.postMail(recipient, subject, message);
+       } catch (MessagingException ex) {
+           Logger.getLogger(Mailing.class.getName()).log(Level.SEVERE, null, ex);
+       }
+ }
 }

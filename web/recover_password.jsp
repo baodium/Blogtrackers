@@ -5,7 +5,14 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@page import="java.util.*"%>
+<%@page import="java.io.File"%>
+
+<%
+	Object error_message = (null == session.getAttribute("error_message")) ? "" : session.getAttribute("error_message");
+	Object success_message = (null == session.getAttribute("success_message")) ? "" : session.getAttribute("success_message");
+	
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,46 +44,18 @@
 	<script type="text/javascript" src="assets/js/core/app.js"></script>
 
 	<script type="text/javascript" src="assets/js/plugins/ui/ripple.min.js"></script>
+         <script type="text/javascript" src="assets/js/plugins/forms/validation/validate.min.js"></script>
+        <script type="text/javascript" src="assets/js/plugins/fileinput.js"></script>
+	<script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>
+
+	<script type="text/javascript" src="assets/js/core/app.js"></script>
+	<script type="text/javascript" src="assets/js/pages/login_validation.js"></script>
 	<!-- /theme JS files -->
 
 </head>
 
 <body class="login-container">
 
-	<!-- Main navbar -->
-	<!--
-	<div class="navbar navbar-inverse bg-indigo">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="index.html"><img src="assets/images/logo_light.png" alt=""></a>
-
-			<ul class="nav navbar-nav pull-right visible-xs-block">
-				<li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
-			</ul>
-		</div>
-
-		<div class="navbar-collapse collapse" id="navbar-mobile">
-			<ul class="nav navbar-nav navbar-right">
-				<li>
-					<a href="#">
-						<i class="icon-display4"></i> <span class="visible-xs-inline-block position-right"> Go to website</span>
-					</a>
-				</li>
-
-				<li>
-					<a href="#">
-						<i class="icon-user-tie"></i> <span class="visible-xs-inline-block position-right"> Contact admin</span>
-					</a>
-				</li>
-
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown">
-						<i class="icon-cog3"></i>
-						<span class="visible-xs-inline-block position-right"> Options</span>
-					</a>
-				</li>
-			</ul>
-		</div>
-	</div>
 	<!-- /main navbar -->
 
 	<!-- Page container -->
@@ -87,25 +66,38 @@
 
 			<!-- Main content -->
 			<div class="content-wrapper">
-
+                                <% if(success_message.equals("")){ %>
 				<!-- Password recovery -->
-				<form action="index.html">
+				<form action="${pageContext.request.contextPath}/resetpassword" method="post" name="recover" class="form-validate">
 					<div class="panel panel-body login-form">
 						<div class="text-center">
 							<div class="icon-object border-warning text-warning"><i class="icon-spinner11"></i></div>
+                                                        <div class="text-warning"><%=(error_message!="")?error_message:""%></div>
 							<h5 class="content-group">Password recovery <small class="display-block">We'll send you instructions in email</small></h5>
 						</div>
 
 						<div class="form-group has-feedback">
-							<input type="email" class="form-control" placeholder="Your email">
+							<input type="email" class="form-control" name="email" required="required" placeholder="Your email">
 							<div class="form-control-feedback">
 								<i class="icon-mail5 text-muted"></i>
 							</div>
 						</div>
 
-						<button type="submit" class="btn bg-pink-400 btn-block">Reset password <i class="icon-arrow-right14 position-right"></i></button>
+						<button type="submit" name="recover" value="yes" class="btn bg-pink-400 btn-block">Reset password <i class="icon-arrow-right14 position-right"></i></button>
 					</div>
 				</form>
+                                <% }else{ %>
+                                <div class="panel panel-body login-form">
+						<div class="text-center">
+							<div class="icon-object border-warning text-warning"><i class="icon-spinner11"></i></div>
+							<h5 class="content-group"><%=success_message%></h5>
+						</div>
+
+						
+						<a href="${pageContext.request.contextPath}/" class="btn bg-blue-400 btn-block">Back <i class="icon-arrow-left52 position-right"></i></a>
+                                </div>
+                                
+                                <% } %>
 				<!-- /password recovery -->
 
 			</div>

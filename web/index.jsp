@@ -2,7 +2,14 @@
 <%@page import="wrapper.*"%>
 <%
   String app_url="http://localhost:1010/Tracker/";  
- %>  
+ %> 
+<%
+	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
+	if (username != null && username != "") {
+		response.sendRedirect("dashboard.jsp");
+	}
+        
+%> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,6 +41,9 @@
 	<script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>
 
 	<script type="text/javascript" src="assets/js/core/app.js"></script>
+        <script>
+           var app_url ='${pageContext.request.contextPath}/influence.jsp'; 
+        </script>
 	<script type="text/javascript" src="assets/js/pages/login_validation.js"></script>
 
 	<script type="text/javascript" src="assets/js/plugins/ui/ripple.min.js"></script>
