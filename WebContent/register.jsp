@@ -1,15 +1,13 @@
 <%@page import="java.util.*"%>
 <%@page import="wrapper.*"%>
-<%
-  String app_url="http://localhost:1010/Tracker/";  
- %>  
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title><%="App Name" %> Register</title>
+	<title>Blogtrackers  > Register</title>
 
 	<!-- Global stylesheets -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
@@ -34,11 +32,15 @@
 	<script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>
 
 	<script type="text/javascript" src="assets/js/core/app.js"></script>
+    <script>
+           var app_url ='${pageContext.request.contextPath}/'; 
+    </script>
 	<script type="text/javascript" src="assets/js/pages/login_validation.js"></script>
 
 	<script type="text/javascript" src="assets/js/plugins/ui/ripple.min.js"></script>
         <!--<script type="text/javascript" src="assets/js/plugins/neon-login.js"></script>-->
 	<!-- /theme JS files -->
+
 
 </head>
 
@@ -55,7 +57,7 @@
 			<div class="content-wrapper">
 
 				<!-- Advanced login -->
-				<form action="<%=app_url%>register" id="form_register" method="post" class="form-validate">
+				<form action="${pageContext.request.contextPath}/register" id="form_register" method="post" class="form-validate">
 					<div class="panel panel-body login-form">
 						<div class="text-center">
 							<!--<div class="icon-object border-success text-success"><i class="icon-plus3"></i></div>-->
