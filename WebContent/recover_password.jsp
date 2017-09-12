@@ -49,6 +49,9 @@
 	<script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>
 
 	<script type="text/javascript" src="assets/js/core/app.js"></script>
+	 <script>
+           var app_url ='${pageContext.request.contextPath}/'; 
+        </script>
 	<script type="text/javascript" src="assets/js/pages/login_validation.js"></script>
 	<!-- /theme JS files -->
 
