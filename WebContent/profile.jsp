@@ -87,7 +87,10 @@
 			<div class="heading-elements">
 				<div class="heading-btn-group">
 					<a href="#" class="btn btn-link btn-float has-text text-size-small"><i class="icon-bars-alt text-indigo-400"></i><span>Statistics</span></a>
+<<<<<<< HEAD
 					<a href="#" class="btn btn-link btn-float has-text text-size-small"><i class="icon-calculator text-indigo-400"></i> <span>Invoices</span></a>
+=======
+>>>>>>> origin/master
 					<a href="#" class="btn btn-link btn-float has-text text-size-small"><i class="icon-calendar5 text-indigo-400"></i> <span>Schedule</span></a>
 				</div>
 			</div>
@@ -236,7 +239,11 @@
 						        <div class="fileinput fileinput-new" data-provides="fileinput">
                                                             <%
                                                             String path=application.getRealPath("/").replace('\\', '/')+"profile_images/";
+<<<<<<< HEAD
                                                             path = path.replace("build/", "");
+=======
+                                                           
+>>>>>>> origin/master
                                                             String filename = path+userinfo.get(0).toString()+".jpg";
                                                             String pimage = "assets/images/placeholder.jpg";
                                                             File f = new File(filename);
@@ -245,6 +252,10 @@
                                                             }
                                                             //pimage = pimage.replace("build/", "");
                                                             %>
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
                                                                   <div class="fileinput-new thumbnail"  data-trigger="fileinput" >
                                                                       <img class="img" src="<%=pimage%>" style="width:150px; height:150px" />
                                                 

@@ -21,7 +21,11 @@ import authentication.DBConnector;
  * @author mukti
  */
 @SuppressWarnings("unused")
+<<<<<<< HEAD
 @WebServlet("/Login")
+=======
+@WebServlet("/login")
+>>>>>>> origin/master
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -37,7 +41,12 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {           
+<<<<<<< HEAD
             response.sendRedirect("app_url");
+=======
+		response.setContentType("text/html");    
+		response.sendRedirect("login.jsp");
+>>>>>>> origin/master
 	}
 
 	/**
@@ -57,7 +66,11 @@ public class Login extends HttpServlet {
 		if(submitted.equals("yes"))
 		{			
 			//blogtracker.util.sysResource s = auth.loginVerify(username,pass);
+<<<<<<< HEAD
 			ArrayList login = new DBConnector().login(username,pass);
+=======
+			ArrayList<?> login = new DBConnector().login(username,pass);
+>>>>>>> origin/master
 			//if(s.verified)
 			if(login.size()>0)
 			{

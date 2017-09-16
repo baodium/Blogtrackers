@@ -55,6 +55,7 @@ public class Resetpassword extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+<<<<<<< HEAD
 
 		//authentication.Login auth = new authentication.Login();
 		String submitted = request.getParameter("recover");
@@ -63,6 +64,17 @@ public class Resetpassword extends HttpServlet {
 		String app_url = "http://localhost:1010/Tracker/";
                 //pww.write(email+":"+username+":"+pass+":"+submitted);
                     if(submitted!=null && submitted.equals("yes")){
+=======
+		
+		//authentication.Login auth = new authentication.Login();
+		String submitted = request.getParameter("recover");
+		PrintWriter pww = response.getWriter();
+        HttpSession session = request.getSession();
+		String app_url = request.getContextPath();
+                //pww.write(email+":"+username+":"+pass+":"+submitted);
+                    if(submitted!=null && submitted.equals("yes")){
+                    	try {
+>>>>>>> origin/master
 			String email = request.getParameter("email");
                         ArrayList prev = new DBConnector().query("SELECT * FROM usercredentials WHERE Email = '"+email+"'");
                         prev = (ArrayList)prev.get(0);
@@ -89,6 +101,15 @@ public class Resetpassword extends HttpServlet {
                         }
                         response.setContentType("text/html");
                         response.sendRedirect("recover_password.jsp");
+<<<<<<< HEAD
+=======
+                    	}catch(Exception e) {
+                    		session.setAttribute("error_message","invalid operation");
+                    		response.setContentType("text/html");
+                            response.sendRedirect("recover_password.jsp");
+                    	}
+                        
+>>>>>>> origin/master
                     }
 		
 	}

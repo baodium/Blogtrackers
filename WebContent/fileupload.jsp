@@ -5,6 +5,10 @@
 <%@ page import="org.apache.commons.fileupload.disk.*" %>
 <%@ page import="org.apache.commons.fileupload.servlet.*" %>
 <%@ page import="org.apache.commons.io.output.*" %>
+<<<<<<< HEAD
+=======
+<%@page import="authentication.*"%>
+>>>>>>> origin/master
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -18,7 +22,11 @@
    path = path.replace("build/", "");
    String filePath = path;//"c:/apache-tomcat/";
  
+<<<<<<< HEAD
 
+=======
+   System.out.println(path);
+>>>>>>> origin/master
    String contentType = request.getContentType();
 
    if ((contentType.indexOf("multipart/form-data") >= 0)) {
@@ -49,7 +57,11 @@
                 file = new File( filePath + username+".jpg") ;
                 fi.write( file ) ;
                 out.println("Uploaded Filename: " + filePath + file_name + "<br>");
+<<<<<<< HEAD
                 
+=======
+                new DBConnector().updateTable("UPDATE usercredentials SET profile_picture ='"+filePath + file_name+"' WHERE UserName='"+username+"'");
+>>>>>>> origin/master
            }
          }
          

@@ -1,15 +1,23 @@
 <%@page import="java.util.*"%>
 <%@page import="wrapper.*"%>
+<<<<<<< HEAD
 <%
   String app_url="http://localhost:8080/Blogtrackers/";  
  %>  
+=======
+ 
+>>>>>>> origin/master
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+<<<<<<< HEAD
 	<title><%="App Name" %> Register</title>
+=======
+	<title>Blogtrackers  > Register</title>
+>>>>>>> origin/master
 
 	<!-- Global stylesheets -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
@@ -18,6 +26,7 @@
 	<link href="assets/css/core.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/components.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/colors.css" rel="stylesheet" type="text/css">
+<<<<<<< HEAD
 	<link rel="stylesheet" href="vegas/vegas.css">
 	<style>
 	.color-light
@@ -25,6 +34,8 @@
 	color:#ffffff !important;	
 	}
 	</style>
+=======
+>>>>>>> origin/master
 	<!-- /global stylesheets -->
 
 	<!-- Core JS files -->
@@ -41,12 +52,22 @@
 	<script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>
 
 	<script type="text/javascript" src="assets/js/core/app.js"></script>
+<<<<<<< HEAD
+=======
+    <script>
+           var app_url ='${pageContext.request.contextPath}/'; 
+    </script>
+>>>>>>> origin/master
 	<script type="text/javascript" src="assets/js/pages/login_validation.js"></script>
 
 	<script type="text/javascript" src="assets/js/plugins/ui/ripple.min.js"></script>
         <!--<script type="text/javascript" src="assets/js/plugins/neon-login.js"></script>-->
 	<!-- /theme JS files -->
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 </head>
 
 <body class="login-container ">
@@ -62,7 +83,11 @@
 			<div class="content-wrapper">
 
 				<!-- Advanced login -->
+<<<<<<< HEAD
 				<form action="<%=app_url%>register" id="form_register" method="post" class="form-validate">
+=======
+				<form action="${pageContext.request.contextPath}/register" id="form_register" method="post" class="form-validate">
+>>>>>>> origin/master
 					<div class="panel panel-body login-form">
 						<div class="text-center">
 							<!--<div class="icon-object border-success text-success"><i class="icon-plus3"></i></div>-->
@@ -119,6 +144,7 @@
 						<br/>
 
 					
+<<<<<<< HEAD
 					<div class="form-group">
 						<button type="submit" id="register" name="register" value="yes" class="btn bg-teal btn-block btn-lg">Register <i class="icon-users position-right"></i></button>
 					</div>
@@ -131,16 +157,29 @@
 				</form>
 				<!-- /advanced login -->
  
+=======
+
+						<button type="submit" id="register" name="register" value="yes" class="btn bg-teal btn-block btn-lg">Register <i class="icon-circle-right2 position-right"></i></button>
+					</div>
+				</form>
+				<!-- /advanced login -->
+
+>>>>>>> origin/master
 			</div>
 			<!-- /main content -->
 
 		</div>
 		<!-- /page content -->
+<<<<<<< HEAD
 <jsp:include page="footer.jsp"></jsp:include>
+=======
+
+>>>>>>> origin/master
 	</div>
 	<!-- /page container -->
 
 
+<<<<<<< HEAD
 	 
 	  <script src="vegas/vegas.min.js"></script>
 <script>
@@ -153,5 +192,8 @@ overlay:true,
 		timer:false
 });
 	</script>
+=======
+	  <jsp:include page="footer.jsp"></jsp:include>
+>>>>>>> origin/master
 </body>
 </html>
