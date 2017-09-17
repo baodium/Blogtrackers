@@ -8,31 +8,16 @@
 *  Latest update: Aug 1, 2015
 *
 * ---------------------------------------------------------------------------- */
-<<<<<<< HEAD
-//<<<<<<< HEAD
 
-=======
-var baseurl=app_url;//"http://localhost:1010/Tracker/";
-//>>>>>>> 24be98068c766af2f18ff4a1434ce0060b214fd0
-=======
-<<<<<<< HEAD
+var baseurl=app_url;//"http://localhost:8080/Blogtrackers/";
 
-=======
-var baseurl=app_url;//"http://localhost:1010/Tracker/";
->>>>>>> cc1506fcd39d22203b7bbe3e8ed85d5033257036
->>>>>>> origin/master
 $(function() {
 
 	// Style checkboxes and radios
 	$('.styled').uniform();
-<<<<<<< HEAD
 
 
-    // Setup validation
-=======
-    //Basic validation
-        // Setup validation
->>>>>>> origin/master
+
     $(".form-validate").validate({
         ignore: 'input[type=hidden], .select2-search__field', // ignore hidden fields
         errorClass: 'validation-error-label',
@@ -82,8 +67,7 @@ $(function() {
             }
         },
         validClass: "validation-valid-label",
-<<<<<<< HEAD
-        success: function(label) {
+     success: function(label) {
             label.addClass("validation-valid-label").text("Successfully")
         },
         rules: {
@@ -93,8 +77,8 @@ $(function() {
         },
         messages: {
             username: "Enter your username",
-<<<<<<< HEAD
-=======
+        }
+    
     });
 
 
@@ -149,20 +133,12 @@ $(function() {
         },
         validClass: "validation-valid-label",
         messages: {
-<<<<<<< HEAD
-            username: "Enter your username",
->>>>>>> origin/master
-            password: {
-            	required: "Enter your password",
-            	minlength: jQuery.validator.format("At least {0} characters required")
+           username: "Enter your username",
+           password: {
+           required: "Enter your password",
+           minlength: jQuery.validator.format("At least {0} characters required")
             }
-        }
-=======
-<<<<<<< HEAD
-=======
-            username: "Enter your correct email",
->>>>>>> origin/master
-            password: "Enter your password"
+        
         },
         
         submitHandler: function(ev)
@@ -171,11 +147,7 @@ $(function() {
                         $("#error_message-box").html('<img src="assets/images/loading.gif" >');
                        // return false;
                         $.ajax({
-<<<<<<< HEAD
-						url: baseurl+'Login',
-=======
-						url: baseurl+'login',
->>>>>>> origin/master
+                        url: baseurl+'login',
 						method: 'POST',
 						//dataType: 'json',
 						data: {
@@ -204,19 +176,10 @@ $(function() {
 
 
 			}
-<<<<<<< HEAD
->>>>>>> 24be98068c766af2f18ff4a1434ce0060b214fd0
     });
 
 });
-=======
->>>>>>> cc1506fcd39d22203b7bbe3e8ed85d5033257036
-    });
-
-
     
-
-});
 
 
 function verify(element){
@@ -279,4 +242,3 @@ function verify(element){
                                     });
     
 }
->>>>>>> origin/master

@@ -1,19 +1,6 @@
-<%@page import="java.util.*"%>
-<<<<<<< HEAD
-<%@page import="wrapper.*"%>
-<%
-  String app_url="http://localhost:8080/Blogtrackers/";  
- %> 
-<%
-	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
-	if (username != null && username != "") {
-		response.sendRedirect("dashboard.jsp");
-	}
-        
-%> 
+
 <!DOCTYPE html>
 <html lang="en">
-=======
 <%@page import="java.io.File"%>
 <%@page import="authentication.DBConnector"%>
 <%
@@ -21,11 +8,6 @@
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
         
 %>
-
-<!DOCTYPE html>
-<html lang="en">
-<<<<<<< HEAD
->>>>>>> origin/master
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,18 +22,7 @@
 	<link href="assets/css/components.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/colors.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="vegas/vegas.css">
-<<<<<<< HEAD
-	<style>
-	.color-light
-	{
-	color:#ffffff !important;	
-	}
-	</style>
-=======
->>>>>>> origin/master
 	<!-- /global stylesheets -->
-
-	<!-- Core JS files -->
 	<script type="text/javascript" src="assets/js/plugins/loaders/pace.min.js"></script>
 	<script type="text/javascript" src="assets/js/core/libraries/jquery.min.js"></script>
 	<script type="text/javascript" src="assets/js/core/libraries/bootstrap.min.js"></script>
@@ -68,12 +39,7 @@
         <script>
            var app_url ='${pageContext.request.contextPath}/influence.jsp'; 
         </script>
-<<<<<<< HEAD
-	<script type="text/javascript" src="assets/js/pages/login_validation.js">
-=======
-	<!--<script type="text/javascript" src="assets/js/pages/login_validation.js"></script>-->
->>>>>>> origin/master
-
+	<script type="text/javascript" src="assets/js/pages/login_validation.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/ui/ripple.min.js"></script>
         <!--<script type="text/javascript" src="assets/js/plugins/neon-login.js"></script>-->
 	<!-- /theme JS files -->
@@ -95,20 +61,12 @@
 				<form action="#" id="form_login" >
 					<div class="panel panel-body login-form">
 						<div class="text-center">
-<<<<<<< HEAD
-                                             <div ><!-- <img src="assets/images/newLogo.jpg" style="width:150px; height:60px"/> --></div>
-                                                        
-							<h5 class="content-group">Login to your Blogtrackers account <small class="display-block">Your credentials</small></h5>
-=======
-                                                    <div ><img src="assets/images/newLogo.jpg" style="width:150px; height:60px"/></div>
                                                         
 							<h5 class="content-group">Login to your account <small class="display-block">Your credentials</small></h5>
->>>>>>> origin/master
                                                          <div class="form-login-error">
                                                                 <p id="error_message-box" style="color:red"></p>
                                                     </div>
 						</div>
-<<<<<<< HEAD
 
 						<div class="form-group has-feedback has-feedback-left">
 							<input type="email" class="form-control" placeholder="Email" id="username" name="username" required="required">
@@ -161,9 +119,6 @@
 	<!-- /page container -->
 
 
-            
-=======
-=======
     <head>
         <title>Welcome to Blogtracker</title>
         <meta name="description" content="">
@@ -235,9 +190,7 @@
         HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
         WARNING: Respond.js doesn't work if you view the page via file://
         =====================================-->
->>>>>>> cc1506fcd39d22203b7bbe3e8ed85d5033257036
-
-        <!--[if lt IE 9]>
+      <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
@@ -1016,9 +969,8 @@ Lab, U.S. Army Research Office</h4>
                 <div class="container">
                     <div class="row">
 
-<<<<<<< HEAD
             <jsp:include page="footer.jsp"></jsp:include>
->>>>>>> origin/master
+
 <script src="vegas/vegas.min.js"></script>
 <script>
 	$("body").vegas({
@@ -1032,10 +984,7 @@ overlay:true,
 	</script>
 </body>
 </html>
-<<<<<<< HEAD
-=======
-=======
-                        <!-- copyright start -->
+                       <!-- copyright start -->
                         <div class="col-md-12 col-sm-12 col-xs-12 text-center">
                             <p class="color-light">Copyright &copy;2017 Blogtrackers All rights reserved.</p>
                         </div>
@@ -1103,5 +1052,3 @@ overlay:true,
 		</script>
     </body>
 </html>
->>>>>>> cc1506fcd39d22203b7bbe3e8ed85d5033257036
->>>>>>> origin/master
