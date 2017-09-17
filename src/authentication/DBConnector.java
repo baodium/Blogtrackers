@@ -44,10 +44,6 @@ public class DBConnector {
 		return dbCon;  
 	}
 
-<<<<<<< HEAD
-=======
-	@SuppressWarnings({ "rawtypes", "unchecked" })
->>>>>>> origin/master
 	public ArrayList query(String query){
 		ArrayList result=new ArrayList();  
 		Connection con = null;
@@ -100,28 +96,16 @@ public class DBConnector {
 		return donee;
 	}
 
-<<<<<<< HEAD
-	public ArrayList login(String email, String password){
-		String query="SELECT * FROM usercredentials WHERE Email ='"+email+"' AND Password ='"+password+"'"; 
-		ArrayList user_info= this.query(query);
-=======
 	
-	@SuppressWarnings("rawtypes")
 	public ArrayList login(String email, String password){
 		String query="SELECT * FROM usercredentials WHERE Email ='"+email+"' AND Password ='"+password+"'"; 
 		ArrayList<?> user_info= this.query(query);
->>>>>>> origin/master
 
 		if(user_info.size()>0){     
 			user_info=(ArrayList)user_info.get(0);
 		}  
 		return user_info;
 	}
-
-<<<<<<< HEAD
-=======
-	
->>>>>>> origin/master
 	public boolean emailExists(String email){
 		String query="SELECT * FROM usercredentials WHERE Email ='"+email+"' "; 
 		ArrayList user_info= this.query(query);
@@ -159,11 +143,7 @@ public class DBConnector {
 	public boolean register(String name, String email,String password, String usertype){
 		boolean inserted=false;
 		String digest =this.md5Funct(password);
-<<<<<<< HEAD
-		String query_string ="insert into usercredentials (UserName, Email, Password, MessageDigest, user_type ) VALUES ('"+name+"','"+email+"','"+password+"','"+digest+"','"+usertype+"' )";
-=======
 		String query_string ="insert into usercredentials (UserName, Email, Password, MessageDigest, user_type,first_name,last_name,phone_number,address,profile_picture,last_updated,added_by,date_added ) VALUES ('"+name+"','"+email+"','"+password+"','"+digest+"','"+usertype+"','','','','','','','','')";
->>>>>>> origin/master
 		inserted=this.updateTable(query_string);  
 		return inserted;
 	}
