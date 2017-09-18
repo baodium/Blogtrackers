@@ -1,6 +1,4 @@
-
-<!DOCTYPE html>
-<html lang="en">
+<%@page import="java.util.*"%>
 <%@page import="java.io.File"%>
 <%@page import="authentication.DBConnector"%>
 <%
@@ -8,117 +6,9 @@
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
         
 %>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title><%="App Name" %></title>
 
-	<!-- Global stylesheets -->
-	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
-	<link href="assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
-	<link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
-	<link href="assets/css/core.css" rel="stylesheet" type="text/css">
-	<link href="assets/css/components.css" rel="stylesheet" type="text/css">
-	<link href="assets/css/colors.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="vegas/vegas.css">
-	<!-- /global stylesheets -->
-	<script type="text/javascript" src="assets/js/plugins/loaders/pace.min.js"></script>
-	<script type="text/javascript" src="assets/js/core/libraries/jquery.min.js"></script>
-	<script type="text/javascript" src="assets/js/core/libraries/bootstrap.min.js"></script>
-	<script type="text/javascript" src="assets/js/plugins/loaders/blockui.min.js"></script>
-	<script type="text/javascript" src="assets/js/plugins/ui/nicescroll.min.js"></script>
-	<script type="text/javascript" src="assets/js/plugins/ui/drilldown.js"></script>
-	<!-- /core JS files -->
-
-	<!-- Theme JS files -->
-	<script type="text/javascript" src="assets/js/plugins/forms/validation/validate.min.js"></script>
-	<script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>
-
-	<script type="text/javascript" src="assets/js/core/app.js"></script>
-        <script>
-           var app_url ='${pageContext.request.contextPath}/influence.jsp'; 
-        </script>
-	<script type="text/javascript" src="assets/js/pages/login_validation.js"></script>
-	<script type="text/javascript" src="assets/js/plugins/ui/ripple.min.js"></script>
-        <!--<script type="text/javascript" src="assets/js/plugins/neon-login.js"></script>-->
-	<!-- /theme JS files -->
-
-</head>
-<!-- login-cover-->
-<body class="login-container ">
-
-	<!-- Page container -->
-	<div class="page-container">
-
-		<!-- Page content -->
-		<div class="page-content">
-
-			<!-- Main content -->
-			<div class="content-wrapper">
-
-				<!-- Form with validation -->
-				<form action="#" id="form_login" >
-					<div class="panel panel-body login-form">
-						<div class="text-center">
-                                                        
-							<h5 class="content-group">Login to your account <small class="display-block">Your credentials</small></h5>
-                                                         <div class="form-login-error">
-                                                                <p id="error_message-box" style="color:red"></p>
-                                                    </div>
-						</div>
-
-						<div class="form-group has-feedback has-feedback-left">
-							<input type="email" class="form-control" placeholder="Email" id="username" name="username" required="required">
-							<div class="form-control-feedback">
-								<i class="icon-user text-muted"></i>
-							</div>
-						</div>
-
-						<div class="form-group has-feedback has-feedback-left">
-							<input type="password" class="form-control" placeholder="Password" id="password" name="password" required="required">
-							<div class="form-control-feedback">
-								<i class="icon-lock2 text-muted"></i>
-							</div>
-						</div>
-
-						<div class="form-group login-options">
-							<div class="row">
-								<div class="col-sm-6">
-									<label class="checkbox-inline">
-										<input type="checkbox" class="styled" checked="checked">
-										Remember
-									</label>
-								</div>
-
-								<div class="col-sm-6 text-right">
-									<a href="<%=app_url%>resetpassword">Forgot password?</a>
-								</div>
-							</div>
-						</div>
-                                                   
-						<div class="form-group">
-							<button type="submit" id="submit" value="submit" value="login" class="btn bg-pink-400 btn-block" onclick="location.href='dashboard.html'">Login <i class="icon-circle-right2 position-right"></i></button>
-						</div>
-                                                             <div class="content-divider text-muted form-group"><span>No account?</span></div>
-                                                <div class="form-group">
-							<a href="<%=app_url%>register" class="btn bg-blue-400 btn-block">Register <i class="icon-users position-right"></i></a>
-						</div>
-
-						</div>
-				</form>
-				<!-- /form with validation -->
- <jsp:include page="footer.jsp"></jsp:include>
-			</div>
-			<!-- /main content -->
-
-		</div>
-		<!-- /page content -->
-
-	</div>
-	<!-- /page container -->
-
-
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <title>Welcome to Blogtracker</title>
         <meta name="description" content="">
@@ -190,7 +80,8 @@
         HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
         WARNING: Respond.js doesn't work if you view the page via file://
         =====================================-->
-      <!--[if lt IE 9]>
+
+        <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
@@ -969,22 +860,7 @@ Lab, U.S. Army Research Office</h4>
                 <div class="container">
                     <div class="row">
 
-            <jsp:include page="footer.jsp"></jsp:include>
-
-<script src="vegas/vegas.min.js"></script>
-<script>
-	$("body").vegas({
-    slides: [
-        { src: "img/signin.jpg" },
-        { src: "img/signin2.jpg" }
-     ],
-overlay:true,
-		timer:false
-});
-	</script>
-</body>
-</html>
-                       <!-- copyright start -->
+                        <!-- copyright start -->
                         <div class="col-md-12 col-sm-12 col-xs-12 text-center">
                             <p class="color-light">Copyright &copy;2017 Blogtrackers All rights reserved.</p>
                         </div>

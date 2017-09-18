@@ -10,7 +10,7 @@
     if(f.exists() && !f.isDirectory()) { 
        pimage = "profile_images/"+session.getAttribute("username")+".jpg";
    }
-                                                            //pimage = pimage.replace("build/", "");
+    //pimage = pimage.replace("build/", "");
 %>
 <html lang="en">
 <head>
@@ -55,12 +55,6 @@
 	<script type="text/javascript" src="assets/js/plugins/forms/validation/validate.min.js"></script>
         <script type="text/javascript" src="assets/js/plugins/fileinput.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>
-<<<<<<< HEAD
-
-	<script type="text/javascript" src="assets/js/core/app.js"></script>
-	<script type="text/javascript" src="assets/js/pages/login_validation.js"></script>
-	<!-- /theme JS files -->
-=======
 	 <script>
            var app_url ='${pageContext.request.contextPath}/'; 
       </script>
@@ -68,7 +62,6 @@
 	<script type="text/javascript" src="assets/js/pages/login_validation.js"></script>
 	<!-- /theme JS files -->
 	       
->>>>>>> origin/master
 
 </head>
 
