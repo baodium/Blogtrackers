@@ -134,7 +134,7 @@
 						</ul>
 
 						<div class="dropdown-content-footer">
-							<a href="#" data-popup="tooltip" title="All messages"><i class="icon-menu display-block"></i></a>
+							<a href="#" data-popup="tooltip" title="See all trackers"><i class="icon-menu display-block"></i></a>
 						</div>
 					</div>
 				</li>

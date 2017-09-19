@@ -1398,7 +1398,7 @@ function googleTranslateElementInit() {
 									<div class="col-md-4">
 										<div class="content-group">
 											<h6 class="text-semibold no-margin"><i class="icon-comments position-left text-slate"></i> 32,693</h6>
-											<span class="text-muted text-size-small">all messages</span>
+											<span class="text-muted text-size-small">See all trackers</span>
 										</div>
 									</div>
 								</div>
