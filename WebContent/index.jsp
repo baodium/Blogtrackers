@@ -287,9 +287,7 @@ content analysis and social network analysis.
         </div>
         
         
-      
-       
-        <!-- Fun Fact Area
+       <!-- Fun Fact Area
         ===================================== -->
         <div id="fact" class="bg-grad-stellar pt100 pb100">
             <div class="container">
@@ -611,9 +609,9 @@ content analysis and social network analysis.
                                 <div class="shop-item-container-in">
                                     <div class="shop-label">-50%</div>
                                     <img src="assets/img/shop/img-shop-1.png" alt="shop item" class="img-responsive center-block">
-                                    <h4 class="shop-item-title">U.S. National Science
-Foundation</h4>
-                                    <span class="shop-item-price">IIS-1636933, IIS-1110868 and ACI-1429160</span>
+                                    <span class="shop-item-price">U.S. National Science
+Foundation</span>
+                                    
                                 </div>
                                 
                             </div>
@@ -623,11 +621,9 @@ Foundation</h4>
                             <div class="shop-item-container-out">
                                 <div class="shop-item-container-in">
                                     <img src="assets/img/shop/img-shop-2.png" alt="shop item" class="img-responsive center-block">
-                                    <h4 class="shop-item-title">U.S.
-Office of Naval Research</h4> 
-                                    <span class="shop-item-price">N00014-10-1-0091, N00014-14-1-0489,
-N00014-15-P-1187, N00014-16-1-2016, N00014-16-1-2412,
-N00014-17-1-2605, N00014-17-1-2675</span>
+                                    <span class="shop-item-price">U.S.
+Office of Naval Research</span> 
+                                  
                                 </div>
 
                             </div>
@@ -637,9 +633,9 @@ N00014-17-1-2605, N00014-17-1-2675</span>
                             <div class="shop-item-container-out">
                                 <div class="shop-item-container-in">
                                     <img src="assets/img/shop/img-shop-3.png" alt="shop item" class="img-responsive center-block">
-                                    <h4 class="shop-item-title">U.S. Air Force Research
-Lab, U.S. Army Research Office</h4>
-                                    <span class="shop-item-price">W911NF-16-1-0189</span>
+                                    <span class="shop-item-price">U.S. Air Force Research
+Lab, U.S. Army Research Office</span>
+                                    
                                 </div>
 
                                 
@@ -649,9 +645,10 @@ Lab, U.S. Army Research Office</h4>
                             <!-- shop item start -->
                             <div class="shop-item-container-out">
                                 <div class="shop-item-container-in">
-                                    <img src="assets/img/shop/img-shop-4.png" alt="shop item" class="img-responsive center-block">
-                                    <h4 class="shop-item-title">Man Jacket</h4>
-                                    <span class="shop-item-price">$57.00</span>
+                                    <img src="assets/img/shop/img-shop-1.png" alt="shop item" class="img-responsive center-block">
+                                    <h4 class="shop-item-title"></h4>
+                                    <span class="shop-item-price">U.S. National Science
+Foundation</span>
                                 </div>
 
                                 
@@ -662,9 +659,8 @@ Lab, U.S. Army Research Office</h4>
                             <div class="shop-item-container-out">
                                 <div class="shop-item-container-in">
                                     <img src="assets/img/shop/img-shop-5-large.jpg" alt="shop item" class="img-responsive center-block">
-                                    <h4 class="shop-item-title">U.S. Defense Advanced Research Projects Agency</h4>
-                                    <span class="shop-item-price">W31P4Q-17-C-
-0059</span>
+                                    <span class="shop-item-price">U.S. Defense Advanced Research Projects Agency</span>
+                                    
                                 </div>
 
                                
@@ -676,8 +672,7 @@ Lab, U.S. Army Research Office</h4>
                                 <div class="shop-item-container-in">
                                     <div class="shop-label">-50%</div>
                                     <img src="assets/img/shop/img-shop-2.png" alt="shop item" class="img-responsive center-block">
-                                    <h4 class="shop-item-title">Cool Man Jacket</h4>
-                                    <span class="shop-item-price">$90.00</span>
+                                    
                                 </div>
 
                               
@@ -685,28 +680,11 @@ Lab, U.S. Army Research Office</h4>
                             <!-- shop item end -->
                             
                             <!-- shop item start -->
-                            <div class="shop-item-container-out">
-                                <div class="shop-item-container-in">
-                                    <div class="shop-label">-50%</div>
-                                    <img src="assets/img/shop/img-shop-3.png" alt="shop item" class="img-responsive center-block">
-                                    <h4 class="shop-item-title">Cool Man Jacket</h4>
-                                    <span class="shop-item-price">$90.00</span>
-                                </div>
-
-                            </div>
+                            
                             <!-- shop item end -->
                             
                             <!-- shop item start -->
-                            <div class="shop-item-container-out">
-                                <div class="shop-item-container-in">
-                                    <div class="shop-label">-50%</div>
-                                    <img src="assets/img/shop/img-shop-4.png" alt="shop item" class="img-responsive center-block">
-                                    <h4 class="shop-item-title">Cool Man Jacket</h4>
-                                    <span class="shop-item-price">$90.00</span>
-                                </div>
-
-                                
-                            </div>
+                           
                             <!-- shop item end -->
 
                         </div><!-- #owlShop end -->
@@ -753,13 +731,13 @@ Lab, U.S. Army Research Office</h4>
                                 <div class="testimonial testimonial-triangle-isosceles bottom-left">
                                     <div class="testimonial-body">
                                         <p>
-                                            Pasific template is the best template so far. So easy to customize and clean code. Recommended!
+                                            Blogtrackers is the best tool so far. So easy to use. Highly recommended!
                                         </p>
                                     </div>
                                     <div class="testimonial-footer">
                                         <img src="assets/img/other/photo-1.jpg" alt="testimonial author" class="img-responsive img-circle">
                                         <i class="fa fa-quote-left"></i>
-                                        Martin Smith <a href="#">envato.com   </a>
+                                        Mukti Barole <a href="#">mukti.com   </a>
                                     </div>
                                 </div>
                                 <!-- Testimonial Item end -->
@@ -768,13 +746,13 @@ Lab, U.S. Army Research Office</h4>
                                 <div class="testimonial testimonial-triangle-isosceles bottom-left">
                                     <div class="testimonial-body">
                                         <p>
-                                            Quisque mollis lacus augue, a hendrerit leo tristique vitae. Mauris non ipsum molestie sagittis elit ac vulputate odio.
+                                            Good tool for sentiments analysis
                                         </p>
                                     </div>
                                     <div class="testimonial-footer">
                                         <img src="assets/img/other/photo-2.jpg" alt="testimonial author" class="img-responsive img-circle">
                                         <i class="fa fa-quote-left"></i>
-                                        Steve Austin <a href="#">facebook.com   </a>
+                                        Samer Al-khateeb <a href="#">samer.com   </a>
                                     </div>
                                 </div>
                                 <!-- Testimonial Item end -->
@@ -783,13 +761,13 @@ Lab, U.S. Army Research Office</h4>
                                 <div class="testimonial testimonial-triangle-isosceles bottom-left">
                                     <div class="testimonial-body">
                                         <p>
-                                            Fusce quam augue, gravida tincidunt dui nec, tempor iaculis justo. 
+                                            You can see the trend of a keyword over a period of time with a click on a button. 
                                         </p>
                                     </div>
                                     <div class="testimonial-footer">
                                         <img src="assets/img/other/photo-4.jpg" alt="testimonial author" class="img-responsive img-circle">
                                         <i class="fa fa-quote-left"></i>
-                                        Gisselse <a href="#">Smashingmagazine.com   </a>
+                                       Nihal Hussain <a href="#">Nihal.com   </a>
                                     </div>
                                 </div>
                                 <!-- Testimonial Item end -->
@@ -798,45 +776,23 @@ Lab, U.S. Army Research Office</h4>
                                 <div class="testimonial testimonial-triangle-isosceles bottom-left">
                                     <div class="testimonial-body">
                                         <p>
-                                            Pasific template is the best template so far. So easy to customize and clean code. Recommended!
+                                            Great interface, smooth and efficient
                                         </p>
                                     </div>
                                     <div class="testimonial-footer">
                                         <img src="assets/img/other/photo-1.jpg" alt="testimonial author" class="img-responsive img-circle">
                                         <i class="fa fa-quote-left"></i>
-                                        Martin Smith <a href="#">Smashingmagazine.com   </a>
+                                        Kiran Bandeli <a href="#">kkbandeli.com   </a>
                                     </div>
                                 </div>
                                 <!-- Testimonial Item end -->
 
                                 <!-- Testimonial Item start -->
-                                <div class="testimonial testimonial-triangle-isosceles bottom-left">
-                                    <div class="testimonial-body">
-                                        <p>
-                                            Quisque mollis lacus augue, a hendrerit leo tristique vitae. Mauris non ipsum molestie sagittis elit ac vulputate odio.
-                                        </p>
-                                    </div>
-                                    <div class="testimonial-footer">
-                                        <img src="assets/img/other/photo-2.jpg" alt="testimonial author" class="img-responsive img-circle">
-                                        <i class="fa fa-quote-left"></i>
-                                        Steve Austin <a href="#">envato.com   </a>
-                                    </div>
-                                </div>
+                               
                                 <!-- Testimonial Item end -->
 
                                 <!-- Testimonial Item start -->
-                                <div class="testimonial testimonial-triangle-isosceles bottom-left">
-                                    <div class="testimonial-body">
-                                        <p>
-                                            Fusce quam augue, gravida tincidunt dui nec, tempor iaculis justo. 
-                                        </p>
-                                    </div>
-                                    <div class="testimonial-footer">
-                                        <img src="assets/img/other/photo-4.jpg" alt="testimonial author" class="img-responsive img-circle">
-                                        <i class="fa fa-quote-left"></i>
-                                        Goselle <a href="#">themeforest.com   </a>
-                                    </div>
-                                </div>
+                               
                                 <!-- Testimonial Item end -->
 
                             </div><!-- owlSectionThreeItem end -->
