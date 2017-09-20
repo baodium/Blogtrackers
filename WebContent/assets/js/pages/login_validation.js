@@ -169,7 +169,7 @@ $(function() {
 							if(login_status === "invalid"){
                                                                         $("#error_message-box").html('Invalid username/password');
 							}else if(login_status === "success"){
-                                                            window.location.href = baseurl+"dashboard.jsp";
+                                                            window.location.href = baseurl+"profile.jsp";
                                                         }
                                                 }
                                     });

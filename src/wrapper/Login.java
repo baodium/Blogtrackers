@@ -72,7 +72,7 @@ public class Login extends HttpServlet {
 				//ArrayList<String> trackers=c.gettrackers(username);
 
 				//session.setAttribute("trackers", trackers);
-                                response.setContentType("text/html");
+                response.setContentType("text/html");
 				pww.write("success");
                                
 				//response.setContentType("text/html");
