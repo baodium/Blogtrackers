@@ -1,7 +1,15 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.io.File"%>
+<%@page import="java.util.*"%>
 <!DOCTYPE html>
 <%
+
+	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
+	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
+	if (username == null || username == "") {
+		response.sendRedirect("index.jsp");
+	}
+
     String path=application.getRealPath("/").replace('\\', '/')+"profile_images/";
     path = path.replace("build/", "");
     String filename = path+session.getAttribute("username")+".jpg";
@@ -10,7 +18,9 @@
     if(f.exists() && !f.isDirectory()) { 
        pimage = "profile_images/"+session.getAttribute("username")+".jpg";
    }
-    //pimage = pimage.replace("build/", "");
+    
+    ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
+    ArrayList trackers = (ArrayList)session.getAttribute("trackers");
 %>
 <html lang="en">
 <head>
@@ -37,6 +47,18 @@
 	<script type="text/javascript" src="assets/js/plugins/ui/drilldown.js"></script>
 	<!-- /core JS files -->
 
+		<!-- Theme JS files -->
+	<script type="text/javascript" src="assets/js/plugins/forms/wizards/stepss.min.js"></script>
+	<script type="text/javascript" src="assets/js/plugins/forms/selects/select2.min.js"></script>
+	<script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>
+	<script type="text/javascript" src="assets/js/core/libraries/jasny_bootstrap.min.js"></script>
+	<script type="text/javascript" src="assets/js/plugins/forms/validation/validate.min.js"></script>
+	<script type="text/javascript" src="assets/js/plugins/extensions/cookie.js"></script>
+
+	<script type="text/javascript" src="assets/js/core/app.js"></script>
+	<script type="text/javascript" src="assets/js/pages/wizard_steps.js"></script>
+
+
 	<!-- Theme JS files -->
 	<script type="text/javascript" src="assets/js/plugins/visualization/d3/d3.min.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/visualization/d3/d3_tooltip.js"></script>
@@ -47,7 +69,7 @@
 	<script type="text/javascript" src="assets/js/plugins/pickers/daterangepicker.js"></script>
 
 	<script type="text/javascript" src="assets/js/core/app.js"></script>
-	<script type="text/javascript" src="assets/js/pages/dashboard.js"></script>
+
 
 	<script type="text/javascript" src="assets/js/plugins/ui/ripple.min.js"></script>
         
@@ -67,22 +89,6 @@
 	       
 	<link href="assets/css/mystyle.css" rel="stylesheet" type="text/css">
 	<!-- /global stylesheets -->
-
-
-
-    <script type="text/javascript" src="assets/js/plugins/maps/jvectormap/jvectormap.min.js"></script>
-	<script type="text/javascript" src="assets/js/plugins/maps/jvectormap/map_files/world.js"></script>
-	<script type="text/javascript" src="assets/js/plugins/maps/jvectormap/map_files/countries/usa.js"></script>
-	<script type="text/javascript" src="assets/js/plugins/maps/jvectormap/map_files/countries/germany.js"></script>
-	<script type="text/javascript" src="assets/demo_data/maps/vector/gdp_demo_data.js"></script>
-
-	<script type="text/javascript" src="assets/js/core/app.js"></script>
-		<script type="text/javascript" src="assets/js/maps/vector/vector_maps_demo.js"></script>
-	<script type="text/javascript" src="assets/js/pages/dashboard.js"></script>
-		
-
-	<script type="text/javascript" src="assets/js/plugins/ui/ripple.min.js"></script>
-
 </head>
 
 <body>
@@ -100,7 +106,7 @@
 		
 		
 			<div class="navbar-collapse collapse" id="navbar-mobile">
-	
+			<form name="trackerform" id="trackerform" action="Datasource" method="get">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown language-switch">
 					<a class="dropdown-toggle" data-toggle="dropdown">
@@ -109,9 +115,16 @@
 					</a>
 
 					<ul class="dropdown-menu">
-						<li><a class="deutsch"> Wale</a></li>
-						<li><a class="ukrainian">Test</a></li>
+					<% if(trackers != null && trackers.size()>0){ 
+						for(int i=0; i<trackers.size(); i++){
+							ArrayList tracker = (ArrayList)trackers.get(i);
+					%>
+						<li><a class="<%=tracker.get(0)%>"> <%=tracker.get(0)%></a></li>
+					<% } } %>
 					</ul>
+					
+					
+					
 				</li>
 
 				
@@ -130,10 +143,8 @@
 						<li><a href="<%=request.getContextPath()%>/logout"><i class="icon-switch2"></i> Logout</a></li>
 					</ul>
 				</li>
-				
-				
-				
 			</ul>
+			</form>
 		</div>
 			
 	
@@ -232,7 +243,7 @@
 
 			<ul class="nav navbar-nav navbar-nav-material navbar-right">
 				<li>
-					<a>
+					<a href="<%=request.getContextPath()%>/setup_tracker.jsp">
 						<i class="icon-history position-left"></i>
 						Blogtrackers
 						<span class="label label-inline position-right bg-success-400">1.4</span>

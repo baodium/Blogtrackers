@@ -50,7 +50,7 @@ public class Login extends HttpServlet {
 
 		String username = request.getParameter("email");
 		String pass = request.getParameter("password");
-                String submitted = request.getParameter("login");
+        String submitted = request.getParameter("login");
 
                  
 		PrintWriter pww = response.getWriter();
@@ -65,8 +65,15 @@ public class Login extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("user",username);
                                 
-                                session.setAttribute("username",login.get(0));
-                                session.setAttribute("email",login.get(2));
+                session.setAttribute("username",login.get(0));
+                session.setAttribute("email",login.get(2));
+                
+                Common c = new Common();
+                try{
+                	ArrayList trackers = new DBConnector().query("SELECT tracker_name FROM trackers WHERE userid='"+login.get(0)+"'");
+                	session.setAttribute("trackers", trackers);
+                }catch(Exception ex){}
+                
 				////
 				//Common c= new Common();
 				//ArrayList<String> trackers=c.gettrackers(username);

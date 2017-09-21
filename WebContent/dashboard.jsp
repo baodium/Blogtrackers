@@ -12,6 +12,7 @@
 	}
         ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
 %>
+
  <jsp:include page="include_top.jsp"></jsp:include>
 
 	<!-- Page header -->
