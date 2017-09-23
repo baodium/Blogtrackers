@@ -74,7 +74,7 @@
 					<div class="panel panel-body login-form">
 						<div class="text-center">
 							<!--<div class="icon-object border-success text-success"><i class="icon-plus3"></i></div>-->
-                                                       <div ><img src="assets/images/a.png" style="width:155px; height:50px"/></div>
+                                                        <div ><img src="assets/images/newLogo.jpg" style="width:150px; height:60px"/></div>
                                                     
 							<h5 class="content-group">Create account <small class="display-block">All fields are required</small></h5>
 						</div>
@@ -82,7 +82,7 @@
 						<div class="content-divider text-muted form-group"><span>Your credentials</span></div>
 
 						<div class="form-group has-feedback has-feedback-left">
-							<input type="text" name="username" id="username_validate" onmouseout="verify(this);" class="form-control" placeholder="Full name" required="required">
+							<input type="text" name="username" id="username_validate" onmouseout="verify(this);" class="form-control" placeholder="Username" required="required">
 							<div class="form-control-feedback">
 								<i class="icon-user-check text-muted"></i>
 							</div>

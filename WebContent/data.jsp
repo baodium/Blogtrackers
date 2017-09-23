@@ -286,7 +286,8 @@
 																	end="${i+2}">
 																	<td class="a-center "><input type="checkbox"
 																		class="flat" name="table_records"
-																		value="${s1.blogsiteID}"> <c:out
+																		value="${s1.blogsiteID}"> 
+																		<c:out
 																			value="${s1.blogsiteName} (${s1.blogSize} posts)" /></td>
 																</c:forEach>
 															</tr>

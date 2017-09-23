@@ -16,7 +16,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+	<title>Blogtrackers</title>
 
 	<!-- Global stylesheets -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
@@ -25,7 +25,6 @@
 	<link href="assets/css/core.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/components.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/colors.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="vegas/vegas.css">
 	<!-- /global stylesheets -->
 
 	<!-- Core JS files -->
@@ -42,7 +41,7 @@
 	<script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>
 
 	<script type="text/javascript" src="assets/js/core/app.js"></script>
-       <script>
+        <script>
            var app_url ='${pageContext.request.contextPath}/'; 
         </script>
 	<script type="text/javascript" src="assets/js/pages/login_validation.js"></script>
@@ -50,6 +49,7 @@
 	<script type="text/javascript" src="assets/js/plugins/ui/ripple.min.js"></script>
         <!--<script type="text/javascript" src="assets/js/plugins/neon-login.js"></script>-->
 	<!-- /theme JS files -->
+
 </head>
 <!-- login-cover-->
 <body class="login-container ">
@@ -67,7 +67,7 @@
 				<form action="#" id="form_login" method="post">
 					<div class="panel panel-body login-form">
 						<div class="text-center">
-                                                    <div ><img src="assets/images/a.png" style="width:155px; height:50px"/></div>
+                                                    <div ><img src="assets/images/newLogo.jpg" style="width:150px; height:60px"/></div>
                                                         
 							<h5 class="content-group">Login to your account <small class="display-block">Your credentials</small></h5>
                                                          <div class="form-login-error">
@@ -122,19 +122,8 @@
 	</div>
 	<!-- /page container -->
 
- <script src="vegas/vegas.min.js"></script>
-<script>
-	$("body").vegas({
-    slides: [
-        { src: "img/signin.jpg" },
-        { src: "img/signin2.jpg" }
-     ],
-overlay:true,
-		timer:false
-});
-	</script>
 
-	  <jsp:include page="footer.jsp"></jsp:include>
+            <jsp:include page="footer.jsp"></jsp:include>
 
 </body>
 </html>
