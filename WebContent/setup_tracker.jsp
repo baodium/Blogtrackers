@@ -51,7 +51,7 @@ function googleTranslateElementInit() {
 				<!-- Basic setup -->
 	            <div class="panel panel-white">
 					<div class="panel-heading">
-						<h6 class="panel-title">Setup tracker</h6>
+						<h6 class="panel-title">Setup tracker &nbsp;<span id="error-box" style="color:red"></span></h6>
 						<div class="heading-elements">
 							<ul class="icons-list">
 		                		<li><a data-action="collapse"></a></li>
@@ -115,6 +115,7 @@ function googleTranslateElementInit() {
 								</div>
 							</div>
 						</fieldset>
+						<textarea name="all-selected-blogs" id="all-selected-blogs" rows="5" cols="5" style="display:none"></textarea>
 					</form>
 	            </div>
 	            <!-- /basic setup -->
@@ -132,9 +133,13 @@ function googleTranslateElementInit() {
 	<script>
 	function set_tracker(source){
 		var keyword = $("#keyword").val();
-		$("#result-set").html(keyword);
+		var searched = $("#search-blog").val();
+		var tracker = $("#tracker-name").val();
+		//console.log(searched);
+		console.log(tracker);
+		$("#result-set").html("<center><img src='assets/images/preloader.gif' /></center>");
 		//console.log(keyword);
-		if(keyword !=""){
+		if(keyword !="" && searched==null){
 			$.ajax({
 		        url: app_url+'webtemplates/bloglist.jsp',
 				method:'POST',
@@ -145,9 +150,60 @@ function googleTranslateElementInit() {
 		        }
 		    });	
 		}
+		
+		if(searched=="yes" && tracker==""){
+			$("#tracker-name").val("");
+			select_blog();
+		}
+		
+		if(tracker!=""){
+			var bloggs = $("#all-selected-blogs").val();
+			bloggs= bloggs.trim(",");
+			var tracker_name = $("#tracker-name").val();
+			var tracker_desc = $("#additional-info").val();
+			$('#next-click').html('submitting...');
+			$('#next-click').attr('disabled',true);
+			$.ajax({
+		        url: app_url+'setup_tracker',
+				method:'POST',
+				data:{title:tracker_name,descr:tracker_desc,sites:bloggs,save:"yes",keyword:keyword},
+		        success: function(response)
+		        {		
+		        	console.log(response);
+		        	if(response==="success"){
+		        		 window.location.href = app_url+"dashboard.jsp";
+		        	}else{
+		        		$("#error-box").html("Error adding tracker");
+		        	}
+		        }
+		    });	
+			console.log("submitted");
+		}
 	}
 	
+	function check_all(){
+		//console.log(keyword);
+		var is_checked = $("#check-all").is(':checked');
+		if(is_checked){
+			$(".blog").prop('checked', true);
+		}else{
+			$(".blog").prop('checked', false);
+		}
+	}
 	
+	function select_blog(){
+		var blogs = $(".blog-list");
+		var selected='';
+		for(var l=0; l<blogs.length; l++){
+				var is_checked = $(blogs[l]).is(':checked');
+				if(is_checked){
+					var valu = $(blogs[l]).val();
+					selected+= valu+",";
+				}
+		}
+		//console.log(selected);
+		$("#all-selected-blogs").val=selected;
+	}
 	
 	</script>
 
