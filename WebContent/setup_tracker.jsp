@@ -49,7 +49,7 @@ function googleTranslateElementInit() {
 			<div class="content-wrapper">
 
 				<!-- Basic setup -->
-	            <div class="panel panel-white">
+	            <div class="panel panel-primary">
 					<div class="panel-heading">
 						<h6 class="panel-title">Setup tracker &nbsp;<span id="error-box" style="color:red"></span></h6>
 						<div class="heading-elements">
@@ -87,7 +87,9 @@ function googleTranslateElementInit() {
 						<fieldset >
 						<div id="result-set">
 							The result should be displayed in a table and each cell should have a means of selection like a checkbox or something fancier
+							
 						</div>
+						
 						</fieldset>
 
 						
@@ -141,7 +143,7 @@ function googleTranslateElementInit() {
 		//console.log(keyword);
 		if(keyword !="" && searched==null){
 			$.ajax({
-		        url: app_url+'webtemplates/bloglist.jsp',
+		        url: app_url+'webtemplates/bloglist2.jsp',
 				method:'POST',
 				data:{keyword:keyword},
 		        success: function(response)
