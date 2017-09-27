@@ -49,7 +49,9 @@
 
 	}
 %>            
-				<div class="panel panel-flat">
+
+				
+		<div class="panel panel-flat">
 					<div class="panel-heading">
 						<h5 class="panel-title"><input type="checkbox" id="check-all" onclick="check_all();" > Blogs about "<%=keyword%>"</span></h5>
 						<div class="heading-elements">
@@ -60,37 +62,48 @@
 		                	</ul>
 	                	</div>
 					</div>
-					<div class="table-responsive pre-scrollable">
-						<table class="table">
-							<thead>
-								<tr>
-									<th>#</th>
-									<th>Blog Name</th>
-									
-								</tr>
-							</thead>
-							<tbody>
-							<% if(bloglist.size()>0){ 
+				<div class="panel-body">
+					<% if(bloglist.size()>0){ 
 								for(int k=0; k<bloglist.size(); k++){
 									ArrayList item = (ArrayList)bloglist.get(k);
-							%>
-								<tr >
-									<td>
-									
-										<%=(k+1)%>
-									</td>
-									<td>
-										<input type="checkbox" onclick="select_blog()" class="blog-list" name="blog" value="<%=item.get(0) %>"  /><%=item.get(1) %> (<%=item.get(2) %> posts)
-									</td>
-								</tr>
-							<% }}else{ %>
-							<tr >
-							<td colspan="2">No matching blog</td>
-							</tr>
-							<% } %>
-								
-							</tbody>
-						</table>
-						<input type="hidden" name="search-blog" id="search-blog" value="yes" />
+							%>			
+				<div class="col-lg-3 col-md-6">
+						<div class="panel panel-body">
+							<div class="media">
+								<div class="media-left">
+									<a href="#" data-popup="lightbox">
+										<img src="img/b.png" class="img-circle img-lg" alt="">
+									</a>
+								</div>
+
+								<div class="media-body">
+									<h6 class="media-heading"><%=item.get(1) %></h6>
+									<span class="text-muted"><%=item.get(2) %> posts</span>
+								</div>
+
+								<div class="media-right media-middle">
+									<ul class="icons-list icons-list-vertical">
+				                    	<li class="dropdown">
+					                    	<a href="#"> <input type="checkbox" onclick="select_blog()" class="control-primary blog-list" value="<%=item.get(0) %>"  name="blog" ></a>
+					                    	<!--  <ul class="dropdown-menu dropdown-menu-right">
+												<li><a href="#"><i class="icon-comment-discussion pull-right"></i> Start chat</a></li>
+												<li><a href="#"><i class="icon-phone2 pull-right"></i> Make a call</a></li>
+												<li><a href="#"><i class="icon-mail5 pull-right"></i> Send mail</a></li>
+												<li class="divider"></li>
+												<li><a href="#"><i class="icon-statistics pull-right"></i> Statistics</a></li>
+											</ul>-->
+				                    	</li>
+			                    	</ul>
+								</div>
+							</div>
+						</div>
 					</div>
-				</div>
+					
+					<% }}else{ %>
+					
+					
+					<% } %>
+					</div>
+					
+					</div>
+					

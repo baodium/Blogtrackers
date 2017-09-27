@@ -145,6 +145,7 @@
         
         <!-- Search Modal Dialog Box
         ===================================== -->
+     
         <div id="searchModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
 
@@ -167,7 +168,6 @@
 
             </div>
         </div>
-        
         
         <!-- Intro Area
         ===================================== -->
@@ -287,7 +287,9 @@ content analysis and social network analysis.
         </div>
         
         
-       <!-- Fun Fact Area
+      
+       
+        <!-- Fun Fact Area
         ===================================== -->
         <div id="fact" class="bg-grad-stellar pt100 pb100">
             <div class="container">
@@ -586,9 +588,7 @@ content analysis and social network analysis.
     
            
         
-        <!-- Shop Area
-        ===================================== -->
-        <div id="blogs" class="pt70 pb50">
+         <div id="blogs" class="pt70 pb50">
             <div class="container">
                 
                 <!-- title start -->
