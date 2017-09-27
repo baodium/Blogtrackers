@@ -27,12 +27,13 @@
 			</div>
 
 			<div class="heading-elements">
-				<div class="heading-btn-group">
-						<div id="google_translate_element"></div><script type="text/javascript">
+				<button id="google_translate_element" class="btn btn-default"><script type="text/javascript">
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({pageLanguage: 'ar', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
 }
-</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>	</div>
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+				
+				</button>
 			</div>
 		</div>
 	</div>

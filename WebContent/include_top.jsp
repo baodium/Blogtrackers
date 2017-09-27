@@ -97,13 +97,11 @@
 <body>
 
 	<!-- Main navbar -->
-	<div class="navbar navbar-inverse bg-indigo">
+	<div class="navbar navbar-inverse" style="background-color:#2A6ADF">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="index.html"><span style="font-size:22px">BlogTrackers</span></a>
-
-			<ul class="nav navbar-nav pull-right visible-xs-block">
-				<li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
-			</ul>
+			<a class="navbar-brand" href="features.jsp"><i class="icon-puzzle3 position-left"></i><span style="font-size:18px">Blogtrackers</span></a>
+						
+			
 		</div>
 
 		
@@ -141,7 +139,7 @@
 					<ul class="dropdown-menu dropdown-menu-right">
 						<li><a href="<%=request.getContextPath()%>/profile"><i class="icon-user-plus"></i> My profile</a></li>
 						<li class="divider"></li>
-						<li><a href="<%=request.getContextPath()%>/profile"><i class="icon-cog5"></i> Account settings</a></li>
+						<li><a href="<%=request.getContextPath()%>/features.jsp"><i class="icon-cog5"></i> Features</a></li>
 						<li><a href="<%=request.getContextPath()%>/help.jsp"><i class="icon-help"></i> Help</a></li>
 						<li><a href="<%=request.getContextPath()%>/logout"><i class="icon-switch2"></i> Logout</a></li>
 					</ul>
@@ -158,55 +156,24 @@
 	
 	
 	<div class="navbar navbar-default" id="navbar-second">
-		<ul class="nav navbar-nav no-border visible-xs-block">
-			<li><a class="text-center collapsed" data-toggle="collapse" data-target="#navbar-second-toggle"><i class="icon-menu7"></i></a></li>
-		</ul>
+		
 
 		<div class="navbar-collapse collapse" id="navbar-second-toggle">
 			<ul class="nav navbar-nav navbar-nav-material">
 				<li class=""><a href="<%=request.getContextPath()%>/dashboard.jsp"><i class="icon-display4 position-left"></i> Dashboard</a></li>
-				<li class="dropdown">
+				<li onclick="location.href='basic.jsp'">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<i class="icon-chart position-left"></i> Basic Analytics<span class="caret"></span>
+						<i class="icon-chart position-left"></i> Basic Analytics
 					</a>
 
-					<ul class="dropdown-menu width-250">
-						<li class="dropdown-header">Basic Analytics</li>
-						<li>
-							<a href="#"><i class="icon-pie-chart8"></i>Posting Frequency</a>
-						</li>
-						<li>
-							<a href="#"><i class="icon-info3"></i>Additional Information</a>
-						</li>
-						
-						</ul>
+					
 				</li>
 
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<i class="icon-stats-bars2 position-left"></i> Advanced Analytics<span class="caret"></span>
+				<li onclick="location.href='advance.jsp'">
+					<a class="">
+						<i class="icon-stats-bars2 position-left"></i> Advanced Analytics
 					</a>
-					<ul class="dropdown-menu width-250">
-						<li class="dropdown-header">Advance Analytics</li>
-						<li>
-							<a href="#"><i class="icon-search4"></i>Keyword Trend</a>
-						</li>
-						<li>
-							<a href="#"><i class="icon-puzzle3"></i>Sentiments</a>
-						</li>
-						<li>
-							<a href="#"><i class="icon-newspaper"></i>Influence</a>
-							
-						</li>
-						<li class="dropdown-submenu">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-file-spreadsheet"></i>Data Presentation</a>
-						<ul class="dropdown-menu width-200">
-						<li class="dropdown-header highlight">Options</li>
-						<li><a href="http://blogtrackers.host.ualr.edu" target="_blank"><i class="icon-circle-css spinner"></i>Data Export in JSON</a></li>
-						
-						</ul>
-						</li>
-						</ul>
+					
 					
 				</li>
 				
@@ -243,32 +210,6 @@
 				</li>
 			</ul>
 			
-
-			<ul class="nav navbar-nav navbar-nav-material navbar-right">
-				<li>
-					<a href="<%=request.getContextPath()%>/setup_tracker.jsp">
-						<i class="icon-history position-left"></i>
-						Blogtrackers
-						<span class="label label-inline position-right bg-success-400">1.4</span>
-					</a>
-				</li>
-
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<i class="icon-cog3"></i>
-						<span class="visible-xs-inline-block position-right">Share</span>
-						<span class="caret"></span>
-					</a>
-
-					<ul class="dropdown-menu dropdown-menu-right">
-						<li><a href="#"><i class="icon-user-lock"></i> Account security</a></li>
-						<li><a href="#"><i class="icon-statistics"></i> Analytics</a></li>
-						<li><a href="#"><i class="icon-accessibility"></i> Accessibility</a></li>
-						<li class="divider"></li>
-						<li><a href="#"><i class="icon-gear"></i> All settings</a></li>
-					</ul>
-				</li>
-			</ul>
 		</div>
 	</div>
 

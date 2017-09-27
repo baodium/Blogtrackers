@@ -3,6 +3,8 @@
     Created on : 28-Aug-2017, 22:23:45
     Author     : Omnibus_03
 --%>
+
+
 <%@page import="java.util.*"%>
 <%@page import="java.io.File"%>
 <%@page import="authentication.DBConnector"%>
@@ -84,12 +86,19 @@
 				</h4>
 			</div>
 
-			<div class="heading-elements">
+				<div class="heading-elements">
 				<div class="heading-btn-group">
-					<a href="#" class="btn btn-link btn-float has-text text-size-small"><i class="icon-bars-alt text-indigo-400"></i><span>Statistics</span></a>
-					<a href="#" class="btn btn-link btn-float has-text text-size-small"><i class="icon-calendar5 text-indigo-400"></i> <span>Schedule</span></a>
-				</div>
+					<button type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-reading"></i></b> Proceed to setup Tracker</button>
+					<button type="button" onclick="location.href='dashboard.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-statistics position-left"></i></b> Proceed to Dashboard</button>
+					<button id="google_translate_element" class="btn btn-default"><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'ar', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+				
+				</button>
 			</div>
+		</div>
 		</div>
 	</div>
 	<!-- /page header -->
@@ -218,7 +227,7 @@
 							<!-- /area chart -->
 
 							<!-- Tabs -->
-		                	<ul class="nav nav-lg nav-tabs nav-justified no-margin no-border-radius bg-indigo-400 border-top border-top-indigo-300">
+		                	<ul class="nav nav-lg nav-tabs nav-justified no-margin no-border-radius bg-primary-400 border-top border-top-indigo-300">
 							
 
 								<li>
@@ -270,7 +279,7 @@
                                                                      </div>
                                                                     <input type="hidden" class="form-control" required="required" name="username"  value = "<%=userinfo.get(0)%>">
 			                           
-                                                                    <input type="submit" name="upload_image" value="upload" class="btn btn-info"><br/> <br/>              
+                                                                    <input type="submit" name="upload_image" value="upload" class="btn btn-primary"><br/> <br/>              
 							<!-- /tabs content -->
 
 					</div>
