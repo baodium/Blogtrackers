@@ -175,9 +175,9 @@
             <div class="intro-body">
                 <div class="container" style="">
                     <div class="row">
-                        <div class="col-md-12" align="center">
+                        <div class="col-md-12 pt-50" align="center">
                             <h1 class="brand-heading text-capitalize color-light pt10 pb10">
-                                 <div class="brand-heading-typed-container">
+                             <!--    <div class="brand-heading-typed-container">
                                     <div id="typed-strings">
                                         <p>Welcome to <span class="color-pasific">Blogtrackers</span></p>
                                         <p>Analyze anything about Blogs</p>
@@ -185,8 +185,14 @@
                                        
                                     </div>
                                     <span id="typed" style="white-space:pre;"></span>
-                                </div>
+                                </div> -->
+			
                             </h1>
+                        <form class="form-horizontal">
+                                <label class="sr-only" for="inputHelpBlock">Enter a search keyword</label>
+                       <input type="text" id="inputHelpBlock" class="form-control input-circle input-lg text-center" aria-describedby="helpBlock">
+                                <span id="helpBlock" class="help-block">Type your question or keyword to get best answer.</span>
+                            </form>
 							<% if(username.equals("")){%>                            
 	                       	<a class="button button-md button-gray hover-ripple-out" data-animation="fadeInUp" data-animation-delay="6000" href="<%=request.getContextPath()%>/login.jsp">Get Started</a>
                       

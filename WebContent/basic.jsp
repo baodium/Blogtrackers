@@ -74,8 +74,8 @@
 			<div class="page-title">
 				<h4>
 					<i class="icon-arrow-left52 position-left"></i>
-					<span class="text-semibold">Help</span>
-					<small class="display-block"><span>How can we help? </span><%=username %>
+					<span class="text-semibold">Basic analytics</span>
+					<small class="display-block"><span> Hi, </span><%=username %>
 				</h4>
 			</div>
 
