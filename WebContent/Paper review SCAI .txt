@@ -1,0 +1,49 @@
+Overall evaluation:	
+-2: (reject)
+The aim of the paper expressed in the title (“A Qualitative Comparison of Facebook and Twitter Bots”) is interesting. But the “results and discussion” section is too short (2 paragraphs). And the only thing we can learn from this section is that users’ attitude towards Facebook bots is, on average, better that user’s attitude towards Twitter bots. But there is no 
+analysis explaining the reasons why it happens. The authors spend too much space to describe ideas that are interesting, but not helpful for understanding the fundamental differences between Facebook and Twitter bots. For example, web crawlers, reCAPTCHA and step-by-step instructions for creating Facebook and Twitter bots.
+
+I think that that the paper addressed a very interesting problem. But its current version is not ready for publishing.
+Review 2
+Overall evaluation:	
+0: (borderline paper)
+The paper in question is raising interesting topic of comparison of bots on different platforms. The strength of this work is demonstrated results on a topic, although the qualitative comparison is somewhat sophomoric: only two characteristics had been examined. Taking into account above mentioned, the title should be more descriptive.
+
+Another important point is that the whole discussed topic has no distinct connection to information retrieval, since bots described in the paper are of general purpose and there is no evidence of their specificity.
+
+In the end, the paper could be accepted to the workshop, basing on the decision of chair board.
+Review 3
+Overall evaluation:	
+-2: (reject)
+Two specific points:
+
+- Not clear why all the types of "bots" are discussed in introduction. Authors for some reason discuss both primitive crawlers and "intelligent" bots.
+- Main sections (2-3) discuss technical details of the bots, but suddenly section 4 presents (some) data analysis results. This leap is not quite clear.
+
+In general, it is an interesting discussion of bots, but I had hard time recognizing main idea of the text. Sometime it resembles popular FAQ for programmers, and some portions of the text are taken from data mining lab. 
+
+In my opinion, paper is not ready to be published yet. Focus of the paper should be established much clearer and results discussed correspondingly.
+Review 4
+Overall evaluation:	
+-2: (reject)
+I was not able to identify a clear goal of the paper. 
+
+Is it an introductory overview of popular messaging platforms for bot developers? 
+Is it analysis of social recognition of bots on the most popular messaging platforms?
+Is it analysis of bots’ behavior?
+
+All of these subjects are touched in the paper but unfortunately no significant conclusions are presented, especially in the light of the workshop topic.
+Review 5
+Overall evaluation:	
+0: (borderline paper)
+The paper generally presents a discussion on qualitative evaluation of chatbots along with a study on two cases, Facebook and Twitter bots. 
+
+The main discussion is on how we can qualitatively evaluate a chatbot in terms of "Phenomenology", "Utility", and "Impact". The discussion presented for each of these concepts and what we want to capture by each of them is pretty nice, however, in my opinion, the difficulty would be connecting or describing these concepts with quantitative metrics which is not addrresed in the paper. 
+There is a really good paper, published at ACL, last year:
+
+Liu, Chia-Wei, et al. "How NOT to evaluate your dialogue system: An empirical study of unsupervised evaluation metrics for dialogue response generation." arXiv preprint arXiv:1603.08023 (2016).
+
+Which discusses how current different metrics are not capable of evaluating a dialogue system. 
+What I suggest is to connect the concept here in this paper to the metric studied in the above paper and see if first, we can find some metrics to somehow connect "Phenomenology", "Utility", or "Impact" to them and second where would be the point of failure for even qualitative evaluation of chatbots using the presented concepts in the paper.
+
+I would also suggest also putting Figure 4d and 4e in a bigger size to make it easier to follow.

@@ -27,12 +27,13 @@
 			</div>
 
 			<div class="heading-elements">
-				<div class="heading-btn-group">
-						<div id="google_translate_element"></div><script type="text/javascript">
+				<button id="google_translate_element" class="btn btn-default"><script type="text/javascript">
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({pageLanguage: 'ar', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
 }
-</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>	</div>
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+				
+				</button>
 			</div>
 		</div>
 	</div>
@@ -49,7 +50,7 @@ function googleTranslateElementInit() {
 			<div class="content-wrapper">
 
 				<!-- Basic setup -->
-	            <div class="panel panel-white">
+	            <div class="panel panel-primary">
 					<div class="panel-heading">
 						<h6 class="panel-title">Setup tracker &nbsp;<span id="error-box" style="color:red"></span></h6>
 						<div class="heading-elements">
@@ -87,7 +88,9 @@ function googleTranslateElementInit() {
 						<fieldset >
 						<div id="result-set">
 							The result should be displayed in a table and each cell should have a means of selection like a checkbox or something fancier
+							
 						</div>
+						
 						</fieldset>
 
 						
@@ -154,7 +157,7 @@ function googleTranslateElementInit() {
 		//console.log(keyword);
 		if(keyword !="" && searched==null){
 			$.ajax({
-		        url: app_url+'webtemplates/bloglist.jsp',
+		        url: app_url+'webtemplates/bloglist2.jsp',
 				method:'POST',
 				data:{keyword:keyword},
 		        success: function(response)
