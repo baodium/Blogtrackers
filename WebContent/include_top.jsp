@@ -1,13 +1,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.io.File"%>
 <%@page import="java.util.*"%>
+<%@page import="wrapper.*"%>
 <!DOCTYPE html>
 <%
 
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
 	if (username == null || username == "") {
-		response.sendRedirect("index.jsp");
+		//response.sendRedirect("index.jsp");
 	}
 
     String path=application.getRealPath("/").replace('\\', '/')+"profile_images/";
@@ -82,6 +83,7 @@
       </script>
 	<script type="text/javascript" src="assets/js/core/app.js"></script>
 	<script type="text/javascript" src="assets/js/pages/login_validation.js"></script>
+	<script type="text/javascript" src="assets/js/functions.js"></script>
 	<!-- /theme JS files -->
 	       
 	       
@@ -106,8 +108,10 @@
 		
 		
 			<div class="navbar-collapse collapse" id="navbar-mobile">
+			
 			<form name="trackerform" id="trackerform" action="Datasource" method="get">
 			<ul class="nav navbar-nav navbar-right">
+			<% if(username!=""){ %>
 				<li class="dropdown language-switch">
 					<a class="dropdown-toggle" data-toggle="dropdown">
 						Select Tracker
@@ -143,8 +147,15 @@
 						<li><a href="<%=request.getContextPath()%>/logout"><i class="icon-switch2"></i> Logout</a></li>
 					</ul>
 				</li>
+				<% }else{%>
+				<li>
+					<a href="<%=request.getContextPath()%>/login"><i class="icon-user"></i> Login</a>
+				</li>
+				<% } %>
+				
 			</ul>
 			</form>
+			
 		</div>
 			
 	
@@ -153,7 +164,7 @@
 	<!-- /main navbar -->
 
 	
-	
+	<% if(username!=""){ %>
 	<div class="navbar navbar-default" id="navbar-second">
 		<ul class="nav navbar-nav no-border visible-xs-block">
 			<li><a class="text-center collapsed" data-toggle="collapse" data-target="#navbar-second-toggle"><i class="icon-menu7"></i></a></li>
@@ -269,4 +280,4 @@
 		</div>
 	</div>
 
-
+  <% }  %>

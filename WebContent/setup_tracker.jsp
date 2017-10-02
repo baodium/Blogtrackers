@@ -94,12 +94,24 @@ function googleTranslateElementInit() {
 
 						<h6>Additional info</h6>
 						<fieldset>
+						
+						<div class="search-results-list">
+						
+						<div class="row" id="searched-trackers">
+						
+						
+											
+						</div>
+						
+                    	</div>
+						
+						
 							<div class="row">
 								<div class="col-md-6">
 									<div class="col-md-6">
 									<div class="form-group">
 										<label>Tracker name</label>
-	                                   <input type="text" name="name" id="tracker-name" class="form-control" placeholder="E.g. My Nato Tracker">
+	                                   <input type="text" name="name" id="tracker-name" required class="form-control" placeholder="E.g. My Nato Tracker">
                                     </div>
 								</div>
 								</div>
@@ -110,13 +122,12 @@ function googleTranslateElementInit() {
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>Additional information:</label>
-	                                    <textarea name="additional-info" id="additional-info" rows="5" cols="5" placeholder="If you want to add a short description for your tracker, do it here." class="form-control"></textarea>
+	                                    <textarea name="additional-info" id="additional-info" required rows="5" cols="5" placeholder="If you want to add a short description for your tracker, do it here." class="form-control"></textarea>
                                     </div>
 								</div>
 							</div>
 						</fieldset>
-						<textarea name="all-selected-blogs" id="all-selected-blogs" rows="5" cols="5" style="display:none"></textarea>
-					</form>
+						</form>
 	            </div>
 	            <!-- /basic setup -->
 
@@ -127,7 +138,8 @@ function googleTranslateElementInit() {
 
 		</div>
 		<!-- /page content -->
-
+	<textarea name="all-selected-blogs" id="all-selected-blogs" rows="5" cols="5" style="display:none"></textarea>
+					
 	</div>
 	<!-- /page container -->
 	<script>
@@ -135,7 +147,8 @@ function googleTranslateElementInit() {
 		var keyword = $("#keyword").val();
 		var searched = $("#search-blog").val();
 		var tracker = $("#tracker-name").val();
-		//console.log(searched);
+		var selected  = $("#selected_result").val();
+		console.log(searched);
 		console.log(tracker);
 		$("#result-set").html("<center><img src='assets/images/preloader.gif' /></center>");
 		//console.log(keyword);
@@ -151,18 +164,29 @@ function googleTranslateElementInit() {
 		    });	
 		}
 		
-		if(searched=="yes" && tracker==""){
-			$("#tracker-name").val("");
-			select_blog();
+		if(searched=="yes" && tracker=="" && selected!="yes" ){
+			populate_selected_trackers();
 		}
 		
-		if(tracker!=""){
+		if(selected=="yes"){
+			if(tracker==""){
+				$("#tracker-name").focus();
+				return false;
+			}
+			
+			var more_info = $("#additional-info").val();
+			if(more_info==""){
+				$("#additional-info").focus();
+				return false;
+			}
+
 			var bloggs = $("#all-selected-blogs").val();
 			bloggs= bloggs.trim(",");
 			var tracker_name = $("#tracker-name").val();
 			var tracker_desc = $("#additional-info").val();
 			$('#next-click').html('submitting...');
 			$('#next-click').attr('disabled',true);
+			
 			$.ajax({
 		        url: app_url+'setup_tracker',
 				method:'POST',
@@ -178,6 +202,7 @@ function googleTranslateElementInit() {
 		        }
 		    });	
 			console.log("submitted");
+			
 		}
 	}
 	
@@ -202,7 +227,24 @@ function googleTranslateElementInit() {
 				}
 		}
 		//console.log(selected);
-		$("#all-selected-blogs").val=selected;
+		$("#all-selected-blogs").val(selected);
+	}
+	
+	function populate_selected_trackers(){
+		var selected = $("#all-selected-blogs").val();
+		selected = selected.substring(0,(selected.length-1));
+		$("#searched-trackers").html("<center><img src='assets/images/preloader.gif' /></center>");
+		console.log(selected);
+		$.ajax({
+	        url: app_url+'webtemplates/searched_trackers.jsp',
+			method:'POST',
+			data:{ids:selected},
+	        success: function(response)
+	        {	
+	        	//console.log(response);
+	        	$("#searched-trackers").html(response);
+	        }
+	    });	
 	}
 	
 	</script>
