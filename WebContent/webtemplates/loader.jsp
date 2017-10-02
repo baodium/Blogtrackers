@@ -15,7 +15,7 @@
 
 <%
 
-    int perpage =10;
+    int perpage =12;
 
 
    PrintWriter pww = response.getWriter();

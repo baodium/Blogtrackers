@@ -57,7 +57,7 @@ public class Search extends HttpServlet {
                         String term = request.getParameter("term");
                         session.setAttribute("search_term",term);
 
-                       String query_string ="SELECT * FROM trackers WHERE tracker_name LIKE  '%"+term+"%' LIMIT 0,10 ";
+                       String query_string ="SELECT * FROM trackers WHERE tracker_name LIKE  '%"+term+"%' LIMIT 0,12 ";
                        ArrayList trackers =new DBConnector().query(query_string); 
                        	session.setAttribute("search_result",trackers);
                         response.setContentType("text/html");
