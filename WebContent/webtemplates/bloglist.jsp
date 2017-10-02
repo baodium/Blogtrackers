@@ -17,10 +17,9 @@
     String keyword = "";
     String s="";
     int from =0;
-    int to = 10;
+    int to = 12;
    ArrayList bloglist = new ArrayList();
-	try {
-		
+	try {		
 			keyword = request.getParameter("keyword");
 			System.out.println(keyword);
 			if(!keyword.trim().isEmpty()){
@@ -49,7 +48,7 @@
 					<!-- Search results -->
 					<div class="search-results-list">
 						
-						<div class="row">
+						<div class="row" id="tracking-blogs">
 						<% if(bloglist.size()>0){ 
 								for(int k=0; k<bloglist.size(); k++){
 									ArrayList item = (ArrayList)bloglist.get(k);
@@ -71,8 +70,32 @@
 							<% }} %>												
 						</div>
 						<input type="hidden" name="search-blog" id="search-blog" value="yes" />
+						<input type="hidden" name="search-keyword" id="search-keyword" value="<%=keyword%> %>" />
+						
+						<%  
+						if(bloglist.size()>0){
+							%>
+							<div class="loadmoreimg" id="loading-img" style="text-align:center"><br/><br/><img src='assets/images/preloader.gif' /><br/></div>
+						
+						<% } %>
                     </div>
-			
-					
-
 				</div>
+				
+				
+	<form name="page_form" id="page_form" method="post" action="">
+    <input type="hidden" id="page_id" name="page_id" value="0" />
+	<input type="hidden" name="negative_page" id="negative_page" value="1" />
+	<input type="hidden" id="hasmore" name="hasmore" value="1" />
+	<input type="hidden" id="current_page" name="current_page" value="setup_tracker" />
+	
+    </form>
+	<!-- /page container -->
+ <script>
+	$(window).scroll(function() {
+
+		if($(window).scrollTop() + $(window).height() > $(document).height() - 200) {
+			loadMoreBlogs();
+		}
+
+	});
+</script>
