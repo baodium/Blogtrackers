@@ -1,7 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.io.File"%>
 <%@page import="java.util.*"%>
+
 <%@page import="wrapper.*"%>
+
 <!DOCTYPE html>
 <%
 
@@ -9,6 +11,7 @@
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
 	if (username == null || username == "") {
 		//response.sendRedirect("index.jsp");
+
 	}
 
     String path=application.getRealPath("/").replace('\\', '/')+"profile_images/";
@@ -87,6 +90,7 @@
 	
 	<script type="text/javascript" src="assets/js/pages/login_validation.js"></script>
 	<script type="text/javascript" src="assets/js/functions.js"></script>
+
 	<!-- /theme JS files -->
 	       
 	       
@@ -109,10 +113,10 @@
 		
 		
 			<div class="navbar-collapse collapse" id="navbar-mobile">
-			
 			<form name="trackerform" id="trackerform" action="Datasource" method="get">
 			<ul class="nav navbar-nav navbar-right">
 			<% if(username!=""){ %>
+
 				<li class="dropdown language-switch">
 					<a class="dropdown-toggle" data-toggle="dropdown">
 						Select Tracker
@@ -223,5 +227,5 @@
 			
 		</div>
 	</div>
-
   <% }  %>
+

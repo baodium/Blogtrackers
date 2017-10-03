@@ -85,13 +85,7 @@
 									<ul class="icons-list icons-list-vertical">
 				                    	<li class="dropdown">
 					                    	<a href="#"> <input type="checkbox" onclick="select_blog()" class="control-primary blog-list" value="<%=item.get(0) %>"  name="blog" ></a>
-					                    	<!--  <ul class="dropdown-menu dropdown-menu-right">
-												<li><a href="#"><i class="icon-comment-discussion pull-right"></i> Start chat</a></li>
-												<li><a href="#"><i class="icon-phone2 pull-right"></i> Make a call</a></li>
-												<li><a href="#"><i class="icon-mail5 pull-right"></i> Send mail</a></li>
-												<li class="divider"></li>
-												<li><a href="#"><i class="icon-statistics pull-right"></i> Statistics</a></li>
-											</ul>-->
+					                    	
 				                    	</li>
 			                    	</ul>
 								</div>

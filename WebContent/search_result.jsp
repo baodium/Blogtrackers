@@ -76,7 +76,7 @@ Object search_result = (null == session.getAttribute("search_result")) ? "" : se
 								<div class="panel panel-body">
 									<div class="media">
 										<div class="media-left">
-											<img src="assets/images/placeholder.jpg" class="img-circle img-lg" alt="">
+											<img src="img/b.png" class="img-circle img-lg" alt="">
 										</div>
 										
 										<div class="media-body">

@@ -47,7 +47,7 @@
 				<div class="panel panel-body">
 					<div class="media">
 						<div class="media-left">
-							<img src="assets/images/placeholder.jpg" class="img-circle img-lg" alt="">
+							<img src="img/b.png" class="img-circle img-lg" alt="">
 						</div>										
 						<div class="media-body">
 							<h6 class="media-heading"><%=item.get(1) %> <input type="checkbox" onclick="select_blog()" class="blog-list" name="blog" style="float:right" value="<%=item.get(0) %>"  />

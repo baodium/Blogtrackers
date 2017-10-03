@@ -115,6 +115,7 @@ function googleTranslateElementInit() {
 									<div class="form-group">
 										<label>Tracker name</label>
 	                                   <input type="text" name="name" id="tracker-name" required class="form-control" placeholder="E.g. My Nato Tracker">
+
                                     </div>
 								</div>
 								</div>
@@ -142,7 +143,7 @@ function googleTranslateElementInit() {
 		</div>
 		<!-- /page content -->
 	<textarea name="all-selected-blogs" id="all-selected-blogs" rows="5" cols="5" style="display:none"></textarea>
-					
+
 	</div>
 	<!-- /page container -->
 	<script>
@@ -152,6 +153,7 @@ function googleTranslateElementInit() {
 		var tracker = $("#tracker-name").val();
 		var selected  = $("#selected_result").val();
 		console.log(searched);
+
 		console.log(tracker);
 		$("#result-set").html("<center><img src='assets/images/preloader.gif' /></center>");
 		//console.log(keyword);
@@ -189,7 +191,7 @@ function googleTranslateElementInit() {
 			var tracker_desc = $("#additional-info").val();
 			$('#next-click').html('submitting...');
 			$('#next-click').attr('disabled',true);
-			
+
 			$.ajax({
 		        url: app_url+'setup_tracker',
 				method:'POST',
@@ -205,7 +207,6 @@ function googleTranslateElementInit() {
 		        }
 		    });	
 			console.log("submitted");
-			
 		}
 	}
 	
@@ -229,7 +230,6 @@ function googleTranslateElementInit() {
 					selected+= valu+",";
 				}
 		}
-		//console.log(selected);
 		$("#all-selected-blogs").val(selected);
 	}
 	
@@ -297,6 +297,7 @@ function googleTranslateElementInit() {
 		return false;
 		}
 	}
+
 	</script>
 
 	<!-- Footer -->

@@ -1,8 +1,4 @@
-<%@page import="java.util.*"%>
-<%@page import="java.net.*"%>
 <%@page import="authentication.DBConnector"%>
-<%@page import="blogtracker.util.Common"%>
-<%@page import="blogtracker.gui.blogtrackers.*"%>
 <%@ page import="java.io.*,java.util.*, javax.servlet.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
@@ -12,12 +8,14 @@
 		response.sendRedirect("index.jsp");
 	}
     ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
-	ArrayList<BlogSites2> bs =  new ArrayList<BlogSites2>();
+
 	DBConnector conn = new DBConnector();
     String keyword = "";
     String s="";
     int from =0;
+
     int to = 12;
+
    ArrayList bloglist = new ArrayList();
 	try {		
 			keyword = request.getParameter("keyword");
@@ -36,7 +34,7 @@
 %>            
 				<div class="panel panel-flat">
 					<div class="panel-heading">
-						<h5 class="panel-title"><input type="checkbox" id="check-all" onclick="check_all();" > Blogs about "<%=keyword%>"</span></h5>
+						<h5 class="panel-title"><input type="checkbox" id="check-all" onclick="check_all();" > Hello Blogs about "<%=keyword%>"</span></h5>
 						<div class="heading-elements">
 							<ul class="icons-list">
 		                		<li><a data-action="collapse"></a></li>
@@ -46,8 +44,7 @@
 	                	</div>
 					</div>					
 					<!-- Search results -->
-					<div class="search-results-list">
-						
+					<div class="search-results-list">						
 						<div class="row" id="tracking-blogs">
 						<% if(bloglist.size()>0){ 
 								for(int k=0; k<bloglist.size(); k++){
@@ -57,7 +54,7 @@
 								<div class="panel panel-body">
 									<div class="media">
 										<div class="media-left">
-											<img src="assets/images/placeholder.jpg" class="img-circle img-lg" alt="">
+											<img src="img/b.png" class="img-circle img-lg" alt="">
 										</div>										
 										<div class="media-body">
 											<h6 class="media-heading"><%=item.get(1) %> <input type="checkbox" onclick="select_blog()" class="blog-list" name="blog" style="float:right" value="<%=item.get(0) %>"  />
@@ -70,8 +67,7 @@
 							<% }} %>												
 						</div>
 						<input type="hidden" name="search-blog" id="search-blog" value="yes" />
-						<input type="hidden" name="search-keyword" id="search-keyword" value="<%=keyword%> %>" />
-						
+						<input type="hidden" name="search-keyword" id="search-keyword" value="<%=keyword%> %>" />					
 						<%  
 						if(bloglist.size()>0){
 							%>
@@ -79,23 +75,19 @@
 						
 						<% } %>
                     </div>
-				</div>
-				
-				
+				</div>				
 	<form name="page_form" id="page_form" method="post" action="">
     <input type="hidden" id="page_id" name="page_id" value="0" />
 	<input type="hidden" name="negative_page" id="negative_page" value="1" />
 	<input type="hidden" id="hasmore" name="hasmore" value="1" />
-	<input type="hidden" id="current_page" name="current_page" value="setup_tracker" />
-	
+	<input type="hidden" id="current_page" name="current_page" value="setup_tracker" />	
     </form>
 	<!-- /page container -->
  <script>
 	$(window).scroll(function() {
-
 		if($(window).scrollTop() + $(window).height() > $(document).height() - 200) {
 			loadMoreBlogs();
 		}
-
 	});
 </script>
+
