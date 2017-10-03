@@ -45,7 +45,7 @@ function loadMoreResult(){
 					try{
 						$(".loader-box").addClass("hidden");
 					}catch(err){}
-					console.log(data);
+					//console.log(data);
 					$("#appendee").append(data);				
 				}
 			}

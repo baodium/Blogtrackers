@@ -1,8 +1,6 @@
 <%@page import="java.util.*"%>
 <%@page import="java.net.*"%>
 <%@page import="authentication.DBConnector"%>
-<%@page import="blogtracker.util.Common"%>
-<%@page import="blogtracker.gui.blogtrackers.*"%>
 <%@ page import="java.io.*,java.util.*, javax.servlet.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
@@ -12,7 +10,6 @@
 		response.sendRedirect("index.jsp");
 	}
     ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
-	ArrayList<BlogSites2> bs =  new ArrayList<BlogSites2>(); 
 
     PrintWriter pww = response.getWriter();
     String keyword = "";

@@ -34,7 +34,7 @@
 %>            
 				<div class="panel panel-flat">
 					<div class="panel-heading">
-						<h5 class="panel-title"><input type="checkbox" id="check-all" onclick="check_all();" >Blogs about "<%=keyword%>"</span></h5>
+						<h5 class="panel-title"><input type="checkbox" id="check-all" onclick="check_all();" >Blogss about "<%=keyword%>"</span></h5>
 						<div class="heading-elements">
 							<ul class="icons-list">
 		                		<li><a data-action="collapse"></a></li>
@@ -68,11 +68,8 @@
 						</div>
 						<input type="hidden" name="search-blog" id="search-blog" value="yes" />
 						<input type="hidden" name="search-keyword" id="search-keyword" value="<%=keyword%> %>" />					
-						<%  
-						if(bloglist.size()>0){
-							%>
-							<div class="loadmoreimg" id="loading-img" style="text-align:center"><br/><br/><img src='assets/images/preloader.gif' /><br/></div>
-						
+						<%  if(bloglist.size()>0){ %>
+							<div class="loadmoreimg" id="loading-img" style="text-align:center"><br/><br/><img src='assets/images/preloader.gif' /><br/></div>						
 						<% } %>
                     </div>
 				</div>				
