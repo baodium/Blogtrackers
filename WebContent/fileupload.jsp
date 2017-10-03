@@ -48,7 +48,7 @@
                 boolean isInMemory = fi.isInMemory();
                 long sizeInBytes = fi.getSize();
                // t_number=t_number+".jpg";
-
+				//
                 file = new File( filePath + username+".jpg") ;
                 fi.write( file ) ;
                 out.println("Uploaded Filename: " + filePath + file_name + "<br>");

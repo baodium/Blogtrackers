@@ -7,6 +7,7 @@
 
 <%
 	DBConnector conn = new DBConnector();
+//
 	try {
 		String submitted = request.getParameter("check_user");
 		String userName = request.getParameter("userName");
