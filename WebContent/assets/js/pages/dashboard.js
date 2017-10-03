@@ -31,12 +31,13 @@ $(function() {
             startDate: moment().subtract('days', 29),
             endDate: moment(),
             minDate: '01/01/2012',
-            maxDate: '12/31/2016',
-            dateLimit: { days: 60 },
+            maxDate: moment(),
+            dateLimit: { days: 20000 },
             ranges: {
                 'Today': [moment(), moment()],
                 'Yesterday': [moment().subtract('days', 1), moment().subtract('days', 1)],
-                'Last 7 Days': [moment().subtract('days', 6), moment()],
+				'Last Year': [moment().subtract('years', 1).startOf('year'), moment().subtract('years', 1).endOf('year')],
+				'Last 7 Days': [moment().subtract('days', 6), moment()],
                 'Last 30 Days': [moment().subtract('days', 29), moment()],
                 'This Month': [moment().startOf('month'), moment().endOf('month')],
                 'Last Month': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')]

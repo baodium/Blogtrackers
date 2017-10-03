@@ -86,6 +86,36 @@
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
        <link rel="stylesheet" href="assets/css/mystyle.css" />
+       <style>
+       #inputHelpBlock
+       {
+       background-color: #ffffff !important;
+       color: #000000;
+       }
+       #helpBlock
+       {
+       color:#ffffff;
+       }
+       #inputHelpBlock::-webkit-input-placeholder {
+color:  #000000 !important;
+}
+ 
+#inputHelpBlock:-moz-placeholder { /* Firefox 18- */
+color: #000 !important;  
+}
+ 
+#inputHelpBlock::-moz-placeholder {  /* Firefox 19+ */
+color: #000 !important;  
+}
+ 
+#inputHelpBlock:-ms-input-placeholder {  
+color: #000 !important;  
+}
+body
+{
+overflow-x:hidden;
+}
+       </style>
     </head>
     <body  id="page-top" data-spy="scroll" data-target=".navbar" data-offset="100">
         
@@ -130,8 +160,7 @@
                         <% }else{ %>
                          <li onclick='location.href="<%=request.getContextPath()%>/logout"'><a href="<%=request.getContextPath()%>/logout" >Logout</a></li>
                         <% } %>
-                        <li ><a href="#" data-toggle="modal" data-target="#searchModal"><i class="fa fa-search fa-fw"></i></a></li>
-                  
+                                       
                                    </ul>
                 </div>
             </div>
@@ -175,7 +204,7 @@
             <div class="intro-body">
                 <div class="container" style="">
                     <div class="row">
-                        <div class="col-md-12 pt-50" align="center">
+                        <div class="col-md-offset-3 col-md-6 col-md-offset-3 pt-50" align="center">
                             <h1 class="brand-heading text-capitalize color-light pt10 pb10">
                              <!--    <div class="brand-heading-typed-container">
                                     <div id="typed-strings">
@@ -190,14 +219,15 @@
                             </h1>
                         <form class="form-horizontal">
                                 <label class="sr-only" for="inputHelpBlock">Enter a search keyword</label>
-                       <input type="text" id="inputHelpBlock" class="form-control input-circle input-lg text-center" aria-describedby="helpBlock">
-                                <span id="helpBlock" class="help-block">Type your question or keyword to get best answer.</span>
+                       <input type="text" id="inputHelpBlock" class="form-control input-circle input-lg text-center" placeholder="Enter a search keyword" aria-describedby="helpBlock">
+                               <span id="helpBlock" class="help-block"></span>
                             </form>
+                            
 							<% if(username.equals("")){%>                            
-	                       	<a class="button button-md button-gray hover-ripple-out" data-animation="fadeInUp" data-animation-delay="6000" href="<%=request.getContextPath()%>/login.jsp">Get Started</a>
+	                       	<a class="button button-md button-gray hover-ripple-out mt30 " data-animation="fadeInUp" data-animation-delay="6000" href="<%=request.getContextPath()%>/login.jsp">Get Started</a>
                       
 	                        <% }else{ %>
-	                        <a class="button button-md button-gray hover-ripple-out" data-animation="fadeInUp" data-animation-delay="6000" href="<%=request.getContextPath()%>/dashboard.jsp">Explore</a>
+	                        <a class="button button-md button-gray hover-ripple-out mt30 " data-animation="fadeInUp" data-animation-delay="6000" href="<%=request.getContextPath()%>/dashboard.jsp">Explore</a>
                       
 	                        <% } %>
                               </div>
