@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Additional Blogger Information</title>
+	<title>Keyword Trends</title>
 
 	<!-- Global stylesheets -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
@@ -38,25 +38,22 @@
 	<script type="text/javascript" src="assets/js/plugins/pickers/daterangepicker.js"></script>
 <script type="text/javascript" src="assets/js/plugins/tables/datatables/datatables.min.js"></script>
 <script type="text/javascript" src="assets/js/plugins/forms/selects/select2.min.js"></script>
-	<script type="text/javascript" src="assets/js/core/app.js"></script>
- <script type="text/javascript" src="assets/js/pages/datatables_basic.js"></script>
-   <script type="text/javascript" src="assets/js/charts/d3/bars/bars_basic_vertical.js"></script>
-   <script type="text/javascript" src="assets/js/plugins/visualization/c3/c3.min.js"></script>
-    
-<!--
-	<script type="text/javascript" src="assets/js/charts/d3/bars/bars_basic_horizontal.js"></script>
-	<script type="text/javascript" src="assets/js/charts/d3/bars/bars_basic_tooltip.js"></script>
-	<script type="text/javascript" src="assets/js/charts/d3/bars/bars_basic_grouped.js"></script>
-	<script type="text/javascript" src="assets/js/charts/d3/bars/bars_basic_stacked.js"></script>
-	<script type="text/javascript" src="assets/js/charts/d3/bars/bars_basic_stacked_normalized.js"></script>
--->
-	
-		<script type="text/javascript" src="assets/js/charts/c3/c3_lines_areas.js"></script>
-			<script type="text/javascript" src="assets/js/charts/c3/c3_bars_pies.js"></script>
 
+<script type="text/javascript" src="assets/js/pages/datatables_basic.js"></script>
+<!--   <script type="text/javascript" src="assets/js/charts/d3/bars/bars_basic_vertical.js"></script>-->
+   <script type="text/javascript" src="assets/js/plugins/visualization/c3/c3.min.js"></script>
+
+		<script type="text/javascript" src="assets/js/charts/c3/c3_lines_areas.js"></script>
+
+	<script type="text/javascript" src="assets/js/core/app.js"></script>
+	<script type="text/javascript" src="assets/js/pages/dashboard.js"></script>
+
+
+ 
+		
 	<script type="text/javascript" src="assets/js/plugins/ui/ripple.min.js"></script>
 	<!-- /theme JS files -->
-<script type="text/javascript" src="assets/js/pages/form_select2.js"></script>
+<!--<script type="text/javascript" src="assets/js/pages/form_select2.js"></script>-->
 
 </head>
 
@@ -246,9 +243,20 @@
 			<div class="page-title">
 				<h4>
 					<i class="icon-arrow-left52 position-left"></i>
-					<span class="text-semibold">Additional Blogger Information</span>
+					<span class="text-semibold">Keyword Trends</span>
 <!--					<small class="display-block">Good morning, Victoria Baker!</small>-->
 				</h4>
+				
+				<div class="form-group">
+				<div class="col-md-12">
+				<div class="input-group">
+				<input type="text" class="form-control ui-autocomplete-input" placeholder="Enter a keyword to search" id="ac-remote" autocomplete="off">
+											<span class="input-group-btn"><button type="button" class="btn btn-primary btn-icon btn-rounded legitRipple"><i class="icon-search4"></i></button></span>
+											
+										</div>
+										</div>
+										</div>
+										
 			</div>
 
 
@@ -271,7 +279,41 @@
 				<div class="col-md-12">
 						<div class="panel panel-primary">
 							<div class="panel-heading">
-								<h6 class="panel-title">Blog Site Information <a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<h6 class="panel-title">Keyword Trendline<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<div class="heading-elements">
+								<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
+										<i class="icon-calendar3 position-left"></i> <span></span> <b class="caret"></b>
+									</button>
+			                	</div>
+							</div>
+
+							<div class="panel-body">
+							
+					<div class="col-lg-12 col-md-12 col-sm-12">
+										
+							<div class="chart-container">
+							<div class="chart" id="c3-line-regions-chart"></div>
+						</div>	
+						
+								</div>
+							</div>
+								
+							
+										
+																
+							
+							
+							
+							
+							</div>
+					</div>
+					</div>
+				
+						
+				
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h6 class="panel-title">Blog <Browser></Browser><a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
 									<ul class="icons-list">
 				                		<li><a data-action="collapse"></a></li>
@@ -282,14 +324,10 @@
 							</div>
 
 							<div class="panel-body">
-							<div class="col-md-4">
-							This is it	
-							</div>
-							<div class="col-md-8">
-							
-							<div class="panel panel-primary">
+							<div class="col-md-6 col-sm-12 col-xs-12">
+						<div class="panel panel-primary">
 							<div class="panel-heading">
-								<h6 class="panel-title">Blogger Details <a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<h6 class="panel-title">Blog Post<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
 									<ul class="icons-list">
 				                		<li><a data-action="collapse"></a></li>
@@ -297,62 +335,45 @@
 <!--				                		<li><a data-action="close"></a></li>-->
 				                	</ul>
 			                	</div>
-			                	
-			                	
 							</div>
 
-							<div class="panel-body">			
-							<div class="col-md-6">
-							<table class="table">
+							<div class="panel-body">
+						
+	
+						<table class="table datatable-basic">
 						<thead>
 							<tr>
-								<th>Blogger name</th>
-								<th>Abby Zimet, staff writerl</th>
-								
+								<th>Blog Post Title</th>
+								<th class="hidden" width="0%" >Frequency</th>
+								<th class="hidden" width="0%"></th>
+								<th class="hidden" width="0%"></th>
+								<th class="hidden"  width="0%"></th>
+								<th class="hidden" width="0%"></th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td>Blogsite name:</td>
-								<td>Common Dreams</td>
-								
-							</tr>
-								<tr>
-								<td>Blog site link</td>
-								<td>http://www.commondreams.org/</td>
-								
+								<td>Choosing sandals that meet the corporate casual dress code <a href="#" class="btn bg-primary-400 btn-rounded btn-icon btn-xs legitRipple pull-right"
+													>
+														<span class="letter-icon icon-eye2"></span>
+													</a></td>
+								<td class="hidden" width="0%"></td>
+								<td class="hidden" width="0%"></td>
+								<td class="hidden" width="0%"></td>
+								<td class="hidden" width="0%"></td>
+								<td class="hidden" width="0%">
+
+								</td>
 							</tr>
 							</tbody>
 							</table>
+   
 							</div>
-							<div class="col-md-6">
-							<table class="table">
-						<thead>
-							<tr>
-								<th>Most recent post data</th>
-								<th>2016-06-23 08:54:26.0</th>
-								
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Maximum influence</td>
-								<td>-2</td>
-								
-							</tr>
-							<tr>
-								<td>Blogsite name:</td>
-								<td>Common Dreams</td>
-								
-							</tr>
-								
-							</tbody>
-							</table>
-							</div>
-							</div>
+						</div>
 					</div>
-								
-								<div class="panel panel-primary">
+						
+<div class="col-md-6 col-sm-12 col-xs-12">
+						<div class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blog Content<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -362,69 +383,41 @@
 <!--				                		<li><a data-action="close"></a></li>-->
 				                	</ul>
 			                	</div>
-			                	
-									</div>
-									<div class="panel-body">
-										
-										
-									</div>
-									
-									</div>
-										
-														
+							</div>
+
+							<div class="panel-body">
+						<textarea disabled class="form-control" rows="12">Celebrated South Florida Chef Lindsay Autry is close to opening the doors of The Regional Kitchen & Public House at CityPlace in West Palm Beach. Over the past couple of months, construction has transformed the blank, open space into the vision Chef Autry & Thierry Beaud have of an open pantry kitchen, with a main dining room tastefully partitioned to create a warm and intimate ambiance. The restaurant will have outdoor seating on the refinished patio, significant private dining space and a distinct elaborate bar and lounge area. “As a chef that has built a home and career in the Palm Beach area over the past several years, the launch of this amazing project excites me both personally and professionally,” Autry said. Continuing to be inspired by consciously sourced ingredients, Autry has spent close to a decade working closely with South Florida’s most fundamental industry professionals - fisherman, farmers, and culinary artisans. Her intimate knowledge of regional product, as well as that of the exceptional product sourced beyond Florida’s borders, is matched only by the extraordinary culinary talents that have earned her industry celebrity and continued national acclaim. During her most recent visit to Kai-Kai Farm in Indiantown, Fla., Autry began to choose some of the selections of the best local ingredients for The Regional Kitchen & Public House’s new and evolving menu. “We toured the farm, ate warm strawberries right off the vine, and got our hands dirty. Knowing where our food comes from, seeing it through the whole process from ground to plate, those are the things I’ve dreamed of for this project,” Autry said. The Regional Kitchen & Public House, Autry said, intends to present a unique perspective on America’s time-honored cuisine through local ingredients, seasonally influenced dishes and the soulful inspiration of a chef-driven kitchen. “We are very excited to become a part of the Okeechobee corridor rebirth along with brands like Restoration Hardware and large new developments such as the beautiful convention center hotel.” said restaurateur Thierry Beaud. The Regional Kitchen & Public House will become the fifth restaurant concept for the TITOU Hospitality Group under Beaud’s leadership. Some of The Region’s fresh menu items will include: * Florida Sweet Corn & Heirloom Tomato Salad: butter lettuce, crispy okra, buttermilk ranch * House Chorizo & Key Clams: trofie pasta, spinach, braised fennel * Boneless Half Chicken: lemony orzo risotto, brussel leaves, feta & pepperoncini * Local Snapper in Banana Leaf: salsa verde, roasted tomatoes & radishes Autry’s culinary skills have earned her the opportunity to work alongside some of the best chefs in at prominent restaurants along the East Coast and in Mexico. A graduate of Johnson & Wales University, Autry honed her skill under James Beard Award winning Chef Michelle Bernstein, working as sous, then executive chef at a number of Bernstein’s top restaurants before headlining as a “Top Chef” finalist. Autry was Executive Chef of the historic Sundy House in Delray Beach, Fla., with whom she also traveled to New York City to cook at the prestigious James Beard House, and in Spring 2015, Autry won the Miami leg in the traveling culinary battle COCHON 555, which allowed her to compete against the country’s best in the final Grand COCHON competition during the 2015 Aspen Food & Wine.
+   
+						</textarea>
+                        
+							</div>
+						</div>
+					</div>
+   
+							</div>
+						</div>
+					
+					
+					<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h6 class="panel-title">Entity Network<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<div class="heading-elements">
+									<ul class="icons-list">
+				                		<li><a data-action="collapse"></a></li>
+				                		<li><a data-action="reload"></a></li>
+<!--				                		<li><a data-action="close"></a></li>-->
+				                	</ul>
+			                	</div>
+							</div>
+
+							<div class="panel-body">
 						
-							
-							
-							
-							</div>
-					</div>
-					</div>
-				<div class="col-md-6 col-sm-12 col-xs-12">
-						<div class="panel panel-primary">
-							<div class="panel-heading">
-								<h6 class="panel-title">Daily Average<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
-								<div class="heading-elements">
-									<ul class="icons-list">
-				                		<li><a data-action="collapse"></a></li>
-				                		<li><a data-action="reload"></a></li>
-<!--				                		<li><a data-action="close"></a></li>-->
-				                	</ul>
-			                	</div>
-							</div>
-
-							<div class="panel-body">
-						<div class="chart-container">
-							<div class="chart" id="d3-bar-vertical"></div>
-						</div>
-
-   
+                        
 							</div>
 						</div>
-					</div>
 					
 					
-					<div class="col-md-6 col-sm-12 col-xs-12">
-						<div class="panel panel-primary">
-							<div class="panel-heading">
-								<h6 class="panel-title">Monthly Average<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
-								<div class="heading-elements">
-									<ul class="icons-list">
-				                		<li><a data-action="collapse"></a></li>
-				                		<li><a data-action="reload"></a></li>
-<!--				                		<li><a data-action="close"></a></li>-->
-				                	</ul>
-			                	</div>
-							</div>
-
-							<div class="panel-body">
-						<div class="chart-container">
-							<div class="chart" id="c3-line-regions-chart"></div>
-						</div>
-
-   
-							</div>
-						</div>
-					</div>
+					
 				
 				
 				      
@@ -435,120 +428,9 @@
 				    
 			      
 			      
-			      <div class="col-md-12 col-sm-12 col-xs-12">
-						<div class="panel panel-primary">
-							<div class="panel-heading">
-								<h6 class="panel-title">Average sentiments<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
-								<div class="heading-elements">
-									<ul class="icons-list">
-				                		<li><a data-action="collapse"></a></li>
-				                		<li><a data-action="reload"></a></li>
-<!--				                		<li><a data-action="close"></a></li>-->
-				                	</ul>
-			                	</div>
-							</div>
-
-							<div class="panel-body">
-						
-   <div class="col-md-4"><div class="chart-container text-center">
-									<div class="display-inline-block" id="c3-donut-chart"></div>
-								</div></div>
-							</div>
-						</div>
-					</div>
 				      
 					
 					
-						<div class="col-md-6 col-sm-12 col-xs-12">
-						<div class="panel panel-primary">
-							<div class="panel-heading">
-								<h6 class="panel-title">List of Domains<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
-								<div class="heading-elements">
-									<ul class="icons-list">
-				                		<li><a data-action="collapse"></a></li>
-				                		<li><a data-action="reload"></a></li>
-<!--				                		<li><a data-action="close"></a></li>-->
-				                	</ul>
-			                	</div>
-							</div>
-
-							<div class="panel-body">
-						<table class="table datatable-basic">
-						<thead>
-							<tr>
-								<th>URL</th>
-								<th>Frequency</th>
-								<th class="hidden" width="0%"></th>
-								<th class="hidden" width="0%"></th>
-								<th class="hidden"  width="0%"></th>
-								<th class="hidden" width="0%"></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Marth</td>
-								<td><a href="#">Enright</a></td>
-								<td class="hidden" width="0%"></td>
-								<td class="hidden" width="0%"></td>
-								<td class="hidden" width="0%"></td>
-								<td class="hidden" width="0%">
-
-								</td>
-							</tr>
-							</tbody>
-							</table>
-
-   
-							</div>
-						</div>
-					</div>
-					
-					
-					
-					
-						<div class="col-md-6 col-sm-12 col-xs-12">
-						<div class="panel panel-primary">
-							<div class="panel-heading">
-								<h6 class="panel-title">List of URLs<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
-								<div class="heading-elements">
-									<ul class="icons-list">
-				                		<li><a data-action="collapse"></a></li>
-				                		<li><a data-action="reload"></a></li>
-<!--				                		<li><a data-action="close"></a></li>-->
-				                	</ul>
-			                	</div>
-							</div>
-
-							<div class="panel-body">
-						<table class="table datatable-basic">
-						<thead>
-							<tr>
-								<th>URL</th>
-								<th class="hidden"></th>
-								<th class="hidden" width="0%"></th>
-								<th class="hidden" width="0%"></th>
-								<th class="hidden"  width="0%"></th>
-								<th class="hidden" width="0%"></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>http://sports.yahoo.com/news/nfl-regional-combines-working-200040813--nfl.html</td>
-								<td class="hidden"></td>
-								<td class="hidden" width="0%"></td>
-								<td class="hidden" width="0%"></td>
-								<td class="hidden" width="0%"></td>
-								<td class="hidden" width="0%">
-
-								</td>
-							</tr>
-							</tbody>
-							</table>
-
-   
-							</div>
-						</div>
-					</div>
 					
 					
 					
@@ -575,6 +457,46 @@
 		&copy; 2017. <a href="#">Blogtracker</a> All Right Reserved
 	</div>
 	<!-- /footer -->
+<script>
+	$('.daterange-ranges').daterangepicker(
+        {
+            startDate: moment().subtract('days', 29),
+            endDate: moment(),
+            minDate: '01/01/2006',
+            maxDate: moment(),
+			showDropdowns: true,
+          showWeekNumbers: true,
+            dateLimit: { days: 30000 },
+            ranges: {
+                //'Today': [moment(), moment()],
+                //'Yesterday': [moment().subtract('days', 1), moment().subtract('days', 1)],
+				'Last Year': [moment().subtract('years', 1).startOf('year'), moment().subtract('years', 1).endOf('year')],
+				//'Last 7 Days': [moment().subtract('days', 6), moment()],
+                //'Last 30 Days': [moment().subtract('days', 29), moment()],
+                'This Year': [moment().startOf('year'), moment()]
+                //'Last Month': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')]
+            },
+            opens: 'left',
+            applyClass: 'btn-small bg-slate-600 btn-block',
+            cancelClass: 'btn-small btn-default btn-block',
+            format: 'MM/DD/YYYY',
+			locale: {
+            applyLabel: 'Submit',
+            cancelLabel: 'Clear',
+            fromLabel: 'From',
+            toLabel: 'To',
+            customRangeLabel: 'Custom',
+            daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+            monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            firstDay: 1
+          }
+        },
+        function(start, end) {
+            $('.daterange-ranges span').html(start.format('MMMM D') + ' - ' + end.format('MMMM D'));
+        }
+    );
 
+    $('.daterange-ranges span').html(moment().subtract('days', 29).format('MMMM D') + ' - ' + moment().format('MMMM D'));
+	</script>
 </body>
 </html>

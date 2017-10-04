@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Additional Blogger Information</title>
+	<title>Sentiments</title>
 
 	<!-- Global stylesheets -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
@@ -38,25 +38,22 @@
 	<script type="text/javascript" src="assets/js/plugins/pickers/daterangepicker.js"></script>
 <script type="text/javascript" src="assets/js/plugins/tables/datatables/datatables.min.js"></script>
 <script type="text/javascript" src="assets/js/plugins/forms/selects/select2.min.js"></script>
-	<script type="text/javascript" src="assets/js/core/app.js"></script>
- <script type="text/javascript" src="assets/js/pages/datatables_basic.js"></script>
-   <script type="text/javascript" src="assets/js/charts/d3/bars/bars_basic_vertical.js"></script>
-   <script type="text/javascript" src="assets/js/plugins/visualization/c3/c3.min.js"></script>
-    
-<!--
-	<script type="text/javascript" src="assets/js/charts/d3/bars/bars_basic_horizontal.js"></script>
-	<script type="text/javascript" src="assets/js/charts/d3/bars/bars_basic_tooltip.js"></script>
-	<script type="text/javascript" src="assets/js/charts/d3/bars/bars_basic_grouped.js"></script>
-	<script type="text/javascript" src="assets/js/charts/d3/bars/bars_basic_stacked.js"></script>
-	<script type="text/javascript" src="assets/js/charts/d3/bars/bars_basic_stacked_normalized.js"></script>
--->
-	
-		<script type="text/javascript" src="assets/js/charts/c3/c3_lines_areas.js"></script>
-			<script type="text/javascript" src="assets/js/charts/c3/c3_bars_pies.js"></script>
 
+<script type="text/javascript" src="assets/js/pages/datatables_basic.js"></script>
+<!--   <script type="text/javascript" src="assets/js/charts/d3/bars/bars_basic_vertical.js"></script>-->
+   <script type="text/javascript" src="assets/js/plugins/visualization/c3/c3.min.js"></script>
+
+		<script type="text/javascript" src="assets/js/charts/c3/c3_lines_areas.js"></script>
+
+	<script type="text/javascript" src="assets/js/core/app.js"></script>
+	<script type="text/javascript" src="assets/js/pages/dashboard.js"></script>
+
+
+ 
+		
 	<script type="text/javascript" src="assets/js/plugins/ui/ripple.min.js"></script>
 	<!-- /theme JS files -->
-<script type="text/javascript" src="assets/js/pages/form_select2.js"></script>
+<!--<script type="text/javascript" src="assets/js/pages/form_select2.js"></script>-->
 
 </head>
 
@@ -246,7 +243,7 @@
 			<div class="page-title">
 				<h4>
 					<i class="icon-arrow-left52 position-left"></i>
-					<span class="text-semibold">Additional Blogger Information</span>
+					<span class="text-semibold">Sentiments</span>
 <!--					<small class="display-block">Good morning, Victoria Baker!</small>-->
 				</h4>
 			</div>
@@ -271,7 +268,26 @@
 				<div class="col-md-12">
 						<div class="panel panel-primary">
 							<div class="panel-heading">
-								<h6 class="panel-title">Blog Site Information <a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<h6 class="panel-title">Timeline of Sentiments<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<div class="heading-elements">
+								<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
+										<i class="icon-calendar3 position-left"></i> <span></span> <b class="caret"></b>
+									</button>
+			                	</div>
+							</div>
+
+							<div class="panel-body">
+							
+							<div class="col-lg-8 col-md-8 col-sm-12">
+								<div class="chart-container">
+							<div class="chart" id="c3-line-regions-chart"></div>
+						</div>						
+							</div>
+					
+								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+		<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h6 class="panel-title">Blogger Name<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
 									<ul class="icons-list">
 				                		<li><a data-action="collapse"></a></li>
@@ -282,107 +298,137 @@
 							</div>
 
 							<div class="panel-body">
-							<div class="col-md-4">
-							This is it	
-							</div>
-							<div class="col-md-8">
-							
-							<div class="panel panel-primary">
-							<div class="panel-heading">
-								<h6 class="panel-title">Blogger Details <a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
-								<div class="heading-elements">
-									<ul class="icons-list">
-				                		<li><a data-action="collapse"></a></li>
-				                		<li><a data-action="reload"></a></li>
-<!--				                		<li><a data-action="close"></a></li>-->
-				                	</ul>
-			                	</div>
-			                	
-			                	
-							</div>
-
-							<div class="panel-body">			
-							<div class="col-md-6">
-							<table class="table">
-						<thead>
-							<tr>
-								<th>Blogger name</th>
-								<th>Abby Zimet, staff writerl</th>
-								
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Blogsite name:</td>
-								<td>Common Dreams</td>
-								
-							</tr>
-								<tr>
-								<td>Blog site link</td>
-								<td>http://www.commondreams.org/</td>
-								
-							</tr>
-							</tbody>
-							</table>
-							</div>
-							<div class="col-md-6">
-							<table class="table">
-						<thead>
-							<tr>
-								<th>Most recent post data</th>
-								<th>2016-06-23 08:54:26.0</th>
-								
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Maximum influence</td>
-								<td>-2</td>
-								
-							</tr>
-							<tr>
-								<td>Blogsite name:</td>
-								<td>Common Dreams</td>
-								
-							</tr>
-								
-							</tbody>
-							</table>
-							</div>
-							</div>
-					</div>
-								
-								<div class="panel panel-primary">
-							<div class="panel-heading">
-								<h6 class="panel-title">Blog Content<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
-								<div class="heading-elements">
-									<ul class="icons-list">
-				                		<li><a data-action="collapse"></a></li>
-				                		<li><a data-action="reload"></a></li>
-<!--				                		<li><a data-action="close"></a></li>-->
-				                	</ul>
-			                	</div>
-			                	
-									</div>
-									<div class="panel-body">
-										
-										
-									</div>
-									
-									</div>
-										
-														
 						
+<table class="table text-nowrap">
+									<thead>
+										<tr>
+											<th>Blogger Name</th>
+											
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												<div class="media-left media-middle">
+													<a href="#" class="btn bg-primary-400 btn-rounded btn-icon btn-xs legitRipple">
+														<span class="letter-icon">S</span>
+													</a>
+												</div>
+
+												<div class="media-body">
+													<div class="media-heading">
+														<a href="#" class="letter-icon-title">Wolnemedia</a>
+													</div>
+
+													<div class="text-muted text-size-small"><i class="icon-checkmark3 text-size-mini position-left"></i>US</div>
+												</div>
+											</td>
+											
+											
+										</tr>
+
+										<tr>
+											<td>
+												<div class="media-left media-middle">
+													<a href="#" class="btn bg-danger-400 btn-rounded btn-icon btn-xs legitRipple">
+														<span class="letter-icon">A</span>
+													</a>
+												</div>
+
+												<div class="media-body">
+													<div class="media-heading">
+														<a href="#" class="letter-icon-title">AdNovum</a>
+													</div>
+
+													<div class="text-muted text-size-small"><i class="icon-spinner11 text-size-mini position-left"></i>Russia</div>
+												</div>
+											</td>
+											
+										</tr>
+
+										<tr>
+											<td>
+												<div class="media-left media-middle">
+													<a href="#" class="btn bg-indigo-400 btn-rounded btn-icon btn-xs legitRipple">
+														<span class="letter-icon">D</span>
+													</a>
+												</div>
+
+												<div class="media-body">
+													<div class="media-heading">
+														<a href="#" class="letter-icon-title">brusek</a>
+													</div>
+
+													<div class="text-muted text-size-small"><i class="icon-lifebuoy text-size-mini position-left"></i>Germany</div>
+												</div>
+											</td>
+											
+											
+										</tr>
+
+										<tr>
+											<td>
+												<div class="media-left media-middle">
+													<a href="#" class="btn bg-success-400 btn-rounded btn-icon btn-xs legitRipple">
+														<span class="letter-icon">O</span>
+													</a>
+												</div>
+
+												<div class="media-body">
+													<div class="media-heading">
+														<a href="#" class="letter-icon-title">Steve Marinucci</a>
+													</div>
+
+													<div class="text-muted text-size-small"><i class="icon-lifebuoy text-size-mini position-left"></i>US</div>
+												</div>
+											</td>
+											
+											
+										</tr>
+
+										<tr>
+											<td>
+												<div class="media-left media-middle">
+													<a href="#" class="btn bg-danger-400 btn-rounded btn-icon btn-xs legitRipple">
+														<span class="letter-icon">A</span>
+													</a>
+												</div>
+
+												<div class="media-body">
+													<div class="media-heading">
+														<a href="#" class="letter-icon-title">Steven Ruygrok</a>
+													</div>
+
+													<div class="text-muted text-size-small"><i class="icon-spinner11 text-size-mini position-left"></i>US</div>
+												</div>
+											</td>
+											
+											
+										</tr>
+									</tbody>
+								</table>
+   
+							</div>
+						</div>
+					
+				</div>				
+							
+							</div>
+								
+							
+										
+																
+							
 							
 							
 							
 							</div>
 					</div>
 					</div>
-				<div class="col-md-6 col-sm-12 col-xs-12">
+				<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="panel panel-primary">
 							<div class="panel-heading">
-								<h6 class="panel-title">Daily Average<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<h6 class="panel-title">Sentiments<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
 									<ul class="icons-list">
 				                		<li><a data-action="collapse"></a></li>
@@ -393,11 +439,110 @@
 							</div>
 
 							<div class="panel-body">
-						<div class="chart-container">
-							<div class="chart" id="d3-bar-vertical"></div>
-						</div>
+							<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h6 class="panel-title">Blog Post<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<div class="heading-elements">
+									<ul class="icons-list">
+				                		<li><a data-action="collapse"></a></li>
+				                		<li><a data-action="reload"></a></li>
+<!--				                		<li><a data-action="close"></a></li>-->
+				                	</ul>
+			                	</div>
+							</div>
 
+							<div class="panel-body">
+						
+	
+						<table class="table datatable-basic">
+						<thead>
+							<tr>
+								<th>Blog Post Title</th>
+								<th class="hidden" width="0%" >Frequency</th>
+								<th class="hidden" width="0%"></th>
+								<th class="hidden" width="0%"></th>
+								<th class="hidden"  width="0%"></th>
+								<th class="hidden" width="0%"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Choosing sandals that meet the corporate casual dress code <a href="#" class="btn bg-primary-400 btn-rounded btn-icon btn-xs legitRipple pull-right"
+													>
+														<span class="letter-icon icon-eye2"></span>
+													</a></td>
+								<td class="hidden" width="0%"></td>
+								<td class="hidden" width="0%"></td>
+								<td class="hidden" width="0%"></td>
+								<td class="hidden" width="0%"></td>
+								<td class="hidden" width="0%">
+
+								</td>
+							</tr>
+							</tbody>
+							</table>
    
+							</div>
+						</div>
+					</div>
+						
+<div class="col-md-6 col-sm-12 col-xs-12">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h6 class="panel-title">Personal Content<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<div class="heading-elements">
+									<ul class="icons-list">
+				                		<li><a data-action="collapse"></a></li>
+				                		<li><a data-action="reload"></a></li>
+<!--				                		<li><a data-action="close"></a></li>-->
+				                	</ul>
+			                	</div>
+							</div>
+
+							<div class="panel-body">
+						
+                        
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-md-6 col-sm-12 col-xs-12">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h6 class="panel-title">Time Orientation<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<div class="heading-elements">
+									<ul class="icons-list">
+				                		<li><a data-action="collapse"></a></li>
+				                		<li><a data-action="reload"></a></li>
+<!--				                		<li><a data-action="close"></a></li>-->
+				                	</ul>
+			                	</div>
+							</div>
+
+							<div class="panel-body">
+						
+                        
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-md-6 col-sm-12 col-xs-12">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h6 class="panel-title">Core Drive and Need<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<div class="heading-elements">
+									<ul class="icons-list">
+				                		<li><a data-action="collapse"></a></li>
+				                		<li><a data-action="reload"></a></li>
+<!--				                		<li><a data-action="close"></a></li>-->
+				                	</ul>
+			                	</div>
+							</div>
+
+							<div class="panel-body">
+						
+                        
 							</div>
 						</div>
 					</div>
@@ -406,7 +551,7 @@
 					<div class="col-md-6 col-sm-12 col-xs-12">
 						<div class="panel panel-primary">
 							<div class="panel-heading">
-								<h6 class="panel-title">Monthly Average<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<h6 class="panel-title">Cognitive Process<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
 									<ul class="icons-list">
 				                		<li><a data-action="collapse"></a></li>
@@ -417,14 +562,60 @@
 							</div>
 
 							<div class="panel-body">
-						<div class="chart-container">
-							<div class="chart" id="c3-line-regions-chart"></div>
-						</div>
-
-   
+						
+                        
 							</div>
 						</div>
 					</div>
+					
+					<div class="col-md-6 col-sm-12 col-xs-12">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h6 class="panel-title">Summary Variable<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<div class="heading-elements">
+									<ul class="icons-list">
+				                		<li><a data-action="collapse"></a></li>
+				                		<li><a data-action="reload"></a></li>
+<!--				                		<li><a data-action="close"></a></li>-->
+				                	</ul>
+			                	</div>
+							</div>
+
+							<div class="panel-body">
+						
+                        
+							</div>
+						</div>
+					</div>
+					
+					
+					<div class="col-md-6 col-sm-12 col-xs-12">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h6 class="panel-title">Sentiment/Emotion<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<div class="heading-elements">
+									<ul class="icons-list">
+				                		<li><a data-action="collapse"></a></li>
+				                		<li><a data-action="reload"></a></li>
+<!--				                		<li><a data-action="close"></a></li>-->
+				                	</ul>
+			                	</div>
+							</div>
+
+							<div class="panel-body">
+						
+                        
+							</div>
+						</div>
+					</div>
+   
+							</div>
+						</div>
+					
+					</div>
+					
+					
+					
 				
 				
 				      
@@ -435,120 +626,8 @@
 				    
 			      
 			      
-			      <div class="col-md-12 col-sm-12 col-xs-12">
-						<div class="panel panel-primary">
-							<div class="panel-heading">
-								<h6 class="panel-title">Average sentiments<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
-								<div class="heading-elements">
-									<ul class="icons-list">
-				                		<li><a data-action="collapse"></a></li>
-				                		<li><a data-action="reload"></a></li>
-<!--				                		<li><a data-action="close"></a></li>-->
-				                	</ul>
-			                	</div>
-							</div>
-
-							<div class="panel-body">
-						
-   <div class="col-md-4"><div class="chart-container text-center">
-									<div class="display-inline-block" id="c3-donut-chart"></div>
-								</div></div>
-							</div>
-						</div>
-					</div>
 				      
 					
-					
-						<div class="col-md-6 col-sm-12 col-xs-12">
-						<div class="panel panel-primary">
-							<div class="panel-heading">
-								<h6 class="panel-title">List of Domains<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
-								<div class="heading-elements">
-									<ul class="icons-list">
-				                		<li><a data-action="collapse"></a></li>
-				                		<li><a data-action="reload"></a></li>
-<!--				                		<li><a data-action="close"></a></li>-->
-				                	</ul>
-			                	</div>
-							</div>
-
-							<div class="panel-body">
-						<table class="table datatable-basic">
-						<thead>
-							<tr>
-								<th>URL</th>
-								<th>Frequency</th>
-								<th class="hidden" width="0%"></th>
-								<th class="hidden" width="0%"></th>
-								<th class="hidden"  width="0%"></th>
-								<th class="hidden" width="0%"></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Marth</td>
-								<td><a href="#">Enright</a></td>
-								<td class="hidden" width="0%"></td>
-								<td class="hidden" width="0%"></td>
-								<td class="hidden" width="0%"></td>
-								<td class="hidden" width="0%">
-
-								</td>
-							</tr>
-							</tbody>
-							</table>
-
-   
-							</div>
-						</div>
-					</div>
-					
-					
-					
-					
-						<div class="col-md-6 col-sm-12 col-xs-12">
-						<div class="panel panel-primary">
-							<div class="panel-heading">
-								<h6 class="panel-title">List of URLs<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
-								<div class="heading-elements">
-									<ul class="icons-list">
-				                		<li><a data-action="collapse"></a></li>
-				                		<li><a data-action="reload"></a></li>
-<!--				                		<li><a data-action="close"></a></li>-->
-				                	</ul>
-			                	</div>
-							</div>
-
-							<div class="panel-body">
-						<table class="table datatable-basic">
-						<thead>
-							<tr>
-								<th>URL</th>
-								<th class="hidden"></th>
-								<th class="hidden" width="0%"></th>
-								<th class="hidden" width="0%"></th>
-								<th class="hidden"  width="0%"></th>
-								<th class="hidden" width="0%"></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>http://sports.yahoo.com/news/nfl-regional-combines-working-200040813--nfl.html</td>
-								<td class="hidden"></td>
-								<td class="hidden" width="0%"></td>
-								<td class="hidden" width="0%"></td>
-								<td class="hidden" width="0%"></td>
-								<td class="hidden" width="0%">
-
-								</td>
-							</tr>
-							</tbody>
-							</table>
-
-   
-							</div>
-						</div>
-					</div>
 					
 					
 					
@@ -566,7 +645,7 @@
 
 	</div>
 	
-	</div>
+	
 	<!-- /page container -->
 
 
@@ -575,6 +654,46 @@
 		&copy; 2017. <a href="#">Blogtracker</a> All Right Reserved
 	</div>
 	<!-- /footer -->
+<script>
+	$('.daterange-ranges').daterangepicker(
+        {
+            startDate: moment().subtract('days', 29),
+            endDate: moment(),
+            minDate: '01/01/2006',
+            maxDate: moment(),
+			showDropdowns: true,
+          showWeekNumbers: true,
+            dateLimit: { days: 30000 },
+            ranges: {
+                //'Today': [moment(), moment()],
+                //'Yesterday': [moment().subtract('days', 1), moment().subtract('days', 1)],
+				'Last Year': [moment().subtract('years', 1).startOf('year'), moment().subtract('years', 1).endOf('year')],
+				//'Last 7 Days': [moment().subtract('days', 6), moment()],
+                //'Last 30 Days': [moment().subtract('days', 29), moment()],
+                'This Year': [moment().startOf('year'), moment()]
+                //'Last Month': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')]
+            },
+            opens: 'left',
+            applyClass: 'btn-small bg-slate-600 btn-block',
+            cancelClass: 'btn-small btn-default btn-block',
+            format: 'MM/DD/YYYY',
+			locale: {
+            applyLabel: 'Submit',
+            cancelLabel: 'Clear',
+            fromLabel: 'From',
+            toLabel: 'To',
+            customRangeLabel: 'Custom',
+            daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+            monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            firstDay: 1
+          }
+        },
+        function(start, end) {
+            $('.daterange-ranges span').html(start.format('MMMM D') + ' - ' + end.format('MMMM D'));
+        }
+    );
 
+    $('.daterange-ranges span').html(moment().subtract('days', 29).format('MMMM D') + ' - ' + moment().format('MMMM D'));
+	</script>
 </body>
 </html>
