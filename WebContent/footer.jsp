@@ -1,4 +1,4 @@
-    <script type="text/javascript" src="assets/js/plugins/maps/jvectormap/jvectormap.min.js"></script>
+<!--     <script type="text/javascript" src="assets/js/plugins/maps/jvectormap/jvectormap.min.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/maps/jvectormap/map_files/world.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/maps/jvectormap/map_files/countries/usa.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/maps/jvectormap/map_files/countries/germany.js"></script>
@@ -9,7 +9,7 @@
 	<script type="text/javascript" src="assets/js/pages/dashboard.js"></script>
 		
 
-	<script type="text/javascript" src="assets/js/plugins/ui/ripple.min.js"></script>
+	<script type="text/javascript" src="assets/js/plugins/ui/ripple.min.js"></script>--> 
 
 <!-- Footer -->
 	<div class="col-md-12 col-sm-12 col-xs-12 text-center">

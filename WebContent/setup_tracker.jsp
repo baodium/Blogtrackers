@@ -146,6 +146,7 @@ function googleTranslateElementInit() {
 
 	</div>
 	<!-- /page container -->
+	
 	<script>
 	function set_tracker(source){
 		var keyword = $("#keyword").val();
@@ -303,6 +304,8 @@ function googleTranslateElementInit() {
 	<!-- Footer -->
   <jsp:include page="footer.jsp"></jsp:include>
 	<!-- /footer -->
-
+	<!-- Dependencies -->
+  <jsp:include page="pagedependencies/setuptracker.jsp"></jsp:include>
+  <!-- End of Dependencies -->
 </body>
 </html>

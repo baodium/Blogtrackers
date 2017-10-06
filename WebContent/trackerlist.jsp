@@ -15,7 +15,14 @@
 
  <jsp:include page="include_top.jsp"></jsp:include>
 
-	
+<style>
+#searchtextbox
+{
+border:2px solid #2196F3 !important;
+background-color:#ffffff;
+padding-left:20px;
+}
+</style>	
 	
 	<!-- Page header -->
 	<div class="page-header">
@@ -29,9 +36,10 @@
 				
 				<div class="form-group">
 				<div class="col-md-12">
+				
 				<div class="input-group">
-				<input type="text" class="form-control ui-autocomplete-input" placeholder="Enter a keyword to search" id="ac-remote" autocomplete="off">
-											<span class="input-group-btn"><button type="button" class="btn btn-primary btn-icon btn-rounded legitRipple"><i class="icon-search4"></i></button></span>
+				<input type="text" class="form-control" placeholder="Enter a keyword to search" id="searchtextbox" autocomplete="off">
+											<span class="input-group-btn" style="padding-left:0px;"><button type="button" class="btn btn-primary">Search</button></span>
 											
 										</div>
 										</div>
@@ -244,7 +252,7 @@
 						    	<div class="caption text-center">
 						    		<h6 class="text-semibold no-margin">James Alexander <small class="display-block">Lead developer</small></h6>
 					    			<ul class="icons-list mt-15">
-				                    	<li><button type="button" class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-target"></i></button></li>
+				                    	<li><button type="button" class="btn btn-primary btn-float btn-float-sm btn-rounded legitRipple"><i class="icon-pencil"></i></button> <button type="button" class="btn btn-primary btn-float btn-float-sm btn-rounded legitRipple"><i class="icon-dashboard"></i></button></li>
 				                    				                    	</ul>
 						    	</div>
 					    	</div>
@@ -275,7 +283,7 @@
 			<div class="col-md-3">
 				<div class="panel panel-primary">
 							<div class="panel-heading">
-								<h6 class="panel-title">Top Trackers<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<h6 class="panel-title">Top Trackers from Community<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
 									<ul class="icons-list">
 				                		<li><a data-action="collapse"></a></li>

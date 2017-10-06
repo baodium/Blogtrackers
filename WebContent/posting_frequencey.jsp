@@ -1,700 +1,443 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8" isELIgnored="false"%>
+<%-- 
+    Document   : dashboard
+    Created on : 28-Aug-2017, 22:23:45
+    Author     : Omnibus_03
+--%>
+<%@page import="java.util.*"%>
 <%
-	Object username = (null == session.getAttribute("user")) ? "" : session.getAttribute("user");
+	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
-
 	if (username == null || username == "") {
 		response.sendRedirect("index.jsp");
 	}
+        ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
 %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Blogtrackers | Posting Frequency</title>
+ <jsp:include page="include_top.jsp"></jsp:include>
 
-<link href="vendors/bootstrap/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-<link href="vendors/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet">
-<link href="vendors/nprogress/nprogress.css" rel="stylesheet">
-<link
-	href="vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css"
-	rel="stylesheet" />
-<link rel="stylesheet" type="text/css"
-	href="vendors/canvasjs/examples/03-area_chart/bootstrap/css/bootstrap.min.css">
-<link href="build/css/custom.min.css" rel="stylesheet">
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="vendors/jQCloud-master/jqcloud/jqcloud.css" />
-<style>
-div.scroll {
-	overflow: scroll;
-}
-</style>
-
-<div class="loader"></div>
-<style>
-.loader {
-	position: fixed;
-	left: 0px;
-	top: 0px;
-	width: 100%;
-	height: 100%;
-	z-index: 9999;
-	background: url('Resources/img/gif/Loading-data.gif') 50% 50% no-repeat
-		rgb(249, 249, 249);
-}
-</style>
-
-<script type="text/javascript">
-	$(window).load(function() {
-		$(".loader").addClass("hidden");
-		//$(".loader").fadeOut("slow");
-	})
-</script>
-
-</head>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script type="text/javascript"
-	src="http://arrow.scrolltotop.com/arrow6.js"></script>
-<noscript>
-	Not seeing a <a href="http://www.scrolltotop.com/">Scroll to Top
-		Button</a>? Go to our FAQ page for more info.
-</noscript>
-
-
-<body class="nav-md">
-	<div class="container body">
-		<div class="main_container">
-			<jsp:include page="new_sidebar.jsp"></jsp:include>
-			<!-- </div> -->
-			<!-- top navigation -->
-			<div class="top_nav">
-				<div class="nav_menu">
-					<nav>
-						<div class="nav toggle">
-							<a id="menu_toggle"><i class="fa fa-bars"></i></a>
-						</div>
-
-						<div class="nav toggle"
-							style="position: absolute; right: 35%; width: 30%;">
-							<form name="trackerform" id="trackerform"
-								action="PostingFrequency" method="post">
-								<select id="tracker" name="tracker" onchange="trackerchanged()"
-									value="${item}" class="form-control" required>
-									<c:choose>
-										<c:when test="${tracker != null}">
-											<option value="">${tracker}</option>
-										</c:when>
-
-										<c:when test="${tracker == null}">
-											<option value="">Select Tracker</option>
-										</c:when>
-									</c:choose>
-
-									<c:forEach items="${trackers}" var="item">
-										<c:if test="${tracker ne item}">
-											<option value="${item}"><c:out value="${item}" /></option>
-										</c:if>c:if>
-									</c:forEach>
-								</select>
-							</form>
-						</div>
-
-
-						<ul class="nav navbar-nav navbar-right">
-							<li class=""><a href="javascript:;"
-								class="user-profile dropdown-toggle" data-toggle="dropdown"
-								aria-expanded="false"> <!-- <img src="images/img.jpg"
-									alt=""> --> <span class=" fa fa-angle-down"></span>
-							</a>
-								<ul class="dropdown-menu dropdown-usermenu pull-right">
-									<li><a href="javascript:;"> Profile</a></li>
-									<li><a href="javascript:;"> <span
-											class="badge bg-red pull-right"></span> <span>Settings</span>
-									</a></li>
-									<li><a href="javascript:;">Help</a></li>
-									<li><a
-										href="${pageContext.request.contextPath}/test_logout.jsp"><i
-											class="fa fa-sign-out pull-right"></i> Log Out</a></li>
-								</ul></li>
-							<li role="presentation" class="dropdown"><a
-								href="javascript:;" class="dropdown-toggle info-number"
-								data-toggle="dropdown" aria-expanded="false"> </a>
-								<ul id="menu1" class="dropdown-menu list-unstyled msg_list"
-									role="menu">
-									<li><a> <span class="image"> <!-- <img src="images/img.jpg"
-												alt="Profile Image" /> -->
-										</span> <span> <span>Sender 1</span> <span class="time">3
-													mins ago</span>
-										</span> <span class="message"> Message.... </span>
-									</a></li>
-
-								</ul></li>
-						</ul>
-					</nav>
-				</div>
+	<!-- Page header -->
+	<div class="page-header">
+		<div class="page-header-content">
+			<div class="page-title">
+				<h4>
+					<i class="icon-arrow-left52 position-left"></i>
+					<span class="text-semibold">Posting Frequency</span>
+<!--					<small class="display-block">Good morning, Victoria Baker!</small>-->
+				</h4>
 			</div>
-			<!-- /top navigation -->
-			<!-- page content -->
-			<div class="right_col" role="main">
-				<div class="">
-					<div class="row top_tiles"></div>
-
-					<div class="row">
-						<div class="col-md-12">
-							<div class="x_panel">
-								<div class="x_title">
-									<h2>
-										Posting Frequency<small><span
-											class="glyphicon glyphicon-info-sign" data-toggle="tooltip"
-											data-original-title="Posting activity for selected time period"></span>
-											<font color="red">${errorMessage}</font> </small>
-									</h2>
-
-									<form name="dateform" id="dateform" action="PostingFrequency"
-										method="post">
-										<div class="filter">
-											<div id="reportrange" class="pull-right"
-												style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-												<i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-												<span>December 30, 2014 - January 28, 2018</span> <input
-													id="datepicked" name="datepicked" type="hidden"
-													onchange="datechanged()"> <b class="caret"></b>
-											</div>
-										</div>
-									</form>
-
-									<div class="clearfix"></div>
-								</div>
-								<form name="pf_spanForm" id="pf_spanForm"
-									action="PostingFrequency" method="post">
-									<div class="x_content">
-										<div class="col-md-9 col-sm-12 col-xs-12">
-											<div class="demo-container">
-												<div id="chartContainer" style="height: 350px"></div>
-												<div style="text-align: center; margin-bottom: 15px;">
-													<jsp:include page="spanchecker.jsp"></jsp:include>
-													<!-- <div class="btn-group" role="group" aria-label="First group">
-														<button type="submit" name="dayFreq" class="btn btn-default btn-sm">Day</button>
-														<button type="submit" name="weekFreq" class="btn btn-default btn-sm">Week</button>
-														<button class="btn btn-default btn-sm" type="submit" name="monthFreq">Month</button>
-														<button type="submit" name="yearFreq" class="btn btn-default btn-sm">Year</button>
-													</div> -->
-												</div>
-
-											</div>
-										</div>
-
-										<div class="col-md-3 col-sm-12 col-xs-12">
-											<div>
-												<div class="x_title">
-													<h2>
-														Top Bloggers<small><span
-															class="glyphicon glyphicon-info-sign"
-															data-toggle="tooltip"
-															data-original-title="Active bloggers for selected time period"></span></small>
-													</h2>
-													<div class="clearfix"></div>
-												</div>
-												<div class="scroll">
-													<ul class="list-unstyled top_profiles scroll-view">
 
 
-														<c:set var="i" value="0" />
-														<c:set var="eo" value="1" />
+		</div>
+	</div>
+	<!-- /page header -->
 
 
-														<c:forEach items="${topBloggers}" var="s1" begin="${i}">
-															<li class="media event"><a
-																class="pull-left border-green profile_thumb"> <i
-																	class="fa fa-user green"></i>
-															</a>
-																<div class="media-body">
-																	<a class="title"
-																		href="<%=request.getContextPath()%>
-																		/AdditionalBlogger?authorName=${s1.bloggerName}">${s1.bloggerName}</a>
-																	<p>
-																		Blog Post Count: <strong>${s1.blogCount}</strong>
-																	</p>
-																</div></li>
-														</c:forEach>
-													</ul>
-												</div>
-											</div>
-										</div>
+	<!-- Page container -->
+	<div class="page-container">
 
-									</div>
+		<!-- Page content -->
+		<div class="page-content">
+
+			<!-- Main content -->
+			<div class="content-wrapper">
+
+				<!-- Main charts -->
+				<div class="row">
+				<div class="col-md-12">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h6 class="panel-title">Posting Frequency<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<form name="dateform" id="dateform" method="post">
+									<div class="heading-elements" id="reportrange" action="PostingFrequency">
+									<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
+										<i class="icon-calendar3 position-left"></i> <span></span>  
+					<input type="hidden" id="datepicked" name="datepicked"  onchange="datechanged()" /><b class="caret"></b>
+									</button>
+			                	</div>
 								</form>
 							</div>
-						</div>
-						<div class="clearfix"></div>
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							<div class="x_panel">
-								<div class="x_title">
-									<h2>
-										Blog Browser<small><span
-											class="glyphicon glyphicon-info-sign" data-toggle="tooltip"
-											data-original-title="List of blog posts for selected time-period"></span></small>
-									</h2>
-									<ul class="nav navbar-right panel_toolbox">
-										<li><a class="collapse-link"><i
-												class="fa fa-chevron-up"></i></a></li>
-									</ul>
-									<div class="clearfix"></div>
-								</div>
-								<div class="x_content">
-									<div class="clearfix"></div>
-									<div class="col-md-6 col-xs-12">
-										<div class="x_panel">
-											<div class="x_content">
-												<div class="scroll" id="alert" style="height: 345px;">
-													<div class="x_content">
-														<table class="table table-hover">
-															<thead>
-																<tr>
-																	<th>Blog Post Title</th>
-																	<th style="display: none;">Type</th>
-																	<th></th>
-																</tr>
-															</thead>
-															<tbody>
-																<c:set var="i" value="0" />
-																<c:set var="eo" value="1" />
 
+							<div class="panel-body">
+							
+							<div class="col-lg-8 col-md-8 col-sm-12">
+								<div class="chart-container">
+							<div class="chart" id="c3-line-regions-chart"></div>
+						</div>						
+							</div>
+					
+								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+		<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h6 class="panel-title">Top Bloggers<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<div class="heading-elements">
+									<ul class="icons-list">
+				                		<li><a data-action="collapse"></a></li>
+				                		<li><a data-action="reload"></a></li>
+<!--				                		<li><a data-action="close"></a></li>-->
+				                	</ul>
+			                	</div>
+							</div>
 
-																<c:forEach items="${blogTitlePost}" var="s12"
-																	begin="${i}">
-																	<tr>
-																		<td>${s12.blogTitle}</td>
-																		<td style="display: none;">${s12.blogContent}</td>
-																		<td>
-																			<button type="button" class="use-address">
-																				<span class="glyphicon glyphicon-arrow-right"></span>
-																			</button>
-																		</td>
-																	</tr>
-																</c:forEach>
-															</tbody>
-														</table>
+							<div class="panel-body">
+						
+<table class="table text-nowrap">
+									<thead>
+										<tr>
+											<th>Blogger Name</th>
+											
+											<th>Blog Count</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												<div class="media-left media-middle">
+													<a href="#" class="btn bg-primary-400 btn-rounded btn-icon btn-xs legitRipple">
+														<span class="letter-icon">S</span>
+													</a>
+												</div>
+
+												<div class="media-body">
+													<div class="media-heading">
+														<a href="#" class="letter-icon-title">Wolnemedia</a>
 													</div>
-												</div>
-											</div>
-										</div>
-									</div>
 
-									<div class="col-md-6 col-xs-12">
-										<div class="x_panel">
-											<div class="clearfix"></div>
-											<div class="scroll" style="height: 350px;">
-												<div class="x_content">
-													<table class="table table-hover">
-														<thead>
-															<tr>
-																<th>Blog Post Content</th>
-															</tr>
-														</thead>
-													</table>
-													<div id="blogpost"></div>
+													<div class="text-muted text-size-small"><i class="icon-checkmark3 text-size-mini position-left"></i>US</div>
 												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+											</td>
+											
+											<td>
+												<h6 class="text-semibold no-margin">1306</h6>
+											</td>
+										</tr>
+
+										<tr>
+											<td>
+												<div class="media-left media-middle">
+													<a href="#" class="btn bg-danger-400 btn-rounded btn-icon btn-xs legitRipple">
+														<span class="letter-icon">A</span>
+													</a>
+												</div>
+
+												<div class="media-body">
+													<div class="media-heading">
+														<a href="#" class="letter-icon-title">AdNovum</a>
+													</div>
+
+													<div class="text-muted text-size-small"><i class="icon-spinner11 text-size-mini position-left"></i>Russia</div>
+												</div>
+											</td>
+											<td>
+												<h6 class="text-semibold no-margin">279</h6>
+											</td>
+										</tr>
+
+										<tr>
+											<td>
+												<div class="media-left media-middle">
+													<a href="#" class="btn bg-indigo-400 btn-rounded btn-icon btn-xs legitRipple">
+														<span class="letter-icon">D</span>
+													</a>
+												</div>
+
+												<div class="media-body">
+													<div class="media-heading">
+														<a href="#" class="letter-icon-title">brusek</a>
+													</div>
+
+													<div class="text-muted text-size-small"><i class="icon-lifebuoy text-size-mini position-left"></i>Germany</div>
+												</div>
+											</td>
+											
+											<td>
+												<h6 class="text-semibold no-margin">249</h6>
+											</td>
+										</tr>
+
+										<tr>
+											<td>
+												<div class="media-left media-middle">
+													<a href="#" class="btn bg-success-400 btn-rounded btn-icon btn-xs legitRipple">
+														<span class="letter-icon">O</span>
+													</a>
+												</div>
+
+												<div class="media-body">
+													<div class="media-heading">
+														<a href="#" class="letter-icon-title">Steve Marinucci</a>
+													</div>
+
+													<div class="text-muted text-size-small"><i class="icon-lifebuoy text-size-mini position-left"></i>US</div>
+												</div>
+											</td>
+											
+											<td>
+												<h6 class="text-semibold no-margin">10</h6>
+											</td>
+										</tr>
+
+										<tr>
+											<td>
+												<div class="media-left media-middle">
+													<a href="#" class="btn bg-danger-400 btn-rounded btn-icon btn-xs legitRipple">
+														<span class="letter-icon">A</span>
+													</a>
+												</div>
+
+												<div class="media-body">
+													<div class="media-heading">
+														<a href="#" class="letter-icon-title">Steven Ruygrok</a>
+													</div>
+
+													<div class="text-muted text-size-small"><i class="icon-spinner11 text-size-mini position-left"></i>US</div>
+												</div>
+											</td>
+											
+											<td>
+												<h6 class="text-semibold no-margin">5</h6>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+   
+							</div>
+						</div>
+					
+				</div>				
+							
+							</div>
+								
+							
+										
+																
+							
+							
+							
+							
+							</div>
+					</div>
+					</div>
+				<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h6 class="panel-title">Blog Browser<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<div class="heading-elements">
+									<ul class="icons-list">
+				                		<li><a data-action="collapse"></a></li>
+				                		<li><a data-action="reload"></a></li>
+<!--				                		<li><a data-action="close"></a></li>-->
+				                	</ul>
+			                	</div>
+							</div>
+
+							<div class="panel-body">
+							<div class="col-md-6 col-sm-12 col-xs-12">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h6 class="panel-title">Blog Post<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<div class="heading-elements">
+									<ul class="icons-list">
+				                		<li><a data-action="collapse"></a></li>
+				                		<li><a data-action="reload"></a></li>
+<!--				                		<li><a data-action="close"></a></li>-->
+				                	</ul>
+			                	</div>
+							</div>
+
+							<div class="panel-body">
+						
+	
+						<table class="table datatable-basic">
+						<thead>
+							<tr>
+								<th>Blog Post Title</th>
+								<th class="hidden" width="0%" >Frequency</th>
+								<th class="hidden" width="0%"></th>
+								<th class="hidden" width="0%"></th>
+								<th class="hidden"  width="0%"></th>
+								<th class="hidden" width="0%"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Choosing sandals that meet the corporate casual dress code <a href="#" class="btn bg-primary-400 btn-rounded btn-icon btn-xs legitRipple pull-right"
+													>
+														<span class="letter-icon icon-eye2"></span>
+													</a></td>
+								<td class="hidden" width="0%"></td>
+								<td class="hidden" width="0%"></td>
+								<td class="hidden" width="0%"></td>
+								<td class="hidden" width="0%"></td>
+								<td class="hidden" width="0%">
+
+								</td>
+							</tr>
+							</tbody>
+							</table>
+   
 							</div>
 						</div>
 					</div>
+						
+<div class="col-md-6 col-sm-12 col-xs-12">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h6 class="panel-title">Blog Content<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<div class="heading-elements">
+									<ul class="icons-list">
+				                		<li><a data-action="collapse"></a></li>
+				                		<li><a data-action="reload"></a></li>
+<!--				                		<li><a data-action="close"></a></li>-->
+				                	</ul>
+			                	</div>
+							</div>
 
-					<div class="clearfix"></div>
-					<div class="row">
-
-						<div class="col-md-6 col-xs-12">
-							<div class="x_panel">
-								<div class="x_title">
-									<h2>
-										Top Keyword <small><span
-											class="glyphicon glyphicon-info-sign" data-toggle="tooltip"
-											data-original-title="Top words extracted for selected time-period"></span></small>
-									</h2>
-									<div class="clearfix"></div>
-								</div>
-								<div class="x_content">
-									<div id="my_words_cloud" class="col-md-12 col-sm-12 col-xs-12"
-										style="height: 335px;"></div>
-								</div>
+							<div class="panel-body">
+						<textarea disabled class="form-control" rows="12">Celebrated South Florida Chef Lindsay Autry is close to opening the doors of The Regional Kitchen & Public House at CityPlace in West Palm Beach. Over the past couple of months, construction has transformed the blank, open space into the vision Chef Autry & Thierry Beaud have of an open pantry kitchen, with a main dining room tastefully partitioned to create a warm and intimate ambiance. The restaurant will have outdoor seating on the refinished patio, significant private dining space and a distinct elaborate bar and lounge area. “As a chef that has built a home and career in the Palm Beach area over the past several years, the launch of this amazing project excites me both personally and professionally,” Autry said. Continuing to be inspired by consciously sourced ingredients, Autry has spent close to a decade working closely with South Florida’s most fundamental industry professionals - fisherman, farmers, and culinary artisans. Her intimate knowledge of regional product, as well as that of the exceptional product sourced beyond Florida’s borders, is matched only by the extraordinary culinary talents that have earned her industry celebrity and continued national acclaim. During her most recent visit to Kai-Kai Farm in Indiantown, Fla., Autry began to choose some of the selections of the best local ingredients for The Regional Kitchen & Public House’s new and evolving menu. “We toured the farm, ate warm strawberries right off the vine, and got our hands dirty. Knowing where our food comes from, seeing it through the whole process from ground to plate, those are the things I’ve dreamed of for this project,” Autry said. The Regional Kitchen & Public House, Autry said, intends to present a unique perspective on America’s time-honored cuisine through local ingredients, seasonally influenced dishes and the soulful inspiration of a chef-driven kitchen. “We are very excited to become a part of the Okeechobee corridor rebirth along with brands like Restoration Hardware and large new developments such as the beautiful convention center hotel.” said restaurateur Thierry Beaud. The Regional Kitchen & Public House will become the fifth restaurant concept for the TITOU Hospitality Group under Beaud’s leadership. Some of The Region’s fresh menu items will include: * Florida Sweet Corn & Heirloom Tomato Salad: butter lettuce, crispy okra, buttermilk ranch * House Chorizo & Key Clams: trofie pasta, spinach, braised fennel * Boneless Half Chicken: lemony orzo risotto, brussel leaves, feta & pepperoncini * Local Snapper in Banana Leaf: salsa verde, roasted tomatoes & radishes Autry’s culinary skills have earned her the opportunity to work alongside some of the best chefs in at prominent restaurants along the East Coast and in Mexico. A graduate of Johnson & Wales University, Autry honed her skill under James Beard Award winning Chef Michelle Bernstein, working as sous, then executive chef at a number of Bernstein’s top restaurants before headlining as a “Top Chef” finalist. Autry was Executive Chef of the historic Sundy House in Delray Beach, Fla., with whom she also traveled to New York City to cook at the prestigious James Beard House, and in Spring 2015, Autry won the Miami leg in the traveling culinary battle COCHON 555, which allowed her to compete against the country’s best in the final Grand COCHON competition during the 2015 Aspen Food & Wine.
+   
+						</textarea>
+                        
 							</div>
 						</div>
-
-						<div class="col-md-6 col-xs-12">
-							<div class="x_panel">
-								<div class="x_title">
-									<h2>
-										Top Entities <small><span
-											class="glyphicon glyphicon-info-sign" data-toggle="tooltip"
-											data-original-title="Top entities extracted for selected time-period"></span></small>
-									</h2>
-									<div class="clearfix"></div>
-								</div>
-								<div class="scroll" style="height: 343px;">
-									<div class="x_content">
-										<table class="table table-hover" id="pf_table_id">
-											<thead>
-												<tr>
-													<th>Name <i class="fa fa-sort"></i></th>
-													<th>Type <i class="fa fa-sort"></i></th>
-													<th>Frequency <i class="fa fa-sort"></i></th>
-													<th>Positive <i class="fa fa-sort"></i></th>
-													<th>Negative <i class="fa fa-sort"></i></th>
-												</tr>
-											</thead>
-											<tbody>
-												<c:set var="i" value="0" />
-												<c:set var="eo" value="1" />
-
-
-												<c:forEach items="${topEntity}" var="s1" begin="${i}">
-													<tr>
-														<td>${s1.entityName}</td>
-														<td>${s1.entityType}</td>
-														<td>${s1.entityFrequency}</td>
-														<td>${s1.posSentiment}</td>
-														<td>${s1.negSentiment}</td>
-													</tr>
-												</c:forEach>
-											</tbody>
-										</table>
-									</div>
-								</div>
-							</div>
-						</div>
-
-
 					</div>
+   
+							</div>
+						</div>
+					
+					</div>
+					
+					
+					
+				
+				
+				      
+				      
+				      
+				      
+				      
+				    
+			      
+			      
+				      
+					
+					
+						<div class="col-md-6 col-sm-12 col-xs-12">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h6 class="panel-title">List of Domains<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<div class="heading-elements">
+									<ul class="icons-list">
+				                		<li><a data-action="collapse"></a></li>
+				                		<li><a data-action="reload"></a></li>
+<!--				                		<li><a data-action="close"></a></li>-->
+				                	</ul>
+			                	</div>
+							</div>
+
+							<div class="panel-body">
+						<table class="table datatable-basic">
+						<thead>
+							<tr>
+								<th>URL</th>
+								<th>Frequency</th>
+								<th class="hidden" width="0%"></th>
+								<th class="hidden" width="0%"></th>
+								<th class="hidden"  width="0%"></th>
+								<th class="hidden" width="0%"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Marth</td>
+								<td><a href="#">Enright</a></td>
+								<td class="hidden" width="0%"></td>
+								<td class="hidden" width="0%"></td>
+								<td class="hidden" width="0%"></td>
+								<td class="hidden" width="0%">
+
+								</td>
+							</tr>
+							</tbody>
+							</table>
+
+   
+							</div>
+						</div>
+					</div>
+					
+					
+					
+					
+						<div class="col-md-6 col-sm-12 col-xs-12">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h6 class="panel-title">Top Entities<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<div class="heading-elements">
+									<ul class="icons-list">
+				                		<li><a data-action="collapse"></a></li>
+				                		<li><a data-action="reload"></a></li>
+<!--				                		<li><a data-action="close"></a></li>-->
+				                	</ul>
+			                	</div>
+							</div>
+
+							<div class="panel-body">
+						<table class="table datatable-basic">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th> Type</th>
+								<th > Frequency</th>
+								<th >Positive</th>
+								<th class="hidden"  width="0%"></th>
+								<th class="hidden" width="0%"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>GTX</td>
+								<td >Automobile</td>
+								<td >1</td>
+								<td>0.5205</td>
+								<td class="hidden" width="0%"></td>
+								<td class="hidden" width="0%">
+
+								</td>
+							</tr>
+							</tbody>
+							</table>
+
+   
+							</div>
+						</div>
+					</div>
+					
+					
+					
 				</div>
-				<div class="clearfix"></div>
-				<!-- </div> -->
+				<!-- /main charts -->
 
-				<script
-					src="${pageContext.request.contextPath}/vendors/jquery/dist/jquery.min.js"></script>
-				<script
-					src="${pageContext.request.contextPath}/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-				<script
-					src="${pageContext.request.contextPath}/vendors/fastclick/lib/fastclick.js"></script>
-				<script
-					src="${pageContext.request.contextPath}/vendors/nprogress/nprogress.js"></script>
-				<script
-					src="${pageContext.request.contextPath}/vendors/Chart.js/dist/Chart.min.js"></script>
-				<script
-					src="${pageContext.request.contextPath}/vendors/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
-				<script
-					src="${pageContext.request.contextPath}/vendors/Flot/jquery.flot.js"></script>
-				<script
-					src="${pageContext.request.contextPath}/vendors/Flot/jquery.flot.pie.js"></script>
-				<script
-					src="${pageContext.request.contextPath}/vendors/Flot/jquery.flot.time.js"></script>
-				<script
-					src="${pageContext.request.contextPath}/vendors/Flot/jquery.flot.stack.js"></script>
-				<script
-					src="${pageContext.request.contextPath}/vendors/Flot/jquery.flot.resize.js"></script>
-				<script
-					src="${pageContext.request.contextPath}/vendors/jQCloud-master/jqcloud/jqcloud-1.0.4.js"></script>
-				<script
-					src="${pageContext.request.contextPath}/production/js/flot/jquery.flot.orderBars.js"></script>
-				<script
-					src="${pageContext.request.contextPath}/production/js/flot/date.js"></script>
-				<script
-					src="${pageContext.request.contextPath}/production/js/flot/jquery.flot.spline.js"></script>
-				<script
-					src="${pageContext.request.contextPath}/production/js/flot/curvedLines.js"></script>
-				<script
-					src="${pageContext.request.contextPath}/production/js/moment/moment.min.js"></script>
-				<script
-					src="${pageContext.request.contextPath}/production/js/datepicker/daterangepicker.js"></script>
-				<script
-					src="${pageContext.request.contextPath}/build/js/custom.min.js"></script>
-				<script
-					src="${pageContext.request.contextPath}/vendors/canvasjs/examples/bootbox.min.js"></script>
-				<script
-					src="${pageContext.request.contextPath}/vendors/canvasjs/canvasjs.min.js"></script>
-				<script
-					src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-				<script type="text/javascript">
-					window.onload = function() {
-						var tabData1 = '${frequency}';
-						var finals = [];
-						if (tabData1.length != 0) {
-							tabData = JSON.parse(tabData1);
-							for (var i = 0; i < tabData.length; i++) {
-								var firstdate = tabData[i].startDate;
-								var res = firstdate.split('-');
-								finals.push({
-									x : new Date(res[0], res[1] - 1, res[2]),
-									y : parseInt(tabData[i].noofposts)
-								});
-							}
-						}
-						var chart = new CanvasJS.Chart("chartContainer", {
-							title : {
-								text : ""
-							},
-							legend : {
-								horizontalAlign : "Right",
-								verticalAlign : "top",
-								fontSize : 15
-							},
-							animationEnabled : true,
-							axisX : {
-								interlacedColor : "#F0F8FF",
-								labelFontSize : 12,
-								interval : 1,
-								intervalType : "${calScale}",
-							},
-							axisY : {
-								labelFontSize : 12
-							},
-							exportEnabled : true,
-							data : [ {
-								click : function(e) {
-									$(".loader").removeClass("hidden");
-									alert(e.dataPoint.x);
-								},
-								type : "area",
-								showInLegend : true,
-								legendMarkerType : "circle",
-								legendText : "Number of Blog Posts",
-								color : "#96CA59",
-								fillOpacity : .2,
-								dataPoints : finals
-							} ]
-						});
-						chart.render();
-					}
-					window.alert = function(title, message) {
-						$.post('PostingFrequency', {
-							data : title
-						}, function(data) {
-							var dataa = '${blogTitlePost}';
-							console.log("Dataaa" + dataa);
-							location.reload();
-						});
-					}
-				</script>
 
-				<script>
-					var tabData1 = '${wordList}';
-					var finalz = new Array();
-					if (tabData1.length != 0) {
-						tabData = JSON.parse(tabData1);
-						for (var i = 0; i < tabData.length; i++) {
-							finalz.push({
-								text : tabData[i].term,
-								weight : tabData[i].frequency
-							});
-						}
-					}
-					$(function() {
-						$("#my_words_cloud").jQCloud(finalz);
-					});
-				</script>
+			
 
-				<script type="text/javascript">
-					$(".use-address").click(
-							function() {
-								var $row = $(this).closest("tr"), $tds = $row
-										.find("td:nth-child(2)");
-								$.each($tds, function() {
-									console.log($(this).text());
-									$('#blogpost').text($(this).text());
-								});
-							});
-				</script>
-				<!-- bootstrap-daterangepicker (Fahad) -->
-				<script type="text/javascript">
-					$(document)
-							.ready(
-									function() {
-										var cb = function(start, end, label) {
-											console.log(start.toISOString(),
-													end.toISOString(), label);
-											$('#reportrange span')
-													.html(
-															start
-																	.format('MMMM D, YYYY')
-																	+ ' - '
-																	+ end
-																			.format('MMMM D, YYYY'));
-											$('#reportrange input')
-													.val(
-															start
-																	.format('MMMM D, YYYY')
-																	+ ' - '
-																	+ end
-																			.format('MMMM D, YYYY'))
-													.trigger('change');
-										};
-										var optionSet1 = {
-											startDate : moment().subtract(29,
-													'days'),
-											endDate : moment(),
-											minDate : '01/01/1990',
-											maxDate : '12/31/2045',
-											showDropdowns : true,
-											showWeekNumbers : true,
-											timePicker : false,
-											timePickerIncrement : 1,
-											timePicker12Hour : true,
-											ranges : {
-												'This Year' : [
-														moment()
-																.startOf('year'),
-														moment() ],
-												'Last Year' : [
-														moment()
-																.subtract(1,
-																		'year')
-																.startOf('year'),
-														moment().subtract(1,
-																'year').endOf(
-																'year') ]
-											},
-											opens : 'left',
-											buttonClasses : [ 'btn btn-default' ],
-											applyClass : 'btn-small btn-primary',
-											cancelClass : 'btn-small',
-											format : 'MM/DD/YYYY',
-											separator : ' to ',
-											locale : {
-												applyLabel : 'Submit',
-												cancelLabel : 'Close',
-												fromLabel : 'From',
-												toLabel : 'To',
-												customRangeLabel : 'Custom',
-												daysOfWeek : [ 'Su', 'Mo',
-														'Tu', 'We', 'Th', 'Fr',
-														'Sa' ],
-												monthNames : [ 'January',
-														'February', 'March',
-														'April', 'May', 'June',
-														'July', 'August',
-														'September', 'October',
-														'November', 'December' ],
-												firstDay : 1
-											}
-										};
-										if ('${datepicked}' == '')
-											$('#reportrange span')
-													.html(
-															moment()
-																	.subtract(
-																			29,
-																			'days')
-																	.format(
-																			'MMMM D, YYYY')
-																	+ ' - '
-																	+ moment()
-																			.format(
-																					'MMMM D, YYYY'));
-										else
-											$('#reportrange span').html(
-													'${datepicked}');
-										$('#reportrange').daterangepicker(
-												optionSet1, cb);
-										$('#reportrange')
-												.on(
-														'show.daterangepicker',
-														function() {
-															console
-																	.log("show event fired");
-														});
-										$('#reportrange')
-												.on(
-														'hide.daterangepicker',
-														function() {
-															console
-																	.log("hide event fired");
-														});
-										$('#reportrange')
-												.on(
-														'apply.daterangepicker',
-														function(ev, picker) {
-															console
-																	.log("apply event fired, start/end dates are "
-																			+ picker.startDate
-																					.format('MMMM D, YYYY')
-																			+ " to "
-																			+ picker.endDate
-																					.format('MMMM D, YYYY'));
-														});
-										$('#reportrange')
-												.on(
-														'cancel.daterangepicker',
-														function(ev, picker) {
-															console
-																	.log("cancel event fired");
-														});
-										$('#options1').click(
-												function() {
-													$('#reportrange').data(
-															'daterangepicker')
-															.setOptions(
-																	optionSet1,
-																	cb);
-												});
-										$('#options2').click(
-												function() {
-													$('#reportrange').data(
-															'daterangepicker')
-															.setOptions(
-																	optionSet2,
-																	cb);
-												});
-										$('#destroy').click(
-												function() {
-													$('#reportrange').data(
-															'daterangepicker')
-															.remove();
-												})
-									});
-				</script>
-				<script type="text/javascript">
-					$(function() {
-						$("#pf_table_id").dataTable({
-							"bPaginate" : false,
-							"bLengthChange" : false,
-							"bFilter" : false,
-							"bSort" : true,
-							"bInfo" : false,
-							"bAutoWidth" : false,
-							"asStripClasses" : null,
-							"sDom" : '<"right"f>',
-							"order" : [ [ 1, 'asc' ] ],
+			
+			<!-- /main content -->
 
-						});
-					})
-				</script>
-				<script type="text/javascript">
-					function trackerchanged() {
-						$(".loader").removeClass("hidden");
-						document.getElementById("trackerform").submit();
+		</div>
+		<!-- /page content -->
 
-					}
-					function datechanged() {
-						$(".loader").removeClass("hidden");
-						document.getElementById("dateform").submit();
-					}
-					function spanChanged() {
-						document.getElementById("pf_spanForm").submit();
-					}
-				</script>
+	</div>
+	
+	</div>
+	<!-- /page container -->
+
+
+    <!-- Footer -->
+  <jsp:include page="footer.jsp"></jsp:include>
+	<!-- /footer -->
+	<!-- Dependencies -->
+  <jsp:include page="pagedependencies/postingfrequency.jsp"></jsp:include>
+  <!-- End of Dependencies -->
+
 </body>
 </html>
