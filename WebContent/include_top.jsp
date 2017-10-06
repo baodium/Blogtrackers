@@ -1,17 +1,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.io.File"%>
 <%@page import="java.util.*"%>
-
-<%@page import="wrapper.*"%>
-
 <!DOCTYPE html>
 <%
 
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
 	if (username == null || username == "") {
-		//response.sendRedirect("index.jsp");
-
+		response.sendRedirect("index.jsp");
 	}
 
     String path=application.getRealPath("/").replace('\\', '/')+"profile_images/";
@@ -41,6 +37,18 @@
 	<link href="assets/css/components.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/colors.css" rel="stylesheet" type="text/css">
 	<!-- /global stylesheets -->
+	
+	<!-- Style from old -->
+	<link href="vendors/nprogress/nprogress.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css"
+	href="vendors/jQCloud-master/jqcloud/jqcloud.css" />
+	<style>
+	<style>
+/*div.scroll {
+	overflow: scroll;
+}*/
+</style>
+	</style>
 
 	<!-- Core JS files -->
 	<script type="text/javascript" src="assets/js/plugins/loaders/pace.min.js"></script>
@@ -49,48 +57,18 @@
 	<script type="text/javascript" src="assets/js/plugins/loaders/blockui.min.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/ui/nicescroll.min.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/ui/drilldown.js"></script>
-	<!-- /core JS files -->
+	
+	
+<script type="text/javascript" src="assets/js/plugins/extensions/cookie.js"></script>
+<script type="text/javascript" src="assets/js/plugins/forms/validation/validate.min.js"></script>
 
-		<!-- Theme JS files -->
-	<script type="text/javascript" src="assets/js/plugins/forms/wizards/stepss.min.js"></script>
-	<script type="text/javascript" src="assets/js/plugins/forms/selects/select2.min.js"></script>
-	<script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>
-	<script type="text/javascript" src="assets/js/plugins/forms/styling/switchery.min.js"></script>
-	<script type="text/javascript" src="assets/js/plugins/forms/styling/switch.min.js"></script>
-	<script type="text/javascript" src="assets/js/core/libraries/jasny_bootstrap.min.js"></script>
-	<script type="text/javascript" src="assets/js/plugins/forms/validation/validate.min.js"></script>
-	<script type="text/javascript" src="assets/js/plugins/extensions/cookie.js"></script>
-
-	<script type="text/javascript" src="assets/js/core/app.js"></script>
-	<script type="text/javascript" src="assets/js/pages/wizard_steps.js"></script>
-
-
-	<!-- Theme JS files -->
-	<script type="text/javascript" src="assets/js/plugins/visualization/d3/d3.min.js"></script>
-	<script type="text/javascript" src="assets/js/plugins/visualization/d3/d3_tooltip.js"></script>
-	<script type="text/javascript" src="assets/js/plugins/forms/styling/switchery.min.js"></script> 
-	<script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>
-	<script type="text/javascript" src="assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
-	<script type="text/javascript" src="assets/js/plugins/ui/moment/moment.min.js"></script>
-	<script type="text/javascript" src="assets/js/plugins/pickers/daterangepicker.js"></script>
-
-	<script type="text/javascript" src="assets/js/core/app.js"></script>
-<script type="text/javascript" src="assets/js/pages/form_checkboxes_radios.js"></script>
-
-	<script type="text/javascript" src="assets/js/plugins/ui/ripple.min.js"></script>
-        
-        	<!-- Theme JS files -->
-	<script type="text/javascript" src="assets/js/plugins/forms/validation/validate.min.js"></script>
-        <script type="text/javascript" src="assets/js/plugins/fileinput.js"></script>
-	<!-- <script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>-->
+<!-- /core JS files -->
+		<!-- <script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>-->
 	 <script>
            var app_url ='${pageContext.request.contextPath}/'; 
       </script>
-	<script type="text/javascript" src="assets/js/core/app.js"></script>
-	
-	<script type="text/javascript" src="assets/js/pages/login_validation.js"></script>
-	<script type="text/javascript" src="assets/js/functions.js"></script>
-
+      
+      <script type="text/javascript" src="assets/js/pages/login_validation.js"></script>
 	<!-- /theme JS files -->
 	       
 	       
@@ -113,11 +91,23 @@
 		
 		
 			<div class="navbar-collapse collapse" id="navbar-mobile">
-			<form name="trackerform" id="trackerform" action="Datasource" method="get">
-			<ul class="nav navbar-nav navbar-right">
-			<% if(username!=""){ %>
-
-				<li class="dropdown language-switch">
+			
+					
+				<ul class="nav navbar-nav navbar-right">
+				<li class="language-switch"">
+			<form name="trackerform" id="trackerform" action="PostingFrequency" method="post">
+			<select id="tracker" name="tracker" onchange="trackerchanged()" value="value="${item}" class="form-control">
+								
+			<% if(trackers != null && trackers.size()>0){ 
+			for(int i=0; i<trackers.size(); i++){
+			ArrayList tracker = (ArrayList)trackers.get(i);
+			%>
+			<option value="<%=tracker.get(0)%>"> <%=tracker.get(0)%> </option>
+					<% } } %>			
+									</select>
+									</form>
+									</li>
+				<!--  <li class="dropdown language-switch">
 					<a class="dropdown-toggle" data-toggle="dropdown">
 						Select Tracker
 						<span class="caret"></span>
@@ -128,13 +118,13 @@
 						for(int i=0; i<trackers.size(); i++){
 							ArrayList tracker = (ArrayList)trackers.get(i);
 					%>
-						<li><a class="<%=tracker.get(0)%>"> <%=tracker.get(0)%></a></li>
+						<li><a class="<%=tracker.get(0)%>"> <%=tracker.get(0)%> <i class="icon-pencil"></i></a></li>
 					<% } } %>
 					</ul>
 					
 					
 					
-				</li>
+				</li>-->
 
 				
 				<li class="dropdown dropdown-user">
@@ -150,49 +140,7 @@
 						<li><a href="<%=request.getContextPath()%>/features.jsp"><i class="icon-cog5"></i> Features</a></li>
 						<li><a href="<%=request.getContextPath()%>/help.jsp"><i class="icon-help"></i> Help</a></li>
 						<li><a href="<%=request.getContextPath()%>/logout"><i class="icon-switch2"></i> Logout</a></li>
-					</ul>
-				</li>
-				<% }else{%>
-				<li>
-					<a href="<%=request.getContextPath()%>/login"><i class="icon-user"></i> Login</a>
-				</li>
-				<% } %>
-				
-			</ul>
-			</form>
-			
-		</div>
-			
-	
-		</div>
-	</div>
-	<!-- /main navbar -->
-
-	
-	<% if(username!=""){ %>
-	<div class="navbar navbar-default" id="navbar-second">
-		
-
-		<div class="navbar-collapse collapse" id="navbar-second-toggle">
-			<ul class="nav navbar-nav navbar-nav-material">
-				<li class=""><a href="<%=request.getContextPath()%>/dashboard.jsp"><i class="icon-display4 position-left"></i> Dashboard</a></li>
-				<li onclick="location.href='basic.jsp'">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<i class="icon-chart position-left"></i> Basic Analytics
-					</a>
-
-					
-				</li>
-
-				<li onclick="location.href='advance.jsp'">
-					<a class="">
-						<i class="icon-stats-bars2 position-left"></i> Advanced Analytics
-					</a>
-					
-					
-				</li>
-				
-				<li class="dropdown">
+							<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<i class="icon-stars position-left"></i> Services<span class="caret"></span>
 					</a>
@@ -223,9 +171,48 @@
 						</li>
 					</ul>
 				</li>
+<<<<<<< HEAD
+					</ul>
+				</li>
+=======
+>>>>>>> 9d845379ea772cc054536aa84fc29151c9d1f7bc
+			</ul>
+			
+		</div>
+			
+	
+		</div>
+	</div>
+	<!-- /main navbar -->
+
+	
+	
+	<div class="navbar navbar-default" id="navbar-second">
+		
+
+		<div class="navbar-collapse collapse" id="navbar-second-toggle">
+			<ul class="nav navbar-nav navbar-nav-material">
+				<li class=""><a href="<%=request.getContextPath()%>/dashboard.jsp"><i class="icon-display4 position-left"></i> Dashboard</a></li>
+				<li onclick="location.href='basic.jsp'">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<i class="icon-chart position-left"></i> Basic Analytics
+					</a>
+
+					
+				</li>
+
+				<li onclick="location.href='advance.jsp'">
+					<a class="">
+						<i class="icon-stats-bars2 position-left"></i> Advanced Analytics
+					</a>
+					
+					
+				</li>
+				
+			
 			</ul>
 			
 		</div>
 	</div>
-  <% }  %>
+
 
