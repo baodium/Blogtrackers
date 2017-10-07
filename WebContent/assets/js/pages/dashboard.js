@@ -26,7 +26,7 @@ $(function() {
     // Daterange picker
     // ------------------------------
 
-    $('.daterange-ranges').daterangepicker(
+    /*$('.daterange-ranges').daterangepicker(
         {
             startDate: moment().subtract('days', 29),
             endDate: moment(),
@@ -53,7 +53,7 @@ $(function() {
     );
 
     $('.daterange-ranges span').html(moment().subtract('days', 29).format('MMMM D') + ' - ' + moment().format('MMMM D'));
-
+*/
 
 
 

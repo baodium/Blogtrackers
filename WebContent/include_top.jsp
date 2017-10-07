@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <%@page import="java.io.File"%>
 <%@page import="java.util.*"%>
 <!DOCTYPE html>
@@ -42,6 +42,9 @@
 	<link href="vendors/nprogress/nprogress.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css"
 	href="vendors/jQCloud-master/jqcloud/jqcloud.css" />
+	
+<link href="${pageContext.request.contextPath}/vendors/vis/dist/vis.css"
+	rel="stylesheet" type="text/css" />
 	<style>
 	<style>
 /*div.scroll {
@@ -61,6 +64,8 @@
 	
 <script type="text/javascript" src="assets/js/plugins/extensions/cookie.js"></script>
 <script type="text/javascript" src="assets/js/plugins/forms/validation/validate.min.js"></script>
+
+
 
 <!-- /core JS files -->
 		<!-- <script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>-->
@@ -91,18 +96,31 @@
 		
 		
 			<div class="navbar-collapse collapse" id="navbar-mobile">
-			
-					
+			<% String Selectedtracker  = (String) session.getAttribute("tracker"); %>
+	
 				<ul class="nav navbar-nav navbar-right">
 				<li class="language-switch"">
-			<form name="trackerform" id="trackerform" action="PostingFrequency" method="post">
-			<select id="tracker" name="tracker" onchange="trackerchanged()" value="value="${item}" class="form-control">
+			<form name="trackerform" id="trackerform" action="" method="post">
+			<select id="tracker" name="tracker" onchange="trackerchanged()" class="form-control">
 								
-			<% if(trackers != null && trackers.size()>0){ 
+			<% 
+			String isselect = "";
+			String isselecttwo;
+			if(trackers != null && trackers.size()>0){ 
 			for(int i=0; i<trackers.size(); i++){
 			ArrayList tracker = (ArrayList)trackers.get(i);
+			/*String test = (String) tracker.get(0);
+			isselecttwo = new String(test);
+			if(Selectedtracker.equals(test))
+			{
+				isselect= new String("selected");
+			}
+			else
+			{
+			 isselect = "";	
+			}*/
 			%>
-			<option value="<%=tracker.get(0)%>"> <%=tracker.get(0)%> </option>
+			<option selected="<%=isselect %>" value="<%=tracker.get(0)%>"> <%=tracker.get(0)%> </option>
 					<% } } %>			
 									</select>
 									</form>
@@ -129,7 +147,7 @@
 				
 				<li class="dropdown dropdown-user">
 					<a class="dropdown-toggle" data-toggle="dropdown">
-						<img src="<%=pimage%>" alt="">
+						<img src="<%=pimage%>" width="50" height="50" alt="">
 						<span><%=session.getAttribute("username")%></span>
 						<i class="caret"></i>
 					</a>
@@ -140,7 +158,43 @@
 						<li><a href="<%=request.getContextPath()%>/features.jsp"><i class="icon-cog5"></i> Features</a></li>
 						<li><a href="<%=request.getContextPath()%>/help.jsp"><i class="icon-help"></i> Help</a></li>
 						<li><a href="<%=request.getContextPath()%>/logout"><i class="icon-switch2"></i> Logout</a></li>
-							<li class="dropdown">
+			
+	</ul>
+				</li>
+
+			</ul>
+			
+		</div>
+			
+	
+		</div>
+	</div>
+	<!-- /main navbar -->
+
+	
+	
+	<!-- <div class="navbar navbar-default" id="navbar-second">
+		
+
+		<div class="navbar-collapse collapse" id="navbar-second-toggle">
+			<ul class="nav navbar-nav navbar-nav-material">
+				<li class=""><a href="<%=request.getContextPath()%>/dashboard.jsp"><i class="icon-display4 position-left"></i> Dashboard</a></li>
+				<li onclick="location.href='basic.jsp'">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<i class="icon-chart position-left"></i> Basic Analytics
+					</a>
+
+					
+				</li>
+
+				<li onclick="location.href='advance.jsp'">
+					<a class="">
+						<i class="icon-stats-bars2 position-left"></i> Advanced Analytics
+					</a>
+					
+					
+				</li>
+								  <li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<i class="icon-stars position-left"></i> Services<span class="caret"></span>
 					</a>
@@ -171,46 +225,10 @@
 						</li>
 					</ul>
 				</li>
-	</ul>
-				</li>
-
-			</ul>
-			
-		</div>
-			
-	
-		</div>
-	</div>
-	<!-- /main navbar -->
-
-	
-	
-	<div class="navbar navbar-default" id="navbar-second">
-		
-
-		<div class="navbar-collapse collapse" id="navbar-second-toggle">
-			<ul class="nav navbar-nav navbar-nav-material">
-				<li class=""><a href="<%=request.getContextPath()%>/dashboard.jsp"><i class="icon-display4 position-left"></i> Dashboard</a></li>
-				<li onclick="location.href='basic.jsp'">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<i class="icon-chart position-left"></i> Basic Analytics
-					</a>
-
-					
-				</li>
-
-				<li onclick="location.href='advance.jsp'">
-					<a class="">
-						<i class="icon-stats-bars2 position-left"></i> Advanced Analytics
-					</a>
-					
-					
-				</li>
-				
 			
 			</ul>
 			
 		</div>
-	</div>
+	</div>-->
 
 

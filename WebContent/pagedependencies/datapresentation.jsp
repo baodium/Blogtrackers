@@ -2,7 +2,8 @@
 	<script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/ui/moment/moment.min.js"></script>
-	<script type="text/javascript" src="assets/js/plugins/pickers/daterangepicker.js"></script>
+	<script
+						src="${pageContext.request.contextPath}/production/js/datepicker/daterangepicker.js"></script>
 
 	<script type="text/javascript" src="assets/js/core/app.js"></script>
  <!-- <script type="text/javascript" src="assets/js/pages/dashboard.js"></script> -->  
@@ -34,6 +35,7 @@
 						src="${pageContext.request.contextPath}/production/js/flot/jquery.flot.spline.js"></script>
 					<script
 						src="${pageContext.request.contextPath}/production/js/flot/curvedLines.js"></script>
+						
  <script>
 	    	
     	var cb = function(start, end, label) {
@@ -42,23 +44,21 @@
               $('#reportrange input').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY')).trigger('change');
             };
     	
-    	$('#reportrange').daterangepicker(
+    	var optionSet1 = $('#reportrange').daterangepicker(
             {
-                startDate: moment().subtract('days', 29),
+                startDate: moment().subtract('days', 45),
                 endDate: moment(),
-                minDate: '01/01/2006',
+                minDate: '01/01/2000',
                 maxDate: moment(),
     			showDropdowns: true,
               showWeekNumbers: true,
-                dateLimit: { days: 30000 },
+              
+                dateLimit: { days: 50000 },
                 ranges: {
-                    //'Today': [moment(), moment()],
-                    //'Yesterday': [moment().subtract('days', 1), moment().subtract('days', 1)],
+                    
     				'Last Year': [moment().subtract('years', 1).startOf('year'), moment().subtract('years', 1).endOf('year')],
-    				//'Last 7 Days': [moment().subtract('days', 6), moment()],
-                    //'Last 30 Days': [moment().subtract('days', 29), moment()],
-                    'This Year': [moment().startOf('year'), moment()]
-                    //'Last Month': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')]
+    				'This Year': [moment().startOf('year'), moment()]
+                  
                 },
                 opens: 'left',
                 applyClass: 'btn-small bg-slate-600 btn-block',
@@ -76,13 +76,15 @@
               }
             },
             function(start, end) {
-                $('#reportrange span').html(start.format('MMMM D') + ' - ' + end.format('MMMM D'));
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
             }
         );
-    if('${datepicked}' == '')
-        $('#reportrange span').html(moment().subtract('days', 29).format('MMMM D') + ' - ' + moment().format('MMMM D'));
-    	else 
-    $('#reportrange').on('show.daterangepicker', function() {
+    	if('${datepicked}' == '')
+    	{ $('#reportrange span').html(moment().subtract('days', 45).format('MMMM D') + ' - ' + moment().format('MMMM D'));
+    	}
+    	
+    	else{ 
+    		/*$('#reportrange').on('show.daterangepicker', function() {
               console.log("show event fired");
             });
             $('#reportrange').on('hide.daterangepicker', function() {
@@ -93,19 +95,21 @@
             });
             $('#reportrange').on('cancel.daterangepicker', function(ev, picker) {
               console.log("cancel event fired");
-            });
+            });*/
     	$('#options1').click(function() {
               $('#reportrange').data('daterangepicker').setOptions(optionSet1, cb);
             });
-            $('#options2').click(function() {
-              $('#reportrange').data('daterangepicker').setOptions(optionSet2, cb);
+         $('#options2').click(function() {
+             $('#reportrange').data('daterangepicker').setOptions(optionSet2, cb);
             });
-            $('#destroy').click(function() {
+           /* $('#destroy').click(function() {
               $('#reportrange').data('daterangepicker').remove();
-            });
-     // set attribute for the form 
+            });*/
+    	}
+              // set attribute for the form 
     $('#trackerform').attr("action","ExportJSON");
-    $('#dateform').attr("action","ExportJSON"); 
+    $('#dateform').attr("action","ExportJSON");
+   
 	 </script>
 	 	<script type="text/javascript">
 						function trackerchanged() {
@@ -122,5 +126,6 @@
 						function recordsChanged() {
 							document.getElementById("records").submit();
 						}
+						
 					</script>
  

@@ -15,15 +15,6 @@
 
  <jsp:include page="include_top.jsp"></jsp:include>
 
-<style>
-#searchtextbox
-{
-border:2px solid #2196F3 !important;
-background-color:#ffffff;
-padding-left:20px;
-}
-</style>	
-	
 	<!-- Page header -->
 	<div class="page-header">
 		<div class="page-header-content">

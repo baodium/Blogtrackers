@@ -24,14 +24,24 @@
 					<span class="text-semibold">Home</span> - Dashboard
 					<small class="display-block"><span>Welcome, </span><%=username %>
 				</h4>
+				<div class="form-group">
+				<div class="col-md-12">
+				
+				<div class="input-group">
+				<input type="text" class="form-control" placeholder="Enter a keyword to search" id="searchtextbox" autocomplete="off">
+											<span class="input-group-btn" style="padding-left:0px;"><button type="button" class="btn btn-primary">Search</button></span>
+											
+										</div>
+										</div>
+										</div>
 			</div>
 
-			<div class="heading-elements">
+			<!--  <div class="heading-elements">
 				<div class="heading-btn-group">
 					<a href="#" class="btn btn-link btn-float has-text text-size-small"><i class="icon-bars-alt text-indigo-400"></i><span>Statistics</span></a>
 					<a href="#" class="btn btn-link btn-float has-text text-size-small"><i class="icon-calendar5 text-indigo-400"></i> <span>Schedule</span></a>
 				</div>
-			</div>
+			</div>-->
 		</div>
 	</div>
 	<!-- /page header -->
@@ -48,7 +58,7 @@
 
 				<!-- Main charts -->
 				<div class="row">
-				<div class="col-md-12">
+				<!--  <div class="col-md-12">
 						<div class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Set Up Tracker<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
@@ -79,7 +89,7 @@
 							
 							</div>
 					</div>
-					</div>
+					</div>-->
 				<div class="col-md-12">
 						<div class="panel panel-primary">
 							<div class="panel-heading">
@@ -88,13 +98,13 @@
 									<ul class="icons-list">
 				                		<li><a data-action="collapse"></a></li>
 				                		<li><a data-action="reload"></a></li>
-				                		<li><a data-action="close"></a></li>
+				                		
 				                	</ul>
 			                	</div>
 							</div>
 
 							<div class="panel-body">
-							<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 ">
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
 					
 					<div class="dashboard-stat blue-madison animated bounce">
 						<div class="visual">
@@ -106,7 +116,7 @@
 								Blogs
 							</div>
 						</div>
-						<a class="more" href="<?php echo base_url();?>index.php?admin/schools_reg">
+						<a class="more" href="">
 						View Blogs <i class="m-icon-swapright m-icon-white"></i>
 						</a>
 					</div>
@@ -114,7 +124,7 @@
 				</div>
 
     
-    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 ">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
 					
 					<div class="dashboard-stat red-intense animated swing">
 						<div class="visual">
@@ -126,7 +136,7 @@
 								Bloggers
 							</div>
 						</div>
-						<a class="more" href="<?php echo base_url();?>index.php?admin/manage_country">
+						<a class="more" href="">
 						View Bloggers <i class="m-icon-swapright m-icon-white"></i>
 						</a>
 					</div>
@@ -144,30 +154,13 @@
 								Blog Posts
 							</div>
 						</div>
-						<a class="more" href="<?php echo base_url();?>index.php?admin/manage_parent">
+						<a class="more" href="">
 						View Blog Posts <i class="m-icon-swapright m-icon-white"></i>
 						</a>
 					</div>
 					
 				</div>
-                               <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 ">
-					
-					<div class="dashboard-stat orange animated tada">
-						<div class="visual">
-							<i class="icon-user"></i>
-						</div>
-						<div class="details">
-							<div class="number cus p10">98</div>
-							<div class="desc p10">
-								Users
-							</div>
-						</div>
-						<a class="more" href="<?php echo base_url();?>index.php?admin/manage_teacher">
-						View Users <i class="m-icon-swapright m-icon-white"></i>
-						</a>
-					</div>
-					
-				</div>
+                    
 				
 				       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 ">
 					
@@ -181,7 +174,7 @@
 								Positive Sentiments
 							</div>
 						</div>
-						<a class="more" href="<?php echo base_url();?>index.php?admin/manage_state">
+						<a class="more" href="">
 						View Positive Sentiments <i class="m-icon-swapright m-icon-white"></i>
 						</a>
 					</div>
@@ -200,7 +193,7 @@
 								Negative Sentiments
 							</div>
 						</div>
-						<a class="more" href="<?php echo base_url();?>index.php?admin/manage_local_government">
+						<a class="more"">
 						View Negative Sentiments <i class="m-icon-swapright m-icon-white"></i>
 						</a>
 					</div>
@@ -220,7 +213,7 @@
 				<!-- Dashboard content -->
 				<div class="row">
 				<div class="col-lg-12">
-				<div class="panel panel-flat">
+				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<h5 class="panel-title">Blogsites Location Distribution</h5>
 						<div class="heading-elements">
@@ -239,6 +232,24 @@
 					</div>
 				</div>
 				
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h5 class="panel-title">Blogsites Language Distribution</h5>
+						<div class="heading-elements">
+							<ul class="icons-list">
+		                		<li><a data-action="collapse"></a></li>
+		                		<li><a data-action="reload"></a></li>
+<!--		                		<li><a data-action="close"></a></li>-->
+		                	</ul>
+	                	</div>
+					</div>
+
+					<div class="panel-body">
+<!--						<p class="content-group">Example of a <code>choropleth</code> world map. A choropleth map is a thematic map in which areas are shaded or patterned in proportion to the measurement of the statistical variable being displayed on the map. The choropleth map provides an easy way to visualize how a measurement varies across a geographic area or it shows the level of variability within a region. This example displays GDP by country, data stored in <code>json</code> file.</p>-->
+						
+					
+					</div>
+				</div>
 				</div>
 				
 				</div>
@@ -255,6 +266,10 @@
 	<!-- Footer -->
   <jsp:include page="footer.jsp"></jsp:include>
 	<!-- /footer -->
+	
+	<!-- Dependencies -->
+  <jsp:include page="pagedependencies/dashboard.jsp"></jsp:include>
+  <!-- End of Dependencies -->
 
 </body>
 </html>

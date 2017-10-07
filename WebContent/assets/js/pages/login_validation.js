@@ -14,7 +14,7 @@ var baseurl=app_url;//"http://localhost:8080/Blogtrackers/";
 $(function() {
 
 	// Style checkboxes and radios
-	$('.styled').uniform();
+	//$('.styled').uniform();
 
 
 

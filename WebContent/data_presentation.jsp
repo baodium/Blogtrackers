@@ -3,6 +3,7 @@
     Created on : 28-Aug-2017, 22:23:45
     Author     : Omnibus_03
 --%>
+
 <%@page import="java.util.*"%>
 
 <%
@@ -24,9 +25,20 @@
 					<span class="text-semibold">Data Export</span>
 					<small class="display-block">Export your Data in JSON</small>
 				</h4>
+				<small><font color=red>${erorrMessage}</font></small>
+				<div class="form-group">
+				<div class="col-md-12">
+				
+				<div class="input-group">
+				<input type="text" class="form-control" placeholder="Enter a keyword to search" id="searchtextbox" autocomplete="off">
+											<span class="input-group-btn" style="padding-left:0px;"><button type="button" class="btn btn-primary">Search</button></span>
+											
+										</div>
+										</div>
+										</div>
 			</div>
 
-
+             
 		</div>
 	</div>
 	<!-- /page header -->
@@ -50,7 +62,7 @@
 								
 					<form name="dateform" id="dateform" method="post">
 									<div class="heading-elements" id="reportrange">
-									<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
+					<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
 										<i class="icon-calendar3 position-left"></i> <span></span>  
 					<input type="hidden" id="datepicked" name="datepicked"  onchange="datechanged()" /><b class="caret"></b>
 									</button>
