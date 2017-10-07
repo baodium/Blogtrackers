@@ -10,7 +10,9 @@
 	if (username == null || username == "") {
 		response.sendRedirect("index.jsp");
 	}
-        ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
+    ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
+    String selected = request.getParameter("all-selected-blogs");
+	
 %>
  <jsp:include page="include_top.jsp"></jsp:include>
  
@@ -28,10 +30,10 @@
 
 			<div class="heading-elements">
 				<button id="google_translate_element" class="btn btn-default"><script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'ar', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-}
-</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+				function googleTranslateElementInit() {
+				  new google.translate.TranslateElement({pageLanguage: 'ar', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+				}
+			</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 				
 				</button>
 			</div>
@@ -102,11 +104,9 @@ function googleTranslateElementInit() {
 						
 						<div class="row" id="searched-trackers">
 						
-						
-											
+																
 						</div>
-						
-                    	</div>
+	                   	</div>
 						
 						
 							<div class="row">
@@ -142,11 +142,14 @@ function googleTranslateElementInit() {
 
 		</div>
 		<!-- /page content -->
-	<textarea name="all-selected-blogs" id="all-selected-blogs" rows="5" cols="5" style="display:none"></textarea>
+	<textarea name="all-selected-blogs" id="all-selected-blogs" rows="5" cols="5" style="display:none"><%=selected%></textarea>
 
 	</div>
 	<!-- /page container -->
 	<script>
+	<% if(!selected.equals("")){%>
+	populate_selected_trackers();
+	<%}%>
 	function set_tracker(source){
 		var keyword = $("#keyword").val();
 		var searched = $("#search-blog").val();
@@ -276,7 +279,7 @@ function googleTranslateElementInit() {
 				requests[z] = $.ajax({ type: "POST",
 					url:url,
 					data:{page:page_no,term:term,search:"yes"},
-					async: true,
+					//async: true,
 					success : function(data){	
 					isRunning = false;
 					//$.get(url+"/"+page_no,function(data){

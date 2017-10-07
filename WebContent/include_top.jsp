@@ -128,8 +128,10 @@
 						for(int i=0; i<trackers.size(); i++){
 							ArrayList tracker = (ArrayList)trackers.get(i);
 					%>
-						<li><a class="<%=tracker.get(0)%>"> <%=tracker.get(0)%></a></li>
-					<% } } %>
+						<li><a class="<%=tracker.get(0)%>"> <%=tracker.get(2)%></a></li>
+					<% } }else{ %>
+						<li>no tracker created yet</li>
+					<% } %>
 					</ul>
 					
 					

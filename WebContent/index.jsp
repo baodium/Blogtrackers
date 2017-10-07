@@ -223,19 +223,21 @@ overflow-x:hidden;
                                 </div> -->
 			
                             </h1>
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" method="post" action="<%=request.getContextPath()%>/search">
                                 <label class="sr-only" for="inputHelpBlock">Enter a search keyword</label>
-                       <input type="text" id="inputHelpBlock" class="form-control input-circle input-lg text-center" placeholder="Enter a search keyword" aria-describedby="helpBlock">
+                       <input type="text" id="inputHelpBlock" class="form-control input-circle input-lg text-center" name="term" placeholder="Enter a search keyword" aria-describedby="helpBlock">
                                <span id="helpBlock" class="help-block"></span>
-                            </form>
-                            
-							<% if(username.equals("")){%>                            
-	                       	<a class="button button-md button-gray hover-ripple-out mt30 " data-animation="fadeInUp" data-animation-delay="6000" href="<%=request.getContextPath()%>/login.jsp">Get Started</a>
+                               <input type="hidden" name="search" value="yes">
+							<% if(username.equals("")){%>  
+							                          
+	                       	<button class="button button-md button-gray hover-ripple-out mt30 " type="submit" data-animation="fadeInUp" data-animation-delay="6000" >Get Started</button>
                       
 	                        <% }else{ %>
-	                        <a class="button button-md button-gray hover-ripple-out mt30 " data-animation="fadeInUp" data-animation-delay="6000" href="<%=request.getContextPath()%>/dashboard.jsp">Explore</a>
+	                        <button type="submit" class="button button-md button-gray hover-ripple-out mt30 " data-animation="fadeInUp" data-animation-delay="6000" >Explore</button>
                       
 	                        <% } %>
+	                         </form>
+                            
                               </div>
                     </div>
                 </div>

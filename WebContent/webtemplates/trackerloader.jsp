@@ -4,11 +4,7 @@
 <%@ page import="java.io.*,java.util.*, javax.servlet.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
-	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
-	if (username == null || username == "") {
-		response.sendRedirect("index.jsp");
-	}
+
     ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
 
     PrintWriter pww = response.getWriter();
@@ -55,6 +51,7 @@
 				</div>
 			</div>
 			<% }}else{ 
+				pww.write(keyword);
 				pww.write("empty");
 			}												
 

@@ -78,7 +78,7 @@ public class Tracker extends HttpServlet {
 				String query="INSERT INTO trackers(userid,tracker_name,date_created,date_modified,query,description,blogsites_num) VALUES('"+userName+"', '"+trackerName+"', '"+createdDate+"', "+ null+", '"+listString+"', '"+trackerDescription+"', '"+selectedSite.length+"')";
 				boolean done = new DBConnector().updateTable(query);
 				if(done) {
-				  	ArrayList trackers = new DBConnector().query("SELECT tracker_name FROM trackers WHERE userid='"+userName+"'");
+				  	ArrayList trackers = new DBConnector().query("SELECT * FROM trackers WHERE userid='"+userName+"'");
                 	session.setAttribute("trackers", trackers);
                 	
 					response.setContentType("text/html");

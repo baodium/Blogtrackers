@@ -4,7 +4,7 @@
 <%
 Object term = (null == session.getAttribute("search_term")) ? "" : session.getAttribute("search_term");
 Object search_result = (null == session.getAttribute("search_result")) ? "" : session.getAttribute("search_result");
-
+Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 %>
 	<!-- Page container -->
 	<div class="page-container">
@@ -41,8 +41,6 @@ Object search_result = (null == session.getAttribute("search_result")) ? "" : se
 									<button type="submit" class="btn btn-primary btn-xlg">Search</button>
 								</div>
 							</div>
-
-
 						</form>
 					</div>
 				</div>
@@ -51,16 +49,29 @@ Object search_result = (null == session.getAttribute("search_result")) ? "" : se
 
 				<!-- Search results -->
 				<div class="content-group">
-					<p class="text-muted text-size-small content-group">
 					<%  
 						if(search_result!=""){
-								ArrayList results = (ArrayList)search_result;
 					%>
-					<%= results.size() %> results found for <%= term %>
-					<% } %>
-					
+					<p class="text-muted text-size-small content-group">				
+					Search results for <%= term %>					
 					</p>
-
+					
+					<div class="col-lg-12 mt-20">
+							<div class="text-right">
+							<form name="" method="post" action="<%=request.getContextPath()%>/setup_tracker.jsp">
+							<input type="hidden" name="from" value="search" />
+							<input type="hidden" name="keyword" value="<%=term%>" />
+							<textarea name="all-selected-blogs" id="all-selected-blogs" rows="5" cols="5" style="display:none" ></textarea>
+							<% if(username==""){ %>
+							<a href="<%=request.getContextPath()%>/login" class="btn btn-primary legitRipple" >Continue</a>
+							<% } else{ %>
+								<button type="submit" class="btn btn-primary legitRipple">Continue</button>
+							<% } %>
+							<br/><br/>
+							</form>
+							</div>
+					</div>
+					<% } %>
 					<div class="search-results-list">
 						
 						<div class="row" id="appendee">
@@ -80,31 +91,27 @@ Object search_result = (null == session.getAttribute("search_result")) ? "" : se
 										</div>
 										
 										<div class="media-body">
-											<h6 class="media-heading"><%=tracker.get(2)%></h6>
+											<h6 class="media-heading"><%=tracker.get(2)%> <input type="checkbox" onclick="select_blog();"  class="blog-list" name="blog" style="float:right" value="<%=tracker.get(0) %>"  /></h6>
 											<span class="text-muted"><%=tracker.get(7)%> post(s)</span>
 										</div>
 										
 									</div>
 								</div>
 							</div>
-							<% }}} %>
-							
-							
-											
+							<% }}} %>											
 						</div>
 						<%  
 						if(search_result!=""){
-								ArrayList results = (ArrayList)search_result;
 							%>
-							<div class="loadmoreimg" id="loading-img" style="text-align:center"><br/><br/><img src='assets/images/preloader.gif' /><br/></div>
-						
+							<div class="loadmoreimg" id="loading-img" style="text-align:center"><br/><br/><img src='assets/images/preloader.gif' /><br/></div>						
 						<% } %>
 						
+									
+							
                     </div>
 				</div>
-
-
 			</div>
+
 			<!-- /main content -->
 
 		</div>
@@ -122,12 +129,27 @@ Object search_result = (null == session.getAttribute("search_result")) ? "" : se
 	<!-- /page container -->
  <script>
 	$(window).scroll(function() {
-
 		if($(window).scrollTop() + $(window).height() > $(document).height() - 200) {
 			loadMoreResult();
 		}
-
 	});
+	
+	
+	
+	function select_blog(){
+		//alert("hello");
+		var blogs = $(".blog-list");
+		var selected='';
+		for(var l=0; l<blogs.length; l++){
+				var is_checked = $(blogs[l]).is(':checked');
+				if(is_checked){
+					var valu = $(blogs[l]).val();
+					selected+= valu+",";
+				}
+		}
+		$("#all-selected-blogs").val(selected);
+	}
+	
 </script>
 
 	<!-- Footer -->
