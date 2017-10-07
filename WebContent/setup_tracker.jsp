@@ -142,11 +142,12 @@
 
 		</div>
 		<!-- /page content -->
-	<textarea name="all-selected-blogs" id="all-selected-blogs" rows="5" cols="5" style="display:none"><%=selected%></textarea>
+	<textarea name="all-selected-blogs" id="all-selected-blogs" rows="5" cols="5" style="display:none"></textarea>
 
 	</div>
 	<!-- /page container -->
 	<script>
+	
 	<% if(!selected.equals("")){%>
 	populate_selected_trackers();
 	<%}%>
@@ -155,12 +156,18 @@
 		var searched = $("#search-blog").val();
 		var tracker = $("#tracker-name").val();
 		var selected  = $("#selected_result").val();
-		console.log(searched);
-
-		console.log(tracker);
-		$("#result-set").html("<center><img src='assets/images/preloader.gif' /></center>");
+		var ref = $(source).attr('href');
+		if(ref=="#previous"){
+			return false;
+		}
+		
+		//console.log(tracker);
+		
+		//$("#result-set").html("<center><img src='assets/images/preloader.gif' /></center>");
 		//console.log(keyword);
 		if(keyword !="" && searched==null){
+			$("#result-set").html("<center><img src='assets/images/preloader.gif' /></center>");
+			$('#next-click').attr('disabled',true);
 			$.ajax({
 		        url: app_url+'webtemplates/bloglist2.jsp',
 				method:'POST',
@@ -172,11 +179,11 @@
 		    });	
 		}
 		
-		if(searched=="yes" && tracker=="" && selected!="yes" ){
+		if(searched=="yes" && ref=="#next" ){
 			populate_selected_trackers();
 		}
 		
-		if(selected=="yes"){
+		if(ref=="#finish"){
 			if(tracker==""){
 				$("#tracker-name").focus();
 				return false;
@@ -213,6 +220,8 @@
 		}
 	}
 	
+	
+	
 	function check_all(){
 		//console.log(keyword);
 		var is_checked = $("#check-all").is(':checked');
@@ -229,6 +238,7 @@
 		for(var l=0; l<blogs.length; l++){
 				var is_checked = $(blogs[l]).is(':checked');
 				if(is_checked){
+					$('#next-click').attr('disabled',true);
 					var valu = $(blogs[l]).val();
 					selected+= valu+",";
 				}

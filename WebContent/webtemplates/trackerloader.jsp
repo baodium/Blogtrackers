@@ -29,7 +29,7 @@
 					s=s+ "'"+ st.nextElement()+"',";
 				}
 				s = "("+s.substring(0,s.length()-1)+")";
-				bloglist = new DBConnector().query("select blogsite_id,blogsite_name,totalposts from blogsites where blogsite_id in (select distinct blogsiteid from terms where term in " +s+") order by blogsite_name LIMIT "+from+", "+to+" ");				
+				bloglist = new DBConnector().query("select blogsite_id,blogsite_name,totalposts from blogsites where blogsite_id in (select distinct blogsiteid from terms where term in " +s+") LIMIT "+from+", "+to+" ");				
 			}
 			
 			if(bloglist.size()>0){ 
@@ -51,7 +51,7 @@
 				</div>
 			</div>
 			<% }}else{ 
-				pww.write(keyword);
+				//pww.write(keyword);
 				pww.write("empty");
 			}												
 
