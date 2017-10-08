@@ -123,7 +123,7 @@
 			 isselect = "";	
 			}*/
 			%>
-			<option selected="<%=isselect %>" value="<%=tracker.get(0)%>"> <%=tracker.get(0)%> </option>
+			<option selected="<%=isselect %>" value="<%=tracker.get(0)%>"> <%=tracker.get(2)%> </option>
 					<% } } %>			
 									</select>
 									</form>
@@ -138,7 +138,7 @@
 						for(int i=0; i<trackers.size(); i++){
 							ArrayList tracker = (ArrayList)trackers.get(i);
 					%>
-						<li><a class="<%=tracker.get(0)%>"> <%=tracker.get(0)%> <i class="icon-pencil"></i></a></li>
+						<li><a class="<%=tracker.get(0)%>"> <%=tracker%> <i class="icon-pencil"></i></a></li>
 					<% } } %>
 					</ul>
 					

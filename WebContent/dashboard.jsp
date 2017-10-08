@@ -11,6 +11,7 @@
 		response.sendRedirect("index.jsp");
 	}
         ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
+        String tracker_id = request.getParameter("tid");
 %>
 
  <jsp:include page="include_top.jsp"></jsp:include>
@@ -61,7 +62,7 @@
 				<!--  <div class="col-md-12">
 						<div class="panel panel-primary">
 							<div class="panel-heading">
-								<h6 class="panel-title">Set Up Tracker<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<h6 class="panel-title">Set Up Tracker <%=tracker_id%><a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
 									<ul class="icons-list">
 				                		<li><a data-action="collapse"></a></li>
