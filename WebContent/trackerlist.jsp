@@ -4,7 +4,6 @@
     Author     : Omnibus_03
 --%>
 <%@page import="java.util.*"%>
-<%@page import="authentication.DBConnector"%>
 <%
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
@@ -12,11 +11,10 @@
 		response.sendRedirect("index.jsp");
 	}
         ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
-        ArrayList trackers = (ArrayList)session.getAttribute("trackers");
-        ArrayList top_trackers = new DBConnector().query("SELECT * FROM trackers WHERE userid <> '"+username+"' ORDER BY date_created DESC LIMIT 0,10");
 %>
 
- <jsp:include page="include_top.jsp"></jsp:include>	
+ <jsp:include page="include_top.jsp"></jsp:include>
+
 	<!-- Page header -->
 	<div class="page-header">
 		<div class="page-header-content">
@@ -26,18 +24,17 @@
 					<span class="text-semibold">Home</span> - Tracker List
 					<small class="display-block"><span>Welcome, </span><%=username %>
 			</h4>
-				<form class="inline-form" action="<%=request.getContextPath()%>/search" method="post" >
-					<div class="form-group">
-					<div class="col-md-12">
-					<div class="input-group">
-					<input type="hidden" name="search" value="yes">
-					<input type="text" class="form-control ui-autocomplete-input" name="term" placeholder="Enter a keyword to search" id="ac-remote" autocomplete="off">
-					<span class="input-group-btn"><button type="submit" class="btn btn-primary btn-icon btn-rounded legitRipple"><i class="icon-search4"></i></button></span>
-												
-					</div>
-					</div>
-					</div>
-				</form>
+				
+				<div class="form-group">
+				<div class="col-md-12">
+				
+				<div class="input-group">
+				<input type="text" class="form-control" placeholder="Enter a keyword to search" id="searchtextbox" autocomplete="off">
+											<span class="input-group-btn" style="padding-left:0px;"><button type="button" class="btn btn-primary">Search</button></span>
+											
+										</div>
+										</div>
+										</div>
 			</div>
 
 
@@ -87,7 +84,7 @@
 														<a href="#" class="letter-icon-title">Tracker Name</a>
 													</div>
 
-													<div class="text-muted text-size-small" ><i class="icon-target text-size-mini position-left"></i><span  id="trackername"></span> </div>
+													<div class="text-muted text-size-small" id="trackername"><i class="icon-target text-size-mini position-left"></i> Tracker 1</div>
 												</div>
 											</td>
 											
@@ -106,7 +103,7 @@
 														<a href="#" class="letter-icon-title">Created Date</a>
 													</div>
 
-													<div class="text-muted text-size-small" ><i class="icon-calendar text-size-mini position-left"></i><span id="createddate" ></span></div>
+													<div class="text-muted text-size-small" id="createddate"><i class="icon-calendar text-size-mini position-left"></i> July 17, 2016</div>
 												</div>
 											</td>
 											
@@ -126,7 +123,7 @@
 														<a href="#" class="letter-icon-title">Number of Blogs</a>
 													</div>
 
-													<div class="text-muted text-size-small"><i class="text-size-mini position-left icon-angle"></i><span id="noofblog"></span></div>
+													<div class="text-muted text-size-small" id="noofblog"><i class="text-size-mini position-left icon-angle"></i>1200</div>
 												</div>
 											</td>
 											
@@ -144,45 +141,140 @@
 													<div class="media-heading">
 														<a href="#" class="letter-icon-title">Description</a>
 													</div>
-													<div class="text-muted text-size-small" ><i class="text-size-mini position-left icon-info22"></i><span id="description"></span></div>
+
+													<div class="text-muted text-size-small" id="description"><i class="text-size-mini position-left icon-info22"></i>Tracking about nato</div>
 												</div>
 											</td>
+											
+											
 										</tr>
+
+									
+									
+
+
+								
 									</tbody>
 								</table>
-							</div>				
+							</div>
+							
+							
+							
+							
+							
 					</div>
 					</div>
 				</div>
 				<div class="col-md-6">
-					<% if(trackers != null && trackers.size()>0){ 
-						for(int i=0; i<trackers.size(); i++){
-							ArrayList tracker = (ArrayList)trackers.get(i);
-							Object blogs = tracker.get(5);
-					%>
+					
 					<div class="col-lg-4 col-md-6 eachtracker">
 							<div class="thumbnail">
 								<div class="thumb thumb-rounded">
 									<img src="img/datapresentation.jpg" alt="">
+
 								</div>
+							
 						    	<div class="caption text-center">
-						    		<h6 class="text-semibold no-margin"><a href="#" onclick="loadTracker('<%= tracker.get(0)%>');"><%=tracker.get(2) %></a> <small class="display-block"><%=tracker.get(1) %></small></h6>
+						    		<h6 class="text-semibold no-margin">James Alexander <small class="display-block">Lead developer</small></h6>
 					    			<ul class="icons-list mt-15">
-				                    	<li><a href="<%=request.getContextPath()%>/dashboard.jsp?tid=<%= tracker.get(0)%>"><button type="button"  class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-target"></i></button></a></li>
-				                    </ul>
+				                    	<li><button type="button" class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-target"></i></button></li>
+				                    		</ul>
+						    	</div>
+					    	</div>
+						</div>		
+							
+							
+							<div class="col-lg-4 col-md-6 eachtracker">
+							<div class="thumbnail">
+								<div class="thumb thumb-rounded">
+									<img src="img/datapresentation.jpg" alt="">
+								
+								</div>
+							
+						    	<div class="caption text-center">
+						    		<h6 class="text-semibold no-margin">James Alexander <small class="display-block">Lead developer</small></h6>
+					    			<ul class="icons-list mt-15">
+				                    	<li><button type="button" class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-target"></i></button></li>
+				                    	</ul>
 						    	</div>
 					    	</div>
 						</div>	
-						<input type="hidden" name="" id="tracker_name_<%=tracker.get(0)%>" value="<%=tracker.get(1) %>" />	
-						<input type="hidden" name="" id="date_created_<%=tracker.get(0)%>" value="<%=tracker.get(3) %>" />	
-						<input type="hidden" name="" id="tracker_desc_<%=tracker.get(0)%>" value="<%=tracker.get(6) %>" />	
-						<input type="hidden" name="" id="tracker_blogs_<%=tracker.get(0)%>" value="<%=blogs %>" />	
-					<% }} %>
-				</div>
+						
+						
+						<div class="col-lg-4 col-md-6 eachtracker">
+							<div class="thumbnail">
+								<div class="thumb thumb-rounded">
+									<img src="img/datapresentation.jpg" alt="">
+									
+								</div>
+							
+						    	<div class="caption text-center">
+						    		<h6 class="text-semibold no-margin">James Alexander <small class="display-block">Lead developer</small></h6>
+					    			<ul class="icons-list mt-15">
+				                    	<li><button type="button" class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-target"></i></button></li>
+				                    	</ul>
+						    	</div>
+					    	</div>
+						</div>	
+
+				<div class="col-lg-4 col-md-6 eachtracker">
+							<div class="thumbnail">
+								<div class="thumb thumb-rounded">
+									<img src="img/datapresentation.jpg" alt="">
+									
+								</div>
+							
+						    	<div class="caption text-center">
+						    		<h6 class="text-semibold no-margin">James Alexander <small class="display-block">Lead developer</small></h6>
+					    			<ul class="icons-list mt-15">
+				                    	<li><button type="button" class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-target"></i></button></li>
+				                    		</ul>
+						    	</div>
+					    	</div>
+						</div>	
+
+				<div class="col-lg-4 col-md-6 eachtracker">
+							<div class="thumbnail">
+								<div class="thumb thumb-rounded">
+									<img src="img/datapresentation.jpg" alt="">
+									
+								</div>
+							
+						    	<div class="caption text-center">
+						    		<h6 class="text-semibold no-margin">James Alexander <small class="display-block">Lead developer</small></h6>
+					    			<ul class="icons-list mt-15">
+				                    	<li><button type="button" class="btn btn-primary btn-float btn-float-sm btn-rounded legitRipple"><i class="icon-pencil"></i></button> <button type="button" class="btn btn-primary btn-float btn-float-sm btn-rounded legitRipple"><i class="icon-dashboard"></i></button></li>
+				                    				                    	</ul>
+						    	</div>
+					    	</div>
+						</div>	
+
+				
+				<div class="col-lg-4 col-md-6">
+							<div class="thumbnail">
+								<div class="thumb thumb-rounded">
+									<img src="img/plus.jpg" alt="">
+								
+								</div>
+							
+						    	<div class="caption text-center">
+						    		<h6 class="text-semibold no-margin"> Add New Tracker<small class="display-block"> Set up a New tracker</small></h6>
+					    			<ul class="icons-list mt-15">
+				                    	
+				                    	<li><a href="#" data-popup="tooltip" title="" data-container="body" data-original-title="Set Up Tracker"><button type="button" class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-plus-circle2"></i></button></a></li>
+			                    	
+			                    	
+					    	</ul>
+						    	</div>
+					    	</div>
+						</div>	
+
+					
+					</div>
 			<div class="col-md-3">
 				<div class="panel panel-primary">
 							<div class="panel-heading">
-								<h6 class="panel-title">Top Trackers<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<h6 class="panel-title">Top Trackers from Community<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
 									<ul class="icons-list">
 				                		<li><a data-action="collapse"></a></li>
@@ -194,27 +286,43 @@
 
 							<div class="panel-body">
 							<div class="list-group no-border no-padding-top">
-							<% if(top_trackers != null && top_trackers.size()>0){ 
-								for(int i=0; i<top_trackers.size(); i++){
-									ArrayList trackee = (ArrayList)top_trackers.get(i);
-							%>
-							<a href="#" class="list-group-item"><i class="icon-paperplane"></i><%=trackee.get(2)%></a>
-							<% }}else{ %>
-								Not tracker found
-							<%} %>
+							<a href="#" class="list-group-item"><i class="icon-paperplane"></i>Tracker 1</a>
+							<a href="#" class="list-group-item"><i class="icon-paperplane"></i>Tracker 2</a>
+							<a href="#" class="list-group-item"><i class="icon-paperplane"></i>Tracker 3</a>
+							<a href="#" class="list-group-item"><i class="icon-paperplane"></i>Tracker 4</a>
+							<a href="#" class="list-group-item"><i class="icon-paperplane"></i>Tracker 5</a>
+							<a href="#" class="list-group-item"><i class="icon-paperplane"></i>Tracker 6</a>
+							<a href="#" class="list-group-item"><i class="icon-paperplane"></i>Tracker 7</a>
+							<a href="#" class="list-group-item"><i class="icon-paperplane"></i>Tracker 8</a>
+							<a href="#" class="list-group-item"><i class="icon-paperplane"></i>Tracker 9</a>
+							<a href="#" class="list-group-item"><i class="icon-paperplane"></i>Tracker 10</a>
+							<a href="#" class="list-group-item"><i class="icon-paperplane"></i>Tracker 11</a>
+							<a href="#" class="list-group-item"><i class="icon-paperplane"></i>Tracker 12</a>
 							</div>
 					</div>
-					</div>					
+					</div>
+				      
+					
 				</div>
 				<!-- /main charts -->
+
+
+			
+
+			
 			<!-- /main content -->
+
 		</div>
 		<!-- /page content -->
 
-	</div>	
-	</div>	
+	</div>
+	
+	</div>
+	
 	</div>
 	<!-- /page container -->
+
+
 	<!-- Footer -->
 	<div class="footer text-muted">
 		&copy; 2017. <a href="#">Blogtracker</a> All Right Reserved
@@ -235,22 +343,6 @@
 	});
 	});	
 	});
-	
-	function loadTracker(tracker_id){
-		
-		var name = $("#tracker_name_"+tracker_id).val();
-		var date_created =  $("#date_created_"+tracker_id).val();
-		var noofblog = $("#tracker_blogs_"+tracker_id).val();
-		//noofblog = noofblog.re(",");
-		noofblog = noofblog.split(",");
-		var det = $("#tracker_desc_"+tracker_id).val();
-			
-		$("#trackername").html(name);		
-		$("#createddate").html(date_created);
-		$("#noofblog").html((noofblog[0]=="blogsite_id in ()")?0:noofblog.length);
-		$("#description").html(det);
-		
-	}
 	</script>
 </body>
 </html>
