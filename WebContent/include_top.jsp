@@ -1,15 +1,13 @@
-
 <%@page import="java.io.File"%>
 <%@page import="java.util.*"%>
+
 <!DOCTYPE html>
 <%
-
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
 	if (username == null || username == "") {
 		response.sendRedirect("index.jsp");
 	}
-
     String path=application.getRealPath("/").replace('\\', '/')+"profile_images/";
     path = path.replace("build/", "");
     String filename = path+session.getAttribute("username")+".jpg";
@@ -135,7 +133,6 @@
 						Select Tracker
 						<span class="caret"></span>
 					</a>
-
 					<ul class="dropdown-menu">
 					<% if(trackers != null && trackers.size()>0){ 
 						for(int i=0; i<trackers.size(); i++){
@@ -180,7 +177,6 @@
 	
 	<!-- <div class="navbar navbar-default" id="navbar-second">
 		
-
 		<div class="navbar-collapse collapse" id="navbar-second-toggle">
 			<ul class="nav navbar-nav navbar-nav-material">
 				<li class=""><a href="<%=request.getContextPath()%>/dashboard.jsp"><i class="icon-display4 position-left"></i> Dashboard</a></li>
@@ -188,10 +184,8 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<i class="icon-chart position-left"></i> Basic Analytics
 					</a>
-
 					
 				</li>
-
 				<li onclick="location.href='advance.jsp'">
 					<a class="">
 						<i class="icon-stats-bars2 position-left"></i> Advanced Analytics
@@ -235,5 +229,3 @@
 			
 		</div>
 	</div>-->
-
-
