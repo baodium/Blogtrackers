@@ -70,7 +70,7 @@ public class Login extends HttpServlet {
                 
                 Common c = new Common();
                 try{
-                	ArrayList trackers = new DBConnector().query("SELECT tracker_name FROM trackers WHERE userid='"+login.get(0)+"'");
+                	ArrayList trackers = new DBConnector().query("SELECT * FROM trackers WHERE userid='"+login.get(0)+"'");
                 	session.setAttribute("trackers", trackers);
                 }catch(Exception ex){}
                 

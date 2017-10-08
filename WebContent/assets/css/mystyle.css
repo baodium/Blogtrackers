@@ -426,4 +426,7 @@ height: 36px;
     line-height: 1.6666667;
     border-radius: 2px;	
 }
-
+.login-container .page-container
+{
+	padding-top: 100px;
+}

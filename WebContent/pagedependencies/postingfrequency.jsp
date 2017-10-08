@@ -179,11 +179,13 @@
       },
       function(start, end) {
           $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+       
       }
   );
 	if('${datepicked}' == '')
 	{ $('#reportrange span').html(moment().subtract('days', 400).format('MMMM D') + ' - ' + moment().format('MMMM D'));
-	$('#datepicked').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY')).trigger('change');}
+	//$('#datepicked').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY')).trigger('change');
+	}
 	
 	else{ 
 		/*$('#reportrange').on('show.daterangepicker', function() {

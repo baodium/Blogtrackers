@@ -2,18 +2,9 @@
 <%@ page import="java.io.*,java.util.*, javax.servlet.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
-	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
-	if (username == null || username == "") {
-		response.sendRedirect("index.jsp");
-	}
-    ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
-
-	DBConnector conn = new DBConnector();
     String keyword = "";
     String s="";
     int from =0;
-
     int to = 12;
 
    ArrayList bloglist = new ArrayList();
@@ -23,7 +14,6 @@
 			if(!keyword.trim().isEmpty()){
 				StringTokenizer st = new StringTokenizer(keyword, ",");			
 				while (st.hasMoreElements()) {
-					//bloglist.add(st.nextElement());
 					s=s+ "'"+ st.nextElement()+"',";
 				}
 				s = "("+s.substring(0,s.length()-1)+")";
@@ -69,7 +59,7 @@
 						<input type="hidden" name="search-blog" id="search-blog" value="yes" />
 						<input type="hidden" name="search-keyword" id="search-keyword" value="<%=keyword%> %>" />					
 						<%  if(bloglist.size()>0){ %>
-							<div class="loadmoreimg" id="loading-img" style="text-align:center"><br/><br/><img src='assets/images/preloader.gif' /><br/></div>						
+							<div class="loadmoreimg" id="loading-img" style="text-align:center; margin-top:10px"><img src='assets/images/preloader.gif' /><br/></div>						
 						<% } %>
                     </div>
 				</div>				

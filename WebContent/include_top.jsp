@@ -36,6 +36,7 @@
 	<link href="assets/css/core.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/components.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/colors.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/mystyle.css" rel="stylesheet" type="text/css">
 	<!-- /global stylesheets -->
 	
 	<!-- Style from old -->
@@ -45,6 +46,10 @@
 	
 <link href="${pageContext.request.contextPath}/vendors/vis/dist/vis.css"
 	rel="stylesheet" type="text/css" />
+	
+	<!--  <link
+	href="${pageContext.request.contextPath}/vendors/jqvmap/dist/jqvmap.min.css"
+	rel="stylesheet" />-->
 	<style>
 	<style>
 /*div.scroll {

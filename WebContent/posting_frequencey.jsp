@@ -61,8 +61,9 @@
 									<div class="heading-elements" id="reportrange" action="PostingFrequency">
 									<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
 										<i class="icon-calendar3 position-left"></i> <span></span>  
-					<input type="hidden" id="datepicked" name="datepicked"  onchange="datechanged()" /><b class="caret"></b>
+					<b class="caret"></b>
 									</button>
+									<input type="hidden" id="datepicked" name="datepicked"  onchange="datechanged()" />
 			                	</div>
 								</form>
 							</div>

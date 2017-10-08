@@ -3,21 +3,12 @@
     Created on : 28-Aug-2017, 22:23:45
     Author     : Omnibus_03
 --%>
-<%@page import="java.util.*"%>
-<%@page import="java.net.*"%>
 <%@page import="authentication.DBConnector"%>
-<%@page import="blogtracker.util.Common"%>
-<%@page import="blogtracker.gui.blogtrackers.*"%>
 <%@ page import="java.io.*,java.util.*, javax.servlet.*"%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-
 <%
 
-    int perpage =12;
-
-
+   int perpage =12;
    PrintWriter pww = response.getWriter();
 	try {
 		
@@ -43,7 +34,7 @@
 											<img src="img/b.png" class="img-circle img-lg" alt="">
 										</div>									
 										<div class="media-body">
-											<h6 class="media-heading"><%=item.get(2)%></h6>
+											<h6 class="media-heading"><%=item.get(2)%> <input type="checkbox" onclick="select_blog()"  class="blog-list" name="blog" style="float:right" value="<%=item.get(0) %>"  /></h6>
 											<span class="text-muted"><%=item.get(7)%> post(s)</span>
 										</div>										
 									</div>
