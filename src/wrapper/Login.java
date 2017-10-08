@@ -68,19 +68,21 @@ public class Login extends HttpServlet {
                 session.setAttribute("username",login.get(0));
                 session.setAttribute("email",login.get(2));
                 
+                Object selected = (null == session.getAttribute("pre-selected-blogs")) ? "" : session.getAttribute("pre-selected-blogs");
+                
                 Common c = new Common();
                 try{
                 	ArrayList trackers = new DBConnector().query("SELECT * FROM trackers WHERE userid='"+login.get(0)+"'");
                 	session.setAttribute("trackers", trackers);
                 }catch(Exception ex){}
                 
-				////
-				//Common c= new Common();
-				//ArrayList<String> trackers=c.gettrackers(username);
-
-				//session.setAttribute("trackers", trackers);
+                
                 response.setContentType("text/html");
-				pww.write("success");
+                if(selected!="") {
+                	pww.write("confirmed");
+                }else {
+                	pww.write("success");
+                }
                                
 				//response.setContentType("text/html");
 				////

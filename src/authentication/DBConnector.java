@@ -77,6 +77,7 @@ public class DBConnector {
 		return result;
 	}
 
+	
 
 	public boolean updateTable(String query){
 		Connection con = null;

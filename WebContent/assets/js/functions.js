@@ -55,4 +55,28 @@ function loadMoreResult(){
 }
 
 
+function trackerchanger(){
+	var tracker = $("#tracker").val();
+	console.log(tracker);
+	if(tracker==""){
+		return false;
+	}else{
+		$.ajax({
+	        url: app_url+'setup_tracker',
+			method:'POST',
+			data:{tracker_id:tracker,select:"yes"},
+	        success: function(response)
+	        {	
+	        	console.log(response);
+	        	if(response=="success"){
+	        		 window.location.href = app_url+"dashboard.jsp";
+	        	}else{
+	        		
+	        	}
+	        }
+	    });	
+	}
+}
+
+
 

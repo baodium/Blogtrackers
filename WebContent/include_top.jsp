@@ -6,8 +6,9 @@
 
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
-	if (username == null || username == "") {
-		response.sendRedirect("index.jsp");
+	String tracker_id = (null == session.getAttribute("tid")) ? "" : session.getAttribute("tid").toString();
+	if(tracker_id!=""){
+		session.setAttribute("tracker",tracker_id);
 	}
 
     String path=application.getRealPath("/").replace('\\', '/')+"profile_images/";
@@ -85,6 +86,8 @@
 	       
 	       
 	<link href="assets/css/mystyle.css" rel="stylesheet" type="text/css">
+
+	<script type="text/javascript" src="assets/js/functions.js?v=0"></script>
 	<!-- /global stylesheets -->
 </head>
 
@@ -101,54 +104,36 @@
 		
 		
 			<div class="navbar-collapse collapse" id="navbar-mobile">
-			<% String Selectedtracker  = (String) session.getAttribute("tracker"); %>
-	
+			<% 
+			String Selectedtracker  = (String)session.getAttribute("tracker"); 
+
+			%>
 				<ul class="nav navbar-nav navbar-right">
+			<% if(username!=""){ %>
 				<li class="language-switch"">
 			<form name="trackerform" id="trackerform" action="" method="post">
-			<select id="tracker" name="tracker" onchange="trackerchanged()" class="form-control">
+			<select id="tracker" name="tracker" onchange="trackerchanger()" class="form-control">
 								
 			<% 
-			String isselect = "";
+			
 			String isselecttwo;
 			if(trackers != null && trackers.size()>0){ 
 			for(int i=0; i<trackers.size(); i++){
+			String isselect = "";
 			ArrayList tracker = (ArrayList)trackers.get(i);
-			/*String test = (String) tracker.get(0);
-			isselecttwo = new String(test);
-			if(Selectedtracker.equals(test))
-			{
-				isselect= new String("selected");
+			String name = tracker.get(0).toString(); 
+			if(name.equals(Selectedtracker)){
+				isselect = "selected";
 			}
-			else
-			{
-			 isselect = "";	
-			}*/
 			%>
-			<option selected="<%=isselect %>" value="<%=tracker.get(0)%>"> <%=tracker.get(2)%> </option>
-					<% } } %>			
-									</select>
-									</form>
-									</li>
-				<!--  <li class="dropdown language-switch">
-					<a class="dropdown-toggle" data-toggle="dropdown">
-						Select Tracker
-						<span class="caret"></span>
-					</a>
-
-					<ul class="dropdown-menu">
-					<% if(trackers != null && trackers.size()>0){ 
-						for(int i=0; i<trackers.size(); i++){
-							ArrayList tracker = (ArrayList)trackers.get(i);
-					%>
-						<li><a class="<%=tracker.get(0)%>"> <%=tracker%> <i class="icon-pencil"></i></a></li>
-					<% } } %>
-					</ul>
-					
-					
-					
-				</li>-->
-
+			<option <%=isselect%> value="<%=tracker.get(0)%>"><%=tracker.get(2)%></option>
+			<% } }else{ %>
+			<option value=""> no tracker created yet </option>
+			<% } %>			
+			</select>
+			</form>
+			</li>
+				
 				
 				<li class="dropdown dropdown-user">
 					<a class="dropdown-toggle" data-toggle="dropdown">
@@ -162,10 +147,13 @@
 						<li class="divider"></li>
 						<li><a href="<%=request.getContextPath()%>/features.jsp"><i class="icon-cog5"></i> Features</a></li>
 						<li><a href="<%=request.getContextPath()%>/help.jsp"><i class="icon-help"></i> Help</a></li>
-						<li><a href="<%=request.getContextPath()%>/logout"><i class="icon-switch2"></i> Logout</a></li>
-			
-	</ul>
+						<li><a href="<%=request.getContextPath()%>/logout"><i class="icon-switch2"></i> Logout</a></li>			
+					</ul>
 				</li>
+				<% }else{ %>
+				<li><a href="<%=request.getContextPath()%>/login"><i class="icon-switch2"></i> Login</a></li>			
+				
+				<% } %>
 
 			</ul>
 			

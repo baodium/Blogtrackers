@@ -63,8 +63,9 @@ public class Sentiments extends HttpServlet {
 	 */
 	@SuppressWarnings({ "deprecation", "unchecked" })
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		HttpSession session= request.getSession();
+		String st_spa = (null == session.getAttribute("st_span")) ? "" : session.getAttribute("st_span").toString();
+		
 		if((session.getAttribute("tracker")==null && request.getParameter("tracker")==null)
 				&& ( session.getAttribute("datepicked")==null && request.getParameter("datepicked")==null))
 		{
@@ -1562,7 +1563,7 @@ public class Sentiments extends HttpServlet {
 				System.out.println(" inside agg");
 				session.setAttribute("radio", "aggregate");
 				System.out.println("aggregate" );
-				if(session.getAttribute("st_span").equals("year"))
+				if(st_spa.equals("year"))
 				{
 					
 					String tracker = (String) session.getAttribute("tracker");
@@ -1677,7 +1678,7 @@ public class Sentiments extends HttpServlet {
 						
 					
 				}
-				else if(session.getAttribute("st_span").equals("month"))
+				else if(st_spa.equals("month"))
 				{
 					
 					String tracker = (String) session.getAttribute("tracker");
@@ -1796,7 +1797,7 @@ public class Sentiments extends HttpServlet {
 					}
 					
 				}
-				else if(session.getAttribute("st_span").equals("week"))
+				else if(st_spa.equals("week"))
 				{
 					String tracker = (String) session.getAttribute("tracker");
 					String userName = (String) session.getAttribute("user");
@@ -1911,7 +1912,7 @@ public class Sentiments extends HttpServlet {
 					}
 											
 				}
-				else if(session.getAttribute("st_span").equals("day"))
+				else if(st_spa.equals("day"))
 				{
 					String tracker = (String) session.getAttribute("tracker");
 					String userName = (String) session.getAttribute("user");
@@ -2036,9 +2037,12 @@ public class Sentiments extends HttpServlet {
 					Map<String, Object> config = new HashMap<String, Object>();
 					//if you need pretty printing
 					config.put("javax.json.stream.JsonGenerator.prettyPrinting", Boolean.valueOf(true));
-
+					
+					
+					
+					
 					ArrayList<blogtracker.util.Sentiments_result> sr = (ArrayList<Sentiments_result>) session.getAttribute("sentires");
-					if(session.getAttribute("st_span").equals("year"))
+					if(st_spa.equals("year"))
 					{
 						
 						JsonBuilderFactory factory = Json.createBuilderFactory(config);
@@ -2131,7 +2135,7 @@ public class Sentiments extends HttpServlet {
 						session.setAttribute("norm_aggr_neg",norm_aggr_neg);
 						
 					}
-					else if(session.getAttribute("st_span").equals("month"))
+					else if(st_spa.equals("month"))
 					{
 						JsonBuilderFactory factory = Json.createBuilderFactory(config);
 						ArrayList<String> trendposnorm = new ArrayList<String>();
@@ -2226,7 +2230,7 @@ public class Sentiments extends HttpServlet {
 					//	System.out.println(" maps " +norm_aggr_neg.);
 						//System.out.println(" maps " +norm_aggr_pos.entrySet());
 					}
-					else if(session.getAttribute("st_span").equals("week"))
+					else if(st_spa.equals("week"))
 					{
 						
 						JsonBuilderFactory factory = Json.createBuilderFactory(config);
@@ -2318,7 +2322,7 @@ public class Sentiments extends HttpServlet {
 						session.setAttribute("norm_aggr_neg",norm_aggr_neg);
 						
 					}
-					else if(session.getAttribute("st_span").equals("day"))
+					else if(st_spa.equals("day"))
 					{
 						JsonBuilderFactory factory = Json.createBuilderFactory(config);
 						ArrayList<String> trendposnorm = new ArrayList<String>();

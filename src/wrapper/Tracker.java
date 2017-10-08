@@ -51,8 +51,12 @@ public class Tracker extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		PrintWriter pww = response.getWriter();
-		if(request.getParameter("save")!=null){
-			HttpSession session= request.getSession();
+		HttpSession session= request.getSession();
+		String savetracker = (null == request.getParameter("save")) ? "" : request.getParameter("save");
+		String selectracker = (null == request.getParameter("select")) ? "" : request.getParameter("select");
+		
+		if(savetracker.equals("yes")){
+			
 			String userName = (String) session.getAttribute("username");
 			String keyword = request.getParameter("keyword");
 			String trackerName=request.getParameter("title");
@@ -79,7 +83,7 @@ public class Tracker extends HttpServlet {
 				boolean done = new DBConnector().updateTable(query);
 				if(done) {
 				  	ArrayList trackers = new DBConnector().query("SELECT * FROM trackers WHERE userid='"+userName+"'");
-                	session.setAttribute("trackers", trackers);
+                	session.setAttribute("trackers", trackers+"");
                 	
 					response.setContentType("text/html");
 					pww.write("success");
@@ -95,6 +99,17 @@ public class Tracker extends HttpServlet {
 			//
 			//			response.sendRedirect("Dashboard.jsp");
 		}
+		
+		
+		if(selectracker.equals("yes")) {
+			String tid = request.getParameter("tracker_id");
+			ArrayList tracker = new DBConnector().query("SELECT * FROM trackers WHERE tid='"+tid+"'");		
+			if(tracker.size()>0){
+				session.setAttribute("tracker", tid);
+				pww.write("success");
+			}
+		}
+		
 	}
 	
 	private String getDateTime() {

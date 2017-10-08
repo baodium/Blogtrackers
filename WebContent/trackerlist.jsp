@@ -166,7 +166,7 @@
 									<img src="img/datapresentation.jpg" alt="">
 								</div>
 						    	<div class="caption text-center">
-						    		<h6 class="text-semibold no-margin"><a href="#" onclick="loadTracker('<%= tracker.get(0)%>');"><%=tracker.get(2) %></a> <small class="display-block"><%=tracker.get(1) %></small></h6>
+						    		<h6 class="text-semibold no-margin"><a href="#" onclick="loadTrackerr('<%= tracker.get(0)%>');"><%=tracker.get(2) %></a> <small class="display-block"><%=tracker.get(1) %></small></h6>
 					    			<ul class="icons-list mt-15">
 				                    	<li><a href="<%=request.getContextPath()%>/dashboard.jsp?tid=<%= tracker.get(0)%>"><button type="button"  class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-target"></i></button></a></li>
 				                    </ul>
@@ -198,7 +198,7 @@
 								for(int i=0; i<top_trackers.size(); i++){
 									ArrayList trackee = (ArrayList)top_trackers.get(i);
 							%>
-							<a href="#" class="list-group-item"><i class="icon-paperplane"></i><%=trackee.get(2)%></a>
+							<a href="<%=request.getContextPath()%>/dashboard.jsp?tid=<%= trackee.get(0)%>" class="list-group-item"><i class="icon-paperplane"></i><%=trackee.get(2)%></a>
 							<% }}else{ %>
 								Not tracker found
 							<%} %>
@@ -224,6 +224,7 @@
 
 <!-- handles the dynamic updatee of content-->
 <script>
+/*
 	$(document).ready(function(e){
 	$('.eachtracker').each(function(index,element){
 	$('.eachtracker:eq('+index+')').click(function(f){
@@ -235,8 +236,8 @@
 	});
 	});	
 	});
-	
-	function loadTracker(tracker_id){
+*/	
+	function loadTrackerr(tracker_id){
 		
 		var name = $("#tracker_name_"+tracker_id).val();
 		var date_created =  $("#date_created_"+tracker_id).val();
