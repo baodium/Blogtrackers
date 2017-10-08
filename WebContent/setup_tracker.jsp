@@ -11,7 +11,8 @@
 		response.sendRedirect("index.jsp");
 	}
     ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
-    String selected = request.getParameter("all-selected-blogs");
+    String selected =  (null == request.getParameter("all-selected-blogs")) ? "" : request.getParameter("all-selected-blogs");
+    
 	
 %>
  <jsp:include page="include_top.jsp"></jsp:include>

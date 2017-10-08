@@ -173,7 +173,7 @@
 						    	</div>
 					    	</div>
 						</div>	
-						<input type="hidden" name="" id="tracker_name_<%=tracker.get(0)%>" value="<%=tracker.get(1) %>" />	
+						<input type="hidden" name="" id="tracker_name_<%=tracker.get(0)%>" value="<%=tracker.get(2) %>" />	
 						<input type="hidden" name="" id="date_created_<%=tracker.get(0)%>" value="<%=tracker.get(3) %>" />	
 						<input type="hidden" name="" id="tracker_desc_<%=tracker.get(0)%>" value="<%=tracker.get(6) %>" />	
 						<input type="hidden" name="" id="tracker_blogs_<%=tracker.get(0)%>" value="<%=blogs %>" />	
