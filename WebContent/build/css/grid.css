@@ -1,0 +1,6 @@
+#container ul { list-style: none; }
+#container .buttons { margin-bottom: 10px; }
+
+#container .list li { width: 100%; margin-bottom: 0px; padding-bottom: 0px; }
+
+#container .grid li { float: left; width: 50%; height: 100%;  padding: 0px; }

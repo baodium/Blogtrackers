@@ -147,6 +147,7 @@
 
 	</div>
 	<!-- /page container -->
+	
 	<script>
 	
 	<% if(!selected.equals("")){%>
@@ -311,12 +312,13 @@
 		return false;
 		}
 	}
-
 	</script>
 
 	<!-- Footer -->
   <jsp:include page="footer.jsp"></jsp:include>
 	<!-- /footer -->
-
+	<!-- Dependencies -->
+  <jsp:include page="pagedependencies/setuptracker.jsp"></jsp:include>
+  <!-- End of Dependencies -->
 </body>
 </html>
