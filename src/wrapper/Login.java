@@ -63,8 +63,8 @@ public class Login extends HttpServlet {
 			if(login.size()>0)
 			{
 				HttpSession session = request.getSession();
-				session.setAttribute("user",username);
-                                
+				//session.setAttribute("user",username);
+				session.setAttribute("user",login.get(0));               
                 session.setAttribute("username",login.get(0));
                 session.setAttribute("email",login.get(2));
                 
