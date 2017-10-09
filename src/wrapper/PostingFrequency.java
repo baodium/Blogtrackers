@@ -65,7 +65,7 @@ public class PostingFrequency extends HttpServlet {
 			}
 			session.setAttribute("errorMessage", "");
 
-			String userName = (String) session.getAttribute("user");
+			String userName = (String) session.getAttribute("username");
 			String trackerName = (String) session.getAttribute("tracker");
 			String datePicked = (String) session.getAttribute("datepicked");
 			TrackerDialog dialog= new TrackerDialog();
@@ -97,21 +97,28 @@ public class PostingFrequency extends HttpServlet {
 			if(session.getAttribute("bsName")!=null)
 				session.removeAttribute("bsName");
 			session.setAttribute("allSepSites", allSites);
+			//session.setAttribute("errorMessage",session.getAttribute("tracker") );
 		}
 		else if(request.getParameter("datepicked")!= null){	
 			String date =request.getParameter("datepicked");
 			session.setAttribute("datepicked", date);
 			List<String> aa=common.returnDates(date);
 			String scale=common.returnScale(aa);
+			//session.setAttribute("errorMessage",aa );
 			if(session.getAttribute("tracker")!=null){
 				session.setAttribute("errorMessage", "");
-				String userName = (String) session.getAttribute("user");
+				String userName = (String) session.getAttribute("username");
 				String trackerName = (String) session.getAttribute("tracker");
 				String datePicked = (String) session.getAttribute("datepicked");
-				TrackerDialog dialog= new TrackerDialog();
-				String selectedSites=dialog.getSelectedSites(userName,trackerName);
+				session.setAttribute("errorMessage", userName);
+				TrackerDialog dialog = new TrackerDialog();
+				String selectedSites = dialog.getSelectedSites(userName,trackerName);
+				
+				session.setAttribute("errorMessage",userName+ " "+trackerName );
 				getRequestedData(scale,selectedSites,datePicked,session);
-			}else{
+				
+			}
+			else{
 				session.setAttribute("errorMessage", "Please Select Tracker then Date");
 			}
 		}

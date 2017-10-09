@@ -1,7 +1,9 @@
 
 	<script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
-	<script type="text/javascript" src="assets/js/plugins/ui/moment/moment.min.js"></script>
+<script
+					src="${pageContext.request.contextPath}/production/js/moment/moment.min.js"></script>
+	
 	<script
 						src="${pageContext.request.contextPath}/production/js/datepicker/daterangepicker.js"></script>
 
@@ -59,17 +61,14 @@
 				  dateLimit: { days: 50000 },
        	          ranges: {
     	              
-       	        	/*'This Year' : [
+       	        	'This Year' : [
 						moment()
 								.startOf('year'),
 						moment() ],
 				'Last Year' : [
 						moment()
 								.subtract(1,'year').startOf('year'),
-						moment().subtract(1,'year').endOf('year') ]*/
-				  
-				  'Last Year': [moment().subtract('years', 1).startOf('year'), moment().subtract('years', 1).endOf('year')],
-					'This Year': [moment().startOf('year'), moment()]
+						moment().subtract(1,'year').endOf('year') ]
     	          },
     	          opens: 'left',
     	          applyClass: 'btn-small bg-slate-600 btn-block',

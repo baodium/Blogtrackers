@@ -52,6 +52,7 @@ public class TrackerDialog extends UtilFunctions{
 		String queryData=null;
 		try {
 			Connection conn = getConn();
+		
 			String queryStr="select query from trackers where userid='"+userName+"' and tracker_name='"+trackerName+"'";
 			Statement stmt = conn.createStatement();
 			ResultSet rset = stmt.executeQuery(queryStr);
@@ -62,7 +63,13 @@ public class TrackerDialog extends UtilFunctions{
 			rset.close();
 			stmt.close();
 			conn.close();
+			System.out.println("I see This");
+			System.out.println(userName);
+			System.out.println(trackerName);
+			System.out.println(queryData);
 			return queryData;
+			
+			
 		} catch (SQLException ex) {
 			Logger.getLogger(sitesDialog.class.getName()).log(Level.SEVERE, null, ex);
 			return null;
