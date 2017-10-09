@@ -1,6 +1,8 @@
 <%@page import="java.io.File"%>
 <%@page import="java.util.*"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <%
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
@@ -45,10 +47,21 @@
 <link href="${pageContext.request.contextPath}/vendors/vis/dist/vis.css"
 	rel="stylesheet" type="text/css" />
 	
-	<!--  <link
+	<link
 	href="${pageContext.request.contextPath}/vendors/jqvmap/dist/jqvmap.min.css"
-	rel="stylesheet" />-->
+	rel="stylesheet" />
+	<!-- NProgress -->
+<link
+	href="${pageContext.request.contextPath}/vendors/nprogress/nprogress.css"
+	rel="stylesheet">
+	
+	<!-- bootstrap-progressbar -->
+<link
+	href="${pageContext.request.contextPath}/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css"
+	rel="stylesheet">
+		<script src="https://d3js.org/d3.v3.min.js"></script>
 	<style>
+	
 	<style>
 /*div.scroll {
 	overflow: scroll;
@@ -104,52 +117,32 @@
 				<ul class="nav navbar-nav navbar-right">
 				<li class="language-switch"">
 			<form name="trackerform" id="trackerform" action="" method="post">
-			<select id="tracker" name="tracker" onchange="trackerchanged()" class="form-control">
-								
-			<% 
-			String isselect = "";
-			String isselecttwo;
-			if(trackers != null && trackers.size()>0){ 
-			for(int i=0; i<trackers.size(); i++){
-			ArrayList tracker = (ArrayList)trackers.get(i);
-			/*String test = (String) tracker.get(0);
-			isselecttwo = new String(test);
-			if(Selectedtracker.equals(test))
-			{
-				isselect= new String("selected");
-			}
-			else
-			{
-			 isselect = "";	
-			}*/
-			%>
-			<option selected="<%=isselect %>" value="<%=tracker.get(0)%>"> <%=tracker.get(2)%> </option>
-					<% } } %>			
+			<select id="tracker" name="tracker" onchange="trackerchanged()" class="form-control" value="${item}">
+					                    
+				                    <c:choose>
+										<c:when test="${tracker != null}">
+											<option selected value="">${tracker} </option>
+										</c:when>
+
+										<c:when test="${tracker == null}">
+											<option value="">Select Tracker</option>
+										</c:when>
+									</c:choose>
+
+									<c:forEach items="${trackers}" var="item">
+										<c:if test="${tracker ne item}">
+											<option value="${item.get(2)}"><c:out value="${item.get(2)}" /></option>
+										</c:if>c:if>
+									</c:forEach>
 									</select>
 									</form>
 									</li>
-				<!--  <li class="dropdown language-switch">
-					<a class="dropdown-toggle" data-toggle="dropdown">
-						Select Tracker
-						<span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu">
-					<% if(trackers != null && trackers.size()>0){ 
-						for(int i=0; i<trackers.size(); i++){
-							ArrayList tracker = (ArrayList)trackers.get(i);
-					%>
-						<li><a class="<%=tracker.get(0)%>"> <%=tracker%> <i class="icon-pencil"></i></a></li>
-					<% } } %>
-					</ul>
-					
-					
-					
-				</li>-->
+			
 
 				
 				<li class="dropdown dropdown-user">
 					<a class="dropdown-toggle" data-toggle="dropdown">
-						<img src="<%=pimage%>" width="50" height="50" alt="">
+						<img src="<%=pimage%>" width="34" height="34" alt="">
 						<span><%=session.getAttribute("username")%></span>
 						<i class="caret"></i>
 					</a>
@@ -175,7 +168,7 @@
 
 	
 	
-	<!-- <div class="navbar navbar-default" id="navbar-second">
+  <div class="navbar navbar-default" id="navbar-second">
 		
 		<div class="navbar-collapse collapse" id="navbar-second-toggle">
 			<ul class="nav navbar-nav navbar-nav-material">
@@ -186,6 +179,8 @@
 					</a>
 					
 				</li>
+				<li><a href="<%=request.getContextPath()%>/PostingFrequency"><i class="fa fa-line-chart"></i>Posting
+							Frequency<span class="fa fa-chevron-right"></span></a></li>
 				<li onclick="location.href='advance.jsp'">
 					<a class="">
 						<i class="icon-stats-bars2 position-left"></i> Advanced Analytics
@@ -228,4 +223,4 @@
 			</ul>
 			
 		</div>
-	</div>-->
+	</div> 

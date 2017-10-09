@@ -73,7 +73,7 @@
 				<script
 					src="${pageContext.request.contextPath}/vendors/echarts/dist/echarts.min.js"></script>
 				
-				<script>
+					<script>
 		var sample_data = {${data}};
     $(document).ready(function(){
         $('#world-map-gdp').vectorMap({
@@ -89,7 +89,7 @@
             normalizeFunction: 'polynomial'
         });
       });
-    
+
       var theme = {
           color: [
               '#26B99A', '#34495E', '#BDC3C7', '#3498DB',
@@ -293,7 +293,7 @@
               fontFamily: 'Arial, Verdana, sans-serif'
           }
       };
-     
+
       var dataStyle = {
         normal: {
           label: {
@@ -318,7 +318,17 @@
           color: 'rgba(0,0,0,0)'
         }
       };
-       
+
+    </script>
+    <script>
+    function getRandomColor() {
+    	  var letters = '0123456789ABCDEF';
+    	  var color = '#';
+    	  for (var i = 0; i < 6; i++) {
+    	    color += letters[Math.floor(Math.random() * 16)];
+    	  }
+    	  return color;
+    	}
     </script>
     
 	<script>
@@ -336,4 +346,5 @@
 	    
 	    
 	</script>
+	
 	

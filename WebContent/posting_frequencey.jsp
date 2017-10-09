@@ -3,7 +3,15 @@
     Created on : 28-Aug-2017, 22:23:45
     Author     : Omnibus_03
 --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="java.util.*"%>
+
+
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8" isELIgnored="false"%>
+
 <%
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
@@ -22,7 +30,8 @@
 				<h4>
 					<i class="icon-arrow-left52 position-left"></i>
 					<span class="text-semibold">Posting Frequency</span>
-			<small class="display-block"><span>Welcome, </span><%=username %>
+			<small class="display-block"><span>Welcome, </span><%=username %> <font color="red">${errorMessage}</font>
+			
 				</h4>
 				<div class="form-group">
 				<div class="col-md-12">
@@ -67,14 +76,24 @@
 			                	</div>
 								</form>
 							</div>
-
+							<form name="pf_spanForm" id="pf_spanForm"
+									action="PostingFrequency" method="post">
 							<div class="panel-body">
 							
 							<div class="col-lg-8 col-md-8 col-sm-12">
-								<div class="chart-container">
+								<!--  <div class="chart-container">
 							<div class="chart" id="c3-line-regions-chart"></div>
-						</div>						
+						</div>	-->
+							<div class="demo-container">
+												<div id="chartContainer" style="height: 350px"></div>
+												<div style="text-align: center; margin-bottom: 15px;">
+													<jsp:include page="spanchecker.jsp"></jsp:include>
+												
+												</div>
+
+											</div>
 							</div>
+							
 					
 								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 		<div class="panel panel-primary">
@@ -100,115 +119,35 @@
 										</tr>
 									</thead>
 									<tbody>
+									<c:set var="i" value="0" />
+														<c:set var="eo" value="1" />
+
+
+														<c:forEach items="${topBloggers}" var="s1" begin="${i}">
 										<tr>
 											<td>
 												<div class="media-left media-middle">
 													<a href="#" class="btn bg-primary-400 btn-rounded btn-icon btn-xs legitRipple">
-														<span class="letter-icon">S</span>
+														<span class="letter-icon">B</span>
 													</a>
 												</div>
 
 												<div class="media-body">
 													<div class="media-heading">
-														<a href="#" class="letter-icon-title">Wolnemedia</a>
+														<a href="<%=request.getContextPath()%>
+																		/AdditionalBlogger?authorName=${s1.bloggerName}" class="letter-icon-title">${s1.bloggerName}</a>
 													</div>
 
-													<div class="text-muted text-size-small"><i class="icon-checkmark3 text-size-mini position-left"></i>US</div>
 												</div>
 											</td>
 											
 											<td>
-												<h6 class="text-semibold no-margin">1306</h6>
+												<h6 class="text-semibold no-margin">${s1.blogCount}</h6>
 											</td>
 										</tr>
+											</c:forEach>
 
-										<tr>
-											<td>
-												<div class="media-left media-middle">
-													<a href="#" class="btn bg-danger-400 btn-rounded btn-icon btn-xs legitRipple">
-														<span class="letter-icon">A</span>
-													</a>
-												</div>
-
-												<div class="media-body">
-													<div class="media-heading">
-														<a href="#" class="letter-icon-title">AdNovum</a>
-													</div>
-
-													<div class="text-muted text-size-small"><i class="icon-spinner11 text-size-mini position-left"></i>Russia</div>
-												</div>
-											</td>
-											<td>
-												<h6 class="text-semibold no-margin">279</h6>
-											</td>
-										</tr>
-
-										<tr>
-											<td>
-												<div class="media-left media-middle">
-													<a href="#" class="btn bg-indigo-400 btn-rounded btn-icon btn-xs legitRipple">
-														<span class="letter-icon">D</span>
-													</a>
-												</div>
-
-												<div class="media-body">
-													<div class="media-heading">
-														<a href="#" class="letter-icon-title">brusek</a>
-													</div>
-
-													<div class="text-muted text-size-small"><i class="icon-lifebuoy text-size-mini position-left"></i>Germany</div>
-												</div>
-											</td>
-											
-											<td>
-												<h6 class="text-semibold no-margin">249</h6>
-											</td>
-										</tr>
-
-										<tr>
-											<td>
-												<div class="media-left media-middle">
-													<a href="#" class="btn bg-success-400 btn-rounded btn-icon btn-xs legitRipple">
-														<span class="letter-icon">O</span>
-													</a>
-												</div>
-
-												<div class="media-body">
-													<div class="media-heading">
-														<a href="#" class="letter-icon-title">Steve Marinucci</a>
-													</div>
-
-													<div class="text-muted text-size-small"><i class="icon-lifebuoy text-size-mini position-left"></i>US</div>
-												</div>
-											</td>
-											
-											<td>
-												<h6 class="text-semibold no-margin">10</h6>
-											</td>
-										</tr>
-
-										<tr>
-											<td>
-												<div class="media-left media-middle">
-													<a href="#" class="btn bg-danger-400 btn-rounded btn-icon btn-xs legitRipple">
-														<span class="letter-icon">A</span>
-													</a>
-												</div>
-
-												<div class="media-body">
-													<div class="media-heading">
-														<a href="#" class="letter-icon-title">Steven Ruygrok</a>
-													</div>
-
-													<div class="text-muted text-size-small"><i class="icon-spinner11 text-size-mini position-left"></i>US</div>
-												</div>
-											</td>
-											
-											<td>
-												<h6 class="text-semibold no-margin">5</h6>
-											</td>
-										</tr>
-									</tbody>
+																		</tbody>
 								</table>
    
 							</div>
@@ -218,7 +157,7 @@
 							
 							</div>
 								
-							
+							</form>
 										
 																
 							
@@ -262,7 +201,7 @@
 						<thead>
 							<tr>
 								<th>Blog Post Title</th>
-								<th class="hidden" width="0%" >Frequency</th>
+								<th></th>
 								<th class="hidden" width="0%"></th>
 								<th class="hidden" width="0%"></th>
 								<th class="hidden"  width="0%"></th>
@@ -270,12 +209,18 @@
 							</tr>
 						</thead>
 						<tbody>
+							<c:set var="i" value="0" />
+																<c:set var="eo" value="1" />
+
+
+				<c:forEach items="${blogTitlePost}" var="s12" begin="${i}">
 							<tr>
-								<td>Choosing sandals that meet the corporate casual dress code <a href="#" class="btn bg-primary-400 btn-rounded btn-icon btn-xs legitRipple pull-right"
-													>
+<td>${s12.blogTitle} <a href="#" class="btn bg-primary-400 btn-rounded btn-icon btn-xs legitRipple pull-right">
 														<span class="letter-icon icon-eye2"></span>
 													</a></td>
-								<td class="hidden" width="0%"></td>
+								<td>	<button type="button" class="use-address btn btn-primary btn-rounded legitRipple">
+																			<i class="icon-target"></i>
+																		</button></td>
 								<td class="hidden" width="0%"></td>
 								<td class="hidden" width="0%"></td>
 								<td class="hidden" width="0%"></td>
@@ -283,6 +228,7 @@
 
 								</td>
 							</tr>
+							</c:forEach>
 							</tbody>
 							</table>
    
@@ -304,9 +250,7 @@
 							</div>
 
 							<div class="panel-body">
-						<textarea disabled class="form-control" rows="12">Celebrated South Florida Chef Lindsay Autry is close to opening the doors of The Regional Kitchen & Public House at CityPlace in West Palm Beach. Over the past couple of months, construction has transformed the blank, open space into the vision Chef Autry & Thierry Beaud have of an open pantry kitchen, with a main dining room tastefully partitioned to create a warm and intimate ambiance. The restaurant will have outdoor seating on the refinished patio, significant private dining space and a distinct elaborate bar and lounge area. “As a chef that has built a home and career in the Palm Beach area over the past several years, the launch of this amazing project excites me both personally and professionally,” Autry said. Continuing to be inspired by consciously sourced ingredients, Autry has spent close to a decade working closely with South Florida’s most fundamental industry professionals - fisherman, farmers, and culinary artisans. Her intimate knowledge of regional product, as well as that of the exceptional product sourced beyond Florida’s borders, is matched only by the extraordinary culinary talents that have earned her industry celebrity and continued national acclaim. During her most recent visit to Kai-Kai Farm in Indiantown, Fla., Autry began to choose some of the selections of the best local ingredients for The Regional Kitchen & Public House’s new and evolving menu. “We toured the farm, ate warm strawberries right off the vine, and got our hands dirty. Knowing where our food comes from, seeing it through the whole process from ground to plate, those are the things I’ve dreamed of for this project,” Autry said. The Regional Kitchen & Public House, Autry said, intends to present a unique perspective on America’s time-honored cuisine through local ingredients, seasonally influenced dishes and the soulful inspiration of a chef-driven kitchen. “We are very excited to become a part of the Okeechobee corridor rebirth along with brands like Restoration Hardware and large new developments such as the beautiful convention center hotel.” said restaurateur Thierry Beaud. The Regional Kitchen & Public House will become the fifth restaurant concept for the TITOU Hospitality Group under Beaud’s leadership. Some of The Region’s fresh menu items will include: * Florida Sweet Corn & Heirloom Tomato Salad: butter lettuce, crispy okra, buttermilk ranch * House Chorizo & Key Clams: trofie pasta, spinach, braised fennel * Boneless Half Chicken: lemony orzo risotto, brussel leaves, feta & pepperoncini * Local Snapper in Banana Leaf: salsa verde, roasted tomatoes & radishes Autry’s culinary skills have earned her the opportunity to work alongside some of the best chefs in at prominent restaurants along the East Coast and in Mexico. A graduate of Johnson & Wales University, Autry honed her skill under James Beard Award winning Chef Michelle Bernstein, working as sous, then executive chef at a number of Bernstein’s top restaurants before headlining as a “Top Chef” finalist. Autry was Executive Chef of the historic Sundy House in Delray Beach, Fla., with whom she also traveled to New York City to cook at the prestigious James Beard House, and in Spring 2015, Autry won the Miami leg in the traveling culinary battle COCHON 555, which allowed her to compete against the country’s best in the final Grand COCHON competition during the 2015 Aspen Food & Wine.
-   
-						</textarea>
+						<textarea disabled class="form-control" rows="12" id="blogpost"></textarea>
                         
 							</div>
 						</div>
@@ -335,7 +279,7 @@
 						<div class="col-md-6 col-sm-12 col-xs-12">
 						<div class="panel panel-primary">
 							<div class="panel-heading">
-								<h6 class="panel-title">List of Domains<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<h6 class="panel-title">Top Keywords<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
 									<ul class="icons-list">
 				                		<li><a data-action="collapse"></a></li>
@@ -346,30 +290,8 @@
 							</div>
 
 							<div class="panel-body">
-						<table class="table datatable-basic">
-						<thead>
-							<tr>
-								<th>URL</th>
-								<th>Frequency</th>
-								<th class="hidden" width="0%"></th>
-								<th class="hidden" width="0%"></th>
-								<th class="hidden"  width="0%"></th>
-								<th class="hidden" width="0%"></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Marth</td>
-								<td><a href="#">Enright</a></td>
-								<td class="hidden" width="0%"></td>
-								<td class="hidden" width="0%"></td>
-								<td class="hidden" width="0%"></td>
-								<td class="hidden" width="0%">
-
-								</td>
-							</tr>
-							</tbody>
-							</table>
+						<div id="my_words_cloud" class="col-md-12 col-sm-12 col-xs-12"
+										style="height: 335px;"></div>
 
    
 							</div>
@@ -393,28 +315,34 @@
 							</div>
 
 							<div class="panel-body">
-						<table class="table datatable-basic">
+						<table class="table datatable-basic" style="min-height:200px;">
 						<thead>
 							<tr>
 								<th>Name</th>
 								<th> Type</th>
 								<th > Frequency</th>
 								<th >Positive</th>
-								<th class="hidden"  width="0%"></th>
+								<th>Negative</th>
 								<th class="hidden" width="0%"></th>
 							</tr>
 						</thead>
 						<tbody>
+						<c:set var="i" value="0" />
+												<c:set var="eo" value="1" />
+
+
+												<c:forEach items="${topEntity}" var="s1" begin="${i}">
 							<tr>
-								<td>GTX</td>
-								<td >Automobile</td>
-								<td >1</td>
-								<td>0.5205</td>
-								<td class="hidden" width="0%"></td>
+								<td>${s1.entityName}</td>
+														<td>${s1.entityType}</td>
+														<td>${s1.entityFrequency}</td>
+														<td>${s1.posSentiment}</td>
+														<td>${s1.negSentiment}</td>
 								<td class="hidden" width="0%">
 
 								</td>
 							</tr>
+							</c:forEach>
 							</tbody>
 							</table>
 

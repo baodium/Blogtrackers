@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/BT-web/!svn/ver/1/src/authentication
+END
+blogtrackers.config
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/BT-web/!svn/ver/75/src/authentication/blogtrackers.config
+END
+Login.java
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/BT-web/!svn/ver/41/src/authentication/Login.java
+END
+RegisterNewUser.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/BT-web/!svn/ver/68/src/authentication/RegisterNewUser.java
+END

@@ -87,7 +87,7 @@
 														<a href="#" class="letter-icon-title">Tracker Name</a>
 													</div>
 
-													<div class="text-muted text-size-small" ><i class="icon-target text-size-mini position-left"></i><span  id="trackername"></span> </div>
+													<div class="text-muted text-size-small" ><i class="icon-target text-size-mini position-left"></i><span id="trackername"></span> </div>
 												</div>
 											</td>
 											

@@ -5,7 +5,10 @@
 --%>
 
 <%@page import="java.util.*"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%
 	Object username = (null == session.getAttribute("user")) ? "" : session.getAttribute("user");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
@@ -23,9 +26,9 @@
 				<h4>
 					<i class="icon-arrow-left52 position-left"></i>
 					<span class="text-semibold">Data Export</span>
-					<small class="display-block">Export your Data in JSON</small>
+					<small class="display-block">Export your Data in JSON <font color=red>${erorrMessage}</font>
 				</h4>
-				<small><font color=red>${erorrMessage}</font></small>
+				
 				<div class="form-group">
 				<div class="col-md-12">
 				
