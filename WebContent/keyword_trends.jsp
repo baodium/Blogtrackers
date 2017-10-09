@@ -3,7 +3,12 @@
     Created on : 28-Aug-2017, 22:23:45
     Author     : Omnibus_03
 --%>
+
 <%@page import="java.util.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8" isELIgnored="false"%>
 <%
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");

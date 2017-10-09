@@ -1,0 +1,744 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package blogtracker.gui.blogtrackers;
+
+import blogtracker.util.UtilFunctions;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
+
+/**
+ *
+ * @author skumar34
+ */
+public class BlogSiteInfo extends UtilFunctions
+{
+    
+     public ArrayList<DomainLink> getMostFrequentLinks(int blogsiteID)
+     {
+        HashMap<String,Integer> hm = new HashMap<String,Integer>();
+//        String[] domains = {"rendymaulana","ndorokakung","afatih","blogombal","anangku","enda.globomedia","rovicky","harry.sufehmi","adinoto","caping","theunspunblog","anotherfool"
+//                              ,"asruldinazis","ndobos","rosyidi","imanbrotoseno","perspektif","jakartass","maseko","rahard","michaelhutagalung","radityadika","bayumukti","suamigila"
+//                              ,"bennychandra","priyandoyo","bajingloncat","gadgetnet","kun.co.ro","chikastuff","rivermaya"
+//                              ,"tikabamget","budiputra","jalansutera","jimmysun","venus-to-mars","akhdian","antobilang"
+//                              ,"zalukhu","sekadarblog","mumtaz","hermansaksono","yusril","edratna","arifkurniawan","maia",
+//                                "ichanx","dexno","nonadita","inijie"};
+
+                try {
+                    String querystr = "select post from blogposts where blogsite_id=" + blogsiteID;
+                    Connection conn = getConn();
+                    Statement stmt = conn.createStatement();
+                    ResultSet rs = stmt.executeQuery(querystr);
+                    while (rs.next()) {
+                       // System.out.println("processing post");
+                        String post = rs.getString("post");
+                        String pattern = "href=\"";
+                        int last = 0;
+                        while (last != -1) {
+                            int start = post.indexOf(pattern, last);
+                            int end = post.indexOf("\"", start + pattern.length());
+                            if (start != -1 && end != -1) {
+                                last = end;
+                                String url = post.substring(start + pattern.length(), end);
+                                if(url.indexOf("http:")==-1&&url.indexOf("www")==-1)
+                                {
+                                    continue;
+                                }
+//                                if(url.indexOf(domains[i-3])!=-1)
+//                                {
+//                                    //ignore self links
+//                                    continue;
+//                                }
+                               if (url.contains("tags")||url.contains("category")||url.contains("tag")||url.contains("category")) {
+                                    continue;
+                                }
+                                 url = url.replaceAll("\\s+","");
+                                 if(url.isEmpty())
+                                 {
+                                     continue;
+                                 }
+                                if (!hm.containsKey(url)) {
+                                    hm.put(url, 1);
+                                } else {
+                                    hm.put(url, hm.get(url) + 1);
+                                }
+                            } else {
+                                last = -1;
+                            }
+                        }
+                    }
+
+                    Set<String> keys = hm.keySet();
+                    urls[] links = new urls[keys.size()];
+                    int count = 0;
+                    for(String st:keys)
+                    {
+                        urls ul = new urls();
+                        ul.count = hm.get(st);
+                        ul.url  = st;
+                        links[count] = ul;
+                        count++;
+
+                    }
+                    //System.out.println("total links"+links.length);
+                    Arrays.sort(links,Collections.reverseOrder());
+                    ArrayList<DomainLink> urllinks = new ArrayList<DomainLink>();
+                    if(links.length>0)
+                    {
+                        int length = 10;
+                        if(links.length<10)
+                        {
+                            length = links.length;
+                        }
+                        for(int i=0;i<length;i++)
+                        {
+
+                            urls url = links[i];
+                            DomainLink dm = new DomainLink();
+                            dm.setLink(url.url);
+                            dm.setRank(url.count);
+                            urllinks.add(dm);
+                        }
+                    }
+                    //System.out.println("size "+urllinks.size());
+                    return urllinks;
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+                return null;
+     }
+
+//     public Connection getConn()
+//     {
+//         try {
+//            String constr = "jdbc:mysql://149.169.226.79:3306/blogtrackers?useUnicode=true&characterEncoding=utf8";
+//            String username = "shamanth";
+//            String password = "shamanth123";
+//            if(constr!=null&&username!=null&&password!=null)
+//            {
+//                try {
+//                        Class.forName("com.mysql.jdbc.Driver").newInstance();
+//                    } catch (InstantiationException ex) {
+//                        ex.printStackTrace();
+//                    } catch (IllegalAccessException ex) {
+//                        ex.printStackTrace();
+//                    }catch (ClassNotFoundException ex) {
+//                    ex.printStackTrace();
+//                    }
+//            }
+//            Connection conn = DriverManager.getConnection(constr,username,password);
+//            return conn;
+//        } catch (SQLException ex) {
+//
+//        }
+//         return null;
+//     }
+
+//     public static void main(String[] args)
+//     {
+//         BlogSiteInfo bsinfo = new BlogSiteInfo();
+//         bsinfo.getMostFrequentLinks(55);
+//     }
+
+     public List<BlogSites> getblogsites()
+    {
+        try {
+
+            List<BlogSites> blogsites = new ArrayList<BlogSites>();
+            Connection  conn = getConn();
+            Statement stmt = conn.createStatement();
+            String querystr = "select blogsite_id, blogsite_name, site_type from blogsites order by blogsite_id";
+            ResultSet rset = stmt.executeQuery(querystr);
+            while (rset.next())
+            {
+                BlogSites bs = new BlogSites(rset.getString("blogsite_name"), rset.getInt("blogsite_id"), rset.getInt("site_type"));
+                blogsites.add(bs);
+            }
+            rset.close();
+            conn.close();
+            return blogsites;
+        } catch (SQLException ex) {
+           
+            return null;
+        }
+    }
+
+    public void getfbtwlinks()
+     {
+        HashMap<String,Integer> hm = new HashMap<String,Integer>();
+        /*String[] domains = {"rendymaulana","ndorokakung","afatih","blogombal","anangku","enda.globomedia","rovicky","harry.sufehmi","adinoto","caping","theunspunblog","anotherfool"
+                              ,"asruldinazis","ndobos","rosyidi","imanbrotoseno","perspektif","jakartass","maseko","rahard","michaelhutagalung","radityadika","bayumukti","suamigila"
+                              ,"bennychandra","priyandoyo","bajingloncat","gadgetnet","kun.co.ro","chikastuff","rivermaya"
+                              ,"tikabamget","budiputra","jalansutera","jimmysun","venus-to-mars","akhdian","antobilang"
+                              ,"zalukhu","sekadarblog","mumtaz","hermansaksono","yusril","edratna","arifkurniawan","maia",
+                                "ichanx","dexno","nonadita","inijie"};
+        */
+        ArrayList<String> links= new ArrayList<String>();
+        for (int i = 3; i <= 52; i++)
+           {
+
+                BufferedWriter bw = null;
+                try {
+                    String querystr = "select post from blogposts where blogsite_id=" + i;
+                    Connection conn = getConn();
+                    Statement stmt = conn.createStatement();
+                    ResultSet rs = stmt.executeQuery(querystr);
+
+                    while (rs.next()) {
+                        String post = rs.getString("post");
+                        String pattern = "href=\"";
+                        int last = 0;
+                        while (last != -1) {
+                            int start = post.indexOf(pattern, last);
+                            int end = post.indexOf("\"", start + pattern.length());
+                            if (start != -1 && end != -1) {
+                                last = end;
+                                String url = post.substring(start + pattern.length(), end);
+                                if(url.indexOf("twitter")==-1&&url.indexOf("facebook")==-1)
+                                {
+                                    continue;
+                                }
+                                if (url.contains("tags")) {
+                                    continue;
+                                }
+                                if(!links.contains(url))
+                                {
+                                    links.add(url);
+                                }
+                            } else {
+                                last = -1;
+                            }
+                        }
+                    }
+                } catch (SQLException ex) {
+                   ex.printStackTrace();
+                }
+
+        }
+
+
+        BufferedWriter bw;
+        try {
+            bw = new BufferedWriter(new FileWriter("C:\\indonesia\\blogger-properties\\fb-tw-profiles.txt"));
+        for(String li:links)
+        {
+            bw.write(li);
+            bw.newLine();
+        }
+            bw.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+     }
+
+    public BlogSiteInfo()
+    {
+        //empty constructor for Flex.
+    }
+
+    public List<DataPoint> getFrequentDays(int siteid)
+    {
+        HashMap<Integer,Integer> hm = new HashMap<Integer,Integer>();
+        //hashmap for days of the week
+        HashMap<Integer, String> days = new HashMap<Integer, String>();
+        days.put(1,"Sunday");
+        days.put(2, "Monday");
+        days.put(3, "Tuesday");
+        days.put(4, "Wednesday");
+        days.put(5, "Thursday");
+        days.put(6, "Friday");
+        days.put(7, "Saturday");
+        try {
+            String querystr = "select blogsite_id from blogsites where blogsite_id = "+siteid;
+            Connection conn = getConn();
+            Statement stmt = conn.createStatement();
+            ResultSet rset = stmt.executeQuery(querystr);
+            //System.out.println("inside");
+            while(rset.next())
+            {
+                int blogsiteID = rset.getInt("blogsite_id");
+                querystr = "select date from blogposts where blogsite_id = '"+blogsiteID+"'";
+                rset = stmt.executeQuery(querystr);
+                while(rset.next())
+                {
+                    java.util.Date postdate= rset.getDate("date");
+                    Calendar cal = Calendar.getInstance();
+                    cal.setTime(postdate);
+
+                    int dow = cal.get(Calendar.DAY_OF_WEEK);
+                    
+                    if(hm.containsKey(dow))
+                    {
+                        hm.put(dow,(hm.get(dow)+1));
+                    }
+                    else
+                        hm.put(dow, 1);
+
+                }
+            }
+            List<DataPoint> dps= new ArrayList<DataPoint>();
+            Set<Integer> keys = hm.keySet();
+            for(int key:keys)
+            {
+                //System.out.println(days.get(key)+" "+hm.get(key));
+                DataPoint dp = new DataPoint(days.get(key),hm.get(key),0,"","");
+                dps.add(dp);
+            }
+            return dps;
+        } catch (SQLException ex) {
+            List<DataPoint> dps= new ArrayList<DataPoint>();
+            return dps;
+        }
+    }
+
+//public Connection getConn()
+//{
+//
+//    try {
+//
+//            try {
+//                    Class.forName("com.mysql.jdbc.Driver").newInstance();
+//                } catch (InstantiationException ex) {
+//                    ex.printStackTrace();
+//                } catch (IllegalAccessException ex) {
+//                    ex.printStackTrace();
+//                } catch (ClassNotFoundException ex) {
+//                    ex.printStackTrace();
+//                }
+//        //String constr = "jdbc:sqlserver://149.169.226.79:1433;instanceName=DMMLSERVER;databaseName=blogtrackers;SelectMethod=cursor;user=shamanth;password=shamanth123";
+//        String constr = "jdbc:mysql://149.169.226.79:3306/blogtrackers?useUnicode=true&characterEncoding=utf8";
+//         //Connection conn = DriverManager.getConnection(constr);
+//         Connection conn = DriverManager.getConnection(constr, "shamanth", "shamanth123");
+//        return conn;
+//    } catch (SQLException ex) {
+//        ex.printStackTrace();
+//    }
+//
+//    return null;
+//}
+
+    public List<ChartPoint> getAvgMonthlyFrequency(int siteid)
+    {
+        HashMap<String,Integer> hm = new HashMap<String,Integer>();
+        //hashmap for months of a year
+        HashMap<Integer, String> months = new HashMap<Integer, String>();
+        months.put(1,"January");
+        months.put(2, "February");
+        months.put(3, "March");
+        months.put(4, "April");
+        months.put(5, "May");
+        months.put(6, "June");
+        months.put(7, "July");
+        months.put(8, "August");
+        months.put(9, "September");
+        months.put(10, "October");
+        months.put(11, "November");
+        months.put(12, "December");
+
+//        HashMap<String,Integer> revmonths = new HashMap<String,Integer>();
+//        revmonths.put("January",1);
+//        revmonths.put("February",2);
+//        revmonths.put("March",3);
+//        revmonths.put("April",4);
+//        revmonths.put("May",5);
+//        revmonths.put("June",6);
+//        revmonths.put("July",7);
+//        revmonths.put("August",8);
+//        revmonths.put("September",9);
+//        revmonths.put("October",10);
+//        revmonths.put("November",11);
+//        revmonths.put("December",12);
+        
+        try {
+
+            Calendar currentCal = Calendar.getInstance();
+            int year = currentCal.get(Calendar.YEAR);
+            year = year-3;
+            String sdate = year+"-01-01";
+            String edate = (year+3)+"-01-01";
+            String querystr = "select date from blogposts where blogsite_id = "+siteid+" and date between '"+sdate+"' and '"+edate+"'";
+            //System.out.println(querystr);
+            Connection conn = getConn();
+            Statement stmt = conn.createStatement();
+            ResultSet rset = stmt.executeQuery(querystr);
+            while(rset.next())
+            {
+                java.util.Date postdate= rset.getDate("date");
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(postdate);
+                int dow = cal.get(Calendar.MONTH);
+                int dateyear = cal.get(Calendar.YEAR);
+                String key = dow+"-"+dateyear;
+                if(hm.containsKey(key))
+                {
+                    hm.put(key,(hm.get(key)+1));
+                }
+                else
+                    hm.put(key, 1);
+
+            }
+
+            List<ChartPoint> dps= new ArrayList<ChartPoint>();
+//            for(int i=0;i<dps.size();i++)
+//            {
+//                dps.add(new Chartoint());
+//            }
+            Set<String> keys = hm.keySet();
+            double[] avgs = new double[12];
+            int[] count = new int[12];
+            for(String key:keys)
+            {
+                String[] keysplit = key.split("-");
+                if(keysplit.length==2)
+                {
+                    int month = Integer.parseInt(keysplit[0]);
+                    int dateyear = Integer.parseInt(keysplit[1]);
+                    ChartPoint cp = null;
+                    boolean flag = false;
+                    for(ChartPoint point:dps)
+                    {
+                        if(point.interval.equals(months.get(month+1)))
+                        {
+                            cp = point;
+                            flag = true;
+                            break;
+                        }
+                        
+                    }
+                    if(!flag)
+                    {
+                        cp = new ChartPoint();
+                        cp.setInterval(months.get(month+1));
+                    }
+                    if(dateyear==year)
+                    {
+                        cp.setNoofposts0(hm.get(key));
+                    }
+                    else
+                    if(dateyear==year+1)
+                    {
+                        cp.setNoofposts1(hm.get(key));
+                    }
+                    else
+                        if(dateyear==year+2)
+                        {
+                            cp.setNoofposts2(hm.get(key));
+                        }
+                    if(month>=0)
+                    {
+                        avgs[month] = avgs[month]+hm.get(key);
+                        count[month]++;
+                        //System.out.println(months.get(index+1)+" "+hm.get(key));
+                    }
+                    if(!flag)
+                    {
+                        dps.add(cp);
+                    }
+                }        
+            }
+           // if((dps.size()==avgs.length)&&(avgs.length==count.length))
+          //  {
+
+                if(dps.size()==12)
+                {
+                    for(int i=0;i<12;i++)
+                    {
+                        if(count[i]>0)
+                        {
+                            dps.get(i).setAvg((int)avgs[i]/count[i]);
+                        }
+                        else
+                            dps.get(i).setAvg(0);
+                    }
+                }
+                else
+                {
+                    for(int i=0;i<dps.size();i++)
+                    {
+                        if(count[i]>0)
+                        {
+                            dps.get(i).setAvg((int)avgs[i]/count[i]);
+                        }
+                        else
+                            dps.get(i).setAvg(0);
+                    }
+                }
+               // System.out.println(dps.size());
+                return dps;
+//            }
+//            else
+//            {
+//                return null;
+//            }
+            
+        } catch (SQLException ex) {
+            List<ChartPoint> dps= new ArrayList<ChartPoint>();
+            return dps;
+        }
+    }
+
+     public ArrayList<DomainLink> getMostFrequentDomains(int blogsiteID)
+     {
+        HashMap<String,Integer> hm = new HashMap<String,Integer>();
+//        String[] domains = {"rendymaulana","ndorokakung","afatih","blogombal","anangku","enda.globomedia","rovicky","harry.sufehmi","adinoto","caping","theunspunblog","anotherfool"
+//                              ,"asruldinazis","ndobos","rosyidi","imanbrotoseno","perspektif","jakartass","maseko","rahard","michaelhutagalung","radityadika","bayumukti","suamigila"
+//                              ,"bennychandra","priyandoyo","bajingloncat","gadgetnet","kun.co.ro","chikastuff","rivermaya"
+//                              ,"tikabamget","budiputra","jalansutera","jimmysun","venus-to-mars","akhdian","antobilang"
+//                              ,"zalukhu","sekadarblog","mumtaz","hermansaksono","yusril","edratna","arifkurniawan","maia",
+//                                "ichanx","dexno","nonadita","inijie"};
+
+//        for (int i = 3; i <= 52; i++)
+//           {
+
+                //BufferedWriter bw = null;
+                try {
+                    String querystr = "select post from blogposts where blogsite_id=" + blogsiteID;
+                    Connection conn = getConn();
+                    Statement stmt = conn.createStatement();
+                    ResultSet rs = stmt.executeQuery(querystr);
+                    while (rs.next()) {
+                        String post = rs.getString("post");
+                        String pattern = "href=\"";
+                        int last = 0;
+                        while (last != -1) {
+                            int start = post.indexOf(pattern, last);
+                            int end = post.indexOf("\"", start + pattern.length());
+                            if (start != -1 && end != -1) {
+                                last = end;
+                                String url = post.substring(start + pattern.length(), end);
+                                if(url.indexOf("http:")==-1&&url.indexOf("www")==-1)
+                                {
+                                    continue;
+                                }
+//                                if(url.indexOf(domains[i-3])!=-1)
+//                                {
+//                                    //ignore self links
+//                                    continue;
+//                                }
+                                if (url.contains("tags")||url.contains("category")||url.contains("tag")||url.contains("category")) {
+                                    continue;
+                                }
+                                url = url.replaceAll("www\\.", "");
+                                url = url.replaceAll("http://", "");
+                                url = url.replaceAll("/.*", "");
+                                url = url.replaceAll("\\s+","");
+                                if(url.isEmpty())
+                                {
+                                    continue;
+                                }
+                                if (!hm.containsKey(url)) {
+                                    hm.put(url, 1);
+                                } else {
+                                    hm.put(url, hm.get(url) + 1);
+                                }
+                            } else {
+                                last = -1;
+                            }
+                        }
+                    }
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+
+        //}
+        Set<String> keys = hm.keySet();
+                    urls[] links = new urls[keys.size()];
+                    int count = 0;
+                    for(String st:keys)
+                    {
+                        urls ul = new urls();
+                        ul.count = hm.get(st);
+                        ul.url  = st;
+                        links[count] = ul;
+                        count++;
+
+                    }
+                    //System.out.println(links.length);
+        Arrays.sort(links,Collections.reverseOrder());
+        ArrayList<DomainLink> domains = new ArrayList<DomainLink>();
+        if(links.length>0)
+        {
+            int length = 10;
+            if(links.length<10)
+            {
+                length = links.length;
+            }
+            for(int i=0;i<length;i++)
+            {
+                urls url = links[i];
+                DomainLink dm = new DomainLink();
+                dm.setLink(url.url);
+                dm.setRank(url.count);
+                domains.add(dm);
+            }
+        }
+        return domains;
+     }
+
+
+     //compute the monthly average number of posts of the bloggers.
+     public void getblogfrequency()
+     {
+
+        BufferedWriter bw = null;
+            try {
+                Connection conn = getConn();
+                bw = new BufferedWriter(new FileWriter("C:\\indonesia\\blogger-properties\\blogfreq-monthly.txt"));
+                Statement stmt = conn.createStatement();
+                for (int i = 1; i <= 2; i++) {
+                    String querystr = "select avg(ct) as ag from (select ct = count(*), Month(date) as mt, Year(date) as yr  from blogposts where blogsite_id = " + i + " group by Month(date),Year(date)) blogposts";
+                    ResultSet rs = stmt.executeQuery(querystr);
+                    if (rs.next())
+                    {
+//                        System.out.println(rs.getInt("ag"));
+                       bw.write(i+","+rs.getInt("ag"));
+                        bw.newLine();
+                    }
+                }
+                bw.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+       }
+
+   public void getLinks()
+    {
+
+        String[] domains = {"rendymaulana","ndorokakung","afatih","blogombal","anangku","enda.globomedia","rovicky","harry.sufehmi","adinoto","caping","theunspunblog","anotherfool"
+                              ,"asruldinazis","ndobos","rosyidi","imanbrotoseno","perspektif","jakartass","maseko","rahard","michaelhutagalung","radityadika","bayumukti","suamigila"
+                              ,"bennychandra","priyandoyo","bajingloncat","gadgetnet","kun.co.ro","chikastuff","rivermaya"
+                              ,"tikabamget","budiputra","jalansutera","jimmysun","venus-to-mars","akhdian","antobilang"
+                              ,"zalukhu","sekadarblog","mumtaz","hermansaksono","yusril","edratna","arifkurniawan","maia.blogdetik",
+                                "ichanx","dexno","nonadita","inijie"};
+
+
+            BufferedWriter bw = null;
+            domains = new String[50];
+            try {
+                Connection conn = getConn();
+                Statement stmt = conn.createStatement();
+                //ArrayList<String> siteslist = new ArrayList<String>();
+                String qstr = "Select * from blogsites where blogsite_id>2";
+                ResultSet rset = stmt.executeQuery(qstr);
+                int k=0;
+                while (rset.next()) {
+                    String ul = rset.getString("blogsite_url");
+                    ul = ul.replaceAll("http://", "");
+                    ul = ul.replaceAll("www.", "");
+
+                   // siteslist.add(ul);
+                   domains[k] = ul;
+                   k++;
+                }
+                bw = new BufferedWriter(new FileWriter("C:\\indonesia\\event4\\after-network(int).txt"));
+
+                for (int i = 3; i <= 52; i++)
+                {
+                    String querystr = "select post from blogposts where blogsite_id=" + i + " and date<'07/01/2006' and date<'12/31/2006'";
+                    ResultSet rs = stmt.executeQuery(querystr);
+                    ArrayList<String> urls = new ArrayList<String>();
+                    while (rs.next())
+                    {
+                        String post = rs.getString("post");
+                        String pattern = "href=\"";
+                        int last = 0;
+                        while (last != -1) {
+                            int start = post.indexOf(pattern, last);
+                            int end = post.indexOf("\"", start+pattern.length());
+                            if (start != -1 && end != -1) {
+                                last = end;
+                                String url = post.substring(start + pattern.length(), end);
+                                if(url.contains("tags/")||url.contains("category/"))
+                                    continue;
+                                if(url.indexOf(domains[i-3])!=-1)
+                                {
+                                    continue;
+                                }
+
+                                if(!urls.contains(url))
+                                {
+                                    urls.add(url);
+                                }
+                            } else {
+                                last = -1;
+                            }
+                        }
+                    }
+                    for (String st : urls)
+                    {
+                        for(int j=0;j<=domains.length-1;j++)
+                        {//System.out.println(domains.length+" "+j);
+                            if(st!=null)
+                            {
+                                if(st.indexOf(domains[j])!=-1)
+                                {
+                                    st= domains[j];
+                                    bw.write(domains[i-3]+","+st);
+                                    bw.newLine();
+                                    break;
+                                }
+                            }
+                        }
+
+                    }
+                }
+                bw.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+
+  }
+
+//   public static void main(String[] args)
+//   {
+//       BlogSiteInfo bs = new BlogSiteInfo();
+//       bs.getAvgMonthlyFrequency();
+//   }
+
+
+class urls implements Comparable
+{
+    public String url;
+    public int count;
+    public int compareTo(Object obj)
+        {
+            urls tempObject=new urls();
+            tempObject=(urls) obj;
+            if(this.count>tempObject.count)
+                return 1;
+            if(this.count<=tempObject.count)
+                return -1;
+            else
+                return 0;
+        }
+
+}
+
+//public static void main(String[] args)
+//{
+//    BlogSiteInfo bs = new BlogSiteInfo();
+//    bs.getMostFrequentDomains(2);
+//
+//}
+
+}

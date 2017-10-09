@@ -1,0 +1,74 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package blogtracker.util;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *
+ * @author skumar34
+ */
+public class getSiteTypes extends UtilFunctions
+{
+    public getSiteTypes()
+    {
+        
+    }
+
+    public ArrayList<SiteType> getsitetypes()
+    {
+        ArrayList<SiteType> sitetypes = new ArrayList<SiteType>();
+        try {
+
+            Connection conn = getConn();
+            //System.out.println("site types retrieving");
+            Statement stmt = conn.createStatement();
+            SiteType st = new SiteType();
+            st.setId(0);
+            st.setType("None Selected");
+            sitetypes.add(st);
+            String queryStr = "select SiteType_ID,Type_name from sitetypes";
+            ResultSet rset = stmt.executeQuery(queryStr);
+            while(rset.next())
+            {
+
+                String sitename = rset.getString("Type_name");
+                int sitetype = rset.getInt("SiteType_ID");
+                //System.out.println(sitename);
+                st = new SiteType();
+                st.setId(sitetype);
+                st.setType(sitename);
+                sitetypes.add(st);
+            }
+            //commented for Merlyna's version
+//            st = new SiteType();
+//            st.setId(9999);
+//            st.setType("All blogs");
+            st = new SiteType();
+            st.setId(9999);
+            st.setType("All blogs");
+            sitetypes.add(st);
+            st = new SiteType();
+            st.setId(9998);
+            st.setType("All tweets");
+            sitetypes.add(st);
+            //System.out.println(sitetypes.size());
+            return sitetypes;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            //Logger.getLogger(getSiteTypes.class.getName()).log(Level.SEVERE, null, ex);
+            return new ArrayList<SiteType>();
+        }
+    }
+
+}
+

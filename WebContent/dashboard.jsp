@@ -4,6 +4,13 @@
     Author     : Omnibus_03
 --%>
 <%@page import="java.util.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8" isELIgnored="false"%>
+
 <%
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
@@ -66,38 +73,7 @@
 
 				<!-- Main charts -->
 				<div class="row">
-				<!--  <div class="col-md-12">
-						<div class="panel panel-primary">
-							<div class="panel-heading">
-								<h6 class="panel-title">Set Up Tracker <%=tracker_id%><a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
-								<div class="heading-elements">
-									<ul class="icons-list">
-				                		<li><a data-action="collapse"></a></li>
-				                		<li><a data-action="reload"></a></li>
-				                		<li><a data-action="close"></a></li>
-				                	</ul>
-			                	</div>
-							</div>
-
-							<div class="panel-body">
-							<div class="form-group">
-							<label class="col-lg-2 control-label">Search For Tracker:</label>
-							<div class="col-lg-7">
-							<input type="text" class="form-control" placeholder="Search for Tracker">
-							</div>
-							<div class="col-lg-3">
-							<div class="text-right">
-							<button type="submit" class="btn btn-primary legitRipple">Search Now <i class="icon-arrow-right14 position-right"></i></button>
-							</div>
-							</div>		
-										
-							</div>
-							
-							
-							
-							</div>
-					</div>
-					</div>-->
+				
 				<div class="col-md-12">
 						<div class="panel panel-primary">
 							<div class="panel-heading">
@@ -162,7 +138,7 @@
 									
 
 					                	<!-- Progress counter -->
-										<div class="content-group-sm svg-center position-relative" id="hours-available-progress"><svg width="76" height="76"><g transform="translate(38,38)"><path class="d3-progress-background" d="M0,38A38,38 0 1,1 0,-38A38,38 0 1,1 0,38M0,36A36,36 0 1,0 0,-36A36,36 0 1,0 0,36Z" style="fill: rgb(238, 238, 238);"></path><path class="d3-progress-foreground" filter="url(#blur)" d="M2.326828918379971e-15,-38A38,38 0 1,1 -34.38342799370878,16.179613079472677L-32.57377388877674,15.328054496342538A36,36 0 1,0 2.204364238465236e-15,-36Z" style="fill: rgb(240, 98, 146); stroke: rgb(240, 98, 146);"></path><path class="d3-progress-front" d="M2.326828918379971e-15,-38A38,38 0 1,1 -34.38342799370878,16.179613079472677L-32.57377388877674,15.328054496342538A36,36 0 1,0 2.204364238465236e-15,-36Z" style="fill: rgb(240, 98, 146); fill-opacity: 1;"></path></g></svg><h2 class="mt-15 mb-5">${nblogposts}</h2><i class="icon-comment text-pink-400 counter-icon" style="top: 22px"></i><div>Blogs</div></div>
+										<div class="content-group-sm svg-center position-relative" id="hours-available-progress"><svg width="76" height="76"><g transform="translate(38,38)"><path class="d3-progress-background" d="M0,38A38,38 0 1,1 0,-38A38,38 0 1,1 0,38M0,36A36,36 0 1,0 0,-36A36,36 0 1,0 0,36Z" style="fill: rgb(238, 238, 238);"></path><path class="d3-progress-foreground" filter="url(#blur)" d="M2.326828918379971e-15,-38A38,38 0 1,1 -34.38342799370878,16.179613079472677L-32.57377388877674,15.328054496342538A36,36 0 1,0 2.204364238465236e-15,-36Z" style="fill: rgb(240, 98, 146); stroke: rgb(240, 98, 146);"></path><path class="d3-progress-front" d="M2.326828918379971e-15,-38A38,38 0 1,1 -34.38342799370878,16.179613079472677L-32.57377388877674,15.328054496342538A36,36 0 1,0 2.204364238465236e-15,-36Z" style="fill: rgb(240, 98, 146); fill-opacity: 1;"></path></g></svg><h2 class="mt-15 mb-5">${nblogposts}</h2><i class="icon-comment text-pink-400 counter-icon" style="top: 22px"></i><div>Blog post</div></div>
 										<!-- /progress counter -->
 
 
@@ -283,11 +259,31 @@
 					</div>
 
 					<div class="panel-body">
-<!--						<p class="content-group">Example of a <code>choropleth</code> world map. A choropleth map is a thematic map in which areas are shaded or patterned in proportion to the measurement of the statistical variable being displayed on the map. The choropleth map provides an easy way to visualize how a measurement varies across a geographic area or it shows the level of variability within a region. This example displays GDP by country, data stored in <code>json</code> file.</p>-->
-						
+			<div style="width:30%; float: left;">
+											<table class="table table-striped">
+    <thead>
+    <br/>
+
+        <th>Language</th>
+        <th>Amount</th>
+
+    </thead>
+    <tbody>
+													<c:forEach items="${nlg}" var="v1" begin="0" end="5">
+														<tr>
+
+															<td class="fs15 fw700 text-left">${fn:toUpperCase(fn:substring(v1[1], 0, 1))}${fn:toLowerCase(fn:substring(v1[1], 1,fn:length(v1[1])))}</td>
+															<td><fmt:formatNumber type = "number"
+         maxFractionDigits = "3" value = "${v1[0]}" /></td>
+														</tr>
+													</c:forEach>
+												</tbody>
+ 									 </table>
+  </div>						
 					
 					
-					<div class="bubble" style="width: 70%; clear: all; float: right; padding-left:150px"></div>
+						<div class="bubble" style="width: 70%; clear: all; float: right; padding-left:150px"></div>
+
 
 										</div>
 					</div>

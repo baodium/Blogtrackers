@@ -1,0 +1,95 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package blogtracker.util;
+
+import com.mysql.jdbc.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *
+ * @author skumar34
+ */
+public class DemoTwitterSearch
+{
+    public DemoTwitterSearch()
+    {
+        //emoty constructor for Flex
+    }
+
+    public Connection getconn()
+    {
+        try {
+
+
+            String constr = "jdbc:mysql://149.169.226.79/tweettrackers?autoReconnect=true&useUnicode=true&characterEncoding=utf8";
+            String username = "shamanth";
+            String password = "shamanth123";
+            if(constr!=null&&username!=null&&password!=null)
+            {
+                try {
+                        Class.forName("com.mysql.jdbc.Driver").newInstance();
+                    } catch (InstantiationException ex) {
+                        ex.printStackTrace();
+                    } catch (IllegalAccessException ex) {
+                        ex.printStackTrace();
+                    }catch (ClassNotFoundException ex) {
+                    ex.printStackTrace();
+                    }
+            }
+            Connection conn = (Connection) DriverManager.getConnection(constr,username,password);
+            return conn;
+        } catch (SQLException ex) {
+            Logger.getLogger(DemoTwitterSearch.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+    }
+
+//    public static void main(String[] args)
+//    {
+//        DemoTwitterSearch dm = new DemoTwitterSearch();
+//        dm.gettweets();
+//
+//    }
+
+    public ArrayList<UserLocation> gettweets()
+    {
+        try {
+            //System.out.println("inside");
+            ArrayList<UserLocation> tweets = new ArrayList<UserLocation>();
+            String querystr = "select text,user,lat,lng,location,geoflag from tweets where tweetid not in (select tweetid from tweets where lat=0.0 and lng=0.0 and geoflag=false)";
+            Connection conn = getconn();
+            Statement stmt = conn.createStatement();
+            ResultSet rset = stmt.executeQuery(querystr);
+            while (rset.next())
+            {
+                //System.out.println("some result");
+                UserLocation user = new UserLocation();
+                user.geoflag = rset.getBoolean("geoflag");
+                user.latitude = rset.getDouble("lat");
+                user.longitude = rset.getDouble("lng");
+                user.tweet = rset.getString("text");
+                user.location = rset.getString("location");
+                user.username = rset.getString("user");
+                tweets.add(user);
+            }
+            //System.out.println(tweets.size());
+            return tweets;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+
+    }
+
+
+}

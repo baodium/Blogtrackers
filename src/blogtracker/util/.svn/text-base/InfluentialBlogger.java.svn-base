@@ -1,0 +1,55 @@
+package blogtracker.util;
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author Shamanth
+ */
+public class InfluentialBlogger implements Comparable {
+
+    private String bloggerName;
+    private double influenceScore;
+    
+    public InfluentialBlogger()
+    {
+        
+    }
+    public InfluentialBlogger(String ibloggerName,double iinfluenceScore)
+     {
+        this.bloggerName=ibloggerName;
+        this.influenceScore=iinfluenceScore;
+     }
+    public int compareTo(Object obj)
+    {
+        InfluentialBlogger tempBlogger=new InfluentialBlogger();
+        tempBlogger=(InfluentialBlogger)obj;
+        if(this.influenceScore>tempBlogger.influenceScore)
+            return 1;
+        if(this.influenceScore<tempBlogger.influenceScore)
+            return -1;
+        else
+            return 0;
+    }
+    
+    public double getInfluenceScore()
+    {
+        return this.influenceScore;
+    }
+    public String getBloggerName()
+    {
+        return this.bloggerName;
+    }
+    public void setInfluenceScore(double iInfluenceScore)
+    {
+        this.influenceScore=iInfluenceScore;
+        
+    }
+    public void setbloggerName(String iBloggerName)
+    {
+        this.bloggerName=iBloggerName;
+    }
+}

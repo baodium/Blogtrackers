@@ -1,0 +1,49 @@
+/*
+ * sitesDialog.java
+ *
+ * Created on May 13, 2008, 1:32 AM
+ */
+
+package blogtracker.gui.blogtrackers;
+
+/**
+ *
+ * @author  skumar34
+ */
+import blogtracker.util.UtilFunctions;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class sitesDialog extends UtilFunctions{
+
+    public ArrayList<BlogSites> getBlogSites()
+    {
+        ArrayList<BlogSites> sites = new ArrayList<BlogSites>();
+        try {
+            Connection conn = getConn();
+            String queryStr = "select blogsite_id, blogsite_name, site_type from blogsites order by blogsite_name";
+            Statement stmt = conn.createStatement();
+            ResultSet rset = stmt.executeQuery(queryStr);
+            while (rset.next())
+            {
+
+                String siteName = rset.getString("blogsite_name");
+                int siteID = rset.getInt("blogsite_ID");
+                String siteType = rset.getString("site_type");
+                //System.out.println(siteType);
+                BlogSites bsites = new BlogSites(siteName,siteID,siteType,false);
+                sites.add(bsites);
+            }
+            rset.close();
+            stmt.close();
+            conn.close();
+            return sites;
+        } catch (SQLException ex) {
+            Logger.getLogger(sitesDialog.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+}
