@@ -56,27 +56,30 @@ public class ExportJSON extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session= request.getSession();
-		
 		if(request.getParameter("tracker")!=null){
 			session.setAttribute("errorMessage", "");
 			String tracker = request.getParameter("tracker");
 			session.setAttribute("tracker", tracker);
 			response.setContentType("text/html");
+			session.setAttribute("errorMessage", "Adekunle");
 			response.sendRedirect("data_presentation.jsp");
 		}
 		else if(request.getParameter("datepicked")!= null && session.getAttribute("tracker")!=null){
 			session.setAttribute("errorMessage", "");
-			
-			String datePicked = "August 25 - October 9";//request.getParameter("datepicked");
+			String datePicked = request.getParameter("datepicked");
 			session.setAttribute("datepicked", datePicked);
 			String userName = (String) session.getAttribute("user");
 			String trackerName = (String) session.getAttribute("tracker");
 			String queryTracker = tDialog.getSelectedSites(userName, trackerName);
-			getRequestedCount(queryTracker,datePicked,session);
+			//getRequestedCount(queryTracker,datePicked,session);
 			response.setContentType("text/html");
+			session.setAttribute("errorMessage", datePicked);
 			response.sendRedirect("data_presentation.jsp");
 			}
-		else if(request.getParameter("exportJSON")!= null && session.getAttribute("tracker")!=null ){
+
+		 else if(request.getParameter("exportJSON")!= null && session.getAttribute("tracker")!=null && session.getAttribute("datepicked")!=null)
+		{
+
 			session.setAttribute("errorMessage", "");
 			String userName = (String) session.getAttribute("user");
 			String trackerName = (String) session.getAttribute("tracker");
@@ -95,7 +98,7 @@ public class ExportJSON extends HttpServlet {
 			 * 	the charset can't be changed. When setting the contentType without the charset property, 
 				the OS's default charset will be used, such as ISO-8859-4 */		
 			
-			response.setContentType("application/json; charset=UTF-8");
+		response.setContentType("application/json; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			response.setHeader("X-Download-Options", "noopen");
 			response.setHeader("Content-Disposition","attachment; filename=\"" + filename + "\"");
@@ -123,8 +126,8 @@ public class ExportJSON extends HttpServlet {
 	private void getRequestedCount(String queryTracker, String datePicked, HttpSession currentSession) {
 		Common common= new Common();
 		List<String> aa=common.returnDates(datePicked);
-		String d1 = "2017-10";//aa.get(0);
-		String d2 = "2017-11";//aa.get(1);
+		String d1 = aa.get(0);
+		String d2 = aa.get(1);
 		int recordsCount=exportJSONDialog.getCount(queryTracker,d1,d2);
 		currentSession.setAttribute("records", recordsCount);
 	}

@@ -4,11 +4,12 @@
     Author     : Omnibus_03
 --%>
 
-<%@page import="java.util.*"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" isELIgnored="false"%>
+<%@page import="java.util.*"%>
 <%
 	Object username = (null == session.getAttribute("user")) ? "" : session.getAttribute("user");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
@@ -26,7 +27,7 @@
 				<h4>
 					<i class="icon-arrow-left52 position-left"></i>
 					<span class="text-semibold">Data Export</span>
-					<small class="display-block">Export your Data in JSON <font color=red>${erorrMessage}</font>
+					<small class="display-block">Export your Data in JSON <font color=red>mrnenrmenrmn${erorrMessage}</font>
 				</h4>
 				
 				<div class="form-group">
@@ -67,8 +68,11 @@
 									<div class="heading-elements" id="reportrange">
 					<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
 										<i class="icon-calendar3 position-left"></i> <span></span>  
-					<input type="text" id="datepicked" name="datepicked"  onclick="datechanged()" /><b class="caret"></b>
+
+					<b class="caret"></b>
+
 									</button>
+									<input type="hidden" id="datepicked" name="datepicked"  onchange="datechanged()" />
 			                	</div>
 								</form>
 			                	
