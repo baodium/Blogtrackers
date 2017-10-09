@@ -114,12 +114,14 @@
    
 	 </script>
 	 	<script type="text/javascript">
+	 	alert("here");
 						function trackerchanged() {
 							$(".loader").removeClass("hidden");
 							document.getElementById("trackerform").submit();
 						}
 						function datechanged() {
-							$(".loader").removeClass("hidden");
+							alert("date picked");//$(".loader").removeClass("hidden");
+							
 							document.getElementById("dateform").submit();
 						}
 						function exportJSON() {

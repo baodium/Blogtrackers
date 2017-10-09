@@ -66,7 +66,8 @@ public class ExportJSON extends HttpServlet {
 		}
 		else if(request.getParameter("datepicked")!= null && session.getAttribute("tracker")!=null){
 			session.setAttribute("errorMessage", "");
-			String datePicked =request.getParameter("datepicked");
+			
+			String datePicked = "August 25 - October 9";//request.getParameter("datepicked");
 			session.setAttribute("datepicked", datePicked);
 			String userName = (String) session.getAttribute("user");
 			String trackerName = (String) session.getAttribute("tracker");
@@ -75,7 +76,7 @@ public class ExportJSON extends HttpServlet {
 			response.setContentType("text/html");
 			response.sendRedirect("data_presentation.jsp");
 			}
-		else if(request.getParameter("exportJSON")!= null && session.getAttribute("tracker")!=null && session.getAttribute("datepicked")!=null){
+		else if(request.getParameter("exportJSON")!= null && session.getAttribute("tracker")!=null ){
 			session.setAttribute("errorMessage", "");
 			String userName = (String) session.getAttribute("user");
 			String trackerName = (String) session.getAttribute("tracker");
@@ -122,8 +123,8 @@ public class ExportJSON extends HttpServlet {
 	private void getRequestedCount(String queryTracker, String datePicked, HttpSession currentSession) {
 		Common common= new Common();
 		List<String> aa=common.returnDates(datePicked);
-		String d1 = aa.get(0);
-		String d2 = aa.get(1);
+		String d1 = "2017-10";//aa.get(0);
+		String d2 = "2017-11";//aa.get(1);
 		int recordsCount=exportJSONDialog.getCount(queryTracker,d1,d2);
 		currentSession.setAttribute("records", recordsCount);
 	}

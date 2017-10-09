@@ -7,9 +7,7 @@
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
 	String tracker_id = (null == session.getAttribute("tid")) ? "" : session.getAttribute("tid").toString();
-	if(tracker_id!=""){
-		session.setAttribute("tracker",tracker_id);
-	}
+	
 
     String path=application.getRealPath("/").replace('\\', '/')+"profile_images/";
     path = path.replace("build/", "");
@@ -124,6 +122,7 @@
 			String name = tracker.get(0).toString(); 
 			if(name.equals(Selectedtracker)){
 				isselect = "selected";
+				session.setAttribute("tracker",tracker.get(0));
 			}
 			%>
 			<option <%=isselect%> value="<%=tracker.get(0)%>"><%=tracker.get(2)%></option>

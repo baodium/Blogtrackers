@@ -69,7 +69,7 @@ function trackerchanger(){
 	        {	
 	        	console.log(response);
 	        	if(response=="success"){
-	        		 window.location.href = app_url+"dashboard.jsp";
+	        		 window.location.reload;//href = app_url+"dashboard.jsp";
 	        	}else{
 	        		
 	        	}

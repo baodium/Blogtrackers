@@ -9,7 +9,7 @@
 <%
 	Object username = (null == session.getAttribute("user")) ? "" : session.getAttribute("user");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
-
+	String tracker = (null == session.getAttribute("tracker")) ? "" : session.getAttribute("tracker").toString();
 	if (username == null) {
 		response.sendRedirect("index.jsp");
 	}
@@ -64,7 +64,7 @@
 									<div class="heading-elements" id="reportrange">
 					<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
 										<i class="icon-calendar3 position-left"></i> <span></span>  
-					<input type="hidden" id="datepicked" name="datepicked"  onchange="datechanged()" /><b class="caret"></b>
+					<input type="text" id="datepicked" name="datepicked"  onclick="datechanged()" /><b class="caret"></b>
 									</button>
 			                	</div>
 								</form>
@@ -86,7 +86,7 @@
 										<div class="text-muted text-size-base" style="font-size:20px;">${records}</div>
 										<form name="exportJSON" id="exportJSON"	action="ExportJSON" method="post">
 										<input id="exportJSON" name="exportJSON" type="hidden" onchange="exportJSON()">
-										
+									
 										<button class="btn btn-primary" type="submit">Download Now</button>
 										
 										</form>
