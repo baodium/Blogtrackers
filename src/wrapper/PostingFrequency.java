@@ -110,11 +110,11 @@ public class PostingFrequency extends HttpServlet {
 				String userName = (String) session.getAttribute("user");
 				String trackerName = (String) session.getAttribute("tracker");
 				String datePicked = (String) session.getAttribute("datepicked");
-				session.setAttribute("errorMessage", userName);
+				//session.setAttribute("errorMessage", userName);
 				TrackerDialog dialog = new TrackerDialog();
 				String selectedSites = dialog.getSelectedSites(userName,trackerName);
 				
-				session.setAttribute("errorMessage",userName+ " "+trackerName );
+				//session.setAttribute("errorMessage",userName+ " "+trackerName );
 				getRequestedData(scale,selectedSites,datePicked,session);
 				
 			}

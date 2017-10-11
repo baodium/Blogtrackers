@@ -258,7 +258,7 @@
 			                	</div>
 							</div>
 
-							<div class="panel-body">
+							<div class="panel-body scroll" style="height: 350px">
 						
 <table class="table text-nowrap">
 									<thead>
@@ -340,10 +340,10 @@
 				                	</ul>
 			                	</div>
 							</div>
-
+<form action="Sentiments" method="post">
 							<div class="panel-body">
 						<div style="margin-top: auto;">
-												<button class="btn btn-positive" onclick="showGif()"
+											<button class="btn btn-primary" onclick="showGif()"
 													type="submit" name="go">Go</button>
 											</div>
 	
@@ -408,6 +408,7 @@
 							</table>
    
 							</div>
+							</form>
 						</div>
 					</div>
 						

@@ -1,0 +1,49 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package blogtracker.util;
+
+import org.jfree.chart.*;
+import org.jfree.chart.plot.*;
+import org.jfree.chart.axis.CategoryAxis;
+import org.jfree.chart.axis.CategoryLabelPositions;
+import org.jfree.chart.ChartFactory.*;
+import org.jfree.chart.renderer.category.BarRenderer;
+import org.jfree.data.category.*;
+/**
+ * create XY(line) and bar charts.
+ * @author Shamanth
+ */
+public class chartBuilder {
+    static CategoryLabelPositions plotOrientation=CategoryLabelPositions.UP_45;
+    public static ChartPanel createBarChart(String chartTitle,String xAxisLabel,String yAxisLabel,DefaultCategoryDataset chartData)
+    {
+      
+        JFreeChart barChart=ChartFactory.createBarChart3D(chartTitle, xAxisLabel, yAxisLabel, chartData, PlotOrientation.VERTICAL, true, true, false);    //last three fields are legend, tooltip, URL
+        CategoryPlot chartPlot=(CategoryPlot)barChart.getPlot();
+        BarRenderer br =(BarRenderer) chartPlot.getRenderer();
+        br.setMaximumBarWidth(br.getMaximumBarWidth()+0.50);
+        //final GradientPaint gp0 = new GradientPaint(0.0f, 0.0f, Color.blue, 0.0f, 0.0f, Color.lightGray);
+        //br.setSeriesFillPaint(0, gp0);
+        chartPlot.setRenderer(br);
+        //chartPlot.setRangeCrosshairVisible(true);
+        //chartPlot.setRangeCrosshairLockedOnData(true);
+        CategoryAxis xAxis=(CategoryAxis)chartPlot.getDomainAxis();
+        xAxis.setLowerMargin(0.10);
+        xAxis.setUpperMargin(0.10);
+        xAxis.setCategoryMargin(0.30);
+        xAxis.setCategoryLabelPositions(plotOrientation);
+        ChartPanel cPanel=new ChartPanel(barChart);
+        cPanel.setDisplayToolTips(true);
+        //cPanel.setFillZoomRectangle(true);
+        //cPanel.setVerticalAxisTrace(true);
+        //cPanel.setHorizontalAxisTrace(true);
+        return cPanel;
+    }
+ public static ChartPanel createXYChart(String chartTitle,String xAxisLabel,String yAxisLabel,DefaultCategoryDataset chartData)
+ {
+   return null;  
+ }
+}

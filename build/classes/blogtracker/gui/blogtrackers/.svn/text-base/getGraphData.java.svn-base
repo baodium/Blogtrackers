@@ -1,0 +1,265 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package blogtracker.gui.blogtrackers;
+
+import blogtracker.util.UtilFunctions;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *
+ * @author skumar34
+ * Return the data to generate traffic pattern graph.
+ */
+public class getGraphData extends UtilFunctions
+{
+
+ //These parts were removed after the indices were commissioned out of use
+//        private IndexWriter writer;         //for the cumulative index of each period.
+//        private IndexWriter docWriter;      //for the index of individual posts within a period.
+          
+//        public String freqTermIndex;// = "C:\\indices\\index1";                          //Index for the lucene directory
+//        public String bloggerPostIndex;// = "C:\\indices\\index2";                    //index for the per post index
+
+//    public void loadGlobalConstants()
+//    {
+//
+//        BufferedReader br = null;
+//        try {
+//            //System.out.println(System.getProperty("user.dir"));
+//            HashMap<String,String> hm = new HashMap<String,String>();
+//            br = new BufferedReader(new FileReader("..\\webapps\\ROOT\\WEB-INF\\classes\\authentication\\blogtrackers.config"));
+//            String temp = "";
+//            while((temp = br.readLine())!=null)
+//            {
+//                temp = temp.trim();
+//                //System.out.println(temp);
+//                if(temp.isEmpty()||temp.startsWith("//"))
+//                {
+//                    continue;
+//                }
+//                else
+//                {
+//                    String[] arr = temp.split("##");
+//                    //System.out.println(arr[0]+" "+arr[1]);
+//                    if(arr.length==2)
+//                    {
+//                        hm.put(arr[0].trim(), arr[1].trim());
+//                    }
+//                }
+//            }
+//            if(!hm.isEmpty())
+//            {
+//                freqTermIndex = hm.get("freqTermIndex");
+//                bloggerPostIndex = hm.get("bloggerPostIndex");
+//
+//            }
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
+//        }finally {
+//            try {
+//                br.close();
+//            } catch (IOException ex) {
+//               ex.printStackTrace();
+//            }
+//
+//        }
+//
+//    }
+//        public void loadGlobalConstants()
+//        {
+//            try {
+//                JFigLocatorIF locator = new blogtracker.util.LocalJFigLocator("config/", "config.xml");
+//                JFigIF confInstance = org.igfay.jfig.JFig.getInstance(locator);
+//                freqTermIndex = confInstance.getValue("Indices", "freqTermIndex");
+//                bloggerPostIndex = confInstance.getValue("Indices", "bloggerPostIndex");
+//
+//            } catch (JFigException ex) {
+//                System.out.println("Configuration file Not found");
+//            }
+//        }
+
+        public getGraphData()
+        {
+            //empty constructor for Flex to instantiate this class.
+        }
+
+        
+
+    public List<DataPoint> getPosts(Date startDate,Date endDate, int numIncr,String calScale, ArrayList<Integer> selectedsites)
+    {
+        int calendarFiledIDX;
+        String selsitesQuery = getSelSitesQuery(selectedsites);
+        java.util.Date curStartDate = startDate;
+        java.util.Date curEndDate;
+        boolean isStop = false;
+        SimpleDateFormat sdform = new SimpleDateFormat();
+        sdform.applyPattern("yyyy-MM-dd");
+        List<DataPoint> dpoints = new ArrayList<DataPoint>();
+        java.util.Calendar clndr = java.util.Calendar.getInstance();
+        clndr.setTime(startDate);
+        if (calScale.equals("date"))
+         {
+            calendarFiledIDX = java.util.Calendar.DATE;
+
+        }
+         else
+             if(calScale.equals("week"))
+             {
+                 calendarFiledIDX = java.util.Calendar.DATE;
+             }
+        else
+        if (calScale.equals("month"))
+        {
+            calendarFiledIDX = java.util.Calendar.MONTH;
+        }
+        else
+        {
+            calendarFiledIDX = java.util.Calendar.YEAR;
+        }
+        
+         // initialize the time period
+            if (calendarFiledIDX == java.util.Calendar.DATE) {
+                clndr.add(calendarFiledIDX, numIncr - 1);
+                curEndDate = clndr.getTime();
+                clndr.setTime(curEndDate);
+                clndr.add(java.util.Calendar.DATE, 1);
+            } else if (calendarFiledIDX == java.util.Calendar.MONTH) {
+                curEndDate = getLastDayOfMonth(clndr.get(java.util.Calendar.YEAR), clndr.get(java.util.Calendar.MONTH) + 1);
+                clndr.setTime(curEndDate);
+                clndr.add(java.util.Calendar.DATE, 1);
+            } else {
+                curEndDate = getLastDayOfYear(clndr.get(java.util.Calendar.YEAR));
+                clndr.setTime(curEndDate);
+                clndr.add(java.util.Calendar.DATE, 1);
+            }
+        if (curEndDate.compareTo(endDate) > 0)
+        {
+            curEndDate = endDate;
+            isStop = true;
+        }
+        Connection conn = getConn();
+        boolean tempFlag = false;
+        //fill the chart datapoints
+        int i=0;
+
+        do
+        {
+            if(tempFlag == true)
+            {
+                isStop = true;
+            }
+//            // obtain information from database
+            //shamanth obtain the count for each period.
+            String queryStr1= "SELECT COUNT(*) " +
+                                  "FROM blogposts " +
+                                  "WHERE "+selsitesQuery+" (date >= '" + sdform.format(curStartDate) + "' AND date <= '" + sdform.format(curEndDate) + "')";
+            
+            ResultSet rSet1= null;
+            try
+            {
+                Statement stmt = conn.createStatement();
+
+                stmt=conn.createStatement();
+                rSet1=stmt.executeQuery(queryStr1);
+            } catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+            try
+            {
+                if(rSet1.next())
+                {   //System.out.println(rSet1.getObject(1).toString());
+                    //adding chart fields.
+                    if(calScale.equals("date")||calScale.equals("week"))
+                    {
+                        DataPoint dp = new DataPoint(sdform.format(curStartDate), Integer.parseInt(rSet1.getObject(1).toString()), i, sdform.format(curEndDate),sdform.format(curStartDate));
+                        dpoints.add(dp);
+                    }
+                    else
+                        if(calScale.equals("month"))
+                        {
+                            SimpleDateFormat dateformat = new SimpleDateFormat();
+                            dateformat.applyPattern("MMMM-yyyy");
+                            DataPoint dp = new DataPoint(dateformat.format(curStartDate), Integer.parseInt(rSet1.getObject(1).toString()), i, sdform.format(curEndDate),sdform.format(curStartDate));
+                            dpoints.add(dp);
+                        }
+                        else
+                            if(calScale.equals("year"))
+                            {
+                                 SimpleDateFormat dateformat = new SimpleDateFormat();
+                                dateformat.applyPattern("yyyy");
+                                DataPoint dp = new DataPoint(dateformat.format(curStartDate), Integer.parseInt(rSet1.getObject(1).toString()), i, sdform.format(curEndDate),sdform.format(curStartDate));
+                                dpoints.add(dp);
+                            }
+                    
+                }
+                
+            }catch(SQLException e)
+            {
+                e.printStackTrace();
+            }
+             // move to the next period
+                curStartDate = clndr.getTime();
+                clndr.add(calendarFiledIDX, numIncr);
+                clndr.add(java.util.Calendar.DATE, -1);
+                curEndDate = clndr.getTime();
+                clndr.add(java.util.Calendar.DATE, 1);
+                if (curEndDate.compareTo(endDate) > 0) {
+                    curEndDate = endDate;
+                    tempFlag=true;              //added another flag because the iteration was ending one month early.
+                }
+                i++;
+           }while(!isStop);
+        try {
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(getGraphData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return dpoints;
+
+    }
+
+//    public static void main(String[] args)
+//    {
+//        getGraphData gp =  new getGraphData();
+//        ArrayList<Integer> aa =new ArrayList<Integer>();
+//        aa.add(1);
+//        List<DataPoint> dp = gp.getPosts(new Date(110,02,01),new Date(110,03,01),1 , "month", aa);
+//
+//    }
+
+    public java.util.Date getLastDayOfMonth(int year, int month)
+    {
+        java.util.Calendar cal = java.util.Calendar.getInstance();
+        cal.set(java.util.Calendar.YEAR, year);
+        cal.set(java.util.Calendar.MONTH, month - 1);
+        cal.set(java.util.Calendar.DATE, 1);
+        cal.add(java.util.Calendar.MONTH, 1);
+        cal.add(java.util.Calendar.DATE, -1);
+        return cal.getTime();
+    }
+
+    public java.util.Date getLastDayOfYear(int year)
+    {
+        java.util.Calendar cal = java.util.Calendar.getInstance();
+        cal.set(java.util.Calendar.YEAR, year);
+        cal.set(java.util.Calendar.MONTH, 1);
+        cal.set(java.util.Calendar.DATE, 1);
+        cal.add(java.util.Calendar.YEAR, 1);
+        cal.add(java.util.Calendar.DATE, -1);
+        return cal.getTime();
+     }
+     
+}

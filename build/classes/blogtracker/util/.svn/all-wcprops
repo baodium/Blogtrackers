@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/BT-web/!svn/ver/66/src/blogtracker/util
+END
+stopWordsList.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/BT-web/!svn/ver/14/src/blogtracker/util/stopWordsList.java
+END
+TwitterAuthenticate.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/BT-web/!svn/ver/47/src/blogtracker/util/TwitterAuthenticate.java
+END
+StringUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/BT-web/!svn/ver/1/src/blogtracker/util/StringUtil.java
+END
+UtilFunctions.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/BT-web/!svn/ver/66/src/blogtracker/util/UtilFunctions.java
+END
+SiteType.java
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/BT-web/!svn/ver/43/src/blogtracker/util/SiteType.java
+END
+UserLocation.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/BT-web/!svn/ver/52/src/blogtracker/util/UserLocation.java
+END
+chartBuilder.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/BT-web/!svn/ver/45/src/blogtracker/util/chartBuilder.java
+END
+NGramAnalyzer.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/BT-web/!svn/ver/66/src/blogtracker/util/NGramAnalyzer.java
+END
+InfluentialBlogger.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/BT-web/!svn/ver/9/src/blogtracker/util/InfluentialBlogger.java
+END
+User.java
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/BT-web/!svn/ver/44/src/blogtracker/util/User.java
+END
+trackerComponent.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/BT-web/!svn/ver/1/src/blogtracker/util/trackerComponent.java
+END
+Mailing.java
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/BT-web/!svn/ver/66/src/blogtracker/util/Mailing.java
+END
+sysResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/BT-web/!svn/ver/45/src/blogtracker/util/sysResource.java
+END
+getSiteTypes.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/BT-web/!svn/ver/66/src/blogtracker/util/getSiteTypes.java
+END
+createIndex.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/BT-web/!svn/ver/14/src/blogtracker/util/createIndex.java
+END
+indexSearch.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/BT-web/!svn/ver/45/src/blogtracker/util/indexSearch.java
+END
+DemoTwitterSearch.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/BT-web/!svn/ver/66/src/blogtracker/util/DemoTwitterSearch.java
+END
+BloggerActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/BT-web/!svn/ver/1/src/blogtracker/util/BloggerActivity.java
+END
+LocationGeoCode.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/BT-web/!svn/ver/55/src/blogtracker/util/LocationGeoCode.java
+END

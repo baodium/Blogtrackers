@@ -27,7 +27,7 @@
 				<h4>
 					<i class="icon-arrow-left52 position-left"></i>
 					<span class="text-semibold">Data Export</span>
-					<small class="display-block">Export your Data in JSON <font color=red>mrnenrmenrmn${erorrMessage}</font>
+					<small class="display-block">Export your Data in JSON <font color=red>${erorrMessage}</font>
 				</h4>
 				
 				<div class="form-group">

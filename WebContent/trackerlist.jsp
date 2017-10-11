@@ -178,6 +178,19 @@
 						<input type="hidden" name="" id="tracker_desc_<%=tracker.get(0)%>" value="<%=tracker.get(6) %>" />	
 						<input type="hidden" name="" id="tracker_blogs_<%=tracker.get(0)%>" value="<%=blogs %>" />	
 					<% }} %>
+					<div class="col-lg-4 col-md-6 eachtracker">
+							<div class="thumbnail">
+								<div class="thumb thumb-rounded">
+									<a href="<%=request.getContextPath()%>/setup_tracker.jsp"><img src="img/plus.jpg" alt=""></a>
+								</div>
+						    	<div class="caption text-center">
+						    		<h6 class="text-semibold no-margin"><a href="<%=request.getContextPath()%>/setup_tracker.jsp" >Add New Tracker</a> <small class="display-block">Set Up Tracker</small></h6>
+					    			<ul class="icons-list mt-15">
+				                    	<li><a href="<%=request.getContextPath()%>/setup_tracker.jsp"><button type="button"  class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-plus2"></i></button></a></li>
+				                    </ul>
+						    	</div>
+					    	</div>
+						</div>	
 				</div>
 			<div class="col-md-3">
 				<div class="panel panel-primary">

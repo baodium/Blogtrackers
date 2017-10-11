@@ -297,7 +297,7 @@ public class Dashboard extends HttpServlet {
 		session.setAttribute("nlang", nl);
 		session.setAttribute("series", t);
 		response.setContentType("text/html");
-		response.sendRedirect("Dashboard.jsp");
+		response.sendRedirect("dashboard.jsp");
 
 		}
 
@@ -321,7 +321,7 @@ public class Dashboard extends HttpServlet {
 			session.setAttribute("nlang", "");
 			session.setAttribute("series", "");			
 			response.setContentType("text/html");
-	    	response.sendRedirect("Dashboard.jsp");
+	    	response.sendRedirect("dashboard.jsp");
 		}
 		else
 		{
@@ -527,7 +527,7 @@ public class Dashboard extends HttpServlet {
 		session.setAttribute("nlang", nl);
 		session.setAttribute("series", t);
 		response.setContentType("text/html");
-		response.sendRedirect("Dashboard.jsp");
+		response.sendRedirect("dashboard.jsp");
 		}
 	}
 }

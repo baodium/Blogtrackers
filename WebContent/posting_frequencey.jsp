@@ -108,7 +108,7 @@
 			                	</div>
 							</div>
 
-							<div class="panel-body">
+							<div class="panel-body scroll" style="height: 350px">
 						
 <table class="table text-nowrap">
 									<thead>
@@ -197,7 +197,7 @@
 							<div class="panel-body">
 						
 	
-						<table class="table datatable-basic">
+						<table class="table datatable-basic" style="height: 335px;">
 						<thead>
 							<tr>
 								<th>Blog Post Title</th>
@@ -215,13 +215,12 @@
 
 				<c:forEach items="${blogTitlePost}" var="s12" begin="${i}">
 							<tr>
-<td>${s12.blogTitle} <a href="#" class="btn bg-primary-400 btn-rounded btn-icon btn-xs legitRipple pull-right">
+<td>${s12.blogTitle} </td>
+ <td style="display:none;">${s12.blogContent}</td>
+<td><a class="use-address btn bg-primary-400 btn-rounded btn-icon btn-xs legitRipple pull-right">
 														<span class="letter-icon icon-eye2"></span>
-													</a></td>
-								<td>	<button type="button" class="use-address btn btn-primary btn-rounded legitRipple">
-																			<i class="icon-target"></i>
-																		</button></td>
-								<td class="hidden" width="0%"></td>
+													</a>	</td>
+								<!--  <td class="hidden" width="0%"></td> -->
 								<td class="hidden" width="0%"></td>
 								<td class="hidden" width="0%"></td>
 								<td class="hidden" width="0%">
@@ -250,7 +249,7 @@
 							</div>
 
 							<div class="panel-body">
-						<textarea disabled class="form-control" rows="12" id="blogpost"></textarea>
+						<textarea disabled class="form-control" rows="20" id="blogpost"></textarea>
                         
 							</div>
 						</div>
@@ -291,7 +290,7 @@
 
 							<div class="panel-body">
 						<div id="my_words_cloud" class="col-md-12 col-sm-12 col-xs-12"
-										style="height: 335px;"></div>
+										style="min-height: 335px;"></div>
 
    
 							</div>

@@ -1,0 +1,215 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package blogtracker.gui.blogtrackers;
+
+import blogtracker.util.UtilFunctions;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+/**
+ *12/7/2010
+ * @author skumar34
+ * @info this class generates the trend information for provided keyword
+ */
+public class KeywordTrends extends UtilFunctions
+{
+    public KeywordTrends()
+    {
+        //empty constructor for Flex to instantiate this class.
+    }
+
+    public java.util.Date getLastDayOfMonth(int year, int month)
+    {
+        java.util.Calendar cal = java.util.Calendar.getInstance();
+        cal.set(java.util.Calendar.YEAR, year);
+        cal.set(java.util.Calendar.MONTH, month - 1);
+        cal.set(java.util.Calendar.DATE, 1);
+        cal.add(java.util.Calendar.MONTH, 1);
+        cal.add(java.util.Calendar.DATE, -1);
+        return cal.getTime();
+    }
+
+    public java.util.Date getLastDayOfYear(int year)
+    {
+        java.util.Calendar cal = java.util.Calendar.getInstance();
+        cal.set(java.util.Calendar.YEAR, year);
+        cal.set(java.util.Calendar.MONTH, 1);
+        cal.set(java.util.Calendar.DATE, 1);
+        cal.add(java.util.Calendar.YEAR, 1);
+        cal.add(java.util.Calendar.DATE, -1);
+        return cal.getTime();
+     }
+
+    public List<kwChartPoint> getchartpoints(Date startDate,Date endDate, int numIncr,String calScale, ArrayList<Integer> selectedsites, String keywords)
+    {
+        int calendarFiledIDX;
+        String selsitesQuery = getSelSitesQuery(selectedsites);
+        java.util.Date curStartDate = startDate;
+        java.util.Date curEndDate;
+        boolean isStop = false;
+        SimpleDateFormat sdform = new SimpleDateFormat();
+        sdform.applyPattern("yyyy-MM-dd");
+        List<kwChartPoint> dpoints = new ArrayList<kwChartPoint>();
+        java.util.Calendar clndr = java.util.Calendar.getInstance();
+        clndr.setTime(startDate);
+        if (calScale.equals("date"))
+         {
+            calendarFiledIDX = java.util.Calendar.DATE;
+
+        }
+         else
+             if(calScale.equals("week"))
+             {
+                 calendarFiledIDX = java.util.Calendar.DATE;
+             }
+        else
+        if (calScale.equals("month"))
+        {
+            calendarFiledIDX = java.util.Calendar.MONTH;
+        }
+        else
+        {
+            calendarFiledIDX = java.util.Calendar.YEAR;
+        }
+
+         // initialize the time period
+            if (calendarFiledIDX == java.util.Calendar.DATE) {
+                clndr.add(calendarFiledIDX, numIncr - 1);
+                curEndDate = clndr.getTime();
+                clndr.setTime(curEndDate);
+                clndr.add(java.util.Calendar.DATE, 1);
+            } else if (calendarFiledIDX == java.util.Calendar.MONTH) {
+                curEndDate = getLastDayOfMonth(clndr.get(java.util.Calendar.YEAR), clndr.get(java.util.Calendar.MONTH) + 1);
+                clndr.setTime(curEndDate);
+                clndr.add(java.util.Calendar.DATE, 1);
+            } else {
+                curEndDate = getLastDayOfYear(clndr.get(java.util.Calendar.YEAR));
+                clndr.setTime(curEndDate);
+                clndr.add(java.util.Calendar.DATE, 1);
+            }
+        if (curEndDate.compareTo(endDate) > 0)
+        {
+            curEndDate = endDate;
+            isStop = true;
+        }
+        Connection conn = getConn();
+        boolean tempFlag = false;
+        //fill the chart datapoints
+        int i=0;
+         SimpleDateFormat dateformat = new SimpleDateFormat();
+            if(calScale.equals("date")||calScale.equals("week"))
+            {
+
+                dateformat.applyPattern("yyyy-MM-dd");
+
+            }
+            else
+                if(calScale.equals("month"))
+                {
+                   // SimpleDateFormat dateformat = new SimpleDateFormat();
+                    dateformat.applyPattern("MMMM-yyyy");
+//                                kwChartPoint dp = new kwChartPoint(dateformat.format(curStartDate), Integer.parseInt(rSet1.getObject(1).toString()), i, sdform.format(curEndDate),sdform.format(curStartDate));
+//                                dpoints.add(dp);
+                }
+                else
+                    if(calScale.equals("year"))
+                    {
+                        // SimpleDateFormat dateformat = new SimpleDateFormat();
+                        dateformat.applyPattern("yyyy");
+//                                    kwChartPoint dp = new kwChartPoint(dateformat.format(curStartDate), Integer.parseInt(rSet1.getObject(1).toString()), i, sdform.format(curEndDate),sdform.format(curStartDate));
+//                                    dpoints.add(dp);
+                    }
+         //obtain the number of posts containing the keywords
+        do
+        {
+            if(tempFlag == true)
+            {
+                isStop = true;
+            }
+            kwChartPoint dp = new kwChartPoint();
+            dp.setInterval(dateformat.format(curStartDate));
+            //System.out.println(curStartDate.toString());
+    //            // obtain information from database
+                //shamanth obtain the count for each period.
+                String postsearchquery = PreparePostSearchQuery(keywords);
+                String queryStr1= "SELECT COUNT(*) " +
+                                      "FROM blogposts " +
+                                      "WHERE "+selsitesQuery+" (date >= '" + sdform.format(curStartDate) +
+                                      "' AND date <= '" + sdform.format(curEndDate) + "') AND "+postsearchquery;
+
+                //System.out.println(queryStr1);
+                ResultSet rSet1= null;
+                try
+                {
+                    Statement stmt = conn.createStatement();
+                    rSet1=stmt.executeQuery(queryStr1);
+                } catch (SQLException e)
+                {
+                    e.printStackTrace();
+                }
+                try
+                {
+                    if(rSet1.next())
+                    {   
+                        //adding chart fields.
+                       //System.out.println(rSet1.getObject(1).toString());
+                       dp.setNoofposts(Integer.parseInt(rSet1.getObject(1).toString()));
+
+                    }
+
+                }catch(SQLException e)
+                {
+                    //in case the query fails add 0 as the data
+                    dp.setNoofposts(0);
+                    e.printStackTrace();
+                }
+            //}
+            dpoints.add(dp);
+             // move to the next period
+                curStartDate = clndr.getTime();
+                clndr.add(calendarFiledIDX, numIncr);
+                clndr.add(java.util.Calendar.DATE, -1);
+                curEndDate = clndr.getTime();
+                clndr.add(java.util.Calendar.DATE, 1);
+                //System.out.println(curEndDate.toString());
+                if (curEndDate.compareTo(endDate) > 0) {
+                    curEndDate = endDate;
+                    tempFlag=true;              //added another flag because the iteration was ending one month early.
+                }
+                i++;
+           }while(!isStop);
+        return dpoints;
+    }
+
+    private String PreparePostSearchQuery(String keyword)
+    {
+       String[] keywordparts = BreakKeywordIntoParts(keyword);
+       String postquery = "(";
+       for(int i=0;i<keywordparts.length;i++)
+       {           
+           if(i==keywordparts.length-1)
+           {
+               postquery = postquery+"post like '%"+keywordparts[i]+"%')";
+               continue;
+           }
+           postquery = postquery+"post like '%"+keywordparts[i]+"%' or ";
+       }
+       return postquery;
+    }
+
+    private String[] BreakKeywordIntoParts(String keyword)
+    {
+        keyword = keyword.replaceAll("\\s+", " ");
+        keyword = keyword.trim();
+        return keyword.split(" ");
+    }
+}

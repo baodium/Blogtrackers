@@ -32,7 +32,22 @@
 					<span class="text-semibold">Home</span> - Dashboard
 					<small class="display-block"><span>Welcome, </span><%=username %>
 				</h4>
-				<div class="form-group">
+				
+			</div>
+				<div class="heading-elements">
+				<div class="heading-btn-group">
+					<button type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-reading"></i></b> Proceed to setup Tracker</button>
+					<button type="button" onclick="location.href='dashboard.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-statistics position-left"></i></b> Proceed to Dashboard</button>
+					<button id="google_translate_element" class="btn btn-default"><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'ar', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+				
+				</button>
+			</div>
+		</div>
+		<div class="form-group">
 				<div class="col-md-12">
 				
 				<div class="input-group">
@@ -42,7 +57,6 @@
 										</div>
 										</div>
 										</div>
-			</div>
 
 			<!--  <div class="heading-elements">
 				<div class="heading-btn-group">
