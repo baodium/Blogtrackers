@@ -30,17 +30,27 @@
 					<span class="text-semibold">Keyword Trends</span>
 <small class="display-block"><span>Welcome, </span><%=username %>
 				</h4>
-				
+				<form name="tagform" id="tagform" action="KeywordTrendsServlet" method="post">
 				<div class="form-group">
 				<div class="col-md-12">
 				
 				<div class="input-group">
-				<input type="text" class="form-control" placeholder="Enter a keyword to search" id="searchtextbox" autocomplete="off">
-											<span class="input-group-btn" style="padding-left:0px;"><button type="button" class="btn btn-primary">Search</button></span>
+				<c:choose>
+				<c:when test="${tags != null}">
+				<input type="text" class="form-control" name="searchText" id="searchBar" placeholder="${tags}"
+															onkeyup="searchTextVerify()" autocomplete="off">
+				</c:when>
+				<c:when test="${tags == null}">
+				<input type="text" class="form-control" name="searchText" id="searchBar" placeholder="Enter a keyword to Search"
+															onkeyup="searchTextVerify()" autocomplete="off">
+					</c:when>
+												</c:choose>											
+											<span class="input-group-btn" style="padding-left:0px;"><button type="submit" class="btn btn-primary" name="searchButton" id="searchButton">Search</button></span>
 											
 										</div>
 										</div>
 										</div>
+										</form>
 										
 			</div>
 
@@ -65,12 +75,13 @@
 						<div class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Keyword Trendline<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
-								<form name="dateform" id="dateform" method="post">
-									<div class="heading-elements" id="reportrange" action="PostingFrequency">
+								<form name="dateform" id="dateform" method="post" 	>
+									<div class="heading-elements" id="reportrange" >
 									<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
 										<i class="icon-calendar3 position-left"></i> <span></span>  
-					<input type="hidden" id="datepicked" name="datepicked"  onchange="datechanged()" /><b class="caret"></b>
+					<b class="caret"></b>
 									</button>
+									<input type="hidden" id="datepicked" name="datepicked"  onchange="datechanged()" />
 			                	</div>
 								</form>
 							</div>
@@ -278,7 +289,7 @@
 						<thead>
 							<tr>
 								<th>Blog Post Title</th>
-								<th></th>
+								<th class="hidden" width="0%"></th>
 								<th ></th>
 								<th class="hidden" width="0%"></th>
 								<th class="hidden"  width="0%"></th>
@@ -291,12 +302,12 @@
 															<c:set var="eo" value="1" />
 															<c:forEach items="${key_names}" var="s" begin="${i}">
 																<tr>
-																	<td><c:out value="${s[1]}" /></td>
-																	<td ><c:out value="${s[2]}" /></td>
+																	<td ><c:out value="${s[1]}" /></td>
+																	<td style="display:none;"><c:out value="${s[2]}" /></td>
 																	<td>
-																		<button type="button" class="use-address btn btn-primary btn-rounded legitRipple">
-																			<i class="icon-target"></i>
-																		</button>
+																		<a class="use-address btn bg-primary-400 btn-rounded btn-icon btn-xs legitRipple pull-right">
+														<span class="letter-icon icon-eye2"></span>
+													</a>
 																	</td>
 																	<td class="hidden" width="0%"></td>
 								<td class="hidden" width="0%"></td>

@@ -62,7 +62,7 @@
 							<div class="panel-heading">
 								<h6 class="panel-title">Timeline of Sentiments<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<form name="dateform" id="dateform" method="post">
-									<div class="heading-elements" id="reportrange" action="PostingFrequency">
+									<div class="heading-elements" id="reportrange" >
 									<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
 										<i class="icon-calendar3 position-left"></i> <span></span>  
 					<input type="hidden" id="datepicked" name="datepicked"  onchange="datechanged()" /><b class="caret"></b>

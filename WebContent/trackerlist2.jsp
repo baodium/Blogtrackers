@@ -31,7 +31,7 @@
 					<div class="col-md-12">
 					<div class="input-group">
 					<input type="hidden" name="search" value="yes">
-					<input type="text" class="form-control" name="term" placeholder="Enter a keyword to search" id="searchtextbox" autocomplete="off">
+					<input type="text" class="form-control ui-autocomplete-input" name="term" placeholder="Enter a keyword to search" id="ac-remote" autocomplete="off">
 					<span class="input-group-btn" style="padding-left:0px;"><button type="button" class="btn btn-primary">Search</button></span>
 												
 					</div>
@@ -161,19 +161,14 @@
 							Object blogs = tracker.get(5);
 					%>
 					<div class="col-lg-4 col-md-6 eachtracker">
-					
 							<div class="thumbnail">
-							
-							<div title="Delete Tracker" class="text-muted text-size-medium" style="position:absolute; cursor:pointer;"><i class="icon-trash text-size-medium position-left"></i></div>
-					
-					
 								<div class="thumb thumb-rounded">
 									<img src="img/datapresentation.jpg" alt="">
 								</div>
 						    	<div class="caption text-center">
 						    		<h6 class="text-semibold no-margin"><a href="#" onclick="loadTracker('<%= tracker.get(0)%>');"><%=tracker.get(2) %></a> <small class="display-block"><%=tracker.get(1) %></small></h6>
 					    			<ul class="icons-list mt-15">
-				                    	<li><a class="pull-left" href="<%=request.getContextPath()%>/dashboard.jsp?tid=<%= tracker.get(0)%>"><button type="button" title="Proceed to Dashboard"  class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-statistics"></i></button></a>    <a class="pull-right" style="margin-left:4px;"><button type="button" title="Edit Tracker"  class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-pencil"></i></button></a></li>
+				                    	<li><a href="<%=request.getContextPath()%>/dashboard.jsp?tid=<%= tracker.get(0)%>"><button type="button" title="Proceed to Dashboard"  class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-statistics"></i></button></a></li>
 				                    </ul>
 						    	</div>
 					    	</div>
