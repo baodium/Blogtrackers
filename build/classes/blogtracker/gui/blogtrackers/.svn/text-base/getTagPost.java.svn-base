@@ -1,0 +1,141 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package blogtracker.gui.blogtrackers;
+
+import blogtracker.util.UtilFunctions;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *
+ * @author skumar34
+ */
+public class getTagPost extends UtilFunctions
+{
+
+    public getTagPost()
+    {
+
+    }
+    public String bloggerPostIndex;// = "C:\\indices\\index2";
+//     public void loadGlobalConstants()
+//    {
+//
+//        BufferedReader br = null;
+//        try {
+//            //System.out.println(System.getProperty("user.dir"));
+//            HashMap<String,String> hm = new HashMap<String,String>();
+//            br = new BufferedReader(new FileReader("..\\webapps\\ROOT\\WEB-INF\\classes\\authentication\\blogtrackers.config"));
+//            String temp = "";
+//            while((temp = br.readLine())!=null)
+//            {
+//                temp = temp.trim();
+//                //System.out.println(temp);
+//                if(temp.isEmpty()||temp.startsWith("//"))
+//                {
+//                    continue;
+//                }
+//                else
+//                {
+//                    String[] arr = temp.split("##");
+//                    //System.out.println(arr[0]+" "+arr[1]);
+//                    if(arr.length==2)
+//                    {
+//                        hm.put(arr[0].trim(), arr[1].trim());
+//                    }
+//                }
+//            }
+//            if(!hm.isEmpty())
+//            {
+//
+//                bloggerPostIndex = hm.get("bloggerPostIndex");
+//
+//            }
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
+//        }finally {
+//            try {
+//                br.close();
+//            } catch (IOException ex) {
+//               ex.printStackTrace();
+//            }
+//
+//        }
+//
+//    }
+//    public void loadGlobalConstants()
+//    {
+//        try {
+//            JFigLocatorIF locator = new blogtracker.util.LocalJFigLocator("config/", "config.xml");
+//            JFigIF confInstance = org.igfay.jfig.JFig.getInstance(locator);
+//            bloggerPostIndex = confInstance.getValue("Indices", "bloggerPostIndex");
+//
+//        } catch (JFigException ex) {
+//            System.out.println("Configuration file Not found");
+//        }
+//    }
+
+
+    public String getPost(int postID)
+    {
+        //System.out.println(postID);
+        String post =  getBlogPost(postID);
+        return post;
+    }
+
+    public List<BPost> fillblogposts(String searchText,String startDate,String endDate,ArrayList<Integer> selectedsites)
+    {
+        try {
+            loadConstants();
+            bloggerPostIndex = hm.get("bloggerPostIndex");
+            SimpleDateFormat sdm = new SimpleDateFormat();
+            sdm.applyPattern("MM-dd-yyyy");
+//            String startdate = sdm.format(startDate);
+//            String enddate = sdm.format(endDate);
+            Connection conn = getConn();
+            Statement stmt = conn.createStatement();
+            String selsitesQuery = getSelSitesQuery(selectedsites);
+            String querystr = "select blogpost_id,date,title,blogger from blogposts where "+selsitesQuery+" date>='"+startDate+"' and date<='"+endDate+"' and post like '%"+searchText+"%'";
+            //System.out.println(querystr);
+//            blogtracker.util.indexSearch ind = new blogtracker.util.indexSearch();
+//            Hits searchHits=ind.search(searchText,bloggerPostIndex);
+            List<BPost> posts = new ArrayList<BPost>();
+//           for(int i=0;i<searchHits.length();i++)
+//            {
+            ResultSet rset = stmt.executeQuery(querystr);
+            while(rset.next())
+            {   
+                long id = rset.getInt("blogpost_id");
+                String title = rset.getString("title");
+                String blogger = rset.getString("blogger");
+                java.sql.Date date = rset.getDate("date");
+                String pubDate = sdm.format(date);
+                BPost post = new BPost(id, title,pubDate,blogger);
+                posts.add(post);
+               
+            }
+            conn.close();
+            return posts;
+            } catch (SQLException ex) {
+            Logger.getLogger(getTagPost.class.getName()).log(Level.SEVERE, null, ex);
+            }
+       return null;
+
+   }
+
+
+}

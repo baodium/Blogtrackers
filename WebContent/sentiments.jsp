@@ -62,7 +62,7 @@
 							<div class="panel-heading">
 								<h6 class="panel-title">Timeline of Sentiments<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<form name="dateform" id="dateform" method="post">
-									<div class="heading-elements" id="reportrange" action="PostingFrequency">
+									<div class="heading-elements" id="reportrange" >
 									<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
 										<i class="icon-calendar3 position-left"></i> <span></span>  
 					<input type="hidden" id="datepicked" name="datepicked"  onchange="datechanged()" /><b class="caret"></b>
@@ -258,7 +258,7 @@
 			                	</div>
 							</div>
 
-							<div class="panel-body">
+							<div class="panel-body scroll" style="height: 350px">
 						
 <table class="table text-nowrap">
 									<thead>
@@ -340,10 +340,10 @@
 				                	</ul>
 			                	</div>
 							</div>
-
+<form action="Sentiments" method="post">
 							<div class="panel-body">
 						<div style="margin-top: auto;">
-												<button class="btn btn-positive" onclick="showGif()"
+											<button class="btn btn-primary" onclick="showGif()"
 													type="submit" name="go">Go</button>
 											</div>
 	
@@ -408,6 +408,7 @@
 							</table>
    
 							</div>
+							</form>
 						</div>
 					</div>
 						

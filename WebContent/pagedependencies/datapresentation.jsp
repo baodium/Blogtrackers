@@ -176,6 +176,5 @@ $('#destroy').click(
 						function recordsChanged() {
 							document.getElementById("records").submit();
 						}
-						
-					</script>
+		</script>
  

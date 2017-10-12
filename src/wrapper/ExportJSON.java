@@ -71,7 +71,7 @@ public class ExportJSON extends HttpServlet {
 			String userName = (String) session.getAttribute("user");
 			String trackerName = (String) session.getAttribute("tracker");
 			String queryTracker = tDialog.getSelectedSites(userName, trackerName);
-			//getRequestedCount(queryTracker,datePicked,session);
+			getRequestedCount(queryTracker,datePicked,session);
 			response.setContentType("text/html");
 			session.setAttribute("errorMessage", datePicked);
 			response.sendRedirect("data_presentation.jsp");

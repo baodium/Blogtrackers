@@ -20,14 +20,16 @@
 %>
 
  <jsp:include page="include_top.jsp"></jsp:include>
+ 
 	<!-- Page header -->
+	
 	<div class="page-header">
 		<div class="page-header-content">
 			<div class="page-title">
 				<h4>
 					<i class="icon-arrow-left52 position-left"></i>
 					<span class="text-semibold">Data Export</span>
-					<small class="display-block">Export your Data in JSON <font color=red>mrnenrmenrmn${erorrMessage}</font>
+					<small class="display-block">Export your Data in JSON <font color=red>${erorrMessage}</font>
 				</h4>
 				
 				<div class="form-group">
@@ -84,16 +86,17 @@
 										<div class="heading-elements">
 											
 					                	</div>
-
+										<form action="ExportJSON" id="records" method="post">
 										<h1 class="no-margin">Export Data from your Current Tracker to JSON</h1>
 										Total Number Of Records Selected
+										<input id="records" name="records" type="hidden" onchange="recordsChanged()" />
 										<c:if test="${records==null}">
 										<c:set var="records" scope="session" value="0" />
 										</c:if>
 										<div class="text-muted text-size-base" style="font-size:20px;">${records}</div>
+										</form>
 										<form name="exportJSON" id="exportJSON"	action="ExportJSON" method="post">
-										<input id="exportJSON" name="exportJSON" type="hidden" onchange="exportJSON()">
-									
+										<input id="exportJSON" name="exportJSON" type="hidden" onchange="exportJSON()" />
 										<button class="btn btn-primary" type="submit">Download Now</button>
 										
 										</form>
@@ -112,20 +115,15 @@
 				</div>
 				<!-- /main charts -->
 
-
-				<!-- Dashboard content -->
-				<div class="row">
-			
-				
-				</div>
-				<!-- /dashboard content -->
-
 			
 			<!-- /main content -->
 
 		</div>
 		<!-- /page content -->
 
+	</div>
+	
+	
 	</div>
 	
 

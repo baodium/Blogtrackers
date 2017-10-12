@@ -349,7 +349,7 @@
 padding-top:8px;
 padding-bottom:8px;	
 }
-#searchtextbox
+#searchtextbox, #searchBar
 {
 border:2px solid #2196F3 !important;
 background-color:#ffffff;
@@ -429,4 +429,22 @@ height: 36px;
 .login-container .page-container
 {
 	padding-top: 100px;
+}
+.scroll {
+	overflow-y: scroll;
+}
+.language-switch
+{
+background-color:#ffffff;
+border-radius:3px;
+margin-top:8px;	
+}
+.language-switch select
+{
+padding-top:8px;	
+height:35px;
+}
+.navbar-header
+{
+margin-top:5px;	
 }

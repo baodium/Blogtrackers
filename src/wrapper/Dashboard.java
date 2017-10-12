@@ -527,7 +527,7 @@ public class Dashboard extends HttpServlet {
 		session.setAttribute("nlang", nl);
 		session.setAttribute("series", t);
 		response.setContentType("text/html");
-		response.sendRedirect("Dashboard.jsp");
+		response.sendRedirect("dashboard.jsp");
 		}
 	}
 }

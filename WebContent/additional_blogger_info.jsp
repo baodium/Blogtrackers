@@ -69,7 +69,7 @@
 							<div class="panel-body">
 							<div class="col-md-4">
 							
-							<div id="address-book">
+							<div id="address-book" class="scroll" style="height:400px;">
 														<div class="slider-content">
 															<ul>
 																<c:set var="i" value="0" />
@@ -354,10 +354,9 @@
 						</thead>
 						<tbody>
 						<c:set var="i" value="0" />
-																				<c:forEach items="${bloggerLinks}" var="s1"
-																					begin="${i}">
+					<c:forEach items="${bloggerLinks}" var="s1"	begin="${i}">
 							<tr>
-								<td><a href="${s1.link}" target="_blank">${s1.link}</a></td>
+								<td width="95%"><a href="${s1.link}" target="_blank">${s1.link}</a></td>
 								<td >${s1.rank}</td>
 								<td class="hidden" width="0%"></td>
 								<td class="hidden" width="0%"></td>

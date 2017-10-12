@@ -1,0 +1,327 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package blogtracker.gui.blogtrackers;
+
+import blogtracker.util.UtilFunctions;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.apache.lucene.index.CorruptIndexException;
+import org.apache.lucene.index.IndexReader;
+
+/**
+ *
+ * @author skumar34
+ */
+public class getTagNGrams extends UtilFunctions
+{
+
+    public getTagNGrams()
+    {
+        
+    }
+
+    public String freqTermIndex;// = "C:\\indices\\index1";
+    public String SEARCH_INDEX; //= "C:\\Program Files (x86)\\blazeds\\tomcat\\webapps\\blazeds\\BlogTracker\\blogtrackers-index";
+    public String stopwordsLoc;
+
+    public void loadGlobalConstants()
+    {
+
+        BufferedReader br = null;
+        try {
+            //System.out.println(System.getProperty("user.dir"));
+            HashMap<String,String> hm = new HashMap<String,String>();
+            //br = new BufferedReader(new FileReader("../webapps/ROOT/WEB-INF/classes/authentication/blogtrackers.config"));
+            br = new BufferedReader(new FileReader("C:/Program Files (x86)/blazeds/tomcat/webapps/ROOT/WEB-INF/classes/authentication/blogtrackers.config"));
+            String temp = "";
+            while((temp = br.readLine())!=null)
+            {
+                temp = temp.trim();
+                //System.out.println(temp);
+                if(temp.isEmpty()||temp.startsWith("//"))
+                {
+                    continue;
+                }
+                else
+                {
+                    String[] arr = temp.split("##");
+                    //System.out.println(arr[0]+" "+arr[1]);
+                    if(arr.length==2)
+                    {
+                        hm.put(arr[0].trim(), arr[1].trim());
+                    }
+                }
+            }
+            if(!hm.isEmpty())
+            {
+                SEARCH_INDEX = hm.get("searchIndex");
+                freqTermIndex = hm.get("freqTermIndex");
+                stopwordsLoc = hm.get("stopWords");
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }finally {
+            try {
+                br.close();
+            } catch (IOException ex) {
+               ex.printStackTrace();
+            }
+
+        }
+
+    }
+//    public void loadGlobalConstants()
+//    {
+//        try {
+//            JFigLocatorIF locator = new blogtracker.util.LocalJFigLocator("config/", "config.xml");
+//            JFigIF confInstance = org.igfay.jfig.JFig.getInstance(locator);
+//            SEARCH_INDEX = confInstance.getValue("Indices", "searchIndex");
+//            freqTermIndex = confInstance.getValue("Indices", "freqTermIndex");
+//            stopwordsLoc = confInstance.getValue("stopWords","loc");
+//        } catch (JFigException ex) {
+//            System.out.println("Configuration file Not found");
+//        }
+//    }
+
+    public tags[] getngrampairs(String startDate, String endDate,ArrayList<Integer> selectedsites,int window)
+    {
+        try {
+            loadGlobalConstants();
+            IndexReader idfread = IndexReader.open(SEARCH_INDEX);
+            String selsitesQuery = this.getSelSitesQuery(selectedsites);
+            String input = getPostsFromDB(startDate,endDate,selsitesQuery);
+            if(input==null)
+            {
+                return null;
+            }
+            blogtracker.util.NGramAnalyzer ng = new blogtracker.util.NGramAnalyzer(window);
+            tags[] ngrams = ng.getTopNGrams(100,input, stopwordsLoc, idfread,startDate,endDate);
+            tags[] ngramphrases = gettopngrams(ngrams,20,selsitesQuery,startDate,endDate);
+            idfread.close();
+            return ngramphrases;
+        } catch (CorruptIndexException ex) {
+            Logger.getLogger(getTagNGrams.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(getTagNGrams.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+   }
+
+    public tags[] gettopngrams( tags[] ngrams,int size, String selsitesQuery,String startDate, String endDate)
+    {
+        Connection conn = this.getConn();
+        int N = 0;
+        String queryStr = "select count(distinct blogger) as bloggercount from blogposts where "+selsitesQuery+" date >='"+startDate+"' and date<='"+endDate+"'";
+        try{
+            Statement stmt = conn.createStatement();
+            ResultSet rset = stmt.executeQuery(queryStr);
+            if(rset.next())
+            {
+                N = rset.getInt("bloggercount");
+            }
+        }catch(SQLException ex)
+        {
+            ex.printStackTrace();
+            N =0;
+        }
+        if(N>0)
+        {           
+            int noofphrases = size;
+            if(ngrams.length<size)
+            {
+                noofphrases = ngrams.length;
+            }
+            tags[] ngramphrases = new tags[noofphrases];
+            
+            for(int i=0;i<noofphrases;i++)
+            {
+                ngramphrases[i] = new tags();
+                int N_i = getNOBKeyword(ngrams[i].getKey(),startDate,endDate,selsitesQuery);
+               // System.out.println("n for key "+ngrams[i].getKey()+" is "+N_i);
+                ngramphrases[i].setKey(ngrams[i].key);
+                if(N_i<=0)
+                {
+                    ngramphrases[i].setValue(ngrams[i].getValue());
+                }
+                else
+                {
+                    ngramphrases[i].setValue(ngrams[i].getValue()*((double)N_i/N));
+                }
+            }
+            Arrays.sort(ngramphrases, Collections.reverseOrder());
+            return ngramphrases;
+        }
+        else
+        {
+            int noofphrases = size;
+            if(ngrams.length<size)
+            {
+                noofphrases = ngrams.length;
+            }
+            tags[] ngramphrases = new tags[size];
+            for(int i=0;i<size;i++)
+            {
+                ngramphrases[i] = new tags();
+                ngramphrases[i].setKey(ngrams[i].key);
+                ngramphrases[i].setValue(ngrams[i].value);
+            }
+            return ngramphrases;
+        }
+
+
+     }
+
+    //get the number of bloggers who used the keyword in their blog posts in the given time period.
+     public int getNOBKeyword(String keyword,String startDate, String endDate, String selsitesQuery)
+      {
+
+          Connection conn = getConn();
+          String querystr = "select count(distinct blogger) as nobloggers from blogposts where "+selsitesQuery+" post like'% "+keyword+" %' and date >='"+startDate+"' and date<='"+endDate+"'";
+
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet rset = stmt.executeQuery(querystr);
+            if(rset.next())
+            {
+                int noofbloggers = rset.getInt("nobloggers");
+                return noofbloggers;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(getTagNGrams.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          return 0;
+
+
+      }
+
+      //DEBUG only, comment for release
+     public Connection getConn()
+     {
+        String constr = "jdbc:mysql://149.169.226.79:3306/blogtrackers_twitter?useUnicode=true&characterEncoding=utf8";
+        String username = "shamanth";
+        String password = "shamanth123";
+        Connection conn = null;
+        try {
+            try {
+                try {
+                    Class.forName("com.mysql.jdbc.Driver").newInstance();
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(getTagNGrams.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(getTagNGrams.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(getTagNGrams.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            conn = DriverManager.getConnection(constr, username, password);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(getTagNGrams.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return conn;
+     }
+
+    public String getPostsFromDB(String startDate,String endDate,String selsitesQuery)
+    {
+        Connection conn = this.getConn();
+        String queryStr = "select post from blogposts where "+selsitesQuery+" date >='"+startDate+"' and date<='"+endDate+"'";
+        try{
+            Statement stmt = conn.createStatement();
+            ResultSet rset = stmt.executeQuery(queryStr);
+            StringBuffer inputStr = new StringBuffer();          
+            while(rset.next())
+            {
+
+               String temp = rset.getString("post");
+               if(!temp.isEmpty())
+               {
+                   //String cleanedPost = this.cleanpost(temp);
+                   inputStr.append(" "+this.noHTMLString(temp));
+//                   System.out.println(inputStr.toString());
+               }
+            }
+            String input = inputStr.toString();
+            return input;
+        }catch(SQLException ex)
+        {
+            return null;
+        }
+    }
+
+    //DEBUG only
+//    public static void main(String[] args)
+//    {
+//        getTagNGrams gt = new getTagNGrams();
+//        ArrayList<Integer> sites = new ArrayList<Integer>();
+//        sites.add(75);
+//        sites.add(76);
+//        sites.add(78);
+//        sites.add(195);
+//        sites.add(215);
+//        sites.add(205);
+//        sites.add(219);
+//        //String query = gt.getSelSitesQuery(sites);
+//        gt.getngrampairs("2011-06-08", "2011-06-08", sites,1);
+//        //gt.getngrampairs("2010-05-01", "2010-07-01",sites,1);
+//    }
+
+    //Changed from NGrams to ArrayList because class was unloading at Flex end and causing errors.
+    public ArrayList<String> formTags(String startDate,String endDate,int threshold,ArrayList<Integer> selectedsites,int window)
+    {
+       StringBuffer taghtml = new StringBuffer();
+      
+       tags[] phrases = getngrampairs(startDate,endDate,selectedsites,window);
+       int limit = threshold;
+       if(phrases.length<threshold)
+           limit = phrases.length;
+       //System.out.println(limit);
+        int size = limit;
+        int tier1 = size/4;
+        for(int j=0;j<tier1;j++)
+        {
+            phrases[j].value = 30;
+            //System.out.println(phrases[j].key+" "+phrases[j].value);
+        }
+        for(int j=tier1;j<tier1+tier1;j++)
+        {
+            phrases[j].value = 20;
+            //System.out.println(phrases[j].key+" "+phrases[j].value);
+        }
+        for(int j=tier1+tier1;j<tier1+tier1+tier1;j++)
+        {
+            phrases[j].value = 15;
+            //System.out.println(phrases[j].key+" "+phrases[j].value);
+        }
+        for(int j=tier1+tier1+tier1;j<limit;j++)
+        {
+            phrases[j].value = 10;
+            //System.out.println(phrases[j].key+" "+phrases[j].value);
+        }
+       for(int i=0;i<limit;i++)
+       {
+          taghtml.append("<a href=\"event:"+phrases[i].key+"\"><font size=\""+phrases[i].value+ "\">"+phrases[i].key+"</font></a> &nbsp; &nbsp; &nbsp; ");
+       }
+        //System.out.println(taghtml);
+       ArrayList<String> retVal = new ArrayList<String>();
+       retVal.add(taghtml.toString());
+       retVal.add(String.valueOf(window));
+       //System.out.println(retVal.getTaghtml()+" "+retVal.getWindow());
+       return retVal;
+    }
+
+}
+
