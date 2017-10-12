@@ -109,7 +109,7 @@ public class DBConnector {
 	public ArrayList query(String query){
 		ArrayList result=new ArrayList();  
 		Connection con = null;
-		System.out.println(query);
+		//System.out.println(query);
 		java.sql.Statement stmt = null;
 		ResultSet rs = null;   
 		try {

@@ -253,5 +253,20 @@
 		
 	}
 	</script>
+	<script type="text/javascript">
+
+		function trackerchanged() {
+			$(".loader").removeClass("hidden");
+			document.getElementById("trackerform").submit();
+		
+		}
+		function datechanged() {
+			$(".loader").removeClass("hidden");
+		document.getElementById("dateform").submit();
+		}
+		function spanChanged() {
+			document.getElementById("pf_spanForm").submit();
+		}
+	</script>
 </body>
 </html>

@@ -65,7 +65,7 @@ public class PostingFrequency extends HttpServlet {
 			}
 			session.setAttribute("errorMessage", "");
 
-			String userName = (String) session.getAttribute("username");
+			String userName = (String) session.getAttribute("user");
 			String trackerName = (String) session.getAttribute("tracker");
 			String datePicked = (String) session.getAttribute("datepicked");
 			TrackerDialog dialog= new TrackerDialog();
@@ -99,6 +99,7 @@ public class PostingFrequency extends HttpServlet {
 			session.setAttribute("allSepSites", allSites);
 			//session.setAttribute("errorMessage",session.getAttribute("tracker") );
 		}
+		
 		else if(request.getParameter("datepicked")!= null){	
 			String date =request.getParameter("datepicked");
 			session.setAttribute("datepicked", date);
@@ -107,7 +108,7 @@ public class PostingFrequency extends HttpServlet {
 			//session.setAttribute("errorMessage",aa );
 			if(session.getAttribute("tracker")!=null){
 				session.setAttribute("errorMessage", "");
-				String userName = (String) session.getAttribute("username");
+				String userName = (String) session.getAttribute("user");
 				String trackerName = (String) session.getAttribute("tracker");
 				String datePicked = (String) session.getAttribute("datepicked");
 				session.setAttribute("errorMessage", userName);
