@@ -350,7 +350,11 @@
 						<table id="sentitable" class="table datatable-basic bulk_action">
 						<thead>
 							<tr>
-							<th><input type="checkbox" id="check-all" class="flat"></th>
+							<th>
+							<label class="mylabel">
+  <input class="mycheckbox individualcheckbox" type='checkbox'>
+  <span class="myspan individualspan"></span></label>
+							<input type="checkbox" id="check-all" class="flat"></th>
 								<th>Select All</th>
 								
 								<th class="hidden" width="0%"></th>
@@ -367,7 +371,11 @@
 																					<tr class="odd pointer">
 																						<c:forEach items="${names}" var="s1" begin="${i}"
 																							end="${i}">
-																							<td class="a-center "><input type="checkbox"
+																							<td class="a-center ">
+																							<label class="mylabel">
+  <input class="mycheckbox individualcheckbox" name="table_records" type='checkbox'>
+  <span class="myspan individualspan"></span></label>
+																							<input type="checkbox"
 																								class="flat" name="table_records"
 																								value="${s1[1]}"></td>
 																							<td class=" " value="${s1[0]}"><c:out

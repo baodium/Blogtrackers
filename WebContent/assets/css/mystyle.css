@@ -448,3 +448,19 @@ height:35px;
 {
 margin-top:5px;	
 }
+.mylabel input {
+  display: none;/* <-- hide the default checkbox */
+}
+.mylabel span {/* <-- style the artificial checkbox */
+  height: 15px;
+  width: 15px;
+  border: 2px solid #2196F3;
+  display: inline-block;
+  position: relative;
+}
+.mycheckbox:checked + span:before {/* <-- style its checked state..with a ticked icon */
+  content: '\2714';
+  position: absolute;
+  top: -3px;
+  left: 0;
+}

@@ -1,8 +1,8 @@
-
-	<script type="text/javascript" src="assets/js/plugins/forms/styling/switchery.min.js"></script>
-	<script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>
-	<script type="text/javascript" src="assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
-	<script
+<script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>
+<script type="text/javascript" src="assets/js/plugins/forms/styling/switchery.min.js"></script>
+<script type="text/javascript" src="assets/js/plugins/forms/styling/switch.min.js"></script>
+<script type="text/javascript" src="assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
+<script
 					src="${pageContext.request.contextPath}/production/js/moment/moment.min.js"></script>
 <script
 						src="${pageContext.request.contextPath}/production/js/datepicker/daterangepicker.js"></script>
@@ -16,7 +16,19 @@
 	
 		
 	<script type="text/javascript" src="assets/js/plugins/ui/ripple.min.js"></script>
-
+   <script>
+   $(document).ready(function(){
+	// trigger the check box dynamically
+	$('.individualspan').each(function(index,element){
+	// generic checkbox checker	
+	$('.individualspan:eq('+index+')').click(function(e){
+	//$('.mylabel:eq('+index+')').append("test");	
+	$('individualcheckbox:eq('+index+')').click();
+	});	
+	});
+	   
+   });
+   </script>
 	<!-- FastClick -->
 							<script
 								src="${pageContext.request.contextPath}/vendors/fastclick/lib/fastclick.js"></script>
@@ -26,8 +38,8 @@
 							<!-- Chart.js -->
 							<script
 								src="${pageContext.request.contextPath}/vendors/Chart.js/dist/Chart.min.js"></script>
-							<script
-								src="${pageContext.request.contextPath}/vendors/iCheck/icheck.min.js"></script>
+							<!--  <script
+								src="${pageContext.request.contextPath}/vendors/iCheck/icheck.min.js"></script>-->
 					
 					<!-- bootbox code -->
 							<script
@@ -78,7 +90,7 @@
       
     
       var ctx = document.getElementById("canvasRadar1");
-      var data = {    		 
+      var data = {  		 
     	labels: ["Past focus", "Present focus", "Future focus"],
         datasets:${radar1}
        };
@@ -187,16 +199,13 @@
         color: "green",
         fillOpacity: 0,
         name : "Positve Sentiments",
-        dataPoints: //array
-        	${trendpos}     
-         
-      },
+        dataPoints: ${trendpos}          //array
+        },
       
       { 
           click: function(e){
          xychange( "dataSeries Event => Type: "+ e.dataSeries.type+ ", dataPoint { x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y + " }");
-         $('#chartpoint input').val(" x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y).trigger('change');
-        
+         $('#chartpoint input').val(" x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y).trigger('change');    
         },
       
         type: "line",
