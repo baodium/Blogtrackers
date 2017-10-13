@@ -9,6 +9,9 @@
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
 	String tracker_id = (null == session.getAttribute("tid")) ? "" : session.getAttribute("tid").toString();
 	
+	
+	ArrayList userinfo = new ArrayList();
+	ArrayList trackers = new ArrayList();
 
     String path=application.getRealPath("/").replace('\\', '/')+"profile_images/";
     path = path.replace("build/", "");
@@ -19,8 +22,10 @@
        pimage = "profile_images/"+session.getAttribute("username")+".jpg";
    }
     
-    ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
-    ArrayList trackers = (ArrayList)session.getAttribute("trackers");
+    try{
+	   userinfo = (ArrayList)session.getAttribute("userinfo");
+	   trackers = (ArrayList)session.getAttribute("trackers");
+    }catch(Exception e){}
 %>
 <html lang="en">
 <head>
@@ -118,37 +123,12 @@
 			String Selectedtracker  = (String)session.getAttribute("tracker"); 
 
 			%>
+
 				<ul class="nav navbar-nav navbar-right">
 			<% if(username!=""){ %>
 				<li class="language-switch"">
 			<form name="trackerform" id="trackerform" action="" method="post">
-<!--  
-<<<<<<< HEAD
-			<select id="tracker" name="tracker" onchange="trackerchanger()" class="form-control">
-								
-			<% 
-			
-			String isselecttwo;
-			if(trackers != null && trackers.size()>0){ 
-			for(int i=0; i<trackers.size(); i++){
-			String isselect = "";
-			ArrayList tracker = (ArrayList)trackers.get(i);
-			String name = tracker.get(0).toString(); 
-			if(name.equals(Selectedtracker)){
-				isselect = "selected";
-				session.setAttribute("tracker",tracker.get(0));
-			}
-			%>
-			<option <%=isselect%> value="<%=tracker.get(0)%>"><%=tracker.get(2)%></option>
-			<% } }else{ %>
-			<option value=""> no tracker created yet </option>
-			<% } %>			
-			</select>
-			</form>
-			</li>
-				
-=======
--->
+
 			<select id="tracker" name="tracker" onchange="trackerchanged()" class="form-control" value="${item}">
 					                    
 				                    <c:choose>
@@ -160,12 +140,12 @@
 											<option value="">Select Tracker</option>
 										</c:when>
 									</c:choose>
-
 									<c:forEach items="${trackers}" var="item">
 										<c:if test="${tracker ne item}">
 											<option value="${item.get(2)}"><c:out value="${item.get(2)}" /></option>
-										</c:if>c:if>
+										</c:if>
 									</c:forEach>
+									
 									</select>
 									</form>
 									</li>

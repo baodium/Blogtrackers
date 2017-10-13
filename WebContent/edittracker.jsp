@@ -1,25 +1,24 @@
 <%@page import="java.util.*"%>
 <%@page import="wrapper.*"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+
+
 <%
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
-	String tracker_id = (null == request.getParameter("tracker_id")) ? "" : request.getParameter("tracker_id");
-	
+	Object edited_tracker = (null == session.getAttribute("edited_tracker")) ? "" : session.getAttribute("edited_tracker");
+	String tracker_id = (null == request.getParameter("tracker_id")) ? edited_tracker.toString() : request.getParameter("tracker_id");
+	ArrayList tracker = new ArrayList();
 	if (username == null || username == "" || tracker_id == "") {
 		response.sendRedirect("index.jsp");
 	}
 	
-	ArrayList tracker = new Tracker().getTracker(tracker_id);
-	tracker = (ArrayList)tracker.get(0);
-    ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
+	try{
+		tracker = new Tracker().getTracker(tracker_id);
+		tracker = (ArrayList)tracker.get(0);
+	}catch(Exception e){}
 %>
-
  <jsp:include page="include_top.jsp"></jsp:include>
-
-
 
 
 	<!-- Page header -->
@@ -67,20 +66,20 @@
 							</div>
 
 							<div class="panel-body">
-							<%=tracker %>
+							
 					<div class="col-lg-12 col-md-12 col-sm-12">
 										
 							<div class="form-group">
 							<form name="edit_tracker" method="post" action="setup_tracker">
 							<label class="control-label">Tracker Name</label>
-							<input class="form-control" type="text" name="title" value="<%=tracker.get(2)%>" />
+							<input class="form-control" type="text" name="title" value="<%=(null == tracker.get(2)) ? "" : tracker.get(2)%>" />
 							</div>
 							<div class="form-group">
 							<label class="control-label">Tracker Description</label>
-							<textarea class="form-control" name="descr"><%=tracker.get(6)%></textarea>
+							<textarea class="form-control" name="descr"><%=(null == tracker.get(6)) ? "" : tracker.get(6)%></textarea>
 							</div>
 							<div>
-							<input type="hidden" name="tracker_id" value="<%=tracker.get(0)%>">
+							<input type="hidden" name="tracker_id" value="<%=(null == tracker.get(0)) ? "" : tracker.get(0)%>">
 							<input type="hidden" name="edit_tracker" value="yes">
 							<input type="hidden" name="action" value="edit_tracker">
 							<button class="btn btn-primary" type="sumbit">Save Tracker</button>

@@ -116,9 +116,9 @@ public class Tracker extends HttpServlet {
 			String tid = request.getParameter("tracker_id");
 			new DBConnector().updateTable("DELETE FROM trackers WHERE  tid='"+tid+"'");	
 			
-			String userName = (String) session.getAttribute("username");
-			ArrayList trackers = new DBConnector().query("SELECT * FROM trackers WHERE userid='"+userName+"'");
-        	session.setAttribute("trackers", trackers+"");
+			String userid = (String) session.getAttribute("user");
+			ArrayList trackers = new DBConnector().query("SELECT * FROM trackers WHERE userid='"+userid+"'");
+        	session.setAttribute("trackers", trackers);
        	
 			}catch(Exception ex) {}
 			pww.write("success");
@@ -126,17 +126,18 @@ public class Tracker extends HttpServlet {
 		
 		if(action.equals("edit_tracker")) {
 			try {
-			String tid = request.getParameter("tracker_id");
-			String name = request.getParameter("title");
-			String desc = request.getParameter("desc");
-			new DBConnector().updateTable("UPDATE trackers SET tracker_name=='"+name+"', description='"+desc+"' WHERE  tid='"+tid+"'");	
-			
-			String userName = (String) session.getAttribute("username");
-			ArrayList trackers = new DBConnector().query("SELECT * FROM trackers WHERE userid='"+userName+"'");
-        	session.setAttribute("trackers", trackers+"");
-        	response.sendRedirect("trackerlist.jsp");
+				String tid = request.getParameter("tracker_id");
+				String name = request.getParameter("title");
+				String desc = request.getParameter("descr");
+				new DBConnector().updateTable("UPDATE trackers SET tracker_name='"+name+"', description='"+desc+"' WHERE  tid='"+tid+"'");	
+				
+				String userid = (String) session.getAttribute("user");
+				ArrayList trackers = new DBConnector().query("SELECT * FROM trackers WHERE userid='"+userid+"'");
+	        	session.setAttribute("trackers", trackers);
+	        	session.setAttribute("edited_tracker", tid+"");
+	        	response.sendRedirect("edittracker.jsp");
 			}catch(Exception ex) {
-				  response.sendRedirect("trackerlist.jsp");
+				  response.sendRedirect("edittracker.jsp");
 			}
 			 
 		}
@@ -156,6 +157,17 @@ public class Tracker extends HttpServlet {
 				String s = "("+selected+")";
 				bloglist = new DBConnector().query("select blogsite_id,blogsite_name,totalposts from blogsites where blogsite_id in "+s+"");			
 			}
+		} catch (Exception ex) {}
+		
+		return bloglist;
+	}
+	
+	
+	public ArrayList<?> getTopTrackers(String username) {
+		ArrayList<?> bloglist = new ArrayList<String>();
+		
+		try {
+			bloglist = new DBConnector().query("SELECT * FROM trackers WHERE userid <> '"+username+"' ORDER BY date_created DESC LIMIT 0,10");			
 		} catch (Exception ex) {}
 		
 		return bloglist;

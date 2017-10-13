@@ -4,16 +4,20 @@
     Author     : Omnibus_03
 --%>
 <%@page import="java.util.*"%>
-<%@page import="authentication.DBConnector"%>
+<%@page import="wrapper.*"%>
 <%
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
+	ArrayList trackers = new ArrayList();
+	ArrayList top_trackers = new ArrayList();
 	if (username == null || username == "") {
 		response.sendRedirect("index.jsp");
 	}
-        ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
-        ArrayList trackers = (ArrayList)session.getAttribute("trackers");
-        ArrayList top_trackers = new DBConnector().query("SELECT * FROM trackers WHERE userid <> '"+username+"' ORDER BY date_created DESC LIMIT 0,10");
+	
+	try{
+     trackers = (ArrayList)session.getAttribute("trackers");
+     top_trackers = new Tracker().getTopTrackers(username.toString());//new DBConnector().query("SELECT * FROM trackers WHERE userid <> '"+username+"' ORDER BY date_created DESC LIMIT 0,10");
+	}catch(Exception e){}
 %>
 
  <jsp:include page="include_top.jsp"></jsp:include>	
