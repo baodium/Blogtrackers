@@ -160,11 +160,12 @@
 							ArrayList tracker = (ArrayList)trackers.get(i);
 							Object blogs = tracker.get(5);
 					%>
+					<form name="form_<%= tracker.get(0)%>" id="form_<%= tracker.get(0)%>" method="post" action="edittracker.jsp">
 					<div class="col-lg-4 col-md-6 eachtracker">
 					
 							<div class="thumbnail">
 							
-							<div title="Delete Tracker" class="text-muted text-size-medium" style="position:absolute; cursor:pointer;"><i class="icon-trash text-size-medium position-left"></i></div>
+							<div title="Delete Tracker" class="text-muted text-size-medium" style="position:absolute; cursor:pointer;"><a href="#" onclick="delete_this('<%= tracker.get(0)%>');"><i class="icon-trash text-size-medium position-left"></i></a></div>
 					
 					
 								<div class="thumb thumb-rounded">
@@ -173,7 +174,7 @@
 						    	<div class="caption text-center">
 						    		<h6 class="text-semibold no-margin"><a href="#" onclick="loadTrackerr('<%= tracker.get(0)%>');"><%=tracker.get(2) %></a> <small class="display-block"><%=tracker.get(1) %></small></h6>
 					    			<ul class="icons-list mt-15">
-				                    	<li><a class="pull-left" href="<%=request.getContextPath()%>/dashboard.jsp?tid=<%= tracker.get(0)%>"><button type="button" title="Proceed to Dashboard"  class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-statistics"></i></button></a>    <a class="pull-right" style="margin-left:4px;"><button type="button" title="Edit Tracker"  class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-pencil"></i></button></a></li>
+				                    	<li><a class="pull-left" href="<%=request.getContextPath()%>/dashboard.jsp?tid=<%= tracker.get(0)%>"><button type="button" title="Proceed to Dashboard"  class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-statistics"></i></button></a>    <a class="pull-right" href="#" onclick="edit_this('<%= tracker.get(0)%>');" style="margin-left:4px;"><button type="button" title="Edit Tracker"  class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-pencil"></i></button></a></li>
 				                    </ul>
 						    	</div>
 					    	</div>
@@ -182,6 +183,8 @@
 						<input type="hidden" name="" id="date_created_<%=tracker.get(0)%>" value="<%=tracker.get(3) %>" />	
 						<input type="hidden" name="" id="tracker_desc_<%=tracker.get(0)%>" value="<%=tracker.get(6) %>" />	
 						<input type="hidden" name="" id="tracker_blogs_<%=tracker.get(0)%>" value="<%=blogs %>" />	
+						<input type="hidden" name="tracker_id"  value="<%=tracker.get(0)%>" />
+					</form>
 					<% }} %>
 					<div class="col-lg-4 col-md-6 eachtracker">
 							<div class="thumbnail">
@@ -284,6 +287,29 @@
 		}
 		function spanChanged() {
 			document.getElementById("pf_spanForm").submit();
+		}
+		
+		function delete_this(id){
+			//var promt = confirm("Are you sure you want to delete this tracker?");
+			if (confirm('Are you sure you want to delete this tracker?')) {
+				$.ajax({
+			        url: app_url+'/setup_tracker',
+					method:'POST',
+					data:{tracker_id:id,action:"delete_tracker"},
+			        success: function(response)
+			        {	
+			        	window.location.reload();
+			        }
+			    });	
+			} else {
+				return false;
+			    //alert('Why did you press cancel? You should have confirmed');
+			}
+			
+		}
+		
+		function edit_this(id){
+			$("#form_"+id).submit();
 		}
 	</script>
 </body>

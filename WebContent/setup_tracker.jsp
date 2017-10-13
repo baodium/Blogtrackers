@@ -5,7 +5,7 @@
 --%>
 <%@page import="java.util.*"%>
 <%@page import="wrapper.*"%>
-<%@page import="authentication.*"%>
+
 <%
 	String selected =  (null == request.getParameter("all-selected-blogs")) ? "" : request.getParameter("all-selected-blogs");
 	String pre_selected = (null == session.getAttribute("pre-selected-blogs")) ? "" : session.getAttribute("pre-selected-blogs").toString();
