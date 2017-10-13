@@ -84,7 +84,7 @@ public class Tracker extends HttpServlet {
 				if(done) {
 				  	ArrayList trackers = new DBConnector().query("SELECT * FROM trackers WHERE userid='"+userName+"'");
                 	session.setAttribute("trackers", trackers+"");
-                	
+                	session.setAttribute("initiated_search_term", "");
 					response.setContentType("text/html");
 					pww.write("success");
 				}else {
@@ -117,4 +117,29 @@ public class Tracker extends HttpServlet {
 		Date date = new Date();
 		return dateFormat.format(date);
 	}
+	
+	public ArrayList<?> getTrackers(String selected) {
+		ArrayList<?> bloglist = new ArrayList<String>();
+		try {
+			if(!selected.trim().isEmpty()){
+				String s = "("+selected+")";
+				bloglist = new DBConnector().query("select blogsite_id,blogsite_name,totalposts from blogsites where blogsite_id in "+s+"");			
+			}
+		} catch (Exception ex) {}
+		
+		return bloglist;
+	}
+	
+	public ArrayList searchTrackers(String term) {
+		ArrayList bloglist = new ArrayList();
+		try {
+			if(!term.trim().isEmpty()){
+				String query_string ="SELECT * FROM trackers WHERE tracker_name LIKE  '%"+term+"%' LIMIT 0,12 ";
+			    bloglist =new DBConnector().query(query_string); 		
+			}
+		} catch (Exception ex) {}
+		
+		return bloglist;
+	}
+    
 }

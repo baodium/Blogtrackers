@@ -104,10 +104,7 @@ if(term!="" && username==""){
 						if(search_result!=""){
 							%>
 							<div class="loadmoreimg" id="loading-img" style="text-align:center"><br/><br/><img src='assets/images/preloader.gif' /><br/></div>						
-						<% } %>
-						
-									
-							
+						<% } %>			
                     </div>
 				</div>
 			</div>

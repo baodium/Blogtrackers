@@ -7,7 +7,6 @@
 <%
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
-
 	String tracker_id = (null == session.getAttribute("tid")) ? "" : session.getAttribute("tid").toString();
 	
 

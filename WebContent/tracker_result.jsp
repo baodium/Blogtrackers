@@ -7,6 +7,8 @@
 <%
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
+	Object term = (null == session.getAttribute("search_term")) ? "" : session.getAttribute("search_term");
+	Object search_result = (null == session.getAttribute("search_result")) ? "" : session.getAttribute("search_result");
 	if (username == null || username == "") {
 		response.sendRedirect("index.jsp");
 	}
@@ -69,18 +71,106 @@
 						<h6>Blog Keyword</h6>
 						<fieldset>
 						
-						Hello <%=username%>, you searched about 
-							
-						</fieldset>
-
+						Hello <%=username%>, you searched about <%=term %>
 						<h6>Search result</h6>
-						<fieldset >
+						
+						
+						
+						
+						
+							<div class="search-results-list">						
+						<div class="row" id="tracking-blogs">
+						<%  
+							if(search_result!=""){
+								ArrayList resultss = (ArrayList)search_result;
+								if(resultss.size()>0){
+									for(int j=0; j<resultss.size(); j++){
+										ArrayList tracker = (ArrayList)resultss.get(j);
+						%>						
+							<div class="col-sm-3">
+								<div class="panel panel-body">
+									<div class="media">
+										<div class="media-left">
+											<img src="img/b.png" class="img-circle img-lg" alt="">
+										</div>										
+										<div class="media-body">
+											<h6 class="media-heading"><%=item.get(1) %> <input type="checkbox" onclick="select_blog()" class="blog-list" name="blog" style="float:right" value="<%=item.get(0) %>"  />
+											</h6>
+											<span class="text-muted"><%=item.get(2) %> post(s)</span>
+										</div>										
+									</div>
+								</div>
+							</div>
+							<% }}else{ %>							
+							No result found
+							<% } %>												
+						</div>
+						<input type="hidden" name="search-blog" id="search-blog" value="yes" />
+						<input type="hidden" name="search-keyword" id="search-keyword" value="<%=keyword%> %>" />					
+						<%  if(bloglist.size()>0){ %>
+							<div class="loadmoreimg" id="loading-img" style="text-align:center; margin-top:10px"><img src='assets/images/preloader.gif' /><br/></div>						
+						<% } %>
+                    </div>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						<div >
 						<div id="result-set">
+						<%=term %>
 							The result should be displayed in a table and each cell should have a means of selection like a checkbox or something fancier
+							
+						<div class="row" id="appendee">
+						<%  
+							if(search_result!=""){
+								ArrayList resultss = (ArrayList)search_result;
+								if(resultss.size()>0){
+									for(int j=0; j<resultss.size(); j++){
+										ArrayList tracker = (ArrayList)resultss.get(j);
+						%>
+							
+							<div class="col-sm-3">
+								<div class="panel panel-body">
+									<div class="media">
+										<div class="media-left">
+											<img src="img/b.png" class="img-circle img-lg" alt="">
+										</div>
+										
+										<div class="media-body">
+											<h6 class="media-heading"><%=tracker.get(2)%> <input type="checkbox" onclick="select_blog();"  class="blog-list" name="blog" style="float:right" value="<%=tracker.get(0) %>"  /></h6>
+											<span class="text-muted"><%=tracker.get(7)%> post(s)</span>
+										</div>
+										
+									</div>
+								</div>
+							</div>
+							<% }}} %>											
+						</div>
+						<%  
+						if(search_result!=""){
+							%>
+							<div class="loadmoreimg" id="loading-img" style="text-align:center"><br/><br/><img src='assets/images/preloader.gif' /><br/></div>						
+						<% } %>	
 							
 						</div>
 						
+						</div>
+							
 						</fieldset>
+
+						
 
 						
 

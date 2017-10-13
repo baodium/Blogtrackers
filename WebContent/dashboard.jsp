@@ -18,7 +18,7 @@
 		response.sendRedirect("index.jsp");
 	}
      ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
-      String tracker_id = (null == session.getAttribute("tid")) ? "" : session.getAttribute("tid").toString();
+     String tracker_id = (null == session.getAttribute("tid")) ? "" : session.getAttribute("tid").toString();
 
 %>
  <jsp:include page="include_top.jsp"></jsp:include>

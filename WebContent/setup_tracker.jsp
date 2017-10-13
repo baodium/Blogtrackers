@@ -4,10 +4,16 @@
     Author     : Omnibus_03
 --%>
 <%@page import="java.util.*"%>
+<%@page import="wrapper.*"%>
+<%@page import="authentication.*"%>
 <%
 	String selected =  (null == request.getParameter("all-selected-blogs")) ? "" : request.getParameter("all-selected-blogs");
 	String pre_selected = (null == session.getAttribute("pre-selected-blogs")) ? "" : session.getAttribute("pre-selected-blogs").toString();
-
+	String term = (null == session.getAttribute("initiated_search_term")) ? "" : session.getAttribute("initiated_search_term").toString();
+	
+	ArrayList bloglist = new ArrayList();
+	ArrayList selected_blog = new ArrayList();
+	 
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
 	
@@ -19,9 +25,27 @@
 		response.sendRedirect("login.jsp");
 	}
 	
-	if(selected=="" && pre_selected!=""){
+	if(selected.equals("") && !pre_selected.equals("")){
 		selected = pre_selected;
 	}
+	
+	
+	if(!selected.equals("")){
+		selected = pre_selected;
+		//bloglist = new Tracker().getTrackers(selected.replaceAll(",$|^x", ""));
+		String [] listed = selected.split(","); 		
+		if(listed.length>0){
+			for(int l=0; l<listed.length; l++){
+				selected_blog.add(l,listed[l]);
+			}
+		}
+	}
+	
+	
+	if(!term.equals("")){
+		bloglist = new Tracker().searchTrackers(term);
+	}
+	
 	
     ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
     //session.setAttribute("pre-selected-blogs", "");
@@ -69,7 +93,7 @@
 				<!-- Basic setup -->
 	            <div class="panel panel-primary">
 					<div class="panel-heading">
-						<h6 class="panel-title">Setup tracker &nbsp;<span id="error-box" style="color:red"></span></h6>
+						<h6 class="panel-title">Setup tracker <%=term%> <%=selected %> &nbsp;<span id="error-box" style="color:red"></span></h6>
 						<div class="heading-elements">
 							<ul class="icons-list">
 		                		<li><a data-action="collapse"></a></li>
@@ -80,6 +104,7 @@
 					</div>
 
                 	<form class="steps-basic" action="#" id="tracker-setter">
+                	  <% if(selected.equals("")){ %>
 						<h6>Blog Keyword</h6>
 						<fieldset>
 							
@@ -100,18 +125,49 @@
 								</div>
 							</div>
 						</fieldset>
-
-						<h6>Search result</h6>
+						<% } %>
+						
+						<h6>Search result <%=selected%></h6>
+						<% if(bloglist.size()>0){ %>
+						<fieldset >
+							<div id="result-set"></div>
+						<div id="search-result-set">
+						<% for(int k=0; k<bloglist.size(); k++){
+								ArrayList item = (ArrayList)bloglist.get(k);
+							%>
+							
+							<div class="col-sm-3">
+								<div class="panel panel-body">
+									<div class="media">
+										<div class="media-left">
+											<img src="img/b.png" class="img-circle img-lg" alt="">
+										</div>									
+										<div class="media-body">
+											<h6 class="media-heading"><%=item.get(1) %> <input type="checkbox" <%=(selected_blog.contains(item.get(0))?"checked":"") %> onclick="select_blog()" class="blog-list" name="blog" style="float:right" value="<%=item.get(0) %>"  />
+											</h6>
+											<span class="text-muted"><%=item.get(2) %> post(s)</span>
+										</div>	
+									</div>
+								</div>
+							</div>
+						<% } %>
+						</div>
+						<%  if(bloglist.size()>0){%>
+							<input type="hidden" name="search-blog" id="search-blog" value="yes" />
+							<!-- <input type="hidden" name="search-keyword" id="search-keyword" value="<%=term%>" />-->
+							<!-- <div class="loadmoreimg" id="loading-img" style="text-align:center"><br/><br/><img src='assets/images/preloader.gif' /><br/></div>	-->
+												
+						<% } %>	
+						<input type="hidden" name="selected_result" id="selected_result" value="yes" />	
+						</fieldset>
+						<% }else{ %>
 						<fieldset >
 						<div id="result-set">
-							The result should be displayed in a table and each cell should have a means of selection like a checkbox or something fancier
-							
-						</div>
-						
+							The result should be displayed in a table and each cell should have a means of selection like a checkbox or something fancier							
+						</div>					
 						</fieldset>
-
+						<% } %>
 						
-
 						<h6>Additional info</h6>
 						<fieldset>
 						
@@ -157,11 +213,28 @@
 
 		</div>
 		<!-- /page content -->
-	<textarea name="all-selected-blogs" id="all-selected-blogs" rows="5" cols="5" style="display:none"></textarea>
+	<textarea name="all-selected-blogs" id="all-selected-blogs" rows="5" cols="5" style="display:none" ><%=(!selected.equals("")?selected:"")%></textarea>
 
 	</div>
 	<!-- /page container -->
 	
+	
+<% if(bloglist.size()>0){ %>
+	<form name="page_form" id="page_form" method="post" action="">
+    <input type="hidden" id="page_id" name="page_id" value="0" />
+	<input type="hidden" name="negative_page" id="negative_page" value="1" />
+	<input type="hidden" id="hasmore" name="hasmore" value="1" />
+	<input type="hidden" id="current_page" name="current_page" value="setup_tracker" />	
+    </form>
+	<!-- /page container -->
+ <script>
+	$(window).scroll(function() {
+		if($(window).scrollTop() + $(window).height() > $(document).height() - 200) {
+			//loadMoreBlogs();
+		}
+	});
+</script>
+<% } %>
 	<script>
 	
 	<% if(!selected.equals("")){%>
@@ -318,7 +391,7 @@
 						try{
 							$(".loader-box").addClass("hidden");
 						}catch(err){}
-						console.log(data);
+						//console.log(data);
 						$("#tracking-blog").append(data);				
 					}
 				}
