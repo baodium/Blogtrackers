@@ -218,7 +218,7 @@
 	<!-- /page container -->
 	
 	
-
+<%  if(bloglist.size()>0){%><br/>
 	<form name="page_form" id="page_form" method="post" action="">
     <input type="hidden" id="page_id" name="page_id" value="0" />
 	<input type="hidden" name="negative_page" id="negative_page" value="1" />
@@ -226,13 +226,14 @@
 	<input type="hidden" id="current_page" name="current_page" value="setup_tracker" />	
     </form>
 	<!-- /page container -->
- <script>
+	 <script>
 	$(window).scroll(function() {
 		if($(window).scrollTop() + $(window).height() > $(document).height() - 200) {
 			loadMoreBlogs();
 		}
 	});
 </script>
+<% } %>
 
 	<script>
 	
