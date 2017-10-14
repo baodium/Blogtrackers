@@ -80,4 +80,11 @@ function trackerchanger(){
 }
 
 
+function reset_tracker(){
+	console.log("yes");
+	try{
+		$("#search-blog").val("no");
+	}catch(e){}
+	
+}
 

@@ -114,7 +114,7 @@
 						</h4>
 							<div class="input-group content-group">
 								<div class="has-feedback has-feedback-left">
-									<input type="text" class="form-control input-xlg" id="keyword" required placeholder="Blog keyword">
+									<input type="text" class="form-control input-xlg" id="keyword" onchange="reset_tracker();" required placeholder="Blog keyword">
 									<div class="form-control-feedback">
 										<i class="icon-search4 text-muted text-size-base"></i>
 									</div>
@@ -253,7 +253,7 @@
 		
 		//$("#result-set").html("<center><img src='assets/images/preloader.gif' /></center>");
 		//console.log(keyword);
-		if(keyword !="" && searched==null){
+		if(keyword !="" && (searched==null || searched!="yes")){
 			$("#result-set").html("<center><img src='assets/images/preloader.gif' /></center>");
 			$('#next-click').attr('disabled',true);
 			$.ajax({
@@ -261,7 +261,8 @@
 				method:'POST',
 				data:{keyword:keyword},
 		        success: function(response)
-		        {		
+		        {	
+		        	$("#search-blog").val("yes");
 		        	$("#result-set").html(response);
 		        }
 		    });	
