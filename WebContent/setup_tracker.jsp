@@ -262,6 +262,7 @@
 			$.ajax({
 		        url: app_url+'webtemplates/bloglist2.jsp',
 				method:'POST',
+				async: true,
 				data:{keyword:keyword},
 		        success: function(response)
 		        {	
@@ -297,6 +298,7 @@
 			$.ajax({
 		        url: app_url+'setup_tracker',
 				method:'POST',
+				async: true,
 				data:{title:tracker_name,descr:tracker_desc,sites:bloggs,save:"yes",keyword:keyword},
 		        success: function(response)
 		        {		
@@ -346,6 +348,7 @@
 		$.ajax({
 	        url: app_url+'webtemplates/searched_trackers.jsp',
 			method:'POST',
+			async: true,
 			data:{ids:selected},
 	        success: function(response)
 	        {	

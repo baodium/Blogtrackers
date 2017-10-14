@@ -10,7 +10,6 @@
    ArrayList bloglist = new ArrayList();
 	try {		
 			keyword = request.getParameter("keyword");
-			System.out.println(keyword);
 			if(!keyword.trim().isEmpty()){
 				StringTokenizer st = new StringTokenizer(keyword, ",");			
 				while (st.hasMoreElements()) {

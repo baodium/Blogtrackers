@@ -31,6 +31,7 @@ function loadMoreResult(){
 	z++;
 			requests[z] = $.ajax({ type: "POST",
 				url:url,
+				async: true,
 				data:{page:page_no,term:term,search:"yes"},
 				async: true,
 				success : function(data){	
@@ -65,6 +66,7 @@ function trackerchanger(){
 		$.ajax({
 	        url: app_url+'setup_tracker',
 			method:'POST',
+			async: true,
 			data:{tracker_id:tracker,select:"yes"},
 	        success: function(response)
 	        {	
@@ -104,6 +106,7 @@ function loadMoreBlogs(){
 	z++;
 			requests[z] = $.ajax({ type: "POST",
 				url:url,
+				async: true,
 				data:{page:page_no,term:term,search:"yes",selected_blogs:selected_blogs},
 				//async: true,
 				success : function(data){	
