@@ -218,7 +218,7 @@
 	<!-- /page container -->
 	
 	
-<% if(bloglist.size()>0){ %>
+
 	<form name="page_form" id="page_form" method="post" action="">
     <input type="hidden" id="page_id" name="page_id" value="0" />
 	<input type="hidden" name="negative_page" id="negative_page" value="1" />
@@ -233,7 +233,7 @@
 		}
 	});
 </script>
-<% } %>
+
 	<script>
 	
 	<% if(!selected.equals("")){%>
