@@ -11,16 +11,12 @@
    ArrayList bloglist = new ArrayList();
    ArrayList selected_blog = new ArrayList();
 	try {		
-			//keyword = request.getParameter("keyword");
-			//System.out.println(keyword);
-			
 	        keyword = request.getParameter("term");
 	        String cpage = request.getParameter("page");
 	        String selected = request.getParameter("selected_blogs");
 	        int from = Integer.parseInt(cpage)*perpage;;
 			int to = (from+perpage);
-			//System.out.println(selected);
-			
+				
 			String [] listed = selected.split(","); 		
 			if(listed.length>0){
 				for(int l=0; l<listed.length; l++){
@@ -28,18 +24,14 @@
 				}
 			}
 			
-
 			if(!keyword.trim().isEmpty()){
 				StringTokenizer st = new StringTokenizer(keyword, ",");			
 				while (st.hasMoreElements()) {
 					//bloglist.add(st.nextElement());
 					s=s+ "'"+ st.nextElement()+"',";
 				}
-				s = "("+s.substring(0,s.length()-1)+")";
-				//bloglist = new DBConnector().query("select blogsite_id,blogsite_name,totalposts from blogsites where blogsite_id in (select distinct blogsiteid from terms where term in " +s+" LIMIT 12) LIMIT "+from+", "+to+" ");				
-				  
+				s = "("+s.substring(0,s.length()-1)+")";	  
 				bloglist = new DBConnector().query("select blogsite_id,blogsite_name,totalposts from blogsites where blogsite_id in (select distinct blogsiteid from terms where term in "+s+" ) limit "+from+", "+to+" ");				
-				//bloglist =new DBConnector().query(query_string); 
 			}
 			
 			if(bloglist.size()>0){ 
@@ -61,7 +53,6 @@
 				</div>
 			</div>
 			<% }}else{ 
-				//pww.write(keyword);
 				pww.write("empty");
 			}												
 
