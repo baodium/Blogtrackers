@@ -200,7 +200,7 @@ public class Dashboard extends HttpServlet {
 			nlg.add(t);
 		}
 		session.setAttribute("nlg", nlg);
-		System.out.println(" "+nlg.get(0).get(0)+" "+nlg.get(0).get(1));
+		//System.out.println(" "+nlg.get(0).get(0)+" "+nlg.get(0).get(1));
 		int sumlang=0;
 		ArrayList<String> nposts = new  ArrayList<String>();
 		for(int i=0; i<nlanguage.size();i++)

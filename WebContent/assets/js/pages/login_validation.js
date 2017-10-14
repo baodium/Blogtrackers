@@ -163,16 +163,18 @@ $(function() {
 						},
 						success: function(response)
 						{       
-                                                        console.log(response);
+                            console.log(response);
 							var login_status = response;//.responseText;
                                                         console.log(login_status);
 							if(login_status === "invalid"){
                                                                         $("#error_message-box").html('Invalid username/password');
-							}else if(login_status === "success"){
-                                                            window.location.href = baseurl+"trackerlist.jsp";
-                                                        }
-                                                }
-                                    });
+							}else if(login_status == "success"){
+                                           window.location.href = baseurl+"trackerlist.jsp";
+                            }else if(login_status == "confirmed"){
+                                           window.location.href = baseurl+"setup_tracker.jsp";
+                            }
+                          }
+                        });
 
 
 			}

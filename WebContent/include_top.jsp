@@ -7,9 +7,12 @@
 <%
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
-	if (username == null || username == "") {
-		response.sendRedirect("index.jsp");
-	}
+	String tracker_id = (null == session.getAttribute("tid")) ? "" : session.getAttribute("tid").toString();
+	
+	
+	ArrayList userinfo = new ArrayList();
+	ArrayList trackers = new ArrayList();
+
     String path=application.getRealPath("/").replace('\\', '/')+"profile_images/";
     path = path.replace("build/", "");
     String filename = path+session.getAttribute("username")+".jpg";
@@ -19,8 +22,10 @@
        pimage = "profile_images/"+session.getAttribute("username")+".jpg";
    }
     
-    ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
-    ArrayList trackers = (ArrayList)session.getAttribute("trackers");
+    try{
+	   userinfo = (ArrayList)session.getAttribute("userinfo");
+	   trackers = (ArrayList)session.getAttribute("trackers");
+    }catch(Exception e){}
 %>
 <html lang="en">
 <head>
@@ -96,6 +101,8 @@
 	       
 	       
 	<link href="assets/css/mystyle.css" rel="stylesheet" type="text/css">
+
+	<script type="text/javascript" src="assets/js/functions.js?v=0"></script>
 	<!-- /global stylesheets -->
 </head>
 
@@ -112,11 +119,16 @@
 		
 		
 			<div class="navbar-collapse collapse" id="navbar-mobile">
-			<% String Selectedtracker  = (String) session.getAttribute("tracker"); %>
-	
+			<% 
+			String Selectedtracker  = (String)session.getAttribute("tracker"); 
+
+			%>
+
 				<ul class="nav navbar-nav navbar-right">
+			<% if(username!=""){ %>
 				<li class="language-switch"">
 			<form name="trackerform" id="trackerform" action="" method="post">
+
 			<select id="tracker" name="tracker" onchange="trackerchanged()" class="form-control" value="${item}">
 					                    
 				                    <c:choose>
@@ -128,16 +140,17 @@
 											<option value="">Select Tracker</option>
 										</c:when>
 									</c:choose>
-
 									<c:forEach items="${trackers}" var="item">
 										<c:if test="${tracker ne item}">
 											<option value="${item.get(2)}"><c:out value="${item.get(2)}" /></option>
-										</c:if>c:if>
+										</c:if>
 									</c:forEach>
+									
 									</select>
 									</form>
 									</li>
 			
+
 
 				
 				<li class="dropdown dropdown-user">
@@ -153,10 +166,13 @@
 						<li><a href="http://blogtrackers.host.ualr.edu" target="_blank"><i class="icon-paperplane spinner"></i>Upgrade Plans</a></li>
 						<li><a href="<%=request.getContextPath()%>/features.jsp"><i class="icon-cog5"></i> Features</a></li>
 						<li><a href="<%=request.getContextPath()%>/help.jsp"><i class="icon-help"></i> Help</a></li>
-						<li><a href="<%=request.getContextPath()%>/logout"><i class="icon-switch2"></i> Logout</a></li>
-			
-	</ul>
+						<li><a href="<%=request.getContextPath()%>/logout"><i class="icon-switch2"></i> Logout</a></li>			
+					</ul>
 				</li>
+				<% }else{ %>
+				<li><a href="<%=request.getContextPath()%>/login"><i class="icon-switch2"></i> Login</a></li>			
+				
+				<% } %>
 
 			</ul>
 			

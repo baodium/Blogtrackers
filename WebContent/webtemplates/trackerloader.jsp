@@ -29,7 +29,9 @@
 					s=s+ "'"+ st.nextElement()+"',";
 				}
 				s = "("+s.substring(0,s.length()-1)+")";
-				bloglist = new DBConnector().query("select blogsite_id,blogsite_name,totalposts from blogsites where blogsite_id in (select distinct blogsiteid from terms where term in " +s+") LIMIT "+from+", "+to+" ");				
+			//	bloglist = new DBConnector().query("select blogsite_id,blogsite_name,totalposts from blogsites where blogsite_id in (select distinct blogsiteid from terms where term in " +s+") LIMIT "+from+", "+to+" ");				
+				   String query_string ="SELECT * FROM trackers WHERE tracker_name LIKE  '%"+keyword+"%' LIMIT "+from+", "+to+" ";
+                   bloglist =new DBConnector().query(query_string); 
 			}
 			
 			if(bloglist.size()>0){ 

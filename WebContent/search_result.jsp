@@ -5,6 +5,10 @@
 Object term = (null == session.getAttribute("search_term")) ? "" : session.getAttribute("search_term");
 Object search_result = (null == session.getAttribute("search_result")) ? "" : session.getAttribute("search_result");
 Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
+
+if(term!="" && username==""){
+	session.setAttribute("initiated_search_term", term);
+}
 %>
 	<!-- Page container -->
 	<div class="page-container">
@@ -62,11 +66,7 @@ Object username = (null == session.getAttribute("username")) ? "" : session.getA
 							<input type="hidden" name="from" value="search" />
 							<input type="hidden" name="keyword" value="<%=term%>" />
 							<textarea name="all-selected-blogs" id="all-selected-blogs" rows="5" cols="5" style="display:none" ></textarea>
-							<% if(username==""){ %>
-							<a href="<%=request.getContextPath()%>/login" class="btn btn-primary legitRipple" >Continue</a>
-							<% } else{ %>
-								<button type="submit" class="btn btn-primary legitRipple">Continue</button>
-							<% } %>
+							<button type="submit" class="btn btn-primary legitRipple">Continue</button>
 							<br/><br/>
 							</form>
 							</div>
@@ -104,10 +104,7 @@ Object username = (null == session.getAttribute("username")) ? "" : session.getA
 						if(search_result!=""){
 							%>
 							<div class="loadmoreimg" id="loading-img" style="text-align:center"><br/><br/><img src='assets/images/preloader.gif' /><br/></div>						
-						<% } %>
-						
-									
-							
+						<% } %>			
                     </div>
 				</div>
 			</div>

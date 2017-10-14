@@ -51,8 +51,13 @@ public class Tracker extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		PrintWriter pww = response.getWriter();
-		if(request.getParameter("save")!=null){
-			HttpSession session= request.getSession();
+		HttpSession session= request.getSession();
+		String savetracker = (null == request.getParameter("save")) ? "" : request.getParameter("save");
+		String selectracker = (null == request.getParameter("select")) ? "" : request.getParameter("select");
+		String action = (null == request.getParameter("action")) ? "" : request.getParameter("action");
+		
+		if(savetracker.equals("yes")){
+			
 			String userName = (String) session.getAttribute("username");
 			String keyword = request.getParameter("keyword");
 			String trackerName=request.getParameter("title");
@@ -79,8 +84,8 @@ public class Tracker extends HttpServlet {
 				boolean done = new DBConnector().updateTable(query);
 				if(done) {
 				  	ArrayList trackers = new DBConnector().query("SELECT * FROM trackers WHERE userid='"+userName+"'");
-                	session.setAttribute("trackers", trackers);
-                	
+                	session.setAttribute("trackers", trackers+"");
+                	session.setAttribute("initiated_search_term", "");
 					response.setContentType("text/html");
 					pww.write("success");
 				}else {
@@ -95,6 +100,48 @@ public class Tracker extends HttpServlet {
 			//
 			//			response.sendRedirect("Dashboard.jsp");
 		}
+		
+		
+		if(selectracker.equals("yes")) {
+			String tid = request.getParameter("tracker_id");
+			ArrayList tracker = new DBConnector().query("SELECT * FROM trackers WHERE tid='"+tid+"'");		
+			if(tracker.size()>0){
+				session.setAttribute("tracker", tid);
+				pww.write("success");
+			}
+		}
+		
+		if(action.equals("delete_tracker")) {
+			try {
+			String tid = request.getParameter("tracker_id");
+			new DBConnector().updateTable("DELETE FROM trackers WHERE  tid='"+tid+"'");	
+			
+			String userid = (String) session.getAttribute("user");
+			ArrayList trackers = new DBConnector().query("SELECT * FROM trackers WHERE userid='"+userid+"'");
+        	session.setAttribute("trackers", trackers);
+       	
+			}catch(Exception ex) {}
+			pww.write("success");
+		}
+		
+		if(action.equals("edit_tracker")) {
+			try {
+				String tid = request.getParameter("tracker_id");
+				String name = request.getParameter("title");
+				String desc = request.getParameter("descr");
+				new DBConnector().updateTable("UPDATE trackers SET tracker_name='"+name+"', description='"+desc+"' WHERE  tid='"+tid+"'");	
+				
+				String userid = (String) session.getAttribute("user");
+				ArrayList trackers = new DBConnector().query("SELECT * FROM trackers WHERE userid='"+userid+"'");
+	        	session.setAttribute("trackers", trackers);
+	        	session.setAttribute("edited_tracker", tid+"");
+	        	response.sendRedirect("edittracker.jsp");
+			}catch(Exception ex) {
+				  response.sendRedirect("edittracker.jsp");
+			}
+			 
+		}
+		
 	}
 	
 	private String getDateTime() {
@@ -102,4 +149,51 @@ public class Tracker extends HttpServlet {
 		Date date = new Date();
 		return dateFormat.format(date);
 	}
+	
+	public ArrayList<?> getTrackers(String selected) {
+		ArrayList<?> bloglist = new ArrayList<String>();
+		try {
+			if(!selected.trim().isEmpty()){
+				String s = "("+selected+")";
+				bloglist = new DBConnector().query("select blogsite_id,blogsite_name,totalposts from blogsites where blogsite_id in "+s+"");			
+			}
+		} catch (Exception ex) {}
+		
+		return bloglist;
+	}
+	
+	
+	public ArrayList<?> getTopTrackers(String username) {
+		ArrayList<?> bloglist = new ArrayList<String>();
+		
+		try {
+			bloglist = new DBConnector().query("SELECT * FROM trackers WHERE userid <> '"+username+"' ORDER BY date_created DESC LIMIT 0,10");			
+		} catch (Exception ex) {}
+		
+		return bloglist;
+	}
+	
+	
+	public ArrayList<?> getTracker(String tracker_id) {
+		ArrayList<?> bloglist = new ArrayList<String>();
+		try {
+			String query_string ="SELECT * FROM trackers WHERE tid ='"+tracker_id+"' ";
+			bloglist = new DBConnector().query(query_string);			
+		} catch (Exception ex) {}
+		
+		return bloglist;
+	}
+	
+	public ArrayList searchTrackers(String term) {
+		ArrayList bloglist = new ArrayList();
+		try {
+			if(!term.trim().isEmpty()){
+				String query_string ="SELECT * FROM trackers WHERE tracker_name LIKE  '%"+term+"%' LIMIT 0,12 ";
+			    bloglist =new DBConnector().query(query_string); 		
+			}
+		} catch (Exception ex) {}
+		
+		return bloglist;
+	}
+    
 }

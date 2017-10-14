@@ -99,6 +99,7 @@ public class PostingFrequency extends HttpServlet {
 			session.setAttribute("allSepSites", allSites);
 			//session.setAttribute("errorMessage",session.getAttribute("tracker") );
 		}
+		
 		else if(request.getParameter("datepicked")!= null){	
 			String date =request.getParameter("datepicked");
 			session.setAttribute("datepicked", date);

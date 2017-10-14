@@ -17,12 +17,14 @@
 	if (username == null || username == "") {
 		response.sendRedirect("index.jsp");
 	}
-        ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
-        String tracker_id = request.getParameter("tid");
+     ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
+     String tracker_id = (null == session.getAttribute("tid")) ? "" : session.getAttribute("tid").toString();
+
 %>
-
  <jsp:include page="include_top.jsp"></jsp:include>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 	<!-- Page header -->
 	<div class="page-header">
 		<div class="page-header-content">
@@ -33,6 +35,7 @@
 					<small class="display-block"><span>Welcome, </span><%=username %>
 				</h4>
 				
+
 			</div>
 				<div class="heading-elements">
 				<div class="heading-btn-group">
@@ -48,15 +51,20 @@ function googleTranslateElementInit() {
 			</div>
 		</div>
 		<div class="form-group">
-				<div class="col-md-12">
+		<form action="<%=request.getContextPath()%>/search" method="post" class="main-search">
 				
+				<div class="col-md-12">
+				<input type="hidden" name="search" value="yes">
 				<div class="input-group">
-				<input type="text" class="form-control" placeholder="Enter a keyword to search" id="searchtextbox" autocomplete="off">
-											<span class="input-group-btn" style="padding-left:0px;"><button type="button" class="btn btn-primary">Search</button></span>
+				<input type="text" name="term" id="term" class="form-control" placeholder="Enter a keyword to search" id="searchtextbox" autocomplete="off">
+					<span class="input-group-btn" style="padding-left:0px;"><button type="submit" class="btn btn-primary">Search</button></span>
 											
-										</div>
-										</div>
-										</div>
+
+				</div>
+				</div>
+		</form>
+		</div>
+
 
 			<!--  <div class="heading-elements">
 				<div class="heading-btn-group">

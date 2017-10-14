@@ -76,8 +76,10 @@ public class ExportJSON extends HttpServlet {
 			session.setAttribute("errorMessage", datePicked);
 			response.sendRedirect("data_presentation.jsp");
 			}
+
 		 else if(request.getParameter("exportJSON")!= null && session.getAttribute("tracker")!=null && session.getAttribute("datepicked")!=null)
 		{
+
 			session.setAttribute("errorMessage", "");
 			String userName = (String) session.getAttribute("user");
 			String trackerName = (String) session.getAttribute("tracker");

@@ -177,9 +177,9 @@ public class UtilFunctions
 		try {
 
 			loadConstants();//"jdbc:sqlserver://149.169.226.79:1433;instanceName=DMMLSERVER;databaseName=blogtrackers;SelectMethod=cursor;user=shamanth;password=shamanth123";//loadConstants();//"jdbc:sqlserver://localhost;instanceName=MSSQLSERVER;databaseName=blogtracker;user=test;password=test";
-			String constr = hm.get("dbConnection");
-			String username = hm.get("dbUserName");
-			String password = hm.get("dbPassword");
+			String constr = "jdbc:mysql://144.167.112.118:3306/blogtrackers";//hm.get("dbConnection");
+			String username = "ukraine_super";//hm.get("dbUserName");
+			String password = "summer2014";//hm.get("dbPassword");
 			if(constr!=null&&username!=null&&password!=null)
 			{
 				try {

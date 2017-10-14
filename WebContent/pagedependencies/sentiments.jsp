@@ -81,7 +81,7 @@
         labels: ["Work", "Leisure", "Home", "Money", "Religion", "Death"],
        
         datasets: ${radar}
-    };
+    		};
       var canvasRadar = new Chart(ctx, {
         type: 'radar',
         data: data,
