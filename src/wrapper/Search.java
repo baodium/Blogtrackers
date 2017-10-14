@@ -3,6 +3,7 @@ package wrapper;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -51,15 +52,23 @@ public class Search extends HttpServlet {
                 String submitted = request.getParameter("search");
                 PrintWriter pww = response.getWriter();
                 HttpSession session = request.getSession();
-				
+				String s="";
                 //pww.write(email+":"+username+":"+pass+":"+submitted);
                     if(submitted!=null && submitted.equals("yes")){	
                         String term = request.getParameter("term");
                         session.setAttribute("search_term",term);
 
-                       String query_string ="SELECT * FROM trackers WHERE tracker_name LIKE  '%"+term+"%' LIMIT 0,12 ";
-                       ArrayList trackers =new DBConnector().query(query_string); 
-                       	session.setAttribute("search_result",trackers);
+                       //String query_string ="SELECT * FROM trackers WHERE tracker_name LIKE  '%"+term+"%' LIMIT 0,12 ";
+                      // ArrayList trackers =new DBConnector().query(query_string); 
+                        StringTokenizer st = new StringTokenizer(term, ",");			
+    					while (st.hasMoreElements()) {
+    						//bloglist.add(st.nextElement());
+    						s=s+ "'"+ st.nextElement()+"',";
+    					}
+    					s = "("+s.substring(0,s.length()-1)+")";
+
+    					ArrayList trackers = new DBConnector().query("select blogsite_id,blogsite_name,totalposts from blogsites where blogsite_id in (select distinct blogsiteid from terms where term in "+s+" ) limit 0,12 ");				                     	
+                       session.setAttribute("search_result",trackers);
                         response.setContentType("text/html");
                         response.sendRedirect("search_result.jsp");
                     }

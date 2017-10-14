@@ -14,7 +14,10 @@
 	if (username == null || username == "") {
 		response.sendRedirect("index.jsp");
 	}
-        
+     
+	session.setAttribute("pre-selected-blogs", "");
+	session.setAttribute("initiated_search_term", "");
+	
         //try{
         ArrayList userinfo = new DBConnector().query("SELECT *  FROM usercredentials WHERE UserName='"+username+"'");          
         userinfo = (ArrayList)userinfo.get(0);

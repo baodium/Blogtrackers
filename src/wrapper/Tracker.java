@@ -4,8 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -186,10 +185,20 @@ public class Tracker extends HttpServlet {
 	
 	public ArrayList searchTrackers(String term) {
 		ArrayList bloglist = new ArrayList();
+		 String s="";
 		try {
 			if(!term.trim().isEmpty()){
-				String query_string ="SELECT * FROM trackers WHERE tracker_name LIKE  '%"+term+"%' LIMIT 0,12 ";
-			    bloglist =new DBConnector().query(query_string); 		
+				//String query_string ="SELECT * FROM trackers WHERE tracker_name LIKE  '%"+term+"%' LIMIT 0,12 ";
+			    //bloglist =new DBConnector().query(query_string); 
+			    
+					StringTokenizer st = new StringTokenizer(term, ",");			
+					while (st.hasMoreElements()) {
+						//bloglist.add(st.nextElement());
+						s=s+ "'"+ st.nextElement()+"',";
+					}
+					s = "("+s.substring(0,s.length()-1)+")";
+
+				   bloglist = new DBConnector().query("select blogsite_id,blogsite_name,totalposts from blogsites where blogsite_id in (select distinct blogsiteid from terms where term in "+s+" ) limit 0,12 ");				
 			}
 		} catch (Exception ex) {}
 		

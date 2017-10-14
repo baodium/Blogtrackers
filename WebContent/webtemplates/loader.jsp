@@ -10,6 +10,7 @@
 
    int perpage =12;
    PrintWriter pww = response.getWriter();
+   String s="";
 	try {
 		
 		String submitted = request.getParameter("search");
@@ -20,9 +21,18 @@
 	        int from = Integer.parseInt(cpage)*perpage;;
 			int to = (from+perpage);
 	       
-	       String query_string ="SELECT * FROM trackers WHERE tracker_name LIKE  '%"+term+"%' LIMIT "+from+", "+to+" ";
-	       ArrayList trackers = new DBConnector().query(query_string); 
-	              
+	       //String query_string ="SELECT * FROM trackers WHERE tracker_name LIKE  '%"+term+"%' LIMIT "+from+", "+to+" ";
+	       //ArrayList trackers = new DBConnector().query(query_string); 
+	       StringTokenizer st = new StringTokenizer(term, ",");			
+			while (st.hasMoreElements()) {
+				//bloglist.add(st.nextElement());
+				s=s+ "'"+ st.nextElement()+"',";
+			}
+			s = "("+s.substring(0,s.length()-1)+")";
+			//bloglist = new DBConnector().query("select blogsite_id,blogsite_name,totalposts from blogsites where blogsite_id in (select distinct blogsiteid from terms where term in " +s+" LIMIT 12) LIMIT "+from+", "+to+" ");				
+			  
+			ArrayList trackers = new DBConnector().query("select blogsite_id,blogsite_name,totalposts from blogsites where blogsite_id in (select distinct blogsiteid from terms where term in "+s+" ) limit "+from+", "+to+" ");				
+			        
 	       if(trackers.size()>0){ 
 	    		 for(int k=0; k<trackers.size(); k++){
 	    			ArrayList item = (ArrayList)trackers.get(k);
@@ -34,8 +44,8 @@
 											<img src="img/b.png" class="img-circle img-lg" alt="">
 										</div>									
 										<div class="media-body">
-											<h6 class="media-heading"><%=item.get(2)%> <input type="checkbox" onclick="select_blog()"  class="blog-list" name="blog" style="float:right" value="<%=item.get(0) %>"  /></h6>
-											<span class="text-muted"><%=item.get(7)%> post(s)</span>
+											<h6 class="media-heading"><%=item.get(1)%> <input type="checkbox" onclick="select_blog()"  class="blog-list" name="blog" style="float:right" value="<%=item.get(0) %>"  /></h6>
+											<span class="text-muted"><%=item.get(2)%> post(s)</span>
 										</div>										
 									</div>
 								</div>

@@ -93,7 +93,7 @@
 				<!-- Basic setup -->
 	            <div class="panel panel-primary">
 					<div class="panel-heading">
-						<h6 class="panel-title">Setup tracker <%=term%> <%=selected %> &nbsp;<span id="error-box" style="color:red"></span></h6>
+						<h6 class="panel-title">Setup tracker &nbsp;<span id="error-box" style="color:red"></span></h6>
 						<div class="heading-elements">
 							<ul class="icons-list">
 		                		<li><a data-action="collapse"></a></li>
@@ -127,15 +127,14 @@
 						</fieldset>
 						<% } %>
 						
-						<h6>Search result <%=selected%></h6>
+						<h6>Search result</h6>
 						<% if(bloglist.size()>0){ %>
 						<fieldset >
 							<div id="result-set"></div>
-						<div id="search-result-set">
+						<div id="tracking-blog">
 						<% for(int k=0; k<bloglist.size(); k++){
 								ArrayList item = (ArrayList)bloglist.get(k);
 							%>
-							
 							<div class="col-sm-3">
 								<div class="panel panel-body">
 									<div class="media">
@@ -152,10 +151,10 @@
 							</div>
 						<% } %>
 						</div>
-						<%  if(bloglist.size()>0){%>
+						<%  if(bloglist.size()>0){%><br/>
 							<input type="hidden" name="search-blog" id="search-blog" value="yes" />
-							<!-- <input type="hidden" name="search-keyword" id="search-keyword" value="<%=term%>" />-->
-							<!-- <div class="loadmoreimg" id="loading-img" style="text-align:center"><br/><br/><img src='assets/images/preloader.gif' /><br/></div>	-->
+							<input type="hidden" name="search-keyword" id="search-keyword" value="<%=term%>" />
+							<div class="loadmoreimg" id="loading-img" style="text-align:center"><br/><br/><img src='assets/images/preloader.gif' /><br/></div>	
 												
 						<% } %>	
 						<input type="hidden" name="selected_result" id="selected_result" value="yes" />	
@@ -230,7 +229,7 @@
  <script>
 	$(window).scroll(function() {
 		if($(window).scrollTop() + $(window).height() > $(document).height() - 200) {
-			//loadMoreBlogs();
+			loadMoreBlogs();
 		}
 	});
 </script>
@@ -352,53 +351,7 @@
 	    });	
 	}
 	
-	
-	
-	function loadMoreBlogs(){
-		
-		if (!isRunning) {
-	      isRunning = true;	
-		//var url=back_url;
-		var url = app_url+'webtemplates/trackerloader.jsp'
-		var $form = $("#page_form"),
-			page_no = $form.find( "input[name='page_id']" ).val();
-		var	hasmore= document.forms["page_form"].hasmore.value;
-		var	term= $("#search-keyword").val();
-		
-		if(hasmore=="0" || hasmore==""){
-			$("#loading-img").addClass("hidden");
-			return false;
-		}
-			
-		page_no=parseInt(page_no);
-		page_no++;
 
-		$form.find("input[name='page_id']").val(page_no);
-		z++;
-				requests[z] = $.ajax({ type: "POST",
-					url:url,
-					data:{page:page_no,term:term,search:"yes"},
-					//async: true,
-					success : function(data){	
-					isRunning = false;
-					//$.get(url+"/"+page_no,function(data){
-					var pos=$(window).height()-200;
-					if(data.trim()=="empty"){
-						document.forms["page_form"].hasmore.value="0";
-						$("#loading-img").html("");
-						return false;
-					}else{
-						try{
-							$(".loader-box").addClass("hidden");
-						}catch(err){}
-						//console.log(data);
-						$("#tracking-blog").append(data);				
-					}
-				}
-		});
-		return false;
-		}
-	}
 	</script>
 
 	<!-- Footer -->

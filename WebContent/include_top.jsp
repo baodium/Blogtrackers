@@ -19,7 +19,7 @@
     String pimage = "assets/images/placeholder.jpg";
     File f = new File(filename);
     if(f.exists() && !f.isDirectory()) { 
-       pimage = "profile_images/"+session.getAttribute("username")+".jpg";
+       pimage = "profile_images/"+session.getAttribute("username")+".jpg?v=1";
    }
     
     try{
