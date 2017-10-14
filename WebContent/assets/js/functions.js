@@ -54,51 +54,7 @@ function loadMoreResult(){
 	}
 }
 
-function loadMoreBlogs(){
-	
-	if (!isRunning) {
-      isRunning = true;	
-	//var url=back_url;
-	var url = app_url+'webtemplates/trackerloader.jsp'
-	var $form = $("#page_form"),
-		page_no = $form.find( "input[name='page_id']" ).val();
-	var	hasmore= document.forms["page_form"].hasmore.value;
-	var	term= $("#search-keyword").val();
-	
-	if(hasmore=="0" || hasmore==""){
-		$("#loading-img").addClass("hidden");
-		return false;
-	}
-	
-	page_no=parseInt(page_no);
-	page_no++;
 
-	$form.find("input[name='page_id']").val(page_no);
-	z++;
-			requests[z] = $.ajax({ type: "POST",
-				url:url,
-				data:{page:page_no,term:term,search:"yes",selected_blogs:"<%=selected%>"},
-				//async: true,
-				success : function(data){	
-				isRunning = false;
-				//$.get(url+"/"+page_no,function(data){
-				var pos=$(window).height()-200;
-				if(data.trim()=="empty"){
-					document.forms["page_form"].hasmore.value="0";
-					$("#loading-img").html("");
-					return false;
-				}else{
-					try{
-						$(".loader-box").addClass("hidden");
-					}catch(err){}
-					//console.log(data);
-					$("#tracking-blog").append(data);				
-				}
-			}
-	});
-	return false;
-	}
-}
 
 function trackerchanger(){
 	var tracker = $("#tracker").val();
