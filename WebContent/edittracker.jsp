@@ -147,11 +147,13 @@
 						<% if(bloglist != null && bloglist.size()>0){ 
 								for(int i=0; i<bloglist.size(); i++){
 									ArrayList blog = (ArrayList)bloglist.get(i);
+									String blogger = (blog.get(3)==null)?"":blog.get(3).toString();
+									String[] bloggers = blogger.split(",");
 							%>
 							<tr id="blogrow-<%=blog.get(0)%>">
 								<td><%=blog.get(1)%></td>
 								<td><%=blog.get(15)%></td>
-								<td><%=blog.get(7)%></td>
+								<td><%=(blogger.equals(""))?0:bloggers.length%></td>
 								<td><%=blog.get(10)%></td>
 								<td><a href="#" onclick="remove_blog('<%=blog.get(0)%>');" class="btn bg-primary-400 btn-rounded btn-icon btn-xs legitRipple"><span class="letter-icon icon-trash"></span></a></td>
 								<td class="hidden" width="0%"></td>
