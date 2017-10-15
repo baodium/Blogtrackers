@@ -17,9 +17,13 @@
 	if (username == null || username == "") {
 		response.sendRedirect("index.jsp");
 	}
+	
+	session.setAttribute("pre-selected-blogs", "");
+	session.setAttribute("initiated_search_term", "");
+	
      ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
      String tracker_id = (null == session.getAttribute("tid")) ? "" : session.getAttribute("tid").toString();
-
+		
 %>
  <jsp:include page="include_top.jsp"></jsp:include>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>

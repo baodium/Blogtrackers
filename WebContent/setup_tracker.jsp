@@ -93,7 +93,7 @@
 				<!-- Basic setup -->
 	            <div class="panel panel-primary">
 					<div class="panel-heading">
-						<h6 class="panel-title">Setup tracker <%=term%> <%=selected %> &nbsp;<span id="error-box" style="color:red"></span></h6>
+						<h6 class="panel-title">Setup tracker &nbsp;<span id="error-box" style="color:red"></span></h6>
 						<div class="heading-elements">
 							<ul class="icons-list">
 		                		<li><a data-action="collapse"></a></li>
@@ -104,6 +104,8 @@
 					</div>
 
                 	<form class="steps-basic" action="#" id="tracker-setter">
+                	<input type="hidden" name="select_ed" id="select_ed" value="<%=selected%>" />
+							
                 	  <% if(selected.equals("")){ %>
 						<h6>Blog Keyword</h6>
 						<fieldset>
@@ -114,7 +116,7 @@
 						</h4>
 							<div class="input-group content-group">
 								<div class="has-feedback has-feedback-left">
-									<input type="text" class="form-control input-xlg" id="keyword" required placeholder="Blog keyword">
+									<input type="text" class="form-control input-xlg" id="keyword" onchange="reset_tracker();" required placeholder="Blog keyword">
 									<div class="form-control-feedback">
 										<i class="icon-search4 text-muted text-size-base"></i>
 									</div>
@@ -127,15 +129,14 @@
 						</fieldset>
 						<% } %>
 						
-						<h6>Search result <%=selected%></h6>
+						<h6>Search result</h6>
 						<% if(bloglist.size()>0){ %>
 						<fieldset >
 							<div id="result-set"></div>
-						<div id="search-result-set">
+						<div id="tracking-blog">
 						<% for(int k=0; k<bloglist.size(); k++){
 								ArrayList item = (ArrayList)bloglist.get(k);
 							%>
-							
 							<div class="col-sm-3">
 								<div class="panel panel-body">
 									<div class="media">
@@ -152,10 +153,10 @@
 							</div>
 						<% } %>
 						</div>
-						<%  if(bloglist.size()>0){%>
+						<%  if(bloglist.size()>0){%><br/>
 							<input type="hidden" name="search-blog" id="search-blog" value="yes" />
-							<!-- <input type="hidden" name="search-keyword" id="search-keyword" value="<%=term%>" />-->
-							<!-- <div class="loadmoreimg" id="loading-img" style="text-align:center"><br/><br/><img src='assets/images/preloader.gif' /><br/></div>	-->
+							<input type="hidden" name="search-keyword" id="search-keyword" value="<%=term%>" />
+							<div class="loadmoreimg" id="loading-img" style="text-align:center"><br/><br/><img src='assets/images/preloader.gif' /><br/></div>	
 												
 						<% } %>	
 						<input type="hidden" name="selected_result" id="selected_result" value="yes" />	
@@ -219,7 +220,7 @@
 	<!-- /page container -->
 	
 	
-<% if(bloglist.size()>0){ %>
+<%  if(bloglist.size()>0){%><br/>
 	<form name="page_form" id="page_form" method="post" action="">
     <input type="hidden" id="page_id" name="page_id" value="0" />
 	<input type="hidden" name="negative_page" id="negative_page" value="1" />
@@ -227,14 +228,15 @@
 	<input type="hidden" id="current_page" name="current_page" value="setup_tracker" />	
     </form>
 	<!-- /page container -->
- <script>
+	 <script>
 	$(window).scroll(function() {
 		if($(window).scrollTop() + $(window).height() > $(document).height() - 200) {
-			//loadMoreBlogs();
+			loadMoreBlogs();
 		}
 	});
 </script>
 <% } %>
+
 	<script>
 	
 	<% if(!selected.equals("")){%>
@@ -254,15 +256,17 @@
 		
 		//$("#result-set").html("<center><img src='assets/images/preloader.gif' /></center>");
 		//console.log(keyword);
-		if(keyword !="" && searched==null){
+		if(keyword !="" && (searched==null || searched!="yes")){
 			$("#result-set").html("<center><img src='assets/images/preloader.gif' /></center>");
 			$('#next-click').attr('disabled',true);
 			$.ajax({
 		        url: app_url+'webtemplates/bloglist2.jsp',
 				method:'POST',
+				async: true,
 				data:{keyword:keyword},
 		        success: function(response)
-		        {		
+		        {	
+		        	$("#search-blog").val("yes");
 		        	$("#result-set").html(response);
 		        }
 		    });	
@@ -294,6 +298,7 @@
 			$.ajax({
 		        url: app_url+'setup_tracker',
 				method:'POST',
+				async: true,
 				data:{title:tracker_name,descr:tracker_desc,sites:bloggs,save:"yes",keyword:keyword},
 		        success: function(response)
 		        {		
@@ -343,6 +348,7 @@
 		$.ajax({
 	        url: app_url+'webtemplates/searched_trackers.jsp',
 			method:'POST',
+			async: true,
 			data:{ids:selected},
 	        success: function(response)
 	        {	
@@ -353,52 +359,6 @@
 	}
 	
 	
-	
-	function loadMoreBlogs(){
-		
-		if (!isRunning) {
-	      isRunning = true;	
-		//var url=back_url;
-		var url = app_url+'webtemplates/trackerloader.jsp'
-		var $form = $("#page_form"),
-			page_no = $form.find( "input[name='page_id']" ).val();
-		var	hasmore= document.forms["page_form"].hasmore.value;
-		var	term= $("#search-keyword").val();
-		
-		if(hasmore=="0" || hasmore==""){
-			$("#loading-img").addClass("hidden");
-			return false;
-		}
-			
-		page_no=parseInt(page_no);
-		page_no++;
-
-		$form.find("input[name='page_id']").val(page_no);
-		z++;
-				requests[z] = $.ajax({ type: "POST",
-					url:url,
-					data:{page:page_no,term:term,search:"yes"},
-					//async: true,
-					success : function(data){	
-					isRunning = false;
-					//$.get(url+"/"+page_no,function(data){
-					var pos=$(window).height()-200;
-					if(data.trim()=="empty"){
-						document.forms["page_form"].hasmore.value="0";
-						$("#loading-img").html("");
-						return false;
-					}else{
-						try{
-							$(".loader-box").addClass("hidden");
-						}catch(err){}
-						//console.log(data);
-						$("#tracking-blog").append(data);				
-					}
-				}
-		});
-		return false;
-		}
-	}
 	</script>
 
 	<!-- Footer -->

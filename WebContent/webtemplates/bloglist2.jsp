@@ -10,14 +10,13 @@
    ArrayList bloglist = new ArrayList();
 	try {		
 			keyword = request.getParameter("keyword");
-			System.out.println(keyword);
 			if(!keyword.trim().isEmpty()){
 				StringTokenizer st = new StringTokenizer(keyword, ",");			
 				while (st.hasMoreElements()) {
 					s=s+ "'"+ st.nextElement()+"',";
 				}
 				s = "("+s.substring(0,s.length()-1)+")";
-				bloglist = new DBConnector().query("select blogsite_id,blogsite_name,totalposts from blogsites where blogsite_id in (select distinct blogsiteid from terms where term in " +s+") order by blogsite_name LIMIT "+from+", "+to+" ");				
+				bloglist = new DBConnector().query("select blogsite_id,blogsite_name,totalposts from blogsites where blogsite_id in (select distinct blogsiteid from terms where term in " +s+") order by blogsite_name limit "+from+", "+to+" ");				
 			}
 
 	} catch (Exception ex) {}
@@ -34,7 +33,8 @@
 	                	</div>
 					</div>					
 					<!-- Search results -->
-					<div class="search-results-list">						
+					<div class="search-results-list">
+					<div id="tracking-blog">						
 						<div class="row" id="tracking-blogs">
 						<% if(bloglist.size()>0){ 
 								for(int k=0; k<bloglist.size(); k++){
@@ -55,11 +55,12 @@
 								</div>
 							</div>
 							<% }}else{ %>							
-							No result found
+							<div>&nbsp;&nbsp;No result found</div>
 							<% } %>												
 						</div>
+						</div>
 						<input type="hidden" name="search-blog" id="search-blog" value="yes" />
-						<input type="hidden" name="search-keyword" id="search-keyword" value="<%=keyword%> %>" />					
+						<input type="hidden" name="search-keyword" id="search-keyword" value="<%=keyword%>" />					
 						<%  if(bloglist.size()>0){ %>
 							<div class="loadmoreimg" id="loading-img" style="text-align:center; margin-top:10px"><img src='assets/images/preloader.gif' /><br/></div>						
 						<% } %>
@@ -71,12 +72,11 @@
 	<input type="hidden" id="hasmore" name="hasmore" value="1" />
 	<input type="hidden" id="current_page" name="current_page" value="setup_tracker" />	
     </form>
-	<!-- /page container -->
- <script>
+    
+     <script>
 	$(window).scroll(function() {
 		if($(window).scrollTop() + $(window).height() > $(document).height() - 200) {
 			loadMoreBlogs();
 		}
 	});
-</script>
-
+	</script>
