@@ -82,11 +82,11 @@
 							<div class="form-group">
 							<form name="edit_tracker" method="post" action="setup_tracker">
 							<label class="control-label">Tracker Name</label>
-							<input class="form-control" type="text" name="title" value="<%=(null == tracker.get(2)) ? "" : tracker.get(2)%>" />
+							<input class="form-control" type="text" required name="title" value="<%=(null == tracker.get(2)) ? "" : tracker.get(2)%>" />
 							</div>
 							<div class="form-group">
 							<label class="control-label">Tracker Description</label>
-							<textarea class="form-control" name="descr"><%=(null == tracker.get(6)) ? "" : tracker.get(6)%></textarea>
+							<textarea class="form-control" required name="descr"><%=(null == tracker.get(6)) ? "" : tracker.get(6)%></textarea>
 							</div>
 							<div>
 							<input type="hidden" name="tracker_id" value="<%=(null == tracker.get(0)) ? "" : tracker.get(0)%>">
