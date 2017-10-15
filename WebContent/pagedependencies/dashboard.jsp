@@ -347,4 +347,125 @@
 	    
 	</script>
 	
+	  <script>
+
+
+
+    var diameter = 500,
+    format = d3.format(",d"),
+    dataSource = 0;
+
+    var pack = d3.layout.pack()
+    .size([diameter - 4, diameter - 4])
+    .sort( function(a, b) {
+        return -(a.value - b.value);
+    })
+    .value(function(d) { return d.size; });
+
+    var svg = d3.select(".bubble").append("svg")
+    .attr("width", diameter)
+    .attr("height", diameter);
+
+    var buttonData = [];
+    var buttonDiv = d3.select("body").append("svg")
+    .attr("width", diameter)
+    .attr("height", 50);
+    var buttons = buttonDiv.selectAll(".updateButton")
+    .data(buttonData)
+    .enter()
+    .append('g')
+    .attr("class", "updateButton")
+    .on("click", function(d, i) {
+    	dataSource = i;
+    	updateVis();
+    });
+    buttons.append("rect")
+    .attr("x", function(d, i) { return (i * 100) + 100; })
+    .attr("width", 98)
+    .attr("height", 25)
+    .attr("ry", 5)
+    .style("stroke", "#787878")
+    .style("fill", "tan");
+    buttons.append("text")
+    .attr("x", function(d, i) { return (i * 100) + (100 / 2) + 98; })
+    .attr("y", 12)
+    .attr("dy", "0.35em")
+    .style("text-anchor", "middle")
+    .style("font-size", "15px")
+    .text(function(d) { return d; });
+
+    var data = getData();
+
+    var vis = svg.datum(data).selectAll(".node")
+    .data(pack.nodes)
+    .enter()
+    .append("g");
+
+    var titles = vis.append("title")
+    .attr("x", function(d) { return d.x; })
+    .attr("y", function(d) { return d.y; })
+    .text(function(d) { return d.name +
+        (d.children ? "" : ": " + format(d.value)); });
+
+    var circles = vis.append("circle")
+    .attr("stroke", "black")
+    .style("fill", function(d) { return !d.children ? getRandomColor() : getRandomColor(); })
+    .attr("cx", function(d) { return d.x; })
+    .attr("cy", function(d) { return d.y; })
+    .attr("r", function(d) { return d.r; });
+
+   // .attr("r", function(d) { return d.r; })
+   // .style("fill", function(d) { return color(d.size); });
+
+    //updateVis();
+
+    function updateVis() {
+
+    if (dataSource == 0)
+        pack.value(function(d) { return d.size; });
+    if (dataSource == 1)
+        pack.value(function(d) { return 100; });
+    if (dataSource == 2)
+        pack.value(function(d) { return 1 +
+                 Math.floor(Math.random()*301); });
+    //pack.sort(null)
+
+
+
+    var data1 = pack.nodes(data);
+
+    titles.attr("x", function(d) { return d.x; })
+        .attr("y", function(d) { return d.y; })
+        .text(function(d) { return d.name +
+            (d.children ? "" : ": " + format(d.value)); });
+
+    circles.transition()
+        .duration(5000)
+        .attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; })
+        .attr("r", function(d) { return d.r; });
+    };
+
+
+    function getData() {
+    return {
+    "name": "Root",
+    "children": [
+    	<c:forEach var="v1" items="${nlg}">
+    	{
+    		"name":"${v1[1]}","size":${v1[0]}
+    	},
+    	</c:forEach>
+
+
+    ]
+    };
+    }
+
+    
+
+
+
+    </script>
+    
 	
