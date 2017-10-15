@@ -65,8 +65,10 @@
 									<div class="heading-elements" id="reportrange" >
 									<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
 										<i class="icon-calendar3 position-left"></i> <span></span>  
-					<input type="hidden" id="datepicked" name="datepicked"  onchange="datechanged()" /><b class="caret"></b>
+					
 									</button>
+									<input type="hidden" id="datepicked" name="datepicked"  onchange="datechanged()" /><b class="caret"></b>
+									
 			                	</div>
 								</form>
 							</div>
@@ -281,7 +283,7 @@
 
 												<div class="media-body">
 													<div class="media-heading">
-														<a href="<%=request.getContextPath()%>/additional_blogger_info.jsp" class="letter-icon-title">${s1}</a>
+														<a href="<%=request.getContextPath()%>/AdditionalBlogger?authorName=${s1}" class="letter-icon-title">${s1}</a>
 													</div>
 
 													

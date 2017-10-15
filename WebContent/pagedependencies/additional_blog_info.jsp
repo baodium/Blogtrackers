@@ -1,4 +1,10 @@
-
+   <script type="text/javascript" src="assets/js/intro.js"></script>
+   
+<script>
+					 $(window).load(function(){
+						   introJs().start();   
+					   });
+					</script>
 	<script type="text/javascript" src="assets/js/plugins/forms/styling/switchery.min.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
@@ -15,6 +21,7 @@
 	
 
 	<script type="text/javascript" src="assets/js/plugins/ui/ripple.min.js"></script>
+	
 	<!-- /theme JS files -->
 <script type="text/javascript" src="assets/js/pages/form_select2.js"></script>
 
@@ -52,6 +59,7 @@
 							});
 						})
 					</script>
+					
 					<script type="text/javascript">
 						$(function() {
 							$("#url_id").dataTable({

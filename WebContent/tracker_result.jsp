@@ -228,7 +228,7 @@
 	
 	<% if(!selected.equals("")){%>
 	populate_selected_trackers();
-	<%}%>
+	<%}	%>
 	function set_tracker(source){
 		var keyword = $("#keyword").val();
 		var searched = $("#search-blog").val();

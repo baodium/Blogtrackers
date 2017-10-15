@@ -1,9 +1,16 @@
-
+   <script type="text/javascript" src="assets/js/intro.js"></script>
+   
+<script>
+					 $(window).load(function(){
+						   introJs().start();   
+					   });
+					</script>
 	<script type="text/javascript" src="assets/js/plugins/forms/styling/switchery.min.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/ui/moment/moment.min.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/pickers/daterangepicker.js"></script>
+	<script src="https://d3js.org/d3.v3.min.js"></script>
 
 
    <!--   <script type="text/javascript" src="assets/js/plugins/maps/jvectormap/jvectormap.min.js"></script>
@@ -468,4 +475,5 @@
 
     </script>
     
+	
 	

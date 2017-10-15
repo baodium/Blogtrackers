@@ -1,4 +1,10 @@
-
+   <script type="text/javascript" src="assets/js/intro.js"></script>
+   
+<script>
+					 $(window).load(function(){
+						   introJs().start();   
+					   });
+					</script>
 	<script type="text/javascript" src="assets/js/plugins/forms/styling/switchery.min.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>

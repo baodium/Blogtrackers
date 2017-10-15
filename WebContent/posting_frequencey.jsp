@@ -33,19 +33,20 @@
 			<small class="display-block"><span>Welcome, </span><%=username %> <font color="red">${errorMessage}</font>
 			
 				</h4>
-				<div class="form-group">
-				<div class="col-md-12">
-				
-				<div class="input-group">
-				<input type="text" class="form-control" placeholder="Enter a keyword to search" id="searchtextbox" autocomplete="off">
-											<span class="input-group-btn" style="padding-left:0px;"><button type="button" class="btn btn-primary">Search</button></span>
-											
-										</div>
-										</div>
-										</div>
 			</div>
-
-
+				<div class="heading-elements">
+				<div class="heading-btn-group">
+					<button type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-reading"></i></b> Proceed to setup Tracker</button>
+					<button type="button" onclick="location.href='dashboard.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-statistics position-left"></i></b> Proceed to Dashboard</button>
+					<button id="google_translate_element" class="btn btn-default"><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'ar', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>				
+				</button>
+			</div>
+		</div>
 		</div>
 	</div>
 	<!-- /page header -->
@@ -259,23 +260,7 @@
 						</div>
 					
 					</div>
-					
-					
-					
-				
-				
-				      
-				      
-				      
-				      
-				      
-				    
-			      
-			      
-				      
-					
-					
-						<div class="col-md-6 col-sm-12 col-xs-12">
+							<div class="col-md-6 col-sm-12 col-xs-12">
 						<div class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Top Keywords<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>

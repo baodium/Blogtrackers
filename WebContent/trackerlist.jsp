@@ -22,6 +22,13 @@
 
  <jsp:include page="include_top.jsp"></jsp:include>	
 	<!-- Page header -->
+	   <script type="text/javascript" src="assets/js/intro.js"></script>
+   
+<script>
+					 $(window).load(function(){
+						   introJs().start();   
+					   });
+					</script>
 	<div class="page-header">
 		<div class="page-header-content">
 			<div class="page-title">
@@ -76,7 +83,7 @@
 
 							<div class="panel-body">
 							<div class="table-responsive">
-								<table class="table text-nowrap">
+								<table class="table ">
 									<tbody>
 										<tr>
 											<td>
@@ -148,7 +155,7 @@
 													<div class="media-heading">
 														<a href="#" class="letter-icon-title">Description</a>
 													</div>
-													<div class="text-muted text-size-small" ><i class="text-size-mini position-left icon-info22"></i><span id="description"></span></div>
+													<div class="text-muted text-size-small" ><i class="text-size-mini position-left icon-info22"></i><span style="height:auto; width:180px !important;" id="description"></span></div>
 												</div>
 											</td>
 										</tr>
@@ -176,9 +183,9 @@
 									<img src="img/datapresentation.jpg" alt="">
 								</div>
 						    	<div class="caption text-center">
-						    		<h6 class="text-semibold no-margin"><a href="#" onclick="loadTrackerr('<%= tracker.get(0)%>');"><%=tracker.get(2) %></a> <small class="display-block"><%=tracker.get(1) %></small></h6>
+						    		<h6 class="text-semibold no-margin"><a onclick="loadTrackerr('<%= tracker.get(0)%>');"><%=tracker.get(2) %></a> <small class="display-block"><%=tracker.get(1) %></small></h6>
 					    			<ul class="icons-list mt-15">
-				                    	<li><a class="pull-left" href="<%=request.getContextPath()%>/dashboard.jsp?tid=<%= tracker.get(0)%>"><button type="button" title="Proceed to Dashboard"  class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-statistics"></i></button></a>    <a class="pull-right" href="#" onclick="edit_this('<%= tracker.get(0)%>');" style="margin-left:4px;"><button type="button" title="Edit Tracker"  class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-pencil"></i></button></a></li>
+				                    	<li><a class="pull-left" href="<%=request.getContextPath()%>/Dashboard?tracker=<%= tracker.get(2)%>"><button type="button" title="Proceed to Dashboard"  class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-statistics"></i></button></a>    <a class="pull-right"  onclick="edit_this('<%= tracker.get(0)%>');" style="margin-left:4px;"><button type="button" title="Edit Tracker"  class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-pencil"></i></button></a></li>
 				                    </ul>
 						    	</div>
 					    	</div>
@@ -207,7 +214,7 @@
 			<div class="col-md-3">
 				<div class="panel panel-primary">
 							<div class="panel-heading">
-								<h6 class="panel-title">Top Trackers<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<h6 class="panel-title">Top Trackers From Communities<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
 									<ul class="icons-list">
 				                		<li><a data-action="collapse"></a></li>
@@ -223,7 +230,7 @@
 								for(int i=0; i<top_trackers.size(); i++){
 									ArrayList trackee = (ArrayList)top_trackers.get(i);
 							%>
-							<a href="<%=request.getContextPath()%>/dashboard.jsp?tid=<%= trackee.get(0)%>" class="list-group-item"><i class="icon-paperplane"></i><%=trackee.get(2)%></a>
+							<a href="<%=request.getContextPath()%>/Dashboard?tracker=<%= trackee.get(2)%>" class="list-group-item"><i class="icon-paperplane"></i><%=trackee.get(2)%></a>
 							<% }}else{ %>
 								Not tracker found
 							<%} %>

@@ -46,6 +46,11 @@ public class Dashboard extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
+		StringBuffer trackerurl =  request.getRequestURL();
+		if(trackerurl != null)
+		{
+		//System.out.println(trackerurl);	
+		}
 		if(session.getAttribute("tracker")==null && request.getParameter("tracker")==null)
 		{
 			session.setAttribute("nblogs", 0);

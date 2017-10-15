@@ -124,7 +124,7 @@ function googleTranslateElementInit() {
 					<div class="col-md-4">
 						<div class="panel">
 							<div class="panel-body text-center">
-								<div class="icon-object border-success text-success"><i class="icon-book"></i></div>
+								<div class="icon-object border-success text-success"><i class="icon-puzzle3"></i></div>
 								<h5 class="text-semibold">Sentiments Analysis</h5>
 								<p class="mb-15">Analyze the sentiment in a text</p>
 								<a href="#" class="btn bg-success-400">Learn more</a>
@@ -135,7 +135,7 @@ function googleTranslateElementInit() {
 					<div class="col-md-4">
 						<div class="panel">
 							<div class="panel-body text-center">
-								<div class="icon-object border-warning text-warning"><i class="icon-lifebuoy"></i></div>
+								<div class="icon-object border-warning text-warning"><i class="icon-split"></i></div>
 								<h5 class="text-semibold">Influence</h5>
 								<p class="mb-15">Analyse the influence of text</p>
 								<a href="#" class="btn bg-warning-400">Learn more</a>
@@ -146,7 +146,7 @@ function googleTranslateElementInit() {
 					<div class="col-md-4">
 						<div class="panel">
 							<div class="panel-body text-center">
-								<div class="icon-object border-blue text-blue"><i class="icon-reading"></i></div>
+								<div class="icon-object border-blue text-blue"><i class="icon-search4"></i></div>
 								<h5 class="text-semibold">Keyword trend</h5>
 								<p class="mb-15">Know the trend of a keyword</p>
 								<a href="#" class="btn bg-blue">Learn more</a>
@@ -161,7 +161,7 @@ function googleTranslateElementInit() {
 					<div class="col-md-4">
 						<div class="panel">
 							<div class="panel-body text-center">
-								<div class="icon-object border-success text-success"><i class="icon-book"></i></div>
+								<div class="icon-object border-success text-success"><i class="icon-share3"></i></div>
 								<h5 class="text-semibold">Blog Network</h5>
 								<p class="mb-15">Analyze network trend</p>
 								<a href="#" class="btn bg-success-400">Learn more</a>
@@ -172,7 +172,7 @@ function googleTranslateElementInit() {
 					<div class="col-md-4">
 						<div class="panel">
 							<div class="panel-body text-center">
-								<div class="icon-object border-warning text-warning"><i class="icon-lifebuoy"></i></div>
+								<div class="icon-object border-warning text-warning"><i class="icon-comment"></i></div>
 								<h5 class="text-semibold">Posting Frequency</h5>
 								<p class="mb-15">Analyse the posting frequency</p>
 								<a href="#" class="btn bg-warning-400">Learn more</a>
@@ -183,7 +183,7 @@ function googleTranslateElementInit() {
 					<div class="col-md-4">
 						<div class="panel">
 							<div class="panel-body text-center">
-								<div class="icon-object border-blue text-blue"><i class="icon-reading"></i></div>
+								<div class="icon-object border-blue text-blue"><i class="icon-database-export"></i></div>
 								<h5 class="text-semibold">Data presentation</h5>
 								<p class="mb-15">Export your work</p>
 								<a href="#" class="btn bg-blue">Learn more</a>

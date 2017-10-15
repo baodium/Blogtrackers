@@ -41,7 +41,9 @@
 	<link href="assets/css/core.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/components.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/colors.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/introjs.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/mystyle.css" rel="stylesheet" type="text/css">
+
 	<!-- /global stylesheets -->
 	
 	<!-- Style from old -->
@@ -126,7 +128,7 @@
 
 				<ul class="nav navbar-nav navbar-right">
 			<% if(username!=""){ %>
-				<li class="language-switch"">
+				<li class="language-switch" data-intro="Select a tracker yfgfgfgfgfgfgfgfgf" data-step="1">
 			<form name="trackerform" id="trackerform" action="" method="post">
 
 			<select id="tracker" name="tracker" onchange="trackerchanged()" class="form-control" value="${item}">
@@ -163,7 +165,7 @@
 					<ul class="dropdown-menu dropdown-menu-right">
 						<li><a href="<%=request.getContextPath()%>/profile"><i class="icon-user-plus"></i> My profile</a></li>
 						<li class="divider"></li>
-						<li><a href="http://blogtrackers.host.ualr.edu" target="_blank"><i class="icon-paperplane spinner"></i>Upgrade Plans</a></li>
+						<li><a target="_blank" onclick="alert('We are still working on the section')"><i class="icon-paperplane spinner"></i>Upgrade Plans</a></li>
 						<li><a href="<%=request.getContextPath()%>/features.jsp"><i class="icon-cog5"></i> Features</a></li>
 						<li><a href="<%=request.getContextPath()%>/help.jsp"><i class="icon-help"></i> Help</a></li>
 						<li><a href="<%=request.getContextPath()%>/logout"><i class="icon-switch2"></i> Logout</a></li>			

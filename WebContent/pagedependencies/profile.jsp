@@ -1,3 +1,10 @@
+   <script type="text/javascript" src="assets/js/intro.js"></script>
+   
+<script>
+					 $(window).load(function(){
+						   introJs().start();   
+					   });
+					</script>
 	<!-- Theme JS files -->
 	<script type="text/javascript" src="assets/js/plugins/forms/wizards/stepss.min.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/forms/selects/select2.min.js"></script>
