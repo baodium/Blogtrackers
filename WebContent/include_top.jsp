@@ -62,11 +62,15 @@
 	href="${pageContext.request.contextPath}/vendors/nprogress/nprogress.css"
 	rel="stylesheet">
 	
+	<link
+	href="${pageContext.request.contextPath}/vendors/iCheck/skins/flat/green.css"
+	rel="stylesheet">
+	
 	<!-- bootstrap-progressbar -->
 <link
 	href="${pageContext.request.contextPath}/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css"
 	rel="stylesheet">
-		<script src="https://d3js.org/d3.v3.min.js"></script>
+		
 	<style>
 	
 	<style>
@@ -84,6 +88,7 @@
 	<script type="text/javascript" src="assets/js/plugins/ui/nicescroll.min.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/ui/drilldown.js"></script>
 	
+	<script src="https://d3js.org/d3.v3.min.js"></script>
 	
 <script type="text/javascript" src="assets/js/plugins/extensions/cookie.js"></script>
 <script type="text/javascript" src="assets/js/plugins/forms/validation/validate.min.js"></script>
@@ -128,7 +133,7 @@
 
 				<ul class="nav navbar-nav navbar-right">
 			<% if(username!=""){ %>
-				<li class="language-switch" data-intro="Select a tracker yfgfgfgfgfgfgfgfgf" data-step="1">
+				<li class="language-switch" data-intro="Select a tracker" data-step="1">
 			<form name="trackerform" id="trackerform" action="" method="post">
 
 			<select id="tracker" name="tracker" onchange="trackerchanged()" class="form-control" value="${item}">

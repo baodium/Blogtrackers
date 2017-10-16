@@ -26,6 +26,65 @@
 		
 %>
  <jsp:include page="include_top.jsp"></jsp:include>
+ <style>
+
+#chart {
+  background: #fff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+text {
+  pointer-events: none;
+}
+
+.grandparent text {
+  font-weight: bold;
+}
+
+rect {
+  fill: none;
+  stroke: #fff;
+}
+
+rect.parent,
+.grandparent rect {
+  stroke-width: 2px;
+}
+
+rect.parent {
+    pointer-events: none;
+}
+
+.grandparent rect {
+  fill: orange;
+}
+
+.grandparent:hover rect {
+  fill: #ee9700;
+}
+
+.children rect.parent,
+.grandparent rect {
+  cursor: pointer;
+}
+
+.children rect.parent {
+  fill: #bbb;
+  fill-opacity: .5;
+}
+
+.children:hover rect.child {
+  fill: #bbb;
+}
+
+</style>
 	<!-- Page header -->
 	<div class="page-header">
 		<div class="page-header-content">
@@ -269,7 +328,7 @@ function googleTranslateElementInit() {
 							<ul class="icons-list">
 		                		<li><a data-action="collapse"></a></li>
 		                		<li><a data-action="reload"></a></li>
-<!--		                		<li><a data-action="close"></a></li>-->
+
 		                	</ul>
 	                	</div>
 					</div>
@@ -302,6 +361,68 @@ function googleTranslateElementInit() {
 
 
 										</div>
+					</div>
+					
+					
+					
+					
+					<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h5 class="panel-title">Distribution of blog posts per blog site</h5>
+						<div class="heading-elements">
+							<ul class="icons-list">
+		                		<li><a data-action="collapse"></a></li>
+		                		<li><a data-action="reload"></a></li>
+
+		                	</ul>
+	                	</div>
+					</div>
+
+					<div class="panel-body">
+											<div id="chart"></div>
+
+							<script type="text/javascript"
+								src="https://www.gstatic.com/charts/loader.js"></script>
+							<script type="text/javascript">
+      google.charts.load('current', {'packages':['treemap']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+        	['Tracker','Parent','value'],
+        	['${tracker}',null,0],
+        <c:forEach var="v1" items="${tree}">
+        		<c:choose>
+        			<c:when test="${empty v1[1]}">
+        				['${v1[2]}. ${v1[3]}','${v1[2]}',${v1[3]}],
+        			</c:when>
+        			<c:otherwise>
+        				<c:choose>
+        					<c:when test="${v1[1] eq v1[2]}">
+								['${v1[1]}. ${v1[3]}','${v1[2]}',${v1[3]}],
+ 							</c:when>
+							<c:otherwise>
+								['${v1[1]} ${v1[3]}','${v1[2]}',${v1[3]}],
+							</c:otherwise>
+						</c:choose>
+					</c:otherwise>
+			 </c:choose>
+        </c:forEach>
+        ]);
+
+       tree = new google.visualization.TreeMap(document.getElementById('chart_div'));
+
+       tree.draw(data, {
+          minColor: '#f00',
+          midColor: '#ddd',
+          maxColor: '#0d0',
+          headerHeight: 15,
+          fontColor: 'black',
+          showScale: true
+        });
+
+     }
+    </script>
+					</div>
 					</div>
 				</div>
 				</div>
