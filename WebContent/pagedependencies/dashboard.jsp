@@ -498,7 +498,7 @@
     	<c:forEach var="v1" items="${nlg}">
     	{
     		"name":"${v1[1]}","size":${v1[0]}
-    	},
+    	}
     	</c:forEach>
 
 
