@@ -23,12 +23,7 @@
  <jsp:include page="include_top.jsp"></jsp:include>	
 	<!-- Page header -->
 	   <script type="text/javascript" src="assets/js/intro.js"></script>
-   
-<script>
-					 $(window).load(function(){
-						   introJs().start();   
-					   });
-					</script>
+ 
 	<div class="page-header">
 		<div class="page-header-content">
 			<div class="page-title">
@@ -37,6 +32,7 @@
 					<span class="text-semibold">Home</span> - Tracker List
 					<small class="display-block"><span>Welcome, </span><%=username %>
 			</h4>
+			<a class="class_name" href="javascript:void(0);" onclick="javascript:introJs().start();">Tour this website</a>
 				<form class="inline-form" action="<%=request.getContextPath()%>/search" method="post" >
 					<div class="form-group">
 					<div class="col-md-12">

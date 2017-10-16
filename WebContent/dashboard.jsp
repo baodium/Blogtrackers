@@ -25,6 +25,7 @@
     String tracker_id = (null == session.getAttribute("tid")) ? "" : session.getAttribute("tid").toString();
 		
 %>
+
  <jsp:include page="include_top.jsp"></jsp:include>
  <style>
 
