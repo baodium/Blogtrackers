@@ -91,8 +91,8 @@ if(term!="" && username==""){
 										</div>
 										
 										<div class="media-body">
-											<h6 class="media-heading"><%=tracker.get(2)%> <input type="checkbox" onclick="select_blog();"  class="blog-list" name="blog" style="float:right" value="<%=tracker.get(0) %>"  /></h6>
-											<span class="text-muted"><%=tracker.get(7)%> post(s)</span>
+											<h6 class="media-heading"><%=tracker.get(1)%> <input type="checkbox" onclick="select_blog();"  class="blog-list" name="blog" style="float:right" value="<%=tracker.get(0) %>"  /></h6>
+											<span class="text-muted"><%=tracker.get(2)%> post(s)</span>
 										</div>
 										
 									</div>
