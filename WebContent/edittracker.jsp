@@ -9,13 +9,22 @@
 	Object edited_tracker = (null == session.getAttribute("edited_tracker")) ? "" : session.getAttribute("edited_tracker");
 	String tracker_id = (null == request.getParameter("tracker_id")) ? edited_tracker.toString() : request.getParameter("tracker_id");
 	ArrayList tracker = new ArrayList();
+	ArrayList bloglist = new ArrayList();
+	String s = "";
 	if (username == null || username == "" || tracker_id == "") {
 		response.sendRedirect("index.jsp");
 	}
 	
 	try{
-		tracker = new Tracker().getTracker(tracker_id);
+		Tracker tk = new Tracker();
+		tracker = tk.getTracker(tracker_id);
 		tracker = (ArrayList)tracker.get(0);
+		String blog_list = tracker.get(5).toString();
+		String[] blist  = blog_list.split("\\(");
+		//s+= blist;
+		blist = blist[1].split("\\)");
+		s=blist[0];
+		bloglist = tk.getBloglist(blist[0]);
 	}catch(Exception e){}
 %>
  <jsp:include page="include_top.jsp"></jsp:include>
@@ -64,10 +73,11 @@ function googleTranslateElementInit() {
 
 				<!-- Main charts -->
 				<div class="row">
+
 				<div class="col-md-12">
 						<div class="panel panel-primary">
 							<div class="panel-heading">
-								<h6 class="panel-title">Edit Tracker <%=tracker_id %><a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<h6 class="panel-title">Edit Tracker <a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
 								<ul class="icons-list">
 				                		<li><a data-action="collapse"></a></li>
@@ -84,11 +94,11 @@ function googleTranslateElementInit() {
 							<div class="form-group">
 							<form name="edit_tracker" method="post" action="setup_tracker">
 							<label class="control-label">Tracker Name</label>
-							<input class="form-control" type="text" name="title" value="<%=(null == tracker.get(2)) ? "" : tracker.get(2)%>" />
+							<input class="form-control" type="text" required name="title" value="<%=(null == tracker.get(2)) ? "" : tracker.get(2)%>" />
 							</div>
 							<div class="form-group">
 							<label class="control-label">Tracker Description</label>
-							<textarea class="form-control" name="descr"><%=(null == tracker.get(6)) ? "" : tracker.get(6)%></textarea>
+							<textarea class="form-control" required name="descr"><%=(null == tracker.get(6)) ? "" : tracker.get(6)%></textarea>
 							</div>
 							<div>
 							<input type="hidden" name="tracker_id" value="<%=(null == tracker.get(0)) ? "" : tracker.get(0)%>">
@@ -143,19 +153,25 @@ function googleTranslateElementInit() {
 								<th>Actions</th>
 								<th class="hidden" width="0%"></th>
 							</tr>
+							
 						</thead>
 						<tbody>
-							<tr>
-								<td>Choosing sandals that meet the corporate casual dress code </td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td><a href="#" class="btn bg-primary-400 btn-rounded btn-icon btn-xs legitRipple"><span class="letter-icon icon-trash"></span>
-													</a></td>
-								<td class="hidden" width="0%">
-
-								</td>
+						<% if(bloglist != null && bloglist.size()>0){ 
+								for(int i=0; i<bloglist.size(); i++){
+									ArrayList blog = (ArrayList)bloglist.get(i);
+									String blogger = (blog.get(3)==null)?"":blog.get(3).toString();
+									String[] bloggers = blogger.split(",");
+							%>
+							<tr id="blogrow-<%=blog.get(0)%>">
+								<td><%=blog.get(1)%></td>
+								<td><%=blog.get(15)%></td>
+								<td><%=(blogger.equals(""))?0:bloggers.length%></td>
+								<td><%=blog.get(10)%></td>
+								<td><a href="#" onclick="remove_blog('<%=blog.get(0)%>');" class="btn bg-primary-400 btn-rounded btn-icon btn-xs legitRipple"><span class="letter-icon icon-trash"></span></a></td>
+								<td class="hidden" width="0%"></td>
 							</tr>
+							<% }} %>
+							
 							</tbody>
 							</table>
    
@@ -230,6 +246,44 @@ function googleTranslateElementInit() {
 
 	  <!-- Footer -->
   <jsp:include page="footer.jsp"></jsp:include>
+  
+  <script>
+	function remove_blog(id){
+		var all_blogs ="<%=s%>";
+		var blog_ids ="";
+		var ids = all_blogs.split(",");
+		for(var l=0; l<ids.length; l++){
+			
+			if(ids[l]!=id){
+				blog_ids+= ids[l]+",";
+			}
+		}
+		
+		blog_ids = blog_ids.substring(0,(blog_ids.length-1));
+		//alert(blog_ids);
+		var tracker_id = "<%=tracker.get(0)%>";
+		//var promt = confirm("Are you sure you want to delete this tracker?");
+		
+		if (confirm('Are you sure you want to remove this blog from tracker?')) {
+			$("#blogrow-"+id).remove();
+			
+			$.ajax({
+		        url: app_url+'/setup_tracker',
+				method:'POST',
+				data:{tracker_id:tracker_id,blog_id:blog_ids,action:"remove_blog"},
+		        success: function(response)
+		        {	
+		        	//window.location.reload();
+		        }
+		    });	
+			
+		} else {
+			return false;
+		}
+		
+		
+	}
+  </script>
 	<!-- /footer -->
 	<!-- Dependencies -->
   <jsp:include page="pagedependencies/keywordtrend.jsp"></jsp:include>

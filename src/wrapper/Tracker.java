@@ -137,8 +137,24 @@ public class Tracker extends HttpServlet {
 	        	response.sendRedirect("edittracker.jsp");
 			}catch(Exception ex) {
 				  response.sendRedirect("edittracker.jsp");
-			}
-			 
+			}			 
+		}
+		
+		if(action.equals("remove_blog")) {
+			try {
+				String tid = request.getParameter("tracker_id");
+				String blog_id = request.getParameter("blog_id");
+				String query="blogsite_id in ("+blog_id+")";
+				new DBConnector().updateTable("UPDATE trackers SET query='"+query+"' WHERE  tid='"+tid+"'");	
+				
+				String userid = (String) session.getAttribute("user");
+				ArrayList trackers = new DBConnector().query("SELECT * FROM trackers WHERE userid='"+userid+"'");
+	        	session.setAttribute("trackers", trackers);
+	        	session.setAttribute("edited_tracker", tid+"");
+	        	//response.sendRedirect("edittracker.jsp");
+			}catch(Exception ex) {
+				 //response.sendRedirect("edittracker.jsp");
+			}			 
 		}
 		
 	}
@@ -204,5 +220,14 @@ public class Tracker extends HttpServlet {
 		
 		return bloglist;
 	}
-    
+	
+	
+	public ArrayList<?> getBloglist(String blog_ids) {
+		ArrayList<?> bloglist = new ArrayList<String>();
+		try {
+			bloglist = new DBConnector().query("select * from blogsites where blogsite_id in ("+blog_ids+") ");									
+		} catch (Exception ex) {}
+		
+		return bloglist;
+	}
 }
