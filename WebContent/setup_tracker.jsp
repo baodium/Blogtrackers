@@ -5,7 +5,11 @@
 --%>
 <%@page import="java.util.*"%>
 <%@page import="wrapper.*"%>
+<%@page import="authentication.DBConnector"%>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	String selected =  (null == request.getParameter("all-selected-blogs")) ? "" : request.getParameter("all-selected-blogs");
 	String pre_selected = (null == session.getAttribute("pre-selected-blogs")) ? "" : session.getAttribute("pre-selected-blogs").toString();
@@ -16,6 +20,8 @@
 	 
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
+	
+	
 	
 	if(selected!=""){
 		session.setAttribute("pre-selected-blogs", selected);
@@ -28,6 +34,7 @@
 	if(selected.equals("") && !pre_selected.equals("")){
 		selected = pre_selected;
 	}
+	
 	
 	
 	if(!selected.equals("")){
@@ -56,7 +63,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 	<!-- Page header -->
-	<div class="page-header">
+	<div class="page-header mb-10">
 		<div class="page-header-content">
 			<div class="page-title">
 				<h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Setup Tracker</span> </h4>
@@ -65,6 +72,7 @@
 					<li><a href="index.html">Home</a></li>
 					<li class="active">Setup tracker</li>
 				</ul>
+				<br/>
 			</div>
 
 			<div class="heading-elements">
@@ -304,7 +312,8 @@
 		        {		
 		        	console.log(response);
 		        	if(response==="success"){
-		        		 window.location.href = app_url+"dashboard.jsp";
+		        		
+		        		 window.location.href = app_url+"Analytics?tracker="+tracker_name;
 		        	}else{
 		        		$("#error-box").html("Error adding tracker");
 		        	}

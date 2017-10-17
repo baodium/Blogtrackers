@@ -64,7 +64,7 @@ public class Dashboard extends HttpServlet {
 			session.setAttribute("nlg", "");
 			session.setAttribute("series", "");			
 			response.setContentType("text/html");
-	    	response.sendRedirect("Dashboard.jsp");
+	    	response.sendRedirect("dashboard.jsp");
 		}
 		else
 		{	

@@ -23,17 +23,10 @@
 	
      ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
     String tracker_id = (null == session.getAttribute("tid")) ? "" : session.getAttribute("tid").toString();
-	
-    
+		
 %>
+
  <jsp:include page="include_top.jsp"></jsp:include>
- <% ArrayList mytrackers = new ArrayList();
-mytrackers = (ArrayList)session.getAttribute("trackers");
-int trackerSize = mytrackers.size();
-    if(trackerSize == 0)
-    {%>
-    <c:redirect url="setup_tracker.jsp"/>	
-  <% } %> 
  <style>
 
 #chart {
@@ -54,10 +47,6 @@ text {
 
 .grandparent text {
   font-weight: bold;
-}
-#chart svg
-{
-width:150%;
 }
 .grandparent rect
 {
@@ -115,9 +104,8 @@ rect.parent {
 	</div>
 			<div class="heading-elements">
 				<div class="heading-btn-group">
-					<button type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-plus2"></i></b> Setup a new tracker</button>
-					<button type="button" href="javascript:void(0);" onclick="javascript:introJs().start();" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-reading "></i></b> Tour Page</button>
-				 
+					<button type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-reading"></i></b> Setup a new tracker</button>
+				<!-- 	<button type="button" onclick="location.href='dashboard.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-statistics position-left"></i></b> Proceed to Dashboard</button> -->
 					<button id="google_translate_element" class="btn btn-default"><script type="text/javascript">
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({pageLanguage: 'ar', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
@@ -127,10 +115,10 @@ function googleTranslateElementInit() {
 				</button>
 			</div>
 		</div>
-		<!--<div class="form-group">
+		<div class="form-group">
 		<form action="<%=request.getContextPath()%>/search" method="post" class="main-search">
 				
-		 	<div class="col-md-12">
+		<!-- 	<div class="col-md-12">
 				<input type="hidden" name="search" value="yes">
 				<div class="input-group">
 				<input type="text" name="term" id="term" class="form-control" placeholder="Enter a keyword to search" id="searchtextbox" autocomplete="off">
@@ -139,9 +127,9 @@ function googleTranslateElementInit() {
 
 				</div>
 				</div>
-				
+				-->
 		</form>
-		</div>-->
+		</div>
 
 
 			<!--  <div class="heading-elements">
@@ -352,7 +340,7 @@ function googleTranslateElementInit() {
 					</div>
 
 					<div class="panel-body">
-			<div class="col-md-4">
+			<div style="width:30%; float: left;">
 											<table class="table table-striped">
     <thead>
     <br/>
@@ -365,7 +353,7 @@ function googleTranslateElementInit() {
 													<c:forEach items="${nlg}" var="v1" begin="0" end="5">
 														<tr>
 
-				<td class="fs15 fw700 text-left">${fn:toUpperCase(fn:substring(v1[1], 0, 1))}${fn:toLowerCase(fn:substring(v1[1], 1,fn:length(v1[1])))}</td>
+															<td class="fs15 fw700 text-left">${fn:toUpperCase(fn:substring(v1[1], 0, 1))}${fn:toLowerCase(fn:substring(v1[1], 1,fn:length(v1[1])))}</td>
 															<td><fmt:formatNumber type = "number"
          maxFractionDigits = "3" value = "${v1[0]}" /></td>
 														</tr>
@@ -375,7 +363,7 @@ function googleTranslateElementInit() {
   </div>						
 					
 					
-						<div align="center" class="col-md-8 bubble"></div>
+						<div class="bubble" style="width:70%"></div>
 
 
 										</div>
@@ -397,7 +385,7 @@ function googleTranslateElementInit() {
 					</div>
 
 					<div class="panel-body">
-					<div id="chart"></div>
+											<div id="chart"></div>
 
 							<script type="text/javascript"
 								src="https://www.gstatic.com/charts/loader.js"></script>
@@ -440,7 +428,6 @@ function googleTranslateElementInit() {
 
      }
     </script>
-											
 					</div>
 					</div>
 				</div>

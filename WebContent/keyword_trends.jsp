@@ -19,7 +19,13 @@
 %>
 
  <jsp:include page="include_top.jsp"></jsp:include>
-
+<% ArrayList mytrackers = new ArrayList();
+mytrackers = (ArrayList)session.getAttribute("trackers");
+int trackerSize = mytrackers.size();
+    if(trackerSize == 0)
+    {%>
+    <c:redirect url="setup_tracker.jsp"/>	
+  <% } %> 
 
 	<!-- Page header -->
 	<div class="page-header">
@@ -30,6 +36,19 @@
 					<span class="text-semibold">Keyword Trends</span>
 <small class="display-block"><span>Welcome, </span><%=username %>
 				</h4>
+				<div class="heading-elements">
+				<div class="heading-btn-group">
+					<button type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-plus2"></i></b> Setup a new tracker</button>
+					<button type="button" href="javascript:void(0);" onclick="javascript:introJs().start();" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-reading "></i></b> Tour Page</button>
+				 <button id="google_translate_element" class="btn btn-default"><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'ar', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+				
+				</button>
+			</div>
+		</div>
 				<form name="tagform" id="tagform" action="KeywordTrendsServlet" method="post">
 				<div class="form-group">
 				<div class="col-md-12">

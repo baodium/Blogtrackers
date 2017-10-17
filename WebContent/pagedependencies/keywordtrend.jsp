@@ -1,10 +1,5 @@
    <script type="text/javascript" src="assets/js/intro.js"></script>
-   
-<script>
-					 $(window).load(function(){
-						   introJs().start();   
-					   });
-					</script>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
@@ -63,7 +58,7 @@ $('#reportrange input').val(start.format('MMMM D, YYYY') + ' - ' + end.format('M
 var optionSet1 =
 {   startDate: moment().subtract('days', 29),
 endDate: moment(),
-minDate: '01/01/2000',
+minDate: '01/01/1947',
 maxDate: moment(),
 showDropdowns: true,
 showWeekNumbers: true,

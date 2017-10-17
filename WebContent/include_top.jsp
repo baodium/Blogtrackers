@@ -3,12 +3,20 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@page import="authentication.DBConnector"%>
+<%@page import="blogtracker.util.Common" %>
 <!DOCTYPE html>
 <%
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
 	String tracker_id = (null == session.getAttribute("tid")) ? "" : session.getAttribute("tid").toString();
 	
+	try{
+    	ArrayList trackers = new DBConnector().query("SELECT * FROM trackers WHERE userid='"+username.toString()+"'");
+    	session.setAttribute("trackers", trackers);
+    	
+    	
+    }catch(Exception ex){}
 	
 	ArrayList userinfo = new ArrayList();
 	ArrayList trackers = new ArrayList();
@@ -25,8 +33,9 @@
     try{
 	   userinfo = (ArrayList)session.getAttribute("userinfo");
 	   trackers = (ArrayList)session.getAttribute("trackers");
+	   //System.out.println(trackers.size());
     }catch(Exception e){}
-%>
+     %>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -190,29 +199,87 @@
 	</div>
 	<!-- /main navbar -->
 
+<%
+String uri = request.getRequestURI();
+String pageName = uri.substring(uri.lastIndexOf("/")+1);	
+
+System.out.println(pageName);
+%>
 	
+
+	<!--  <div class="navbar navbar-default" id="navbar-second">
 	
- <!--  <div class="navbar navbar-default" id="navbar-second">
+	<div class="navbar-collapse collapse" id="navbar-second-toggle">
+		<ul class="nav navbar-nav navbar-nav-material">
+			<li class=""><a href="<%=request.getContextPath()%>/dashboard.jsp"><i class="icon-display4 position-left"></i> Dashboard</a></li>
+			<li onclick="location.href='basic.jsp'">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<i class="icon-chart position-left"></i> Basic Analytics
+				</a>
+				
+			</li>
+			<li><a href="<%=request.getContextPath()%>/PostingFrequency"><i class="fa fa-line-chart"></i>Posting
+						Frequency<span class="fa fa-chevron-right"></span></a></li>
+			<li onclick="location.href='advance.jsp'">
+				<a class="">
+					<i class="icon-stats-bars2 position-left"></i> Advanced Analytics
+				</a>
+				
+				
+			</li>
+					 	  <li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<i class="icon-stars position-left"></i> Services<span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu width-200">
+				<li class="dropdown-header">Services</li>
+				<li class="dropdown-submenu">
+						<a href="#"><i class="icon-circle2"></i> Upgrade Options</a>
+						<ul class="dropdown-menu width-200">
+							<li class="dropdown-header highlight">Options</li>
+							<li><a href="http://blogtrackers.host.ualr.edu" target="_blank"><i class="icon-paperplane spinner"></i>Plans</a></li>
+							<li><a href="http://blogtrackers.host.ualr.edu" target="_blank"><i class="icon-comments spinner"></i>Testimonials</a></li>
+							
+						</ul>
+						
+				</li>
+				<li class="dropdown-submenu">
+				<a href="#"><i class="icon-video-camera2"></i> Training</a>
+						<ul class="dropdown-menu width-200">
+							<li class="dropdown-header highlight">Options</li>
+							<li><a> <i class="icon-video-camera-slash spinner"></i>Video Tutorials</a></li>
+							<li ><a ><i class="icon-file-pdf spinner"></i>Download PDF</a></li>
+							
+						</ul>
+						</li>
+						<li>
+				<a href="#"><i class="icon-headphones"></i> Support</a>
+			
+					</li>
+				</ul>
+			</li>
+		
+		</ul>
+		
+	</div>
+</div>  -->
+
+
+  <div class="navbar navbar-default" id="navbar-second">
 		
 		<div class="navbar-collapse collapse" id="navbar-second-toggle">
 			<ul class="nav navbar-nav navbar-nav-material">
-				<li class=""><a href="<%=request.getContextPath()%>/dashboard.jsp"><i class="icon-display4 position-left"></i> Dashboard</a></li>
-				<li onclick="location.href='basic.jsp'">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<i class="icon-chart position-left"></i> Basic Analytics
-					</a>
-					
-				</li>
-				<li><a href="<%=request.getContextPath()%>/PostingFrequency"><i class="fa fa-line-chart"></i>Posting
-							Frequency<span class="fa fa-chevron-right"></span></a></li>
-				<li onclick="location.href='advance.jsp'">
-					<a class="">
-						<i class="icon-stats-bars2 position-left"></i> Advanced Analytics
+				<li class=""><a href="<%=request.getContextPath()%>/trackerlist.jsp"><i class="icon-list position-left"></i> Tracker List</a></li>
+				
+				
+				<li >
+					<a href="<%=request.getContextPath()%>/analytics.jsp" class="">
+						<i class="icon-stats-bars2 position-left"></i> Analytics
 					</a>
 					
 					
 				</li>
-								  <li class="dropdown">
+								 <!--   <li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<i class="icon-stars position-left"></i> Services<span class="caret"></span>
 					</a>
@@ -242,9 +309,10 @@
 				
 						</li>
 					</ul>
-				</li>
+				</li>-->
 			
 			</ul>
 			
 		</div>
-	</div>  -->
+	</div>  
+	

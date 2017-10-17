@@ -15,9 +15,15 @@
 	}
         ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
 %>
-
+ 
  <jsp:include page="include_top.jsp"></jsp:include>
-
+<% ArrayList mytrackers = new ArrayList();
+mytrackers = (ArrayList)session.getAttribute("trackers");
+int trackerSize = mytrackers.size();
+    if(trackerSize == 0)
+    {%>
+    <c:redirect url="setup_tracker.jsp"/>	
+  <% } %>
 
 	<!-- Page header -->
 	<div class="page-header">
@@ -28,16 +34,20 @@
 					<span class="text-semibold">Sentiments</span>
 	<small class="display-block"><span>Welcome, </span><%=username %>
 				</h4>
-				<div class="form-group">
-				<div class="col-md-12">
+				<div class="heading-elements">
+				<div class="heading-btn-group">
+					<button type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-plus2"></i></b> Setup a new tracker</button>
+					<button type="button" href="javascript:void(0);" onclick="javascript:introJs().start();" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-reading "></i></b> Tour Page</button>
+				 <button id="google_translate_element" class="btn btn-default"><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'ar', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 				
-				<div class="input-group">
-				<input type="text" class="form-control" placeholder="Enter a keyword to search" id="searchtextbox" autocomplete="off">
-											<span class="input-group-btn" style="padding-left:0px;"><button type="button" class="btn btn-primary">Search</button></span>
-											
-										</div>
-										</div>
-										</div>
+				</button>
+			</div>
+		</div>
+				
 			</div>
 
 
@@ -62,7 +72,7 @@
 							<div class="panel-heading">
 								<h6 class="panel-title">Timeline of Sentiments<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<form name="dateform" id="dateform" method="post">
-									<div class="heading-elements" id="reportrange" >
+									<div class="heading-elements" data-intro="Select a Date Range" data-step="2" id="reportrange" >
 									<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
 										<i class="icon-calendar3 position-left"></i> <span></span>  
 					
@@ -75,7 +85,7 @@
 
 							<div class="panel-body">
 							
-							<div class="col-lg-8 col-md-8 col-sm-12">
+							<div class="col-lg-8 col-md-8 col-sm-12" data-intro="Select a Data Point" data-step="3">
 							<!-- 	<div class="chart-container">
 							  <div class="chart" id="c3-line-regions-chart"></div>
 						</div>	-->		
@@ -247,7 +257,7 @@
 										</div>			
 							</div>
 					
-								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" data-intro="Select a Blogger Name" data-step="4">
 		<div class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blogger Name<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
@@ -353,9 +363,9 @@
 						<thead>
 							<tr>
 							<th>
-							<label class="mylabel">
+							<!--  <label class="mylabel">
   <input class="mycheckbox individualcheckbox" type='checkbox'>
-  <span class="myspan individualspan"></span></label>
+  <span class="myspan individualspan"></span></label>-->
 							<input type="checkbox" id="check-all" class="flat"></th>
 								<th>Select All</th>
 								
@@ -374,9 +384,9 @@
 																						<c:forEach items="${names}" var="s1" begin="${i}"
 																							end="${i}">
 																							<td class="a-center ">
-																							<label class="mylabel">
+																							<!--  <label class="mylabel">
   <input class="mycheckbox individualcheckbox" name="table_records" type='checkbox'>
-  <span class="myspan individualspan"></span></label>
+  <span class="myspan individualspan"></span></label> -->
 																							<input type="checkbox"
 																								class="flat" name="table_records"
 																								value="${s1[1]}"></td>

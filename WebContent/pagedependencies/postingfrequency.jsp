@@ -1,10 +1,6 @@
    <script type="text/javascript" src="assets/js/intro.js"></script>
    
-<script>
-					 $(window).load(function(){
-						   introJs().start();   
-					   });
-					</script>
+
 	<script type="text/javascript" src="assets/js/plugins/forms/styling/switchery.min.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
@@ -45,8 +41,8 @@
 					src="${pageContext.request.contextPath}/vendors/jQCloud-master/jqcloud/jqcloud-1.0.4.js"></script>
 				<script
 					src="${pageContext.request.contextPath}/production/js/flot/jquery.flot.orderBars.js"></script>
-				<script
-					src="${pageContext.request.contextPath}/production/js/flot/date.js"></script>
+			<!--  	<script
+					src="${pageContext.request.contextPath}/production/js/flot/date.js"></script>-->
 				<script
 					src="${pageContext.request.contextPath}/production/js/flot/jquery.flot.spline.js"></script>
 				<script
@@ -161,7 +157,7 @@
       var optionSet1 =
     	      {   startDate: moment().subtract('days', 29),
     	          endDate: moment(),
-    	          minDate: '01/01/2000',
+    	          minDate: '01/01/1947',
     	          maxDate: moment(),
     			  showDropdowns: true,
     	          showWeekNumbers: true,

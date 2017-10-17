@@ -69,6 +69,7 @@
 						<input type="hidden" name="search-blog" id="search-blog" value="yes" />
 						<input type="hidden" name="search-keyword" id="search-keyword" value="<%=keyword%> %>" />					
 						<%  if(bloglist.size()>0){ %>
+						
 							<div class="loadmoreimg" id="loading-img" style="text-align:center"><br/><br/><img src='assets/images/preloader.gif' /><br/></div>						
 						<% } %>
                     </div>

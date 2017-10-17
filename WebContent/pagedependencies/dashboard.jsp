@@ -1,9 +1,9 @@
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
    <script type="text/javascript" src="assets/js/intro.js"></script>
    
 <script>
-					 $(window).load(function(){
-						   introJs().start();   
-					   });
+					
 					 $('#trackerform').attr("action","Dashboard");
 					</script>
 	<script type="text/javascript" src="assets/js/plugins/forms/styling/switchery.min.js"></script>
@@ -11,23 +11,11 @@
 	<script type="text/javascript" src="assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/ui/moment/moment.min.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/pickers/daterangepicker.js"></script>
-	<script src="https://d3js.org/d3.v3.min.js"></script>
-
-
-   <!--   <script type="text/javascript" src="assets/js/plugins/maps/jvectormap/jvectormap.min.js"></script>
-	<script type="text/javascript" src="assets/js/plugins/maps/jvectormap/map_files/world.js"></script>
-	<script type="text/javascript" src="assets/js/plugins/maps/jvectormap/map_files/countries/usa.js"></script>
-	<script type="text/javascript" src="assets/js/plugins/maps/jvectormap/map_files/countries/germany.js"></script>
-	<script type="text/javascript" src="assets/demo_data/maps/vector/gdp_demo_data.js"></script>-->
 
 	<script type="text/javascript" src="assets/js/core/app.js"></script>
-		<!-- <script type="text/javascript" src="assets/js/maps/vector/vector_maps_demo.js"></script>  -->
-	<!-- <script type="text/javascript" src="assets/js/pages/dashboard.js"></script> -->
-		
-
 	<script type="text/javascript" src="assets/js/plugins/ui/ripple.min.js"></script>
-	<script
-					src="${pageContext.request.contextPath}/vendors/echarts/dist/echarts.min.js"></script>
+	<!--  <script
+					src="${pageContext.request.contextPath}/vendors/echarts/dist/echarts.min.js"></script>-->
 				<script
 					src="${pageContext.request.contextPath}/vendors/echarts/map/js/world.js"></script>
 	<script
@@ -36,7 +24,7 @@
 				<script
 					src="${pageContext.request.contextPath}/vendors/nprogress/nprogress.js"></script>
 				<!-- Chart.js -->
-				<script
+				<!--  <script
 					src="${pageContext.request.contextPath}/vendors/Chart.js/dist/Chart.min.js"></script>
 
 				<!-- gauge.js -->
@@ -83,10 +71,10 @@
 					
 					<script
 					src="${pageContext.request.contextPath}/build/js/custom.min.js"></script>
-				
-			
-			
-			<script>
+ <!-- New Tree Map   -->
+   <script src="http://d3js.org/d3.v3.min.js"></script>
+   
+ <script>
 
 
     var diameter = 500,
@@ -581,12 +569,9 @@
 
 
     </script>
-			
-			
-				
-					<script>
+						<script>
 
-		var sample_data = {${data}};
+		var sample_data = {${data}}
     $(document).ready(function(){
         $('#world-map-gdp').vectorMap({
             map: 'world_en',
@@ -899,7 +884,9 @@
     </script>
    
 
- <!-- New Tree Map   -->
+
+
+   <!-- New Tree Map   -->
    <script src="http://d3js.org/d3.v3.min.js"></script>
 
    <script>
@@ -1159,5 +1146,3 @@ if (window.location.hash === "") {
 }
 
 </script>
-	
-	
