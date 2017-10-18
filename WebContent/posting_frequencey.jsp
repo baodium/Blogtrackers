@@ -75,7 +75,7 @@ function googleTranslateElementInit() {
 							<div class="panel-heading">
 								<h6 class="panel-title">Posting Frequency<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<form name="dateform" id="dateform" method="post">
-									<div class="heading-elements" id="reportrange" action="PostingFrequency">
+									<div data-intro="Select a date range " data-step="2" class="heading-elements" id="reportrange" action="PostingFrequency">
 									<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
 										<i class="icon-calendar3 position-left"></i> <span></span>  
 					<b class="caret"></b>
@@ -92,9 +92,9 @@ function googleTranslateElementInit() {
 								<!--  <div class="chart-container">
 							<div class="chart" id="c3-line-regions-chart"></div>
 						</div>	-->
-							<div class="demo-container">
+							<div data-intro="Select a data point on the graph" data-step="3" class="demo-container">
 												<div id="chartContainer" style="height: 350px"></div>
-												<div style="text-align: center; margin-bottom: 15px;">
+												<div data-intro="You can switch between day, weeek, month and year" data-step="4" style="text-align: center; margin-bottom: 15px;">
 													<jsp:include page="spanchecker.jsp"></jsp:include>
 												
 												</div>
@@ -104,7 +104,7 @@ function googleTranslateElementInit() {
 							
 					
 								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-		<div class="panel panel-primary">
+		<div data-intro="Click on a blogger name to get additional blogger information" data-step="5" class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Top Bloggers<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -190,7 +190,7 @@ function googleTranslateElementInit() {
 
 							<div class="panel-body">
 							<div class="col-md-6 col-sm-12 col-xs-12">
-						<div class="panel panel-primary">
+						<div data-intro="Click on the icon in front of the blog title to view blog content" data-step="6" class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blog Post<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -244,7 +244,7 @@ function googleTranslateElementInit() {
 					</div>
 						
 <div class="col-md-6 col-sm-12 col-xs-12">
-						<div class="panel panel-primary">
+						<div data-intro="This section displays the blog content" data-step="7" class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blog Content<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -268,7 +268,7 @@ function googleTranslateElementInit() {
 					
 					</div>
 							<div class="col-md-6 col-sm-12 col-xs-12">
-						<div class="panel panel-primary">
+						<div data-intro="This section displays the top keywords" data-step="8" class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Top Keywords<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -293,7 +293,7 @@ function googleTranslateElementInit() {
 					
 					
 						<div class="col-md-6 col-sm-12 col-xs-12">
-						<div class="panel panel-primary">
+						<div data-intro="This section displays the top entities" data-step="9" class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Top Entities<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">

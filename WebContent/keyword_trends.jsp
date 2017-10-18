@@ -50,10 +50,10 @@ function googleTranslateElementInit() {
 			</div>
 		</div>
 				<form name="tagform" id="tagform" action="KeywordTrendsServlet" method="post">
-				<div class="form-group">
+				<div  class="form-group">
 				<div class="col-md-12">
 				
-				<div class="input-group">
+				<div data-intro="Enter a keyword to search and press enter key or click the search button" data-step="2" class="input-group">
 				<c:choose>
 				<c:when test="${tags != null}">
 				<input type="text" class="form-control" name="searchText" id="searchBar" placeholder="${tags}"
@@ -95,7 +95,7 @@ function googleTranslateElementInit() {
 							<div class="panel-heading">
 								<h6 class="panel-title">Keyword Trendline<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<form name="dateform" id="dateform" method="post" 	>
-									<div class="heading-elements" id="reportrange" >
+									<div data-intro="Select a date range" data-step="3" class="heading-elements" id="reportrange" >
 									<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
 										<i class="icon-calendar3 position-left"></i> <span></span>  
 					<b class="caret"></b>
@@ -112,9 +112,9 @@ function googleTranslateElementInit() {
 							<!-- <div class="chart-container">
 							<div class="chart" id="c3-line-regions-chart"></div>
 						</div>	-->
-																		<div class="demo-container">
+																		<div data-intro="Click on a datapoint on the graph" data-step="4" class="demo-container">
 													<div id="chartContainer" style="height: 350px;"></div>
-													<div style="text-align: center; margin-bottom: 15px;">
+													<div data-intro="Switch between day, week, month and year" data-step="5" style="text-align: center; margin-bottom: 15px;">
 														<form name="kt_spanform" id="kt_spanform" action="KeywordTrendsServlet"
 																method="post">
 														<%
@@ -275,7 +275,7 @@ function googleTranslateElementInit() {
 				
 						
 				
-						<div class="panel panel-primary">
+						<div data-intro="Click on the icon in front of the blog title to view blog content" data-step="6" class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blog <Browser></Browser><a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -347,7 +347,7 @@ function googleTranslateElementInit() {
 					</div>
 						
 <div class="col-md-6 col-sm-12 col-xs-12">
-						<div class="panel panel-primary">
+						<div data-intro="This section displays the blog content" data-step="7" class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blog Content<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -370,7 +370,7 @@ function googleTranslateElementInit() {
 						</div>
 					
 					
-					<div class="panel panel-primary">
+					<div data-intro="This section displays the entity network" data-step="8" class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Entity Network<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">

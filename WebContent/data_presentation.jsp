@@ -106,7 +106,7 @@ function googleTranslateElementInit() {
 										</form>
 										<form name="exportJSON" id="exportJSON"	action="ExportJSON" method="post">
 										<input id="exportJSON" name="exportJSON" type="hidden" onchange="exportJSON()" />
-										<button class="btn btn-primary" type="submit">Download Now</button>
+										<button data-intro="Click here to download your data in JSON format" data-step="3" class="btn btn-primary" type="submit">Download Now</button>
 										
 										</form>
 									</div>

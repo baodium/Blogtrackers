@@ -39,7 +39,7 @@
 			</h4>
 			<div class="heading-elements">
 				<div class="heading-btn-group">
-					<button type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-plus2"></i></b> Setup a new tracker</button>
+					<button data-intro="Click here to create a new tracker" data-step="1" type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-plus2"></i></b> Setup a new tracker</button>
 					<button type="button" href="javascript:void(0);" onclick="javascript:introJs().start();" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-reading "></i></b> Tour Page</button>
 				 
 					<button id="google_translate_element" class="btn btn-default"><script type="text/javascript">
@@ -111,7 +111,7 @@ function googleTranslateElementInit() {
 
 												<div class="media-body">
 													<div class="media-heading">
-														<a href="#" class="letter-icon-title">Tracker Name <li class="language-switch" data-intro="Select a tracker" data-step="2"></a>
+														<a href="#" class="letter-icon-title">Tracker Name </a>
 													</div>
 
 													<div class="text-muted text-size-small" ><i class="icon-target text-size-mini position-left"></i><span id="trackername"></span> </div>
@@ -188,20 +188,20 @@ function googleTranslateElementInit() {
 							Object blogs = tracker.get(5);
 					%>
 					<form name="form_<%= tracker.get(0)%>" id="form_<%= tracker.get(0)%>" method="post" action="edittracker.jsp">
-					<div class="col-lg-4 col-md-6 eachtracker">
+					<div  class="col-lg-4 col-md-6 eachtracker">
 					
 							<div class="thumbnail">
 							
-							<div title="Delete Tracker" class="text-muted text-size-medium" style="position:absolute; cursor:pointer;"><a href="#" onclick="delete_this('<%= tracker.get(0)%>');"><i class="icon-trash text-size-medium position-left"></i></a></div>
+							<div data-intro="Click here to delete an existing tracker" data-step="2" title="Delete Tracker" class="text-muted text-size-medium" style="position:absolute; cursor:pointer;"><a href="#" onclick="delete_this('<%= tracker.get(0)%>');"><i class="icon-trash text-size-medium position-left"></i></a></div>
 					
 					
 								<div class="thumb thumb-rounded">
 									<img src="img/datapresentation.jpg" alt="">
 								</div>
 						    	<div class="caption text-center">
-						    		<h6 class="text-semibold no-margin"><a onclick="loadTrackerr('<%= tracker.get(0)%>');"><%=tracker.get(2) %></a> <small class="display-block"><%=tracker.get(1) %></small></h6>
+						    		<h6 class="text-semibold no-margin"><a data-intro="Click here to view metadata information about your tracker" data-step="5" onclick="loadTrackerr('<%= tracker.get(0)%>');"><%=tracker.get(2) %></a> <small class="display-block"><%=tracker.get(1) %></small></h6>
 					    			<ul class="icons-list mt-15">
-				                    	<li><a class="pull-left" href="<%=request.getContextPath()%>/Analytics?tracker=<%= tracker.get(2)%>"><button type="button" title="Proceed to Analytics"  class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-statistics"></i></button></a>    <a class="pull-right"  onclick="edit_this('<%= tracker.get(0)%>');" style="margin-left:4px;"><button type="button" title="Edit Tracker"  class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-pencil"></i></button></a></li>
+				                    	<li><a class="pull-left" href="<%=request.getContextPath()%>/Analytics?tracker=<%= tracker.get(2)%>"><button data-intro="Click here to perform analytical operations such as sentiments, keyword trends, posting frequency and data export" data-step="3" type="button" title="Proceed to Analytics"  class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-statistics"></i></button></a>    <a class="pull-right"  onclick="edit_this('<%= tracker.get(0)%>');" style="margin-left:4px;"><button data-intro="Click here to modify existing tracker and view blogsites" data-step="4" type="button" title="Edit Tracker"  class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-pencil"></i></button></a></li>
 				                    </ul>
 						    	</div>
 					    	</div>
@@ -246,7 +246,7 @@ function googleTranslateElementInit() {
 								for(int i=0; i<top_trackers.size(); i++){
 									ArrayList trackee = (ArrayList)top_trackers.get(i);
 							%>
-							<a href="<%=request.getContextPath()%>/Dashboard?tracker=<%= trackee.get(2)%>" class="list-group-item"><i class="icon-paperplane"></i><%=trackee.get(2)%></a>
+							<a onclick="alert('still working on this feature')" class="list-group-item"><i class="icon-paperplane"></i><%=trackee.get(2)%></a>
 							<% }}else{ %>
 								Not tracker found
 							<%} %>

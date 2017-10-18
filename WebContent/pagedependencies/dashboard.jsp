@@ -72,6 +72,18 @@
 					<script
 					src="${pageContext.request.contextPath}/build/js/custom.min.js"></script>
  <!-- New Tree Map   -->
+ <style>
+.loader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('img/gif/Loading-data.gif') 50% 50% no-repeat
+		rgb(249, 249, 249);
+}
+</style>
    <script src="http://d3js.org/d3.v3.min.js"></script>
    
  <script>
@@ -882,6 +894,7 @@
 		}
 
     </script>
+   
    
 
 

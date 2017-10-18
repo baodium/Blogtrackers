@@ -10,6 +10,80 @@
 
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8" isELIgnored="false"%>
+	<%@ page import="java.io.*" %>
+<%@ page import="java.util.*" %>
+<%@ page import="org.json.simple.JSONObject" %>
+<%
+if(session.getAttribute("tracker")==null && request.getParameter("tracker")==null)
+{
+
+	session.setAttribute("nblogs", 0);
+	session.setAttribute("nblogposts", 0);
+	session.setAttribute("nbloggers", 0);
+	session.setAttribute("npsenti", 0);
+	session.setAttribute("nnsenti", 0);
+	session.setAttribute("nloc", "");
+	session.setAttribute("data", "");
+	session.setAttribute("nlang", "");
+	session.setAttribute("series", "");
+
+}
+else
+{
+if(session.getAttribute("tree")!=""){
+	ArrayList<ArrayList<String>> tree =(ArrayList<ArrayList<String>>) session.getAttribute("tree");
+	String str = "[\n";
+
+for(int i=0;i<tree.size();i++)
+{
+	//out.println(tree.get(i).get(3));
+	if((tree.get(i).get(3)!=null) && (tree.get(i).get(3).contains("null")))
+	{
+
+		//out.println("n value");
+
+	}
+	else
+	{
+		//out.println(tree.get(i).get(3));
+		str = str + "{\n"+"\"key\" : \" "+tree.get(i).get(1)+" \",\n\"region\" : \""+tree.get(i).get(2)+"\",\n\"value\" : "+tree.get(i).get(3)+"\n},\n";
+
+	}
+}
+str =str.substring(0, str.length() - 1);
+str = str.replaceAll(",$", "");
+str=str+"\n]";
+//out.println(getServletContext().getRealPath("/"));
+
+
+//always give the path from root. This way it almost always works.
+String nameOfTextFile = getServletContext().getRealPath("/")+"countries.json";
+try {
+    PrintWriter pw = new PrintWriter(new FileOutputStream(nameOfTextFile,false));
+    pw.println(str);
+    //clean up
+    pw.close();
+} catch(IOException e) {
+   //out.println(e.getMessage());
+}
+}
+else
+{
+
+	String str="";
+	//always give the path from root. This way it almost always works.
+	String nameOfTextFile = getServletContext().getRealPath("/")+"countries.json";
+	try {
+	    PrintWriter pw = new PrintWriter(new FileOutputStream(nameOfTextFile,false));
+	    pw.println(str);
+	    //clean up
+	    pw.close();
+	} catch(IOException e) {
+	 //  out.println(e.getMessage());
+	}
+}
+}
+%>
 
 <%
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
@@ -168,7 +242,7 @@ function googleTranslateElementInit() {
 				<div class="row">
 				
 				<div class="col-md-12">
-						<div class="panel panel-primary">
+						<div data-intro="View statistics about your tracker such as number of blogs, number of bloggers, positive and negative sentiments" data-step="2" class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Dashboard Statistics<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -304,7 +378,7 @@ function googleTranslateElementInit() {
 				<!-- Dashboard content -->
 				<div class="row">
 				<div class="col-lg-12">
-				<div class="panel panel-primary">
+				<div data-intro="This portion will give information about location distribution of blogsites in your tracker " data-step="3" class="panel panel-primary">
 					<div class="panel-heading">
 						<h5 class="panel-title">Blogsites Location Distribution</h5>
 						<div class="heading-elements">
@@ -317,13 +391,13 @@ function googleTranslateElementInit() {
 					</div>
 
 					<div class="panel-body">
-					<div class="col-md-4" style="overflow-y: scroll;">
+					<div class="col-md-2" style="overflow-y: scroll;">
 											<table class="countries_list">
 												<tbody>
 													<c:forEach items="${nloc}" var="v1" begin="0" end="5">
 														<tr>
-															<td class="fs15 fw700 text-right">${v1[1]}</td>
-															<td>${v1[0]}%</td>
+															<td width="60%" class="fs15 fw700 text-left">${v1[1]}</td>
+															<td width="20%">${v1[0]}%</td>
 														</tr>
 													</c:forEach>
 												</tbody>
@@ -334,12 +408,12 @@ function googleTranslateElementInit() {
 						
 						
 						
-						<div id="world-map-gdp" class="col-md-8 col-sm-12 col-xs-12"
+						<div id="world-map-gdp" class="col-md-10 col-sm-12 col-xs-12"
 											style="height: 420px;"></div>
 					</div>
 				</div>
 				
-				<div class="panel panel-primary">
+				<div data-intro="This portion will give information about language distribution of blogsites in your tracker " data-step="3" class="panel panel-primary">
 					<div class="panel-heading">
 						<h5 class="panel-title">Blogsites Language Distribution</h5>
 						<div class="heading-elements">
@@ -384,7 +458,7 @@ function googleTranslateElementInit() {
 					
 					
 					
-					<div class="panel panel-primary">
+					<div data-intro="This portion will give information about blog posts per blog site in your tracker " data-step="4" class="panel panel-primary">
 					<div class="panel-heading">
 						<h5 class="panel-title">Distribution of blog posts per blog site</h5>
 						<div class="heading-elements">
