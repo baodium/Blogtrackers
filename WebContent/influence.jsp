@@ -12,6 +12,7 @@
         ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
 %>
 
+
  <jsp:include page="include_top.jsp"></jsp:include>
 <% ArrayList mytrackers = new ArrayList();
 mytrackers = (ArrayList)session.getAttribute("trackers");
@@ -63,10 +64,10 @@ function googleTranslateElementInit() {
 				<div class="row">
 				<div class="col-md-12">
 						<div class="panel panel-primary">
-							<div class="panel-heading">
+							<div  class="panel-heading">
 								<h6 class="panel-title">Influential Bloggers<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<form name="dateform" id="dateform" method="post">
-									<div class="heading-elements" id="reportrange" action="PostingFrequency">
+									<div data-intro="Select a daterange" data-step="2" class="heading-elements" id="reportrange" action="PostingFrequency">
 									<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
 										<i class="icon-calendar3 position-left"></i> <span></span>  
 					<input type="hidden" id="datepicked" name="datepicked"  onchange="datechanged()" /><b class="caret"></b>
@@ -79,7 +80,7 @@ function googleTranslateElementInit() {
 							
 							<div class="col-lg-12 col-md-12 col-sm-12">
 								
-								<table class="table datatable-basic">
+								<table data-intro="Select a blogger name to view additional blogger information" data-step="3" class="table datatable-basic">
 						<thead>
 							<tr>
 								<th>Blogger</th>
@@ -125,10 +126,10 @@ function googleTranslateElementInit() {
 							<!--  <div class="chart-container">
 							<div class="chart" id="c3-line-regions-chart"></div>
 						</div>	-->
-						<div class="demo-container">
+						<div data-intro="Select a data point on the graph" data-step="4" class="demo-container">
 												<div id="chartContainer" style="height: 350px; width: 100%;"></div>
 												<form action="InfluenceServlet" method="post">
-													<div style="text-align: center; margin-bottom: 15px;">
+													<div data-intro="Switch between day, week, month and year" data-step="5" style="text-align: center; margin-bottom: 15px;">
 														<div class="btn-group" role="group"
 															aria-label="First group">
 															<span id="spanform">
@@ -158,7 +159,7 @@ function googleTranslateElementInit() {
 							</div>
 					</div>
 					</div>
-					<div class="panel panel-primary">
+					<div data-intro="This section shows blog post corresponding to the point of click" data-step="6" class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blog Post<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -177,7 +178,7 @@ function googleTranslateElementInit() {
 						</div>
 						
 				<div class="col-md-12 col-sm-12 col-xs-12">
-						<div class="panel panel-primary">
+						<div data-intro="This section displays the top entities" data-step="9" class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Influencial Blog Post<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -191,7 +192,7 @@ function googleTranslateElementInit() {
 
 							<div class="panel-body">
 							<div class="col-md-6 col-sm-12 col-xs-12">
-						<div class="panel panel-primary">
+						<div  data-intro="Click on the icon in front of the blog title to view content" data-step="8" class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blog Post<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -203,7 +204,7 @@ function googleTranslateElementInit() {
 			                	</div>
 							</div>
 
-							<div class="panel-body">
+							<div class="panel-body" style="min-height: 460px;">
 						
 	
 						<table class="table datatable-basic">
@@ -228,9 +229,10 @@ function googleTranslateElementInit() {
 																			<th scope="row">${s12.title}</th>
 																			<td style="display: none;">${s12.postContent}</td>
 																			<td>
-																				<button type="button" class="use-address btn btn-primary btn-rounded legitRipple">
-																			<i class="icon-target"></i>
-																		</button>
+																						<a class="use-address btn bg-primary-400 btn-rounded btn-icon btn-xs legitRipple pull-right">
+														<span class="letter-icon icon-eye2"></span>
+													</a>
+																				
 																			</td>
 																			<th class="hidden" width="0%"></th>
 								<th class="hidden"  width="0%"></th>
@@ -247,7 +249,7 @@ function googleTranslateElementInit() {
 					</div>
 						
 <div class="col-md-6 col-sm-12 col-xs-12">
-						<div class="panel panel-primary">
+						<div  data-intro="This section displays the blog content" data-step="9" class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blog Content<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -260,7 +262,7 @@ function googleTranslateElementInit() {
 							</div>
 
 							<div class="panel-body">
-						<textarea disabled class="form-control" id="blogpostContent" rows="12"></textarea>
+						<textarea disabled class="form-control" id="blogpostContent" rows="20"></textarea>
                         
 							</div>
 						</div>
@@ -290,7 +292,7 @@ function googleTranslateElementInit() {
 
 							<div class="panel-body">
 							<div class="col-md-6 col-sm-12 col-xs-12">
-						<div class="panel panel-primary">
+						<div  data-intro="This section displays the bloggers activities" data-step="11" class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Bloggers Activity<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -314,7 +316,7 @@ function googleTranslateElementInit() {
 						
 						
 						<div class="col-md-6 col-sm-12 col-xs-12">
-						<div class="panel panel-primary">
+						<div  data-intro="Click on the point to view bloggers activity" data-step="10" class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Influence<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
