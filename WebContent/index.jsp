@@ -226,7 +226,7 @@ overflow-x:hidden;
                             </h1>
                         <form class="form-horizontal" method="post" action="<%=request.getContextPath()%>/search">
                                 <label class="sr-only" for="inputHelpBlock">Enter a search keyword</label>
-                       <input type="text" id="inputHelpBlock" class="form-control input-circle input-lg text-center" name="term" placeholder="Enter a search keyword" aria-describedby="helpBlock">
+                       <input type="text" id="inputHelpBlock" required class="form-control input-circle input-lg text-center" name="term" placeholder="Enter a search keyword" aria-describedby="helpBlock">
                                <span id="helpBlock" class="help-block"></span>
                                <input type="hidden" name="search" value="yes">
 							<% if(username.equals("")){%>  

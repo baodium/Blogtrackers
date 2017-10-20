@@ -24,6 +24,35 @@ int trackerSize = mytrackers.size();
     {%>
     <c:redirect url="setup_tracker.jsp"/>	
   <% } %>
+  
+  
+<style>
+	
+				
+.loader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('img/Loading.gif') 50% 50% no-repeat
+		rgb(249, 249, 249);
+}
+</style>
+   <script type="text/javascript">
+$(window).load(function() {
+	$(".loader").addClass("hidden");
+	
+})
+</script>
+
+				<script type="text/javascript">
+									function showGif() {
+									$(".loader").removeClass("hidden");
+									}
+</script>
+	
 
 	<!-- Page header -->
 	<div class="page-header">

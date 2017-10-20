@@ -36,6 +36,33 @@
 	   //System.out.println(trackers.size());
     }catch(Exception e){}
      %>
+
+<style>
+.loader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('img/Loading.gif') 50% 50% no-repeat
+		rgb(249, 249, 249);
+}
+</style>
+<script type="text/javascript">
+$(window).load(function() {
+	$(".loader").addClass("hidden");
+	//$(".loader").fadeOut("slow");
+})
+</script>
+<script type="text/javascript">
+									function showGif() {
+										$(".loader").removeClass("hidden");
+									}
+</script>
+     
+     
+     
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -263,6 +290,12 @@ System.out.println(pageName);
 		
 	</div>
 </div>  -->
+<% 
+if (username == null || username == "") {
+	
+	
+} else{
+	%>
 
 
   <div class="navbar navbar-default" id="navbar-second">
@@ -315,4 +348,5 @@ System.out.println(pageName);
 			
 		</div>
 	</div>  
+	<% } %>
 	
