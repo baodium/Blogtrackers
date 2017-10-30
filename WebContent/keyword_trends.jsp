@@ -28,15 +28,21 @@ int trackerSize = mytrackers.size();
   <% } %> 
 
 	<!-- Page header -->
-	<div class="page-header">
+	<div class="page-header mb-20">
 		<div class="page-header-content">
 			<div class="page-title">
 				<h4>
 					<i class="icon-arrow-left52 position-left"></i>
 					<span class="text-semibold">Keyword Trends</span>
-<small class="display-block"><span>Welcome, </span><%=username %>
+
 				</h4>
-				<div class="heading-elements">
+				<ul class="breadcrumb breadcrumb-caret position-right">
+					<li><a href="features.jsp">Home</a></li>
+					<li ><a href="trackerlist.jsp">Tracker List </a></li>
+					<li> <a href="analytics.jsp">Analytics</a></li>
+					<li class="active">Keyword Trends</li>
+				</ul>
+			<!-- 	<div class="heading-elements">
 				<div class="heading-btn-group">
 					<button type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-plus2"></i></b> Setup a new tracker</button>
 					<button type="button" href="javascript:void(0);" onclick="javascript:introJs().start();" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-reading "></i></b> Tour Page</button>
@@ -48,7 +54,7 @@ function googleTranslateElementInit() {
 				
 				</button>
 			</div>
-		</div>
+		</div> -->
 				<form name="tagform" id="tagform" action="KeywordTrendsServlet" method="post">
 				<div  class="form-group">
 				<div class="col-md-12">
@@ -288,22 +294,18 @@ function googleTranslateElementInit() {
 							</div>
 
 							<div class="panel-body">
+							<div class="row flex">
 							<div class="col-md-6 col-sm-12 col-xs-12">
-						<div class="panel panel-primary">
+							 <div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="panel panel-primary2">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blog Post<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
-								<div class="heading-elements">
-									<ul class="icons-list">
-				                		<li><a data-action="collapse"></a></li>
-				                		<li><a data-action="reload"></a></li>
-<!--				                		<li><a data-action="close"></a></li>-->
-				                	</ul>
-			                	</div>
+								
 							</div>
 
-							<div class="panel-body">
+							<div class="panel-body scroll2">
 						
-	
+	                  
 						<table class="table datatable-basic">
 						<thead>
 							<tr>
@@ -341,30 +343,33 @@ function googleTranslateElementInit() {
 							
 							</tbody>
 							</table>
+							
    
 							</div>
 						</div>
+						</div>
 					</div>
 						
-<div class="col-md-6 col-sm-12 col-xs-12">
-						<div data-intro="This section displays the blog content" data-step="7" class="panel panel-primary">
+						
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+						<div data-intro="This section displays the blog content" data-step="7" class="panel panel-primary2">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blog Content<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
-								<div class="heading-elements">
-									<ul class="icons-list">
-				                		<li><a data-action="collapse"></a></li>
-				                		<li><a data-action="reload"></a></li>
-<!--				                		<li><a data-action="close"></a></li>-->
-				                	</ul>
-			                	</div>
+								
 							</div>
 
-							<div class="panel-body">
-						<textarea id="blogpost" disabled class="form-control" rows="12"></textarea>
+							<div class="panel-body scroll2">
+						<div id="blogpost" ></div>
                         
 							</div>
 						</div>
+						</div>
 					</div>
+					
+					</div>
+					
+					
    
 							</div>
 						</div>

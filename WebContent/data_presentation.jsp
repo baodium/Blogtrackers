@@ -29,15 +29,21 @@ int trackerSize = mytrackers.size();
  
 	<!-- Page header -->
 	
-	<div class="page-header">
+	<div class="page-header mb-20">
 		<div class="page-header-content">
 			<div class="page-title">
 				<h4>
 					<i class="icon-arrow-left52 position-left"></i>
 					<span class="text-semibold">Data Export</span>
-					<small class="display-block">Export your Data in JSON <font color=red>${erorrMessage}</font>
+					
 				</h4>
-				<div class="heading-elements">
+				<ul class="breadcrumb breadcrumb-caret position-right">
+					<li><a href="features.jsp">Home</a></li>
+					<li ><a href="trackerlist.jsp">Tracker List </a></li>
+					<li> <a href="analytics.jsp">Analytics</a></li>
+					<li class="active">Data Presentation</li>
+				</ul>
+			<!-- 	<div class="heading-elements">
 				<div class="heading-btn-group">
 					<button type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-plus2"></i></b> Setup a new tracker</button>
 					<button type="button" href="javascript:void(0);" onclick="javascript:introJs().start();" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-reading "></i></b> Tour Page</button>
@@ -49,7 +55,7 @@ function googleTranslateElementInit() {
 				
 				</button>
 			</div>
-		</div>
+		</div> -->
 				
 			</div>
 

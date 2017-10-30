@@ -29,22 +29,25 @@
 %>
  <jsp:include page="include_top.jsp"></jsp:include>
 
-
 	<!-- Page header -->
-	<div class="page-header">
+	<div class="page-header mb-20">
 		<div class="page-header-content">
 			<div class="page-title">
 				<h4>
-					<i class="icon-arrow-left52 position-left"></i>
-					<span class="text-semibold">Edit Tracker</span>
-<!--					<small class="display-block">Good morning, Victoria Baker!</small>-->
+					<a href="trackerlist.jsp"><i class="icon-arrow-left52 position-left"></i></a>
+				<span class="text-semibold">Edit Tracker</span> 
 				</h4>
 				
+				<ul class="breadcrumb breadcrumb-caret position-right">
+					<li><a href="features.jsp">Home</a></li>
+					<li><a href="trackerlist.jsp">Tracker List</a></li>
+					<li class="active">Edit Tracker</li>
+				</ul>
 				
 										
 			</div>
 
-	<div class="heading-elements">
+	<!-- <div class="heading-elements">
 				<div class="heading-btn-group">
 					<button type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-reading"></i></b> Setup a new tracker</button>
 					<button type="button" onclick="location.href='dashboard.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-statistics position-left"></i></b> Back to dashboard</button>
@@ -56,7 +59,7 @@ function googleTranslateElementInit() {
 				
 				</button>
 			</div>
-		</div>
+		</div> -->
 		</div>
 	</div>
 	<!-- /page header -->
@@ -178,7 +181,7 @@ function googleTranslateElementInit() {
 							</div>
 						</div>
 					
-						
+						<div class="input textarea clearfix example1"></div>
 
    
 							
@@ -196,10 +199,11 @@ function googleTranslateElementInit() {
 			                	</div>
 							</div>
 
+					
 							<div class="panel-body">
 						<div class="form-group">
 							
-							<textarea class="form-control" placeholder="Enter List of Blog One Per Line" rows="12"></textarea>
+							<input type="text" class="form-control tokenfield" placeholder="Enter the list of blogsites to crawl" value="">
 							</div>
 							<div>
 							<button class="btn btn-primary">Crawl Now</button>
@@ -207,7 +211,6 @@ function googleTranslateElementInit() {
                         
 							</div>
 						</div>
-					
 					
 					
 				
@@ -286,7 +289,7 @@ function googleTranslateElementInit() {
   </script>
 	<!-- /footer -->
 	<!-- Dependencies -->
-  <jsp:include page="pagedependencies/keywordtrend.jsp"></jsp:include>
+  <jsp:include page="pagedependencies/edittracker.jsp"></jsp:include>
   <!-- End of Dependencies -->
 
 </body>

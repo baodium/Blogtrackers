@@ -37,29 +37,6 @@
     }catch(Exception e){}
      %>
 
-<style>
-.loader {
-	position: fixed;
-	left: 0px;
-	top: 0px;
-	width: 100%;
-	height: 100%;
-	z-index: 9999;
-	background: url('img/Loading.gif') 50% 50% no-repeat
-		rgb(249, 249, 249);
-}
-</style>
-<script type="text/javascript">
-$(window).load(function() {
-	$(".loader").addClass("hidden");
-	//$(".loader").fadeOut("slow");
-})
-</script>
-<script type="text/javascript">
-									function showGif() {
-										$(".loader").removeClass("hidden");
-									}
-</script>
      
      
      
@@ -80,6 +57,7 @@ $(window).load(function() {
 	<link href="assets/css/introjs.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/mystyle.css" rel="stylesheet" type="text/css">
 
+	
 	<!-- /global stylesheets -->
 	
 	<!-- Style from old -->
@@ -129,7 +107,17 @@ $(window).load(function() {
 <script type="text/javascript" src="assets/js/plugins/extensions/cookie.js"></script>
 <script type="text/javascript" src="assets/js/plugins/forms/validation/validate.min.js"></script>
 
-
+<script type="text/javascript">
+$(window).load(function() {
+	$("#pageloader").addClass("hidden");
+	//$(".loader").fadeOut("slow");
+})
+</script>
+<script type="text/javascript">
+		function showGif() {
+				$("#pageloader").removeClass("hidden");
+			}
+</script>
 
 <!-- /core JS files -->
 		<!-- <script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>-->
@@ -146,17 +134,26 @@ $(window).load(function() {
 	<link href="assets/css/mystyle.css" rel="stylesheet" type="text/css">
 
 	<script type="text/javascript" src="assets/js/functions.js?v=0"></script>
+	
 	<!-- /global stylesheets -->
 </head>
 
 <body>
 
+        <div id="pageloader">
+			<div class="loader-item">
+                <img src="assets/img/logo/Loading-data.gif" alt="page loader">
+            </div>
+		</div>
+		
 	<!-- Main navbar -->
 	<div class="navbar navbar-inverse" style="background-color:#2A6ADF">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="features.jsp"><i class="icon-puzzle3 position-left"></i><span style="font-size:18px">Blogtrackers</span></a>
 						
-			
+			<ul class="nav navbar-nav pull-right visible-xs-block">
+				<li><a data-toggle="collapse" data-target="#navbar-mobile" class="collapsed" aria-expanded="false"><i class="icon-tree5"></i></a></li>
+			</ul>
 		</div>
 
 		
@@ -169,10 +166,11 @@ $(window).load(function() {
 
 				<ul class="nav navbar-nav navbar-right">
 			<% if(username!=""){ %>
-				<li class="language-switch" data-intro="Select a tracker" data-step="1">
+			<li class="language-switch2"><button type="button" href="javascript:void(0);" onclick="javascript:introJs().start();" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-reading "></i></b> Tour Page</button></li>
+				<li style="display:none;" class="language-switch" data-intro="Select a tracker" data-step="1">
 			<form name="trackerform" id="trackerform" action="" method="post">
 
-			<select id="tracker" name="tracker" onchange="trackerchanged()" class="form-control" value="${item}">
+			<select  id="tracker" name="tracker" onchange="trackerchanged()" class="form-control" value="${item}">
 					                    
 				                    <c:choose>
 										<c:when test="${tracker != null}">
@@ -297,9 +295,10 @@ if (username == null || username == "") {
 } else{
 	%>
 
-
   <div class="navbar navbar-default" id="navbar-second">
-		
+		<ul class="nav navbar-nav no-border visible-xs-block">
+			<li><a class="text-center collapsed" data-toggle="collapse" data-target="#navbar-second-toggle"><i class="icon-menu7"></i></a></li>
+		</ul>
 		<div class="navbar-collapse collapse" id="navbar-second-toggle">
 			<ul class="nav navbar-nav navbar-nav-material">
 				<li class=""><a href="<%=request.getContextPath()%>/trackerlist.jsp"><i class="icon-list position-left"></i> Tracker List</a></li>
@@ -312,6 +311,11 @@ if (username == null || username == "") {
 					
 					
 				</li>
+				<li class="settracker" >
+				<button data-intro="Click here to create a new tracker" data-step="1" type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-plus2"></i></b> Setup a new tracker</button>
+		        </li>
+				
+				
 								 <!--   <li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<i class="icon-stars position-left"></i> Services<span class="caret"></span>
@@ -345,8 +349,9 @@ if (username == null || username == "") {
 				</li>-->
 			
 			</ul>
-			
+				
 		</div>
+			
 	</div>  
 	<% } %>
 	

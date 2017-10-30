@@ -61,9 +61,15 @@ $(window).load(function() {
 				<h4>
 					<i class="icon-arrow-left52 position-left"></i>
 					<span class="text-semibold">Sentiments</span>
-	<small class="display-block"><span>Welcome, </span><%=username %>
+	<%-- <small class="display-block"><span>Welcome, </span><%=username %></small> --%>
 				</h4>
-				<div class="heading-elements">
+				<ul class="breadcrumb breadcrumb-caret position-right">
+					<li><a href="features.jsp">Home</a></li>
+					<li ><a href="trackerlist.jsp">Tracker List </a></li>
+					<li> <a href="analytics.jsp">Analytics</a></li>
+					<li class="active">Sentiments</li>
+				</ul>
+			<!-- 	<div class="heading-elements">
 				<div class="heading-btn-group">
 					<button type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-plus2"></i></b> Setup a new tracker</button>
 					<button type="button" href="javascript:void(0);" onclick="javascript:introJs().start();" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-reading "></i></b> Tour Page</button>
@@ -75,7 +81,7 @@ function googleTranslateElementInit() {
 				
 				</button>
 			</div>
-		</div>
+		</div> -->
 				
 			</div>
 
@@ -100,7 +106,7 @@ function googleTranslateElementInit() {
 						<div class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Timeline of Sentiments<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
-								<form name="dateform" id="dateform" method="post">
+								<form name="dateform" id="dateform" method="post" action="">
 									<div class="heading-elements" data-intro="Select a daterange" data-step="2" id="reportrange" >
 									<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
 										<i class="icon-calendar3 position-left"></i> <span></span>  
@@ -287,7 +293,7 @@ function googleTranslateElementInit() {
 							</div>
 					
 								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" data-intro="Select a Blogger Name" data-step="4">
-		<div class="panel panel-primary">
+		<div class="panel panel-primary2">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blogger Name<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -299,9 +305,9 @@ function googleTranslateElementInit() {
 			                	</div>
 							</div>
 
-							<div class="panel-body scroll" style="height: 350px">
+							<div class="panel-body scroll" style="height: 350px; overflow-x:hidden;">
 						
-<table class="table text-nowrap">
+<table class="table text-nowrap ">
 									<thead>
 										<tr>
 											<th>Blogger Name</th>
@@ -370,7 +376,7 @@ function googleTranslateElementInit() {
 
 							<div class="panel-body">
 							<div class="col-md-12 col-sm-12 col-xs-12">
-						<div class="panel panel-primary">
+						<div class="panel panel-primary2">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blog Post<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -462,7 +468,7 @@ function googleTranslateElementInit() {
 					</div>
 						
 <div  data-intro="Radar chart of personal content" data-step="7"  class="col-md-6 col-sm-12 col-xs-12">
-						<div class="panel panel-primary">
+						<div class="panel panel-primary2">
 							<div class="panel-heading">
 								<h6 class="panel-title">Personal Content<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -494,7 +500,7 @@ function googleTranslateElementInit() {
 					</div>
 					
 					<div class="col-md-6 col-sm-12 col-xs-12">
-						<div data-intro="Radar chart of time orientation" data-step="8" class="panel panel-primary">
+						<div data-intro="Radar chart of time orientation" data-step="8" class="panel panel-primary2">
 							<div class="panel-heading">
 								<h6 class="panel-title">Time Orientation<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -523,7 +529,7 @@ function googleTranslateElementInit() {
 					</div>
 					
 					<div class="col-md-6 col-sm-12 col-xs-12">
-						<div data-intro="Radar chart of core drive and need" data-step="9" class="panel panel-primary">
+						<div data-intro="Radar chart of core drive and need" data-step="9" class="panel panel-primary2">
 							<div class="panel-heading">
 								<h6 class="panel-title">Core Drive and Need<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -556,7 +562,7 @@ function googleTranslateElementInit() {
 					
 					
 					<div class="col-md-6 col-sm-12 col-xs-12">
-						<div data-intro="Radar chart of cognitive process" data-step="10" class="panel panel-primary">
+						<div data-intro="Radar chart of cognitive process" data-step="10" class="panel panel-primary2">
 							<div class="panel-heading">
 								<h6 class="panel-title">Cognitive Process<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -588,7 +594,7 @@ function googleTranslateElementInit() {
 					</div>
 					
 					<div class="col-md-6 col-sm-12 col-xs-12">
-						<div data-intro="Radar chart of summary variable" data-step="11" class="panel panel-primary">
+						<div data-intro="Radar chart of summary variable" data-step="11" class="panel panel-primary2">
 							<div class="panel-heading">
 								<h6 class="panel-title">Summary Variable<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -616,7 +622,7 @@ function googleTranslateElementInit() {
 					
 					
 					<div class="col-md-6 col-sm-12 col-xs-12">
-						<div data-intro="Radar chart of sentiment or emotion" data-step="12" class="panel panel-primary">
+						<div data-intro="Radar chart of sentiment or emotion" data-step="12" class="panel panel-primary2">
 							<div class="panel-heading">
 								<h6 class="panel-title">Sentiment/Emotion<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">

@@ -30,17 +30,23 @@ int trackerSize = mytrackers.size();
     <c:redirect url="setup_tracker.jsp"/>	
   <% } %> 
 	<!-- Page header -->
-	<div class="page-header">
+	<div class="page-header mb-20">
 		<div class="page-header-content">
 			<div class="page-title">
 				<h4>
 					<i class="icon-arrow-left52 position-left"></i>
 					<span class="text-semibold">Posting Frequency</span>
-			<small class="display-block"><span>Welcome, </span><%=username %> <font color="red">${errorMessage}</font>
+			<%-- <small class="display-block"><span>Welcome, </span><%=username %> <font color="red">${errorMessage}</font></small> --%>
 			
 				</h4>
+				<ul class="breadcrumb breadcrumb-caret position-right">
+					<li><a href="features.jsp">Home</a></li>
+					<li ><a href="trackerlist.jsp">Tracker List </a></li>
+					<li> <a href="analytics.jsp">Analytics</a></li>
+					<li class="active">Data Presentation</li>
+				</ul>
 			</div>
-				<div class="heading-elements">
+				<!-- <div class="heading-elements">
 				<div class="heading-btn-group">
 						<button type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-plus2"></i></b> Setup a new tracker</button>
 					<button type="button" href="javascript:void(0);" onclick="javascript:introJs().start();" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-reading "></i></b> Tour Page</button>
@@ -53,7 +59,7 @@ function googleTranslateElementInit() {
 				
 				</button>
 			</div>
-		</div>
+		</div> -->
 		</div>
 	</div>
 	<!-- /page header -->
@@ -104,7 +110,7 @@ function googleTranslateElementInit() {
 							
 					
 								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-		<div data-intro="Click on a blogger name to get additional blogger information" data-step="5" class="panel panel-primary">
+		<div data-intro="Click on a blogger name to get additional blogger information" data-step="5" class="panel panel-primary2">
 							<div class="panel-heading">
 								<h6 class="panel-title">Top Bloggers<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -189,7 +195,9 @@ function googleTranslateElementInit() {
 							</div>
 
 							<div class="panel-body">
+							<div class="row flex">
 							<div class="col-md-6 col-sm-12 col-xs-12">
+							<div class="col-md-12 col-sm-12 col-xs-12">
 						<div data-intro="Click on the icon in front of the blog title to view blog content" data-step="6" class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blog Post<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
@@ -202,7 +210,7 @@ function googleTranslateElementInit() {
 			                	</div>
 							</div>
 
-							<div class="panel-body">
+							<div class="panel-body scroll2">
 						
 	
 						<table class="table datatable-basic" style="height: 335px;">
@@ -241,9 +249,11 @@ function googleTranslateElementInit() {
    
 							</div>
 						</div>
+						</div>
 					</div>
 						
 <div class="col-md-6 col-sm-12 col-xs-12">
+<div class="col-md-12 col-sm-12 col-xs-12">
 						<div data-intro="This section displays the blog content" data-step="7" class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blog Content<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
@@ -256,13 +266,14 @@ function googleTranslateElementInit() {
 			                	</div>
 							</div>
 
-							<div class="panel-body">
-						<textarea disabled class="form-control" rows="20" id="blogpost"></textarea>
+							<div class="panel-body scroll2">
+						<div id="blogpost"></div>
                         
 							</div>
 						</div>
 					</div>
-   
+					</div>
+   </div>
 							</div>
 						</div>
 					
@@ -280,7 +291,7 @@ function googleTranslateElementInit() {
 			                	</div>
 							</div>
 
-							<div class="panel-body">
+							<div class="panel-body scroll2">
 						<div id="my_words_cloud" class="col-md-12 col-sm-12 col-xs-12"
 										style="min-height: 335px;"></div>
 
@@ -305,7 +316,7 @@ function googleTranslateElementInit() {
 			                	</div>
 							</div>
 
-							<div class="panel-body">
+							<div class="panel-body scroll2">
 						<table class="table datatable-basic" style="min-height:200px;">
 						<thead>
 							<tr>

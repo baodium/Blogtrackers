@@ -1,6 +1,7 @@
 <%@page import="java.util.*"%>
 <%@page import="wrapper.*"%>
-
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,7 +79,11 @@
                                                     
 							<h5 class="content-group">Create account <small class="display-block">All fields are required</small></h5>
 						</div>
-
+						
+                        <div class="text-success text-center">${successMessage}</div>
+                        
+                        
+						
 						<div class="content-divider text-muted form-group"><span>Your credentials</span></div>
 
 						<div class="form-group has-feedback has-feedback-left">

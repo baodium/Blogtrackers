@@ -1,6 +1,6 @@
 <%@page import="wrapper.*"%>
 <%@page import="java.util.*"%>
-<jsp:include page="include_top.jsp"></jsp:include>
+<jsp:include page="include_top2.jsp"></jsp:include>
 <%
 Object term = (null == session.getAttribute("search_term")) ? "" : session.getAttribute("search_term");
 Object search_result = (null == session.getAttribute("search_result")) ? "" : session.getAttribute("search_result");

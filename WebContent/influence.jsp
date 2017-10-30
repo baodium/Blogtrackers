@@ -22,15 +22,21 @@ int trackerSize = mytrackers.size();
     <c:redirect url="setup_tracker.jsp"/>	
   <% } %> 
 	<!-- Page header -->
-	<div class="page-header">
+	<div class="page-header mb-20">
 		<div class="page-header-content">
 			<div class="page-title">
 				<h4>
 					<i class="icon-arrow-left52 position-left"></i>
 					<span class="text-semibold">Influence</span>
-<small class="display-block"><span>Welcome, </span><%=username %>	
+
 				</h4>
-				<div class="heading-elements">
+				<ul class="breadcrumb breadcrumb-caret position-right">
+					<li><a href="features.jsp">Home</a></li>
+					<li ><a href="trackerlist.jsp">Tracker List </a></li>
+					<li> <a href="analytics.jsp">Analytics</a></li>
+					<li class="active">Influence</li>
+				</ul>
+			<!-- 	<div class="heading-elements">
 				<div class="heading-btn-group">
 					<button type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-plus2"></i></b> Setup a new tracker</button>
 					<button type="button" href="javascript:void(0);" onclick="javascript:introJs().start();" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-reading "></i></b> Tour Page</button>
@@ -42,7 +48,7 @@ function googleTranslateElementInit() {
 				
 				</button>
 			</div>
-		</div>
+		</div> -->
 			</div>
 
 
@@ -67,11 +73,12 @@ function googleTranslateElementInit() {
 							<div  class="panel-heading">
 								<h6 class="panel-title">Influential Bloggers<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<form name="dateform" id="dateform" method="post">
-									<div data-intro="Select a daterange" data-step="2" class="heading-elements" id="reportrange" action="PostingFrequency">
+									<div data-intro="Select a daterange" data-step="2" class="heading-elements" id="reportrange">
 									<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
 										<i class="icon-calendar3 position-left"></i> <span></span>  
-					<input type="hidden" id="datepicked" name="datepicked"  onchange="datechanged()" /><b class="caret"></b>
+					<b class="caret"></b> 
 									</button>
+									<input type="hidden" id="datepicked" name="datepicked"  onchange="datechanged()" />
 			                	</div>
 								</form>
 							</div>
@@ -191,8 +198,10 @@ function googleTranslateElementInit() {
 							</div>
 
 							<div class="panel-body">
+							<div class="row flex">
 							<div class="col-md-6 col-sm-12 col-xs-12">
-						<div  data-intro="Click on the icon in front of the blog title to view content" data-step="8" class="panel panel-primary">
+							 <div class="col-md-12 col-sm-12 col-xs-12">
+						<div  data-intro="Click on the icon in front of the blog title to view content" data-step="8" class="panel panel-primary2">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blog Post<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -204,7 +213,7 @@ function googleTranslateElementInit() {
 			                	</div>
 							</div>
 
-							<div class="panel-body" style="min-height: 460px;">
+							<div class="panel-body scroll2">
 						
 	
 						<table class="table datatable-basic">
@@ -247,9 +256,11 @@ function googleTranslateElementInit() {
 							</div>
 						</div>
 					</div>
+					</div>
 						
 <div class="col-md-6 col-sm-12 col-xs-12">
-						<div  data-intro="This section displays the blog content" data-step="9" class="panel panel-primary">
+ <div class="col-md-12 col-sm-12 col-xs-12">
+						<div  data-intro="This section displays the blog content" data-step="9" class="panel panel-primary2">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blog Content<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -261,11 +272,13 @@ function googleTranslateElementInit() {
 			                	</div>
 							</div>
 
-							<div class="panel-body">
-						<textarea disabled class="form-control" id="blogpostContent" rows="20"></textarea>
+							<div class="panel-body scroll2">
+						<div id="blogpostContent" rows="20"></div>
                         
 							</div>
 						</div>
+						</div>
+					</div>
 					</div>
    
 							</div>
@@ -292,7 +305,7 @@ function googleTranslateElementInit() {
 
 							<div class="panel-body">
 							<div class="col-md-6 col-sm-12 col-xs-12">
-						<div  data-intro="This section displays the bloggers activities" data-step="11" class="panel panel-primary">
+						<div  data-intro="This section displays the bloggers activities" data-step="11" class="panel panel-primary2">
 							<div class="panel-heading">
 								<h6 class="panel-title">Bloggers Activity<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -316,7 +329,7 @@ function googleTranslateElementInit() {
 						
 						
 						<div class="col-md-6 col-sm-12 col-xs-12">
-						<div  data-intro="Click on the point to view bloggers activity" data-step="10" class="panel panel-primary">
+						<div  data-intro="Click on the point to view bloggers activity" data-step="10" class="panel panel-primary2">
 							<div class="panel-heading">
 								<h6 class="panel-title">Influence<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">

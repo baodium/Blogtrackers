@@ -19,15 +19,15 @@
  <jsp:include page="include_top.jsp"></jsp:include>
 
 	<!-- Page header -->
-	<div class="page-header">
+	<div class="page-header mb-20">
 		<div class="page-header-content">
 			<div class="page-title">
 				<h4>
 					<i class="icon-arrow-left52 position-left"></i>
 					<span class="text-semibold">Additional Blog Information</span>
-<small class="display-block"><span>Welcome, </span><%=username %>
+<%-- <small class="display-block"><span>Welcome, </span><%=username %></small> --%>
 				</h4>
-				<div class="form-group">
+				<!-- <div class="form-group">
 				<div class="col-md-12">
 				
 				<div class="input-group">
@@ -36,7 +36,7 @@
 											
 										</div>
 										</div>
-										</div>
+										</div> -->
 			</div>
 
 

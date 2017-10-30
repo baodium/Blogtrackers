@@ -79,17 +79,22 @@
     border-color: #ebebeb;
 } 
         </style>
-	<div class="page-header">
+	<div class="page-header mb-20">
 		<div class="page-header-content">
 			<div class="page-title">
 				<h4>
 					<i class="icon-arrow-left52 position-left"></i>
-					<span class="text-semibold">Home</span> - Profile 
-					<small class="display-block"><span>Welcome, </span><%=username %>
+					<span class="text-semibold">Profile</span>
+					<%-- <small class="display-block"><span>Welcome, </span><%=username %></small> --%>
 				</h4>
 			</div>
+			<ul class="breadcrumb breadcrumb-caret position-right">
+					<li><a href="features.jsp">Home</a></li>
+					
+					<li class="active">Profile</li>
+				</ul>
 
-				<div class="heading-elements">
+			<!-- 	<div class="heading-elements">
 				<div class="heading-btn-group">
 					<button type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-plus2"></i></b> Setup a new tracker</button>
 					
@@ -102,7 +107,7 @@ function googleTranslateElementInit() {
 				
 				</button>
 			</div>
-		</div>
+		</div> -->
 		</div>
 	</div>
 	<!-- /page header -->

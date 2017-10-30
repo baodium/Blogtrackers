@@ -57,8 +57,10 @@ public class Register extends HttpServlet {
 		{			
 			boolean register = new DBConnector().register(username, email,pass,type);
                         if(register){
+                        	HttpSession session= request.getSession();
                             response.setContentType("text/html");
-                         response.sendRedirect("login.jsp");
+                         session.setAttribute("successMessage", "Registration Successful");
+                         response.sendRedirect("register.jsp");
                         }else{
                             response.setContentType("text/html");
                             response.sendRedirect("register");

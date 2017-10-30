@@ -80,17 +80,22 @@ int trackerSize = mytrackers.size();
     border-color: #ebebeb;
 } 
         </style>
-	<div class="page-header">
+	<div class="page-header mb-20">
 		<div class="page-header-content">
 			<div class="page-title">
 				<h4>
 					<i class="icon-arrow-left52 position-left"></i>
 					<span class="text-semibold">Analytics</span>
-					<small class="display-block"><span>Welcome </span><%=username %>
+					
 				</h4>
+				<ul class="breadcrumb breadcrumb-caret position-right">
+					<li><a href="features.jsp">Home</a></li>
+					<li ><a href="trackerlist.jsp">Tracker List </a></li>
+					<li class="active">Analytics</li>
+				</ul>
 			</div>
 
-				<div class="heading-elements">
+			<!-- 	 <div class="heading-elements">
 				<div class="heading-btn-group">
 					<button type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-plus2"></i></b> Setup a new tracker</button>
 					<button type="button" href="javascript:void(0);" onclick="javascript:introJs().start();" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-reading "></i></b> Tour Page</button>
@@ -102,7 +107,8 @@ function googleTranslateElementInit() {
 				
 				</button>
 			</div>
-		</div>
+		</div>  -->
+	</div>
 	</div>
 	<!-- /page header -->
 
@@ -120,7 +126,7 @@ function googleTranslateElementInit() {
 				<div class="col-md-12">
 				
 				
-					<div class="col-lg-3 col-md-6">
+					<div class="col-lg-2 col-md-6">
 					<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/Dashboard?tracker=${tracker}"> 
@@ -135,7 +141,7 @@ function googleTranslateElementInit() {
 								<img src="img/dashboard.jpg" alt="">
 								<div class="caption">
 									<span style="font-size: 18px;">
-									Check the frequency of a particular blog post and analyze some basic Information
+									Check the dashboard statistics of your tracker
 								   </span>
 								</div>
 							</div>
@@ -180,7 +186,7 @@ function googleTranslateElementInit() {
 										</c:choose>
 					</div>
 				
-						<div class="col-lg-3 col-md-6">
+						<div class="col-lg-2 col-md-6">
 						<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/PostingFrequency?tracker=${tracker}"> 
@@ -239,7 +245,7 @@ function googleTranslateElementInit() {
 										</c:choose>
 					</div>
 							
-							<div class="col-lg-3 col-md-6">
+							<div class="col-lg-2 col-md-6">
 							<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/KeywordTrendsServlet?tracker=${tracker}"> 
@@ -253,7 +259,7 @@ function googleTranslateElementInit() {
 								<img src="img/keywords.jpg" alt="">
 								<div class="caption">
 									<span style="font-size: 18px;">
-									Check the frequency of a particular blog post and analyze some basic Information
+									Analyze the keyword trends in blogs on your trackers
 								   </span>
 								</div>
 							</div>
@@ -301,7 +307,7 @@ function googleTranslateElementInit() {
 					
 					
 					
-					<div class="col-lg-3 col-md-6">
+					<div class="col-lg-2 col-md-6">
 					<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/Sentiments?tracker=${tracker}"> 
@@ -315,7 +321,7 @@ function googleTranslateElementInit() {
 								<img src="img/sentiments.jpg" alt="">
 								<div class="caption">
 									<span style="font-size: 18px;">
-									Check the frequency of a particular blog post and analyze some basic Information
+									Analyze the positive and the negative sentiments in blogsites
 								   </span>
 								</div>
 							</div>
@@ -362,7 +368,7 @@ function googleTranslateElementInit() {
 					</div>
 					
 					
-					<div class="col-lg-3 col-md-6">
+					<div class="col-lg-2 col-md-6">
 					<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/InfluenceServlet?tracker=${tracker}"> 
@@ -376,7 +382,7 @@ function googleTranslateElementInit() {
 								<img src="img/influencers.jpg" alt="">
 								<div class="caption">
 									<span style="font-size: 18px;">
-									Check the frequency of a particular blog post and analyze some basic Information
+									Analyze the influence on different blog sites on your tracker	
 								   </span>
 								</div>
 							</div>
@@ -423,7 +429,7 @@ function googleTranslateElementInit() {
 					</div>
 					
 					
-					<div class="col-lg-3 col-md-6">
+					<div class="col-lg-2 col-md-6">
 					<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/ExportJSON?tracker=${tracker}"> 

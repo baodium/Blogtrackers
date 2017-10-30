@@ -29,18 +29,21 @@
 	<!-- Page header -->
 	   <script type="text/javascript" src="assets/js/intro.js"></script>
  
-	<div class="page-header">
+	<div class="page-header mb-20">
 		<div class="page-header-content">
 			<div class="page-title">
 			<h4>
 					<i class="icon-arrow-left52 position-left"></i>
-					<span class="text-semibold">Home</span> - Tracker List
-					<small class="display-block"><span>Welcome, </span><%=username %>
+					<span class="text-semibold">Tracker List</span>
 			</h4>
-			<div class="heading-elements">
+			<ul class="breadcrumb breadcrumb-caret position-right">
+					<li><a href="features.jsp">Home</a></li>
+					<li class="active">Tracker List</li>
+				</ul>
+			<!-- <div class="heading-elements">
 				<div class="heading-btn-group">
-					<button data-intro="Click here to create a new tracker" data-step="1" type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-plus2"></i></b> Setup a new tracker</button>
-					<button type="button" href="javascript:void(0);" onclick="javascript:introJs().start();" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-reading "></i></b> Tour Page</button>
+					 <button data-intro="Click here to create a new tracker" data-step="1" type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-plus2"></i></b> Setup a new tracker</button> 
+					  <button type="button" href="javascript:void(0);" onclick="javascript:introJs().start();" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-reading "></i></b> Tour Page</button>
 				 
 					<button id="google_translate_element" class="btn btn-default"><script type="text/javascript">
 function googleTranslateElementInit() {
@@ -50,7 +53,7 @@ function googleTranslateElementInit() {
 				
 				</button>
 			</div>
-		</div>
+		</div>-->
 		<!-- 	<form class="inline-form" action="<%=request.getContextPath()%>/search" method="post" >
 					<div class="form-group">
 					<div class="col-md-12">

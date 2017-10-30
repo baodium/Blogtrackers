@@ -63,19 +63,19 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 	<!-- Page header -->
-	<div class="page-header mb-10">
+	<div class="page-header mb-20">
 		<div class="page-header-content">
 			<div class="page-title">
 				<h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Setup Tracker</span> </h4>
 
 				<ul class="breadcrumb breadcrumb-caret position-right">
-					<li><a href="index.html">Home</a></li>
+					<li><a href="features.jsp">Home</a></li>
 					<li class="active">Setup tracker</li>
 				</ul>
-				<br/>
+				
 			</div>
 
-			<div class="heading-elements">
+		<!-- 	<div class="heading-elements">
 				<button id="google_translate_element" class="btn btn-default"><script type="text/javascript">
 				function googleTranslateElementInit() {
 				  new google.translate.TranslateElement({pageLanguage: 'ar', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
@@ -83,7 +83,7 @@
 			</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 				
 				</button>
-			</div>
+			</div> -->
 		</div>
 	</div>
 	<!-- /page header -->
