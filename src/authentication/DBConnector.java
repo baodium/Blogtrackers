@@ -30,7 +30,8 @@ public class DBConnector {
 	public Connection dbCon ; 
 	public String current_user;
 	public String current_user_type;
-
+	
+	//"jdbc:mysql://144.167.112.118:3306/blogtrackers"
 	//"jdbc:mysql://localhost:3306/blogtrackers"
 	public  DBConnector(){
 		String dbURL =  "jdbc:mysql://144.167.112.118:3306/blogtrackers"; //144.167.112.118 ukraine_super, summer2014

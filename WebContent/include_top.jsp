@@ -55,7 +55,7 @@
 	<link href="assets/css/components.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/colors.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/introjs.css" rel="stylesheet" type="text/css">
-	<link href="assets/css/mystyle.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/mystyle2.css" rel="stylesheet" type="text/css">
 
 	
 	<!-- /global stylesheets -->
@@ -131,7 +131,7 @@ $(window).load(function() {
 	       
 	       
 	       
-	<link href="assets/css/mystyle.css" rel="stylesheet" type="text/css">
+	<!-- <link href="assets/css/mystyle.css" rel="stylesheet" type="text/css"> -->
 
 	<script type="text/javascript" src="assets/js/functions.js?v=0"></script>
 	
@@ -159,6 +159,7 @@ $(window).load(function() {
 		
 		
 			<div class="navbar-collapse collapse" id="navbar-mobile">
+			<p class="navbar-text mt-5"><span class="label bg-success-400">BASIC USER</span></p>
 			<% 
 			String Selectedtracker  = (String)session.getAttribute("tracker"); 
 
@@ -166,7 +167,7 @@ $(window).load(function() {
 
 				<ul class="nav navbar-nav navbar-right">
 			<% if(username!=""){ %>
-			<li class="language-switch2"><button type="button" href="javascript:void(0);" onclick="javascript:introJs().start();" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-reading "></i></b> Tour Page</button></li>
+			<li class="language-switch2  hidden-md"><button type="button" href="javascript:void(0);" onclick="javascript:introJs().start();" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-reading "></i></b> Tour Page</button></li>
 				<li style="display:none;" class="language-switch" data-intro="Select a tracker" data-step="1">
 			<form name="trackerform" id="trackerform" action="" method="post">
 
@@ -304,15 +305,15 @@ if (username == null || username == "") {
 				<li class=""><a href="<%=request.getContextPath()%>/trackerlist.jsp"><i class="icon-list position-left"></i> Tracker List</a></li>
 				
 				
-				<li >
+				<%-- <li >
 					<a href="<%=request.getContextPath()%>/analytics.jsp" class="">
 						<i class="icon-stats-bars2 position-left"></i> Analytics
 					</a>
 					
 					
-				</li>
+				</li> --%>
 				<li class="settracker" >
-				<button data-intro="Click here to create a new tracker" data-step="1" type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-plus2"></i></b> Setup a new tracker</button>
+				<button style="margin-top: -2px" data-intro="Click here to create a new tracker" data-step="1" type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-plus2"></i></b> Setup a new tracker</button>
 		        </li>
 				
 				

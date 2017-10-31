@@ -257,29 +257,26 @@ function googleTranslateElementInit() {
           Back: Dolor scelerisque ridiculus! Mus? Augue, montes, montes proin rhoncus vel a parturient dapibus eros? Penatibus nascetur. In turpis nisi elementum nascetur habitasse augue egestas, in ac rhoncus odio porttitor turpis.
           <button>button</button>
       </div> 
-    </div>-->
+    </div>
 
     <script type="text/javascript">
     $(function(){
       $("#card-1").flip({
-    	  axis: "x",
-          reverse: true,
-          trigger: 'manual',
-        autoSize: true
+        axis: "y", // y or x
+        reverse: false, // true and false
+        trigger: "hover", // click or hover
+        speed: '250',
+        front: $('.other-front'),
+        back: $('.other-back'),
+        autoSize: false
       });
       $("#card-2").flip({
         axis: "x",
         reverse: true,
-       	trigger: 'manual'
+        trigger: "click"
       });
-      $("#toggle-btn").click(function(){
-    	  $("#card-2").flip('toggle');  
-      })
-       $("#toggle-btn2").click(function(){
-    	  $("#card-1").flip('toggle');  
-      })
     });
-    </script> 
+    </script> -->
 				<div class="col-md-12">
 						<div data-intro="View statistics about your tracker such as number of blogs, number of bloggers, positive and negative sentiments" data-step="2" class="panel panel-primary">
 							<div class="panel-heading">
@@ -416,8 +413,7 @@ function googleTranslateElementInit() {
 
 				<!-- Dashboard content -->
 				<div class="row">
-				<div id="card-1" class="card">
-				<div class="col-lg-6">
+				<div class="col-lg-12">
 				<div data-intro="This portion will give information about location distribution of blogsites in your tracker " data-step="3" class="panel panel-primary">
 					<div class="panel-heading">
 						<h5 class="panel-title">Blogsites Location Distribution</h5>
@@ -430,14 +426,8 @@ function googleTranslateElementInit() {
 	                	</div>
 					</div>
 
-					<div class="panel-body" style="min-height:600px;">
-					<button class="btn btn-primary icon-info22" style="position:absolute; z-index:99; top:5px ; right:5px;" id="toggle-btn2"></button>
-					<div class="front">
-						<div id="world-map-gdp" class="col-md-12 col-sm-12 col-xs-12"
-											style="height: 420px;"></div>
-											</div>
-				<div class="back">
-					<div class="col-md-12" style="overflow-y: scroll;">
+					<div class="panel-body">
+					<div class="col-md-2" style="overflow-y: scroll;">
 											<table class="countries_list">
 												<tbody>
 													<c:forEach items="${nloc}" var="v1" begin="0" end="5">
@@ -449,19 +439,17 @@ function googleTranslateElementInit() {
 												</tbody>
 											</table>
 										</div>
-										</div>
+										
 <!--						<p class="content-group">Example of a <code>choropleth</code> world map. A choropleth map is a thematic map in which areas are shaded or patterned in proportion to the measurement of the statistical variable being displayed on the map. The choropleth map provides an easy way to visualize how a measurement varies across a geographic area or it shows the level of variability within a region. This example displays GDP by country, data stored in <code>json</code> file.</p>-->
 						
 						
 						
+						<div id="world-map-gdp" class="col-md-10 col-sm-12 col-xs-12"
+											style="height: 420px;"></div>
 					</div>
-					
 				</div>
 				</div>
-				</div>
-				
-				<div class="col-lg-6">
-				<div id="card-2" class="card">
+				<div class="col-lg-12">
 				<div data-intro="This portion will give information about language distribution of blogsites in your tracker " data-step="3" class="panel panel-primary">
 					<div class="panel-heading">
 						<h5 class="panel-title">Blogsites Language Distribution</h5>
@@ -472,18 +460,10 @@ function googleTranslateElementInit() {
 
 		                	</ul>
 	                	</div>
-	                	
 					</div>
 
-					<div class="panel-body" style="min-height:600px;">
-					<button class="btn btn-primary icon-info22" style="position:absolute; z-index:99; top:5px;" id="toggle-btn"></button>
-					<div class="front">
-						<div align="center" class="col-md-12 bubble"></div>
-
-
-										</div>
-				<div class="back">
-			<div class="col-md-12">
+					<div class="panel-body">
+			<div class="col-md-4">
 											<table class="table table-striped">
     <thead>
     <br/>
@@ -504,14 +484,15 @@ function googleTranslateElementInit() {
 												</tbody>
  									 </table>
   </div>						
-  </div>
 					
 					
+						<div align="center" class="col-md-8 bubble"></div>
+
+
 										</div>
 					</div>
-					</div>
-					</div>
-		<div class="col-lg-12">
+					
+		
 					
 					<div data-intro="This portion will give information about blog posts per blog site in your tracker " data-step="4" class="panel panel-primary">
 					<div class="panel-heading">

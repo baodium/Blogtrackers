@@ -43,7 +43,7 @@ int trackerSize = mytrackers.size();
 					<li><a href="features.jsp">Home</a></li>
 					<li ><a href="trackerlist.jsp">Tracker List </a></li>
 					<li> <a href="analytics.jsp">Analytics</a></li>
-					<li class="active">Data Presentation</li>
+					<li class="active">Data Presentation (Current Tracker: <%=session.getAttribute("tracker")%>)</li>
 				</ul>
 			</div>
 				<!-- <div class="heading-elements">
@@ -80,8 +80,9 @@ function googleTranslateElementInit() {
 						<div class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Posting Frequency<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<div class="heading-elements">
 								<form name="dateform" id="dateform" method="post">
-									<div data-intro="Select a date range " data-step="2" class="heading-elements" id="reportrange" action="PostingFrequency">
+									<div data-intro="Select a date range " data-step="2" id="reportrange" action="PostingFrequency">
 									<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
 										<i class="icon-calendar3 position-left"></i> <span></span>  
 					<b class="caret"></b>
@@ -89,6 +90,7 @@ function googleTranslateElementInit() {
 									<input type="hidden" id="datepicked" name="datepicked"  onchange="datechanged()" />
 			                	</div>
 								</form>
+								</div>
 							</div>
 							<form name="pf_spanForm" id="pf_spanForm"
 									action="PostingFrequency" method="post">
@@ -198,7 +200,7 @@ function googleTranslateElementInit() {
 							<div class="row flex">
 							<div class="col-md-6 col-sm-12 col-xs-12">
 							<div class="col-md-12 col-sm-12 col-xs-12">
-						<div data-intro="Click on the icon in front of the blog title to view blog content" data-step="6" class="panel panel-primary">
+						<div data-intro="Click on the icon in front of the blog title to view blog content" data-step="6" class="panel panel-primary2">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blog Post<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -254,7 +256,7 @@ function googleTranslateElementInit() {
 						
 <div class="col-md-6 col-sm-12 col-xs-12">
 <div class="col-md-12 col-sm-12 col-xs-12">
-						<div data-intro="This section displays the blog content" data-step="7" class="panel panel-primary">
+						<div data-intro="This section displays the blog content" data-step="7" class="panel panel-primary2">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blog Content<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">

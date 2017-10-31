@@ -123,7 +123,379 @@ function googleTranslateElementInit() {
 			<div class="content-wrapper">
 
 				<!-- Main charts -->
+				<div class="row">
+				<div class="col-md-12">
 				
+				
+					<div class="col-lg-2 col-md-6">
+					<c:choose>
+										<c:when test="${tracker != null}">
+											<a href="<%=request.getContextPath()%>/Dashboard?tracker=${tracker}"> 
+										</c:when>
+										<c:when test="${tracker == null}">
+											<a href="<%=request.getContextPath()%>/dashboard.jsp"> 
+										</c:when>
+					</c:choose>
+					
+						<div class="thumbnail">
+							<div class="thumb thumb-slide">
+								<img src="img/dashboard.jpg" alt="">
+								<div class="caption">
+									<span style="font-size: 18px;">
+									Check the dashboard statistics of your tracker
+								   </span>
+								</div>
+							</div>
+						
+					    	<div class="caption text-center">
+					    		<h6 class="text-semibold no-margin">Dashboard
+<!--					    		<small class="display-block">Network engineer</small>-->
+					    		
+					    		</h6>
+				    			<ul class="icons-list mt-15">
+			                    	<li>
+			                    	<c:choose>
+										<c:when test="${tracker != null}">
+											<a href="<%=request.getContextPath()%>/Dashboard?tracker=${tracker}" data-popup="tooltip" title="" data-container="body" data-original-title="Dashboard"> 
+										</c:when>
+										<c:when test="${tracker == null}">
+											<a href="<%=request.getContextPath()%>/dashboard.jsp" data-popup="tooltip" title="" data-container="body" data-original-title="Dashboard"> 
+										</c:when>
+										</c:choose>
+			                    	
+			                    	<button type="button" class="btn btn-primary btn-icon btn-float btn-float-lg btn-rounded legitRipple"><i class="icon-pie-chart8"></i></button>
+			                    	<c:choose>
+										<c:when test="${tracker != null}">
+			                    	</a>
+			                    	</c:when>
+			                    		<c:when test="${tracker != null}">
+				    	</a>
+				    	</c:when>
+										</c:choose>
+			                    	</li>
+			                    	
+		                    	</ul>
+					    	</div>
+				    	</div>
+				    	<c:choose>
+										<c:when test="${tracker != null}">
+				    	</a>
+				    	</c:when>
+				    		<c:when test="${tracker == null}">
+				    	</a>
+				    	</c:when>
+										</c:choose>
+					</div>
+				
+						<div class="col-lg-2 col-md-6">
+						<c:choose>
+										<c:when test="${tracker != null}">
+											<a href="<%=request.getContextPath()%>/PostingFrequency?tracker=${tracker}"> 
+										</c:when>
+										<c:when test="${tracker == null}">
+											<a href="<%=request.getContextPath()%>/posting_frequencey.jsp"> 
+										</c:when>
+					</c:choose>
+						<div class="thumbnail">
+							<div class="thumb thumb-slide">
+								<img src="img/postingfrequency.jpg" alt="">
+								<div class="caption">
+									<span style="font-size: 18px;">
+									Check the frequency of a particular blog post and analyze some basic Information
+								   </span>
+								</div>
+							</div>
+						
+					    	<div class="caption text-center">
+					    		<h6 class="text-semibold no-margin">Posting Frequency 
+<!--					    		<small class="display-block">Network engineer</small>-->
+					    		
+					    		</h6>
+				    			<ul class="icons-list mt-15">
+			                    	<li>
+			                    	<c:choose>
+										<c:when test="${tracker != null}">
+											<a href="<%=request.getContextPath()%>/PostingFrequency?tracker=${tracker}" data-popup="tooltip" title="" data-container="body" data-original-title="Posting Frequency"> 
+										</c:when>
+										<c:when test="${tracker == null}">
+											<a href="<%=request.getContextPath()%>/posting_frequencey.jsp" data-popup="tooltip" title="" data-container="body" data-original-title="Posting Frequency"> 
+										</c:when>
+										</c:choose>
+			                    	<button type="button" class="btn btn-primary btn-icon btn-float btn-float-lg btn-rounded legitRipple"><i class="icon-comment"></i></button>
+			                    	<c:choose>
+										<c:when test="${tracker != null}">
+			                    	</a>
+			                    	</c:when>
+			                    		<c:when test="${tracker != null}">
+				    	</a>
+				    	</c:when>
+										</c:choose>
+			                    	
+			                    	</li>
+			                    	
+		                    	</ul>
+					    	</div>
+				    	</div>
+				    	<c:choose>
+										<c:when test="${tracker != null}">
+				    	</a>
+				    	</c:when>
+				    		<c:when test="${tracker == null}">
+				    	</a>
+				    	</c:when>
+										</c:choose>
+					</div>
+							
+							<div class="col-lg-2 col-md-6">
+							<c:choose>
+										<c:when test="${tracker != null}">
+											<a href="<%=request.getContextPath()%>/KeywordTrendsServlet?tracker=${tracker}"> 
+										</c:when>
+										<c:when test="${tracker == null}">
+											<a href="<%=request.getContextPath()%>/keyword_trends.jsp"> 
+										</c:when>
+					</c:choose>
+						<div class="thumbnail">
+							<div class="thumb thumb-slide">
+								<img src="img/keywords.jpg" alt="">
+								<div class="caption">
+									<span style="font-size: 18px;">
+									Analyze the keyword trends in blogs on your trackers
+								   </span>
+								</div>
+							</div>
+						
+					    	<div class="caption text-center">
+					    		<h6 class="text-semibold no-margin">Keyword Trends
+<!--					    		<small class="display-block">Network engineer</small>-->
+					    		
+					    		</h6>
+				    			<ul class="icons-list mt-15">
+			                    	<li>
+			                    	<c:choose>
+										<c:when test="${tracker != null}">
+											<a href="<%=request.getContextPath()%>/KeywordTrendsServlet?tracker=${tracker}" data-popup="tooltip" title="" data-container="body" data-original-title="Keyword Trends"> 
+										</c:when>
+										<c:when test="${tracker == null}">
+											<a href="<%=request.getContextPath()%>/keyword_trends.jsp" data-popup="tooltip" title="" data-container="body" data-original-title="Posting Frequency"> 
+										</c:when>
+										</c:choose>
+			                    	<button type="button" class="btn btn-primary btn-icon btn-float btn-float-lg btn-rounded legitRipple"><i class="icon-search4"></i></button>
+			                    	<c:choose>
+										<c:when test="${tracker != null}">
+			                    	</a>
+			                    	</c:when>
+			                    		<c:when test="${tracker != null}">
+				    	</a>
+				    	</c:when>
+										</c:choose>
+			                    	
+			                    	</li>
+			                    	
+		                    	</ul>
+					    	</div>
+				    	</div>
+				    	<c:choose>
+										<c:when test="${tracker != null}">
+				    	</a>
+				    	</c:when>
+				    		<c:when test="${tracker == null}">
+				    	</a>
+				    	</c:when>
+										</c:choose>
+					</div>
+					
+					
+					
+					
+					<div class="col-lg-2 col-md-6">
+					<c:choose>
+										<c:when test="${tracker != null}">
+											<a href="<%=request.getContextPath()%>/Sentiments?tracker=${tracker}"> 
+										</c:when>
+										<c:when test="${tracker == null}">
+											<a href="<%=request.getContextPath()%>/sentiments.jsp"> 
+										</c:when>
+					</c:choose>
+						<div class="thumbnail">
+							<div class="thumb thumb-slide">
+								<img src="img/sentiments.jpg" alt="">
+								<div class="caption">
+									<span style="font-size: 18px;">
+									Analyze the positive and the negative sentiments in blogsites
+								   </span>
+								</div>
+							</div>
+						
+					    	<div class="caption text-center">
+					    		<h6 class="text-semibold no-margin">Sentiments
+<!--					    		<small class="display-block">Network engineer</small>-->
+					    		
+					    		</h6>
+				    			<ul class="icons-list mt-15">
+			                    	<li>
+			                    	<c:choose>
+										<c:when test="${tracker != null}">
+											<a href="<%=request.getContextPath()%>/Sentiments?tracker=${tracker}" data-popup="tooltip" title="" data-container="body" data-original-title="Sentiments"> 
+										</c:when>
+										<c:when test="${tracker == null}">
+											<a href="<%=request.getContextPath()%>/sentiments.jsp" data-popup="tooltip" title="" data-container="body" data-original-title="Sentiments"> 
+										</c:when>
+										</c:choose>
+			                    	
+			                    	<button type="button" class="btn btn-primary btn-icon btn-float btn-float-lg btn-rounded legitRipple"><i class="icon-puzzle3"></i></button>
+			                    	<c:choose>
+										<c:when test="${tracker != null}">
+			                    	</a>
+			                    	</c:when>
+			                    		<c:when test="${tracker != null}">
+				    	</a>
+				    	</c:when>
+										</c:choose>
+			                    	
+			                    	</li>
+			                    	
+		                    	</ul>
+					    	</div>
+				    	</div>
+				    		<c:choose>
+										<c:when test="${tracker != null}">
+				    	</a>
+				    	</c:when>
+				    		<c:when test="${tracker == null}">
+				    	</a>
+				    	</c:when>
+										</c:choose>
+					</div>
+					
+					
+					<div class="col-lg-2 col-md-6">
+					<c:choose>
+										<c:when test="${tracker != null}">
+											<a href="<%=request.getContextPath()%>/InfluenceServlet?tracker=${tracker}"> 
+										</c:when>
+										<c:when test="${tracker == null}">
+											<a href="<%=request.getContextPath()%>/influence.jsp"> 
+										</c:when>
+					</c:choose>
+						<div class="thumbnail">
+							<div class="thumb thumb-slide">
+								<img src="img/influencers.jpg" alt="">
+								<div class="caption">
+									<span style="font-size: 18px;">
+									Analyze the influence on different blog sites on your tracker	
+								   </span>
+								</div>
+							</div>
+						
+					    	<div class="caption text-center">
+					    		<h6 class="text-semibold no-margin">Influence
+<!--					    		<small class="display-block">Network engineer</small>-->
+					    		
+					    		</h6>
+				    			<ul class="icons-list mt-15">
+			                    	<li>
+			                    	
+			                    	<c:choose>
+										<c:when test="${tracker != null}">
+											<a href="<%=request.getContextPath()%>/InfluenceServlet?tracker=${tracker}" data-popup="tooltip" title="" data-container="body" data-original-title="Influence"> 
+										</c:when>
+										<c:when test="${tracker == null}">
+											<a href="<%=request.getContextPath()%>/influence.jsp" data-popup="tooltip" title="" data-container="body" data-original-title="Influence"> 
+										</c:when>
+										</c:choose>
+										
+			                    	<button type="button" class="btn btn-primary btn-icon btn-float btn-float-lg btn-rounded legitRipple"><i class="icon-split"></i></button>
+			                    	<c:choose>
+										<c:when test="${tracker != null}">
+				    	</a>
+				    	</c:when>
+				    		<c:when test="${tracker == null}">
+				    	</a>
+				    	</c:when>
+										</c:choose>
+			                    	</li>
+			                    	
+		                    	</ul>
+					    	</div>
+				    	</div>
+				    	<c:choose>
+										<c:when test="${tracker != null}">
+				    	</a>
+				    	</c:when>
+				    		<c:when test="${tracker == null}">
+				    	</a>
+				    	</c:when>
+										</c:choose>
+					</div>
+					
+					
+					<div class="col-lg-2 col-md-6">
+					<c:choose>
+										<c:when test="${tracker != null}">
+											<a href="<%=request.getContextPath()%>/ExportJSON?tracker=${tracker}"> 
+										</c:when>
+										<c:when test="${tracker == null}">
+											<a href="<%=request.getContextPath()%>/data_presentation.jsp"> 
+										</c:when>
+					</c:choose>
+						<div class="thumbnail">
+							<div class="thumb thumb-slide">
+								<img src="img/datapresentation.jpg" alt="">
+								<div class="caption">
+									<span class="text-size-large" style="font-size: 18px;">
+									Export data in a JSON format for analysis purpose
+								   </span>
+								</div>
+							</div>
+						
+					    	<div class="caption text-center">
+					    		<h6 class="text-semibold no-margin">Data Presentation
+<!--					    		<small class="display-block">Network engineer</small>-->
+					    		
+					    		</h6>
+				    			<ul class="icons-list mt-15">
+			                    	<li>
+			                    	<c:choose>
+										<c:when test="${tracker != null}">
+											<a href="<%=request.getContextPath()%>/ExportJSON?tracker=${tracker}" data-popup="tooltip" title="" data-container="body" data-original-title="Data Presentation"> 
+										</c:when>
+										<c:when test="${tracker == null}">
+											<a href="<%=request.getContextPath()%>/data_presentation.jsp" data-popup="tooltip" title="" data-container="body" data-original-title="Data Presentation"> 
+										</c:when>
+										</c:choose>
+			                    	<button type="button" class="btn btn-primary btn-icon btn-float btn-float-lg btn-rounded legitRipple"><i class="icon-database-export"></i></button>
+			                    		<c:choose>
+										<c:when test="${tracker != null}">
+				    	</a>
+				    	</c:when>
+				    		<c:when test="${tracker == null}">
+				    	</a>
+				    	</c:when>
+										</c:choose>
+			                    	</li>
+			                    	
+		                    	</ul>
+					    	</div>
+				    	</div>
+				    		<c:choose>
+										<c:when test="${tracker != null}">
+				    	</a>
+				    	</c:when>
+				    		<c:when test="${tracker == null}">
+				    	</a>
+				    	</c:when>
+										</c:choose>
+					</div>
+
+
+				
+					
+					</div>
+			
+				      
+					
+				</div>
 				
 				
 				<div class="row">
@@ -140,7 +512,7 @@ function googleTranslateElementInit() {
 							<div class="panel-body text-center">
 								<div class="icon-object border-success text-success"><i class="icon-pie-chart8"></i></div>
 								<h5 class="text-semibold">Dashboard</h5>
-								<p class="mb-15">View statistics such as Language Distribution </p>
+								<p class="mb-15">Analyze the Dashboard Statistics</p>
 								<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/Dashboard?tracker=${tracker}" class="btn bg-success-400 legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Dashboard">
@@ -183,7 +555,7 @@ function googleTranslateElementInit() {
 							<div class="panel-body text-center">
 								<div class="icon-object border-warning text-warning"><i class="icon-comment"></i></div>
 								<h5 class="text-semibold">Posting Frequency</h5>
-								<p class="mb-15">Analyse the posting frequency of the bloggers in your tracker</p>
+								<p class="mb-15">Analyse the posting frequency</p>
 								<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/PostingFrequency?tracker=${tracker}" class="btn bg-warning-400 legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Posting Frequency">
@@ -267,7 +639,7 @@ function googleTranslateElementInit() {
 							<div class="panel-body text-center">
 								<div class="icon-object border-success text-success"><i class="icon-puzzle3"></i></div>
 								<h5 class="text-semibold">Sentiments Analysis</h5>
-								<p class="mb-15">Analyze the sentiment of the blogposts in the tracker</p>
+								<p class="mb-15">Analyze the sentiment in a text</p>
 								<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/Sentiments?tracker=${tracker}" class="btn bg-success-400 legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Sentiments"> 
@@ -310,7 +682,7 @@ function googleTranslateElementInit() {
 							<div class="panel-body text-center">
 								<div class="icon-object border-warning text-warning"><i class="icon-split"></i></div>
 								<h5 class="text-semibold">Influence</h5>
-								<p class="mb-15">Analyse the influence of bloggers in the blogpost</p>
+								<p class="mb-15">Analyse the influence of text</p>
 								<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/InfluenceServlet?tracker=${tracker}" class="btn bg-warning-400 legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Influence"> 
@@ -353,7 +725,7 @@ function googleTranslateElementInit() {
 							<div class="panel-body text-center">
 								<div class="icon-object border-blue text-blue"><i class="icon-database-export"></i></div>
 								<h5 class="text-semibold">Data presentation</h5>
-								<p class="mb-15">Export your tracker information as a JSON</p>
+								<p class="mb-15">Export your work</p>
 								<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/ExportJSON?tracker=${tracker}"  class="btn bg-blue legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Data Presentation"> 

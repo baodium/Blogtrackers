@@ -56,7 +56,7 @@ if(term!="" && username==""){
 					<%  
 						if(search_result!=""){
 					%>
-					<p class="text-muted text-size-small content-group">				
+					<p class="text-muted text-size-large content-group">				
 					Search results for <%= term %>					
 					</p>
 					

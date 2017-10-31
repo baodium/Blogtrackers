@@ -67,7 +67,7 @@ $(window).load(function() {
 					<li><a href="features.jsp">Home</a></li>
 					<li ><a href="trackerlist.jsp">Tracker List </a></li>
 					<li> <a href="analytics.jsp">Analytics</a></li>
-					<li class="active">Sentiments</li>
+					<li class="active">Sentiments (Current Tracker: <%=session.getAttribute("tracker")%>)</li>
 				</ul>
 			<!-- 	<div class="heading-elements">
 				<div class="heading-btn-group">

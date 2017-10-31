@@ -124,13 +124,13 @@ display: none;
 
 <script type="text/javascript">
 $(window).load(function() {
-	$(".pageloader").addClass("hidden");
+	$("#pageloader").addClass("hidden");
 	//$(".loader").fadeOut("slow");
 })
 </script>
 <script type="text/javascript">
 									function showGif() {
-										$(".pageloader").removeClass("hidden");
+										$("#pageloader").removeClass("hidden");
 									}
 </script>
      

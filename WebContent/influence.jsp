@@ -34,7 +34,7 @@ int trackerSize = mytrackers.size();
 					<li><a href="features.jsp">Home</a></li>
 					<li ><a href="trackerlist.jsp">Tracker List </a></li>
 					<li> <a href="analytics.jsp">Analytics</a></li>
-					<li class="active">Influence</li>
+					<li class="active">Influence (Current Tracker: <%=session.getAttribute("tracker")%>)</li>
 				</ul>
 			<!-- 	<div class="heading-elements">
 				<div class="heading-btn-group">
@@ -72,8 +72,9 @@ function googleTranslateElementInit() {
 						<div class="panel panel-primary">
 							<div  class="panel-heading">
 								<h6 class="panel-title">Influential Bloggers<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<div class="heading-elements">
 								<form name="dateform" id="dateform" method="post">
-									<div data-intro="Select a daterange" data-step="2" class="heading-elements" id="reportrange">
+									<div data-intro="Select a daterange" data-step="2" id="reportrange">
 									<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
 										<i class="icon-calendar3 position-left"></i> <span></span>  
 					<b class="caret"></b> 
@@ -81,6 +82,7 @@ function googleTranslateElementInit() {
 									<input type="hidden" id="datepicked" name="datepicked"  onchange="datechanged()" />
 			                	</div>
 								</form>
+								</div>
 							</div>
 
 							<div class="panel-body">

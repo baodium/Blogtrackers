@@ -29,18 +29,9 @@ int trackerSize = mytrackers.size();
 				<h4>
 					<i class="icon-arrow-left52 position-left"></i>
 					<span class="text-semibold">Additional Blogger Information</span>
-<small class="display-block"><span>Welcome, </span><%=username %>
+<small class="display-block"><span>Welcome, </span><%=username %> (Current Tracker: <%=session.getAttribute("tracker")%>)
 				</h4>
-					<div class="form-group">
-				<div class="col-md-12">
-				
-				<div class="input-group">
-				<input type="text" class="form-control" placeholder="Enter a keyword to search" id="searchtextbox" autocomplete="off">
-											<span class="input-group-btn" style="padding-left:0px;"><button type="button" class="btn btn-primary">Search</button></span>
-											
-										</div>
-										</div>
-										</div>
+					
 			</div>
 
 
