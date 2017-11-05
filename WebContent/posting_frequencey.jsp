@@ -112,7 +112,7 @@ function googleTranslateElementInit() {
 							
 					
 								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-		<div data-intro="Click on a blogger name to get additional blogger information" data-step="5" class="panel panel-primary2">
+		<div data-intro="Click on a blogger name to get additional blogger information" data-step="5" class="panel panel-default">
 							<div class="panel-heading">
 								<h6 class="panel-title">Top Bloggers<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -183,7 +183,7 @@ function googleTranslateElementInit() {
 							</div>
 					</div>
 					</div>
-				<div class="col-md-12 col-sm-12 col-xs-12">
+				
 						<div class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blog Browser<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
@@ -200,7 +200,7 @@ function googleTranslateElementInit() {
 							<div class="row flex">
 							<div class="col-md-6 col-sm-12 col-xs-12">
 							<div class="col-md-12 col-sm-12 col-xs-12">
-						<div data-intro="Click on the icon in front of the blog title to view blog content" data-step="6" class="panel panel-primary2">
+						<div data-intro="Click on the icon in front of the blog title to view blog content" data-step="6" class="panel panel-default">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blog Post<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -256,7 +256,7 @@ function googleTranslateElementInit() {
 						
 <div class="col-md-6 col-sm-12 col-xs-12">
 <div class="col-md-12 col-sm-12 col-xs-12">
-						<div data-intro="This section displays the blog content" data-step="7" class="panel panel-primary2">
+						<div data-intro="This section displays the blog content" data-step="7" class="panel panel-default">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blog Content<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -279,7 +279,7 @@ function googleTranslateElementInit() {
 							</div>
 						</div>
 					
-					</div>
+					
 							<div class="col-md-6 col-sm-12 col-xs-12">
 						<div data-intro="This section displays the top keywords" data-step="8" class="panel panel-primary">
 							<div class="panel-heading">

@@ -285,7 +285,7 @@ int trackerSize = mytrackers.size();
 							<div class="row flex">
 							<div class="col-md-6 col-sm-12 col-xs-12">
 							 <div class="col-md-12 col-sm-12 col-xs-12">
-						<div class="panel panel-primary2">
+						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blog Post<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								
@@ -341,7 +341,7 @@ int trackerSize = mytrackers.size();
 						
                       <div class="col-md-6 col-sm-12 col-xs-12">
                       <div class="col-md-12 col-sm-12 col-xs-12">
-						<div data-intro="This section displays the blog content" data-step="7" class="panel panel-primary2">
+						<div data-intro="This section displays the blog content" data-step="7" class="panel panel-default">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blog Content<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								

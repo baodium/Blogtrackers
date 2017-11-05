@@ -55,7 +55,7 @@ $(window).load(function() {
 	
 
 	<!-- Page header -->
-	<div class="page-header">
+	<div class="page-header mb-20">
 		<div class="page-header-content">
 			<div class="page-title">
 				<h4>
@@ -92,7 +92,7 @@ function googleTranslateElementInit() {
 
 
 	<!-- Page container -->
-	<div class="page-container">
+	<div class="page-container mb-20">
 
 		<!-- Page content -->
 		<div class="page-content">
@@ -293,7 +293,7 @@ function googleTranslateElementInit() {
 							</div>
 					
 								<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" data-intro="Select a Blogger Name" data-step="4">
-		<div class="panel panel-primary2">
+		<div class="panel panel-default">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blogger Name<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -361,7 +361,7 @@ function googleTranslateElementInit() {
 							</div>
 					</div>
 					</div>
-				<div class="col-md-12 col-sm-12 col-xs-12">
+				
 						<div class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Sentiments<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
@@ -376,7 +376,7 @@ function googleTranslateElementInit() {
 
 							<div class="panel-body">
 							<div class="col-md-12 col-sm-12 col-xs-12">
-						<div class="panel panel-primary2">
+						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blog Post<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -468,7 +468,7 @@ function googleTranslateElementInit() {
 					</div>
 						
 <div  data-intro="Radar chart of personal content" data-step="7"  class="col-md-6 col-sm-12 col-xs-12">
-						<div class="panel panel-primary2">
+						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h6 class="panel-title">Personal Content<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -500,7 +500,7 @@ function googleTranslateElementInit() {
 					</div>
 					
 					<div class="col-md-6 col-sm-12 col-xs-12">
-						<div data-intro="Radar chart of time orientation" data-step="8" class="panel panel-primary2">
+						<div data-intro="Radar chart of time orientation" data-step="8" class="panel panel-default">
 							<div class="panel-heading">
 								<h6 class="panel-title">Time Orientation<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -529,7 +529,7 @@ function googleTranslateElementInit() {
 					</div>
 					
 					<div class="col-md-6 col-sm-12 col-xs-12">
-						<div data-intro="Radar chart of core drive and need" data-step="9" class="panel panel-primary2">
+						<div data-intro="Radar chart of core drive and need" data-step="9" class="panel panel-default">
 							<div class="panel-heading">
 								<h6 class="panel-title">Core Drive and Need<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -562,7 +562,7 @@ function googleTranslateElementInit() {
 					
 					
 					<div class="col-md-6 col-sm-12 col-xs-12">
-						<div data-intro="Radar chart of cognitive process" data-step="10" class="panel panel-primary2">
+						<div data-intro="Radar chart of cognitive process" data-step="10" class="panel panel-default">
 							<div class="panel-heading">
 								<h6 class="panel-title">Cognitive Process<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -594,7 +594,7 @@ function googleTranslateElementInit() {
 					</div>
 					
 					<div class="col-md-6 col-sm-12 col-xs-12">
-						<div data-intro="Radar chart of summary variable" data-step="11" class="panel panel-primary2">
+						<div data-intro="Radar chart of summary variable" data-step="11" class="panel panel-default">
 							<div class="panel-heading">
 								<h6 class="panel-title">Summary Variable<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -622,7 +622,7 @@ function googleTranslateElementInit() {
 					
 					
 					<div class="col-md-6 col-sm-12 col-xs-12">
-						<div data-intro="Radar chart of sentiment or emotion" data-step="12" class="panel panel-primary2">
+						<div data-intro="Radar chart of sentiment or emotion" data-step="12" class="panel panel-default">
 							<div class="panel-heading">
 								<h6 class="panel-title">Sentiment/Emotion<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -655,7 +655,7 @@ function googleTranslateElementInit() {
 							</div>
 						</div>
 					
-					</div>
+					
 					
 					
 					

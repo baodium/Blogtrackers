@@ -431,19 +431,19 @@ function googleTranslateElementInit() {
 					</div>
 
 					<div class="panel-body" style="min-height:600px;">
-					<button class="btn btn-primary icon-info22" style="position:absolute; z-index:99; top:5px ; right:5px;" id="toggle-btn2"></button>
+					<button class="btn btn-primary icon-flip-vertical2" style="position:absolute; z-index:99; top:5px ; right:5px;" id="toggle-btn2"></button>
 					<div class="front">
 						<div id="world-map-gdp" class="col-md-12 col-sm-12 col-xs-12"
 											style="height: 420px;"></div>
 											</div>
 				<div class="back">
-					<div class="col-md-12" style="overflow-y: scroll;">
-											<table class="countries_list">
+					<div class="col-md-12" style="overflow-y: scroll; margin-top:30px;">
+											<table class="table table-striped">
 												<tbody>
 													<c:forEach items="${nloc}" var="v1" begin="0" end="5">
 														<tr>
-															<td width="60%" class="fs15 fw700 text-left">${v1[1]}</td>
-															<td width="20%">${v1[0]}%</td>
+															<td  class="fs15 fw700 text-left">${v1[1]}</td>
+															<td >${v1[0]}%</td>
 														</tr>
 													</c:forEach>
 												</tbody>
@@ -476,7 +476,7 @@ function googleTranslateElementInit() {
 					</div>
 
 					<div class="panel-body" style="min-height:600px;">
-					<button class="btn btn-primary icon-info22" style="position:absolute; z-index:99; top:5px;" id="toggle-btn"></button>
+					<button class="btn btn-primary icon-flip-vertical2" style="position:absolute; z-index:99; top:5px; right:5px;" id="toggle-btn"></button>
 					<div class="front">
 						<div align="center" class="col-md-12 bubble"></div>
 

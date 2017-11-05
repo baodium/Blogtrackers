@@ -5,7 +5,6 @@ package blogtracker.util;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -40,48 +39,18 @@ public class ExportJSONDialog extends UtilFunctions{
 			//appending "p." here since table blogtrackers.blogposts is aliased as "p"
 			String qTracker = "p." + queryTracker;
 			Connection conn = getConn();
-			System.out.println(conn);
-			ArrayList result=new ArrayList(); 
-			
 			int recordCount=0;
-			
-			//String count ="SELECT COUNT(*) as numb from blogtrackers.blogposts p, blogtrackers.blogsites s, blogtrackers.liwc l where s.blogsite_id = p.blogsite_id and l.blogpostid = p.blogpost_id and "+ qTracker + " and p.date >= '"+startDate+"' AND p.date <= '"+endDate+"' ";
-			String count ="SELECT * FROM blogtrackers.blogposts LIMIT 0,2";
-			
+			String count ="SELECT COUNT(*) as numb from blogtrackers.blogposts p, blogtrackers.blogsites s, blogtrackers.liwc l where s.blogsite_id = p.blogsite_id and l.blogpostid = p.blogpost_id and "+ qTracker + " and p.date >= '"+startDate+"' AND p.date <= '"+endDate+"' ";
 			Statement stmt = conn.createStatement();
-			//ResultSet rset = stmt.executeQuery(count);
-			ResultSet rs = null; 
-			//System.out.println(rset);
-			
-			stmt = conn.prepareStatement(count);
-			rs = stmt.executeQuery(count); 
-			ResultSetMetaData rsmd = rs.getMetaData();
-			int column_size = rsmd.getColumnCount();
-			int i=0;
-			while(rs.next()){
-				ArrayList output=new ArrayList();
-				int total=column_size;//rs.getFetchSize();
-				//rs.
-				for(int j=1;j<=(total); j++ ){
-					output.add((j-1), rs.getString(j));
-				}
-				result.add(i,output);
-				i++;
-			}
-			
-			System.out.println(result);
-			/*
+			ResultSet rset = stmt.executeQuery(count);
 			while (rset.next())
 			recordCount = rset.getInt("numb");
 			rset.close();
 			stmt.close();
 			conn.close();
 			return recordCount;
-			*/
-			return 10;
-		
 		} 
-		catch (Exception ex) {
+		catch (SQLException ex) {
 			Logger.getLogger(ExportJSON.class.getName()).log(Level.SEVERE, null, ex);
 			return null;
 		}

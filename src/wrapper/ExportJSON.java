@@ -124,8 +124,8 @@ public class ExportJSON extends HttpServlet {
 		List<String> aa=common.returnDates(datePicked);
 		String d1 = aa.get(0);
 		String d2 = aa.get(1);
-		int recordsCount=exportJSONDialog.getCount(queryTracker,d1,d2);
-		currentSession.setAttribute("records", recordsCount);
+	    int recordsCount=exportJSONDialog.getCount(queryTracker,d1,d2);
+	    currentSession.setAttribute("records", recordsCount);
 		System.out.println(recordsCount);
 	}
 	

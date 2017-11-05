@@ -23,15 +23,20 @@ int trackerSize = mytrackers.size();
   <% } %> 
   
 	<!-- Page header -->
-	<div class="page-header">
+	<div class="page-header mb-20">
 		<div class="page-header-content">
 			<div class="page-title">
 				<h4>
 					<i class="icon-arrow-left52 position-left"></i>
 					<span class="text-semibold">Additional Blogger Information</span>
-<small class="display-block"><span>Welcome, </span><%=username %> (Current Tracker: <%=session.getAttribute("tracker")%>)
+<%-- <small class="display-block"><span>Welcome, </span><%=username %> (Current Tracker: <%=session.getAttribute("tracker")%>) --%>
 				</h4>
-					
+				<ul class="breadcrumb breadcrumb-caret position-right">
+					<li><a href="features.jsp">Home</a></li>
+					<li ><a href="trackerlist.jsp">Tracker List </a></li>
+					<li> <a href="analytics.jsp">Analytics</a></li>
+					<li class="active">Additional Blogger Info (Current Tracker: <%=session.getAttribute("tracker")%>)</li>
+				</ul>	
 			</div>
 
 
@@ -287,7 +292,7 @@ int trackerSize = mytrackers.size();
 			                	</div>
 							</div>
 
-							<div class="panel-body">
+							<div class="panel-body scroll2" style="height:500px;">
 						<table class="table datatable-basic">
 						<thead>
 							<tr>
@@ -338,7 +343,7 @@ int trackerSize = mytrackers.size();
 			                	</div>
 							</div>
 
-							<div class="panel-body">
+							<div class="panel-body scroll2" style="height:500px;">
 						<table class="table datatable-basic">
 						<thead>
 							<tr>

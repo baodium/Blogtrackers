@@ -159,7 +159,7 @@ $(window).load(function() {
 		
 		
 			<div class="navbar-collapse collapse" id="navbar-mobile">
-			<p class="navbar-text mt-5"><span class="label bg-success-400">BASIC USER</span></p>
+			<!-- <p class="navbar-text mt-5"><span class="label bg-success-400">BASIC USER</span></p> -->
 			<% 
 			String Selectedtracker  = (String)session.getAttribute("tracker"); 
 
