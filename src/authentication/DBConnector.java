@@ -133,9 +133,24 @@ public class DBConnector {
 
 		} catch (SQLException ex) {
 			result.add(0,"Err");          
-		} finally{
-
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) { /* ignored */}
+			}
+			if (stmt != null) {
+				try {
+					stmt.close();
+				} catch (SQLException e) { /* ignored */}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException e) { /* ignored */}
+			}
 		}
+
 		return result;
 	}
 
@@ -155,9 +170,23 @@ public class DBConnector {
 
 		} catch (SQLException ex) {
 			donee=false;    
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) { /* ignored */}
+			}
+			if (stmt != null) {
+				try {
+					stmt.close();
+				} catch (SQLException e) { /* ignored */}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException e) { /* ignored */}
+			}
 		} 
-
-
 		return donee;
 	}
 

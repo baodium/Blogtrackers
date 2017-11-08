@@ -8,8 +8,8 @@
     String s="";
 
     int perpage =12;
-   ArrayList bloglist = new ArrayList();
-   ArrayList selected_blog = new ArrayList();
+    ArrayList bloglist = new ArrayList();
+    ArrayList selected_blog = new ArrayList();
 	try {		
 	        keyword = request.getParameter("term");
 	        String cpage = request.getParameter("page");

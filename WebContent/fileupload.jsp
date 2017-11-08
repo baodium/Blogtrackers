@@ -5,10 +5,7 @@
 <%@ page import="org.apache.commons.fileupload.disk.*" %>
 <%@ page import="org.apache.commons.fileupload.servlet.*" %>
 <%@ page import="org.apache.commons.io.output.*" %>
-
 <%@page import="authentication.*"%>
-
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 

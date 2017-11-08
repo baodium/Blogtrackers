@@ -227,7 +227,7 @@ function googleTranslateElementInit() {
 						
 
                                             
-                                        <form class="form-horizontal" name="upload_form" enctype="multipart/form-data" action="fileupload.jsp" method="POST">
+                       <form class="form-horizontal" name="upload_form" enctype="multipart/form-data" action="fileupload.jsp" method="POST">
 						<!-- My messages -->
 						<div class="panel panel-flat">
 							
