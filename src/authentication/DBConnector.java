@@ -31,11 +31,12 @@ public class DBConnector {
 	public String current_user;
 	public String current_user_type;
 	
-	//"jdbc:mysql://144.167.112.118:3306/blogtrackers"
+	//jdbc:mysql://blogtrackers.host.ualr.edu:3306/blogtrackers ukraine_user
+	//"jdbc:mysql://144.167.112.118:3306/blogtrackers" ukraine_super
 	//"jdbc:mysql://localhost:3306/blogtrackers"
 	public  DBConnector(){
-		String dbURL =  "jdbc:mysql://144.167.112.118:3306/blogtrackers"; //144.167.112.118 ukraine_super, summer2014
-        String username ="ukraine_super";
+		String dbURL =  "jdbc:mysql://blogtrackers.host.ualr.edu:3306/blogtrackers"; 
+        String username ="ukraine_user";
 	    String password = "summer2014";      
 		//Statement stmt = null;
 		//ResultSet rs = null;
