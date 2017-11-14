@@ -74,7 +74,7 @@ public class InfluenceServlet extends HttpServlet {
 			String datePicked = (String) session.getAttribute("datepicked");
 			TrackerDialog dialog= new TrackerDialog();
 			String selectedSites=dialog.getSelectedSites(userName,trackerName);
-			getRequestedData(scale,selectedSites,datePicked,session);
+			this.getRequestedData(scale,selectedSites,datePicked,session);
 		}
 		response.setContentType("text/html");
 		response.sendRedirect("influence.jsp");
@@ -230,7 +230,7 @@ public class InfluenceServlet extends HttpServlet {
 	 * @param datePicked
 	 * @param curSession
 	 */
-	private void getRequestedData(String curScale, String selectedSites, String datePicked, HttpSession curSession) {
+	public void getRequestedData(String curScale, String selectedSites, String datePicked, HttpSession curSession) {
 		ExecutorService executor = Executors.newFixedThreadPool(MYTHREADS);
 		getInfluentialBloggers infBlogger= new getInfluentialBloggers();
 		getInfluentialBlogPosts inflBlogPost= new getInfluentialBlogPosts();

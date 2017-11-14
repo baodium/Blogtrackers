@@ -98,7 +98,7 @@ function googleTranslateElementInit() {
 		<div class="page-content">
 
 			<!-- Main content -->
-			<div class="content-wrapper">
+			<div class="content-wrapper" id="body-result">
 
 				<!-- Main charts -->
 				<div class="row">
@@ -264,7 +264,7 @@ function googleTranslateElementInit() {
 														<c:when test="${radio eq 'aggregate'}">
 															<input type="radio" name="aggr_norm" value="aggregate"
 																checked="checked"> Aggregate 
-															<input type="radio" name="aggr_norm" value="normalized"
+															<input type="radio"  name="aggr_norm" value="normalized"
 																onchange="aggr_norm_changed()"> Normalized
 													    </c:when>
 														<c:otherwise>

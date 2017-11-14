@@ -33,8 +33,10 @@
 					<div class="search-results-list">
 					<div id="tracking-blog">						
 						<div class="row" id="tracking-blogs">
-						<% if(bloglist.size()>0){ 
-								for(int k=0; k<bloglist.size(); k++){
+						<% 
+						try{
+						if(bloglist.size()>0){ 
+								for(int k=0; k<bloglist.size(); k++){								
 									ArrayList item = (ArrayList)bloglist.get(k);
 							%>							
 							<div class="col-sm-3">
@@ -51,14 +53,17 @@
 									</div>
 								</div>
 							</div>
-							<% }}else{ %>							
+							<% 									
+								}}else{ %>							
 							<div>&nbsp;&nbsp;No result found</div>
+							<% }}catch(Exception e){ %>								
+								<div>&nbsp;&nbsp;No result found</div>							
 							<% } %>												
 						</div>
 						</div>
 						<input type="hidden" name="search-blog" id="search-blog" value="yes" />
 						<input type="hidden" name="search-keyword" id="search-keyword" value="<%=keyword%>" />					
-						<%  if(bloglist.size()>0){ %>
+						<%  if(bloglist.size()>0 && bloglist.get(0)!="Err"){ %>
 							<div class="loadmoreimg" id="loading-img" style="text-align:center; margin-top:10px"><img src='assets/images/preloader.gif' /><br/></div>						
 						<% } %>
                     </div>

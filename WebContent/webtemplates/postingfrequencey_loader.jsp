@@ -1,12 +1,17 @@
-<%-- 
-    Document   : dashboard
-    Created on : 28-Aug-2017, 22:23:45
-    Author     : Omnibus_03
---%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="java.util.*"%>
+<%@page import="java.io.IOException"%>
+<%@page import="java.text.*"%>
+<%@page import="javax.servlet.ServletException"%>
+<%@page import="javax.servlet.annotation.WebServlet"%>
+<%@page import="javax.servlet.http.*"%>
+<%@page import="org.json.simple.JSONObject"%>
+<%@page import="blogtracker.gui.blogtrackers.*"%>
+<%@page import="blogtracker.util.*"%>
+<%@page import="wrapper.PostingFrequency"%>
+
 
 
 <%@ page language="java" contentType="text/html; charset=utf-8"
@@ -18,10 +23,89 @@
 	if (username == null || username == "") {
 		response.sendRedirect("index.jsp");
 	}
-        ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
+	
+    ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
+    
+    
+    //private static final long serialVersionUID = 1L;
+	PostingFrequencyDialog pfDialog= new PostingFrequencyDialog();
+	Common common= new Common();
+	TrackerDialog trackerDialog = new TrackerDialog();
+	BloggerInfoDialog biDialog= new BloggerInfoDialog();
+	
+	PostingFrequency freq = new PostingFrequency();
+
+	//HttpSession session= request.getSession();
+
+	if(request.getParameter("tracker")!=null){
+		String tracker = request.getParameter("tracker");
+		session.setAttribute("tracker", tracker);
+		String userName = (String) session.getAttribute("user");
+		String selectedSites=trackerDialog.getSelectedSites(userName,tracker);
+
+		ArrayList<JSONObject> brNameList = biDialog.getBloggerNames(selectedSites);
+		session.setAttribute("brNameList", brNameList);
+
+		ArrayList<BeanAllSites> allSites=trackerDialog.getSiteNames(selectedSites);
+		if(session.getAttribute("bsName")!=null)
+			session.removeAttribute("bsName");
+		session.setAttribute("allSepSites", allSites);
+		//session.setAttribute("errorMessage",session.getAttribute("tracker") );
+	}
+	
+	else if(request.getParameter("datepicked")!= null){	
+		String date =request.getParameter("datepicked");
+		session.setAttribute("datepicked", date);
+		List<String> aa=common.returnDates(date);
+		String scale=common.returnScale(aa);
+		//session.setAttribute("errorMessage",aa );
+		if(session.getAttribute("tracker")!=null){
+			session.setAttribute("errorMessage", "");
+			String userName = (String) session.getAttribute("user");
+			String trackerName = (String) session.getAttribute("tracker");
+			String datePicked = (String) session.getAttribute("datepicked");
+			//session.setAttribute("errorMessage", userName);
+			TrackerDialog dialog = new TrackerDialog();
+			String selectedSites = dialog.getSelectedSites(userName,trackerName);
+			
+			//session.setAttribute("errorMessage",userName+ " "+trackerName );
+			//freq.
+			freq.getRequestedData(scale,selectedSites,datePicked,session);
+			
+		}
+		else{
+			session.setAttribute("errorMessage", "Please Select Tracker then Date");
+		}
+		
+		
+	}
+
+	else if(request.getParameter("options")!=null){
+		String scale=request.getParameter("options");
+		System.out.println(request.getParameter("options"));
+
+		session.setAttribute("calScale", scale);
+		if(session.getAttribute("datepicked")!=null && session.getAttribute("tracker")!=null){
+			session.setAttribute("errorMessage", "");
+			//				session.removeAttribute("errorMessage");
+
+
+			String userName = (String) session.getAttribute("user");
+			String trackerName = (String) session.getAttribute("tracker");
+			String datePicked = (String) session.getAttribute("datepicked");
+			TrackerDialog dialog= new TrackerDialog();
+			String selectedSites=dialog.getSelectedSites(userName,trackerName);
+			freq.getRequestedData(scale,selectedSites,datePicked,session);
+
+		}
+		else{
+			session.setAttribute("errorMessage", "Please Select Tracker or Date");
+		}
+
+	}
+
 %>
 
- <jsp:include page="include_top.jsp"></jsp:include>
 <% ArrayList mytrackers = new ArrayList();
 mytrackers = (ArrayList)session.getAttribute("trackers");
 int trackerSize = mytrackers.size();
@@ -29,57 +113,12 @@ int trackerSize = mytrackers.size();
     {%>
     <c:redirect url="setup_tracker.jsp"/>	
   <% } %> 
-	<!-- Page header -->
-	<div class="page-header mb-20">
-		<div class="page-header-content">
-			<div class="page-title">
-				<h4>
-					<i class="icon-arrow-left52 position-left"></i>
-					<span class="text-semibold">Posting Frequency</span>
-			<%-- <small class="display-block"><span>Welcome, </span><%=username %> <font color="red">${errorMessage}</font></small> --%>
-			
-				</h4>
-				<ul class="breadcrumb breadcrumb-caret position-right">
-					<li><a href="features.jsp">Home</a></li>
-					<li ><a href="trackerlist.jsp">Tracker List </a></li>
-					<li> <a href="analytics.jsp">Analytics</a></li>
-					<li class="active">Data Presentation (Current Tracker: <%=session.getAttribute("tracker")%>)</li>
-				</ul>
-			</div>
-				<!-- <div class="heading-elements">
-				<div class="heading-btn-group">
-						<button type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-plus2"></i></b> Setup a new tracker</button>
-					<button type="button" href="javascript:void(0);" onclick="javascript:introJs().start();" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-reading "></i></b> Tour Page</button>
-				 
-					<button id="google_translate_element" class="btn btn-default"><script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'ar', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-}
-</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-				
-				</button>
-			</div>
-		</div> -->
-		</div>
-	</div>
-	<!-- /page header -->
-
-
-	<!-- Page container -->
-	<div class="page-container">
-
-		<!-- Page content -->
-		<div class="page-content">
-
-			<!-- Main content -->
-			<div class="content-wrapper" id="body-result" >
-
-				<!-- Main charts -->
+<!-- Main charts -->
 				<div class="row">
 				<div class="col-md-12">
 						<div class="panel panel-primary">
 							<div class="panel-heading">
-								<h6 class="panel-title">Posting Frequency<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<h6 class="panel-title">Posting Frequency Loaded<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
 								<form name="dateform" id="dateform" method="post">
 									<div data-intro="Select a date range " data-step="2" id="reportrange" action="PostingFrequency">
@@ -87,7 +126,6 @@ function googleTranslateElementInit() {
 										<i class="icon-calendar3 position-left"></i> <span></span>  
 					<b class="caret"></b>
 									</button>
-									<input type="hidden" name="is_request" value="yes">
 									<input type="hidden" id="datepicked" name="datepicked"  onchange="datechanged()" />
 			                	</div>
 								</form>
@@ -103,7 +141,7 @@ function googleTranslateElementInit() {
 							<div data-intro="Select a data point on the graph" data-step="3" class="demo-container">
 												<div id="chartContainer" style="height: 350px"></div>
 												<div data-intro="You can switch between day, weeek, month and year" data-step="4" style="text-align: center; margin-bottom: 15px;">
-													<jsp:include page="spanchecker.jsp"></jsp:include>
+													<jsp:include page="../spanchecker.jsp"></jsp:include>
 												
 												</div>
 
@@ -358,29 +396,4 @@ function googleTranslateElementInit() {
 					
 					
 				</div>
-				<!-- /main charts -->
-
-
-			
-
-			
-			<!-- /main content -->
-
-		</div>
-		<!-- /page content -->
-
-	</div>
-	
-	</div>
-	<!-- /page container -->
-
-
-    <!-- Footer -->
-  <jsp:include page="footer.jsp"></jsp:include>
-	<!-- /footer -->
-	<!-- Dependencies -->
-  <jsp:include page="pagedependencies/postingfrequency.jsp"></jsp:include>
-  <!-- End of Dependencies -->
-
-</body>
-</html>
+ <jsp:include page="../pagedependencies/postingfrequency.jsp"></jsp:include>

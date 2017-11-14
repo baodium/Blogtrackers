@@ -1,19 +1,192 @@
-<%@page import="java.util.*"%>
+
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@page import="java.util.*"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.Map.Entry"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Locale"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.io.IOException"%>
+<%@page import="java.text.*"%>
+<%@page import="javax.servlet.ServletException"%>
+<%@page import="javax.servlet.annotation.WebServlet"%>
+<%@page import="javax.servlet.http.*"%>
+<%@page import="org.json.simple.JSONObject"%>
+<%@page import="blogtracker.gui.blogtrackers.*"%>
+<%@page import="blogtracker.util.*"%>
+<%@page import="javax.json.*"%>
+<%@page import="java.sql.*"%>
+<%@page import="javax.json.*"%>
+<%@page import="java.time.*"%>
+<%@page import="wrapper.InfluenceServlet"%>
+<%@page import="blogtracker.util.Common"%>
+
+
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8" isELIgnored="false"%>
-<%
+	
+	<%
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
 	if (username == null || username == "") {
 		response.sendRedirect("index.jsp");
 	}
-        ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
-%>
+	
+    ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
+    
+    
+    //private static final long serialVersionUID = 1L;
+	PostingFrequencyDialog pfDialog= new PostingFrequencyDialog();
+	Common common= new Common();
+	TrackerDialog trackerDialog = new TrackerDialog();
+	BloggerInfoDialog biDialog= new BloggerInfoDialog();
+	InfluenceServlet inf = new InfluenceServlet();
+	InfluenceDialog iflDialog= new InfluenceDialog();
+	Common ccommon= new Common();
+	
+	if(request.getParameter("tracker")!=null){
+		String tracker = request.getParameter("tracker");
+		session.setAttribute("tracker", tracker);
+		String userName = (String) session.getAttribute("user");
+		String selectedSites=trackerDialog.getSelectedSites(userName,tracker);
+
+		ArrayList<JSONObject> brNameList = biDialog.getBloggerNames(selectedSites);
+		session.setAttribute("brNameList", brNameList);
+
+		ArrayList<BeanAllSites> allSites=trackerDialog.getSiteNames(selectedSites);
+		if(session.getAttribute("bsName")!=null)
+			session.removeAttribute("bsName");
+		session.setAttribute("allSepSites", allSites);
+	}
+	else if(request.getParameter("datepicked")!= null){	
+		String date =request.getParameter("datepicked");
+		session.setAttribute("datepicked", date);
+		List<String> aa=common.returnDates(date);
+		String scale=common.returnScale(aa);
+		if(session.getAttribute("tracker")!=null){
+			session.setAttribute("errorMessage", "");
+			String userName = (String) session.getAttribute("user");
+			String trackerName = (String) session.getAttribute("tracker");
+			String datePicked = (String) session.getAttribute("datepicked");
+			TrackerDialog dialog= new TrackerDialog();
+			String selectedSites=dialog.getSelectedSites(userName,trackerName);
+			try{
+			inf.getRequestedData(scale,selectedSites,datePicked,session);
+			}catch(Exception ex){}
+		}else{
+			session.setAttribute("errorMessage", "Please Select Tracker then Date");
+		}
+	}
+
+	else if(request.getParameter("infl_option")!=null){
+		String scale=request.getParameter("infl_option");
+		System.out.println(request.getParameter("infl_option"));
+
+		session.setAttribute("inflCalScale", scale);
+		if(session.getAttribute("datepicked")!=null && session.getAttribute("tracker")!=null){
+			session.setAttribute("errorMessage", "");
+			//				session.removeAttribute("errorMessage");
 
 
- <jsp:include page="include_top.jsp"></jsp:include>
+			String userName = (String) session.getAttribute("user");
+			String trackerName = (String) session.getAttribute("tracker");
+			String datePicked = (String) session.getAttribute("datepicked");
+			String selectedSites=trackerDialog.getSelectedSites(userName,trackerName);
+			inf.getRequestedData(scale,selectedSites,datePicked,session);
+
+		}
+		else{
+			session.setAttribute("errorMessage", "Please Select Tracker or Date");
+		}
+
+	}
+
+	//		else if(request.getParameter("monthFreq")!=null || request.getParameter("dayFreq")!=null 
+	//				|| request.getParameter("weekFreq")!=null || request.getParameter("yearFreq")!=null){
+	//
+	//			if(session.getAttribute("datepicked")!=null && session.getAttribute("tracker")!=null){
+	//				session.setAttribute("errorMessage", "");
+	//				String scale=null;
+	//				if(request.getParameter("dayFreq")!=null){ scale="day"; }
+	//				else if(request.getParameter("weekFreq")!=null){ scale="week"; }
+	//				else if(request.getParameter("monthFreq")!=null){ scale="month"; }
+	//				else if(request.getParameter("yearFreq")!=null){ scale="year"; }
+	//
+	//				String userName = (String) session.getAttribute("user");
+	//				String trackerName = (String) session.getAttribute("tracker");
+	//				String datePicked = (String) session.getAttribute("datepicked");
+	//				String selectedSites=trackerDialog.getSelectedSites(userName,trackerName);
+	//				getRequestedData(scale,selectedSites,datePicked,session);
+	//
+	//			}else{
+	//				session.setAttribute("errorMessage", "Please Select Tracker or Date");
+	//			}
+	//
+	//		}
+
+	else if (request.getParameter("inflPost")!=null){
+		String incomingName = request.getParameter("inflPost");
+		System.out.println("onClick -"+incomingName);
+		String type=(String) session.getAttribute("inflCalScale");
+		String extractedDate=incomingName.substring(0, 15);
+		String bloggerName=incomingName.substring(incomingName.lastIndexOf(')') + 2, incomingName.length());
+		DateFormat df = new SimpleDateFormat("EEE MMM dd yyyy"); 
+		DateFormat df1 = new SimpleDateFormat("yyyy-MM-dd"); 
+		Calendar c = Calendar.getInstance();
+		Date date;
+		String newStartDate = null;
+		String newEndDate;
+		try {
+			date = df.parse(extractedDate);
+			newStartDate = df1.format(date);
+			c.setTime(df1.parse(newStartDate));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		if(type.equalsIgnoreCase("day")){
+			c.add(Calendar.DATE, 1);	
+		}else if (type.equalsIgnoreCase("week")) {
+			c.add(Calendar.DATE, 7);
+		}else if (type.equalsIgnoreCase("month")) {
+			c.add(Calendar.MONTH, 1);
+		}else if (type.equalsIgnoreCase("year")) {
+			c.add(Calendar.YEAR, 1);
+		}
+		newEndDate = df1.format(c.getTime()); 
+		String userName = (String) session.getAttribute("user");
+		String trackerName = (String) session.getAttribute("tracker");
+		String selectedSites=trackerDialog.getSelectedSites(userName,trackerName);
+
+		String inflBlogPost = iflDialog.getInfluentialPost(newStartDate, newEndDate, selectedSites, bloggerName);
+		session.setAttribute("inflBlogPost", inflBlogPost);
+
+	}else{
+		String scatClickData = request.getParameter("scatterClick");
+		String bloggerName=scatClickData.substring(1, scatClickData.indexOf("<"));
+
+		String userName = (String) session.getAttribute("user");
+		String trackerName = (String) session.getAttribute("tracker");
+		String datePicked = (String) session.getAttribute("datepicked");
+		String selectedSites=trackerDialog.getSelectedSites(userName,trackerName);
+
+		//Common ccommon= new Common();
+		List<String> aa=common.returnDates(datePicked);
+		String d1 = aa.get(0);
+		String d2 = aa.get(1);
+
+		ArrayList<BeanTopKeywords> scatWordList=iflDialog.getTopKeywords(bloggerName,selectedSites,d1,d2); 
+		System.out.println(scatWordList);
+		session.setAttribute("scatWordList", scatWordList);
+	}
+	
+	%>
+	
+	
 <% ArrayList mytrackers = new ArrayList();
 mytrackers = (ArrayList)session.getAttribute("trackers");
 int trackerSize = mytrackers.size();
@@ -21,52 +194,8 @@ int trackerSize = mytrackers.size();
     {%>
     <c:redirect url="setup_tracker.jsp"/>	
   <% } %> 
-	<!-- Page header -->
-	<div class="page-header mb-20">
-		<div class="page-header-content">
-			<div class="page-title">
-				<h4>
-					<i class="icon-arrow-left52 position-left"></i>
-					<span class="text-semibold">Influence</span>
 
-				</h4>
-				<ul class="breadcrumb breadcrumb-caret position-right">
-					<li><a href="features.jsp">Home</a></li>
-					<li ><a href="trackerlist.jsp">Tracker List </a></li>
-					<li> <a href="analytics.jsp">Analytics</a></li>
-					<li class="active">Influence (Current Tracker: <%=session.getAttribute("tracker")%>)</li>
-				</ul>
-			<!-- 	<div class="heading-elements">
-				<div class="heading-btn-group">
-					<button type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-plus2"></i></b> Setup a new tracker</button>
-					<button type="button" href="javascript:void(0);" onclick="javascript:introJs().start();" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-reading "></i></b> Tour Page</button>
-				 <button id="google_translate_element" class="btn btn-default"><script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'ar', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-}
-</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-				
-				</button>
-			</div>
-		</div> -->
-			</div>
-
-
-		</div>
-	</div>
-	<!-- /page header -->
-
-
-	<!-- Page container -->
-	<div class="page-container">
-
-		<!-- Page content -->
-		<div class="page-content">
-
-			<!-- Main content -->
-			<div class="content-wrapper" id="body-result">
-
-				<!-- Main charts -->
+<!-- Main charts -->
 				<div class="row">
 				<div class="col-md-12">
 						<div class="panel panel-primary">
@@ -381,48 +510,5 @@ function googleTranslateElementInit() {
 					
 					</div>
 					
-					
-				
-				
-				      
-				      
-				      
-				      
-				      
-				    
-			      
-			      
-				      
-					
-					
-					
-					
-					
 				</div>
-				<!-- /main charts -->
-
-
-			
-
-			
-			<!-- /main content -->
-
-		</div>
-		<!-- /page content -->
-
-	</div>
-	
-	</div>
-	<!-- /page container -->
-
-
-	   <!-- Footer -->
-  <jsp:include page="footer.jsp"></jsp:include>
-	<!-- /footer -->
-	<!-- Dependencies -->
-  <jsp:include page="pagedependencies/influence.jsp"></jsp:include>
-  <!-- End of Dependencies -->
-	
-	
-</body>
-</html>
+<jsp:include page="../pagedependencies/influence.jsp"></jsp:include>

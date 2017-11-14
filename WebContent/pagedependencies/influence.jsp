@@ -76,10 +76,13 @@
 
 
 			<script type="text/javascript">
-				window.onload = function() {
-
+				//window.onload = 
+					$(document).ready(function() {
+					try{
 					var tabData1 = '${INFBlScz}';
+					
 					tabData = JSON.parse(tabData1);
+					
 
 					var gr1 = '${inflGraph0}';
 					var f1 = [];
@@ -309,7 +312,8 @@
 						} ]
 					});
 					chart1.render();
-				}
+					}catch(e){}
+				});
 				window.popup = function(title, message) {
 					$.post('InfluenceServlet', {
 						scatterClick : title
@@ -321,17 +325,19 @@
 
 			<script>
 				var tabData1 = '${scatWordList}';
+				try{
 				tabData = JSON.parse(tabData1);
-				var finalz = new Array();
-				for (var i = 0; i < tabData.length; i++) {
-					finalz.push({
-						text : tabData[i].term,
-						weight : tabData[i].frequency
+					var finalz = new Array();
+					for (var i = 0; i < tabData.length; i++) {
+						finalz.push({
+							text : tabData[i].term,
+							weight : tabData[i].frequency
+						});
+					}
+					$(function() {
+						$("#my_words").jQCloud(finalz);
 					});
-				}
-				$(function() {
-					$("#my_words").jQCloud(finalz);
-				});
+				}catch(Exception){}
 			</script>
 			
 <script>
@@ -463,10 +469,25 @@ $('#reportrange').data(
 					$(".loader").removeClass("hidden");
 					document.getElementById("trackerform").submit();
 				}
+				
 				function datechanged() {
 					$(".loader").removeClass("hidden");
-					document.getElementById("dateform").submit();
+					//document.getElementById("dateform").submit();
+					var datepicked = $("#datepicked").val();
+					$("#body-result").html("<div style='text-align:center; padding:150px'><img src='assets/images/preloader.gif' /><br/></div>");
+				       
+					$.ajax({
+				        url: app_url+'webtemplates/influence_loader.jsp',
+						method:'POST',
+						//async: true,
+						data:{datepicked:datepicked,is_request:true},
+				        success: function(response)
+				        {	
+				        	$("#body-result").html(response);
+				        }
+				    });
 				}
+				
 			</script>
 			<script>
 				$(document).ready(function() {

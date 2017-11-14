@@ -80,7 +80,7 @@ int trackerSize = mytrackers.size();
 		<div class="page-content">
 
 			<!-- Main content -->
-			<div class="content-wrapper">
+			<div class="content-wrapper" id="body-result" >
 
 				<!-- Main charts -->
 				<div class="row">
