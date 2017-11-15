@@ -34,19 +34,7 @@ public class DBConnector {
 	//"jdbc:mysql://144.167.112.118:3306/blogtrackers"
 	//"jdbc:mysql://localhost:3306/blogtrackers"
 	public  DBConnector(){
-		String dbURL =  "jdbc:mysql://localhost:3306/blogtrackers";//"jdbc:mysql://144.167.112.118:3306/blogtrackers"; //144.167.112.118 ukraine_super, summer2014
-        String username ="root";//"ukraine_super";
-	    String password = "";//"summer2014";      
-		//Statement stmt = null;
-		//ResultSet rs = null;
-		try{
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			dbCon = DriverManager.getConnection(dbURL, username, password);
-			//System.out.println(dbCon);
-		}catch(Exception ex){
-			//System.out.println(ex);
-			System.out.println("Unable to connect!");
-		}
+		getConn();
 	}
 
 	public Connection getConnection(){
@@ -114,7 +102,7 @@ public class DBConnector {
 		java.sql.Statement stmt = null;
 		ResultSet rs = null;   
 		try {
-			con = getConnection();//getConn();//Connection();//getConection//DriverManager.getConnection(dbURL, username, password);
+			con = getConn();//getConn();//Connection();//getConection//DriverManager.getConnection(dbURL, username, password);
 			stmt = con.prepareStatement(query);
 			rs = stmt.executeQuery(query); 
 			ResultSetMetaData rsmd = rs.getMetaData();
@@ -130,8 +118,12 @@ public class DBConnector {
 				result.add(i,output);
 				i++;
 			}
+			//rs.close();
+			//stmt.close();
+			//con.close();
 
 		} catch (SQLException ex) {
+			System.out.println(ex);
 			result.add(0,"Err");          
 		} finally {
 			if (rs != null) {
@@ -162,7 +154,7 @@ public class DBConnector {
 		ResultSet rs = null;             
 		boolean donee;// =false;
 		try {
-			con = getConnection();//getConection//DriverManager.getConnection(dbURL, username, password);
+			con = getConn();//getConection//DriverManager.getConnection(dbURL, username, password);
 			stmt = con.prepareStatement(query);
 			//stmt = con.prepareStatement(medication_query);
 			int done = stmt.executeUpdate(query);
@@ -241,6 +233,15 @@ public class DBConnector {
 		String query_string ="insert into usercredentials (UserName, Email, Password, MessageDigest, user_type,first_name,last_name,phone_number,address,profile_picture,last_updated,added_by,date_added ) VALUES ('"+name+"','"+email+"','"+password+"','"+digest+"','"+usertype+"','','','','','','','','')";
 		inserted=this.updateTable(query_string);  
 		return inserted;
+	}
+	
+	
+	public int getTotal(String table){
+		//this.getConn();
+		ArrayList total =new ArrayList();
+		String query="SELECT * FROM "+table+" "; 
+		total= this.query(query);
+		return total.size();
 	}
 
 	
