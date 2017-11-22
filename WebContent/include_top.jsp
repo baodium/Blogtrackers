@@ -48,6 +48,28 @@
 	<title>Blogtrackers</title>
 
 	<!-- Global stylesheets -->
+	<style>
+
+.links line {
+  stroke: #999;
+  stroke-opacity: 0.6;
+}
+
+.nodes circle {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+	#mynetwork {
+            width: 100%;
+            height: 500px;
+            border: 1px solid #444444;
+            background-color: #eeeded;
+        }
+
+</style>
+<script type="text/javascript" src="dist/vis.js"></script>
+    <link href="dist/vis-network.min.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
 	<link href="assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
@@ -55,6 +77,7 @@
 	<link href="assets/css/components.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/colors.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/introjs.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/jquery-ui.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/mystyle2.css" rel="stylesheet" type="text/css">
 
 	

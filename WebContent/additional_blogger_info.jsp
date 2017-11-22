@@ -25,9 +25,9 @@ int trackerSize = mytrackers.size();
 	<!-- Page header -->
 	<div class="page-header mb-20">
 		<div class="page-header-content">
-			<div class="page-title">
+			<div class="page-title mb-20">
 				<h4>
-					<i class="icon-arrow-left52 position-left"></i>
+					<a href="<%=request.getContextPath()%>/analytics.jsp"><i class="icon-arrow-left52 position-left"></i></a>
 					<span class="text-semibold">Additional Blogger Information</span>
 <%-- <small class="display-block"><span>Welcome, </span><%=username %> (Current Tracker: <%=session.getAttribute("tracker")%>) --%>
 				</h4>
@@ -37,7 +37,19 @@ int trackerSize = mytrackers.size();
 					<li> <a href="analytics.jsp">Analytics</a></li>
 					<li class="active">Additional Blogger Info (Current Tracker: <%=session.getAttribute("tracker")%>)</li>
 				</ul>	
+				
+				
 			</div>
+			<div class="form-group ">
+				<div class="col-md-12 mb-20">
+				
+				<div class="input-group">
+				<input type="text" class="form-control" placeholder="Enter a blogger name to search" id="searchtextbox" autocomplete="off">
+											<span class="input-group-btn" style="padding-left:0px;"><button type="button" class="btn btn-primary">Search</button></span>
+											
+										</div>
+										</div>
+										</div>
 
 
 		</div>
@@ -70,7 +82,7 @@ int trackerSize = mytrackers.size();
 							</div>
 
 							<div class="panel-body">
-							<div class="col-md-4">
+							<div class="col-md-4 hidden">
 							
 							<div id="address-book" class="scroll" style="height:400px;">
 														<div class="slider-content">
@@ -86,9 +98,9 @@ int trackerSize = mytrackers.size();
 																</div>
 							
 							</div>
-							<div class="col-md-8">
+							<div class="col-md-12">
 							
-							<div class="panel panel-primary">
+							<div class="panel panel-default">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blogger Details <a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -153,7 +165,7 @@ int trackerSize = mytrackers.size();
 							</div>
 					</div>
 								
-								<div class="panel panel-primary">
+								<div class="panel panel-default">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blog Content<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">

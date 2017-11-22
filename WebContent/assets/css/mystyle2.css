@@ -509,7 +509,7 @@ width:100% !important;
 float:right !important;
 position:absolute !important; 
 right:10px; 
-top:12px;	
+top:7px;	
 }
 .scroll2
 {
@@ -537,4 +537,26 @@ color: #2196F3;
 .panel-default > .panel-heading
 {
 background-color:#eeeded !important;	
+}
+@media screen and (min-width: 769px)
+{
+.page-container 
+{
+width:90% !important;
+margin:0 5% !important;	
+}
+.page-header-content
+{
+width:90% !important;
+margin:0 5% !important;	
+}
+.navbar 
+{
+padding-left: 6% !important;
+padding-right: 6% !important;	
+}
+.settracker
+{
+right:6% !important;	
+}	
 }

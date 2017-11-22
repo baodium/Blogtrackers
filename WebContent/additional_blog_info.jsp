@@ -23,10 +23,16 @@
 		<div class="page-header-content">
 			<div class="page-title">
 				<h4>
-					<i class="icon-arrow-left52 position-left"></i>
+					<a href="<%=request.getContextPath()%>/analytics.jsp"><i class="icon-arrow-left52 position-left"></i></a>
 					<span class="text-semibold">Additional Blog Information</span>
 <%-- <small class="display-block"><span>Welcome, </span><%=username %></small> --%>
 				</h4>
+				<ul class="breadcrumb breadcrumb-caret position-right">
+					<li><a href="features.jsp">Home</a></li>
+					<li ><a href="trackerlist.jsp">Tracker List </a></li>
+					<li> <a href="analytics.jsp">Analytics</a></li>
+					<li class="active">Additional Blog Info (Current Tracker: <%=session.getAttribute("tracker")%>)</li>
+				</ul>
 				<!-- <div class="form-group">
 				<div class="col-md-12">
 				

@@ -122,6 +122,8 @@ public class PostingFrequency extends HttpServlet {
 			else{
 				session.setAttribute("errorMessage", "Please Select Tracker then Date");
 			}
+			
+			
 		}
 
 		else if(request.getParameter("options")!=null){
@@ -194,7 +196,11 @@ public class PostingFrequency extends HttpServlet {
 
 		}
 		response.setContentType("text/html");
-		response.sendRedirect("posting_frequencey.jsp");
+		if(request.getParameter("is_request")!= null) {
+			request.getRequestDispatcher("../webtemplates/postingfrequencey_loader.jsp").include(request,response);
+		}else {
+		 response.sendRedirect("posting_frequencey.jsp");
+		}
 	}
 
 
@@ -204,7 +210,7 @@ public class PostingFrequency extends HttpServlet {
 	 * @param datePicked
 	 * @param session
 	 */
-	private void getRequestedData(String calScale, String selectedSites, String datePicked, HttpSession currentSession) {
+	public void getRequestedData(String calScale, String selectedSites, String datePicked, HttpSession currentSession) {
 		System.out.println(datePicked);
 		List<String> aa=common.returnDates(datePicked);
 		String d1 = aa.get(0);
@@ -227,4 +233,6 @@ public class PostingFrequency extends HttpServlet {
 		currentSession.setAttribute("topBloggers", blogger);
 		currentSession.setAttribute("calScale", calScale);
 	}
+	
+	
 }

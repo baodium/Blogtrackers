@@ -34,7 +34,7 @@ int trackerSize = mytrackers.size();
 		<div class="page-header-content">
 			<div class="page-title">
 				<h4>
-					<i class="icon-arrow-left52 position-left"></i>
+					<a href="<%=request.getContextPath()%>/analytics.jsp"><i class="icon-arrow-left52 position-left"></i></a>
 					<span class="text-semibold">Posting Frequency</span>
 			<%-- <small class="display-block"><span>Welcome, </span><%=username %> <font color="red">${errorMessage}</font></small> --%>
 			
@@ -43,7 +43,7 @@ int trackerSize = mytrackers.size();
 					<li><a href="features.jsp">Home</a></li>
 					<li ><a href="trackerlist.jsp">Tracker List </a></li>
 					<li> <a href="analytics.jsp">Analytics</a></li>
-					<li class="active">Data Presentation (Current Tracker: <%=session.getAttribute("tracker")%>)</li>
+					<li class="active">Posting Frequency (Current Tracker: <%=session.getAttribute("tracker")%>)</li>
 				</ul>
 			</div>
 				<!-- <div class="heading-elements">
@@ -72,7 +72,7 @@ function googleTranslateElementInit() {
 		<div class="page-content">
 
 			<!-- Main content -->
-			<div class="content-wrapper">
+			<div class="content-wrapper" id="body-result" >
 
 				<!-- Main charts -->
 				<div class="row">
@@ -87,19 +87,19 @@ function googleTranslateElementInit() {
 										<i class="icon-calendar3 position-left"></i> <span></span>  
 					<b class="caret"></b>
 									</button>
+									<input type="hidden" name="is_request" value="yes">
 									<input type="hidden" id="datepicked" name="datepicked"  onchange="datechanged()" />
 			                	</div>
 								</form>
 								</div>
 							</div>
-							<form name="pf_spanForm" id="pf_spanForm"
-									action="PostingFrequency" method="post">
-							<div class="panel-body">
+							<form name="pf_spanForm" id="pf_spanForm" action="PostingFrequency" method="post">
+							<div class="panel-body" >
 							
 							<div class="col-lg-8 col-md-8 col-sm-12">
 								<!--  <div class="chart-container">
 							<div class="chart" id="c3-line-regions-chart"></div>
-						</div>	-->
+						     </div>	-->
 							<div data-intro="Select a data point on the graph" data-step="3" class="demo-container">
 												<div id="chartContainer" style="height: 350px"></div>
 												<div data-intro="You can switch between day, weeek, month and year" data-step="4" style="text-align: center; margin-bottom: 15px;">

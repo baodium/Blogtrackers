@@ -55,7 +55,8 @@
 					src="${pageContext.request.contextPath}/vendors/canvasjs/canvasjs.min.js"></script>
 					
 					<script type="text/javascript">
-					window.onload = function() {
+					//window.onload = 
+						$(document).ready(function() {
 						var tabData1 = '${frequency}';
 						var finals = [];
 						if (tabData1.length != 0) {
@@ -104,7 +105,7 @@
 							} ]
 						});
 						chart.render();
-					}
+					});
 					window.alert = function(title, message) {
 						$.post('PostingFrequency', {
 							data : title
@@ -291,7 +292,32 @@ $('#destroy').click(
 		}
 		function datechanged() {
 			$(".loader").removeClass("hidden");
-		document.getElementById("dateform").submit();
+			
+			
+		//document.getElementById("dateform").submit();
+		
+		
+		var datepicked = $("#datepicked").val();
+		$("#body-result").html("<div style='text-align:center; padding:150px'><img src='assets/images/preloader.gif' /><br/></div>");
+	       
+        //var start = document.forms['dateform']['daterangepicker_start'].value;
+        //var end = document.forms['dateform']['daterangepicker_end'].value;
+       // console.log(datepicked); return false;
+		$.ajax({
+	        url: app_url+'webtemplates/postingfrequencey_loader.jsp',
+			method:'POST',
+			//async: true,
+			data:{datepicked:datepicked,is_request:true},
+	        success: function(response)
+	        {	
+	        	 console.log(response);
+	        	$("#body-result").html(response);
+	        }
+	    });
+
+		
+		
+		
 		}
 		function spanChanged() {
 			document.getElementById("pf_spanForm").submit();

@@ -239,7 +239,8 @@ public class getGraphData extends UtilFunctions
 			}
 			try
 			{
-				if(rSet1.next())
+				if(rSet1!=null) {
+				if(rSet1.next() )
 				{   //System.out.println(rSet1.getObject(1).toString());
 					//adding chart fields.
 					if(calScale.equals("day")||calScale.equals("week"))
@@ -266,6 +267,7 @@ public class getGraphData extends UtilFunctions
 							}
 
 
+				}
 				}
 
 			}catch(SQLException e)

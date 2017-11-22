@@ -82,10 +82,9 @@
       // Radar chart
       var ctx = document.getElementById("canvasRadar");
       var data = {
-        labels: ["Work", "Leisure", "Home", "Money", "Religion", "Death"],
-       
-        datasets: ${radar}
-    		};
+        	labels: ["Work", "Leisure", "Home", "Money", "Religion", "Death"], 
+        	datasets: [${radar}]
+    		}
       var canvasRadar = new Chart(ctx, {
         type: 'radar',
         data: data,
@@ -96,7 +95,7 @@
       var ctx = document.getElementById("canvasRadar1");
       var data = {  		 
     	labels: ["Past focus", "Present focus", "Future focus"],
-        datasets:${radar1}
+        datasets:[${radar1}]
        };
 
 
@@ -111,7 +110,7 @@
       var ctx = document.getElementById("canvasRadar2");
       var data = {
         labels: ["Affiliation", "Achievement", "Power", "Reward focus", "Risk/prevention focus"],
-        datasets: ${radar2}
+        datasets: [${radar2}]
       };
 
       var canvasRadar2 = new Chart(ctx, {
@@ -124,7 +123,7 @@
       var ctx = document.getElementById("canvasRadar3");
       var data = {
         labels: ["Insight", "Cause", "Discrepancies", "Tentativeness", "Certainty", "Differentiation"],
-        datasets: ${radar3}
+        datasets: [${radar3}]
       };
 
       var canvasRadar3 = new Chart(ctx, {
@@ -136,7 +135,7 @@
       var ctx = document.getElementById("canvasRadar4");
       var data = {
         labels: ["Analytical Thinking", "Clout", "Authentic", "Emotional Tone"],
-        datasets: ${radar4}
+        datasets: [${radar4}]
       };
 
 
@@ -150,7 +149,7 @@
       var ctx = document.getElementById("canvasRadar5");
       var data = {
         labels: ["Positive emotion", "Negative emotion", "Anxiety", "Anger", "Sadness"],
-        datasets: ${radar5}
+        datasets: [${radar5}]
       };
 
       var canvasRadar5 = new Chart(ctx, {
@@ -164,81 +163,79 @@
     </script>
     
 					<script type="text/javascript">
-  window.onload = function () {
+  //window.onload = 
+$(document).ready(function () {
     var chart = new CanvasJS.Chart("chartContainer",
     {
-      title: {
-        text: ""
-      },
-      legend: {
-       horizontalAlign: "right", // "center" , "right" (fahad)
-       verticalAlign: "bottom",
-       fontSize: 25
-       },
-       animationEnabled: true,
-       axisX:{
-        
-        labelFontSize: 12, 
-         interval: 1,
-       intervalType: '${span}',
-        valueFormatString: "DD MMM YYYY"   // "DD MMM" for date and month, "MMM" for month only , "YYYY" year only (fahad)
-         
-      },
-      axisY:{
-        labelFontSize: 12
-      },
+			      title: {
+			        text: ""
+			      },
+			      legend: {
+			       horizontalAlign: "right", // "center" , "right" (fahad)
+			       verticalAlign: "bottom",
+			       fontSize: 25
+			       },
+			       animationEnabled: true,
+			       axisX:{
+			        
+			        labelFontSize: 12, 
+			         interval: 1,
+			       intervalType: '${span}',
+			        valueFormatString: "DD MMM YYYY"   // "DD MMM" for date and month, "MMM" for month only , "YYYY" year only (fahad)
+			         
+			      },
+			      axisY:{
+			        labelFontSize: 12
+			      },
        exportEnabled: true,
         data: [
             {
-          click: function(e){
-        	  $(".loader").removeClass("hidden");
-         xychange( "dataSeries Event => Type: "+ e.dataSeries.type+ ", dataPoint { x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y + " }");
-         $('#chartpoint input').val(" x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y).trigger('change');
-        },
-      
-        type: "line",
-        showInLegend: true,
-        legendMarkerType: "circle",
-        legendText: "Positive Sentiments",
-        color: "green",
-        fillOpacity: 0,
-        name : "Positve Sentiments",
-        dataPoints: ${trendpos}          //array
-        },
-      
-      { 
-          click: function(e){
-         xychange( "dataSeries Event => Type: "+ e.dataSeries.type+ ", dataPoint { x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y + " }");
-         $('#chartpoint input').val(" x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y).trigger('change');    
-        },
-      
-        type: "line",
-        showInLegend: true,
-        legendMarkerType: "circle",
-        legendText: "Negative Sentiments",
-        color: "red",
-        fillOpacity: 0,
-        name:"Negative Sentiments",
-        dataPoints: //array
-		${trendneg}
-        
-     }
-      ],
+		          click: function(e){
+		        	  $(".loader").removeClass("hidden");
+		        	 xychange( "dataSeries Event => Type: "+ e.dataSeries.type+ ", dataPoint { x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y + " }");
+		         	$('#chartpoint input').val(" x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y).trigger('change');
+		        	},
+		      
+		        type: "line",
+		        showInLegend: true,
+		        legendMarkerType: "circle",
+		        legendText: "Positive Sentiments",
+		        color: "green",
+		        fillOpacity: 0,
+		        name : "Positve Sentiments",
+		        dataPoints: ${trendpos}          //array
+        	},
+      		{ 
+		        click: function(e){
+		         xychange( "dataSeries Event => Type: "+ e.dataSeries.type+ ", dataPoint { x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y + " }");
+		         $('#chartpoint input').val(" x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y).trigger('change');    
+		        },
+		      
+		        type: "line",
+		        showInLegend: true,
+		        legendMarkerType: "circle",
+		        legendText: "Negative Sentiments",
+		        color: "red",
+		        fillOpacity: 0,
+		        name:"Negative Sentiments",
+		        dataPoints: ${trendneg},
+        	}],
       legend : {
-			cursor : "pointer",
-			itemclick : function(e) {
-			if (typeof (e.dataSeries.visible) === "undefined"
-					|| e.dataSeries.visible) {
-				e.dataSeries.visible = false;
-			} else {
-				e.dataSeries.visible = true;
-			}
-			chart.render();
-			}
+				cursor : "pointer",
+				itemclick : function(e) {
+					if (typeof (e.dataSeries.visible) === "undefined"
+							|| e.dataSeries.visible) {
+						e.dataSeries.visible = false;
+					} else {
+						e.dataSeries.visible = true;
+					}
+					chart.render();
+				}
 		}
     });
     chart.render();
-  }
+  });
+  
   window.xychange = function(title, message){
     var myElementToShow = document.getElementById("xychange");
     myElementToShow.innerHTML = title + "</br>" + message; 
@@ -406,7 +403,20 @@ $('#destroy').click(
    		function datechanged()
        	{
        	$(".loader").removeClass("hidden");
-             document.getElementById("dateform").submit();
+            // document.getElementById("dateform").submit();
+       	var datepicked = $("#datepicked").val();
+			$("#body-result").html("<div style='text-align:center; padding:150px'><img src='assets/images/preloader.gif' /><br/></div>");
+		       
+			$.ajax({
+		        url: app_url+'webtemplates/sentiment_loader.jsp',
+				method:'POST',
+				//async: true,
+				data:{datepicked:datepicked,is_request:true},
+		        success: function(response)
+		        {	
+		        	$("#body-result").html(response);
+		        }
+		    });
              
         }
    		function trackerchanged()
@@ -418,15 +428,58 @@ $('#destroy').click(
    		function xychanged()
    		{
    		 $(".loader").removeClass("hidden");
-   			document.getElementById("xyform").submit();
+   			//document.getElementById("xyform").submit();
+   			var xy = $("#xychange").val();
+			$("#body-result").html("<div style='text-align:center; padding:150px'><img src='assets/images/preloader.gif' /><br/></div>");
+		       
+			$.ajax({
+		        url: app_url+'webtemplates/sentiment_loader.jsp',
+				method:'POST',
+				//async: true,
+				data:{xychange:xy,is_request:true},
+		        success: function(response)
+		        {	
+		        	// console.log(response);
+		        	$("#body-result").html(response);
+		        }
+		    });
    		}
    		function aggr_norm_changed()
    		{
    		 $(".loader").removeClass("hidden");
-   			document.getElementById("trendtype").submit();
+   			//document.getElementById("trendtype").submit();
+   		//var xy = $("#xychange").val();
+   		var aggr = document.forms['trendtype'].aggr_norm.value;//$("#xychange").val();
+		$("#body-result").html("<div style='text-align:center; padding:150px'><img src='assets/images/preloader.gif' /><br/></div>");
+	       
+		$.ajax({
+	        url: app_url+'webtemplates/sentiment_loader.jsp',
+			method:'POST',
+			//async: true,
+			data:{aggr_norm:aggr,is_request:true},
+	        success: function(response)
+	        {	
+	        	// console.log(response);
+	        	$("#body-result").html(response);
+	        }
+	    });
    		}
    		function spanChanged() {
-			document.getElementById("st_spanform").submit();
+			//document.getElementById("st_spanform").submit();
+   			var stspan = document.forms['st_spanform'].options.value;//$("#xychange").val();
+			$("#body-result").html("<div style='text-align:center; padding:150px'><img src='assets/images/preloader.gif' /><br/></div>");
+		       
+			$.ajax({
+		        url: app_url+'webtemplates/sentiment_loader.jsp',
+				method:'POST',
+				//async: true,
+				data:{options:stspan,is_request:true},
+		        success: function(response)
+		        {	
+		        	// console.log(response);
+		        	$("#body-result").html(response);
+		        }
+		    });
 		}
    		
    	    

@@ -31,12 +31,11 @@ public class DBConnector {
 	public String current_user;
 	public String current_user_type;
 	
-	//jdbc:mysql://blogtrackers.host.ualr.edu:3306/blogtrackers ukraine_user
-	//"jdbc:mysql://144.167.112.118:3306/blogtrackers" ukraine_super
+	//"jdbc:mysql://144.167.112.118:3306/blogtrackers"
 	//"jdbc:mysql://localhost:3306/blogtrackers"
 	public  DBConnector(){
-		String dbURL =  "jdbc:mysql://blogtrackers.host.ualr.edu:3306/blogtrackers"; 
-        String username ="ukraine_user";
+		String dbURL =  "jdbc:mysql://144.167.112.118:3306/blogtrackers"; //144.167.112.118 ukraine_super, summer2014
+        String username ="ukraine_super";
 	    String password = "summer2014";      
 		//Statement stmt = null;
 		//ResultSet rs = null;
@@ -54,59 +53,7 @@ public class DBConnector {
 		return dbCon;  
 	}
 	
-	
-    protected Connection getConn()
-    {
-        try {
-        	/*
-            loadConstants();//"jdbc:sqlserver://149.169.226.79:1433;instanceName=DMMLSERVER;databaseName=blogtrackers;SelectMethod=cursor;user=shamanth;password=shamanth123";//loadConstants();//"jdbc:sqlserver://localhost;instanceName=MSSQLSERVER;databaseName=blogtracker;user=test;password=test";
-            String constr = hm.get("dbConnection");
-            String username = hm.get("dbUserName");
-            String password = hm.get("dbPassword");
-            if(constr!=null&&username!=null&&password!=null)
-            {
-                try {
-                    Class.forName("com.mysql.jdbc.Driver").newInstance();
-                    //                        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
-                } catch (InstantiationException ex) {
-                    ex.printStackTrace();
-                } catch (IllegalAccessException ex) {
-                    ex.printStackTrace();
-                }catch (ClassNotFoundException ex) {
-                    ex.printStackTrace();
-                }
-            }
-            Connection conn = DriverManager.getConnection(constr,username,password);
-            return conn;
-            */
-            
-            
-    		String dbURL =  "jdbc:mysql://127.0.0.1:3306/blogtrackers";//"jdbc:mysql://144.167.112.118:3306/blogtrackers"; //144.167.112.118 ukraine_super, summer2014
-            String username ="root";//"ukraine_super";
-            String password = "";//"summer2014";      
-            Statement stmt = null;
-            ResultSet rs = null;
 
-			try {
-	            Class.forName("com.mysql.jdbc.Driver").newInstance();
-	            //                        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
-	        } catch (InstantiationException ex) {
-	            ex.printStackTrace();
-	        } catch (IllegalAccessException ex) {
-	            ex.printStackTrace();
-	        }catch (ClassNotFoundException ex) {
-	            ex.printStackTrace();
-	        }
-		
-			Connection conn = DriverManager.getConnection(dbURL, username, password);
-			return conn;
-  
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(UtilFunctions.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
 
 	public ArrayList query(String query){
 		ArrayList result=new ArrayList();  

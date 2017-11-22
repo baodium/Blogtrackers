@@ -59,7 +59,7 @@ $(window).load(function() {
 		<div class="page-header-content">
 			<div class="page-title">
 				<h4>
-					<i class="icon-arrow-left52 position-left"></i>
+					<a href="<%=request.getContextPath()%>/analytics.jsp"><i class="icon-arrow-left52 position-left"></i></a>
 					<span class="text-semibold">Sentiments</span>
 	<%-- <small class="display-block"><span>Welcome, </span><%=username %></small> --%>
 				</h4>
@@ -98,7 +98,7 @@ function googleTranslateElementInit() {
 		<div class="page-content">
 
 			<!-- Main content -->
-			<div class="content-wrapper">
+			<div class="content-wrapper" id="body-result">
 
 				<!-- Main charts -->
 				<div class="row">
@@ -264,7 +264,7 @@ function googleTranslateElementInit() {
 														<c:when test="${radio eq 'aggregate'}">
 															<input type="radio" name="aggr_norm" value="aggregate"
 																checked="checked"> Aggregate 
-															<input type="radio" name="aggr_norm" value="normalized"
+															<input type="radio"  name="aggr_norm" value="normalized"
 																onchange="aggr_norm_changed()"> Normalized
 													    </c:when>
 														<c:otherwise>

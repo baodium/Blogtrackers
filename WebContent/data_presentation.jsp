@@ -33,7 +33,7 @@ int trackerSize = mytrackers.size();
 		<div class="page-header-content">
 			<div class="page-title">
 				<h4>
-					<i class="icon-arrow-left52 position-left"></i>
+					<a href="<%=request.getContextPath()%>/analytics.jsp"><i class="icon-arrow-left52 position-left"></i></a>
 					<span class="text-semibold">Data Export</span>
 					
 				</h4>

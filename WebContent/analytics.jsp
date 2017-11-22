@@ -20,7 +20,9 @@
 %>
 
   <jsp:include page="include_top.jsp"></jsp:include>
-  <% ArrayList mytrackers = new ArrayList();
+  <% 
+
+  ArrayList mytrackers = new ArrayList();
 mytrackers = (ArrayList)session.getAttribute("trackers");
 int trackerSize = mytrackers.size();
     if(trackerSize == 0)
@@ -84,7 +86,7 @@ int trackerSize = mytrackers.size();
 		<div class="page-header-content">
 			<div class="page-title">
 				<h4>
-					<i class="icon-arrow-left52 position-left"></i>
+					<a href="<%=request.getContextPath()%>/trackerlist.jsp"><i class="icon-arrow-left52 position-left"></i></a>
 					<span class="text-semibold">Analytics</span>
 					
 			
@@ -297,6 +299,12 @@ function googleTranslateElementInit() {
 				    	</c:when>
 										</c:choose>
 					</div>
+					
+					
+					
+					
+					
+					
 					<div class="col-md-4">
 					<c:choose>
 										<c:when test="${tracker != null}">
@@ -382,7 +390,138 @@ function googleTranslateElementInit() {
 				    	</c:when>
 										</c:choose>
 					</div>
-
+<div class="col-md-4">
+					<c:choose>
+										<c:when test="${tracker != null}">
+											<a href="<%=request.getContextPath()%>/AdditionalBlogger?tracker=${tracker}"> 
+										</c:when>
+										<c:when test="${tracker == null}">
+											<a href="<%=request.getContextPath()%>/additional_blog_info.jsp"> 
+										</c:when>
+					</c:choose>
+						<div class="panel">
+							<div class="panel-body text-center">
+								<div class="icon-object border-success text-success"><i class="icon-puzzle3"></i></div>
+								<h5 class="text-semibold">Additional blog information</h5>
+								<p class="mb-15">Get additional blog information</p>
+								<c:choose>
+										<c:when test="${tracker != null}">
+											<a href="<%=request.getContextPath()%>/AdditionalInfoServlet?tracker=${tracker}" class="btn bg-success-400 legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Additional blog information"> 
+										</c:when>
+										<c:when test="${tracker == null}">
+											<a href="<%=request.getContextPath()%>/additional_blog_info.jsp" class="btn bg-success-400 legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Additional blog information"> 
+										</c:when>
+										</c:choose>
+								
+								View Blog Information
+								<c:choose>
+										<c:when test="${tracker != null}">
+				    	</a>
+				    	</c:when>
+				    		<c:when test="${tracker == null}">
+				    	</a>
+				    	</c:when>
+										</c:choose>
+							</div>
+						</div>
+						<c:choose>
+										<c:when test="${tracker != null}">
+				    	</a>
+				    	</c:when>
+				    		<c:when test="${tracker == null}">
+				    	</a>
+				    	</c:when>
+										</c:choose>
+					</div>
+					
+					<div class="col-md-4">
+					<c:choose>
+										<c:when test="${tracker != null}">
+											<a href="<%=request.getContextPath()%>/AdditionalBlogger?tracker=${tracker}"> 
+										</c:when>
+										<c:when test="${tracker == null}">
+											<a href="<%=request.getContextPath()%>/additional_blogger_info.jsp"> 
+										</c:when>
+					</c:choose>
+						<div class="panel">
+							<div class="panel-body text-center">
+								<div class="icon-object border-warning text-warning"><i class="icon-puzzle3"></i></div>
+								<h5 class="text-semibold">Additional Blogger information</h5>
+								<p class="mb-15">Get additional Blogger information</p>
+								<c:choose>
+										<c:when test="${tracker != null}">
+											<a href="<%=request.getContextPath()%>/AdditionalBlogger?tracker=${tracker}" class="btn bg-warning-400 legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Additional Blogger information"> 
+										</c:when>
+										<c:when test="${tracker == null}">
+											<a href="<%=request.getContextPath()%>/additional_blog_info.jsp" class="btn bg-warning-400 legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Additional Blogger information"> 
+										</c:when>
+										</c:choose>
+								
+								View Blogger Information
+								<c:choose>
+										<c:when test="${tracker != null}">
+				    	</a>
+				    	</c:when>
+				    		<c:when test="${tracker == null}">
+				    	</a>
+				    	</c:when>
+										</c:choose>
+							</div>
+						</div>
+						<c:choose>
+										<c:when test="${tracker != null}">
+				    	</a>
+				    	</c:when>
+				    		<c:when test="${tracker == null}">
+				    	</a>
+				    	</c:when>
+										</c:choose>
+					</div>
+					
+					
+					<div class="col-md-4">
+					<c:choose>
+										<c:when test="${tracker != null}">
+											<a href="<%=request.getContextPath()%>/AdditionalBlogger?tracker=${tracker}"> 
+										</c:when>
+										<c:when test="${tracker == null}">
+											<a href="<%=request.getContextPath()%>/blog_network.jsp"> 
+										</c:when>
+					</c:choose>
+						<div class="panel">
+							<div class="panel-body text-center">
+								<div class="icon-object border-blue text-blue"><i class="icon-share3"></i></div>
+								<h5 class="text-semibold">Blog Network</h5>
+								<p class="mb-15">Get Information about the Network</p>
+								<c:choose>
+										<c:when test="${tracker != null}">
+											<a href="<%=request.getContextPath()%>/blog_network.jsp?tracker=${tracker}" class="btn bg-blue legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Blog Network"> 
+										</c:when>
+										<c:when test="${tracker == null}">
+											<a href="<%=request.getContextPath()%>/blog_network.jsp" class="btn bg-blue legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Blog Network"> 
+										</c:when>
+										</c:choose>
+								
+								View Blog Network
+								<c:choose>
+										<c:when test="${tracker != null}">
+				    	</a>
+				    	</c:when>
+				    		<c:when test="${tracker == null}">
+				    	</a>
+				    	</c:when>
+										</c:choose>
+							</div>
+						</div>
+						<c:choose>
+										<c:when test="${tracker != null}">
+				    	</a>
+				    	</c:when>
+				    		<c:when test="${tracker == null}">
+				    	</a>
+				    	</c:when>
+										</c:choose>
+					</div>
 					
 				</div>
 				<!-- /main charts -->

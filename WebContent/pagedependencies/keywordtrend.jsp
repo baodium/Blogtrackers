@@ -173,17 +173,49 @@ $('#reportrange').data(
    		function datechanged()
        	{
    			$(".loader").removeClass("hidden");
-             document.getElementById("dateform").submit();
+             //document.getElementById("dateform").submit();
+             
+   			var datepicked = $("#datepicked").val();
+   			$("#body-result").html("<div style='text-align:center; padding:150px'><img src='assets/images/preloader.gif' /><br/></div>");
+   		       
+   			$.ajax({
+   		        url: app_url+'webtemplates/keywordtrend_loader.jsp',
+   				method:'POST',
+   				//async: true,
+   				data:{datepicked:datepicked,is_request:true},
+   		        success: function(response)
+   		        {	
+   		        	 //console.log(response);
+   		        	$("#body-result").html(response);
+   		        }
+   		    });
+
         }
    		function trackerchanged()
    	   	{
    			$(".loader").removeClass("hidden");
-   	     		document.getElementById("trackerform").submit();
+   	     		//document.getElementById("trackerform").submit();
+   	     		
+   	     		
    	   	}
    		function xychanged()
    		{
    			$(".loader").removeClass("hidden");
-   			document.getElementById("xyform").submit();
+   			//document.getElementById("xyform").submit();
+   			var xy = $("#xychange").val();
+   			$("#body-result").html("<div style='text-align:center; padding:150px'><img src='assets/images/preloader.gif' /><br/></div>");
+   		       
+   			$.ajax({
+   		        url: app_url+'webtemplates/keywordtrend_loader.jsp',
+   				method:'POST',
+   				//async: true,
+   				data:{xychange:xy,is_request:true},
+   		        success: function(response)
+   		        {	
+   		        	// console.log(response);
+   		        	$("#body-result").html(response);
+   		        }
+   		    });
    		}
    		
    		function searchTracker() {
@@ -222,7 +254,8 @@ $('#reportrange').data(
    </script>	
 	 
 	 	<script type="text/javascript">
-  window.onload = function () {
+		$(document)
+		.ready(function () {
     var chart = new CanvasJS.Chart("chartContainer",
     {
       title: {
@@ -280,7 +313,7 @@ $('#reportrange').data(
 		}
   });
     chart.render();
-    }
+    });
      window.xychange = function(title, message){
     var myElementToShow = document.getElementById("xychange");
     myElementToShow.innerHTML = title + "</br>" + message; 

@@ -66,7 +66,9 @@
 	<div class="page-header mb-20">
 		<div class="page-header-content">
 			<div class="page-title">
-				<h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Setup Tracker</span> </h4>
+				<h4>
+				<a href="<%=request.getContextPath()%>/features.jsp"><i class="icon-arrow-left52 position-left"></i></a> 
+				<span class="text-semibold">Setup Tracker</span> </h4>
 
 				<ul class="breadcrumb breadcrumb-caret position-right">
 					<li><a href="features.jsp">Home</a></li>

@@ -33,7 +33,7 @@
 		<div class="page-header-content">
 			<div class="page-title">
 			<h4>
-					<i class="icon-arrow-left52 position-left"></i>
+					<a href="<%=request.getContextPath()%>/features.jsp"><i class="icon-arrow-left52 position-left"></i></a>
 					<span class="text-semibold">Tracker List</span>
 			</h4>
 			<ul class="breadcrumb breadcrumb-caret position-right">

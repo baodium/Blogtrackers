@@ -11,12 +11,12 @@
 <script type="text/javascript" src="assets/js/plugins/forms/selects/select2.min.js"></script>
 	<script type="text/javascript" src="assets/js/core/app.js"></script>
  <script type="text/javascript" src="assets/js/pages/datatables_basic.js"></script>
-
+ <script type="text/javascript" src="assets/js/jquery-ui.js"></script>
 
 	<script type="text/javascript" src="assets/js/plugins/ui/ripple.min.js"></script>
 	<!-- /theme JS files -->
 
-<script type="text/javascript" src="js/slidernav/slidernav.js"></script>
+<!-- <script type="text/javascript" src="js/slidernav/slidernav.js"></script> -->
 <script
 					src="${pageContext.request.contextPath}/vendors/fastclick/lib/fastclick.js"></script>
 				<script
@@ -348,7 +348,7 @@
 
 					});
 					var handleSliderNav = function() {
-						$('#address-book').sliderNav();
+						//$('#address-book').sliderNav();
 
 						$('#address-book .slider-content ul li ul li a')
 								.click(
@@ -394,5 +394,16 @@
 						document.getElementById("trackerform").submit();
 
 					}
+				</script>
+				<script>
+
+				$(function() {
+					var names=["PHP","HTML","CSS","JavaScript","jQuery","MySQL","Ajax","Java","ASP.Net"];
+				    $("#searchtextbox").autocomplete({
+				        source: names,
+						autoFocus:true
+				    });
+				});
+
 				</script>
 				

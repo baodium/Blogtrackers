@@ -538,3 +538,26 @@ color: #2196F3;
 {
 background-color:#eeeded !important;	
 }
+/*Custom CSS for the stuff for look and feel*/
+@media screen and (min-width: 769px)
+{
+.page-container
+{
+width:90% !important;
+margin:0 5% !important;	
+}
+.page-header-content
+{
+width:90% !important;
+margin:0 5% !important;	
+}	
+.navbar 
+{
+padding-left: 6%;
+padding-right: 6%;	
+}
+.settracker
+{
+right:6% !important;	
+}
+}

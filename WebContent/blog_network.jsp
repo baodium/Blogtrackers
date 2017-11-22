@@ -1,411 +1,341 @@
+<%-- 
+    Document   : dashboard
+    Created on : 28-Aug-2017, 22:23:45
+    Author     : Omnibus_03
+--%>
+
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"
-	isELIgnored="false"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
+<%@page import="java.util.*"%>
 <%
 	Object username = (null == session.getAttribute("user")) ? "" : session.getAttribute("user");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
-
-	if (username == null || username == "") {
+	String tracker = (null == session.getAttribute("tracker")) ? "" : session.getAttribute("tracker").toString();
+	if (username == null) {
 		response.sendRedirect("index.jsp");
 	}
 %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- Meta, title, CSS, favicons, etc. -->
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="js/springy.js"></script>
-<script src="js/springyui.js"></script>
+<% ArrayList mytrackers = new ArrayList();
+mytrackers = (ArrayList)session.getAttribute("trackers");
+int trackerSize = mytrackers.size();
+    if(trackerSize == 0)
+    {%>
+    <c:redirect url="setup_tracker.jsp"/>	
+  <% } %> 
+ <jsp:include page="include_top.jsp"></jsp:include>
 
 
-
-<script type="text/javascript" src="js/function.js"></script>
-
-
-<title>Blogtrackers | Keyword Trends</title>
-
-<!-- Bootstrap -->
-<link
-	href="${pageContext.request.contextPath}/vendors/bootstrap/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-<!-- Font Awesome -->
-<link
-	href="${pageContext.request.contextPath}/vendors/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet">
-<!-- NProgress -->
-<link href="${pageContext.request.contextPath}/vendors/nprogress/nprogress.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/vendors/iCheck/skins/flat/green.css"
-	rel="stylesheet">
-<!-- Custom Theme Style -->
-<link href="${pageContext.request.contextPath}/build/css/custom.min.css"
-	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/vendors/vis/dist/vis.css"
-	rel="stylesheet" type="text/css" />
-<link
-	href="${pageContext.request.contextPath}/vendors/bootstrap-slider-master/dist/css/bootstrap-slider.min.css"
-	rel="stylesheet" type="text/css" />
-<style>
-div.scroll {
-	overflow: scroll;
-}
-</style>
-</head>
-<body class="nav-md">
-<div class="loader"></div>
-	<style>
-.loader {
-	position: fixed;
-	left: 0px;
-	top: 0px;
-	width: 100%;
-	height: 100%;
-	z-index: 9999;
-	background: url('Resources/img/gif/Loading-data.gif') 50% 50% no-repeat
-		rgb(249, 249, 249);
-}
-</style>
-
-	<script type="text/javascript">
-		$(window).load(function() {
-			$(".loader").addClass("hidden");
-			//$(".loader").fadeOut("slow");
-		});
-	
-</script>
-	<div class="container body">
-		<div class="main_container">
-			<jsp:include page="new_sidebar.jsp"></jsp:include>
-
-			<!-- top navigation -->
-			<div class="top_nav">
-				<div class="nav_menu">
-					<nav>
-						<div class="nav toggle">
-							<a id="menu_toggle"><i class="fa fa-bars"></i></a>
-						</div>
-						<div class="nav toggle" style="position: absolute; right: 35%; width: 30%;">
-							<form name="trackerform" id="trackerform" action="KeywordTrendsServlet"
-								method="post">
-								<select id="tracker" name="tracker" onchange="trackerchanged()"
-									value="${item}" class="form-control" required>
-									<c:choose>
-										<c:when test="${tracker != null}">
-											<option value="">${tracker}</option>
-										</c:when>
-
-										<c:when test="${tracker == null}">
-											<option value="">Select Tracker</option>
-										</c:when>
-									</c:choose>
-
-									<c:forEach items="${trackers}" var="item">
-										<c:if test="${tracker ne item}">
-											<option value="${item}"><c:out value="${item}" /></option>
-										</c:if>c:if>
-									</c:forEach>
-								</select>
-							</form>
-						</div>
-
-						<ul class="nav navbar-nav navbar-right">
-							<li class=""><a href="javascript:;" class="user-profile dropdown-toggle"
-								data-toggle="dropdown" aria-expanded="false"> <!-- <img src="images/img.jpg"
-									alt=""> --><%=username %> <span class=" fa fa-angle-down"></span>
-							</a>
-								<ul class="dropdown-menu dropdown-usermenu pull-right">
-									<li><a href="javascript:;"> Profile</a></li>
-									<li><a href="javascript:;"> <span class="badge bg-red pull-right"></span>
-											<span>Settings</span>
-									</a></li>
-									<li><a href="javascript:;">Help</a></li>
-									<li><a href="${pageContext.request.contextPath}/test_logout.jsp"><i
-											class="fa fa-sign-out pull-right"></i> Log Out</a></li>
-								</ul></li>
-							<li role="presentation" class="dropdown"><a href="javascript:;"
-								class="dropdown-toggle info-number" data-toggle="dropdown"
-								aria-expanded="false"> 
-							</a>
-								<ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-									<li><a> <span class="image">
-												<!-- <img src="images/img.jpg"
-												alt="Profile Image" /> -->
-										</span> <span> <span>Sender 1</span> <span class="time">3 mins ago</span>
-										</span> <span class="message"> Message.... </span>
-									</a></li>
-
-									<li>
-										<div class="text-center">
-											<a> <strong>See All Alerts</strong> <i class="fa fa-angle-right"></i>
-											</a>
-										</div>
-									</li>
-								</ul></li>
-						</ul>
-					</nav>
-				</div>
+	<!-- Page header -->
+		<div class="page-header mb-20">
+		<div class="page-header-content">
+			<div class="page-title">
+				<h4>
+					<a href="<%=request.getContextPath()%>/analytics.jsp"><i class="icon-arrow-left52 position-left"></i></a>
+					<span class="text-semibold">Blog Network</span>
+					
+				</h4>
+				<ul class="breadcrumb breadcrumb-caret position-right">
+					<li><a href="features.jsp">Home</a></li>
+					<li ><a href="trackerlist.jsp">Tracker List </a></li>
+					<li> <a href="analytics.jsp">Analytics</a></li>
+					<li class="active">Blog Network (Current Tracker: <%=session.getAttribute("tracker")%>)</li>
+				</ul>
+		
+				
 			</div>
 
-			<!-- page content -->
-			<div class="right_col" role="main">
-				<div class="">
-					<div class="row top_tiles"></div>
-					<div class="row">
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							<div class="x_panel">
-								<div class="title">
-									<div class="col-md-12 col-sm-12 col-xs-12 form-group pull-right top_search">
-										<form name="tagform" id="tagform" action="KeywordTrendsServlet"
-											method="post">
-											<div class="input-group">
-												 <input type="text" class="form-control"  name="searchText" id="searchBar" placeholder="Search for..." 
-												 onkeyup="searchTextVerify(event)" style="height: 45px; border: 1.2px solid gray"> <span
-													class="input-group-btn">
-													<button class="btn btn-default" onclick="showGif()" type="submit" name="searchButton"
-												id="searchButton" style="height: 45px; border: 1.2px solid grey">Go!</button>
-												</span>
-											</div>
-										</form>
-									</div>
-									<script type="text/javascript">
-									function showGif() {
-										$(".loader").removeClass("hidden");
-									}
-									</script>
+             
+		</div>
+	</div>
+	<!-- /page header -->
+
+
+	<!-- Page container -->
+	<div class="page-container">
+
+		<!-- Page content -->
+		<div class="page-content">
+
+			<!-- Main content -->
+			<div class="content-wrapper">
+
+				<!-- Main charts -->
+				<div class="row">
+				<div class="col-md-12" >
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h6 class="panel-title">Blog Network<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<div class="heading-elements">
+<!--
+								<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
+										<i class="icon-calendar3 position-left"></i> <span></span> <b class="caret"></b>
+									</button>
+-->
+			                	</div>
+							</div>
+
+							<div class="panel-body" style="min-height: 500px;">
+							<div class="col-md-12">
+	<div id="mynetwork"></div>
+<script type="text/javascript">
+    var nodes = [
+        {id: 0, label: "0", group: 'source'},
+        {id: 1, label: "1", group: 'blogger'},
+        {id: 2, label: "2", group: 'blogger'},
+        {id: 3, label: "3", group: 'blogger'},
+        {id: 4, label: "4", group: 'blogger'},
+        {id: 5, label: "5", group: 'blogger'},
+        {id: 6, label: "6", group: 'blogger'},
+        {id: 7, label: "7", group: 'blogger'},
+        {id: 8, label: "8", group: 'blogger'},
+        {id: 9, label: "9", group: 'blogger'},
+        {id: 10, label: "10", group: 'mints'},
+        {id: 11, label: "11", group: 'mints'},
+        {id: 12, label: "12", group: 'mints'},
+        {id: 13, label: "13", group: 'mints'},
+        {id: 14, label: "14", group: 'mints'},
+        {id: 15, group: 'dotsWithLabel'},
+        {id: 16, group: 'dotsWithLabel'},
+        {id: 17, group: 'dotsWithLabel'},
+        {id: 18, group: 'linkedin'},
+        {id: 19, group: 'facebook'},
+        {id: 20, label: "twitter", group: 'twitter'},
+        {id: 21, label: "diamond", group: 'diamonds'},
+        {id: 22, label: "diamond", group: 'diamonds'},
+        {id: 23, label: "diamond", group: 'diamonds'},
+    ];
+    var edges = [
+        {from: 1, to: 0},
+        {from: 2, to: 0},
+        {from: 4, to: 3},
+        {from: 5, to: 4},
+        {from: 4, to: 0},
+        {from: 7, to: 6},
+        {from: 8, to: 7},
+        {from: 7, to: 0},
+        {from: 10, to: 9},
+        {from: 11, to: 10},
+        {from: 10, to: 4},
+        {from: 13, to: 12},
+        {from: 14, to: 13},
+        {from: 13, to: 0},
+        {from: 16, to: 15},
+        {from: 17, to: 15},
+        {from: 15, to: 10},
+        {from: 19, to: 18},
+        {from: 20, to: 19},
+        {from: 19, to: 4},
+        {from: 22, to: 21},
+        {from: 23, to: 22},
+        {from: 23, to: 0},
+    ]
+
+    // create a network
+    var container = document.getElementById('mynetwork');
+    var data = {
+        nodes: nodes,
+        edges: edges
+    };
+    var options = {
+        nodes: {
+            shape: 'dot',
+            size: 25,
+            font: {
+                size: 15,
+                color: '#2196F3'
+            },
+            borderWidth: 2
+        },
+        edges: {
+            width: 2
+        },
+        groups: {
+            diamonds: {
+                color: {background:'red',border:'white'},
+                shape: 'diamond'
+            },
+            
+            dotsWithLabel: {
+                label: "I'm a dot!",
+                shape: 'dot',
+                color: 'cyan'
+            },
+            
+            mints: {color:'rgb(0,255,140)'},
+            blogger: {
+                shape: 'icon',
+                icon: {
+                    face: 'FontAwesome',
+                    code: '\uf0c0',
+                    size: 50,
+                    color: 'orange'
+                }
+            },
+            twitter: {
+                shape: 'icon',
+                icon: {
+                    face: 'FontAwesome',
+                    code: '\uf099',
+                    size: 50,
+                    color: '#1da1f2'
+                }
+            },
+            facebook: {
+                shape: 'icon',
+                icon: {
+                    face: 'FontAwesome',
+                    code: '\uf09a',
+                    size: 50,
+                    color: '#4267b2'
+                }
+            },
+            linkedin: {
+                shape: 'icon',
+                icon: {
+                    face: 'FontAwesome',
+                    code: '\uf08c',
+                    size: 50,
+                    color: '#0077B5'
+                }
+            },
+            blog: {
+                shape: 'icon',
+                icon: {
+                    face: 'FontAwesome',
+                    code: '\uf086',
+                    size: 50,
+                    color: '#0077B5'
+                }
+            },
+            source: {
+                color:{border:'white'}
+            }
+        }
+    };
+    var network = new vis.Network(container, data, options);
+
+</script>	
+</div>		
+							<div style="position: absolute;  top:20px; display:none;" class="col-lg-3 col-md-3 col-sm-12 col-xs-12 features-tab">
+		<div class="panel panel-default">
+							<div class="panel-heading">
+								<h6 class="panel-title">Features<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<div class="heading-elements">
+									<ul class="icons-list">
+				                		<li><a data-action="collapse"></a></li>
+<!--				                		<li><a data-action="reload"></a></li>-->
+				                		<!-- <li><a data-action="close"></a></li> -->
+				                	</ul>
+			                	</div>
+							</div>
+
+							<div class="panel-body">
+						
+<div class="checkbox">
+<label><div class="checker"><span class="">
+<input type="checkbox" value="blogtoblog" class="styled"></span></div>
+Blog - Blog
+</label>
+	</div>
+ <div class="checkbox">
+<label><div class="checker"><span class="">
+<input type="checkbox" value="bloggertoblogger" class="styled"></span></div>
+Blogger - Blogger
+</label>
+	</div>  
+<div class="checkbox">
+<label><div class="checker"><span class="">
+<input type="checkbox" value="facebook" class="styled"></span></div>
+Facebook
+</label>
+	</div>
+<div class="checkbox">
+<label><div class="checker"><span class="">
+<input type="checkbox" value="linkedin" class="styled"></span></div>
+LinkedIn
+</label>
+	</div>	
+<div class="checkbox">
+<label><div class="checker"><span class="">
+<input type="checkbox" value="twitter" class="styled"></span></div>
+Twitter 
+</label>
+	</div>																						
+							
 									
-		
-									<div class="x_title">
-										<h2>
-											Blog network<small></small>
-										</h2>
-										<form name="dateform" id="dateform" action="KeywordTrendsServlet"
-											method="post">
-											<div class="filter">
-												<div id="reportrange" class="pull-right"
-													style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-													<i class="glyphicon glyphicon-calendar fa fa-calendar"></i> <span>December
-														30, 2014 - January 28, 2018</span><input id="datepicked" name="datepicked"
-														type="hidden" onchange="datechanged()"><b class="caret"></b>
-												</div>
-											</div>
-										</form>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-									<div class="clearfix"></div>
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							
-							
-								<div class="x_content">
-									<div class="clearfix"></div>
-									<div class="col-md-3 col-xs-12">
-							
-	
-<div id="contact-card" class="panel panel-default">
-												  <div class="panel-heading">
-													<h2 class="panel-title">Blog connection</h2>
-												  </div>
-												  <div class="panel-body">
-												  <input type="search" class="" placeholder="Search for a node" style="width:100%">
-														<br/>
-														<br/>
-													<div id="card" class="row">
-														
-		
-														<span>
-														
-														
-														<form name="checker">
-                <input type="checkbox"  id="external_id" checked onclick="checkNode('external_id','external')" />External Sites
-                <ul>
-	<input type="checkbox" id="Blogger wale" class="external" checked onchange="changeNode('Blogger wale',0)" onmouseover="displayInfo('blogger wale')" onmouseout="eraseInfo()" />Blogger wale<br/>        	
-                </ul>
-                <input type="checkbox"  checked id="social_id" onclick="checkNode('social_id','social')" />Social Media
-                		<ul>
-            						
-	
-		<input type="checkbox" id="Twitter" class="social" onmouseover="displayInfo('twitter')" onmouseout="eraseInfo()" checked onclick="changeNode('Twitter',1)"  />Twitter<br/>
-		<input type="checkbox" id="YouTube" class="social"  onmouseover="displayInfo('youtube')" onmouseout="eraseInfo()" checked onclick="changeNode('YouTube',2)" />YouTube<br/>
-		<input type="checkbox" id="Facebook" class="social" onmouseover="displayInfo('facebook')" onmouseout="eraseInfo()" checked onclick="changeNode('Facebook',3)" />Facebook<br/>
-	</form>
-            						            		
-            			
-            	</li>
-            </ul>
-														</span>
-														
-													</div>
-												  </div>
-</div>
-
-<div id="contact-card" class="panel panel-default">
-												  <div class="panel-heading">
-													<h2 class="panel-title">More Information</h2>
-												  </div>
-												  <div class="panel-body">
-													<div id="card-info" class="row">
-														
-														
-														<span>
-													
-<br/>
-		</span>
-														
-													</div>
-												  </div>
-</div>
-
-</div>
-									
-									<div class="col-md-9 col-xs-12">
-										<div class="x_panel">
-											<div class="clearfix"></div>
-											<div class="scroll" id="alert" style="height: 400px;">
-												<div class="x_content">
-
-	
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-<script src="js/springy.js"></script>
-<script src="js/springyui.js"></script>
-<script>
-
-jQuery(function(){
-	changeNode("Blogger wale","0");
-	
-});
-</script>
-
-
-	<canvas id="springydemo" width="640" height="400" />
-	
-</div>
- <script>    
- 
- function checkNode(element,classe){
-	 var status = $("#"+element).is(":checked");
-		if(status==false){
-			$("."+classe).attr('checked', false);
-		}else{
-			$("."+classe).attr('checked', true);
-		}
-		
-		var childre=$("."+classe);
-		for(var j=0; j<childre.length; j++){
-			console.log(childre[j].id);
-			changeNode(childre[j].id,j);
-		}
-		//console.log(children);
-
- }
- 
- function displayInfo(element){
-	 $("#card-info").html(element);
- }
- 
- function eraseInfo(){
-	 $("#card-info").html("");
- }
- 
- /*this function will remove every outbound link from the node*/
-function changeNode(element,index){
-	var graph = new Springy.Graph();
-	var children = new Array();
-	var names = ["Blogger wale","Twitter","YouTube","Facebook"];
-
-	/* specify how the nodes are connected */
-	children[0]  =["Twitter","Facebook"];
-	children[1]  =["YouTube"];
-	children[2]  =["Blogger wale"];
-	children[3] = ["Blogger wale"];
-
-	var nodes = new Array();
-	for(var i=0; i<names.length; i++){
-		var name=names[i];
-		if(names[i]!=null){
-			nodes[i] = graph.newNode({label: names[i]});
-		}
-	}
-		
-	var childrenn = children;
-	var status = $("#"+element).is(":checked");
-	if(status==false){
-		childrenn[index]=null;
-	
-	}
-
-	for(l=0; l<names.length; l++){
-		if(childrenn[l]!==null){
-			for(var m=0; m<childrenn[l].length; m++ ){			
-				var position = names.indexOf(childrenn[l][m]);
-				graph.newEdge(nodes[l], nodes[position], {color: '#00A0B0'});
-			}
-		}
-	}
-		
-	var springy = window.springy = jQuery('#springydemo').springy({
-			graph: graph,
-			nodeSelected: function(node){
-				//console.log(node);
-				displayInfo(node.data.label);
-		}
-	});
-		
-}
-</script>
-	<div id="blogpost"></div>
-
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-				
-						</div>
 							</div>
 						</div>
-
 					
-
-						<div class="clearfix"></div>
+				</div>	
 						
+								<!--<div><div id="cy" ></div></div>-->
+														
+								
+					
+											
+							<div style="position:absolute; bottom:10px;" class="col-md-12 text-center"><div class="btn-group">
+								<button type="button" id="features" class="btn btn-primary btn-rounded legitRipple">Features</button>
+								<button type="button" class="btn btn-primary btn-rounded legitRipple">Statistics</button>
+								<!--<button type="button" class="btn btn-primary legitRipple">Right</button>-->
+							</div></div>
+							</div>
+								
+							
+										
+																
+							
+							
+							
+							
+							</div>
 					</div>
-				</div>
-			</div>
+					</div>
+			
+					
+					
+					
 				
-			<!-- /footer content -->
-			<!-- jQuery -->
-			<!-- jQuery -->
+				
+				      
+				      
+				      
+				      
+				      
+				    
+			      
+			      
+					
+				</div>
+				<!-- /main charts -->
+
+
 			
-			<script
-				src="${pageContext.request.contextPath}/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-			<!-- FastClick -->
-			<script
-				src="${pageContext.request.contextPath}/vendors/fastclick/lib/fastclick.js"></script>
-			<!-- NProgress -->
-			<script src="${pageContext.request.contextPath}/vendors/nprogress/nprogress.js"></script>
-			<!-- Chart.js -->
-			<script src="${pageContext.request.contextPath}/vendors/iCheck/icheck.min.js"></script>
-			<script
-				src="${pageContext.request.contextPath}/production/js/moment/moment.min.js"></script>
-			<script
-				src="${pageContext.request.contextPath}/production/js/datepicker/daterangepicker.js"></script>
-			<!-- Custom Theme Scripts -->
-			<script src="${pageContext.request.contextPath}/build/js/custom.min.js"></script>
-			<!-- bootbox code -->
-			<script
-				src="${pageContext.request.contextPath}/vendors/canvasjs/examples/bootbox.min.js"></script>
-			<script src="${pageContext.request.contextPath}/vendors/canvasjs/canvasjs.min.js"></script>
-			<!-- Ion.RangeSlider -->
-			<script
-				src="${pageContext.request.contextPath}/vendors/bootstrap-slider-master/dist/bootstrap-slider.min.js"></script>
-			<!-- CSS dependencies for canvasjs -->
-			<script src="${pageContext.request.contextPath}/vendors/vis/dist/vis.js"></script>
-			<script
-				src="${pageContext.request.contextPath}/vendors/Tags-Input-master/src/jquery.tagsinput.js"></script>
-			<script type="text/javascript">
+
 			
+			<!-- /main content -->
+
+		</div>
+		<!-- /page content -->
+
+	</div>
+	
+
+	
+	
+	<!-- /page container -->
+
+
+	<!-- Footer -->
+	
+  <jsp:include page="footer.jsp"></jsp:include>
+
+	<!-- /footer -->
+<!-- Dependencies -->
+  <jsp:include page="pagedependencies/blog_network.jsp"></jsp:include>
+  <!-- End of Dependencies -->
+	
+</body>
+</html>

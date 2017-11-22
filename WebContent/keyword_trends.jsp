@@ -15,7 +15,10 @@
 	if (username == null || username == "") {
 		response.sendRedirect("index.jsp");
 	}
+	else
+	{
         ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
+	}
 %>
 
  <jsp:include page="include_top.jsp"></jsp:include>
@@ -32,7 +35,7 @@ int trackerSize = mytrackers.size();
 		<div class="page-header-content">
 			<div class="page-title">
 				<h4>
-					<i class="icon-arrow-left52 position-left"></i>
+					<a href="<%=request.getContextPath()%>/analytics.jsp"><i class="icon-arrow-left52 position-left"></i></a>
 					<span class="text-semibold">Keyword Trends</span>
 
 				</h4>
@@ -45,7 +48,7 @@ int trackerSize = mytrackers.size();
 		
 				<form name="tagform" id="tagform" action="KeywordTrendsServlet" method="post">
 				<div  class="form-group ">
-				<div class="col-md-12 mb-20">
+				<!-- <div class="col-md-12 mb-20"> -->
 				
 				<div data-intro="Enter a keyword to search and press enter key or click the search button" data-step="2" class="input-group">
 				<c:choose>
@@ -61,7 +64,7 @@ int trackerSize = mytrackers.size();
 											<span class="input-group-btn" style="padding-left:0px;"><button type="submit" class="btn btn-primary" name="searchButton" id="searchButton">Search</button></span>
 											
 										</div>
-										</div>
+										<!-- </div> -->
 										</div>
 										</form>
 										
@@ -80,7 +83,7 @@ int trackerSize = mytrackers.size();
 		<div class="page-content">
 
 			<!-- Main content -->
-			<div class="content-wrapper">
+			<div class="content-wrapper" id="body-result" >
 
 				<!-- Main charts -->
 				<div class="row">
