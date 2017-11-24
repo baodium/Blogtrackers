@@ -59,7 +59,7 @@ $(window).load(function() {
 		<div class="page-header-content">
 			<div class="page-title">
 				<h4>
-					<a href="<%=request.getContextPath()%>/analytics.jsp"><i class="icon-arrow-left52 position-left"></i></a>
+					<i class="icon-arrow-left52 position-left"></i>
 					<span class="text-semibold">Sentiments</span>
 	<%-- <small class="display-block"><span>Welcome, </span><%=username %></small> --%>
 				</h4>
