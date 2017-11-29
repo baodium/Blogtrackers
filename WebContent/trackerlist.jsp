@@ -86,7 +86,7 @@ function googleTranslateElementInit() {
 
 				<!-- Main charts -->
 				<div class="row">
-				<div class="col-md-3">
+				<div class="col-md-4">
 					<div class="panel panel-primary">
 							<div class="panel-heading">
 							
@@ -184,7 +184,7 @@ function googleTranslateElementInit() {
 					</div>
 					</div>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-8">
 					<% if(trackers != null && trackers.size()>0){ 
 						for(int i=0; i<trackers.size(); i++){
 							ArrayList tracker = (ArrayList)trackers.get(i);
@@ -230,7 +230,7 @@ function googleTranslateElementInit() {
 					    	</div>
 						</div>	
 				</div>
-			<div class="col-md-3">
+			<div class="col-md-3 hidden">
 				<div class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Top Trackers From Communities<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
