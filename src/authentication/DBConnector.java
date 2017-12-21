@@ -35,8 +35,8 @@ public class DBConnector {
 	//"jdbc:mysql://localhost:3306/blogtrackers"
 	public  DBConnector(){
 		
-		String dbURL = "jdbc:mysql://blogtrackers.host.ualr.edu:3306/blogtrackers"; //144.167.112.118 ukraine_super, summer2014
-        String username ="ukraine_user";
+		String dbURL = "jdbc:mysql://144.167.112.118:3306/blogtrackers"; //144.167.112.118 ukraine_super, summer2014
+        String username ="ukraine_super";
 	    String password = "summer2014";      
 		//Statement stmt = null;
 		//ResultSet rs = null;

@@ -142,7 +142,7 @@ function googleTranslateElementInit() {
 							<div class="panel-body text-center">
 								<div class="icon-object border-success text-success"><i class="icon-pie-chart8"></i></div>
 								<h5 class="text-semibold">Dashboard</h5>
-								<p class="mb-15">View statistics such as Language Distribution </p>
+								<p class="mb-15">View Statistics such as Language Distribution </p>
 								<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/Dashboard?tracker=${tracker}" class="btn bg-success-400 legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Dashboard">
@@ -185,7 +185,7 @@ function googleTranslateElementInit() {
 							<div class="panel-body text-center">
 								<div class="icon-object border-warning text-warning"><i class="icon-comment"></i></div>
 								<h5 class="text-semibold">Posting Frequency</h5>
-								<p class="mb-15">Analyse the posting frequency of the bloggers in your tracker</p>
+								<p class="mb-15">Analyse the Posting Frequency of the Bloggers </p>
 								<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/PostingFrequency?tracker=${tracker}" class="btn bg-warning-400 legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Posting Frequency">
@@ -227,7 +227,7 @@ function googleTranslateElementInit() {
 							<div class="panel-body text-center">
 								<div class="icon-object border-blue text-blue"><i class="icon-search4"></i></div>
 								<h5 class="text-semibold">Keyword trend</h5>
-								<p class="mb-15">Know the trend of a keyword</p>
+								<p class="mb-15">Know the Trend of a Keyword</p>
 								<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/KeywordTrendsServlet?tracker=${tracker}" class="btn bg-blue legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Keyword Trends">
@@ -269,7 +269,7 @@ function googleTranslateElementInit() {
 							<div class="panel-body text-center">
 								<div class="icon-object border-success text-success"><i class="icon-puzzle3"></i></div>
 								<h5 class="text-semibold">Sentiments Analysis</h5>
-								<p class="mb-15">Analyze the sentiment of the blogposts in the tracker</p>
+								<p class="mb-15">Analyze the Sentiment of the Blogposts in the Tracker</p>
 								<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/Sentiments?tracker=${tracker}" class="btn bg-success-400 legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Sentiments"> 
@@ -318,7 +318,7 @@ function googleTranslateElementInit() {
 							<div class="panel-body text-center">
 								<div class="icon-object border-warning text-warning"><i class="icon-split"></i></div>
 								<h5 class="text-semibold">Influence</h5>
-								<p class="mb-15">Analyse the influence of bloggers in the blogpost</p>
+								<p class="mb-15">Analyse the Influence of Bloggers from Blogposts</p>
 								<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/InfluenceServlet?tracker=${tracker}" class="btn bg-warning-400 legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Influence"> 
@@ -361,7 +361,7 @@ function googleTranslateElementInit() {
 							<div class="panel-body text-center">
 								<div class="icon-object border-blue text-blue"><i class="icon-database-export"></i></div>
 								<h5 class="text-semibold">Data presentation</h5>
-								<p class="mb-15">Export your tracker information as a JSON</p>
+								<p class="mb-15">Export Your Tracker Information as a JSON</p>
 								<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/ExportJSON?tracker=${tracker}"  class="btn bg-blue legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Data Presentation"> 
@@ -403,7 +403,7 @@ function googleTranslateElementInit() {
 							<div class="panel-body text-center">
 								<div class="icon-object border-success text-success"><i class="icon-puzzle3"></i></div>
 								<h5 class="text-semibold">Additional blog information</h5>
-								<p class="mb-15">Get additional blog information</p>
+								<p class="mb-15">Get Additional Blog Information</p>
 								<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/AdditionalInfoServlet?tracker=${tracker}" class="btn bg-success-400 legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Additional blog information"> 
@@ -447,7 +447,7 @@ function googleTranslateElementInit() {
 							<div class="panel-body text-center">
 								<div class="icon-object border-warning text-warning"><i class="icon-puzzle3"></i></div>
 								<h5 class="text-semibold">Additional Blogger information</h5>
-								<p class="mb-15">Get additional Blogger information</p>
+								<p class="mb-15">Get Additional Blogger Information</p>
 								<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/AdditionalBlogger?tracker=${tracker}" class="btn bg-warning-400 legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Additional Blogger information"> 
@@ -492,7 +492,7 @@ function googleTranslateElementInit() {
 							<div class="panel-body text-center">
 								<div class="icon-object border-blue text-blue"><i class="icon-share3"></i></div>
 								<h5 class="text-semibold">Blog Network</h5>
-								<p class="mb-15">Get Information about the Network</p>
+								<p class="mb-15">Get Information About the Network</p>
 								<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/blog_network.jsp?tracker=${tracker}" class="btn bg-blue legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Blog Network"> 

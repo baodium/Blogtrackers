@@ -12,7 +12,7 @@
 	String tracker_id = (null == session.getAttribute("tid")) ? "" : session.getAttribute("tid").toString();
 	
 	try{
-    	ArrayList trackers = new DBConnector().query("SELECT * FROM trackers WHERE userid='"+username.toString()+"'");
+    	ArrayList trackers = new DBConnector().query("SELECT * FROM trackers WHERE userid='"+username.toString()+"' ORDER BY tid DESC");
     	session.setAttribute("trackers", trackers);
     	
     	
