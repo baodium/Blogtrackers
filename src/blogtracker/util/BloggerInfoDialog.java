@@ -380,6 +380,34 @@ public class BloggerInfoDialog extends UtilFunctions{
 			return null;
 		}
 	}
+	
+	
+	public ArrayList<JSONObject> searchBlogger(String term){
+		ArrayList arrayList= new ArrayList();
+		try
+		{
+			Connection conn = getConn();
+			Statement stmt = conn.createStatement();
+
+			String querystr = "select distinct blogger from blogposts where blogger like '%"+term+"%' and blogger not like '' order by blogger limit 50";
+
+			ResultSet rset = stmt.executeQuery(querystr);
+			while(rset.next())
+			{ 
+				String blogger=rset.getString("blogger");
+				JSONObject object= new JSONObject();
+				object.put("blogger", blogger);
+				arrayList.add(blogger);
+			}
+			rset.close();
+			stmt.close();
+			conn.close();
+			return arrayList;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
+	}
 	/**
 	 * @param args
 	 */

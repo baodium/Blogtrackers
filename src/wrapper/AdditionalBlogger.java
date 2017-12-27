@@ -1,6 +1,7 @@
 package wrapper;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -103,8 +104,25 @@ public class AdditionalBlogger extends HttpServlet {
 				session.removeAttribute("bsName");
 			session.setAttribute("allSepSites", allSites);
 		}
-		response.setContentType("text/html");
-		response.sendRedirect("additional_blogger_info.jsp");
+		
+		if(request.getParameter("search_blogger")!=null){
+			PrintWriter pww = response.getWriter();
+			String term = request.getParameter("term");
+			String result = "";
+			ArrayList<JSONObject> brNameList = biDialog.searchBlogger(term);
+			if(brNameList!=null && brNameList.size()>0) {
+				for(int i=0; i<brNameList.size(); i++) {
+					result+=brNameList.get(i)+"|";
+				}
+			}
+			
+			pww.write(result+"");
+			
+			
+		}else {
+		 response.setContentType("text/html");
+		 response.sendRedirect("additional_blogger_info.jsp");
+		}
 	}
 
 	@SuppressWarnings("unchecked")

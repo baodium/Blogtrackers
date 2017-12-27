@@ -86,7 +86,7 @@ function googleTranslateElementInit() {
 
 				<!-- Main charts -->
 				<div class="row">
-				<div class="col-md-3">
+				<div class="col-md-4">
 					<div class="panel panel-primary">
 							<div class="panel-heading">
 							
@@ -184,7 +184,7 @@ function googleTranslateElementInit() {
 					</div>
 					</div>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-8">
 					<% if(trackers != null && trackers.size()>0){ 
 						for(int i=0; i<trackers.size(); i++){
 							ArrayList tracker = (ArrayList)trackers.get(i);
@@ -202,7 +202,7 @@ function googleTranslateElementInit() {
 									<img src="img/datapresentation.jpg" alt="">
 								</div>
 						    	<div class="caption text-center">
-						    		<h6 class="text-semibold no-margin"><a data-intro="Click here to view metadata information about your tracker" data-step="5" onclick="loadTrackerr('<%= tracker.get(0)%>');"><%=tracker.get(2) %></a> <small class="display-block"><%=tracker.get(1) %></small></h6>
+						    		<h6 class="text-semibold no-margin"><a title="View Tracker Metadata" data-intro="Click here to view metadata information about your tracker" data-step="5" onclick="loadTrackerr('<%= tracker.get(0)%>');"><%=tracker.get(2) %></a> <small class="display-block"><%=tracker.get(1) %></small></h6>
 					    			<ul class="icons-list mt-15">
 				                    	<li><a class="pull-left" href="<%=request.getContextPath()%>/Analytics?tracker=<%= tracker.get(2)%>"><button data-intro="Click here to perform analytical operations such as sentiments, keyword trends, posting frequency and data export" data-step="3" type="button" title="Proceed to Analytics"  class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-statistics"></i></button></a>    <a class="pull-right"  onclick="edit_this('<%= tracker.get(0)%>');" style="margin-left:4px;"><button data-intro="Click here to modify existing tracker and view blogsites" data-step="4" type="button" title="Edit Tracker"  class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-pencil"></i></button></a></li>
 				                    </ul>
@@ -230,7 +230,7 @@ function googleTranslateElementInit() {
 					    	</div>
 						</div>	
 				</div>
-			<div class="col-md-3">
+			<div class="col-md-3 hidden">
 				<div class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Top Trackers From Communities<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>

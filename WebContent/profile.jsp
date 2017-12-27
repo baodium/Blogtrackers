@@ -143,7 +143,7 @@ function googleTranslateElementInit() {
 							<ul class="icons-list">
 		                		<li><a data-action="collapse"></a></li>
 		                		<li><a data-action="reload"></a></li>
-		                		<li><a data-action="close"></a></li>
+		                		
 		                	</ul>
 	                	</div>
 					</div>
@@ -157,22 +157,22 @@ function googleTranslateElementInit() {
 									<div class="row">
 										<div class="col-md-4">
 							<div class="form-group">
-				                                <input type="text" class="form-control"name="first_name" placeholder="First Name" required="required" value = "<%=userinfo.get(4)%>" />
+				                                <input type="text" class="form-control"name="first_name" placeholder="First Name" required="required" maxlength="20" value = "<%=userinfo.get(4)%>" />
                                                                 
                                                         </div>
 
 			                                <div class="form-group">
-				                                <input type="text" class="form-control" name="last_name" placeholder="Last Name" required="required" value = "<%=userinfo.get(5)%>">
+				                                <input type="text" class="form-control" name="last_name" placeholder="Last Name" required="required" maxlength="20" value = "<%=userinfo.get(5)%>">
 			                                </div>
 										</div>
 
 										<div class="col-md-8">
 											<div class="form-group">
-				                                <input type="email" name="email" class="form-control"  placeholder="Email" required="required" value = "<%=userinfo.get(2)%>">
+				                                <input type="email" name="email" class="form-control"  placeholder="Email" maxlength="40" required="required" value = "<%=userinfo.get(2)%>">
 			                                </div>
 
 			                                <div class="form-group">
-				                                <input type="text" name="phone_number" class="form-control" placeholder="Phone Number" value = "<%=userinfo.get(6)%>">
+				                                <input type="tel" name="phone_number" class="form-control" placeholder="Phone Number" malength="12" value = "<%=userinfo.get(6)%>">
 			                                </div>
 										</div>
 									</div>
@@ -191,7 +191,7 @@ function googleTranslateElementInit() {
                                                                                         </div>
 
 			                                <div class="form-group">
-				                                <input type="text" name="address" class="form-control" placeholder="Address" value = "<%=userinfo.get(7)%>">
+				                                <input type="text" name="address" class="form-control" placeholder="Address" maxlength="80" value = "<%=userinfo.get(7)%>">
 			                                </div>
 										</div>
 

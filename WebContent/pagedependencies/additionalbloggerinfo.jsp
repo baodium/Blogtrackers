@@ -398,11 +398,27 @@
 				<script>
 
 				$(function() {
-					var names=["PHP","HTML","CSS","JavaScript","jQuery","MySQL","Ajax","Java","ASP.Net"];
-				    $("#searchtextbox").autocomplete({
-				        source: names,
-						autoFocus:true
-				    });
+					 $("#searchtextbox").autocomplete({
+					      
+					        source: function( request, response ) {
+					            $.ajax({
+					              url: app_url+'/AdditionalBlogger',
+					              method:'POST',
+					              data: {
+					            	  term:request.term,search_blogger:"true"
+					              },
+					              success: function( data ) {
+					            	  names = data.split("|");
+					                response( names );
+					              }
+					            });
+					          },
+							autoFocus:true
+					  });
+					//var names=["PHP","HTML","CSS","JavaScript","jQuery","MySQL","Ajax","Java","ASP.Net"];
+					
+				
+				 
 				});
 
 				</script>

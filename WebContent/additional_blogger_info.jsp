@@ -19,7 +19,7 @@ mytrackers = (ArrayList)session.getAttribute("trackers");
 int trackerSize = mytrackers.size();
     if(trackerSize == 0)
     {%>
-    <c:redirect url="setup_tracker.jsp"/>	
+    	<c:redirect url="setup_tracker.jsp"/>
   <% } %> 
   
 	<!-- Page header -->
@@ -44,7 +44,7 @@ int trackerSize = mytrackers.size();
 				<div class="col-md-12 mb-20">
 				
 				<div class="input-group">
-				<input type="text" class="form-control" placeholder="Enter a blogger name to search" id="searchtextbox" autocomplete="off">
+				<input type="text" class="form-control"  placeholder="Enter a blogger name to search" id="searchtextbox" autocomplete="off">
 											<span class="input-group-btn" style="padding-left:0px;"><button type="button" class="btn btn-primary">Search</button></span>
 											
 										</div>
