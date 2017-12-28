@@ -413,7 +413,32 @@
 					              }
 					            });
 					          },
-							autoFocus:true
+							select: function( event, ui ) {
+						        var blogger = ui.item.value;
+						        console.log(blogger);
+						        $.ajax({
+						              url: app_url+'/AdditionalBlogger',
+						              method:'POST',
+						              data: {
+						            	  blogger:blogger,get_detail:"true"
+						              },
+						              success: function( data ) {
+						            	  console.log(data);
+						            	  var result= JSON.parse(data);
+						            	  console.log(result);
+						            	  
+						            	  if(result.length>0){
+						            		  $("#blogger-name").html(result[0].author);
+						            		  $("#blogsite-name").html(result[0].siteName);
+						            		  $("#blog-site").html("<a href='"+result[0].siteUrl+"' target='_blank'>"+result[0].siteUrl+"</a>");
+						            		  $("#maximum-influence").html(result[0].maxInfluence);
+						            		  $("#recent-post").html(result[0].lastCleaned);
+						            	  }
+						            	 
+						              }
+						            });					        
+						     },
+							autoFocus:true,
 					  });
 					//var names=["PHP","HTML","CSS","JavaScript","jQuery","MySQL","Ajax","Java","ASP.Net"];
 					

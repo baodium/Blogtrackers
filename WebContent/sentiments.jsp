@@ -22,7 +22,7 @@ mytrackers = (ArrayList)session.getAttribute("trackers");
 int trackerSize = mytrackers.size();
     if(trackerSize == 0)
     {%>
-    <c:redirect url="setup_tracker.jsp"/>	
+    <c:redirect url="setup_tracker.jsp"/>
   <% } %>
   
   
@@ -124,7 +124,7 @@ function googleTranslateElementInit() {
 							<!-- 	<div class="chart-container">
 							  <div class="chart" id="c3-line-regions-chart"></div>
 						</div>	-->		
-																<div class="demo-container">
+						<div class="demo-container">
 
 											<div id="chartContainer" style="height: 350px"></div>
 
