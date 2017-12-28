@@ -316,7 +316,9 @@
 		        	if(response==="success"){
 		        		
 		        		 window.location.href = app_url+"Analytics?tracker="+tracker_name;
-		        	}else{
+		        	}else if(response==="exist"){
+		        		$("#error-box").html("tracker name already exists");
+		        	}else{	        	
 		        		$("#error-box").html("Error adding tracker");
 		        	}
 		        }

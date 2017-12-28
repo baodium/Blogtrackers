@@ -79,17 +79,23 @@ public class Tracker extends HttpServlet {
 				}
 				//TrackerDialog dialog= new TrackerDialog();
 				//dialog.addTracker(userName, trackerName, createdDate, null, listString, trackerDescription, selectedSite.length);
-				String query="INSERT INTO trackers(userid,tracker_name,date_created,date_modified,query,description,blogsites_num) VALUES('"+userName+"', '"+trackerName+"', '"+createdDate+"', "+ null+", '"+listString+"', '"+trackerDescription+"', '"+selectedSite.length+"')";
-				boolean done = new DBConnector().updateTable(query);
-				if(done) {
-				  	ArrayList trackers = new DBConnector().query("SELECT * FROM trackers WHERE userid='"+userName+"'");
-                	session.setAttribute("trackers", trackers+"");
-                	session.setAttribute("initiated_search_term", "");
-					response.setContentType("text/html");
-					pww.write("success");
-				}else {
-					response.setContentType("text/html");
-					pww.write("full failure");
+				ArrayList prev = new DBConnector().query("SELECT * FROM trackers WHERE tracker_name='"+trackerName+"'");
+				
+				if(prev!=null && prev.size()>0) {
+					pww.write("exist");
+				}else {	
+					String query="INSERT INTO trackers(userid,tracker_name,date_created,date_modified,query,description,blogsites_num) VALUES('"+userName+"', '"+trackerName+"', '"+createdDate+"', "+ null+", '"+listString+"', '"+trackerDescription+"', '"+selectedSite.length+"')";
+					boolean done = new DBConnector().updateTable(query);
+					if(done) {
+					  	ArrayList trackers = new DBConnector().query("SELECT * FROM trackers WHERE userid='"+userName+"'");
+	                	session.setAttribute("trackers", trackers+"");
+	                	session.setAttribute("initiated_search_term", "");
+						response.setContentType("text/html");
+						pww.write("success");
+					}else {
+						response.setContentType("text/html");
+						pww.write("full failure");
+					}
 				}
 			}
 			else{
