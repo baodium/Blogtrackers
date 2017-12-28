@@ -203,14 +203,13 @@ $(document).ready(function () {
 		        color: "green",
 		        fillOpacity: 0,
 		        name : "Positve Sentiments",
-		        dataPoints: ${trendpos}          //array
+		        dataPoints: [${trendpos}],          //array
         	},
       		{ 
 		        click: function(e){
 		         xychange( "dataSeries Event => Type: "+ e.dataSeries.type+ ", dataPoint { x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y + " }");
 		         $('#chartpoint input').val(" x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y).trigger('change');    
-		        },
-		      
+		        },    
 		        type: "line",
 		        showInLegend: true,
 		        legendMarkerType: "circle",
@@ -218,7 +217,7 @@ $(document).ready(function () {
 		        color: "red",
 		        fillOpacity: 0,
 		        name:"Negative Sentiments",
-		        dataPoints: ${trendneg},
+		        dataPoints: [${trendneg}],
         	}],
       legend : {
 				cursor : "pointer",
@@ -405,8 +404,8 @@ $('#destroy').click(
        	$(".loader").removeClass("hidden");
             // document.getElementById("dateform").submit();
        	var datepicked = $("#datepicked").val();
-			$("#body-result").html("<div style='text-align:center; padding:150px'><img src='assets/images/preloader.gif' /><br/></div>");
-		       
+			$(".demo-container").html("<div style='text-align:center; padding:150px'><img src='assets/images/preloader.gif' /><br/></div>");
+			
 			$.ajax({
 		        url: app_url+'webtemplates/sentiment_loader.jsp',
 				method:'POST',
@@ -414,7 +413,7 @@ $('#destroy').click(
 				data:{datepicked:datepicked,is_request:true},
 		        success: function(response)
 		        {	
-		        	$("#body-result").html(response);
+		        	$(".demo-container").html(response);
 		        }
 		    });
              
@@ -430,7 +429,7 @@ $('#destroy').click(
    		 $(".loader").removeClass("hidden");
    			//document.getElementById("xyform").submit();
    			var xy = $("#xychange").val();
-			$("#body-result").html("<div style='text-align:center; padding:150px'><img src='assets/images/preloader.gif' /><br/></div>");
+			$(".demo-container").html("<div style='text-align:center; padding:150px'><img src='assets/images/preloader.gif' /><br/></div>");
 		       
 			$.ajax({
 		        url: app_url+'webtemplates/sentiment_loader.jsp',
@@ -440,7 +439,7 @@ $('#destroy').click(
 		        success: function(response)
 		        {	
 		        	// console.log(response);
-		        	$("#body-result").html(response);
+		        	$(".demo-container").html(response);
 		        }
 		    });
    		}
@@ -450,7 +449,7 @@ $('#destroy').click(
    			//document.getElementById("trendtype").submit();
    		//var xy = $("#xychange").val();
    		var aggr = document.forms['trendtype'].aggr_norm.value;//$("#xychange").val();
-		$("#body-result").html("<div style='text-align:center; padding:150px'><img src='assets/images/preloader.gif' /><br/></div>");
+		$(".demo-container").html("<div style='text-align:center; padding:150px'><img src='assets/images/preloader.gif' /><br/></div>");
 	       
 		$.ajax({
 	        url: app_url+'webtemplates/sentiment_loader.jsp',
@@ -459,15 +458,14 @@ $('#destroy').click(
 			data:{aggr_norm:aggr,is_request:true},
 	        success: function(response)
 	        {	
-	        	// console.log(response);
-	        	$("#body-result").html(response);
+	        	$(".demo-container").html(response);
 	        }
 	    });
    		}
    		function spanChanged() {
 			//document.getElementById("st_spanform").submit();
    			var stspan = document.forms['st_spanform'].options.value;//$("#xychange").val();
-			$("#body-result").html("<div style='text-align:center; padding:150px'><img src='assets/images/preloader.gif' /><br/></div>");
+			$(".demo-container").html("<div style='text-align:center; padding:150px'><img src='assets/images/preloader.gif' /><br/></div>");
 		       
 			$.ajax({
 		        url: app_url+'webtemplates/sentiment_loader.jsp',
@@ -476,8 +474,7 @@ $('#destroy').click(
 				data:{options:stspan,is_request:true},
 		        success: function(response)
 		        {	
-		        	// console.log(response);
-		        	$("#body-result").html(response);
+		        	$(".demo-container").html(response);
 		        }
 		    });
 		}

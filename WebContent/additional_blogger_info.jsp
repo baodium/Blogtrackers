@@ -19,7 +19,7 @@ mytrackers = (ArrayList)session.getAttribute("trackers");
 int trackerSize = mytrackers.size();
     if(trackerSize == 0)
     {%>
-    	<c:redirect url="setup_tracker.jsp"/>
+    <c:redirect url="setup_tracker.jsp"/>
   <% } %> 
   
 	<!-- Page header -->
@@ -41,14 +41,16 @@ int trackerSize = mytrackers.size();
 				
 			</div>
 			<div class="form-group ">
+			<form name="search-author" method="get" action="<%=request.getContextPath()%>/AdditionalBlogger">
 				<div class="col-md-12 mb-20">
 				
 				<div class="input-group">
-				<input type="text" class="form-control"  placeholder="Enter a blogger name to search" id="searchtextbox" autocomplete="off">
-											<span class="input-group-btn" style="padding-left:0px;"><button type="button" class="btn btn-primary">Search</button></span>
+				<input type="text" name="authorName" class="form-control"  placeholder="Enter a blogger name to search" id="searchtextbox" autocomplete="off">
+											<span class="input-group-btn" style="padding-left:0px;"><button type="submit" class="btn btn-primary">Search</button></span>
 											
 										</div>
 										</div>
+										</form>
 										</div>
 
 
@@ -120,19 +122,19 @@ int trackerSize = mytrackers.size();
 						<thead>
 							<tr>
 								<th>Blogger name</th>
-								<th id="card-name">${bloggerDetails[0].author}</th>
+								<th id="blogger-name">${bloggerDetails[0].author}</th>
 								
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td>Blogsite name:</td>
-								<td>${bloggerDetails[0].siteName}</td>
+								<td id="blogsite-name">${bloggerDetails[0].siteName}</td>
 								
 							</tr>
 								<tr>
-								<td>Vist Blog Site</td>
-								<td><a href="${bloggerDetails[0].siteURL}" target="_blank">${bloggerDetails[0].siteURL}</a></td>
+								<td>Visit Blog Site</td>
+								<td id="blog-site"><a href="${bloggerDetails[0].siteURL}" target="_blank">${bloggerDetails[0].siteURL}</a></td>
 								
 							</tr>
 							</tbody>
@@ -143,19 +145,19 @@ int trackerSize = mytrackers.size();
 						<thead>
 							<tr>
 								<th>Most recent post data</th>
-								<th>${bloggerDetails[0].lastCleaned}</th>
+								<th id="recent-post">${bloggerDetails[0].lastCleaned}</th>
 								
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td>Maximum influence</td>
-								<td>${bloggerDetails[0].maxInfluence}</td>
+								<td id="maximum-influence">${bloggerDetails[0].maxInfluence}</td>
 								
 							</tr>
 							<tr>
 								<td>Blogsite name:</td>
-								<td>${bloggerDetails[0].lastCleaned}</td>
+								<td id="blogsite-name">${bloggerDetails[0].lastCleaned}</td>
 								
 							</tr>
 								

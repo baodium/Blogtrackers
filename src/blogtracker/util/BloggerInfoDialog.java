@@ -5,6 +5,7 @@ package blogtracker.util;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -408,6 +409,77 @@ public class BloggerInfoDialog extends UtilFunctions{
 			return null;
 		}
 	}
+	
+	public ArrayList<JSONObject> getDetail(String blogger_name){
+		ArrayList arrayList= new ArrayList();
+		try
+		{
+			Connection conn = getConn();
+			Statement stmt = conn.createStatement();
+			ArrayList result=new ArrayList();  	
+			String querystr = "select distinct * from blogposts where blogger = '"+blogger_name+"' and blogger not like '' order by blogger limit 2";
+			ResultSet rset = stmt.executeQuery(querystr);
+
+			ResultSetMetaData rsmd = rset.getMetaData();
+			int column_size = rsmd.getColumnCount();
+			int i=0;
+			while(rset.next()){
+				ArrayList output=new ArrayList();
+				int total=column_size;//rs.getFetchSize();
+				//rs.
+				for(int j=1;j<=(total); j++ ){
+					output.add((j-1), rset.getString(j));
+					
+				}
+				result.add(i,output);
+				i++;
+			}
+			
+			rset.close();
+			stmt.close();
+			conn.close();
+			return result;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
+	}
+	
+	
+	
+	public ArrayList<BeanBloggerDetails> searchBloggerDetails(String authorName) throws JSONException{
+		ArrayList<BeanBloggerDetails> postIDList= new ArrayList<>();
+		try
+		{
+			Connection conn = getConn();
+			Statement stmt = conn.createStatement();
+
+			String querystr = "SELECT a.*, blogsite_name,blogsite_url, last_cleaned, description FROM blogtrackers.blogsites JOIN (select max(influence_score) as score, blogger, blogsite_id from blogtrackers.blogposts where blogger = '"+authorName+"' Group by blogsite_id) a On a.blogsite_id =blogsites.blogsite_id;";
+
+			ResultSet rset = stmt.executeQuery(querystr);
+			while(rset.next())
+			{ 
+				String blogger=rset.getString("blogger");
+				String siteName=rset.getString("blogsite_name");
+				String siteURL=rset.getString("blogsite_url");
+				String lastCleaned= rset.getString("last_cleaned");
+				String description= rset.getString("description");
+				int maxInfluence= rset.getInt("score");
+				BeanBloggerDetails jsonObject= new BeanBloggerDetails(blogger, siteName, siteURL, lastCleaned, description, maxInfluence);
+
+				postIDList.add(jsonObject);
+			}
+			rset.close();
+			stmt.close();
+			conn.close();
+			return postIDList;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
+
+	}
+
 	/**
 	 * @param args
 	 */

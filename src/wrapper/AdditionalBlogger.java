@@ -53,8 +53,9 @@ public class AdditionalBlogger extends HttpServlet {
 		String selectedSites=dialog.getSelectedSites(userName,trackerName);
 
 		if(request.getParameter("authorName")!=null){
+			
 			String authorName = request.getParameter("authorName").toString();
-			System.out.println(authorName);
+			
 			ArrayList<BeanBloggerDetails> bloggerDetails= new ArrayList<>();
 			try {
 				bloggerDetails = biDialog.getBloggerDetails(authorName, selectedSites);
@@ -119,6 +120,19 @@ public class AdditionalBlogger extends HttpServlet {
 			pww.write(result+"");
 			
 			
+		}else if(request.getParameter("get_detail")!=null){
+				PrintWriter pww = response.getWriter();
+				String blogger = request.getParameter("blogger");
+				ArrayList<BeanBloggerDetails> bloggerDetails= new ArrayList<>();
+				try {
+					bloggerDetails = biDialog.searchBloggerDetails(blogger);
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+					pww.write(bloggerDetails+"");	
+	
 		}else {
 		 response.setContentType("text/html");
 		 response.sendRedirect("additional_blogger_info.jsp");
