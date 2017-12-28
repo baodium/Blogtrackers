@@ -72,7 +72,7 @@
 
 				<ul class="breadcrumb breadcrumb-caret position-right">
 					<li><a href="features.jsp">Home</a></li>
-					<li class="active">Setup tracker</li>
+					<li class="active">Setup Tracker</li>
 				</ul>
 				
 			</div>
@@ -117,7 +117,7 @@
                 	<input type="hidden" name="select_ed" id="select_ed" value="<%=selected%>" />
 							
                 	  <% if(selected.equals("")){ %>
-						<h6>Blog Keyword</h6>
+						<h6>Blog keyword</h6>
 						<fieldset>
 							
 						<h4 class="text-center content-group-lg">

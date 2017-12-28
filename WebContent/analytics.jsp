@@ -482,7 +482,7 @@ function googleTranslateElementInit() {
 					<div class="col-md-4">
 					<c:choose>
 										<c:when test="${tracker != null}">
-											<a href="<%=request.getContextPath()%>/AdditionalBlogger?tracker=${tracker}"> 
+											<a href="<%=request.getContextPath()%>/BlogNetwork?tracker=${tracker}"> 
 										</c:when>
 										<c:when test="${tracker == null}">
 											<a href="<%=request.getContextPath()%>/blog_network.jsp"> 
