@@ -252,7 +252,7 @@ $(window).load(function() {
 String uri = request.getRequestURI();
 String pageName = uri.substring(uri.lastIndexOf("/")+1);	
 
-System.out.println(pageName);
+//System.out.println(pageName);
 %>
 	
 

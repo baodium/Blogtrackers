@@ -1,9 +1,11 @@
 <%@page import="wrapper.*"%>
 <%@page import="java.util.*"%>
 <jsp:include page="include_top2.jsp"></jsp:include>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
 <%
 Object term = (null == session.getAttribute("search_term")) ? "" : session.getAttribute("search_term");
 Object search_result = (null == session.getAttribute("search_result")) ? "" : session.getAttribute("search_result");
+Object total_result = (null == session.getAttribute("total_result")) ? "" : session.getAttribute("total_result");
 Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 
 if(term!="" && username==""){
@@ -18,7 +20,6 @@ if(term!="" && username==""){
 
 			<!-- Main content -->
 			<div class="content-wrapper">
-
 				<!-- Search field -->
 				<div class="panel panel-flat">
 					<div class="panel-heading">
@@ -54,10 +55,10 @@ if(term!="" && username==""){
 				<!-- Search results -->
 				<div class="content-group">
 					<%  
-						if(search_result!=""){
+					if(search_result!=""){
 					%>
 					<p class="text-muted text-size-large content-group">				
-					Search results for <%= term %>					
+					<%=total_result %> results found for <%= term %>					
 					</p>
 					
 					<div class="col-lg-12 mt-20">
@@ -72,18 +73,19 @@ if(term!="" && username==""){
 							</div>
 					</div>
 					<% } %>
-					<div class="search-results-list">
-						
-						<div class="row" id="appendee">
+					<div class="search-results-list">						
+						<div class="row grid" id="appendee">
 						<%  
-							if(search_result!=""){
+							if((search_result instanceof String) ){
+								
+								try{
 								ArrayList resultss = (ArrayList)search_result;
 								if(resultss.size()>0){
 									for(int j=0; j<resultss.size(); j++){
 										ArrayList tracker = (ArrayList)resultss.get(j);
 						%>
 							
-							<div class="col-sm-3">
+							<div class="col-sm-3 grid-item item-<%=tracker.get(0)%>">
 								<div class="panel panel-body">
 									<div class="media">
 										<div class="media-left">
@@ -95,13 +97,27 @@ if(term!="" && username==""){
 											<span class="text-muted"><%=tracker.get(2)%> post(s)</span>
 										</div>
 										
+										<div class="heading-btn-group">
+										<center>
+											<a href="#" onclick="favorIt('<%=tracker.get(0)%>');" class="btn btn-link btn-float has-text" title="Add to favourite"><i class="icon-stack text-primary"></i></a>
+											<a href="#" onclick="trackIt('<%=tracker.get(0)%>');" class="btn btn-link btn-float has-text"  title="Add to tracker"><i class="icon-plus3 text-primary"></i></a>
+										</center>
+										</div>	
+												
 									</div>
 								</div>
 							</div>
-							<% }}} %>											
+							<% }}else{ %>
+							No result found
+							<% }}catch(Exception e){ %>
+								
+							<% }} %>	
+							
+																
 						</div>
+						
 						<%  
-						if(search_result!=""){
+						if(search_result instanceof String && search_result!=""){
 							%>
 							<div class="loadmoreimg" id="loading-img" style="text-align:center"><br/><br/><img src='assets/images/preloader.gif' /><br/></div>						
 						<% } %>			
@@ -124,6 +140,18 @@ if(term!="" && username==""){
 	
     </form>
 	<!-- /page container -->
+	<script>
+	/* Masnory grid*/
+	function initialiaze_masonry(){
+		$('.grid').masonry({
+			  // options
+			  itemSelector: '.grid-item',
+			  columnWidth: 150
+			});
+	}
+	initialiaze_masonry();
+	</script>
+	
  <script>
 	$(window).scroll(function() {
 		if($(window).scrollTop() + $(window).height() > $(document).height() - 200) {
@@ -134,7 +162,6 @@ if(term!="" && username==""){
 	
 	
 	function select_blog(){
-		//alert("hello");
 		var blogs = $(".blog-list");
 		var selected='';
 		for(var l=0; l<blogs.length; l++){
@@ -147,6 +174,20 @@ if(term!="" && username==""){
 		$("#all-selected-blogs").val(selected);
 	}
 	
+	
+	function trackIt(id){
+		//console.log(id);
+		var selected = $("#all-selected-blogs").val();		
+		selected+= id+",";
+		$("#all-selected-blogs").val(selected);
+		$(".item-"+id).remove();
+		initialiaze_masonry();
+		console.log($("#all-selected-blogs").val());
+	}
+	
+	function favorIt(id){
+		
+	}
 </script>
 
 	<!-- Footer -->
