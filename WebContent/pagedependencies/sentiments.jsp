@@ -83,7 +83,7 @@
       var ctx = document.getElementById("canvasRadar");
       var data = {
         	labels: ["Work", "Leisure", "Home", "Money", "Religion", "Death"], 
-        	datasets: [${radar}]
+        	datasets: '${radar}'
     		}
       var canvasRadar = new Chart(ctx, {
         type: 'radar',
@@ -123,7 +123,7 @@
       var ctx = document.getElementById("canvasRadar3");
       var data = {
         labels: ["Insight", "Cause", "Discrepancies", "Tentativeness", "Certainty", "Differentiation"],
-        datasets: [${radar3}]
+        datasets: '${radar3}'
       };
 
       var canvasRadar3 = new Chart(ctx, {
@@ -135,7 +135,7 @@
       var ctx = document.getElementById("canvasRadar4");
       var data = {
         labels: ["Analytical Thinking", "Clout", "Authentic", "Emotional Tone"],
-        datasets: [${radar4}]
+        datasets: '${radar4}'
       };
 
 
@@ -149,7 +149,7 @@
       var ctx = document.getElementById("canvasRadar5");
       var data = {
         labels: ["Positive emotion", "Negative emotion", "Anxiety", "Anger", "Sadness"],
-        datasets: [${radar5}]
+        datasets: '${radar5}'
       };
 
       var canvasRadar5 = new Chart(ctx, {
@@ -203,7 +203,7 @@ $(document).ready(function () {
 		        color: "green",
 		        fillOpacity: 0,
 		        name : "Positve Sentiments",
-		        dataPoints: [${trendpos}],          //array
+		        dataPoints: "${trendpos}",          //array
         	},
       		{ 
 		        click: function(e){
@@ -217,7 +217,7 @@ $(document).ready(function () {
 		        color: "red",
 		        fillOpacity: 0,
 		        name:"Negative Sentiments",
-		        dataPoints: [${trendneg}],
+		        dataPoints: '${trendneg}',
         	}],
       legend : {
 				cursor : "pointer",
@@ -475,6 +475,12 @@ $('#destroy').click(
 		        success: function(response)
 		        {	
 		        	$(".demo-container").html(response);
+		        	
+		        	
+		        	$.getScript("pagedependencies/sentiments.jsp", function( data, textStatus, jqxhr ) {
+						
+					});
+		        	
 		        }
 		    });
 		}

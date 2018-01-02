@@ -3002,4 +3002,3 @@ int trackerSize = mytrackers.size();
 												</div>
 
 											</div>
-<jsp:include page="../pagedependencies/sentiments.jsp"></jsp:include>
