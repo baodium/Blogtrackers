@@ -76,7 +76,7 @@ if(term!="" && username==""){
 					<div class="search-results-list">						
 						<div class="row grid" id="appendee">
 						<%  
-							if((search_result instanceof String) ){
+							if(search_result!="" ){
 								
 								try{
 								ArrayList resultss = (ArrayList)search_result;
@@ -117,7 +117,7 @@ if(term!="" && username==""){
 						</div>
 						
 						<%  
-						if(search_result instanceof String && search_result!=""){
+						if(search_result!=""){
 							%>
 							<div class="loadmoreimg" id="loading-img" style="text-align:center"><br/><br/><img src='assets/images/preloader.gif' /><br/></div>						
 						<% } %>			
