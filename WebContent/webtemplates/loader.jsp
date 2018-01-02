@@ -44,7 +44,7 @@
 											<img src="img/b.png" class="img-circle img-lg" alt="">
 										</div>									
 										<div class="media-body">
-											<h6 class="media-heading"><%=item.get(1)%> <input type="checkbox" onclick="select_blog()"  class="blog-list" name="blog" style="float:right" value="<%=item.get(0) %>"  /></h6>
+											<h6 class="media-heading"><b><%=item.get(1)%></b> <input type="checkbox" onclick="select_blog()"  class="blog-list" name="blog" style="float:right" value="<%=item.get(0) %>"  /></h6>
 											<span class="text-muted"><%=item.get(2)%> post(s)</span>
 											<span><br/><br/>
 											<%=item.get(3)%>

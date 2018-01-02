@@ -96,10 +96,11 @@ if(term!="" && username==""){
 										</div>
 										
 										<div class="media-body">
-											<h6 class="media-heading"><%=tracker.get(1)%> <input type="checkbox" onclick="select_blog();"  class="blog-list" name="blog" style="float:right" value="<%=tracker.get(0) %>"  /></h6>
+											<h6 class="media-heading"><b><%=tracker.get(1)%></b> <input type="checkbox" onclick="select_blog();"  class="blog-list" name="blog" style="float:right" value="<%=tracker.get(0) %>"  /></h6>
 											<span class="text-muted"><%=tracker.get(2)%> post(s)</span>
 											<span><br/><br/>
-											<%=tracker.get(3)%>
+											<% String detail = tracker.get(3).toString();%>
+											<%=detail%>
 											</span>
 										</div>
 										
@@ -146,10 +147,19 @@ if(term!="" && username==""){
 	
     </form>
 	<!-- /page container -->
+<script>
+$(document).ready(function(){
+var container = document.querySelector('.grid');
+var msnry = new Masonry( container, {
+ // columnWidth: 0,
+  itemSelector: '.grid-item'
+});
+
+});
+</script>
 	<script>
-	/* Masnory grid*/
-	$('.grid').masonry();
 	
+	/* Masnory grid*/
 	function initialiaze_masonry(){
 		$('.grid').masonry({
 			  // options

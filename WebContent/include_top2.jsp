@@ -149,7 +149,7 @@ $(window).load(function() {
 	       
 	<link href="assets/css/mystyle.css" rel="stylesheet" type="text/css">
 
-	<script type="text/javascript" src="assets/js/functions.js?v=23"></script>
+	<script type="text/javascript" src="assets/js/functions.js?v=2123"></script>
 	<!-- /global stylesheets -->
 </head>
 
