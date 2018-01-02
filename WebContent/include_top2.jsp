@@ -13,9 +13,7 @@
 	
 	try{
     	ArrayList trackers = new DBConnector().query("SELECT * FROM trackers WHERE userid='"+username.toString()+"'");
-    	session.setAttribute("trackers", trackers);
-    	
-    	
+    	session.setAttribute("trackers", trackers);	
     }catch(Exception ex){}
 	
 	ArrayList userinfo = new ArrayList();

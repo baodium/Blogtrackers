@@ -9,10 +9,14 @@ Object term = (null == session.getAttribute("search_term")) ? "" : session.getAt
 Object search_result = (null == session.getAttribute("search_result")) ? "" : session.getAttribute("search_result");
 Object total_result = (null == session.getAttribute("total_result")) ? "" : session.getAttribute("total_result");
 Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
-Random rand = new Random();
+ArrayList trackers = new ArrayList();
 if(term!="" && username==""){
 	session.setAttribute("initiated_search_term", term);
 }
+
+try{
+	   trackers = (ArrayList)session.getAttribute("trackers");
+ }catch(Exception e){}
 %>
 	<!-- Page container -->
 	<div class="page-container">
@@ -85,7 +89,7 @@ if(term!="" && username==""){
 								if(resultss.size()>0){
 									for(int j=0; j<resultss.size(); j++){
 										ArrayList tracker = (ArrayList)resultss.get(j);
-										int  n = rand.nextInt(10) + 1;
+										
 						%>
 							
 							<div class="col-sm-3 grid-item item-<%=tracker.get(0)%>">
@@ -99,15 +103,40 @@ if(term!="" && username==""){
 											<h6 class="media-heading"><b><%=tracker.get(1)%></b> <input type="checkbox" onclick="select_blog();"  class="blog-list" name="blog" style="float:right" value="<%=tracker.get(0) %>"  /></h6>
 											<span class="text-muted"><%=tracker.get(2)%> post(s)</span>
 											<span><br/><br/>
-											<% String detail = tracker.get(3).toString();%>
-											<%=detail%>
+											<%=tracker.get(3)%>
 											</span>
 										</div>
-										
+										<span class="divider"></span>
 										<div class="heading-btn-group">
 										<center>
-											<a href="#" onclick="favorIt('<%=tracker.get(0)%>');" class="btn btn-link btn-float has-text" title="Add to favourite"><i class="icon-stack text-primary"></i></a>
-											<a href="#" onclick="trackIt('<%=tracker.get(0)%>');" class="btn btn-link btn-float has-text"  title="Add to tracker"><i class="icon-plus3 text-primary"></i></a>
+										
+											<% if(username!=""){ %>
+											<a href="#" onclick="favorIt('<%=tracker.get(0)%>');" class="btn btn-link btn-float has-text" title="Add to favourite"><i class="icon-stars text-primary"></i></a>								
+											<a href="#"  class="btn btn-link btn-float dropdown-toggle" data-toggle="dropdown"  title="Add to tracker"><i class="icon-stack text-primary"></i></a>
+											<ul class="dropdown-menu dropdown-menu-right">
+												<li class="divider"></li>
+												<% 
+												if(trackers.size()>0){
+												for(int i=0; i<trackers.size(); i++){
+													if(i<6){
+													ArrayList tr = (ArrayList)trackers.get(i);
+												%>
+														<li><a target="#" style="padding:0 8px" ><input class="tracker-<%=tracker.get(0)%>" type="checkbox" value="<%=tr.get(0)%>"/><%=tr.get(2)%></a></li>											
+												<% }} %>
+												<li><input type="text" style="height:10px; padding-left:5px" class="form-control input-xlg" id="tracker-name-<%=tracker.get(0)%>" /></li>			
+												
+												<li class="divider"></li>
+												<li><a href="#" onclick="addToTracker('<%=tracker.get(0)%>');" id="add-tracker-<%=tracker.get(0)%>" class="btn btn-link" style="padding:0 8px"><i class="icon-paperplane text-primary"></i> <span>Add</span> </a></li>																			
+												<% } %>
+												<li class="divider"></li>
+												<li><a id="create-tracker-<%=tracker.get(0)%>" onclick="createTracker('<%=tracker.get(0)%>');" class="btn" style="padding:3px 8px"><i class="icon-plus2 text-primary"></i> <span>create tracker</span> </a></li>			
+											</ul>
+											<% }else{ %>
+											<a href="<%=request.getContextPath()%>/login"  class="btn btn-link btn-float has-text" title="Add to favourite"><i class="icon-stars text-primary"></i></a>
+											
+											<a href="<%=request.getContextPath()%>/login"  class="btn btn-link btn-float has-text"  title="Add to tracker"><i class="icon-stack text-primary"></i></a>
+											
+											<% } %>
 										</center>
 										</div>	
 												
@@ -193,18 +222,50 @@ var msnry = new Masonry( container, {
 	}
 	
 	
-	function trackIt(id){
-		//console.log(id);
-		var selected = $("#all-selected-blogs").val();		
-		selected+= id+",";
-		$("#all-selected-blogs").val(selected);
-		$(".item-"+id).remove();
-		initialiaze_masonry();
-		console.log($("#all-selected-blogs").val());
-	}
-	
+
 	function favorIt(id){
 		
+	}
+	
+	function createTracker(id){
+		var name = $("#tracker-name-"+id).val();
+		console.log(id);
+		console.log($("#tracker-name-"+id));
+		if(name==""){
+			$("#tracker-name-"+id).focus();
+		}
+		return false;
+	}
+	
+	function addToTracker(id){
+		var trackers = $(".tracker-"+id);
+		//var blog_id = $(".tracker-"+id);
+		var selected='';
+		for(var l=0; l<trackers.length; l++){
+				var is_checked = $(trackers[l]).is(':checked');
+				if(is_checked){
+					var valu = $(trackers[l]).val();
+					selected+= valu+",";
+				}
+		}
+		
+		if(selected!=""){
+			console.log(selected);
+			/*
+			$.ajax({
+		        url: app_url+'setup_tracker',
+				method:'POST',
+				async: true,
+				data:{tracker_ids:selected,blog_id:id,add_blog:"yes"},
+		        success: function(response)
+		        {	
+		        	console.log(response);
+		        	
+		        }
+		    });	
+			*/
+		}
+		return false;
 	}
 </script>
 

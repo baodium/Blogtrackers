@@ -71,14 +71,12 @@ public class Search extends HttpServlet {
     					ArrayList trackerz = new DBConnector().query("select blogsite_id from blogsites where blogsite_id in (select distinct blogsiteid from terms where term in "+s+" )");				                     	
     					ArrayList trackers = new DBConnector().query("select blogsite_id,blogsite_name,totalposts, description from blogsites where blogsite_id in (select distinct blogsiteid from terms where term in "+s+" ) limit 0,12 ");				                     	
                        session.setAttribute("search_result",trackers);
-                       if(trackerz.get(0)!="Err") {
+                       if(trackerz!=null) {
                     	   session.setAttribute("total_result",trackerz.size());
                        }
                         response.setContentType("text/html");
                         response.sendRedirect("search_result.jsp");
                     }
-               
-                 
-                
+          
 	}
 }
