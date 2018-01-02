@@ -37,7 +37,7 @@
 	    		 for(int k=0; k<trackers.size(); k++){
 	    			ArrayList item = (ArrayList)trackers.get(k);
 	    	%>
-	    			<div class="col-sm-3">
+	    			<div  class="col-sm-3 grid-item item-<%=item.get(0)%>">
 								<div class="panel panel-body">
 									<div class="media">
 										<div class="media-left">
@@ -46,6 +46,16 @@
 										<div class="media-body">
 											<h6 class="media-heading"><%=item.get(1)%> <input type="checkbox" onclick="select_blog()"  class="blog-list" name="blog" style="float:right" value="<%=item.get(0) %>"  /></h6>
 											<span class="text-muted"><%=item.get(2)%> post(s)</span>
+											<span><br/><br/>
+											<%=item.get(3)%>
+											</span>
+										</div>	
+										
+										<div class="heading-btn-group">
+										<center>
+											<a href="#" onclick="favorIt('<%=item.get(0)%>');" class="btn btn-link btn-float has-text" title="Add to favourite"><i class="icon-stack text-primary"></i></a>
+											<a href="#" onclick="trackIt('<%=item.get(1)%>');" class="btn btn-link btn-float has-text"  title="Add to tracker"><i class="icon-plus3 text-primary"></i></a>
+										</center>
 										</div>										
 									</div>
 								</div>

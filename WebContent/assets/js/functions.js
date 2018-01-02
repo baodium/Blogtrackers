@@ -47,7 +47,16 @@ function loadMoreResult(){
 						$(".loader-box").addClass("hidden");
 					}catch(err){}
 					//console.log(data);
-					$("#appendee").append(data);				
+					$("#appendee").append(data);
+					try{
+						
+					}catch(err){
+						$('.grid').masonry({
+							  // options
+							  itemSelector: '.grid-item',
+							  columnWidth: 150
+						});
+					}
 				}
 			}
 	});

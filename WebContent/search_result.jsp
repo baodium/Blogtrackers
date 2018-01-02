@@ -1,5 +1,7 @@
 <%@page import="wrapper.*"%>
 <%@page import="java.util.*"%>
+<%@page import="java.util.Random.*"%>
+
 <jsp:include page="include_top2.jsp"></jsp:include>
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
 <%
@@ -7,7 +9,7 @@ Object term = (null == session.getAttribute("search_term")) ? "" : session.getAt
 Object search_result = (null == session.getAttribute("search_result")) ? "" : session.getAttribute("search_result");
 Object total_result = (null == session.getAttribute("total_result")) ? "" : session.getAttribute("total_result");
 Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
-
+Random rand = new Random();
 if(term!="" && username==""){
 	session.setAttribute("initiated_search_term", term);
 }
@@ -73,7 +75,7 @@ if(term!="" && username==""){
 							</div>
 					</div>
 					<% } %>
-					<div class="search-results-list">						
+					<div class="search-results-list"><br/><br/><br/><br/>						
 						<div class="row grid" id="appendee">
 						<%  
 							if(search_result!="" ){
@@ -83,6 +85,7 @@ if(term!="" && username==""){
 								if(resultss.size()>0){
 									for(int j=0; j<resultss.size(); j++){
 										ArrayList tracker = (ArrayList)resultss.get(j);
+										int  n = rand.nextInt(10) + 1;
 						%>
 							
 							<div class="col-sm-3 grid-item item-<%=tracker.get(0)%>">
@@ -95,6 +98,9 @@ if(term!="" && username==""){
 										<div class="media-body">
 											<h6 class="media-heading"><%=tracker.get(1)%> <input type="checkbox" onclick="select_blog();"  class="blog-list" name="blog" style="float:right" value="<%=tracker.get(0) %>"  /></h6>
 											<span class="text-muted"><%=tracker.get(2)%> post(s)</span>
+											<span><br/><br/>
+											<%=tracker.get(3)%>
+											</span>
 										</div>
 										
 										<div class="heading-btn-group">
@@ -142,14 +148,16 @@ if(term!="" && username==""){
 	<!-- /page container -->
 	<script>
 	/* Masnory grid*/
+	$('.grid').masonry();
+	
 	function initialiaze_masonry(){
 		$('.grid').masonry({
 			  // options
 			  itemSelector: '.grid-item',
-			  columnWidth: 150
+			  columnWidth: 5
 			});
 	}
-	initialiaze_masonry();
+	//initialiaze_masonry();
 	</script>
 	
  <script>

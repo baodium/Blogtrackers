@@ -68,8 +68,8 @@ public class Search extends HttpServlet {
     					}
     					s = "("+s.substring(0,s.length()-1)+")";
     					//System.out.println(s);
-    					ArrayList trackerz = new DBConnector().query("select blogsite_id,blogsite_name,totalposts from blogsites where blogsite_id in (select distinct blogsiteid from terms where term in "+s+" )");				                     	
-    					ArrayList trackers = new DBConnector().query("select blogsite_id,blogsite_name,totalposts from blogsites where blogsite_id in (select distinct blogsiteid from terms where term in "+s+" ) limit 0,12 ");				                     	
+    					ArrayList trackerz = new DBConnector().query("select blogsite_id from blogsites where blogsite_id in (select distinct blogsiteid from terms where term in "+s+" )");				                     	
+    					ArrayList trackers = new DBConnector().query("select blogsite_id,blogsite_name,totalposts, description from blogsites where blogsite_id in (select distinct blogsiteid from terms where term in "+s+" ) limit 0,12 ");				                     	
                        session.setAttribute("search_result",trackers);
                        if(trackerz.get(0)!="Err") {
                     	   session.setAttribute("total_result",trackerz.size());
