@@ -81,58 +81,19 @@ int trackerSize = mytrackers.size();
 							<div class="col-md-12">
 	<div id="mynetwork"></div>
 <script type="text/javascript">
-    var nodes = [
-        {id: 0, label: "0", group: 'source'},
-        {id: 1, label: "1", group: 'blogger'},
-        {id: 2, label: "2", group: 'blogger'},
-        {id: 3, label: "3", group: 'blogger'},
-        {id: 4, label: "4", group: 'blogger'},
-        {id: 5, label: "5", group: 'blogger'},
-        {id: 6, label: "6", group: 'blogger'},
-        {id: 7, label: "7", group: 'blogger'},
-        {id: 8, label: "8", group: 'blogger'},
-        {id: 9, label: "9", group: 'blogger'},
-        {id: 10, label: "10", group: 'mints'},
-        {id: 11, label: "11", group: 'mints'},
-        {id: 12, label: "12", group: 'mints'},
-        {id: 13, label: "13", group: 'mints'},
-        {id: 14, label: "14", group: 'mints'},
-        {id: 15, group: 'dotsWithLabel'},
-        {id: 16, group: 'dotsWithLabel'},
-        {id: 17, group: 'dotsWithLabel'},
-        {id: 18, group: 'linkedin'},
-        {id: 19, group: 'facebook'},
-        {id: 20, label: "twitter", group: 'twitter'},
-        {id: 21, label: "diamond", group: 'diamonds'},
-        {id: 22, label: "diamond", group: 'diamonds'},
-        {id: 23, label: "diamond", group: 'diamonds'},
-    ];
-    var edges = [
-        {from: 1, to: 0},
-        {from: 2, to: 0},
-        {from: 4, to: 3},
-        {from: 5, to: 4},
-        {from: 4, to: 0},
-        {from: 7, to: 6},
-        {from: 8, to: 7},
-        {from: 7, to: 0},
-        {from: 10, to: 9},
-        {from: 11, to: 10},
-        {from: 10, to: 4},
-        {from: 13, to: 12},
-        {from: 14, to: 13},
-        {from: 13, to: 0},
-        {from: 16, to: 15},
-        {from: 17, to: 15},
-        {from: 15, to: 10},
-        {from: 19, to: 18},
-        {from: 20, to: 19},
-        {from: 19, to: 4},
-        {from: 22, to: 21},
-        {from: 23, to: 22},
-        {from: 23, to: 0},
-    ]
-
+var nodes = [
+ 	
+ 	<c:forEach items="${nodes}" var="l" >
+     {id: ${l[0]}, label: "${l[1]}", group: '${l[2]}'},
+     </c:forEach>
+ ];
+ 
+ var edges = [
+ 	<c:forEach items="${edges}" var="l" >
+     {from: ${l[0]}, to: ${l[1]}, ${l[2]}},
+     </c:forEach>
+ ]  
+ 
     // create a network
     var container = document.getElementById('mynetwork');
     var data = {
@@ -142,10 +103,10 @@ int trackerSize = mytrackers.size();
     var options = {
         nodes: {
             shape: 'dot',
-            size: 25,
+            size: 20,
             font: {
                 size: 15,
-                color: '#2196F3'
+                color: '#ffffff'
             },
             borderWidth: 2
         },
@@ -157,15 +118,13 @@ int trackerSize = mytrackers.size();
                 color: {background:'red',border:'white'},
                 shape: 'diamond'
             },
-            
             dotsWithLabel: {
                 label: "I'm a dot!",
                 shape: 'dot',
                 color: 'cyan'
             },
-            
             mints: {color:'rgb(0,255,140)'},
-            blogger: {
+            icons: {
                 shape: 'icon',
                 icon: {
                     face: 'FontAwesome',
@@ -174,40 +133,67 @@ int trackerSize = mytrackers.size();
                     color: 'orange'
                 }
             },
-            twitter: {
-                shape: 'icon',
-                icon: {
-                    face: 'FontAwesome',
-                    code: '\uf099',
-                    size: 50,
-                    color: '#1da1f2'
-                }
-            },
-            facebook: {
+						facebook: {
                 shape: 'icon',
                 icon: {
                     face: 'FontAwesome',
                     code: '\uf09a',
                     size: 50,
-                    color: '#4267b2'
+                    color: 'orange'
                 }
             },
-            linkedin: {
+						twitter: {
+                shape: 'icon',
+                icon: {
+                    face: 'FontAwesome',
+                    code: '\uf099',
+                    size: 50,
+                    color: 'orange'
+                }
+            },
+						youtube: {
+                shape: 'icon',
+                icon: {
+                    face: 'FontAwesome',
+                    code: '\uf16a',
+                    size: 50,
+                    color: 'orange'
+                }
+            },
+						tumblr: {
+                shape: 'icon',
+                icon: {
+                    face: 'FontAwesome',
+                    code: '\uf173',
+                    size: 50,
+                    color: 'orange'
+                }
+            },
+						linkedin: {
                 shape: 'icon',
                 icon: {
                     face: 'FontAwesome',
                     code: '\uf08c',
                     size: 50,
-                    color: '#0077B5'
+                    color: 'orange'
                 }
             },
-            blog: {
+						socialmedia: {
                 shape: 'icon',
                 icon: {
                     face: 'FontAwesome',
-                    code: '\uf086',
+                    code: '\uf1e0',
                     size: 50,
-                    color: '#0077B5'
+                    color: 'orange'
+                }
+            },
+						entities: {
+                shape: 'icon',
+                icon: {
+                    face: 'FontAwesome',
+                    code: '\uf111',
+                    size: 50,
+                    color: 'orange'
                 }
             },
             source: {
@@ -337,5 +323,22 @@ Twitter
   <jsp:include page="pagedependencies/blog_network.jsp"></jsp:include>
   <!-- End of Dependencies -->
 	
+	<script>
+	$(document).ready(function(e)
+	{
+	$('#features').click(function(e)
+    {
+	$('.features-tab').slideToggle(500);
+	});
+
+	$('.checker input[type=checkbox]').each(function(index,element){
+	$('.checker input[type=checkbox]:eq('+index+')').click(function(){
+	$('.checkbox .checker span:eq('+index+')').toggleClass('checked');
+	//$('.checker input[type=checkbox]:eq('+index+')').trigger('click');
+   });
+	});
+
+	});
+	</script>
 </body>
 </html>
