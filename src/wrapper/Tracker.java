@@ -58,6 +58,8 @@ public class Tracker extends HttpServlet {
 		if(savetracker.equals("yes")){
 			
 			String userName = (String) session.getAttribute("username");
+			String userid = (String) session.getAttribute("user");
+			     	
 			String keyword = request.getParameter("keyword");
 			String trackerName=request.getParameter("title");
 			if(!trackerName.trim().isEmpty()){
@@ -87,7 +89,7 @@ public class Tracker extends HttpServlet {
 					String query="INSERT INTO trackers(userid,tracker_name,date_created,date_modified,query,description,blogsites_num) VALUES('"+userName+"', '"+trackerName+"', '"+createdDate+"', "+ null+", '"+listString+"', '"+trackerDescription+"', '"+selectedSite.length+"')";
 					boolean done = new DBConnector().updateTable(query);
 					if(done) {
-					  	ArrayList trackers = new DBConnector().query("SELECT * FROM trackers WHERE userid='"+userName+"'");
+					  	ArrayList trackers = new DBConnector().query("SELECT * FROM trackers WHERE userid='"+userid+"'");
 	                	session.setAttribute("trackers", trackers+"");
 	                	session.setAttribute("initiated_search_term", "");
 						response.setContentType("text/html");
