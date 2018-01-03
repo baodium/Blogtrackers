@@ -29,9 +29,9 @@
 				</h4>
 				<ul class="breadcrumb breadcrumb-caret position-right">
 					<li><a href="features.jsp">Home</a></li>
-					<li ><a href="trackerlist.jsp">Tracker List </a></li>
+					<li ><a href="trackerlist.jsp">Tracker List </a><a href="edittracker.jsp" title="Edit <%=session.getAttribute("tracker")%> Tracker">(<%=session.getAttribute("tracker")%>)</a></li>
 					<li> <a href="analytics.jsp">Analytics</a></li>
-					<li class="active">Additional Blog Info (Current Tracker: <%=session.getAttribute("tracker")%>)</li>
+					<li class="active">Additional Blog Info</li>
 				</ul>
 				<!-- <div class="form-group">
 				<div class="col-md-12">
@@ -260,8 +260,8 @@
 			                	</div>
 							</div>
 
-							<div class="panel-body">
-						<table class="table datatable-basic">
+							<div class="panel-body scroll2">
+						<table class="table datatable-basic" style="min-height:500px;">
 						<thead>
 							<tr>
 								<th>URL</th>
@@ -311,8 +311,8 @@
 			                	</div>
 							</div>
 
-							<div class="panel-body">
-						<table class="table datatable-basic">
+							<div class="panel-body scroll2">
+						<table class="table datatable-basic" style="min-height:500px;">
 						<thead>
 							<tr>
 								<th>URL</th>

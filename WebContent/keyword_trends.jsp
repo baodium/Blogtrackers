@@ -41,9 +41,9 @@ int trackerSize = mytrackers.size();
 				</h4>
 				<ul class="breadcrumb breadcrumb-caret position-right mb-20">
 					<li><a href="features.jsp">Home</a></li>
-					<li ><a href="trackerlist.jsp">Tracker List </a></li>
+					<li ><a href="trackerlist.jsp">Tracker List </a><a href="edittracker.jsp" title="Edit <%=session.getAttribute("tracker")%> Tracker">(<%=session.getAttribute("tracker")%>)</a></li>
 					<li> <a href="analytics.jsp">Analytics</a></li>
-					<li class="active">Keyword Trends (Current Tracker: <%=session.getAttribute("tracker")%>)</li>
+					<li class="active">Keyword Trends </li>
 				</ul>
 		
 				<form name="tagform" id="tagform" action="KeywordTrendsServlet" method="post">

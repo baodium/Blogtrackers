@@ -500,6 +500,13 @@ height:17px;
     margin-top: 6px;
     border-radius: 3px;
 }
+#tourpage
+{
+position:fixed;
+right:0;
+bottom:0;	
+z-index:9999;
+}
 .tokenfield .token-input
 {
 width:100% !important;	
@@ -579,4 +586,8 @@ right:6% !important;
         .navbar-nav-material > li > a
         {
         font-size:14px;
+        }
+        #reportrange span
+        {
+        text-transform:capitalize;
         }

@@ -75,7 +75,7 @@
 				<h4>
 					<a href="<%=request.getContextPath()%>/features.jsp"><i class="icon-home position-left"></i></a>
 					<span class="text-semibold">Home</span> 
-					<small class="display-block"><span>Welcome, </span><%=username %>
+					<small class="display-block"><span>Welcome, </span><%=username %> <a href="trackerlist.jsp">Proceed to Tracker List</a>
 				</h4>
 			</div>
 
