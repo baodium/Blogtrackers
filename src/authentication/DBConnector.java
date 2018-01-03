@@ -34,10 +34,13 @@ public class DBConnector {
 	//"jdbc:mysql://144.167.112.118:3306/blogtrackers"
 	//"jdbc:mysql://localhost:3306/blogtrackers"
 	public  DBConnector(){
+		Connection con = getConnection();
+	}
 
+	public Connection getConnection(){
 		String dbURL = "jdbc:mysql://144.167.112.118:3306/blogtrackers"; //144.167.112.118 ukraine_super, summer2014
         String username ="ukraine_super";
-	    String password = "summer2014";      
+	    String password ="summer2014";      
 
 		//Statement stmt = null;
 		//ResultSet rs = null;
@@ -46,12 +49,9 @@ public class DBConnector {
 			dbCon = DriverManager.getConnection(dbURL, username, password);
 			//System.out.println(dbCon);
 		}catch(Exception ex){
-			//System.out.println(ex);
 			System.out.println("Unable to connect!");
 		}
-	}
 
-	public Connection getConnection(){
 		return dbCon;  
 	}
 	
@@ -85,7 +85,7 @@ public class DBConnector {
 			con.close();
 
 		} catch (SQLException ex) {
-			//System.out.println(ex);
+			ex.printStackTrace();
 			result.add(0,"Err");          
 		} 
 
@@ -169,17 +169,47 @@ public class DBConnector {
 	}
 	
 	
-	public int getTotal(String table){
+	public ArrayList getTotal(){
 		//this.getConn();
 		ArrayList total =new ArrayList();
-	
-		String query="SELECT * FROM "+table; 
-		total = this.query(query);
-		return total.size();
+		Connection con = null;
+		//System.out.println(query);
+		java.sql.Statement stmt = null;
+		ResultSet rs = null;   
+		try {
+			String query = "select (select count(*) from usercredentials) as users, (select count(*) from trackers) as trackers, (select count(*) from blogposts) as blogposts, (select count(*) from blogsites) as blogsites from dual";
+			con = getConnection();//getConn();//Connection();//getConection//DriverManager.getConnection(dbURL, username, password);
+			stmt = con.prepareStatement(query);
+			rs = stmt.executeQuery(query); 
+			
+			rs.next();
+			int totalusers = rs.getInt("users");
+			int trackers = rs.getInt("trackers");
+			int blogposts = rs.getInt("blogposts");
+			int blogsites = rs.getInt("blogsites");
+			
+			total.add(0,totalusers);
+			total.add(1,trackers);
+			total.add(2,blogposts);
+			total.add(3,blogsites);
+			
+			rs.close();
+			stmt.close();
+			con.close();
+
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			total.add(0,0);
+			total.add(1,0);
+			total.add(2,0);
+			total.add(3,0);
+		} 
+
+		return total;
 
 	}
-
 	
+		
         public String md5Funct(String userNamePass) {
 		try {
 
