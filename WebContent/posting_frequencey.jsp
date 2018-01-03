@@ -41,9 +41,9 @@ int trackerSize = mytrackers.size();
 				</h4>
 				<ul class="breadcrumb breadcrumb-caret position-right">
 					<li><a href="features.jsp">Home</a></li>
-					<li ><a href="trackerlist.jsp">Tracker List </a></li>
+					<li ><a href="trackerlist.jsp">Tracker List </a><a href="edittracker.jsp" title="Edit <%=session.getAttribute("tracker")%> Tracker">(<%=session.getAttribute("tracker")%>)</a></li>
 					<li> <a href="analytics.jsp">Analytics</a></li>
-					<li class="active">Posting Frequency (Current Tracker: <%=session.getAttribute("tracker")%>)</li>
+					<li class="active">Posting Frequency</li>
 				</ul>
 			</div>
 				<!-- <div class="heading-elements">
@@ -253,6 +253,7 @@ function googleTranslateElementInit() {
 						</div>
 						</div>
 					</div>
+					
 						
 <div class="col-md-6 col-sm-12 col-xs-12">
 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -280,8 +281,21 @@ function googleTranslateElementInit() {
 						</div>
 					
 					
+						<div class="panel panel-primary">
+							<div class="panel-heading">Keywords Vs Entities<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<div class="heading-elements">
+									<ul class="icons-list">
+				                		<li><a data-action="collapse"></a></li>
+				                		<li><a data-action="reload"></a></li>
+<!--				                		<li><a data-action="close"></a></li>-->
+				                	</ul>
+			                	</div>
+							</div>
+
+							<div class="panel-body">
+							
 							<div class="col-md-6 col-sm-12 col-xs-12">
-						<div data-intro="This section displays the top keywords" data-step="8" class="panel panel-primary">
+						<div data-intro="This section displays the top keywords" data-step="8" class="panel panel-default">
 							<div class="panel-heading">
 								<h6 class="panel-title">Top Keywords<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -306,7 +320,7 @@ function googleTranslateElementInit() {
 					
 					
 						<div class="col-md-6 col-sm-12 col-xs-12">
-						<div data-intro="This section displays the top entities" data-step="9" class="panel panel-primary">
+						<div data-intro="This section displays the top entities" data-step="9" class="panel panel-default">
 							<div class="panel-heading">
 								<h6 class="panel-title">Top Entities<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -353,6 +367,9 @@ function googleTranslateElementInit() {
    
 							</div>
 						</div>
+					</div>
+					
+					</div>
 					</div>
 					
 					

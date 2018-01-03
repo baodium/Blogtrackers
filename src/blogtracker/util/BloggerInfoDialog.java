@@ -97,6 +97,7 @@ public class BloggerInfoDialog extends UtilFunctions{
 		days.put(5, "Thursday");
 		days.put(6, "Friday");
 		days.put(7, "Saturday");
+		
 		try
 		{
 			Connection conn = getConn();
@@ -109,6 +110,7 @@ public class BloggerInfoDialog extends UtilFunctions{
 				java.util.Date postdate= rset.getDate("date");
 				Calendar cal = Calendar.getInstance();
 				cal.setTime(postdate);
+				
 				int dow = cal.get(Calendar.DAY_OF_WEEK);                    
 				if(daysmap.containsKey(dow))
 				{

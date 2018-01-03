@@ -603,10 +603,10 @@ content analysis and social network analysis.
                 <div class="row">
                     
                     <!-- left content start -->
-                    <div class="col-md-5">
+                    <div class="col-md-6 animated" data-animation="fadeInLeft" data-animation-delay="200">
                         <div class="general-content">
-                            <h3 class="mb25">
-                                <small class="color-red">About COSMOS</small>
+                            <h3 class="mb25 font-size-normal">
+                              About COSMOS
                             </h3>
                             <p>At COSMOS, we are studying various aspects of social media and online behavior - the good, bad and the ugly.
 							At COSMOS, Dr. Agarwal is directing several projects with funding from the U.S.
@@ -622,7 +622,7 @@ content analysis and social network analysis.
                     <!-- left content end -->
                     
                     <!-- right content start -->
-                    <div class="col-md-5 col-md-push-1">
+                    <div class="col-md-5 col-md-push-1 animated" data-animation="fadeInRight" data-animation-delay="200">
 					
                         <img src="assets/img/vegasimg/cosmos.jpg" class="img-responsive pull-right" style="height: 55%; width: 55%">
                     </div>
@@ -635,13 +635,13 @@ content analysis and social network analysis.
     
            
         
-         <div id="blogs" class="pt70 pb50">
+         <div id="blogs" class="bg-gray pt70 pb50">
             <div class="container">
                 
                 <!-- title start -->
                 <div class="row text-center mb25">
                     <h1 class="font-size-normal">
-                           Our sponsors
+                           Our Sponsors
                         <small class="heading heading-solid center-block"></small>
                     </h1>
                 </div>
@@ -655,7 +655,7 @@ content analysis and social network analysis.
                             <div class="shop-item-container-out">
                                 <div class="shop-item-container-in">
                                     <div class="shop-label">-50%</div>
-                                    <img src="assets/img/shop/img-shop-1.png" alt="shop item" class="img-responsive center-block">
+                                    <img src="assets/sponsor/nsf.jpg" alt="shop item" class="img-responsive center-block">
                                     <span class="shop-item-price">U.S. National Science
 Foundation</span>
                                     
@@ -667,9 +667,8 @@ Foundation</span>
                             <!-- shop item start -->
                             <div class="shop-item-container-out">
                                 <div class="shop-item-container-in">
-                                    <img src="assets/img/shop/img-shop-2.png" alt="shop item" class="img-responsive center-block">
-                                    <span class="shop-item-price">U.S.
-Office of Naval Research</span> 
+                                    <img src="assets/sponsor/oonr.jpg" alt="U.S. Office of Naval Research" class="img-responsive center-block">
+                                    <span class="shop-item-price">U.S. Office of Naval &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Research <br/></span> 
                                   
                                 </div>
 
@@ -679,7 +678,7 @@ Office of Naval Research</span>
                             <!-- shop item start -->
                             <div class="shop-item-container-out">
                                 <div class="shop-item-container-in">
-                                    <img src="assets/img/shop/img-shop-3.png" alt="shop item" class="img-responsive center-block">
+                                    <img src="assets/sponsor/aflr.jpg" alt="U.S. Air Force Research" class="img-responsive center-block">
                                     <span class="shop-item-price">U.S. Air Force Research
 Lab, U.S. Army Research Office</span>
                                     
@@ -689,23 +688,12 @@ Lab, U.S. Army Research Office</span>
                             </div>
                             <!-- shop item end -->
                             
-                            <!-- shop item start -->
-                            <div class="shop-item-container-out">
-                                <div class="shop-item-container-in">
-                                    <img src="assets/img/shop/img-shop-1.png" alt="shop item" class="img-responsive center-block">
-                                    <h4 class="shop-item-title"></h4>
-                                    <span class="shop-item-price">U.S. National Science
-Foundation</span>
-                                </div>
-
-                                
-                            </div>
-                            <!-- shop item end -->
+                           
                             
                             <!-- shop item start -->
                             <div class="shop-item-container-out">
                                 <div class="shop-item-container-in">
-                                    <img src="assets/img/shop/img-shop-5-large.jpg" alt="shop item" class="img-responsive center-block">
+                                    <img src="assets/sponsor/darpa.jpg" alt="U.S. Defense Advanced Research Projects Agency" class="img-responsive center-block">
                                     <span class="shop-item-price">U.S. Defense Advanced Research Projects Agency</span>
                                     
                                 </div>
@@ -714,17 +702,7 @@ Foundation</span>
                             </div>
                             <!-- shop item end -->
                             
-                            <!-- shop item start -->
-                            <div class="shop-item-container-out">
-                                <div class="shop-item-container-in">
-                                    <div class="shop-label">-50%</div>
-                                    <img src="assets/img/shop/img-shop-2.png" alt="shop item" class="img-responsive center-block">
-                                    
-                                </div>
-
-                              
-                            </div>
-                            <!-- shop item end -->
+                          
                             
                             <!-- shop item start -->
                             
@@ -784,7 +762,7 @@ Foundation</span>
                                     <div class="testimonial-footer">
                                         <img src="assets/img/other/photo-1.jpg" alt="testimonial author" class="img-responsive img-circle">
                                         <i class="fa fa-quote-left"></i>
-                                        Mukti Barole <a href="#">mukti.com   </a>
+                                        Mukti Barole <a href="#"> </a>
                                     </div>
                                 </div>
                                 <!-- Testimonial Item end -->
@@ -799,7 +777,7 @@ Foundation</span>
                                     <div class="testimonial-footer">
                                         <img src="assets/img/other/photo-2.jpg" alt="testimonial author" class="img-responsive img-circle">
                                         <i class="fa fa-quote-left"></i>
-                                        Samer Al-khateeb <a href="#">samer.com   </a>
+                                        Samer Al-khateeb <a href="#"></a>
                                     </div>
                                 </div>
                                 <!-- Testimonial Item end -->
@@ -814,7 +792,7 @@ Foundation</span>
                                     <div class="testimonial-footer">
                                         <img src="assets/img/other/photo-4.jpg" alt="testimonial author" class="img-responsive img-circle">
                                         <i class="fa fa-quote-left"></i>
-                                       Nihal Hussain <a href="#">Nihal.com   </a>
+                                       Nihal Hussain <a href="#"> </a>
                                     </div>
                                 </div>
                                 <!-- Testimonial Item end -->
@@ -829,7 +807,7 @@ Foundation</span>
                                     <div class="testimonial-footer">
                                         <img src="assets/img/other/photo-1.jpg" alt="testimonial author" class="img-responsive img-circle">
                                         <i class="fa fa-quote-left"></i>
-                                        Kiran Bandeli <a href="#">kkbandeli.com   </a>
+                                        Kiran Bandeli <a href="#"> </a>
                                     </div>
                                 </div>
                                 <!-- Testimonial Item end -->

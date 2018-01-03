@@ -38,7 +38,7 @@ public class BlogNetwork extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		HttpSession session= request.getSession();
-
+      
 		
 		doPost(request,response);
 	}
@@ -169,17 +169,17 @@ public class BlogNetwork extends HttpServlet {
 					
 				}
 				
-				ArrayList<ArrayList<String>> entities = bg.get_bn_entity(userName,tracker);
-				for (int j=0;j<entities.size();j++)
-				{
-					ArrayList<String> t = new ArrayList<String>();
-					int y = x++;
-					t.add(Integer.toString(y));  //media id
-					t.add(entities.get(j).get(0));  //blogsite id
-					t.add(entities.get(j).get(1));  //entity
-					t.add("arrows:'from'");
-					en.add(t);
-				}	
+//				ArrayList<ArrayList<String>> entities = bg.get_bn_entity(userName,tracker);
+//				for (int j=0;j<entities.size();j++)
+//				{
+//					ArrayList<String> t = new ArrayList<String>();
+//					int y = x++;
+//					t.add(Integer.toString(y));  //media id
+//					t.add(entities.get(j).get(0));  //blogsite id
+//					t.add(entities.get(j).get(1));  //entity
+//					t.add("arrows:'from'");
+//					en.add(t);
+//				}	
 			
 				
 				

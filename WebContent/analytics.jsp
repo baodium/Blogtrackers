@@ -93,8 +93,8 @@ int trackerSize = mytrackers.size();
 				</h4>
 				<ul class="breadcrumb breadcrumb-caret position-right">
 					<li><a href="features.jsp">Home</a></li>
-					<li ><a href="trackerlist.jsp">Tracker List </a></li>
-					<li class="active">Analytics (Current Tracker: <%=session.getAttribute("tracker")%>)</li>
+					<li ><a href="trackerlist.jsp">Tracker List  </a><a href="edittracker.jsp" title="Edit <%=session.getAttribute("tracker")%> Tracker">(<%=session.getAttribute("tracker")%>)</a></li>
+					<li class="active">Analytics</li>
 				</ul>
 			</div>
 
@@ -138,7 +138,7 @@ function googleTranslateElementInit() {
 											<a href="<%=request.getContextPath()%>/dashboard.jsp"> 
 										</c:when>
 					</c:choose>
-						<div class="panel">
+						<div class="panel view overlay hm-red-strong">
 							<div class="panel-body text-center">
 								<div class="icon-object border-success text-success"><i class="icon-pie-chart8"></i></div>
 								<h5 class="text-semibold">Dashboard</h5>
@@ -226,7 +226,7 @@ function googleTranslateElementInit() {
 						<div class="panel">
 							<div class="panel-body text-center">
 								<div class="icon-object border-blue text-blue"><i class="icon-search4"></i></div>
-								<h5 class="text-semibold">Keyword trend</h5>
+								<h5 class="text-semibold">Keyword Trend</h5>
 								<p class="mb-15">Know the Trend of a Keyword</p>
 								<c:choose>
 										<c:when test="${tracker != null}">
@@ -360,7 +360,7 @@ function googleTranslateElementInit() {
 						<div class="panel">
 							<div class="panel-body text-center">
 								<div class="icon-object border-blue text-blue"><i class="icon-database-export"></i></div>
-								<h5 class="text-semibold">Data presentation</h5>
+								<h5 class="text-semibold">Data Presentation</h5>
 								<p class="mb-15">Export Your Tracker Information as a JSON</p>
 								<c:choose>
 										<c:when test="${tracker != null}">
@@ -393,7 +393,7 @@ function googleTranslateElementInit() {
 <div class="col-md-4">
 					<c:choose>
 										<c:when test="${tracker != null}">
-											<a href="<%=request.getContextPath()%>/AdditionalBlogger?tracker=${tracker}"> 
+											<a href="<%=request.getContextPath()%>/AdditionalInfoServlet?tracker=${tracker}"> 
 										</c:when>
 										<c:when test="${tracker == null}">
 											<a href="<%=request.getContextPath()%>/additional_blog_info.jsp"> 
@@ -401,8 +401,8 @@ function googleTranslateElementInit() {
 					</c:choose>
 						<div class="panel">
 							<div class="panel-body text-center">
-								<div class="icon-object border-success text-success"><i class="icon-puzzle3"></i></div>
-								<h5 class="text-semibold">Additional blog information</h5>
+								<div class="icon-object border-success text-success"><i class="icon-info22"></i></div>
+								<h5 class="text-semibold">Additional Blog Information</h5>
 								<p class="mb-15">Get Additional Blog Information</p>
 								<c:choose>
 										<c:when test="${tracker != null}">
@@ -445,7 +445,7 @@ function googleTranslateElementInit() {
 					</c:choose>
 						<div class="panel">
 							<div class="panel-body text-center">
-								<div class="icon-object border-warning text-warning"><i class="icon-puzzle3"></i></div>
+								<div class="icon-object border-warning text-warning"><i class="icon-user"></i></div>
 								<h5 class="text-semibold">Additional Blogger information</h5>
 								<p class="mb-15">Get Additional Blogger Information</p>
 								<c:choose>
@@ -495,7 +495,7 @@ function googleTranslateElementInit() {
 								<p class="mb-15">Get Information About the Network</p>
 								<c:choose>
 										<c:when test="${tracker != null}">
-											<a href="<%=request.getContextPath()%>/blog_network.jsp?tracker=${tracker}" class="btn bg-blue legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Blog Network"> 
+											<a href="<%=request.getContextPath()%>/BlogNetwork?tracker=${tracker}" class="btn bg-blue legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Blog Network"> 
 										</c:when>
 										<c:when test="${tracker == null}">
 											<a href="<%=request.getContextPath()%>/blog_network.jsp" class="btn bg-blue legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Blog Network"> 

@@ -71,8 +71,10 @@ public class Analytics extends HttpServlet {
 		
 		if(request.getParameter("tracker")!=null)
 		{
-			String tracker = request.getParameter("tracker");
-			session.setAttribute("tracker", tracker);
+			String[] trackerdetails = request.getParameter("tracker").split(",");
+			
+			session.setAttribute("edited_tracker",trackerdetails[1]);
+			session.setAttribute("tracker", trackerdetails[0]);
 		}
         response.setContentType("text/html");
 		response.sendRedirect("analytics.jsp");
