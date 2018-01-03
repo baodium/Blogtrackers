@@ -94,6 +94,9 @@ function googleTranslateElementInit() {
 						for(int i=0; i<trackers.size(); i++){
 							ArrayList tracker = (ArrayList)trackers.get(i);
 							Object blogs = tracker.get(5);
+							String totalblog =  tracker.get(5).toString();
+							String[] tb= totalblog.split(",");
+						
 					%>
 					<form name="form_<%= tracker.get(0)%>" id="form_<%= tracker.get(0)%>" method="post" action="edittracker.jsp">
 					<div  class="col-lg-3 col-md-3 eachtracker">
@@ -120,7 +123,7 @@ function googleTranslateElementInit() {
 										<td width="50%"><i class="icon-angle position-left"></i>No of Blogs</td>
 										<td class="text-right">
 											<div class="btn-group">
-												<a href="#" class="label label-primary" > </a>
+												<a href="#" class="label label-primary" > <%=(tb[0]=="blogsite_id in ()")?0:tb.length%></a>
 												
 											</div>
 										</td>
