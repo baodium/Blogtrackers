@@ -12,16 +12,14 @@
 	ArrayList bloglist = new ArrayList();
 	String s = "";
 	if (username == null || username == "" || tracker_id == "") {
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("trackerlist.jsp");
 	}
 	
 
 	try{
 		Tracker tk = new Tracker();
 		tracker = tk.getTracker(tracker_id);
-		if(null==tracker || tracker.size()==0){
-			response.sendRedirect("trackerlist.jsp");
-		}
+
 		tracker = (ArrayList)tracker.get(0);
 		String blog_list = tracker.get(5).toString();
 		String[] blist  = blog_list.split("\\(");
@@ -99,7 +97,7 @@ function googleTranslateElementInit() {
 							<div class="panel-body">
 							
 					<div class="col-lg-12 col-md-12 col-sm-12">
-										
+							<% if(tracker != null && tracker.size()>0){ %>			
 							<div class="form-group">
 							<form name="edit_tracker" method="post" action="setup_tracker">
 							<label class="control-label">Tracker Name</label>
@@ -116,7 +114,7 @@ function googleTranslateElementInit() {
 							<button class="btn btn-primary" type="sumbit">Save Tracker</button>
 							</form>
 							</div>
-						
+							<% } %>
 								</div>
 							</div>
 								
@@ -255,7 +253,8 @@ function googleTranslateElementInit() {
 
 	  <!-- Footer -->
   <jsp:include page="footer.jsp"></jsp:include>
-  
+  <% if(tracker != null && tracker.size()>0){ %>			
+							
   <script>
 	function remove_blog(id){
 		var all_blogs ="<%=s%>";
@@ -293,6 +292,7 @@ function googleTranslateElementInit() {
 		
 	}
   </script>
+  <% } %>
 	<!-- /footer -->
 	<!-- Dependencies -->
   <jsp:include page="pagedependencies/edittracker.jsp"></jsp:include>

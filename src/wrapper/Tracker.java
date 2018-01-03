@@ -142,9 +142,9 @@ public class Tracker extends HttpServlet {
 				ArrayList trackers = new DBConnector().query("SELECT * FROM trackers WHERE userid='"+userid+"'");
 	        	session.setAttribute("trackers", trackers);
 	        	session.setAttribute("edited_tracker", tid+"");
-	        	response.sendRedirect("trackerlist.jsp");
+	        	response.sendRedirect("edittracker.jsp");
 			}catch(Exception ex) {
-				  response.sendRedirect("trackerlist.jsp");
+				  response.sendRedirect("edittracker.jsp");
 			}			 
 		}
 		
