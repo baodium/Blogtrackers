@@ -15,9 +15,13 @@
 		response.sendRedirect("index.jsp");
 	}
 	
+
 	try{
 		Tracker tk = new Tracker();
 		tracker = tk.getTracker(tracker_id);
+		if(null==tracker || tracker.size()==0){
+			response.sendRedirect("trackerlist.jsp");
+		}
 		tracker = (ArrayList)tracker.get(0);
 		String blog_list = tracker.get(5).toString();
 		String[] blist  = blog_list.split("\\(");
@@ -25,7 +29,9 @@
 		blist = blist[1].split("\\)");
 		s=blist[0];
 		bloglist = tk.getBloglist(blist[0]);
-	}catch(Exception e){}
+	}catch(Exception e){
+		
+	}
 %>
  <jsp:include page="include_top.jsp"></jsp:include>
 
