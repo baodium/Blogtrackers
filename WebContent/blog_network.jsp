@@ -90,9 +90,9 @@ function googleTranslateElementInit() {
 			                	</div>
 							</div>
 
-							<div class="panel-body" style="min-height: 500px;">
+							<div class="panel-body" style="min-height: 800px;">
 							<div class="col-md-12">
-	<div id="mynetwork"></div>
+	<div id="mynetwork" style="background-color:#ffffff; min-height: 780px;"></div>
 <script type="text/javascript">
    /*   var nodes = [
         {id: 0, label: "0", group: 'source'},
@@ -158,8 +158,7 @@ function googleTranslateElementInit() {
 				{from: 28, to: 23},
 				{from: 29, to: 10},
 				{from: 30, to: 16},
-    ] 
-  */
+    ]   */
  
    var nodes = [
  	
