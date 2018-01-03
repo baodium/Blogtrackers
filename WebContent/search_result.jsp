@@ -1,14 +1,22 @@
 <%@page import="wrapper.*"%>
 <%@page import="java.util.*"%>
+<%@page import="java.util.Random.*"%>
+
 <jsp:include page="include_top2.jsp"></jsp:include>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
 <%
 Object term = (null == session.getAttribute("search_term")) ? "" : session.getAttribute("search_term");
 Object search_result = (null == session.getAttribute("search_result")) ? "" : session.getAttribute("search_result");
+Object total_result = (null == session.getAttribute("total_result")) ? "" : session.getAttribute("total_result");
 Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
-
+ArrayList trackers = new ArrayList();
 if(term!="" && username==""){
 	session.setAttribute("initiated_search_term", term);
 }
+
+try{
+	   trackers = (ArrayList)session.getAttribute("trackers");
+ }catch(Exception e){}
 %>
 	<!-- Page container -->
 	<div class="page-container">
@@ -18,7 +26,6 @@ if(term!="" && username==""){
 
 			<!-- Main content -->
 			<div class="content-wrapper">
-
 				<!-- Search field -->
 				<div class="panel panel-flat">
 					<div class="panel-heading">
@@ -54,10 +61,10 @@ if(term!="" && username==""){
 				<!-- Search results -->
 				<div class="content-group">
 					<%  
-						if(search_result!=""){
+					if(search_result!=""){
 					%>
 					<p class="text-muted text-size-large content-group">				
-					Search results for <%= term %>					
+					<%=total_result %> results found for <%= term %>					
 					</p>
 					
 					<div class="col-lg-12 mt-20">
@@ -72,18 +79,20 @@ if(term!="" && username==""){
 							</div>
 					</div>
 					<% } %>
-					<div class="search-results-list">
-						
-						<div class="row" id="appendee">
+					<div class="search-results-list"><br/><br/><br/><br/>						
+						<div class="row grid" id="appendee">
 						<%  
-							if(search_result!=""){
+							if(search_result!="" ){
+								
+								try{
 								ArrayList resultss = (ArrayList)search_result;
 								if(resultss.size()>0){
 									for(int j=0; j<resultss.size(); j++){
 										ArrayList tracker = (ArrayList)resultss.get(j);
+										
 						%>
 							
-							<div class="col-sm-3">
+							<div class="col-sm-3 grid-item item-<%=tracker.get(0)%>">
 								<div class="panel panel-body">
 									<div class="media">
 										<div class="media-left">
@@ -91,15 +100,58 @@ if(term!="" && username==""){
 										</div>
 										
 										<div class="media-body">
-											<h6 class="media-heading"><%=tracker.get(1)%> <input type="checkbox" onclick="select_blog();"  class="blog-list" name="blog" style="float:right" value="<%=tracker.get(0) %>"  /></h6>
+											<h6 class="media-heading"><b><%=tracker.get(1)%></b> <input type="checkbox" onclick="select_blog();"  class="blog-list" name="blog" style="float:right" value="<%=tracker.get(0) %>"  /></h6>
 											<span class="text-muted"><%=tracker.get(2)%> post(s)</span>
+											<span><br/><br/>
+											<%=tracker.get(3)%>
+											</span>
 										</div>
+										<span class="divider"></span>
+										<div class="heading-btn-group">
+										<center>
 										
+											<% if(username!=""){ %>
+											<a href="#" onclick="favorIt('<%=tracker.get(0)%>');" class="btn btn-link btn-float has-text" title="Add to favourite"><i class="icon-stars text-primary"></i></a>								
+											<a href="#"  class="btn btn-link btn-float dropdown-toggle" data-toggle="dropdown"  title="Add to tracker"><i class="icon-stack text-primary"></i></a>
+											<ul class="dropdown-menu dropdown-menu-right">
+												<li class="divider"></li>
+												<% 
+												if(trackers.size()>0){
+												for(int i=0; i<trackers.size(); i++){
+													if(i<6){
+													ArrayList tr = (ArrayList)trackers.get(i);
+												%>
+														<li><a target="#" style="padding:0 8px" ><input class="tracker-<%=tracker.get(0)%>" type="checkbox" value="<%=tr.get(0)%>"/><%=tr.get(2)%></a></li>											
+												<% }} %>
+												<li><input type="text" style="height:10px; padding-left:5px" class="form-control input-xlg" id="tracker-name-<%=tracker.get(0)%>" /></li>			
+												
+												<li class="divider"></li>
+												<li><a href="#" onclick="addToTracker('<%=tracker.get(0)%>');" id="add-tracker-<%=tracker.get(0)%>" class="btn btn-link" style="padding:0 8px"><i class="icon-paperplane text-primary"></i> <span>Add</span> </a></li>																			
+												<% } %>
+												<li class="divider"></li>
+												<li><a id="create-tracker-<%=tracker.get(0)%>" onclick="createTracker('<%=tracker.get(0)%>');" class="btn" style="padding:3px 8px"><i class="icon-plus2 text-primary"></i> <span>create tracker</span> </a></li>			
+											</ul>
+											<% }else{ %>
+											<a href="<%=request.getContextPath()%>/login"  class="btn btn-link btn-float has-text" title="Add to favourite"><i class="icon-stars text-primary"></i></a>
+											
+											<a href="<%=request.getContextPath()%>/login"  class="btn btn-link btn-float has-text"  title="Add to tracker"><i class="icon-stack text-primary"></i></a>
+											
+											<% } %>
+										</center>
+										</div>	
+												
 									</div>
 								</div>
 							</div>
-							<% }}} %>											
+							<% }}else{ %>
+							No result found
+							<% }}catch(Exception e){ %>
+								
+							<% }} %>	
+							
+																
 						</div>
+						
 						<%  
 						if(search_result!=""){
 							%>
@@ -124,6 +176,29 @@ if(term!="" && username==""){
 	
     </form>
 	<!-- /page container -->
+<script>
+$(document).ready(function(){
+var container = document.querySelector('.grid');
+var msnry = new Masonry( container, {
+ // columnWidth: 0,
+  itemSelector: '.grid-item'
+});
+
+});
+</script>
+	<script>
+	
+	/* Masnory grid*/
+	function initialiaze_masonry(){
+		$('.grid').masonry({
+			  // options
+			  itemSelector: '.grid-item',
+			  columnWidth: 5
+			});
+	}
+	//initialiaze_masonry();
+	</script>
+	
  <script>
 	$(window).scroll(function() {
 		if($(window).scrollTop() + $(window).height() > $(document).height() - 200) {
@@ -134,7 +209,6 @@ if(term!="" && username==""){
 	
 	
 	function select_blog(){
-		//alert("hello");
 		var blogs = $(".blog-list");
 		var selected='';
 		for(var l=0; l<blogs.length; l++){
@@ -147,6 +221,52 @@ if(term!="" && username==""){
 		$("#all-selected-blogs").val(selected);
 	}
 	
+	
+
+	function favorIt(id){
+		
+	}
+	
+	function createTracker(id){
+		var name = $("#tracker-name-"+id).val();
+		console.log(id);
+		console.log($("#tracker-name-"+id));
+		if(name==""){
+			$("#tracker-name-"+id).focus();
+		}
+		return false;
+	}
+	
+	function addToTracker(id){
+		var trackers = $(".tracker-"+id);
+		//var blog_id = $(".tracker-"+id);
+		var selected='';
+		for(var l=0; l<trackers.length; l++){
+				var is_checked = $(trackers[l]).is(':checked');
+				if(is_checked){
+					var valu = $(trackers[l]).val();
+					selected+= valu+",";
+				}
+		}
+		
+		if(selected!=""){
+			console.log(selected);
+			/*
+			$.ajax({
+		        url: app_url+'setup_tracker',
+				method:'POST',
+				async: true,
+				data:{tracker_ids:selected,blog_id:id,add_blog:"yes"},
+		        success: function(response)
+		        {	
+		        	console.log(response);
+		        	
+		        }
+		    });	
+			*/
+		}
+		return false;
+	}
 </script>
 
 	<!-- Footer -->

@@ -37,11 +37,11 @@
     ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
     
     
-    final long serialVersionUID = 1L;
-	/* PostingFrequencyDialog pfDialog= new PostingFrequencyDialog();
-	Common common= new Common(); */
+    //private static final long serialVersionUID = 1L;
+	PostingFrequencyDialog pfDialog= new PostingFrequencyDialog();
+	Common common= new Common();
 	TrackerDialog trackerDialog = new TrackerDialog();
-	//BloggerInfoDialog biDialog= new BloggerInfoDialog();
+	BloggerInfoDialog biDialog= new BloggerInfoDialog();
 	
 	
 	
@@ -3002,4 +3002,3 @@ int trackerSize = mytrackers.size();
 												</div>
 
 											</div>
-<jsp:include page="../pagedependencies/sentiments.jsp"></jsp:include>

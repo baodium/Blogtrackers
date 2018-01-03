@@ -39,6 +39,7 @@ public class Search extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {           
 			HttpSession session = request.getSession();	
 			session.setAttribute("search_result",null);
+			session.setAttribute("total_result",null);
 			response.setContentType("text/html");
             response.sendRedirect("search_result.jsp");
 	}
@@ -59,21 +60,23 @@ public class Search extends HttpServlet {
                         session.setAttribute("search_term",term);
 
                        //String query_string ="SELECT * FROM trackers WHERE tracker_name LIKE  '%"+term+"%' LIMIT 0,12 ";
-                      // ArrayList trackers =new DBConnector().query(query_string); 
+                       // ArrayList trackers =new DBConnector().query(query_string); 
                         StringTokenizer st = new StringTokenizer(term, ",");			
     					while (st.hasMoreElements()) {
     						//bloglist.add(st.nextElement());
     						s=s+ "'"+ st.nextElement()+"',";
     					}
     					s = "("+s.substring(0,s.length()-1)+")";
-
-    					ArrayList trackers = new DBConnector().query("select blogsite_id,blogsite_name,totalposts from blogsites where blogsite_id in (select distinct blogsiteid from terms where term in "+s+" ) limit 0,12 ");				                     	
+    					//System.out.println(s);
+    					ArrayList trackerz = new DBConnector().query("select blogsite_id from blogsites where blogsite_id in (select distinct blogsiteid from terms where term in "+s+" )");				                     	
+    					ArrayList trackers = new DBConnector().query("select blogsite_id,blogsite_name,totalposts, description from blogsites where blogsite_id in (select distinct blogsiteid from terms where term in "+s+" ) limit 0,12 ");				                     	
                        session.setAttribute("search_result",trackers);
+                       if(trackerz!=null) {
+                    	   session.setAttribute("total_result",trackerz.size());
+                       }
                         response.setContentType("text/html");
                         response.sendRedirect("search_result.jsp");
                     }
-               
-                 
-                
+          
 	}
 }

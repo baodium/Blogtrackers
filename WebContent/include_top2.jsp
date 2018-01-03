@@ -13,9 +13,7 @@
 	
 	try{
     	ArrayList trackers = new DBConnector().query("SELECT * FROM trackers WHERE userid='"+username.toString()+"'");
-    	session.setAttribute("trackers", trackers);
-    	
-    	
+    	session.setAttribute("trackers", trackers);	
     }catch(Exception ex){}
 	
 	ArrayList userinfo = new ArrayList();
@@ -149,7 +147,7 @@ $(window).load(function() {
 	       
 	<link href="assets/css/mystyle.css" rel="stylesheet" type="text/css">
 
-	<script type="text/javascript" src="assets/js/functions.js?v=0"></script>
+	<script type="text/javascript" src="assets/js/functions.js?v=2123"></script>
 	<!-- /global stylesheets -->
 </head>
 

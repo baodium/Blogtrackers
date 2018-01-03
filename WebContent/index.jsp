@@ -5,8 +5,9 @@
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
 	DBConnector dbhandle = new DBConnector();
+	int total_trackers = dbhandle.getTotal("trackers");
+    
 	int total_users = dbhandle.getTotal("usercredentials");
-    int total_trackers = dbhandle.getTotal("trackers");
     
     int total_posts = dbhandle.getTotal("blogposts");
     int total_sites = dbhandle.getTotal("blogsites");

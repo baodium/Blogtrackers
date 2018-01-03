@@ -80,30 +80,14 @@ public class DBConnector {
 				result.add(i,output);
 				i++;
 			}
-			//rs.close();
-			//stmt.close();
-			//con.close();
+			rs.close();
+			stmt.close();
+			con.close();
 
 		} catch (SQLException ex) {
-			System.out.println(ex);
+			//System.out.println(ex);
 			result.add(0,"Err");          
-		} finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException e) { /* ignored */}
-			}
-			if (stmt != null) {
-				try {
-					stmt.close();
-				} catch (SQLException e) { /* ignored */}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (SQLException e) { /* ignored */}
-			}
-		}
+		} 
 
 		return result;
 	}
@@ -121,25 +105,12 @@ public class DBConnector {
 			//stmt = con.prepareStatement(medication_query);
 			int done = stmt.executeUpdate(query);
 			donee=true;
+			rs.close();
+			stmt.close();
+			con.close();
 
 		} catch (SQLException ex) {
 			donee=false;    
-		} finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException e) { /* ignored */}
-			}
-			if (stmt != null) {
-				try {
-					stmt.close();
-				} catch (SQLException e) { /* ignored */}
-			}
-			if (con != null) {
-				try {
-					con.close();
-				} catch (SQLException e) { /* ignored */}
-			}
 		} 
 		return donee;
 	}

@@ -47,7 +47,22 @@ function loadMoreResult(){
 						$(".loader-box").addClass("hidden");
 					}catch(err){}
 					//console.log(data);
-					$("#appendee").append(data);				
+					$("#appendee").append(data);
+					try{
+						
+					}catch(err){}
+					
+					/* Reload masonry*/
+					$.getScript("https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js", function( data, textStatus, jqxhr ) {				
+						var container = document.querySelector('.grid');
+						var msnry = new Masonry( container, {
+						itemSelector: '.grid-item'
+						});
+					//msnry.appended(data);
+						msnry.layout();
+						//alert("yes");
+					});
+					
 				}
 			}
 	});
