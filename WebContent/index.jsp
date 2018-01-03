@@ -5,12 +5,8 @@
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
 	DBConnector dbhandle = new DBConnector();
-	int total_trackers = dbhandle.getTotal("trackers");
-    
-	int total_users = dbhandle.getTotal("usercredentials");
-    
-    int total_posts = dbhandle.getTotal("blogposts");
-    int total_sites = dbhandle.getTotal("blogsites");
+	ArrayList total = dbhandle.getTotal();
+	
 %>
 
 <!DOCTYPE html>
@@ -366,7 +362,7 @@ content analysis and social network analysis.
                             <!-- fun fact one start -->
                             <div class="col-md-12 col-sm-6 col-xs-6">
                                 <div class="fact">                                    
-                                    <div class="fact-number timer" data-perc="<%=total_trackers%>">
+                                    <div class="fact-number timer" data-perc="<%=total.get(1)%>">
                                         <span class="factor color-light"></span>
                                     </div>                                    
                                     <span class="fact-title color-light alpha7">Trackers</span>
@@ -377,7 +373,7 @@ content analysis and social network analysis.
                             <!-- fun fact two start -->
                             <div class="col-md-12 col-sm-6 col-xs-6">
                                 <div class="fact">
-                                    <div class="fact-number timer" data-perc="<%=total_posts%>">
+                                    <div class="fact-number timer" data-perc="<%=total.get(2)%>">
                                         <span class="factor color-light"></span>
                                     </div>
                                     <span class="fact-title color-light alpha7">Blog Posts</span>
@@ -396,7 +392,7 @@ content analysis and social network analysis.
                             <!-- fun fact three start -->
                             <div class="col-md-12 col-sm-6 col-xs-6">
                                 <div class="fact">
-                                    <div class="fact-number timer" data-perc="<%=total_users%>">
+                                    <div class="fact-number timer" data-perc="<%=total.get(0)%>">
                                         <span class="factor color-light"></span>
                                     </div>
                                     <span class="fact-title color-light alpha7">Users</span>
@@ -407,7 +403,7 @@ content analysis and social network analysis.
                             <!-- fun fact four start -->
                             <div class="col-md-12 col-sm-6 col-xs-6">
                                 <div class="fact">
-                                    <div class="fact-number timer" data-perc="<%=total_sites%>">
+                                    <div class="fact-number timer" data-perc="<%=total.get(3)%>">
                                         <span class="factor color-light"></span>
                                     </div>
                                     <span class="fact-title color-light alpha7">Blog Sites</span>
