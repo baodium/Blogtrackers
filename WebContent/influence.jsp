@@ -128,7 +128,7 @@ function googleTranslateElementInit() {
 
 							<div class="panel-body scroll" style="height: 350px">					
 								
-								<table data-intro="Select a blogger name to view additional blogger information" data-step="3" class="table datatable-basic">
+								<table data-intro="Select a blogger name to view additional blogger information" data-step="3" class="table ">
 						<thead>
 							<tr>
 								<th>Blogger</th>

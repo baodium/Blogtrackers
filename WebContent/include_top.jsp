@@ -88,8 +88,8 @@
 	<link rel="stylesheet" type="text/css"
 	href="vendors/jQCloud-master/jqcloud/jqcloud.css" />
 	
-<link href="${pageContext.request.contextPath}/vendors/vis/dist/vis.css"
-	rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/vendors/blog_network/dist/vis.js"></script>
+    <link href="${pageContext.request.contextPath}/vendors/blog_network/dist/vis-network.min.css" rel="stylesheet" type="text/css"/>
 	
 	<link
 	href="${pageContext.request.contextPath}/vendors/jqvmap/dist/jqvmap.min.css"
@@ -190,7 +190,7 @@ $(window).load(function() {
 
 				<ul class="nav navbar-nav navbar-right">
 			<% if(username!=""){ %>
-			<li class="language-switch2  hidden-md"><button type="button" href="javascript:void(0);" onclick="javascript:introJs().start();" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-reading "></i></b> Tour Page</button></li>
+			<li class="language-switch2  hidden-md"><button type="button" href="javascript:void(0);" onclick="javascript:introJs().start();" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple" style="text-transform:capitalize;"><b><i class="icon-reading "></i></b> Tour Page</button></li>
 				<li style="display:none;" class="language-switch" data-intro="Select a tracker" data-step="1">
 			<form name="trackerform" id="trackerform" action="" method="post">
 
@@ -325,7 +325,7 @@ if (username == null || username == "") {
 		</ul>
 		<div class="navbar-collapse collapse" id="navbar-second-toggle">
 			<ul class="nav navbar-nav navbar-nav-material">
-				<li class=""><a href="<%=request.getContextPath()%>/trackerlist.jsp"><i class="icon-list position-left"></i> Tracker List</a></li>
+				<li class=""><a href="<%=request.getContextPath()%>/trackerlist.jsp" style="text-transform:capitalize"><i class="icon-list position-left"></i> Tracker List</a></li>
 				
 				
 				<%-- <li >
@@ -336,7 +336,7 @@ if (username == null || username == "") {
 					
 				</li> --%>
 				<li class="settracker" >
-				<button style="margin-top: -2px" data-intro="Click here to create a new tracker" data-step="1" type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-plus2"></i></b> Setup a new tracker</button>
+				<button style="margin-top: -2px; text-transform:capitalize;" data-intro="Click here to create a new tracker" data-step="1" type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-plus2"></i></b> Setup a new tracker</button>
 		        </li>
 				
 				

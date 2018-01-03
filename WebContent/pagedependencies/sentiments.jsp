@@ -83,7 +83,7 @@
       var ctx = document.getElementById("canvasRadar");
       var data = {
         	labels: ["Work", "Leisure", "Home", "Money", "Religion", "Death"], 
-        	datasets: [${radar}]
+        	datasets: ${radar}
     		}
       var canvasRadar = new Chart(ctx, {
         type: 'radar',
@@ -95,7 +95,7 @@
       var ctx = document.getElementById("canvasRadar1");
       var data = {  		 
     	labels: ["Past focus", "Present focus", "Future focus"],
-        datasets:[${radar1}]
+        datasets:${radar1}
        };
 
 
@@ -110,7 +110,7 @@
       var ctx = document.getElementById("canvasRadar2");
       var data = {
         labels: ["Affiliation", "Achievement", "Power", "Reward focus", "Risk/prevention focus"],
-        datasets: [${radar2}]
+        datasets: ${radar2}
       };
 
       var canvasRadar2 = new Chart(ctx, {
@@ -123,7 +123,7 @@
       var ctx = document.getElementById("canvasRadar3");
       var data = {
         labels: ["Insight", "Cause", "Discrepancies", "Tentativeness", "Certainty", "Differentiation"],
-        datasets: [${radar3}]
+        datasets: ${radar3}
       };
 
       var canvasRadar3 = new Chart(ctx, {
@@ -135,7 +135,7 @@
       var ctx = document.getElementById("canvasRadar4");
       var data = {
         labels: ["Analytical Thinking", "Clout", "Authentic", "Emotional Tone"],
-        datasets: [${radar4}]
+        datasets: ${radar4}
       };
 
 
@@ -149,7 +149,7 @@
       var ctx = document.getElementById("canvasRadar5");
       var data = {
         labels: ["Positive emotion", "Negative emotion", "Anxiety", "Anger", "Sadness"],
-        datasets: [${radar5}]
+        datasets: ${radar5}
       };
 
       var canvasRadar5 = new Chart(ctx, {
@@ -161,7 +161,7 @@
     
       
     </script>
-    
+
 					<script type="text/javascript">
   //window.onload = 
 $(document).ready(function () {
@@ -203,7 +203,7 @@ $(document).ready(function () {
 		        color: "green",
 		        fillOpacity: 0,
 		        name : "Positve Sentiments",
-		        dataPoints: [${trendpos}],          //array
+		        dataPoints: ${trendpos},          //array
         	},
       		{ 
 		        click: function(e){
@@ -217,8 +217,8 @@ $(document).ready(function () {
 		        color: "red",
 		        fillOpacity: 0,
 		        name:"Negative Sentiments",
-		        dataPoints: [${trendneg}],
-        	}],
+		        dataPoints: ${trendneg},
+        	},
       legend : {
 				cursor : "pointer",
 				itemclick : function(e) {
@@ -230,7 +230,7 @@ $(document).ready(function () {
 					}
 					chart.render();
 				}
-		}
+		}]
     });
     chart.render();
   });
@@ -266,7 +266,8 @@ $(document).ready(function () {
       };
 	
       var optionSet1 =
-    	      {   startDate: moment().subtract('days', 29),
+    	      {   
+    		  	  startDate: moment().subtract('days', 29),
     	          endDate: moment(),
     	          minDate: '01/01/1947',
     	          maxDate: moment(),

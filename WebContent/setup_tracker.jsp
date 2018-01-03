@@ -124,6 +124,8 @@
 							Welcome to our knowledge base
 							<small class="display-block">Type the keyword of the blog that you wish to track and click next to proceed </small>
 						</h4>
+						
+										
 							<div class="input-group content-group">
 								<div class="has-feedback has-feedback-left">
 									<input type="text" class="form-control input-xlg" id="keyword" onchange="reset_tracker();" required placeholder="Blog keyword">

@@ -13,6 +13,8 @@
 	});	
 	});
 */	
+
+
 	function loadTrackerr(tracker_id){
 		
 		var name = $("#tracker_name_"+tracker_id).val();
@@ -24,7 +26,8 @@
 			
 		$("#trackername").html(name);		
 		$("#createddate").html(date_created);
-		$("#noofblog").html((noofblog[0]=="blogsite_id in ()")?0:noofblog.length);
+		$("#noofblog_"+tracker_id).html((noofblog[0]=="blogsite_id in ()")?0:noofblog.length);
+		
 		$("#description").html(det);
 		
 	}

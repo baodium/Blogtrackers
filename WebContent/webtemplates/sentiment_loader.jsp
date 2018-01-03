@@ -37,11 +37,11 @@
     ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
     
     
-    //private static final long serialVersionUID = 1L;
-	PostingFrequencyDialog pfDialog= new PostingFrequencyDialog();
-	Common common= new Common();
+    final long serialVersionUID = 1L;
+	/* PostingFrequencyDialog pfDialog= new PostingFrequencyDialog();
+	Common common= new Common(); */
 	TrackerDialog trackerDialog = new TrackerDialog();
-	BloggerInfoDialog biDialog= new BloggerInfoDialog();
+	//BloggerInfoDialog biDialog= new BloggerInfoDialog();
 	
 	
 	

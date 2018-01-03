@@ -39,7 +39,7 @@ int trackerSize = mytrackers.size();
 					<span class="text-semibold">Keyword Trends</span>
 
 				</h4>
-				<ul class="breadcrumb breadcrumb-caret position-right">
+				<ul class="breadcrumb breadcrumb-caret position-right mb-20">
 					<li><a href="features.jsp">Home</a></li>
 					<li ><a href="trackerlist.jsp">Tracker List </a></li>
 					<li> <a href="analytics.jsp">Analytics</a></li>

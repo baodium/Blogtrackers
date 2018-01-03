@@ -31,7 +31,7 @@ int trackerSize = mytrackers.size();
 					<span class="text-semibold">Additional Blogger Information</span>
 <%-- <small class="display-block"><span>Welcome, </span><%=username %> (Current Tracker: <%=session.getAttribute("tracker")%>) --%>
 				</h4>
-				<ul class="breadcrumb breadcrumb-caret position-right">
+				<ul class="breadcrumb breadcrumb-caret position-right mb-20">
 					<li><a href="features.jsp">Home</a></li>
 					<li ><a href="trackerlist.jsp">Tracker List </a></li>
 					<li> <a href="analytics.jsp">Analytics</a></li>
@@ -39,19 +39,22 @@ int trackerSize = mytrackers.size();
 				</ul>	
 				
 				
-			</div>
-			<div class="form-group ">
 			<form name="search-author" method="get" action="<%=request.getContextPath()%>/AdditionalBlogger">
-				<div class="col-md-12 mb-20">
+			<div class="form-group">
+			<!-- 	<div class="col-md-12 mb-20"> -->
 				
 				<div class="input-group">
 				<input type="text" name="authorName" class="form-control"  placeholder="Enter a blogger name to search" id="searchtextbox" autocomplete="off">
 											<span class="input-group-btn" style="padding-left:0px;"><button type="submit" class="btn btn-primary">Search</button></span>
 											
 										</div>
+										<!-- </div> -->
 										</div>
 										</form>
-										</div>
+										
+				
+			</div>
+			
 
 
 		</div>
@@ -272,17 +275,17 @@ int trackerSize = mytrackers.size();
 						
   
 								
-								<div class="col-md-4">
+								<div class="col-md-4" style="text-align:center;">
 															<canvas id="canvas1i" height="210" width="210"
 																style="margin: 5px 10px 10px 0"></canvas>
 															<h4 style="margin: 0">${bloggerSentiments[2].year}</h4>
 														</div>
-														<div class="col-md-4">
+														<div class="col-md-4" style="text-align:center;">
 															<canvas id="canvas1i2" height="210" width="210"
 																style="margin: 5px 10px 10px 0"></canvas>
 															<h4 style="margin: 0">${bloggerSentiments[1].year}</h4>
 														</div>
-														<div class="col-md-4">
+														<div class="col-md-4" style="text-align:center;">
 															<canvas id="canvas1i3" height="210" width="210"
 																style="margin: 5px 10px 10px 0"></canvas>
 															<h4 style="margin: 0">${bloggerSentiments[0].year}</h4>

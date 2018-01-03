@@ -86,7 +86,8 @@ function googleTranslateElementInit() {
 
 				<!-- Main charts -->
 				<div class="row">
-				<div class="col-md-4">
+			
+				<!-- <div class="col-md-4">
 					<div class="panel panel-primary">
 							<div class="panel-heading">
 							
@@ -94,9 +95,9 @@ function googleTranslateElementInit() {
 								<div class="heading-elements">
 									<ul class="icons-list">
 				                		<li><a data-action="collapse"></a></li>
-				                		<li><a data-action="reload"></a></li>
+				                		<li><a data-action="reload"></a></li> -->
 <!--				                		<li><a data-action="close"></a></li>-->
-				                	</ul>
+				             <!--   	</ul>
 			                	</div>
 							</div>
 
@@ -183,26 +184,118 @@ function googleTranslateElementInit() {
 							</div>				
 					</div>
 					</div>
-				</div>
-				<div class="col-md-8">
+				</div> -->
+				
+				<div class="col-md-12">
 					<% if(trackers != null && trackers.size()>0){ 
 						for(int i=0; i<trackers.size(); i++){
 							ArrayList tracker = (ArrayList)trackers.get(i);
 							Object blogs = tracker.get(5);
 					%>
 					<form name="form_<%= tracker.get(0)%>" id="form_<%= tracker.get(0)%>" method="post" action="edittracker.jsp">
-					<div  class="col-lg-4 col-md-6 eachtracker">
+					<div  class="col-lg-3 col-md-3 eachtracker">
 					
 							<div class="thumbnail">
-							
 							<div data-intro="Click here to delete an existing tracker" data-step="2" title="Delete Tracker" class="text-muted text-size-medium" style="position:absolute; cursor:pointer;"><a href="#" onclick="delete_this('<%= tracker.get(0)%>');"><i class="icon-trash text-size-medium position-left"></i></a></div>
-					
-					
-								<div class="thumb thumb-rounded">
-									<img src="img/datapresentation.jpg" alt="">
-								</div>
+					       
+							<div class="table-responsive">
+								<table class="table ">
+									<tbody>
+										<tr>
+											<td style="border-top:none;">
+												<div class="media-left media-middle">
+													<!-- <a href="#" class="btn bg-primary-400 btn-rounded btn-icon btn-xs legitRipple">
+														<span class="letter-icon">T</span>
+													</a> -->
+												</div>
+
+												<div class="media-body">
+													<div class="media-heading">
+														<a href="#" class="letter-icon-title">Tracker Name </a>
+													</div>
+
+													<div class="text-muted text-size-small"><i class="icon-target text-size-mini position-left"></i><span id="trackername"><%=tracker.get(2)%> </span> </div>
+												</div>
+											</td>
+											
+											
+										</tr>
+											<tr>
+											<td>
+												<div class="media-left media-middle">
+													<!-- <a href="#" class="btn bg-primary-400 btn-rounded btn-icon btn-xs legitRipple">
+														<span class="letter-icon">C</span>
+													</a> -->
+												</div>
+
+												<div class="media-body">
+													<div class="media-heading">
+														<a href="#" class="letter-icon-title">Created Date</a>
+													</div>
+
+													<div class="text-muted text-size-small"><i class="icon-calendar text-size-mini position-left"></i><span><%=tracker.get(3) %></span></div>
+												</div>
+											</td>
+											
+											
+										</tr>
+										
+												<tr>
+											<td>
+												<div class="media-left media-middle">
+													<!-- <a href="#" class="btn bg-primary btn-rounded btn-icon btn-xs legitRipple">
+														<span class="letter-icon">N</span>
+													</a> -->
+												</div>
+
+												<div class="media-body">
+													<div class="media-heading">
+														<a href="#" class="letter-icon-title">Number of Blogs</a>
+													</div>
+
+													<div class="text-muted text-size-small"><i class="text-size-mini position-left icon-angle"></i><span id="noofblog_<%= tracker.get(0) %>" onload="loadTrackerr('<%= tracker.get(0)%>');"></span></div>
+												</div>
+											</td>
+											
+											
+										</tr>
+																	<tr>
+											<td>
+												<div class="media-left media-middle">
+													<!-- <a href="#" class="btn bg-primary-400 btn-rounded btn-icon btn-xs legitRipple">
+														<span class="letter-icon">D</span>
+													</a> -->
+												</div>
+
+												<div class="media-body">
+													<div class="media-heading">
+														<a href="#" class="letter-icon-title">Description</a>
+													</div>
+													<div class="text-muted text-size-small"><i class="text-size-mini position-left icon-info22"></i><span style="height:auto; width:180px !important;" ><%=tracker.get(6) %></span></div>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							
+								<!-- <div class="thumb thumb-rounded">
+								  <div class="table-responsive">
+								<table class="table ">
+									<tbody>
+										<tr>
+					                        <div class="media-heading">
+														Tracker Name: <%=tracker.get(2)%> 
+													</div>
+													</tr>
+													</tbody>
+													</table>
+													</div> --!>
+									<!-- <img src="img/datapresentation.jpg" alt=""> -->
+									
+								<!-- </div> -->
 						    	<div class="caption text-center">
-						    		<h6 class="text-semibold no-margin"><a title="View Tracker Metadata" data-intro="Click here to view metadata information about your tracker" data-step="5" onclick="loadTrackerr('<%= tracker.get(0)%>');"><%=tracker.get(2) %></a> <small class="display-block"><%=tracker.get(1) %></small></h6>
+						    		<!-- <h6 class="text-semibold no-margin"><a title="View Tracker Metadata" data-intro="Click here to view metadata information about your tracker" data-step="5" onclick="loadTrackerr('<%= tracker.get(0)%>');"><%=tracker.get(2) %></a> --> <!-- <small class="display-block"><%=tracker.get(1) %></small> --><!-- </h6> -->
 					    			<ul class="icons-list mt-15">
 				                    	<li><a class="pull-left" href="<%=request.getContextPath()%>/Analytics?tracker=<%= tracker.get(2)%>"><button data-intro="Click here to perform analytical operations such as sentiments, keyword trends, posting frequency and data export" data-step="3" type="button" title="Proceed to Analytics"  class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-statistics"></i></button></a>    <a class="pull-right"  onclick="edit_this('<%= tracker.get(0)%>');" style="margin-left:4px;"><button data-intro="Click here to modify existing tracker and view blogsites" data-step="4" type="button" title="Edit Tracker"  class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-pencil"></i></button></a></li>
 				                    </ul>
@@ -216,13 +309,13 @@ function googleTranslateElementInit() {
 						<input type="hidden" name="tracker_id"  value="<%=tracker.get(0)%>" />
 					</form>
 					<% }} %>
-					<div class="col-lg-4 col-md-6 eachtracker">
+					<div class="col-lg-3 col-md-3 eachtracker">
 							<div class="thumbnail">
 								<div class="thumb thumb-rounded">
 									<a href="<%=request.getContextPath()%>/setup_tracker.jsp"><img src="img/plus.jpg" alt=""></a>
 								</div>
 						    	<div class="caption text-center">
-						    		<h6 class="text-semibold no-margin"><a href="<%=request.getContextPath()%>/setup_tracker.jsp" >Add New Tracker</a> <small class="display-block">Set Up Tracker</small></h6>
+						    		<h6 class="text-semibold no-margin"><a href="<%=request.getContextPath()%>/setup_tracker.jsp" >Add New Tracker</a> <small class="display-block" style="line-height: 1.25;">Click Add New Tracker To Setup A New Tracker With Description</small></h6>
 					    			<ul class="icons-list mt-15">
 				                    	<li><a href="<%=request.getContextPath()%>/setup_tracker.jsp"><button type="button" title="Add New Tracker"  class="btn btn-primary btn-float btn-float-md btn-rounded legitRipple"><i class="icon-plus2"></i></button></a></li>
 				                    </ul>

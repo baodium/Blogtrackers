@@ -1,0 +1,113 @@
+/* CSS Document */
+.dashboard-stat .visual {
+    width: 80px;
+    height: 80px;
+    display: block;
+    float: left;
+    padding-top: 10px;
+    padding-left: 15px;
+    margin-bottom: 15px;
+    font-size: 35px;
+    line-height: 35px;
+}
+.dashboard-stat.blue-madison {
+    background-color: #578ebe;
+}
+
+.dashboard-stat {
+    display: block;
+    margin-bottom: 25px;
+    overflow: hidden;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+}
+.dashboard-stat.blue-madison .visual > i {
+    color: #FFFFFF;
+    opacity: 0.45;
+    filter: alpha(opacity=10);
+}
+.dashboard-stat .visual > i {
+    margin-left: -35px;
+    font-size: 110px;
+    line-height: 110px;
+}
+.dashboard-stat.blue-madison .details .number {
+    color: #FFFFFF;
+	padding-right:10px;
+}
+.dashboard-stat .details .number {
+    padding-top: 25px;
+    text-align: right;
+    font-size: 34px;
+    line-height: 36px;
+    letter-spacing: -1px;
+    margin-bottom: 0px;
+	padding-right:10px;
+    font-weight: 300;
+}
+
+.dashboard-stat.blue-madison .details .desc {
+    color: #FFFFFF;
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+.dashboard-stat .details .desc {
+    text-align: right;
+    font-size: 16px;
+    letter-spacing: 0px;
+    font-weight: 300;
+	padding-right:10px;
+}
+.dashboard-stat.blue-madison .more {
+    color: #FFFFFF;
+    background-color: #4884b8;
+}
+
+.dashboard-stat .more {
+    clear: both;
+    display: block;
+    padding: 6px 10px 6px 10px;
+    position: relative;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 11px;
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+}
+
+.dashboard-stat.red-intense {
+    background-color: #e35b5a;
+}
+.dashboard-stat.orange {
+    background-color: darkorange;
+}
+
+.dashboard-stat.red-intense .visual > i, .dashboard-stat.orange .visual > i {
+    color: #FFFFFF;
+    opacity: 0.45;
+    filter: alpha(opacity=10);
+}
+.dashboard-stat.red-intense .details .desc, .dashboard-stat.orange .details .desc {
+    color: #FFFFFF;
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+.dashboard-stat.red-intense .more{
+    color: #FFFFFF;
+    background-color: #e04a49;
+}
+.dashboard-stat.orange .more 
+{
+	 color: #FFFFFF;
+    background-color: orange;
+}
+.dashboard-stat.red-intense .details .number, .dashboard-stat.orange .details .number 
+{
+    color: #FFFFFF;
+}
+
+
