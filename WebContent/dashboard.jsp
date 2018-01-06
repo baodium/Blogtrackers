@@ -188,7 +188,7 @@ rect.parent {
 				</h4>
 					<ul class="breadcrumb breadcrumb-caret position-right">
 					<li><a href="features.jsp">Home</a></li>
-					<li ><a href="trackerlist.jsp">Tracker List </a><a href="edittracker.jsp" title="Edit <%=session.getAttribute("tracker")%> Tracker">(Tracker: <%=session.getAttribute("tracker")%>)</a></li>
+					<li ><a href="trackerlist.jsp">Tracker List </a><a href="edittracker.jsp" title="Edit <%=session.getAttribute("tracker")%> Tracker">(<%=session.getAttribute("tracker")%>)</a></li>
 					<li> <a href="analytics.jsp">Analytics</a></li>
 					<li class="active">Dashboard </li>
 				</ul>

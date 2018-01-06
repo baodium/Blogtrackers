@@ -117,24 +117,9 @@ function googleTranslateElementInit() {
 							<% } %>
 								</div>
 							</div>
-								
-							
-										
-																
-							
-							
-							
-							
 							</div>
 					</div>
 					</div>
-				
-						
-				
-						
-
-							
-							
 						<div class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">List of Blogs<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
@@ -186,54 +171,12 @@ function googleTranslateElementInit() {
 						</div>
 					
 						<div class="input textarea clearfix example1"></div>
-
-   
+			<div class="form-group">
 							
-					
-					
-					<div class="panel panel-primary">
-							<div class="panel-heading">
-								<h6 class="panel-title">Add New Blogs to Crawl<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
-								<div class="heading-elements">
-									<ul class="icons-list">
-				                		<li><a data-action="collapse"></a></li>
-				                		<li><a data-action="reload"></a></li>
-
-				                	</ul>
-			                	</div>
-							</div>
-
-					
-							<div class="panel-body">
-						<div class="form-group">
-							
-							<input type="text" class="form-control tokenfield" placeholder="Enter the list of blogsites to crawl" value="">
-							</div>
-							<div>
-							<button class="btn btn-primary">Crawl Now</button>
-							</div>
-                        
-							</div>
-						</div>
-					
-					
-				
-				
-				      
-				      
-				      
-				      
-				      
-				    
-			      
-			      
-				      
-					
-					
-					
-					
-					
-				</div>
+							<iframe style ="width:100%; height: 300px" src="anol_project\crawler.html">
+ 								 <p>Your browser does not support iframes.</p>
+							</iframe>
+					</div>
 				<!-- /main charts -->
 
 

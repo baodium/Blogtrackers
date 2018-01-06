@@ -79,6 +79,10 @@ public class BlogNetwork extends HttpServlet {
 				
 				
 			}
+		 if(request.getParameter("datepicked")!= null){	
+				String date =request.getParameter("datepicked");
+				session.setAttribute("datepicked", date);
+		 }
 			else
 			{
 				String tracker = (String) session.getAttribute("tracker");
@@ -179,7 +183,7 @@ public class BlogNetwork extends HttpServlet {
 					t.add(entities.get(j).get(1));  //entity
 					t.add("arrows:'from'");
 					en.add(t);
-				}	
+				}
 			
 				
 				
