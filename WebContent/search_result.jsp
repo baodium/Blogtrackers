@@ -239,7 +239,6 @@ var msnry = new Masonry( container, {
 	
 	function addToTracker(id){
 		var trackers = $(".tracker-"+id);
-		//var blog_id = $(".tracker-"+id);
 		var selected='';
 		for(var l=0; l<trackers.length; l++){
 				var is_checked = $(trackers[l]).is(':checked');
@@ -251,22 +250,45 @@ var msnry = new Masonry( container, {
 		
 		if(selected!=""){
 			console.log(selected);
-			/*
+			
 			$.ajax({
 		        url: app_url+'setup_tracker',
 				method:'POST',
 				async: true,
-				data:{tracker_ids:selected,blog_id:id,add_blog:"yes"},
+				data:{tracker_ids:selected,blog_id:id,action:"add_blog_to_tracker"},
 		        success: function(response)
 		        {	
 		        	console.log(response);
+		        	toastr.success('Blog successfully added');
+
 		        	
 		        }
 		    });	
-			*/
+			
 		}
 		return false;
 	}
+	
+	function removeFromTracker(id){
+		if(selected!=""){		
+			$.ajax({
+		        url: app_url+'setup_tracker',
+				method:'POST',
+				async: true,
+				data:{blog_id:id,action:"remove_blog_from_tracker"},
+		        success: function(response)
+		        {	
+		        	console.log(response);
+		        	toastr.success('Blog successfully removed');
+
+		        	
+		        }
+		    });	
+			
+		}
+		return false;
+	}
+
 </script>
 
 	<!-- Footer -->

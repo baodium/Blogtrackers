@@ -129,6 +129,8 @@
 	
 <script type="text/javascript" src="assets/js/plugins/extensions/cookie.js"></script>
 <script type="text/javascript" src="assets/js/plugins/forms/validation/validate.min.js"></script>
+<script type="text/javascript" src="assets/js/toastr.js"></script>--> 
+
 
 <script type="text/javascript">
 $(window).load(function() {

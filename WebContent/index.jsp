@@ -5,7 +5,11 @@
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
 	DBConnector dbhandle = new DBConnector();
-	ArrayList total = dbhandle.getTotal();
+	ArrayList total = new ArrayList();//dbhandle.getTotal();
+	total.add(0,0);
+	total.add(1,0);
+	total.add(2,0);
+	total.add(3,0);
 	
 %>
 
