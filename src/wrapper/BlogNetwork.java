@@ -79,6 +79,10 @@ public class BlogNetwork extends HttpServlet {
 				
 				
 			}
+		 if(request.getParameter("datepicked")!= null){	
+				String date =request.getParameter("datepicked");
+				session.setAttribute("datepicked", date);
+		 }
 			else
 			{
 				String tracker = (String) session.getAttribute("tracker");
@@ -169,17 +173,17 @@ public class BlogNetwork extends HttpServlet {
 					
 				}
 				
-//				ArrayList<ArrayList<String>> entities = bg.get_bn_entity(userName,tracker);
-//				for (int j=0;j<entities.size();j++)
-//				{
-//					ArrayList<String> t = new ArrayList<String>();
-//					int y = x++;
-//					t.add(Integer.toString(y));  //media id
-//					t.add(entities.get(j).get(0));  //blogsite id
-//					t.add(entities.get(j).get(1));  //entity
-//					t.add("arrows:'from'");
-//					en.add(t);
-//				}	
+				ArrayList<ArrayList<String>> entities = bg.get_bn_entity(userName,tracker);
+				for (int j=0;j<entities.size();j++)
+				{
+					ArrayList<String> t = new ArrayList<String>();
+					int y = x++;
+					t.add(Integer.toString(y));  //media id
+					t.add(entities.get(j).get(0));  //blogsite id
+					t.add(entities.get(j).get(1));  //entity
+					t.add("arrows:'from'");
+					en.add(t);
+				}
 			
 				
 				
@@ -330,7 +334,7 @@ public class BlogNetwork extends HttpServlet {
 				session.setAttribute("nodes", nodes);
 				session.setAttribute("edges", edges);
 				System.out.println("print nodes"+nodes);
-				System.out.println("print enges"+edges);
+				System.out.println("print edges"+edges);
 			}
 			
 			

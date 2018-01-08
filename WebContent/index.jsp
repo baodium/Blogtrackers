@@ -5,6 +5,7 @@
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
 	DBConnector dbhandle = new DBConnector();
+
 	ArrayList total = new ArrayList();//dbhandle.getTotal();
 	total.add(0,0);
 	total.add(1,0);
@@ -364,25 +365,25 @@ content analysis and social network analysis.
                         <div class="row">
                             
                             <!-- fun fact one start -->
-                            <div class="col-md-12 col-sm-6 col-xs-6">
+                            <!-- <div class="col-md-12 col-sm-6 col-xs-6">
                                 <div class="fact">                                    
-                                    <div class="fact-number timer" data-perc="<%=total.get(1)%>">
+                                    <div class="fact-number timer" data-perc="">
                                         <span class="factor color-light"></span>
                                     </div>                                    
                                     <span class="fact-title color-light alpha7">Trackers</span>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- fun fact one end -->
                             
                             <!-- fun fact two start -->
-                            <div class="col-md-12 col-sm-6 col-xs-6">
+                            <!-- <div class="col-md-12 col-sm-6 col-xs-6">
                                 <div class="fact">
-                                    <div class="fact-number timer" data-perc="<%=total.get(2)%>">
+                                    <div class="fact-number timer" data-perc="">
                                         <span class="factor color-light"></span>
                                     </div>
                                     <span class="fact-title color-light alpha7">Blog Posts</span>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- fun fact two end -->
                             
                         </div>
@@ -394,25 +395,25 @@ content analysis and social network analysis.
                         <div class="row">
                             
                             <!-- fun fact three start -->
-                            <div class="col-md-12 col-sm-6 col-xs-6">
+                            <!-- <div class="col-md-12 col-sm-6 col-xs-6">
                                 <div class="fact">
-                                    <div class="fact-number timer" data-perc="<%=total.get(0)%>">
+                                    <div class="fact-number timer" data-perc="">
                                         <span class="factor color-light"></span>
                                     </div>
                                     <span class="fact-title color-light alpha7">Users</span>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- fun fact three end -->
                             
                             <!-- fun fact four start -->
-                            <div class="col-md-12 col-sm-6 col-xs-6">
+                            <!-- <div class="col-md-12 col-sm-6 col-xs-6">
                                 <div class="fact">
-                                    <div class="fact-number timer" data-perc="<%=total.get(3)%>">
+                                    <div class="fact-number timer" data-perc="">
                                         <span class="factor color-light"></span>
                                     </div>
                                     <span class="fact-title color-light alpha7">Blog Sites</span>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- fun fact four end -->
                             
                         </div>
