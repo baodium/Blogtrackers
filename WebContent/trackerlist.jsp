@@ -117,7 +117,10 @@ function googleTranslateElementInit() {
 									
 									<tr>
 										<td width="30%"><i class="icon-alarm-check position-left"></i> Created:</td>
-										<td width="70%" class="text-right"><%=tracker.get(3) %></td>
+										<td width="70%" class="text-right">
+										<% String[] createddate = tracker.get(3).toString().split(" ");  
+										%>
+										<%=createddate[0] %></td>
 									</tr>
 									<tr>
 										<td width="50%"><i class="icon-angle position-left"></i>No of Blogs</td>
