@@ -1,7 +1,11 @@
 package wrapper;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.Month;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -75,16 +79,47 @@ public class BlogNetwork extends HttpServlet {
 				
 				
 				BlogNetworkUtil bg = new BlogNetworkUtil();
-				bg.get_bn_sites(userName,tracker);
+				//bg.get_bn_sites(userName,tracker);
 				
 				
 			}
-		 if(request.getParameter("datepicked")!= null){	
-				String date =request.getParameter("datepicked");
-				session.setAttribute("datepicked", date);
-		 }
+		
+		 
 			else
 			{
+				if(request.getParameter("datepicked") != null)
+				{
+					try
+					{
+					String date = request.getParameter("datepicked");
+					session.setAttribute("datepicked", date);
+					date = session.getAttribute("datepicked").toString();
+					System.out.println(session.getAttribute("datepicked"));
+					String arr[] = date.split("-", 2);
+					String sdate1 = arr[0];   
+					String sdate2 = arr[1];
+					sdate2=sdate2.trim();  // date 2 will have space trim it
+					int mm1=Month.valueOf(sdate1.substring(0, sdate1.indexOf(' ')).toUpperCase()).getValue();
+					int mm2=Month.valueOf(sdate2.substring(0, sdate2.indexOf(' ')).toUpperCase()).getValue();
+
+					String tempdate[] = sdate1.split(" ", 3);
+					String dd=tempdate[1];
+					String year=tempdate[2];
+					String d1 = year+"-"+mm1+"-"+dd;
+					d1=d1.replace(" ", "");
+
+					String tempdate2[] = sdate2.split(" ", 3);
+					dd=tempdate2[1];
+					year=tempdate2[2];
+					String d2 = year+"-"+mm2+"-"+dd;
+					d2=d2.replace(" ", "");
+
+					DateFormat df = new SimpleDateFormat("yyyy-MM-dd"); 
+
+					Date startdate = df.parse(d1);
+					Date enddate = df.parse(d2);
+
+			
 				String tracker = (String) session.getAttribute("tracker");
 				//Saad's Code
 				String userName = (String) session.getAttribute("user");
@@ -97,7 +132,7 @@ public class BlogNetwork extends HttpServlet {
 				System.out.println(" before cal");
 				
 				BlogNetworkUtil bg = new BlogNetworkUtil();
-				HashMap<Integer,String> sn =bg.get_bn_sites(userName,tracker); //site id and names
+				HashMap<Integer,String> sn =bg.get_bn_sites(startdate, enddate, userName,tracker); //site id and names
 				/*HashMap<Integer,Integer> sid =new HashMap<Integer,Integer>(); 
 				int i=1;*/
 						
@@ -117,7 +152,7 @@ public class BlogNetwork extends HttpServlet {
 				}
 				
 				//creating media ids
-				HashMap<Integer,String> dn =bg.get_bn_medias(userName,tracker);  // site id and domain
+				HashMap<Integer,String> dn =bg.get_bn_medias(startdate, enddate,userName,tracker);  // site id and domain
 				ArrayList<ArrayList<String>> mid = new ArrayList<ArrayList<String>>();
 				ArrayList<ArrayList<String>> fb = new ArrayList<ArrayList<String>>();
 				ArrayList<ArrayList<String>> yt = new ArrayList<ArrayList<String>>();
@@ -173,7 +208,7 @@ public class BlogNetwork extends HttpServlet {
 					
 				}
 				
-				ArrayList<ArrayList<String>> entities = bg.get_bn_entity(userName,tracker);
+				ArrayList<ArrayList<String>> entities = bg.get_bn_entity(startdate, enddate,userName,tracker);
 				for (int j=0;j<entities.size();j++)
 				{
 					ArrayList<String> t = new ArrayList<String>();
@@ -335,6 +370,13 @@ public class BlogNetwork extends HttpServlet {
 				session.setAttribute("edges", edges);
 				System.out.println("print nodes"+nodes);
 				System.out.println("print edges"+edges);
+			}
+				
+				catch(Exception ex)
+				{
+					
+				}
+			}
 			}
 			
 			
