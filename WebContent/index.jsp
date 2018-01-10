@@ -161,7 +161,7 @@ overflow-x:hidden;
                         <% if(username.equals("")){%>                            
                         <li onclick='location.href="<%=request.getContextPath()%>/login"'><a href="<%=request.getContextPath()%>/login" >Login</a></li>
                         <% }else{ %>
-                         <li onclick='location.href="<%=request.getContextPath()%>/Analytics"'><a href="<%=request.getContextPath()%>/Analytics" >Dashboard</a></li>
+                         <li onclick='location.href="<%=request.getContextPath()%>/trackerlist.jsp"'><a href="<%=request.getContextPath()%>/trackerlist.jsp" >Dashboard</a></li>
                          <li onclick='location.href="<%=request.getContextPath()%>/logout"'><a href="<%=request.getContextPath()%>/logout" >Logout</a></li>
                         <% } %>
                                        
