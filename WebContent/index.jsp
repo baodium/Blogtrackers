@@ -5,14 +5,10 @@
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
 	DBConnector dbhandle = new DBConnector();
-
-	ArrayList total = new ArrayList();//dbhandle.getTotal();
-	total.add(0,0);
-	total.add(1,0);
-	total.add(2,0);
-	total.add(3,0);
-	
-%>
+	/* ArrayList total = dbhandle.getTotal();
+	total.get(3);
+ */
+ %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -629,7 +625,7 @@ content analysis and social network analysis.
                     <!-- right content start -->
                     <div class="col-md-5 col-md-push-1 animated" data-animation="fadeInRight" data-animation-delay="200">
 					
-                        <img src="assets/img/vegasimg/cosmos.jpg" class="img-responsive pull-right" style="height: 55%; width: 55%">
+                        <img src="assets/images/cosmosmember.jpg" class="img-responsive pull-right">
                     </div>
                     <!-- right content end -->
                     

@@ -14,13 +14,7 @@
 
 
  <jsp:include page="include_top.jsp"></jsp:include>
-<% ArrayList mytrackers = new ArrayList();
-mytrackers = (ArrayList)session.getAttribute("trackers");
-int trackerSize = mytrackers.size();
-    if(trackerSize == 0)
-    {%>
-    <c:redirect url="setup_tracker.jsp"/>	
-  <% } %> 
+
 	<!-- Page header -->
 	<div class="page-header mb-20">
 		<div class="page-header-content">
@@ -128,7 +122,7 @@ function googleTranslateElementInit() {
 
 							<div class="panel-body scroll" style="height: 350px">					
 								
-								<table data-intro="Select a blogger name to view additional blogger information" data-step="3" class="table ">
+								<table data-intro="Select a blogger name to view additional blogger information" data-step="3" class="table">
 						<thead>
 							<tr>
 								<th>Blogger</th>

@@ -18,10 +18,7 @@
 <% ArrayList mytrackers = new ArrayList();
 mytrackers = (ArrayList)session.getAttribute("trackers");
 int trackerSize = mytrackers.size();
-    if(trackerSize == 0)
-    {%>
-    <c:redirect url="setup_tracker.jsp"/>	
-  <% } %> 
+%>
 	<!-- Page header -->
 	<div class="page-header mb-20">
 		<div class="page-header-content">

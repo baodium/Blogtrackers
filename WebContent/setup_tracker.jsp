@@ -316,7 +316,8 @@
 		        {		
 		        	console.log(response);
 		        	if(response==="success"){
-		        		 window.location.href = app_url+"trackerlist.jsp";//+tracker_name;				        	
+		        		
+		        		 window.location.href = app_url+"Analytics?tracker="+tracker_name;
 		        	}else if(response==="exist"){
 		        		$("#error-box").html("tracker name already exists");
 		        	}else{	        	

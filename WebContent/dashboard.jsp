@@ -101,13 +101,7 @@ else
     
 %>
  <jsp:include page="include_top.jsp"></jsp:include>
- <% ArrayList mytrackers = new ArrayList();
-mytrackers = (ArrayList)session.getAttribute("trackers");
-int trackerSize = mytrackers.size();
-    if(trackerSize == 0)
-    {%>
-    <c:redirect url="setup_tracker.jsp"/>	
-  <% } %> 
+ 
  <style>
 
 #chart {

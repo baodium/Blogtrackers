@@ -591,3 +591,12 @@ right:6% !important;
         {
         text-transform:capitalize;
         }
+        p, body
+        {
+        font-size:13px;
+        }
+        iframe
+        {
+        border:0px;
+        
+        }
