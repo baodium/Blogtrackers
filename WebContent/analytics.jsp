@@ -12,23 +12,19 @@
 	}
         
         //try{
-        ArrayList userinfo = new DBConnector().query("SELECT *  FROM usercredentials WHERE UserName='"+username+"'");          
-        userinfo = (ArrayList)userinfo.get(0);
+        //ArrayList userinfo = new DBConnector().query("SELECT *  FROM usercredentials WHERE UserName='"+username+"'");          
+        //userinfo = (ArrayList)userinfo.get(0);
         //}catch(Exception e){
           //  response.sendRedirect("index.jsp");
         //}
+        ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
 %>
 
   <jsp:include page="include_top.jsp"></jsp:include>
-  <% 
-
-  ArrayList mytrackers = new ArrayList();
-mytrackers = (ArrayList)session.getAttribute("trackers");
+ <% ArrayList mytrackers = new ArrayList();
+mytrackers = (ArrayList) session.getAttribute("trackers");
 int trackerSize = mytrackers.size();
-    if(trackerSize == 0)
-    {%>
-    <c:redirect url="setup_tracker.jsp"/>	
-  <% } %> 
+%>
 	<!-- Page header -->
         <style>
             input[type="file"] {

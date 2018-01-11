@@ -53,16 +53,7 @@ public class Analytics extends HttpServlet {
 		}
 		if(session.getAttribute("tracker")==null && request.getParameter("tracker")==null)
 		{
-			/*session.setAttribute("nblogs", 0);
-			session.setAttribute("nblogposts", 0);
-			session.setAttribute("nbloggers", 0);
-			session.setAttribute("npsenti", 0);
-			session.setAttribute("nnsenti", 0);
-			session.setAttribute("nloc", "");
-			session.setAttribute("data", "");
-			session.setAttribute("nlang", "");
-			session.setAttribute("nlg", "");
-			session.setAttribute("series", "");	*/		
+				
 			response.setContentType("text/html");
 	    	response.sendRedirect("analytics.jsp");
 		}
