@@ -129,10 +129,7 @@
 	
 <script type="text/javascript" src="assets/js/plugins/extensions/cookie.js"></script>
 <script type="text/javascript" src="assets/js/plugins/forms/validation/validate.min.js"></script>
-<<<<<<< HEAD
-=======
 
->>>>>>> b95e0dc467a3153dd64c2b454081941e44d9b434
 
 <script type="text/javascript">
 $(window).load(function() {

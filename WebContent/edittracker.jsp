@@ -195,29 +195,6 @@ function googleTranslateElementInit() {
 
 							<div class="panel-body">
 						<div class="input textarea clearfix example1"></div>
-<<<<<<< HEAD
-			
-							
-							<iframe class="scroll2" style ="width:100%; height: 500px" src="anol_project\crawler.html">
- 								 <p>Your browser does not support iframes.</p>
-							</iframe>
-					
-					</div>
-=======
-			<div class="form-group">
-					<!--  		
-							<iframe style ="width:100%; height: 300px" src="anol_project\crawler.html">
- 								 <p>Your browser does not support iframes.</p>
-							</iframe>
-					-->	
-							
-							
-							
-							
-							
-							
-							
-							<div class="ui padded segment">
 
     <!--content-->
     <div class="ui padded segment">
@@ -552,11 +529,7 @@ function googleTranslateElementInit() {
 </script>
 
 							
-							
-							
-							
-				
->>>>>>> b95e0dc467a3153dd64c2b454081941e44d9b434
+						
 					</div>
 				<!-- /main charts -->
 
