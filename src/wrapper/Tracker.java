@@ -266,7 +266,10 @@ public class Tracker extends HttpServlet {
 		if(action.equals("crawl")) {
 			try {
 				String data = request.getParameter("data");
-				//new DBConnector().updateTable("UPDATE trackers SET query='"+query+"' WHERE  tid='"+tid+"'");	
+				String userid = (String) session.getAttribute("user");
+				
+				String query="INSERT INTO blogstocrawl(userid,detail) VALUES('"+userid+"', '"+data+"')";
+				boolean done = new DBConnector().updateTable(query);
 				pww.write(data);
 			}catch(Exception ex) {
 				pww.write(ex+" error");
