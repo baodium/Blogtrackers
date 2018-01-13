@@ -289,44 +289,57 @@ function googleTranslateElementInit() {
 									<ul class="icons-list">
 				                		<li><a data-action="collapse"></a></li>
 <!--				                		<li><a data-action="reload"></a></li>-->
-				                		<li><a data-action="close"></a></li>
+				                		<!-- <li><a data-action="close"></a></li> -->
 				                	</ul>
 			                	</div>
 							</div>
 
 							<div class="panel-body">
-
+<form method="POST">
 <div class="checkbox">
 <label><div class="checker"><span class="">
-<input type="checkbox" value="blogtoblog" class="styled"></span></div>
+<input type="checkbox" value="blogtoblog" id="blogtoblog" class="styled"></span></div>
 Blog - Blog
 </label>
 	</div>
  <div class="checkbox">
 <label><div class="checker"><span class="">
-<input type="checkbox" value="bloggertoblogger" class="styled"></span></div>
-Blogger - Blogger
+<input type="checkbox" value="blogtoblogger" id="blogtoblogger" class="styled"></span></div>
+Blog - Blogger
 </label>
 	</div>
+<div>Social Media</div>	
 <div class="checkbox">
 <label><div class="checker"><span class="">
-<input type="checkbox" value="facebook" class="styled"></span></div>
+<input type="checkbox" value="facebook" id="facebook" class="styled"></span></div>
 Facebook
 </label>
 	</div>
 <div class="checkbox">
 <label><div class="checker"><span class="">
-<input type="checkbox" value="linkedin" class="styled"></span></div>
+<input type="checkbox" value="linkedin" id="facebook" class="styled"></span></div>
 LinkedIn
 </label>
 	</div>
 <div class="checkbox">
 <label><div class="checker"><span class="">
-<input type="checkbox" value="twitter" class="styled"></span></div>
+<input type="checkbox" value="twitter" id="twitter" class="styled"></span></div>
 Twitter
 </label>
 	</div>
-
+<div class="checkbox">
+<label><div class="checker"><span class="">
+<input type="checkbox" value="youtube" id="youtube" class="styled"></span></div>
+Youtube
+</label>
+	</div>
+	<div class="checkbox">
+<label><div class="checker"><span class="">
+<input type="checkbox" value="tumblr" id="tumblr" class="styled"></span></div>
+tumblr
+</label>
+	</div>		
+</form>
 
 							</div>
 						</div>

@@ -196,8 +196,30 @@ $('#destroy').click(
 	
 	$('.checker input[type=checkbox]').each(function(index,element){
 	$('.checker input[type=checkbox]:eq('+index+')').click(function(){
-	$('.checkbox .checker span:eq('+index+')').toggleClass('checked'); 
-	//$('.checker input[type=checkbox]:eq('+index+')').trigger('click');		
+	$('.checkbox .checker span:eq('+index+')').toggleClass('checked');
+	$('.checker input[type=checkbox]:eq('+index+')').attr('checked',"checked");
+	var checkstatus = $('.checker input[type=checkbox]:eq('+index+')').is(':checked'); 
+	if(checkstatus)
+	{
+	var checkboxval = $('.checker input[type=checkbox]:eq('+index+')').val();
+	//var filterval;
+	// start the ajax request to filter blog network
+	$.ajax(
+	{	
+	url: app_url+'BlogNetwork',
+	method:'POST',
+	data:{
+	filterval:"trueadekunle"	
+	},
+	success:function(){
+	//console.log(xhr.getResponseHeader('code'));	
+	}	
+	
+	});// end of ajax request
+	console.log(checkboxval);
+	console.log(checkstatus);	
+	}
+	
    });
 	});	
    
