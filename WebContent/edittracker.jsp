@@ -257,7 +257,7 @@ function googleTranslateElementInit() {
                         </div>-->
 
 
-                        <div class="six wide field main-fields">
+                        <div class="four wide field main-fields">
                             <label>&nbsp;URL to be crawled</label>
                             <input type="text" name="crawl_url" id="crawl_url"  placeholder="Enter URL here">
                         </div>
@@ -284,7 +284,7 @@ function googleTranslateElementInit() {
                             </div>
                         </div>
 
-                        <div style="text-align: center"  class="one wide field main-fields">
+                        <div style="text-align: center"  class="two wide field main-fields">
                             <label>&nbsp;</label>
                             <button class="ui blue button" type="submit" style="margin-left:16%">Launch</button>
 
@@ -381,14 +381,15 @@ function googleTranslateElementInit() {
                         $(this).css({display: "none"});
                     });
                     var data= $(this).serializeJSON();
-					//console.log(data);
+					console.log(data);
                     $.ajax({
                         type: "post",
-                        url: "jsonGenerator.php",
-                        data: data,
-                        dataType: "json",
-                        contentType: "application/json",
-                        accept: "application/json"
+                        url:   app_url+'/setup_tracker',
+                        data:{data:data,action:"crawl"},
+          		      
+                       // dataType: "json",
+                       // contentType: "application/json",
+                       // accept: "application/json"
                     }).done(function (response) {
 						console.log(response);
 					$(that).find(".loading-bar").css({display:'none'});

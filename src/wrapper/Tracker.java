@@ -262,6 +262,17 @@ public class Tracker extends HttpServlet {
 			}			 
 		}
 		
+		
+		if(action.equals("crawl")) {
+			try {
+				String data = request.getParameter("data");
+				//new DBConnector().updateTable("UPDATE trackers SET query='"+query+"' WHERE  tid='"+tid+"'");	
+				pww.write(data);
+			}catch(Exception ex) {
+				pww.write(ex+" error");
+			}			 
+		}
+		
 	}
 	
 	private String getDateTime() {
