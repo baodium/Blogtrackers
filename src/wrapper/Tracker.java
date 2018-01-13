@@ -155,26 +155,35 @@ public class Tracker extends HttpServlet {
 				String tid = request.getParameter("tracker_ids");
 				String blog_id = request.getParameter("blog_id");
 				String[] tracker_ids = tid.split(",");
-				String addendum = "";
-				
+				DBConnector db = new DBConnector();
 				for(int i=0; i<tracker_ids.length; i++) {
-					 tracker = new DBConnector().query("SELECT query FROM trackers WHERE tid='"+tracker_ids[i]+"'");
+					String addendum = "";
+						
+					if(!tracker_ids[i].equals("")) {
+					 tracker = db.query("SELECT query FROM trackers WHERE tid='"+tracker_ids[i]+"'");
 					 if(tracker.size()>0){
-							String que = tracker.get(0).toString();
-							System.out.println(que);
+						 	ArrayList hd = (ArrayList)tracker.get(0);
+							String que = hd.get(0).toString();
+							
+							System.out.println(que+" here");
 							String[] qt = que.split(",");
 							for(int j=0; j<qt.length; j++) {
-								if(!qt[j].equals("blogsite_id in ()")) {
-									qt[j] = qt[j].replaceAll("blogsite_id in (", "");
-									qt[j] = qt[j].replaceAll(")", "");
-									addendum+=qt[j];
+								if(!qt[j].equals("blogsite_id in \\(\\)")) {
+									qt[j] = qt[j].replaceAll("blogsite_id in \\(", "");
+									qt[j] = qt[j].replaceAll("\\)", "");
+									if(!qt[j].equals("")) {				
+										addendum+=qt[j]+",";
+									}
 								}
 							}
 							
 							addendum = "blogsite_id in ("+addendum+blog_id+")";
-							new DBConnector().updateTable("UPDATE trackers SET query='"+addendum+"' WHERE  tid='"+tracker_ids[i]+"'");	
+							//listString="blogsite_id in ("+listString.substring(0, listString.length()-1)+")";
+							//pww.write(addendum);
+							db.updateTable("UPDATE trackers SET query='"+addendum+"' WHERE  tid='"+tracker_ids[i]+"'");	
 						
 					 }
+					}
 				}
 				
 				String userid = (String) session.getAttribute("user");
@@ -183,36 +192,44 @@ public class Tracker extends HttpServlet {
 	        	pww.write("success");
 	        	
 			}catch(Exception ex) {
-				  response.sendRedirect("edittracker.jsp");
+				pww.write(ex+"");
+				  //response.sendRedirect("edittracker.jsp");
+				  pww.write("error here");
 			}			 
 		}
 		
 
-		if(action.equals("remove_blog_in_tracker")) {
+		if(action.equals("remove_blog_from_tracker")) {
 			try {
 				ArrayList tracker =null;
 				String blog_id = request.getParameter("blog_id");
+				String tracker_id = request.getParameter("tracker_id");
 				
-				String addendum = "";
 				
-				tracker = new DBConnector().query("SELECT tid,query FROM trackers WHERE query LIKE '%"+blog_id+",%'");
+				tracker = new DBConnector().query("SELECT tid,query FROM trackers WHERE tid ='"+tracker_id+"'");
 					 if(tracker.size()>0){
 						 for(int i=0; i<tracker.size(); i++) {
-							String que = tracker.get(1).toString();
-							String tid = tracker.get(0).toString();
+							 String addendum = "";
+								
+							 ArrayList hd = (ArrayList)tracker.get(0);
+							 String que = hd.get(1).toString();
+							 
+							 String tid = tracker.get(0).toString();
 							System.out.println(que);
 							String[] qt = que.split(",");
 							for(int j=0; j<qt.length; j++) {
-								if(!qt[j].equals("blogsite_id in ()")) {
-									qt[j] = qt[j].replaceAll("blogsite_id in (", "");
-									qt[j] = qt[j].replaceAll(")", "");
+								if(!qt[j].equals("blogsite_id in \\(\\)")) {
+									qt[j] = qt[j].replaceAll("blogsite_id in \\(", "");
+									qt[j] = qt[j].replaceAll("\\)", "");
 									if(!qt[j].equals(blog_id)) {
 										addendum+=qt[j];
 									}
 								}
 							}
 							
+							//pww.write(que);
 							addendum = "blogsite_id in ("+addendum+")";
+							//pww.write(addendum);
 							new DBConnector().updateTable("UPDATE trackers SET query='"+addendum+"' WHERE  tid='"+tid+"'");	
 						 }
 					 }
@@ -224,7 +241,7 @@ public class Tracker extends HttpServlet {
 	        	pww.write("success");
 	        	
 			}catch(Exception ex) {
-				  response.sendRedirect("edittracker.jsp");
+				  pww.write("error");
 			}			 
 		}
 		
@@ -232,7 +249,7 @@ public class Tracker extends HttpServlet {
 			try {
 				String tid = request.getParameter("tracker_id");
 				String blog_id = request.getParameter("blog_id");
-				String query="blogsite_id in ("+blog_id+")";
+				String query="blogsite_id in \\("+blog_id+"\\)";
 				new DBConnector().updateTable("UPDATE trackers SET query='"+query+"' WHERE  tid='"+tid+"'");	
 				
 				String userid = (String) session.getAttribute("user");
