@@ -104,8 +104,9 @@ public class DBConnector {
 			stmt = con.prepareStatement(query);
 			//stmt = con.prepareStatement(medication_query);
 			int done = stmt.executeUpdate(query);
+			//rs = stmt.executeQuery(query);
 			donee=true;
-			rs.close();
+			//rs.close();
 			stmt.close();
 			con.close();
 

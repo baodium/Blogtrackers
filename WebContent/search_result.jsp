@@ -1,4 +1,5 @@
 <%@page import="wrapper.*"%>
+<%@page import="authentication.*"%>
 <%@page import="java.util.*"%>
 <%@page import="java.util.Random.*"%>
 
@@ -17,6 +18,9 @@ if(term!="" && username==""){
 try{
 	   trackers = (ArrayList)session.getAttribute("trackers");
  }catch(Exception e){}
+
+
+
 %>
 	<!-- Page container -->
 	<div class="page-container">
@@ -117,19 +121,22 @@ try{
 												<li class="divider"></li>
 												<% 
 												if(trackers.size()>0){
+												String tracker_id = tracker.get(0).toString();
 												for(int i=0; i<trackers.size(); i++){
 													if(i<6){
 													ArrayList tr = (ArrayList)trackers.get(i);
+													String ids = tr.get(5).toString();
+													String test1 = tracker_id+",";
+													String test2 = tracker_id+")";
 												%>
-														<li><a target="#" style="padding:0 8px" ><input class="tracker-<%=tracker.get(0)%>" type="checkbox" value="<%=tr.get(0)%>"/><%=tr.get(2)%></a></li>											
+														<li><a target="#" style="padding:0 8px" ><input class="tracker-<%=tracker.get(0)%>" <% if(ids.indexOf(test1)>0 || ids.indexOf(test2)>0){%> checked <% } %>type="checkbox" onchange="removeFromTracker('<%=tracker.get(0)%>','<%=tr.get(0)%>');" value="<%=tr.get(0)%>"/><%=tr.get(2)%></a></li>											
 												<% }} %>
-												<li><input type="text" style="height:10px; padding-left:5px" class="form-control input-xlg" id="tracker-name-<%=tracker.get(0)%>" /></li>			
+												<!--  <li><input type="text" style="height:10px; padding-left:5px" class="form-control input-xlg" id="tracker-name-<%=tracker.get(0)%>" /></li>	-->		
 												
 												<li class="divider"></li>
-												<li><a href="#" onclick="addToTracker('<%=tracker.get(0)%>');" id="add-tracker-<%=tracker.get(0)%>" class="btn btn-link" style="padding:0 8px"><i class="icon-paperplane text-primary"></i> <span>Add</span> </a></li>																			
+												<li><a href="#" onclick="addToTracker('<%=tracker.get(0)%>');" id="add-tracker-<%=tracker.get(0)%>" class="btn btn-link" style="padding:0 8px"><i class="icon-paperplane text-primary"></i> <span>Add To Selected</span> </a></li>																			
 												<% } %>
-												<li class="divider"></li>
-												<li><a id="create-tracker-<%=tracker.get(0)%>" onclick="createTracker('<%=tracker.get(0)%>');" class="btn" style="padding:3px 8px"><i class="icon-plus2 text-primary"></i> <span>create tracker</span> </a></li>			
+												<!--  <li><a id="create-tracker-<%=tracker.get(0)%>" onclick="createTracker('<%=tracker.get(0)%>');" class="btn" style="padding:3px 8px"><i class="icon-plus2 text-primary"></i> <span>create tracker</span> </a></li>	-->		
 											</ul>
 											<% }else{ %>
 											<a href="<%=request.getContextPath()%>/login"  class="btn btn-link btn-float has-text" title="Add to favourite"><i class="icon-stars text-primary"></i></a>
@@ -176,13 +183,19 @@ try{
 	
     </form>
 	<!-- /page container -->
+	<script type="text/javascript" src="assets/js/toastr.js?v=1"></script>
+
+	<link href="assets/css/toastr.css" rel="stylesheet">
+	
 <script>
+
 $(document).ready(function(){
 var container = document.querySelector('.grid');
 var msnry = new Masonry( container, {
  // columnWidth: 0,
   itemSelector: '.grid-item'
 });
+
 
 });
 </script>
@@ -260,13 +273,54 @@ var msnry = new Masonry( container, {
 		        success: function(response)
 		        {	
 		        	console.log(response);
+<<<<<<< HEAD
 		        	
+=======
+		        	if(response=="success"){
+		        		toastr.success('Blog successfully added!', 'Success')
+
+		        	}
+		        			        	
+>>>>>>> b95e0dc467a3153dd64c2b454081941e44d9b434
 		        }
 		    });	
 			*/
 		}
 		return false;
 	}
+<<<<<<< HEAD
+=======
+	
+	function removeFromTracker(blog_id,tracker_id){
+		var checked = $(".tracker-"+blog_id).is(':checked');
+		console.log(checked);
+		
+		if(blog_id=="" || tracker_id=="" || !checked)
+			return false;
+		
+			
+			$.ajax({
+		        url: app_url+'setup_tracker',
+				method:'POST',
+				async: true,
+				data:{blog_id:blog_id,tracker_id:tracker_id,action:"remove_blog_from_tracker"},
+		        success: function(response)
+		        {	
+		        	console.log(response);
+					if(response=="success"){
+
+						toastr.success('Blog successfully removed!', 'Success')
+
+		        	}
+
+		        	
+		        }
+		    });	
+
+
+	}
+
+>>>>>>> b95e0dc467a3153dd64c2b454081941e44d9b434
 </script>
 
 	<!-- Footer -->

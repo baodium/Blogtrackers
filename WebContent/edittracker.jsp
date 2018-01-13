@@ -33,6 +33,18 @@
 %>
  <jsp:include page="include_top.jsp"></jsp:include>
 
+<link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"
+            integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-serialize-object/2.5.0/jquery.serialize-object.min.js"></script>
+
+
 	<!-- Page header -->
 	<div class="page-header mb-20">
 		<div class="page-header-content">
@@ -183,6 +195,7 @@ function googleTranslateElementInit() {
 
 							<div class="panel-body">
 						<div class="input textarea clearfix example1"></div>
+<<<<<<< HEAD
 			
 							
 							<iframe class="scroll2" style ="width:100%; height: 500px" src="anol_project\crawler.html">
@@ -190,6 +203,360 @@ function googleTranslateElementInit() {
 							</iframe>
 					
 					</div>
+=======
+			<div class="form-group">
+					<!--  		
+							<iframe style ="width:100%; height: 300px" src="anol_project\crawler.html">
+ 								 <p>Your browser does not support iframes.</p>
+							</iframe>
+					-->	
+							
+							
+							
+							
+							
+							
+							
+							<div class="ui padded segment">
+
+    <!--content-->
+    <div class="ui padded segment">
+
+        <!--header-->
+        <h3 class="ui block header">
+            <i class="settings icon"></i> Automated Crawler
+        </h3>
+
+        <!--crawler block-->
+        <div class="ui padded segment" id="crawler_block">
+
+            <!--<form class="ui form">
+
+                <div class="fields">
+                    <div class="one wide field">
+                        <label style="padding-left:20%">&nbsp;&nbsp;&nbsp;Sl.</label>
+                    </div>
+
+                    <div class="five wide field">
+                        <label>Tracking Id</label>
+                    </div>
+
+                    <div class="nine wide field">
+                        <label>&nbsp;URL to be crawled</label>
+                    </div>
+
+                    <div class="six wide field">
+                        <label>&nbsp;Focus crawl by keyword(s)</label>
+                    </div>
+
+                    <div class="six wide field">
+                        <label>&nbsp;Limit by pages</label>
+                    </div>
+
+                    <div class="three wide field">
+                        <label>&nbsp;</label>
+                    </div>
+                    <div class="three wide field">
+                        <label>&nbsp;</label>
+                    </div>
+
+                </div>
+            </form>-->
+            <div id="all-forms">
+                <form class="ui form">
+                    <div class="fields ">
+                        <div class="one wide field">
+                            <label style="padding-left:20%">Sl.</label>
+                            <div class="ui label sl-number" style="font-size: 1.22rem">1</div>
+                            <input class="hidden-serial-input" type="hidden" name="serial_no" value=""/>
+                        </div>
+
+                       <!-- <div class="two wide field">
+                            <label>Tracking Id</label>
+                            <div class="ui label tracking-id" style="font-size: 1.22rem"></div>
+                            <input class="hidden-tracking-id-input" type="hidden" name="tracking_id" value=""/>
+                        </div>-->
+
+
+                        <div class="four wide field main-fields">
+                            <label>&nbsp;URL to be crawled</label>
+                            <input type="text" name="crawl_url" id="crawl_url"  placeholder="Enter URL here">
+                        </div>
+
+                        <div class="three wide field main-fields">
+                            <label>&nbsp;Focus crawl by keyword(s)</label>
+                            <input type="text" name="keyword" id="keyword" placeholder="Enter keyword">
+                        </div>
+
+                        <div class="three wide field main-fields">
+                            <label>&nbsp;Limit by pages</label>
+                            <div class="ui selection dropdown">
+                                <input type="hidden" name="pages">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">Select page limit</div>
+                                <div class="menu">
+                                    <div class="item" data-value="1">Current page only</div>
+                                    <div class="item" data-value="10">Upto 10 pages</div>
+                                    <div class="item" data-value="25">Upto 25 pages</div>
+                                    <div class="item" data-value="50">Upto 50 pages</div>
+                                    <div class="item" data-value="100">Upto 100 pages</div>
+                                    <div class="item" data-value="no">No limit</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center"  class="two wide field main-fields">
+                            <label>&nbsp;</label>
+                            <button class="ui blue button" type="submit" style="margin-left:16%">Launch</button>
+
+                        </div>
+						
+						<div style="display:none" class="fourteen wide field loading-bar">
+                            <div class="ui active inverted dimmer">
+                                <div class="ui text loader">The crawler is running...</div>
+                            </div>
+                        </div>
+						
+                        <div style="display:none" class="fourteen wide field progress-bar">
+                            <!--<label>&nbsp;</label>-->
+                            <h5 class="initiated-text ui positive message" style="text-align: center;margin-top:16px">The Crawler for URL has been Initiated.</h5>
+                        </div>
+                        <div style="text-align: center" class="two wide field">
+                            <label>&nbsp;</label>
+                            <button class="ui red button removeButton" type="button">Delete</button>
+                        </div>
+
+
+                        <!--<div style="display:none" class="twelve wide field progress-bar">
+                            <div class="ui blue progress" data-value="20" data-total="100" style="padding:3px">
+                                <div class="bar"></div>
+                                <div class="label percentage">0%</div>
+                            </div>
+                            <div class="three wide field">
+                                <button class="ui red button pauseButton" type="button">Remove</button>
+                            </div>
+                        </div>-->
+
+
+                    </div>
+
+                </form>
+            </div>
+
+
+        </div>
+
+
+        <!--Add crawler-->
+        <button class="ui compact labeled icon button" id='addNewButton'>
+            <i class="add icon"></i>Add crawler
+        </button>
+
+    </div>
+    <!--content end-->
+
+</div>
+<!--wrapper end-->
+
+
+<script>
+
+    function prepareView() {
+        $('.ui.dropdown')
+                .dropdown();
+        $("#all-forms").find(".form").each(function () {
+            var that = $(this);
+            $(this).form({
+                fields: {
+                    crawl_url: {
+                        identifier: 'crawl_url',
+                        rules: [
+                            {
+                                type: 'url',
+                                prompt: 'Please enter a valid URL'
+                            }
+                        ]
+                    },
+                    keyword: {
+                        identifier: 'keyword',
+                        rules: [
+                            {
+                                type: 'empty'
+                            }
+                        ]
+                    },
+                    pages: {
+                        identifier: 'pages',
+                        rules: [
+                            {
+                                type: 'empty',
+                                prompt: 'Please select a Current page only'
+                            }
+                        ]
+                    }
+
+                }, "onSuccess": function (event) {
+                    event.preventDefault();
+					$(that).find(".loading-bar").css({display:'block'});
+                    $(that).find(".main-fields").each(function () {
+                        $(this).css({display: "none"});
+                    });
+                    var data= $(this).serializeJSON();
+					console.log(data);
+                    $.ajax({
+                        type: "post",
+                        url:   app_url+'/setup_tracker',
+                        data:{data:data,action:"crawl"},
+          		      
+                       // dataType: "json",
+                       // contentType: "application/json",
+                       // accept: "application/json"
+                    }).done(function (response) {
+						console.log(response);
+					$(that).find(".loading-bar").css({display:'none'});
+                        $(that).find(".progress-bar").css({display: "block"});
+                        $(that).find(".progress-bar .initiated-text").html("The crawling for "+
+                           getLocation(JSON.parse(data).crawl_url).hostname+" is completed.");
+                    }).fail(function (jqXHR, textStatus) {
+						console.log(jqXHR);
+                        console.log("Call failed: " + textStatus);
+                    });
+
+
+                }
+            })
+        });
+
+
+    }
+
+    function putSerialNumber() {
+        var serial = 1;
+        $("#all-forms").find(".form").each(function () {
+            $(this).find(".sl-number").html(serial);
+            $(this).find(".hidden-serial-input").val(serial);
+            serial++;
+        });
+        if (serial > 10) {
+            $("#addNewButton").css({display: "none"});
+        } else {
+            $("#addNewButton").css({display: "block"});
+        }
+    }
+
+//    function allTrackingIds() {
+//        var allTrackingIds = [];
+//        $("#all-forms").find(".form").each(function () {
+//            allTrackingIds.push($(this).find(".hidden-tracking-id-input").val());
+//        });
+//        return allTrackingIds;
+//    }
+
+    $(document).ready(function () {
+
+        /*var newTrackingID = "TR" + parseInt(+new Date());
+        $("#all-forms").find(".tracking-id").html(newTrackingID);
+        $("#all-forms").find(".hidden-tracking-id-input").val(newTrackingID);*/
+
+//        setInterval(function () {
+//
+//            $.ajax({
+//                type: "post",
+//                url: "data.php",
+//                data: JSON.stringify({
+//                    trackingIds: allTrackingIds(),
+//                    apiKey: "123456789ygviykvboguy"
+//                }),
+//                dataType: "json",
+//                contentType: "application/json",
+//                accept:"application/json"
+//            }).done(function (response) {
+//                $("#all-forms").find(".form").each(function () {
+//                    var that = $(this);
+//                    if(response.length>0){
+//                        response.map(function (item) {
+//                            if(item.trackingId===$(that).find(".hidden-tracking-id-input").val()){
+//                                $(that).find(".ui.progress").progress({percent:parseInt(item.progress)})
+//                                $(that).find(".label.percentage").html(item.progress+"%")
+//                            }
+//                        })
+//                    }
+//                });
+//            }).fail(function (jqXHR, textStatus) {
+//                console.log("Call failed: " + textStatus);
+//            });
+//
+//        }, 3000);
+
+
+        prepareView();
+        putSerialNumber();
+        var allFormDiv = $("#all-forms");
+        var formRow = allFormDiv.find(".form:first").clone();
+
+        $("#all-forms").on("click", '.removeButton', function (e) {
+            e.preventDefault();
+            $(this).closest('.form').remove();
+            putSerialNumber();
+        });
+
+        $("#all-forms").on("click", '.pauseButton', function (e) {
+            e.preventDefault();
+//            var trackingId = $(this).closest("#all-forms").find(".hidden-tracking-id-input").val();
+            $(this).closest('.form').remove();
+            putSerialNumber();
+//            pauseCrawling(trackingId);
+        });
+
+        $("#addNewButton").on("click", function (e) {
+            if ($("#all-forms").find(".form").length < 10) {
+                e.preventDefault();
+                var newFormRow = formRow.clone();
+//                var newTrackingID = "TR" + parseInt(+new Date());
+//                $(newFormRow).find(".tracking-id").html(newTrackingID);
+//                $(newFormRow).find(".hidden-tracking-id-input").val(newTrackingID);
+                allFormDiv.append((newFormRow));
+                prepareView();
+                putSerialNumber();
+            }
+
+        });
+
+
+    });
+
+//    function pauseCrawling(trackingId) {
+//        $.ajax({
+//            type: "post",
+//            url: "data.php",
+//            data: JSON.stringify({
+//                trackingId: trackingId
+//            }),
+//            dataType: "json",
+//            contentType: "application/json",
+//            accept: "application/json"
+//        }).done(function (response) {
+//            console.log("Call passed: " + response);
+//        }).fail(function (jqXHR, textStatus) {
+//            console.log("Call failed: " + textStatus);
+//        });
+//    }
+
+
+    function getLocation (href) {
+        var l = document.createElement("a");
+        l.href = href;
+        return l;
+    }
+
+</script>
+
+							
+							
+							
+							
+				
+>>>>>>> b95e0dc467a3153dd64c2b454081941e44d9b434
 					</div>
 				<!-- /main charts -->
 
