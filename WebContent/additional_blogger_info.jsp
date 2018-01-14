@@ -25,13 +25,12 @@
 					<span class="text-semibold">Additional Blogger Information</span>
 <%-- <small class="display-block"><span>Welcome, </span><%=username %> (Current Tracker: <%=session.getAttribute("tracker")%>) --%>
 				</h4>
-				<ul class="breadcrumb breadcrumb-caret position-right mb-20">
+				<ul class="breadcrumb breadcrumb-caret position-right">
 					<li><a href="features.jsp">Home</a></li>
-					<li ><a href="trackerlist.jsp">Tracker List </a><a href="edittracker.jsp" title="Edit <%=session.getAttribute("tracker")%> Tracker">(<%=session.getAttribute("tracker")%>)</a></li>
-					<li> <a href="analytics.jsp">Analytics</a></li>
-					<li class="active">Additional Blogger Info </li>
-				</ul>	
-				
+					<li ><a href="trackerlist.jsp">Tracker List  </a></li>
+					<li><a href="edittracker.jsp" title="Edit <%=session.getAttribute("tracker")%> Tracker"><%=session.getAttribute("tracker")%></a></li>
+					<li class="active">Additional Blogger Information</li>
+				</ul>
 				
 			<form name="search-author" method="get" action="<%=request.getContextPath()%>/AdditionalBlogger">
 			<div class="form-group">

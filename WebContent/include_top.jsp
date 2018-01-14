@@ -173,7 +173,7 @@ $(window).load(function() {
 	<!-- Main navbar -->
 	<div class="navbar navbar-inverse" style="background-color:#2A6ADF">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="features.jsp"><i class="icon-puzzle3 position-left"></i><span style="font-size:18px">Blogtrackers</span></a>
+			<a class="navbar-brand" href="features.jsp"><span style="font-size:18px">Blogtrackers</span></a>
 						
 			<ul class="nav navbar-nav pull-right visible-xs-block">
 				<li><a data-toggle="collapse" data-target="#navbar-mobile" class="collapsed" aria-expanded="false"><i class="icon-tree5"></i></a></li>

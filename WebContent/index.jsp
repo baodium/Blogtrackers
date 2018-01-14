@@ -689,7 +689,6 @@ Lab, U.S. Army Research Office</span>
                             </div>
                             <!-- shop item end -->
                             
-                           
                             
                             <!-- shop item start -->
                             <div class="shop-item-container-out">
@@ -700,6 +699,19 @@ Lab, U.S. Army Research Office</span>
                                 </div>
 
                                
+                            </div>
+                            <!-- shop item end -->
+                            
+                            
+                               <!-- shop item start -->
+                            <div class="shop-item-container-out">
+                                <div class="shop-item-container-in">
+                                    <img src="assets/sponsor/aro.jpg" alt="U.S. Air Force Research" class="img-responsive center-block"><br/>
+                                    <span class="shop-item-price">U.S. Army Research Office</span>
+                                    
+                                </div>
+
+                                
                             </div>
                             <!-- shop item end -->
                             
