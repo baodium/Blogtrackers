@@ -70,7 +70,10 @@ public class BlogNetwork extends HttpServlet {
 		else
 		{
 			System.out.println("  inside else before");
-			
+			if(request.getParameter("blogtoblog") != null)
+			{
+			System.out.println(request.getParameter("blogtoblog").toString());	
+			}
 			// block of code for get parameter
 //				if(session.getAttribute("tracker") != null && request.getParameter("tracker")==null)
 //						{
@@ -123,10 +126,7 @@ public class BlogNetwork extends HttpServlet {
 				{
 				String date = request.getParameter("datepicked");
 				session.setAttribute("datepicked", date);
-//				PrintWriter pww = response.getWriter();
-				String filtervalue = request.getParameter("filtervalue");
-				System.out.println("Filter " + filtervalue);
-//				pww.write(filtervalue);
+
 				//System.out.println("Filter Value"+filtervalue );
 				System.out.println("Date for Request "+date);
 				// addition by adekunle blog network by date range
@@ -421,8 +421,8 @@ public class BlogNetwork extends HttpServlet {
 					{
 					String date = session.getAttribute("datepicked").toString();
 					System.out.println("Date for get"+session.getAttribute("datepicked"));	
-					String filtervalue = request.getParameter("filtervalue");
-					System.out.println("Filter " + filtervalue);
+					//String filtervalue = request.getParameter("filtervalue");
+					//System.out.println("Filter " + filtervalue);
 					// addition by adekunle blognetwork search by date range
 //					PrintWriter pww = response.getWriter();
 					
@@ -620,7 +620,8 @@ public class BlogNetwork extends HttpServlet {
 					t.add(en.get(i).get(2));
 					t.add("circle");
 					nodes.add(t);
-				}							//entity code end
+				}
+				//entity code end
 				for( int i=0;i<mid.size();i++)
 				{
 					ArrayList<String> t = new ArrayList<String>();

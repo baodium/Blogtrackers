@@ -201,24 +201,78 @@ $('#destroy').click(
 	var checkstatus = $('.checker input[type=checkbox]:eq('+index+')').is(':checked'); 
 	if(checkstatus)
 	{
-	var checkboxval = $('.checker input[type=checkbox]:eq('+index+')').val();
+	var checkboxval;
+	var blog2blog;
+	var blogger2blogger;
+	var facebook;
+	var linkedin;
+	var twitter;
+	var youtube;
+	var tumblr;
+	if(checkstatus && $('.checker input[type=checkbox]:eq('+index+')').val() === "blogtoblog")	
+	{
+	//checkboxval = $('#blogtoblog').val();
+	blog2blog = $('#blogtoblog').val();
+	}
+	if(checkstatus && $('.checker input[type=checkbox]:eq('+index+')').val() === "bloggertoblogger")
+	{
+	blogger2blogger = $('#blogger2blogger').val();	
+	}
+	if(checkstatus && $('.checker input[type=checkbox]:eq('+index+')').val() === "facebook")
+	{
+	facebook = $('#facebook').val();	
+	}
+	if(checkstatus && $('.checker input[type=checkbox]:eq('+index+')').val() === "linkedin")
+	{
+	linkedin = $('#linkedin').val();	
+	}
+	if(checkstatus && $('.checker input[type=checkbox]:eq('+index+')').val() === "twitter")
+	{
+	twitter = $('#twitter').val();	
+	}
+	if(checkstatus && $('.checker input[type=checkbox]:eq('+index+')').val() === "youtube")
+	{
+	youtube = $('#youtube').val();	
+	}
+	if(checkstatus && $('.checker input[type=checkbox]:eq('+index+')').val() === "tumblr")
+	{
+	tumblr = $('#tumblr').val();	
+	}
+	//var checkboxval = $('.checker input[type=checkbox]:eq('+index+')').val();
+	
+	console.log(blog2blog);
 	//var filterval;
 	// start the ajax request to filter blog network
-	$.ajax(
+	/*  $.ajax(
 	{	
 	url: app_url+'BlogNetwork',
 	method:'POST',
 	data:{
-	filterval:"trueadekunle"	
+	filterval:checkboxval	
 	},
 	success:function(){
 	//console.log(xhr.getResponseHeader('code'));	
 	}	
-	
-	});// end of ajax request
-	console.log(checkboxval);
-	console.log(checkstatus);	
-	}
+	}); */
+	// end of ajax request
+	  $.post(app_url+'BlogNetwork',{
+	// parse the datas	  
+	//'filtervalue':blog2blog,
+	'blogtoblog':blog2blog,
+	'bloggertoblogger':blogger2blogger,
+	'facebook':facebook,
+	'linkedin':linkedin,
+	'twitter':twitter,
+	'youtube':youtube,
+	'tumblr':tumblr
+	},function(responseText){
+	//$('body').html(responseText);
+	//$('#pageloader').hide("3000");
+	//console.log(responseText);	
+	}); 
+	/* console.log(checkboxval);
+	console.log(checkstatus);	*/
+	} 
 	
    });
 	});	
