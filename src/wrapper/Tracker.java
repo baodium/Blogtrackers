@@ -148,8 +148,7 @@ public class Tracker extends HttpServlet {
 			}			 
 		}
 		
-<<<<<<< HEAD
-=======
+
 
 		if(action.equals("add_blog_to_tracker")) {
 			try {
@@ -247,7 +246,7 @@ public class Tracker extends HttpServlet {
 			}			 
 		}
 		
->>>>>>> b95e0dc467a3153dd64c2b454081941e44d9b434
+
 		if(action.equals("remove_blog")) {
 			try {
 				String tid = request.getParameter("tracker_id");

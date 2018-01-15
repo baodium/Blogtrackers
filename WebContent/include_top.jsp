@@ -67,6 +67,7 @@
         }
 
 </style>
+
 <script type="text/javascript" src="dist/vis.js"></script>
     <link href="dist/vis-network.min.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
@@ -78,6 +79,7 @@
 	<link href="assets/css/colors.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/introjs.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/jquery-ui.css" rel="stylesheet" type="text/css">
+	
 	<link href="assets/css/mystyle2.css" rel="stylesheet" type="text/css">
 
 	

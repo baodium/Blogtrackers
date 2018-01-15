@@ -143,7 +143,7 @@ function googleTranslateElementInit() {
 								<div class="heading-elements">
 									<ul class="list-inline list-inline-condensed heading-text">
 										<li><a href="#" class="text-default" data-intro="Click here to modify existing tracker and view blogsites" data-step="4"  title="Edit Tracker" onclick="edit_this('<%= tracker.get(0)%>');"><i class="icon-pencil7"></i></a></li>
-										<li><a data-intro="Click here to delete an existing tracker" data-step="2" title="Delete Tracker" onclick="delete_this('<%= tracker.get(0)%>');" href="#" class="text-default"><i class="icon-bin"></i></a></li>
+										<li><a data-intro="Click here to delete an existing tracker" data-step="2" title="Delete Tracker" onclick="delete_this('<%= tracker.get(0)%>');" class="text-default"><i class="icon-bin"></i></a></li>
 									</ul>
 
 									<ul class="list-inline list-inline-condensed heading-text pull-right">
@@ -177,7 +177,7 @@ function googleTranslateElementInit() {
 					<div class="col-lg-3 col-md-3 eachtracker">
 							<div class="thumbnail">
 								<div class="thumb thumb-rounded">
-									<a href="<%=request.getContextPath()%>/setup_tracker.jsp"><img style="height:132px" src="img/plus.jpg" alt=""></a>
+									<a href="<%=request.getContextPath()%>/setup_tracker.jsp"><img style="width:130px; height:130px; display:flow-root;" src="img/plus2.jpg" alt=""></a>
 								</div>
 						    	<div class="caption text-center">
 						    		<h6 class="text-semibold no-margin"><a href="<%=request.getContextPath()%>/setup_tracker.jsp" >Add New Tracker</a> <small class="display-block" style="line-height: 1.25;">Click To Setup A New Tracker</small></h6>
