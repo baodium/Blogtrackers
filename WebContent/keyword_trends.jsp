@@ -27,7 +27,7 @@
 	<!-- Page header -->
 	<div class="page-header mb-20">
 		<div class="page-header-content">
-			<div class="page-title">
+			<div class="page-title mb-20">
 				<h4>
 					<a href="<%=request.getContextPath()%>/analytics.jsp"><i class="icon-arrow-left52 position-left"></i></a>
 					<span class="text-semibold">Keyword Trends</span>
@@ -35,11 +35,11 @@
 				</h4>
 				<ul class="breadcrumb breadcrumb-caret position-right">
 					<li><a href="features.jsp">Home</a></li>
-					<li ><a href="trackerlist.jsp">Tracker List  </a></li>
-					<li><a href="edittracker.jsp" title="Edit <%=session.getAttribute("tracker")%> Tracker"><%=session.getAttribute("tracker")%></a></li>
+					<li ><a href="trackerlist.jsp">Tracker List  </a><a href="edittracker.jsp" title="Edit <%=session.getAttribute("tracker")%> Tracker">(<%=session.getAttribute("tracker")%>)</a></li>
+					<li><a href="analytics.jsp">Analytics</a></li>
 					<li class="active">Keyword Trends</li>
 				</ul>
-		
+		</div>
 				<form name="tagform" id="tagform" action="KeywordTrendsServlet" method="post">
 				<div  class="form-group ">
 				<!-- <div class="col-md-12 mb-20"> -->
@@ -62,7 +62,7 @@
 										</div>
 										</form>
 										
-			</div>
+			
 
 
 		</div>
@@ -375,7 +375,7 @@
 							<div class="panel-body">
 						
                         <div class="demo-container">
-												<div id="mynetwork" style="height: 400px"></div>
+												<div id="mynetwork" style="height: 400px; "></div>
 											</div>
 							</div>
 						</div>
