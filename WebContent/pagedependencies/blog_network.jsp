@@ -191,14 +191,63 @@ $('#destroy').click(
 	{
 	$('#features').click(function(e)
     {
-	$('.features-tab').slideToggle(500);	
+	$('.features-tab').slideToggle(500);
+	
 	});	
 	
-	$('.checker input[type=checkbox]').each(function(index,element){
-	$('.checker input[type=checkbox]:eq('+index+')').click(function(){
-	$('.checkbox .checker span:eq('+index+')').toggleClass('checked');
-	$('.checker input[type=checkbox]:eq('+index+')').attr('checked',"checked");
-	var checkstatus = $('.checker input[type=checkbox]:eq('+index+')').is(':checked'); 
+	// showing by sectionss
+	$('.checkgroupindi input[type=checkbox]').each(function(index,element){
+	$('.checkgroupindi input[type=checkbox]:eq('+index+')').click(function(){
+	$('.checkgroup .checker span:eq('+index+')').toggleClass('checked');
+	var hasthisClass = $('.checkgroup .checker span:eq('+index+')').hasClass('checked');
+	$('.checkgroupindi input[type=checkbox]:eq('+index+')').attr('checked',"checked");
+	var thecheckstatus;
+	if(hasthisClass)
+	{
+	thecheckstatus = $('.checkgroupindi input[type=checkbox]:eq('+index+')').is(':checked');
+	if(thecheckstatus)
+	{
+	//show the blog blogger and blogblogfilter
+	$('.checkall:eq('+index+')').show(200);
+	console.log(thecheckstatus);
+	}
+	}
+	else if(!hasthisClass)
+	{
+		thecheckstatus = false;
+		if(!thecheckstatus)
+		{
+		//show the blog blogger and blogblogfilter
+		$('.checkall:eq('+index+')').hide(200);
+		console.log(thecheckstatus);
+		}	
+	}
+	//console.log(status)
+	
+	
+	
+	});
+	});
+	
+	// this check the box and send the parameters to the servlet
+	$('.checkerindi input[type=checkbox]').each(function(index,element){
+	$('.checkerindi input[type=checkbox]:eq('+index+')').click(function(){
+	$('.checkboxcon .checker span:eq('+index+')').toggleClass('checked');
+	var hastheClass = $('.checkboxcon .checker span:eq('+index+')').hasClass('checked');
+	var checkstatus;
+	if(hastheClass)
+	{
+	$('.checkerindi input[type=checkbox]:eq('+index+')').attr('checked',"checked");
+	checkstatus = $('.checkerindi input[type=checkbox]:eq('+index+')').is(':checked'); 
+	console.log(hastheClass);
+	}
+	else if(!hastheClass)
+	{
+	$('.checkerindi input[type=checkbox]:eq('+index+')').removeAttr('checked',"checked");
+	checkstatus = false;
+	console.log(checkstatus);
+	}
+	
 	if(checkstatus)
 	{
 	var checkboxval;
@@ -209,6 +258,7 @@ $('#destroy').click(
 	var twitter;
 	var youtube;
 	var tumblr;
+	var entity;
 	if(checkstatus && $('.checker input[type=checkbox]:eq('+index+')').val() === "blogtoblog")	
 	{
 	//checkboxval = $('#blogtoblog').val();
@@ -238,9 +288,14 @@ $('#destroy').click(
 	{
 	tumblr = $('#tumblr').val();	
 	}
+	if(checkstatus && $('.checker input[type=checkbox]:eq('+index+')').val() === "entity")
+	{
+	entity = $('#entity').val();	
+	}
+	console.log(blog2blog);
 	//var checkboxval = $('.checker input[type=checkbox]:eq('+index+')').val();
 	
-	console.log(blog2blog);
+	//console.log(blog2blog);
 	//var filterval;
 	// start the ajax request to filter blog network
 	/*  $.ajax(
@@ -264,10 +319,11 @@ $('#destroy').click(
 	'linkedin':linkedin,
 	'twitter':twitter,
 	'youtube':youtube,
-	'tumblr':tumblr
+	'tumblr':tumblr,
+	'enity':entity
 	},function(responseText){
-	//$('body').html(responseText);
-	//$('#pageloader').hide("3000");
+	$('body').html(responseText);
+	$('#pageloader').hide("3000");
 	//console.log(responseText);	
 	}); 
 	/* console.log(checkboxval);
