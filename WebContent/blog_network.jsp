@@ -297,49 +297,78 @@ function googleTranslateElementInit() {
 
 							<div class="panel-body">
 <form method="POST">
-<div class="checkbox">
-<label><div class="checker"><span class="">
+<div class="checkbox checkgroup">
+<label>
+<div class="checker checkgroupindi"><span class="">
+<input type="checkbox" value="blogtoblog" id="" class="styled"></span>
+</div>
+ Blog Network
+</label>
+</div>
+
+<div class="checkall">
+<div class="checkbox checkboxcon">
+<label><div class="checker checkerindi"><span class="">
 <input type="checkbox" value="blogtoblog" id="blogtoblog" class="styled"></span></div>
 Blog - Blog
 </label>
-	</div>
- <div class="checkbox">
-<label><div class="checker"><span class="">
+</div>
+ <div class="checkbox checkboxcon">
+<label><div class="checker checkerindi"><span class="">
 <input type="checkbox" value="blogtoblogger" id="blogtoblogger" class="styled"></span></div>
 Blog - Blogger
 </label>
-	</div>
-<div>Social Media</div>	
-<div class="checkbox">
-<label><div class="checker"><span class="">
+</div>
+</div>
+<hr/>
+<div class="checkbox checkgroup">
+<label>
+<div class="checker checkgroupindi"><span class="">
+<input type="checkbox" value="blogtoblog" id="" class="styled"></span>
+</div>
+ Social Media
+</label>
+</div>
+
+<div class="checkall">
+<div class="checkbox checkboxcon">
+<label><div class="checker checkerindi"><span class="">
 <input type="checkbox" value="facebook" id="facebook" class="styled"></span></div>
 Facebook
 </label>
 	</div>
-<div class="checkbox">
-<label><div class="checker"><span class="">
-<input type="checkbox" value="linkedin" id="facebook" class="styled"></span></div>
+<div class="checkbox checkboxcon">
+<label><div class="checker checkerindi"><span class="">
+<input type="checkbox" value="linkedin" id="linkedin" class="styled"></span></div>
 LinkedIn
 </label>
 	</div>
-<div class="checkbox">
-<label><div class="checker"><span class="">
+<div class="checkbox checkboxcon">
+<label><div class="checker checkerindi"><span class="">
 <input type="checkbox" value="twitter" id="twitter" class="styled"></span></div>
 Twitter
 </label>
 	</div>
-<div class="checkbox">
-<label><div class="checker"><span class="">
+<div class="checkbox checkboxcon">
+<label><div class="checker checkerindi"><span class="">
 <input type="checkbox" value="youtube" id="youtube" class="styled"></span></div>
 Youtube
 </label>
 	</div>
-	<div class="checkbox">
-<label><div class="checker"><span class="">
+	<div class="checkbox checkboxcon">
+<label><div class="checker checkerindi"><span class="">
 <input type="checkbox" value="tumblr" id="tumblr" class="styled"></span></div>
-tumblr
+Tumblr
 </label>
-	</div>		
+	</div>
+	</div>	
+<hr />	
+<div class="checkbox checkboxcon">
+<label><div class="checker checkerindi"><span class="">
+<input type="checkbox" value="entity" id="entity" class="styled"></span></div>
+Entity
+</label>
+	</div>
 </form>
 
 							</div>
