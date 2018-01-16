@@ -269,8 +269,10 @@ public class Tracker extends HttpServlet {
 			try {
 				String data = request.getParameter("data");
 				String userid = (String) session.getAttribute("user");
-				
-				String query="INSERT INTO blogstocrawl(userid,detail) VALUES('"+userid+"', '"+data+"')";
+				ArrayList df = new DBConnector().query("SELECT * FROM blogstocrawl");
+	        	int curr = df.size();
+	        	curr+=1;
+				String query="INSERT INTO blogstocrawl(id,userid,data) VALUES("+curr+",'"+userid+"', '"+data+"')";
 				boolean done = new DBConnector().updateTable(query);
 				pww.write(data);
 			}catch(Exception ex) {

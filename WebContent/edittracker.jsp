@@ -379,7 +379,7 @@ function googleTranslateElementInit() {
                         $(this).css({display: "none"});
                     });
                     var data= $(this).serializeJSON();
-					console.log(data);
+					//console.log(data);
                     $.ajax({
                         type: "post",
                         url:   app_url+'/setup_tracker',
