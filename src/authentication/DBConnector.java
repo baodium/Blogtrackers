@@ -188,7 +188,10 @@ public class DBConnector {
 			int trackers = rs.getInt("trackers");
 			int blogposts = rs.getInt("blogposts");
 			int blogsites = rs.getInt("blogsites");
-			
+			/*System.out.println(rs.getInt("users"));
+			System.out.println(rs.getInt("trackers"));
+			System.out.println(rs.getInt("blogposts"));
+			System.out.println(rs.getInt("blogsites"));*/
 			total.add(0,totalusers);
 			total.add(1,trackers);
 			total.add(2,blogposts);

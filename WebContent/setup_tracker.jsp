@@ -176,7 +176,7 @@
 						<% }else{ %>
 						<fieldset >
 						<div id="result-set">
-							The result should be displayed in a table and each cell should have a means of selection like a checkbox or something fancier							
+							You did not enter a search keyword <span style="color:red">You will not be able to create a tracker</span> 							
 						</div>					
 						</fieldset>
 						<% } %>
@@ -316,7 +316,8 @@
 		        {		
 		        	console.log(response);
 		        	if(response==="success"){
-		        		 window.location.href = app_url+"trackerlist.jsp";//+tracker_name;				        	
+		        		
+		        		 window.location.href = app_url+"Analytics?tracker="+tracker_name;
 		        	}else if(response==="exist"){
 		        		$("#error-box").html("tracker name already exists");
 		        	}else{	        	

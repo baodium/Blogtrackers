@@ -149,6 +149,7 @@ public class Tracker extends HttpServlet {
 		}
 		
 
+
 		if(action.equals("add_blog_to_tracker")) {
 			try {
 				ArrayList tracker =null;
@@ -245,6 +246,7 @@ public class Tracker extends HttpServlet {
 			}			 
 		}
 		
+
 		if(action.equals("remove_blog")) {
 			try {
 				String tid = request.getParameter("tracker_id");

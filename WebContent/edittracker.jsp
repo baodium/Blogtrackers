@@ -33,8 +33,8 @@
 %>
  <jsp:include page="include_top.jsp"></jsp:include>
 
-<link rel="stylesheet" type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+ <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css"> 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"
             integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
             crossorigin="anonymous"></script>
@@ -181,22 +181,20 @@ function googleTranslateElementInit() {
    
 							</div>
 						</div>
-					
+					<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h6 class="panel-title">Crawl New Blogs<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<div class="heading-elements">
+									<ul class="icons-list">
+				                		<li><a data-action="collapse"></a></li>
+				                		<li><a data-action="reload"></a></li>
+<!--				                		<li><a data-action="close"></a></li>-->
+				                	</ul>
+			                	</div>
+							</div>
+
+							<div class="panel-body">
 						<div class="input textarea clearfix example1"></div>
-			<div class="form-group">
-					<!--  		
-							<iframe style ="width:100%; height: 300px" src="anol_project\crawler.html">
- 								 <p>Your browser does not support iframes.</p>
-							</iframe>
-					-->	
-							
-							
-							
-							
-							
-							
-							
-							<div class="ui padded segment">
 
     <!--content-->
     <div class="ui padded segment">
@@ -531,10 +529,7 @@ function googleTranslateElementInit() {
 </script>
 
 							
-							
-							
-							
-				
+						
 					</div>
 				<!-- /main charts -->
 

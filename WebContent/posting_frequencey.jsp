@@ -22,13 +22,7 @@
 %>
 
  <jsp:include page="include_top.jsp"></jsp:include>
-<% ArrayList mytrackers = new ArrayList();
-mytrackers = (ArrayList)session.getAttribute("trackers");
-int trackerSize = mytrackers.size();
-    if(trackerSize == 0)
-    {%>
-    <c:redirect url="setup_tracker.jsp"/>	
-  <% } %> 
+
 	<!-- Page header -->
 	<div class="page-header mb-20">
 		<div class="page-header-content">
@@ -41,9 +35,10 @@ int trackerSize = mytrackers.size();
 				</h4>
 				<ul class="breadcrumb breadcrumb-caret position-right">
 					<li><a href="features.jsp">Home</a></li>
-					<li ><a href="trackerlist.jsp">Tracker List </a><a href="edittracker.jsp" title="Edit <%=session.getAttribute("tracker")%> Tracker">(<%=session.getAttribute("tracker")%>)</a></li>
-					<li> <a href="analytics.jsp">Analytics</a></li>
-					<li class="active">Posting Frequency</li>
+					<li ><a href="trackerlist.jsp">Tracker List  </a></li>
+					<li><a href="edittracker.jsp" title="Edit <%=session.getAttribute("tracker")%> Tracker"><%=session.getAttribute("tracker")%></a></li>
+					<li><a href="analytics.jsp">Analytics</a></li>
+						<li class="active">Posting Frequency</li>
 				</ul>
 			</div>
 				<!-- <div class="heading-elements">

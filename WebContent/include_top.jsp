@@ -67,6 +67,7 @@
         }
 
 </style>
+
 <script type="text/javascript" src="dist/vis.js"></script>
     <link href="dist/vis-network.min.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
@@ -78,6 +79,7 @@
 	<link href="assets/css/colors.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/introjs.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/jquery-ui.css" rel="stylesheet" type="text/css">
+	
 	<link href="assets/css/mystyle2.css" rel="stylesheet" type="text/css">
 
 	
@@ -173,7 +175,7 @@ $(window).load(function() {
 	<!-- Main navbar -->
 	<div class="navbar navbar-inverse" style="background-color:#2A6ADF">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="features.jsp"><i class="icon-puzzle3 position-left"></i><span style="font-size:18px">Blogtrackers</span></a>
+			<a class="navbar-brand" href="features.jsp"><span style="font-size:18px">Blogtrackers</span></a>
 						
 			<ul class="nav navbar-nav pull-right visible-xs-block">
 				<li><a data-toggle="collapse" data-target="#navbar-mobile" class="collapsed" aria-expanded="false"><i class="icon-tree5"></i></a></li>
@@ -194,7 +196,7 @@ $(window).load(function() {
 			<li class="language-switch2" >
 				<button style="margin-top: -2px; text-transform:capitalize;" data-intro="Click here to create a new tracker" data-step="1" type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-plus2"></i></b> Setup a new tracker</button>
 		        </li>
-			<li id="tourpage" class="language-switch2  hidden-md"><button type="button" href="javascript:void(0);" onclick="javascript:introJs().start();" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple" ><b><i class="icon-reading "></i></b> Tour Page</button></li>
+			<li id="tourpage" class="language-switch2  hidden-md"><button style="border:2px solid #2196F3" type="button" href="javascript:void(0);" onclick="javascript:introJs().start();" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple" ><b><i class="icon-reading "></i></b> Tour Page</button></li>
 				<li style="display:none;" class="language-switch" data-intro="Select a tracker" data-step="1">
 			<form name="trackerform" id="trackerform" action="" method="post">
 

@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class BlogNetworkUtil extends UtilFunctions{
@@ -74,12 +75,15 @@ public class BlogNetworkUtil extends UtilFunctions{
 		
 	}*/
 	
-	public HashMap<Integer,String> get_bn_sites(String username, String trackername)
+	public HashMap<Integer,String> get_bn_sites(Date startdate, Date enddate, String username, String trackername)
 	{
 		
 		Connection conn= getConn();
 		String queryStr = "select query from blogtrackers.trackers where userid = \'"+ username +"\' and tracker_name = \'" + trackername + "\'";
 		HashMap<Integer,String> site =new HashMap<Integer,String>();
+		
+		java.sql.Date sqldate1 = new java.sql.Date(startdate.getTime());
+		java.sql.Date sqldate2 = new java.sql.Date(enddate.getTime());
 		
 		Statement st;
 		try {
@@ -137,8 +141,10 @@ public class BlogNetworkUtil extends UtilFunctions{
 		return blogger;
 	}
 	
-	public HashMap<Integer,String> get_bn_medias(String username, String trackername)
+	public HashMap<Integer,String> get_bn_medias(Date startdate, Date enddate,String username, String trackername)
 	{
+		java.sql.Date sqldate1 = new java.sql.Date(startdate.getTime());
+		java.sql.Date sqldate2 = new java.sql.Date(enddate.getTime());
 		Connection conn= getConn();
 		String queryStr = "select query from blogtrackers.trackers where userid = \'"+ username +"\' and tracker_name = \'" + trackername + "\'";
 		HashMap<Integer,String> media =new HashMap<Integer,String>();
@@ -149,7 +155,7 @@ public class BlogNetworkUtil extends UtilFunctions{
 			ResultSet rs = st.executeQuery(queryStr);
 			rs.next();
 			String query = rs.getString("query");
-			queryStr = "SELECT blogsite_id, domain from blogtrackers.outlinks where "+query;
+			queryStr = "SELECT blogsite_id, domain from blogtrackers.outlinks where date >=\'"+sqldate1+"\' and date<=\'"+sqldate2+"\' and "+query;
 			st = conn.createStatement();
 			rs = st.executeQuery(queryStr);
 			
@@ -166,7 +172,7 @@ public class BlogNetworkUtil extends UtilFunctions{
 		return media;
 	}
 	
-	public HashMap<String,String> get_bn_media_category(String username, String trackername)
+	public HashMap<String,String> get_bn_media_category( String username, String trackername)
 	{
 		Connection conn= getConn();
 		HashMap<String,String> media =new HashMap<String,String>();
@@ -190,8 +196,10 @@ public class BlogNetworkUtil extends UtilFunctions{
 		return media;
 	}
 	
-	public ArrayList<ArrayList<String>> get_bn_entity(String username, String trackername)
+	public ArrayList<ArrayList<String>> get_bn_entity(Date startdate, Date enddate, String username, String trackername)
 	{
+		java.sql.Date sqldate1 = new java.sql.Date(startdate.getTime());
+		java.sql.Date sqldate2 = new java.sql.Date(enddate.getTime());
 		Connection conn= getConn();
 		String queryStr = "select query from blogtrackers.trackers where userid = \'"+ username +"\' and tracker_name = \'" + trackername + "\'";
 		ArrayList<ArrayList<String>> en = new ArrayList<ArrayList<String>>();
@@ -202,7 +210,7 @@ public class BlogNetworkUtil extends UtilFunctions{
 			ResultSet rs = st.executeQuery(queryStr);
 			rs.next();
 			String query = rs.getString("query");
-			queryStr = "select blogsite_id,blogpost_id from blogtrackers.blogposts where "+query;
+			queryStr = "select blogsite_id,blogpost_id from blogtrackers.blogposts where date >=\'"+sqldate1+"\' and date<=\'"+sqldate2+"\' and "+query;
 			System.out.println("    "+queryStr);
 			st = conn.createStatement();
 			rs = st.executeQuery(queryStr);

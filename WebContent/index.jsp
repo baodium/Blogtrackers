@@ -5,14 +5,10 @@
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
 	DBConnector dbhandle = new DBConnector();
-
-	ArrayList total = new ArrayList();//dbhandle.getTotal();
-	total.add(0,0);
-	total.add(1,0);
-	total.add(2,0);
-	total.add(3,0);
-	
-%>
+	/* ArrayList total = dbhandle.getTotal();
+	total.get(3);
+ */
+ %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -165,7 +161,7 @@ overflow-x:hidden;
                         <% if(username.equals("")){%>                            
                         <li onclick='location.href="<%=request.getContextPath()%>/login"'><a href="<%=request.getContextPath()%>/login" >Login</a></li>
                         <% }else{ %>
-                         <li onclick='location.href="<%=request.getContextPath()%>/Analytics"'><a href="<%=request.getContextPath()%>/Analytics" >Dashboard</a></li>
+                         <li onclick='location.href="<%=request.getContextPath()%>/trackerlist.jsp"'><a href="<%=request.getContextPath()%>/trackerlist.jsp" >Dashboard</a></li>
                          <li onclick='location.href="<%=request.getContextPath()%>/logout"'><a href="<%=request.getContextPath()%>/logout" >Logout</a></li>
                         <% } %>
                                        
@@ -629,7 +625,7 @@ content analysis and social network analysis.
                     <!-- right content start -->
                     <div class="col-md-5 col-md-push-1 animated" data-animation="fadeInRight" data-animation-delay="200">
 					
-                        <img src="assets/img/vegasimg/cosmos.jpg" class="img-responsive pull-right" style="height: 55%; width: 55%">
+                        <img src="assets/images/cosmosmember.jpg" class="img-responsive pull-right">
                     </div>
                     <!-- right content end -->
                     
@@ -693,7 +689,6 @@ Lab, U.S. Army Research Office</span>
                             </div>
                             <!-- shop item end -->
                             
-                           
                             
                             <!-- shop item start -->
                             <div class="shop-item-container-out">
@@ -704,6 +699,19 @@ Lab, U.S. Army Research Office</span>
                                 </div>
 
                                
+                            </div>
+                            <!-- shop item end -->
+                            
+                            
+                               <!-- shop item start -->
+                            <div class="shop-item-container-out">
+                                <div class="shop-item-container-in">
+                                    <img src="assets/sponsor/aro.jpg" alt="U.S. Air Force Research" class="img-responsive center-block"><br/>
+                                    <span class="shop-item-price">U.S. Army Research Office</span>
+                                    
+                                </div>
+
+                                
                             </div>
                             <!-- shop item end -->
                             

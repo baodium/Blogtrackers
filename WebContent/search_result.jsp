@@ -252,6 +252,7 @@ var msnry = new Masonry( container, {
 	
 	function addToTracker(id){
 		var trackers = $(".tracker-"+id);
+		//var blog_id = $(".tracker-"+id);
 		var selected='';
 		for(var l=0; l<trackers.length; l++){
 				var is_checked = $(trackers[l]).is(':checked');
@@ -263,26 +264,32 @@ var msnry = new Masonry( container, {
 		
 		if(selected!=""){
 			console.log(selected);
-			
+			/*
 			$.ajax({
 		        url: app_url+'setup_tracker',
 				method:'POST',
 				async: true,
-				data:{tracker_ids:selected,blog_id:id,action:"add_blog_to_tracker"},
+				data:{tracker_ids:selected,blog_id:id,add_blog:"yes"},
 		        success: function(response)
 		        {	
 		        	console.log(response);
+<<<<<<< HEAD
+		        	
+=======
 		        	if(response=="success"){
 		        		toastr.success('Blog successfully added!', 'Success')
 
 		        	}
 		        			        	
+>>>>>>> b95e0dc467a3153dd64c2b454081941e44d9b434
 		        }
 		    });	
-			
+			*/
 		}
 		return false;
 	}
+<<<<<<< HEAD
+=======
 	
 	function removeFromTracker(blog_id,tracker_id){
 		var checked = $(".tracker-"+blog_id).is(':checked');
@@ -313,6 +320,7 @@ var msnry = new Masonry( container, {
 
 	}
 
+>>>>>>> b95e0dc467a3153dd64c2b454081941e44d9b434
 </script>
 
 	<!-- Footer -->

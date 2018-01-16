@@ -410,10 +410,11 @@
 					              success: function( data ) {
 					            	  names = data.split("|");
 					                response( names );
+					                
 					              }
 					            });
 					          },
-							select: function( event, ui ) {
+							 select: function( event, ui ) {
 						        var blogger = ui.item.value;
 						        console.log(blogger);
 						        $.ajax({
@@ -437,7 +438,7 @@
 						            	 
 						              }
 						            });					        
-						     },
+						     }, 
 							autoFocus:true,
 					  });
 					//var names=["PHP","HTML","CSS","JavaScript","jQuery","MySQL","Ajax","Java","ASP.Net"];
