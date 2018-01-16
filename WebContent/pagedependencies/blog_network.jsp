@@ -320,7 +320,7 @@ $('#destroy').click(
 	'twitter':twitter,
 	'youtube':youtube,
 	'tumblr':tumblr,
-	'enity':entity
+	'entity':entity
 	},function(responseText){
 	$('body').html(responseText);
 	$('#pageloader').hide("3000");
