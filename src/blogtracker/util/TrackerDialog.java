@@ -47,6 +47,31 @@ public class TrackerDialog extends UtilFunctions{
 			return false;
 		}
 	}
+    public String getTrackerIDByName(String username, String trackername)
+    {
+    String queryData=null;	
+    Connection conn = getConn();
+    String queryStr = "select tid from trackers where userid='"+username+"'and tracker_name='"+trackername+"' LIMIT 1";
+    try{
+    Statement stmt = conn.createStatement();
+	ResultSet rset = stmt.executeQuery(queryStr);
+	while (rset.next())
+	{
+	queryData = rset.getString("tid");
+	}
+	rset.close();
+	stmt.close();
+	conn.close();
+	System.out.println(queryData);
+	System.out.println(username);
+    return queryData;
+    }
+    catch(SQLException ex)
+    {	
+    Logger.getLogger(sitesDialog.class.getName()).log(Level.SEVERE, null, ex);	
+    return null;
+    }
+    }
 	public String getSelectedSites(String userName, String trackerName)
 	{
 		String queryData=null;
