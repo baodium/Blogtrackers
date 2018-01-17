@@ -420,12 +420,36 @@ public class BlogNetwork extends HttpServlet {
 					try
 					{
 					String date = session.getAttribute("datepicked").toString();
-					System.out.println("Date for get"+session.getAttribute("datepicked"));	
+					System.out.println("Date for get" +session.getAttribute("datepicked"));	
 					//String filtervalue = request.getParameter("filtervalue");
 					//System.out.println("Filter " + filtervalue);
 					// addition by adekunle blognetwork search by date range
-//					PrintWriter pww = response.getWriter();
+					// PrintWriter pww = response.getWriter();
 					
+					if(request.getParameter("blogtoblog") != null)
+					{
+					String blogtoblog = request.getParameter("blogtoblog");
+					session.setAttribute("blogtoblog", blogtoblog);
+					System.out.println(request.getParameter("blogtoblog"));	
+					}
+					if(request.getParameter("blogtoblog") == null)
+					{
+					session.setAttribute("blogtoblog", "");	
+					}
+					if(request.getParameter("bloggertoblogger") != null)
+					{
+					String bloggertoblogger = request.getParameter("bloggertoblogger");
+					session.setAttribute("blogtoblog", bloggertoblogger);	
+					System.out.println(request.getParameter("bloggertoblogger"));	
+					}
+					if(request.getParameter("bloggertoblogger") == null)
+					{
+					session.setAttribute("bloggertoblogger", "");		
+					}
+					if(request.getParameter("facebook") != null)
+					{
+					System.out.println(request.getParameter("facebook"));	
+					}
 					date = session.getAttribute("datepicked").toString();
 					String arr[] = date.split("-", 2);
 					String sdate1 = arr[0];   
@@ -469,6 +493,7 @@ public class BlogNetwork extends HttpServlet {
 				int i=1;*/
 						
 				HashMap<Integer,String> bln =bg.get_bn_bloggers(userName,tracker); //site id and bloggers
+				
 				//creating blogger ids
 				ArrayList<ArrayList<String>> bid = new ArrayList<ArrayList<String>>();
 				int x=267;
@@ -606,7 +631,7 @@ public class BlogNetwork extends HttpServlet {
 					nodes.add(t);
 				}
 				for( int i=0;i<tmb.size();i++)
-				{
+				{ 
 					ArrayList<String> t = new ArrayList<String>();
 					t.add(tmb.get(i).get(0));
 					t.add(tmb.get(i).get(2));

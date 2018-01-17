@@ -282,7 +282,15 @@ function googleTranslateElementInit() {
 
 </script>
 </div>
-							<div style="position: absolute;  top:20px; display:none;" class="col-lg-3 col-md-3 col-sm-12 col-xs-12 features-tab">
+<%
+/* if(session.getAttribute("blogtoblog").toString() != null)
+{
+	
+} */
+
+
+%>					
+<div style="position: absolute;  top:20px; display:none;" class="col-lg-3 col-md-3 col-sm-12 col-xs-12 features-tab">
 		<div class="panel panel-default">
 							<div class="panel-heading">
 								<h6 class="panel-title">Features<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
