@@ -418,10 +418,7 @@ public class BlogNetwork extends HttpServlet {
 					{
 					String date = session.getAttribute("datepicked").toString();
 					System.out.println("Date for get " +session.getAttribute("datepicked"));	
-					//String filtervalue = request.getParameter("filtervalue");
-					//System.out.println("Filter " + filtervalue);
-					// addition by adekunle blognetwork search by date range
-					// PrintWriter pww = response.getWriter();
+					
 					
 					// conditions for filtering the blog network
 					
@@ -440,7 +437,7 @@ public class BlogNetwork extends HttpServlet {
 					String blogtoblogger = request.getParameter("blogtoblogger");
 					session.setAttribute("blogtoblogger", blogtoblogger);	
 					System.out.println(request.getParameter("blogtoblogger"));
-					System.out.println(session.getAttribute("blogtoblogger"));
+					System.out.println(request.getParameter("blogtoblogger"));
 					}
 					if(request.getParameter("blogtoblogger") == null)
 					{

@@ -215,7 +215,7 @@ $('#destroy').click(
 	{
 	//show the blog blogger and blogblogfilter
 	$('.checkall:eq('+index+')').show(200);
-	console.log(thecheckstatus);
+	//console.log(thecheckstatus);
 	}
 	}
 	else if(!hasthisClass)
@@ -225,7 +225,7 @@ $('#destroy').click(
 		{
 		//show the blog blogger and blogblogfilter
 		$('.checkall:eq('+index+')').hide(200);
-		console.log(thecheckstatus);
+		//console.log(thecheckstatus);
 		}	
 	}
 	//console.log(status)
@@ -233,8 +233,8 @@ $('#destroy').click(
 	});
 	});
 	<% 
-	boolean checkblogtoblog=false, checkblogtoblogger=false, checkfacebook=false, checktwitter=false, checkyoutube=false, checklinkedin=false, checktumblr=false, checkentity=false; 
-	if(session.getAttribute("blogtoblog") != null || session.getAttribute("blogtoblog") != "")
+	boolean checkblogtoblog=false, checkblogtoblogger=false, checkfacebook=false, checktwitter=false, checkyoutube=false, checklinkedin=false, checktumblr=false, checkentity=false;
+	if(session.getAttribute("blogtoblog") != null && session.getAttribute("blogtoblog") != "")
 	{
 	checkblogtoblog = true;	
 	}
@@ -278,18 +278,18 @@ $('#destroy').click(
 	{
 	$('.checkerindi input[type=checkbox]:eq('+index+')').attr('checked',"checked");
 	checkstatus = $('.checkerindi input[type=checkbox]:eq('+index+')').is(':checked'); 
-	console.log(hastheClass);
+	//console.log(hastheClass);
 	}
 	else if(!hastheClass)
 	{
 	$('.checkerindi input[type=checkbox]:eq('+index+')').removeAttr('checked',"checked");
 	checkstatus = false;
-	console.log(hastheClass);
+	//console.log(hastheClass);
 	}
 	
 	if(checkstatus)
 	{
-	var checkboxval;
+	//var checkboxval;
 	var blog2blog="";
 	var blog2blogger="";
 	var facebook="";
@@ -297,7 +297,7 @@ $('#destroy').click(
 	var twitter="";
 	var youtube="";
 	var tumblr="";
-	var entity;
+	var entity="";
 	// check if the checkbox has been initialized
 	if(checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "blogtoblog" || <%=checkblogtoblog %>)	
 	{
@@ -332,6 +332,7 @@ $('#destroy').click(
 	{
 	entity = $('#entity').val();	
 	}
+	
 	console.log("Blog to Blog "+blog2blog);
 	console.log("Blogger to Blogger "+blog2blogger);
 	console.log("facebook "+facebook);
@@ -340,23 +341,8 @@ $('#destroy').click(
 	console.log("tumblr "+tumblr);
 	console.log("linkedin "+linkedin);
 	console.log("Entity "+entity);
-	//var checkboxval = $('.checker input[type=checkbox]:eq('+index+')').val();
 	
-	//console.log(blog2blog);
-	//var filterval;
 	// start the ajax request to filter blog network
-	/*  $.ajax(
-	{	
-	url: app_url+'BlogNetwork',
-	method:'POST',
-	data:{
-	filterval:checkboxval	
-	},
-	success:function(){
-	//console.log(xhr.getResponseHeader('code'));	
-	}	
-	}); */
-	// end of ajax request
 	  $.post(app_url+'BlogNetwork',{
 	// parse the datas	  
 	//'filtervalue':blog2blog,
@@ -369,13 +355,17 @@ $('#destroy').click(
 	'tumblr':tumblr,
 	'entity':entity
 	},function(responseText){
-	$('body').html(responseText);
-	$('#pageloader').hide("3000");  
+	/* $('body').html(responseText);
+	$('#pageloader').hide("3000"); */  
 	//console.log(responseText);	
 	}); 
 	/* console.log(checkboxval);
 	console.log(checkstatus);	*/
 	} 
+	else if(!checkstatus)
+	{
+		
+	}
 	
    });
 	});	
