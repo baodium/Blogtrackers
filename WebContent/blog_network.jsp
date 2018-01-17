@@ -403,7 +403,7 @@ entitychecked = "checked='checked'";
 <div class="checkbox checkgroup">
 <label>
 <div class="checker checkgroupindi"><span class="">
-<input type="checkbox" value="blogtoblog" id="" class="styled"></span>
+<input type="checkbox" value="blognetwork" id="blognetwork" class="styled"></span>
 </div>
  Blog Network
 </label>
@@ -427,7 +427,7 @@ Blog - Blogger
 <div class="checkbox checkgroup">
 <label>
 <div class="checker checkgroupindi"><span class="">
-<input type="checkbox" value="socialmedia" id="" class="styled"></span>
+<input type="checkbox" value="socialmedia" id="socialmedia" class="styled"></span>
 </div>
  Social Media
 </label>
