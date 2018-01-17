@@ -70,10 +70,7 @@ public class BlogNetwork extends HttpServlet {
 		else
 		{
 			System.out.println("  inside else before");
-			if(request.getParameter("blogtoblog") != null)
-			{
-			System.out.println(request.getParameter("blogtoblog").toString());	
-			}
+			
 			// block of code for get parameter
 //				if(session.getAttribute("tracker") != null && request.getParameter("tracker")==null)
 //						{
@@ -420,11 +417,13 @@ public class BlogNetwork extends HttpServlet {
 					try
 					{
 					String date = session.getAttribute("datepicked").toString();
-					System.out.println("Date for get" +session.getAttribute("datepicked"));	
+					System.out.println("Date for get " +session.getAttribute("datepicked"));	
 					//String filtervalue = request.getParameter("filtervalue");
 					//System.out.println("Filter " + filtervalue);
 					// addition by adekunle blognetwork search by date range
 					// PrintWriter pww = response.getWriter();
+					
+					// conditions for filtering the blog network
 					
 					if(request.getParameter("blogtoblog") != null)
 					{
@@ -436,20 +435,77 @@ public class BlogNetwork extends HttpServlet {
 					{
 					session.setAttribute("blogtoblog", "");	
 					}
-					if(request.getParameter("bloggertoblogger") != null)
+					if(request.getParameter("blogtoblogger") != null)
 					{
-					String bloggertoblogger = request.getParameter("bloggertoblogger");
-					session.setAttribute("blogtoblog", bloggertoblogger);	
-					System.out.println(request.getParameter("bloggertoblogger"));	
+					String blogtoblogger = request.getParameter("blogtoblogger");
+					session.setAttribute("blogtoblogger", blogtoblogger);	
+					System.out.println(request.getParameter("blogtoblogger"));	
 					}
-					if(request.getParameter("bloggertoblogger") == null)
+					if(request.getParameter("blogtoblogger") == null)
 					{
-					session.setAttribute("bloggertoblogger", "");		
+					session.setAttribute("blogtoblogger", "");		
 					}
 					if(request.getParameter("facebook") != null)
 					{
+					String facebook = request.getParameter("facebook");	
+					session.setAttribute("facebook", facebook);
 					System.out.println(request.getParameter("facebook"));	
 					}
+					if(request.getParameter("facebook") == null)
+					{
+					session.setAttribute("facebook","");	
+					}
+					if(request.getParameter("linkedin") != null)
+					{
+					String linkedin = request.getParameter("linkedin");	
+					session.setAttribute("linkedin", linkedin);
+					System.out.println(request.getParameter("linkedin"));	
+					}
+					if(request.getParameter("linkedin") == null)
+					{
+					session.setAttribute("linkedin", "");	
+					}
+					if(request.getParameter("twitter") != null)
+					{
+					String twitter = request.getParameter("twitter");	
+					session.setAttribute("twitter", twitter);
+					System.out.println(request.getParameter("twitter"));		
+					}
+					if(request.getParameter("twitter") == null)
+					{
+					session.setAttribute("twitter", "");		
+					}
+					if(request.getParameter("youtube") != null)
+					{
+					String youtube = request.getParameter("youtube");	
+					session.setAttribute("youtube", youtube);
+					System.out.println(request.getParameter("youtube"));		
+					}
+					if(request.getParameter("youtube") == null)
+					{
+					session.setAttribute("youtube", "");		
+					}
+					if(request.getParameter("tumblr") != null)
+					{
+					String tumblr = request.getParameter("tumblr");	
+					session.setAttribute("tumblr", tumblr);
+					System.out.println(request.getParameter("tumblr"));		
+					}
+					if(request.getParameter("tumblr") == null)
+					{
+					session.setAttribute("tumblr", "");		
+					}
+					if(request.getParameter("entity") != null)
+					{
+					String enity = request.getParameter("entity");	
+					session.setAttribute("entity", enity);
+					System.out.println(request.getParameter("entity"));		
+					}
+					if(request.getParameter("entity") == null)
+					{
+					session.setAttribute("entity", "");		
+					}
+					
 					date = session.getAttribute("datepicked").toString();
 					String arr[] = date.split("-", 2);
 					String sdate1 = arr[0];   

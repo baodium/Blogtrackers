@@ -245,54 +245,61 @@ $('#destroy').click(
 	{
 	$('.checkerindi input[type=checkbox]:eq('+index+')').removeAttr('checked',"checked");
 	checkstatus = false;
-	console.log(checkstatus);
+	console.log(hastheClass);
 	}
 	
 	if(checkstatus)
 	{
 	var checkboxval;
 	var blog2blog;
-	var blogger2blogger;
+	var blog2blogger;
 	var facebook;
 	var linkedin;
 	var twitter;
 	var youtube;
 	var tumblr;
 	var entity;
-	if(checkstatus && $('.checker input[type=checkbox]:eq('+index+')').val() === "blogtoblog")	
+	if(checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "blogtoblog")	
 	{
 	//checkboxval = $('#blogtoblog').val();
 	blog2blog = $('#blogtoblog').val();
 	}
-	if(checkstatus && $('.checker input[type=checkbox]:eq('+index+')').val() === "bloggertoblogger")
+	if(checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "blogtoblogger")
 	{
-	blogger2blogger = $('#blogger2blogger').val();	
+	blog2blogger = $('#blogtoblogger').val();	
 	}
-	if(checkstatus && $('.checker input[type=checkbox]:eq('+index+')').val() === "facebook")
+	if(checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "facebook")
 	{
 	facebook = $('#facebook').val();	
 	}
-	if(checkstatus && $('.checker input[type=checkbox]:eq('+index+')').val() === "linkedin")
+	if(checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "linkedin")
 	{
 	linkedin = $('#linkedin').val();	
 	}
-	if(checkstatus && $('.checker input[type=checkbox]:eq('+index+')').val() === "twitter")
+	if(checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "twitter")
 	{
 	twitter = $('#twitter').val();	
 	}
-	if(checkstatus && $('.checker input[type=checkbox]:eq('+index+')').val() === "youtube")
+	if(checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "youtube")
 	{
 	youtube = $('#youtube').val();	
 	}
-	if(checkstatus && $('.checker input[type=checkbox]:eq('+index+')').val() === "tumblr")
+	if(checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "tumblr")
 	{
 	tumblr = $('#tumblr').val();	
 	}
-	if(checkstatus && $('.checker input[type=checkbox]:eq('+index+')').val() === "entity")
+	if(checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "entity")
 	{
 	entity = $('#entity').val();	
 	}
-	console.log(blog2blog);
+	console.log("Blog to Blog "+blog2blog);
+	console.log("Blogger to Blogger "+blog2blogger);
+	console.log("facebook "+facebook);
+	console.log("twitter "+twitter);
+	console.log("youtube "+youtube);
+	console.log("tumblr "+tumblr);
+	console.log("linkedin "+linkedin);
+	console.log("Entity "+entity);
 	//var checkboxval = $('.checker input[type=checkbox]:eq('+index+')').val();
 	
 	//console.log(blog2blog);
@@ -314,7 +321,7 @@ $('#destroy').click(
 	// parse the datas	  
 	//'filtervalue':blog2blog,
 	'blogtoblog':blog2blog,
-	'bloggertoblogger':blogger2blogger,
+	'blogtoblogger':blog2blogger,
 	'facebook':facebook,
 	'linkedin':linkedin,
 	'twitter':twitter,
@@ -322,8 +329,8 @@ $('#destroy').click(
 	'tumblr':tumblr,
 	'entity':entity
 	},function(responseText){
-	$('body').html(responseText);
-	$('#pageloader').hide("3000");
+	/* $('body').html(responseText);
+	$('#pageloader').hide("3000"); */
 	//console.log(responseText);	
 	}); 
 	/* console.log(checkboxval);

@@ -205,7 +205,7 @@ function googleTranslateElementInit() {
                 shape: 'icon',
                 icon: {
                     face: 'FontAwesome',
-                    code: '\uf0c0',
+                    code: '\uf007',
                     size: 50,
                     color: 'orange'
                 }
@@ -283,10 +283,16 @@ function googleTranslateElementInit() {
 </script>
 </div>
 <%
-/* if(session.getAttribute("blogtoblog").toString() != null)
+String blog2blog="", bloggertoblogger="", blognetwork="";
+if(session.getAttribute("blogtoblog") == null || session.getAttribute("blogtoblog") == "")
 {
-	
-} */
+blog2blog = "";	
+}
+else if(session.getAttribute("blogtoblog") != null && session.getAttribute("blogtoblog") != "")
+{
+blog2blog = "checked";	
+}
+
 
 
 %>					
@@ -316,7 +322,7 @@ function googleTranslateElementInit() {
 
 <div class="checkall">
 <div class="checkbox checkboxcon">
-<label><div class="checker checkerindi"><span class="">
+<label><div class="checker checkerindi"><span class="<%=blog2blog %>">
 <input type="checkbox" value="blogtoblog" id="blogtoblog" class="styled"></span></div>
 Blog - Blog
 </label>
@@ -332,7 +338,7 @@ Blog - Blogger
 <div class="checkbox checkgroup">
 <label>
 <div class="checker checkgroupindi"><span class="">
-<input type="checkbox" value="blogtoblog" id="" class="styled"></span>
+<input type="checkbox" value="socialmedia" id="" class="styled"></span>
 </div>
  Social Media
 </label>
