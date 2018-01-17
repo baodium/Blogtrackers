@@ -1,3 +1,9 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@page import="java.util.*"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8" isELIgnored="false"%>
 <script type="text/javascript" src="assets/js/intro.js"></script>
 <!-- Theme JS files -->
 	<script type="text/javascript" src="assets/js/plugins/forms/styling/uniform.min.js"></script>
@@ -224,10 +230,43 @@ $('#destroy').click(
 	}
 	//console.log(status)
 	
-	
-	
 	});
 	});
+	<% 
+	boolean checkblogtoblog=false, checkblogtoblogger=false, checkfacebook=false, checktwitter=false, checkyoutube=false, checklinkedin=false, checktumblr=false, checkentity=false; 
+	if(session.getAttribute("blogtoblog") != null || session.getAttribute("blogtoblog") != "")
+	{
+	checkblogtoblog = true;	
+	}
+	if(session.getAttribute("blogtoblogger") != null && session.getAttribute("blogtoblogger") != "")
+	{
+	checkblogtoblogger = true;	
+	}
+	if(session.getAttribute("facebook") != null && session.getAttribute("facebook") != "")
+	{
+	checkfacebook = true;	
+	}
+	if(session.getAttribute("linkedin") != null && session.getAttribute("linkedin") != "")
+	{
+	checklinkedin = true;	
+	}
+	if(session.getAttribute("twitter") != null && session.getAttribute("twitter") != "")
+	{
+	checktwitter = true;	
+	}
+	if(session.getAttribute("youtube") != null && session.getAttribute("tumblr") != "" )
+	{
+	checkyoutube = true;	
+	}
+	if(session.getAttribute("tumblr") != null && session.getAttribute("tumblr") != "" )
+	{
+	checktumblr = true;	
+	}
+	if(session.getAttribute("entity") != null && session.getAttribute("entity") != "")
+	{
+	checkentity = true;	
+	}
+	%>
 	
 	// this check the box and send the parameters to the servlet
 	$('.checkerindi input[type=checkbox]').each(function(index,element){
@@ -251,44 +290,45 @@ $('#destroy').click(
 	if(checkstatus)
 	{
 	var checkboxval;
-	var blog2blog;
-	var blog2blogger;
-	var facebook;
-	var linkedin;
-	var twitter;
-	var youtube;
-	var tumblr;
+	var blog2blog="";
+	var blog2blogger="";
+	var facebook="";
+	var linkedin="";
+	var twitter="";
+	var youtube="";
+	var tumblr="";
 	var entity;
-	if(checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "blogtoblog")	
+	// check if the checkbox has been initialized
+	if(checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "blogtoblog" || <%=checkblogtoblog %>)	
 	{
 	//checkboxval = $('#blogtoblog').val();
 	blog2blog = $('#blogtoblog').val();
 	}
-	if(checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "blogtoblogger")
+	if(checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "blogtoblogger" || <%=checkblogtoblogger %>)
 	{
 	blog2blogger = $('#blogtoblogger').val();	
 	}
-	if(checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "facebook")
+	if(checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "facebook" || <%=checkfacebook %>)
 	{
 	facebook = $('#facebook').val();	
 	}
-	if(checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "linkedin")
+	if(checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "linkedin" || <%=checklinkedin %>)
 	{
 	linkedin = $('#linkedin').val();	
 	}
-	if(checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "twitter")
+	if(checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "twitter" || <%=checktwitter %>)
 	{
 	twitter = $('#twitter').val();	
 	}
-	if(checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "youtube")
+	if(checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "youtube" || <%=checkyoutube %>)
 	{
 	youtube = $('#youtube').val();	
 	}
-	if(checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "tumblr")
+	if(checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "tumblr" || <%=checktumblr %>)
 	{
 	tumblr = $('#tumblr').val();	
 	}
-	if(checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "entity")
+	if(checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "entity" || <%=checkentity %>)
 	{
 	entity = $('#entity').val();	
 	}
@@ -329,8 +369,8 @@ $('#destroy').click(
 	'tumblr':tumblr,
 	'entity':entity
 	},function(responseText){
-	/* $('body').html(responseText);
-	$('#pageloader').hide("3000"); */
+	$('body').html(responseText);
+	$('#pageloader').hide("3000");  
 	//console.log(responseText);	
 	}); 
 	/* console.log(checkboxval);

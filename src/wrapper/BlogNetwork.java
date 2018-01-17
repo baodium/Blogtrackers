@@ -439,7 +439,8 @@ public class BlogNetwork extends HttpServlet {
 					{
 					String blogtoblogger = request.getParameter("blogtoblogger");
 					session.setAttribute("blogtoblogger", blogtoblogger);	
-					System.out.println(request.getParameter("blogtoblogger"));	
+					System.out.println(request.getParameter("blogtoblogger"));
+					System.out.println(session.getAttribute("blogtoblogger"));
 					}
 					if(request.getParameter("blogtoblogger") == null)
 					{
