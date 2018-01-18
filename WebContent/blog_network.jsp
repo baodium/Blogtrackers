@@ -15,10 +15,7 @@
 %>
 
  <jsp:include page="include_top.jsp"></jsp:include>
-<% ArrayList mytrackers = new ArrayList();
-mytrackers = (ArrayList)session.getAttribute("trackers");
-int trackerSize = mytrackers.size();
-%>
+
 	<!-- Page header -->
 	<div class="page-header mb-20">
 		<div class="page-header-content">

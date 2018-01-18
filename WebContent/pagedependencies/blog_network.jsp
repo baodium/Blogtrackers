@@ -355,8 +355,8 @@ $('#destroy').click(
 	'tumblr':tumblr,
 	'entity':entity
 	},function(responseText){
-	/* $('body').html(responseText);
-	$('#pageloader').hide("3000"); */  
+	 $('body').html(responseText);
+	$('#pageloader').hide("3000");   
 	//console.log(responseText);	
 	}); 
 	/* console.log(checkboxval);
@@ -364,7 +364,78 @@ $('#destroy').click(
 	} 
 	else if(!checkstatus)
 	{
+	//what to do when unchecking the checkbox
+		var blog2blog="";
+		var blog2blogger="";
+		var facebook="";
+		var linkedin="";
+		var twitter="";
+		var youtube="";
+		var tumblr="";
+		var entity="";
+		// check if the checkbox has been initialized
+		if(!checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "blogtoblog")	
+		{
+		//checkboxval = $('#blogtoblog').val();
+		blog2blog = "";
+		}
+		if(!checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "blogtoblogger")
+		{
+		blog2blogger = "";	
+		}
+		if(!checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "facebook")
+		{
+		facebook = "";	
+		}
+		if(!checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "linkedin")
+		{
+		linkedin = "";	
+		}
+		if(!checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "twitter")
+		{
+		twitter = "";	
+		}
+		if(!checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "youtube")
+		{
+		youtube = "";	
+		}
+		if(!checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "tumblr")
+		{
+		tumblr = "";	
+		}
+		if(checkstatus && $('.checkerindi input[type=checkbox]:eq('+index+')').val() === "entity")
+		{
+		entity = "";	
+		}
 		
+		console.log("Blog to Blog "+blog2blog);
+		console.log("Blogger to Blogger "+blog2blogger);
+		console.log("facebook "+facebook);
+		console.log("twitter "+twitter);
+		console.log("youtube "+youtube);
+		console.log("tumblr "+tumblr);
+		console.log("linkedin "+linkedin);
+		console.log("Entity "+entity);
+		
+		// start the ajax request to filter blog network
+		  $.post(app_url+'BlogNetwork',{
+		// parse the datas	  
+		//'filtervalue':blog2blog,
+		'blogtoblog':blog2blog,
+		'blogtoblogger':blog2blogger,
+		'facebook':facebook,
+		'linkedin':linkedin,
+		'twitter':twitter,
+		'youtube':youtube,
+		'tumblr':tumblr,
+		'entity':entity
+		},function(responseText){
+		  $('body').html(responseText);
+		$('#pageloader').hide("3000");    
+		//console.log(responseText);	
+		}); 
+		/* console.log(checkboxval);
+		console.log(checkstatus);	*/
 	}
 	
    });
