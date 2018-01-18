@@ -187,7 +187,7 @@ function googleTranslateElementInit() {
 						<div class="panel">
 							<div class="panel-body text-center">
 								<div class="icon-object border-blue text-blue"><i class="icon-database-export"></i></div>
-								<h5 class="text-semibold">Data presentation</h5>
+								<h5 class="text-semibold">Data Presentation</h5>
 								<p class="mb-15">Export your work</p>
 								<a href="#" class="btn bg-blue" data-toggle="modal" data-target="#datapresentation">Learn more</a>
 							</div>

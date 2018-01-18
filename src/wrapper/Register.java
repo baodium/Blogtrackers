@@ -60,10 +60,10 @@ public class Register extends HttpServlet {
                         	HttpSession session= request.getSession();
                             response.setContentType("text/html");
                          session.setAttribute("successMessage", "Registration Successful");
-                         response.sendRedirect("register.jsp");
+                         response.sendRedirect("login.jsp");
                         }else{
                             response.setContentType("text/html");
-                            response.sendRedirect("register");
+                            response.sendRedirect("login");
                         }
 		}
 	}
