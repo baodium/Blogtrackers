@@ -190,7 +190,14 @@ function googleTranslateElementInit() {
         groups: {
             diamonds: {
                 color: {background:'red',border:'white'},
-                shape: 'diamond'
+                shape: 'icon',
+                icon: {
+                    face: 'FontAwesome',
+                    code: '\uf0ac',
+                    size: 50,
+                    color: 'red',
+                    background:'white'
+                } 	
             },
             dotsWithLabel: {
                 label: "I'm a dot!",
@@ -280,18 +287,22 @@ function googleTranslateElementInit() {
 </script>
 </div>
 <%
-String blog2blog="",blog2blogchecked="", blogtoblogger="",blogtobloggerchecked = "", blognetwork="", blognetworkchecked = "";
+String blog2blog="",blog2blogchecked="", blogtoblogger="",blogtobloggerchecked = "", blognetwork="", blognetworkchecked = "", socialmedia="",socialmediachecked="";
 String facebook="",facebookchecked="",twitter="",twitterchecked="", linkedin="", linkedinchecked="",tumblr="",tumblrchecked="",youtube="",youtubechecked="",entity="",entitychecked="";
 // initialization of blogtoblog
 if(session.getAttribute("blogtoblog") == null && session.getAttribute("blogtoblog") == "")
 {
 blog2blog = "";
 blog2blogchecked = "";
+blognetwork="";
+blognetworkchecked="";
 }
 else if(session.getAttribute("blogtoblog") != null && session.getAttribute("blogtoblog") != "")
 {
 blog2blog = "checked";
 blog2blogchecked = "checked='checked'";
+blognetwork="checked";
+blognetworkchecked="checked='checked'";
 }
 
 // inititalization of blogtoblogger
@@ -299,11 +310,15 @@ if(session.getAttribute("blogtoblogger") == null && session.getAttribute("blogto
 {
 blogtoblogger = "";
 blogtobloggerchecked = "";
+blognetwork="";
+blognetworkchecked="";
 }
 else if(session.getAttribute("blogtoblogger") != null && session.getAttribute("blogtoblogger") != "")
 {
 blogtoblogger = "checked";
 blogtobloggerchecked = "checked='checked'";
+blognetwork="checked";
+blognetworkchecked="checked='checked'";
 }
 
 //initialization of facebook
@@ -311,11 +326,15 @@ if(session.getAttribute("facebook") == null && session.getAttribute("facebook") 
 {
 facebook = "";
 facebookchecked = "";
+socialmedia="";
+socialmediachecked="";
 }
 else if(session.getAttribute("facebook") != null && session.getAttribute("facebook") != "")
 {
 facebook = "checked";
 facebookchecked = "checked='checked'";
+socialmedia="checked";
+socialmediachecked="checked='checked'";
 }
 
 
@@ -324,11 +343,15 @@ if(session.getAttribute("twitter") == null && session.getAttribute("twitter") ==
 {
 twitter = "";
 twitterchecked = "";
+socialmedia="";
+socialmediachecked="";
 }
 else if(session.getAttribute("twitter") != null && session.getAttribute("twitter") != "")
 {
 twitter = "checked";
 twitterchecked = "checked='checked'";
+socialmedia="checked";
+socialmediachecked="checked='checked'";
 }
 
 //initialization of linkedin
@@ -336,11 +359,15 @@ if(session.getAttribute("linkedin") == null && session.getAttribute("linkedin") 
 {
 linkedin = "";
 linkedinchecked = "";
+socialmedia="";
+socialmediachecked="";
 }
 else if(session.getAttribute("linkedin") != null && session.getAttribute("linkedin") != "")
 {
 linkedin = "checked";
 linkedinchecked = "checked='checked'";
+socialmedia="checked";
+socialmediachecked="checked='checked'";
 }
 
 //initialization of youtube
@@ -348,11 +375,15 @@ if(session.getAttribute("youtube") == null && session.getAttribute("youtube") ==
 {
 youtube = "";
 youtubechecked = "";
+socialmedia="";
+socialmediachecked="";
 }
 else if(session.getAttribute("youtube") != null && session.getAttribute("youtube") != "")
 {
 youtube = "checked";
 youtubechecked = "checked='checked'";
+socialmedia="checked";
+socialmediachecked="checked='checked'";
 }
 
 //initialization of tumblr
@@ -360,11 +391,15 @@ if(session.getAttribute("tumblr") == null && session.getAttribute("tumblr") == "
 {
 tumblr = "";
 tumblrchecked = "";
+socialmedia="";
+socialmediachecked="";
 }
 else if(session.getAttribute("tumblr") != null && session.getAttribute("tumblr") != "")
 {
 tumblr = "checked";
 tumblrchecked = "checked='checked'";
+socialmedia="checked";
+socialmediachecked="checked='checked'";
 }
 
 //initialization of entity
@@ -399,8 +434,8 @@ entitychecked = "checked='checked'";
 <form method="POST">
 <div class="checkbox checkgroup">
 <label>
-<div class="checker checkgroupindi"><span class="">
-<input type="checkbox" value="blognetwork" id="blognetwork" class="styled"></span>
+<div class="checker checkgroupindi"><span class="<%=blognetwork %>">
+<input type="checkbox" value="blognetwork" <%=blognetworkchecked %> id="blognetwork" class="styled"></span>
 </div>
  Blog Network
 </label>
@@ -423,8 +458,8 @@ Blog - Blogger
 <hr/>
 <div class="checkbox checkgroup">
 <label>
-<div class="checker checkgroupindi"><span class="">
-<input type="checkbox" value="socialmedia" id="socialmedia" class="styled"></span>
+<div class="checker checkgroupindi"><span class="<%=socialmedia %>">
+<input type="checkbox" value="socialmedia" id="socialmedia" <%=socialmediachecked %> class="styled"></span>
 </div>
  Social Media
 </label>

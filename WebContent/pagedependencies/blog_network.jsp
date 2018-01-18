@@ -199,7 +199,28 @@ $('#destroy').click(
     {
 	$('.features-tab').slideToggle(500);
 	
-	});	
+	});
+	
+	//if any blog-blog or blog-blogger checked show features tab
+	var blognetstatus = $('#blognetwork').is(':checked');
+	if(blognetstatus)
+	{
+	$('.features-tab').show(200);
+	$('.checkall:eq(0)').show(200);
+	}
+	
+	var socialmediastatus = $('#socialmedia').is(':checked');
+	if(socialmediastatus)
+	{
+	$('.features-tab').show(200);
+	$('.checkall:eq(1)').show(200);
+	}
+	
+	var entitystatus = $('#entity').is(':checked');
+	if(entitystatus)
+	{
+	$('.features-tab').show(200);
+	}
 	
 	// showing by sectionss
 	$('.checkgroupindi input[type=checkbox]').each(function(index,element){
@@ -274,6 +295,7 @@ $('#destroy').click(
 	$('.checkboxcon .checker span:eq('+index+')').toggleClass('checked');
 	var hastheClass = $('.checkboxcon .checker span:eq('+index+')').hasClass('checked');
 	var checkstatus;
+	$('#pageloader').show();
 	if(hastheClass)
 	{
 	$('.checkerindi input[type=checkbox]:eq('+index+')').attr('checked',"checked");
