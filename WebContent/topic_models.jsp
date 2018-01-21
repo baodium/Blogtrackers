@@ -337,26 +337,19 @@
 				</div>
 				<!-- /footer content -->
 				<!-- jQuery -->
-				<script
-					src="${pageContext.request.contextPath}/vendors/jquery/dist/jquery.min.js"></script>
+<script	src="${pageContext.request.contextPath}/vendors/jquery/dist/jquery.min.js"></script>
 				<!-- Bootstrap -->
-				<script
-					src="${pageContext.request.contextPath}/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<script	src="${pageContext.request.contextPath}/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 				<!-- FastClick -->
-				<script
-					src="${pageContext.request.contextPath}/vendors/fastclick/lib/fastclick.js"></script>
+<script	src="${pageContext.request.contextPath}/vendors/fastclick/lib/fastclick.js"></script>
 				<!-- NProgress -->
-				<script
-					src="${pageContext.request.contextPath}/vendors/nprogress/nprogress.js"></script>
+<script	src="${pageContext.request.contextPath}/vendors/nprogress/nprogress.js"></script>
 				<!-- Chart.js -->
-				<script
-					src="${pageContext.request.contextPath}/vendors/Chart.js/dist/Chart.min.js"></script>
+<script	src="${pageContext.request.contextPath}/vendors/Chart.js/dist/Chart.min.js"></script>
 				<!-- gauge.js -->
-				<script
-					src="${pageContext.request.contextPath}/vendors/gauge.js/dist/gauge.min.js"></script>
+<script	src="${pageContext.request.contextPath}/vendors/gauge.js/dist/gauge.min.js"></script>
 				<!-- bootstrap-progressbar -->
-				<script
-					src="${pageContext.request.contextPath}/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+<script	src="${pageContext.request.contextPath}/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
 				<!-- iCheck -->
 				<script
 					src="${pageContext.request.contextPath}/vendors/iCheck/icheck.min.js"></script>
@@ -391,16 +384,9 @@
 				<script
 					src="${pageContext.request.contextPath}/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
 				<!-- bootstrap-daterangepicker -->
-				<script
-					src="${pageContext.request.contextPath}/production/js/moment/moment.min.js"></script>
-				<script
-					src="${pageContext.request.contextPath}/production/js/datepicker/daterangepicker.js"></script>
-
-
-
-
-				<script
-					src="${pageContext.request.contextPath}/build/js/custom.min.js"></script>
+<script	src="${pageContext.request.contextPath}/production/js/moment/moment.min.js"></script>
+<script src="${pageContext.request.contextPath}/production/js/datepicker/daterangepicker.js"></script>
+<script	src="${pageContext.request.contextPath}/build/js/custom.min.js"></script>
 
 
 				<!-- JQVMap -->
