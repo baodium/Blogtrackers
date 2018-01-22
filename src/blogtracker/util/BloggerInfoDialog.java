@@ -395,7 +395,8 @@ public class BloggerInfoDialog extends UtilFunctions{
 			Statement stmt = conn.createStatement();
 
 			String querystr = "select distinct blogger from blogposts where blogger like '%"+term+"%' and blogger not like '' order by blogger limit 50";
-
+//			String querystr = "select distinct blogger from blogposts order by blogger limit 150";
+			System.out.println(querystr);
 			ResultSet rset = stmt.executeQuery(querystr);
 			while(rset.next())
 			{ 

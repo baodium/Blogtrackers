@@ -131,7 +131,7 @@ public class AdditionalBlogger extends HttpServlet {
 					e.printStackTrace();
 				}
 				
-					pww.write(bloggerDetails+"");	
+					//pww.write(bloggerDetails+"");	
 	
 		}else {
 		 response.setContentType("text/html");
