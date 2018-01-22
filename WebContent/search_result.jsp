@@ -264,7 +264,7 @@ var msnry = new Masonry( container, {
 		
 		if(selected!=""){
 			console.log(selected);
-			/*
+			
 			$.ajax({
 		        url: app_url+'setup_tracker',
 				method:'POST',
@@ -273,23 +273,18 @@ var msnry = new Masonry( container, {
 		        success: function(response)
 		        {	
 		        	console.log(response);
-<<<<<<< HEAD
-		        	
-=======
 		        	if(response=="success"){
 		        		toastr.success('Blog successfully added!', 'Success')
 
 		        	}
-		        			        	
->>>>>>> b95e0dc467a3153dd64c2b454081941e44d9b434
+
 		        }
 		    });	
-			*/
+			
 		}
 		return false;
 	}
-<<<<<<< HEAD
-=======
+
 	
 	function removeFromTracker(blog_id,tracker_id){
 		var checked = $(".tracker-"+blog_id).is(':checked');
@@ -319,8 +314,6 @@ var msnry = new Masonry( container, {
 
 
 	}
-
->>>>>>> b95e0dc467a3153dd64c2b454081941e44d9b434
 </script>
 
 	<!-- Footer -->
