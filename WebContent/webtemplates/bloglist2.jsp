@@ -69,7 +69,7 @@
                     </div>
 				</div>				
 	<form name="page_form" id="page_form" method="post" action="">
-    <input type="hidden" id="page_id" name="page_id" value="0" />
+    <input type="hidden" id="page_id" name="page_id" value="1" />
 	<input type="hidden" name="negative_page" id="negative_page" value="1" />
 	<input type="hidden" id="hasmore" name="hasmore" value="1" />
 	<input type="hidden" id="current_page" name="current_page" value="setup_tracker" />	
