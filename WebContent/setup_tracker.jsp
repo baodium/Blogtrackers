@@ -210,7 +210,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>Additional information:</label>
-	                                    <textarea name="additional-info" id="additional-info" required rows="5" cols="5" placeholder="If you want to add a short description for your tracker, do it here." class="form-control"></textarea>
+	                                    <textarea name="additional-info" id="additional-info" required rows="5" cols="5" placeholder="Please enter a description for this tracker" class="form-control"></textarea>
                                     </div>
 								</div>
 							</div>

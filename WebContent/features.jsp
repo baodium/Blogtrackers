@@ -124,27 +124,30 @@ function googleTranslateElementInit() {
 
 				<!-- Info blocks -->
 				<div class="row">
-					<div class="col-md-4">
+				
+				<div class="col-md-4">
 						<div class="panel">
 							<div class="panel-body text-center">
-								<div class="icon-object border-success text-success"><i class="icon-puzzle3"></i></div>
-								<h5 class="text-semibold">Sentiments Analysis</h5>
-								<p class="mb-15">Analyze the sentiment in a text</p>
-								<a href="#" class="btn bg-success-400" data-toggle="modal" data-target="#sentiments">Learn more</a>
+								<div class="icon-object border-success text-success"><i class="icon-share3"></i></div>
+								<h5 class="text-semibold">Dashboard</h5>
+								<p class="mb-15">View Statistics such as Language Distribution</p>
+								<a href="#" class="btn bg-success-400" data-toggle="modal" data-target="#dashboard">Learn more</a>
 							</div>
 						</div>
 					</div>
-
+					
 					<div class="col-md-4">
 						<div class="panel">
 							<div class="panel-body text-center">
-								<div class="icon-object border-warning text-warning"><i class="icon-split"></i></div>
-								<h5 class="text-semibold">Influence</h5>
-								<p class="mb-15">Analyse the influence of text</p>
-								<a href="#" class="btn bg-warning-400" data-toggle="modal" data-target="#influence">Learn more</a>
+								<div class="icon-object border-warning text-warning"><i class="icon-comment"></i></div>
+								<h5 class="text-semibold">Posting Frequency</h5>
+								<p class="mb-15">Analyse the posting frequency</p>
+								<a href="#" class="btn bg-warning-400" data-toggle="modal" data-target="#postingfrequency">Learn more</a>
 							</div>
 						</div>
 					</div>
+					
+					
 
 					<div class="col-md-4">
 						<div class="panel">
@@ -161,27 +164,32 @@ function googleTranslateElementInit() {
 				
 				<!-- Info blocks -->
 				<div class="row">
-					<div class="col-md-4">
+				
+				<div class="col-md-4">
 						<div class="panel">
 							<div class="panel-body text-center">
-								<div class="icon-object border-success text-success"><i class="icon-share3"></i></div>
-								<h5 class="text-semibold">Blog Network</h5>
-								<p class="mb-15">Analyze network trend</p>
-								<a href="#" class="btn bg-success-400" data-toggle="modal" data-target="#blognetwork">Learn more</a>
+								<div class="icon-object border-success text-success"><i class="icon-puzzle3"></i></div>
+								<h5 class="text-semibold">Sentiments Analysis</h5>
+								<p class="mb-15">Analyze the sentiment in a text</p>
+								<a href="#" class="btn bg-success-400" data-toggle="modal" data-target="#sentiments">Learn more</a>
 							</div>
 						</div>
 					</div>
+					
 
+					
 					<div class="col-md-4">
 						<div class="panel">
 							<div class="panel-body text-center">
-								<div class="icon-object border-warning text-warning"><i class="icon-comment"></i></div>
-								<h5 class="text-semibold">Posting Frequency</h5>
-								<p class="mb-15">Analyse the posting frequency</p>
-								<a href="#" class="btn bg-warning-400" data-toggle="modal" data-target="#postingfrequency">Learn more</a>
+								<div class="icon-object border-warning text-warning"><i class="icon-split"></i></div>
+								<h5 class="text-semibold">Influence</h5>
+								<p class="mb-15">Analyse the influence of text</p>
+								<a href="#" class="btn bg-warning-400" data-toggle="modal" data-target="#influence">Learn more</a>
 							</div>
 						</div>
 					</div>
+					
+					
 
 					<div class="col-md-4">
 						<div class="panel">
@@ -197,17 +205,8 @@ function googleTranslateElementInit() {
 				<!-- /info blocks -->
 <!-- Info blocks -->
 				<div class="row">
-					<div class="col-md-4">
-						<div class="panel">
-							<div class="panel-body text-center">
-								<div class="icon-object border-success text-success"><i class="icon-share3"></i></div>
-								<h5 class="text-semibold">Dashboard</h5>
-								<p class="mb-15">View Statistics such as Language Distribution</p>
-								<a href="#" class="btn bg-success-400" data-toggle="modal" data-target="#dashboard">Learn more</a>
-							</div>
-						</div>
-					</div>
-
+					
+					
 					<div class="col-md-4">
 						<div class="panel">
 							<div class="panel-body text-center">
@@ -229,6 +228,18 @@ function googleTranslateElementInit() {
 							</div>
 						</div>
 					</div>
+					
+						<div class="col-md-4">
+						<div class="panel">
+							<div class="panel-body text-center">
+								<div class="icon-object border-success text-success"><i class="icon-share3"></i></div>
+								<h5 class="text-semibold">Blog Network</h5>
+								<p class="mb-15">Analyze network trend</p>
+								<a href="#" class="btn bg-success-400" data-toggle="modal" data-target="#blognetwork">Learn more</a>
+							</div>
+						</div>
+					</div>
+					
 				</div>
 				<!-- /info blocks -->
 

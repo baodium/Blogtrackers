@@ -367,6 +367,7 @@ public class BloggerInfoDialog extends UtilFunctions{
 			String querystr = "select distinct blogger from blogposts where "+selectedSites+" and blogger not like '' order by blogger limit 50";
 
 			ResultSet rset = stmt.executeQuery(querystr);
+			System.out.print(querystr);
 			while(rset.next())
 			{ 
 				String blogger=rset.getString("blogger");
@@ -374,6 +375,7 @@ public class BloggerInfoDialog extends UtilFunctions{
 				object.put("blogger", blogger);
 				arrayList.add(object);
 			}
+			
 			rset.close();
 			stmt.close();
 			conn.close();
