@@ -271,7 +271,7 @@ $('#reportrange').data(
         interlacedColor: "#F0F8FF",
         labelFontSize: 12, 
          interval: 1,
-       intervalType: ${span},
+       intervalType: "${span}",
         valueFormatString: "DD MMM YYYY"   // "DD MMM" for date and month, "MMM" for month only , "YYYY" year only (fahad)
          
       },
@@ -355,9 +355,12 @@ $('#reportrange').data(
         edges: edges
     };
     
+    //var options = {};
+    
     var options = {
     interaction:{hover:true},
-    hover: true,
+    /*
+    hover: true  
     tooltipDelay: 3,
         nodes: {
           shape: 'dot',
@@ -368,7 +371,11 @@ $('#reportrange').data(
             }
           }
         }
+    */
       };
+    
+    
+    
     network = new vis.Network(container, data, options);
     network.on("click", function (params) {
         params.event = "[original event]";

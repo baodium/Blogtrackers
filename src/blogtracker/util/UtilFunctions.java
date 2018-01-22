@@ -179,6 +179,7 @@ public class UtilFunctions
             String constr = hm.get("dbConnection");
             String username = hm.get("dbUserName");
             String password = hm.get("dbPassword");
+            System.out.println(username);
             if(constr!=null&&username!=null&&password!=null)
             {
                 try {

@@ -377,22 +377,7 @@ function googleTranslateElementInit() {
 					</div>
 					
 					
-				
-				
-				      
-				      
-				      
-				      
-				      
-				    
-			      
-			      
-				      
-					
-					
-					
-					
-					
+						
 				</div>
 				<!-- /main charts -->
 
