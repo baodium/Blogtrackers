@@ -278,6 +278,8 @@
 				data:{keyword:keyword},
 		        success: function(response)
 		        {	
+		        	//console.log("here");
+		        	//console.log(response);
 		        	$("#search-blog").val("yes");
 		        	$("#result-set").html(response);
 		        }
