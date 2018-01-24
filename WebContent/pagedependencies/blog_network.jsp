@@ -13,6 +13,7 @@
 	<script type="text/javascript" src="assets/js/plugins/forms/selects/bootstrap_multiselect.js"></script>
 <script
 					src="${pageContext.request.contextPath}/production/js/moment/moment.min.js"></script>
+					<script src="${pageContext.request.contextPath}/js/screenfull.js"></script>
 	<script
 						src="${pageContext.request.contextPath}/production/js/datepicker/daterangepicker.js"></script>
 <script type="text/javascript" src="assets/js/plugins/tables/datatables/datatables.min.js"></script>
@@ -55,6 +56,11 @@
 						src="${pageContext.request.contextPath}/production/js/flot/jquery.flot.spline.js"></script>
 					<script
 						src="${pageContext.request.contextPath}/production/js/flot/curvedLines.js"></script>
+				
+<!--
+
+//-->
+
 <script>
 						$(document)
 						.ready(
@@ -463,5 +469,40 @@ $('#destroy').click(
    });
 	});	
    
+	});
+	</script>
+	<script>
+	// full screen functionality for blog network
+	$(function () {
+		$('#supported').text('Supported/allowed: ' + !!screenfull.enabled);
+
+		if (!screenfull.enabled) {
+			return false;
+		}
+		
+		$('#toggle-btn2').click(function () {
+			screenfull.toggle($('#mainrealcontainer')[0]);
+		});
+		
+		function fullscreenchange() {
+			var elem = screenfull.element;
+
+			$('#status').text('Is fullscreen: ' + screenfull.isFullscreen);
+
+			if (elem) {
+				$('#element').text('Element: ' + elem.localName + (elem.id ? '#' + elem.id : ''));
+			}
+
+			if (!screenfull.isFullscreen) {
+				$('#external-iframe').remove();
+				document.body.style.overflow = 'auto';
+			}
+		}
+
+		screenfull.on('change', fullscreenchange);
+
+		// Set the initial values
+		fullscreenchange();
+		
 	});
 	</script>

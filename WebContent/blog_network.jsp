@@ -65,7 +65,7 @@ function googleTranslateElementInit() {
 			<div class="content-wrapper">
 
 				<!-- Main charts -->
-				<div class="row">
+				<div class="row" id="mainrealcontainers">
 				<div class="col-md-12" >
 						<div class="panel panel-primary">
 							<div class="panel-heading">
@@ -510,8 +510,12 @@ Entity
 						</div>
 
 				</div>
+				
+				<div style="position:absolute; top:10px;" class="col-md-12 text-center">
+				<button class="btn btn-primary  icon-screen-full legitRipple" style="position:absolute; z-index:99; top:5px ; right:40px;" id="toggle-btn2"></button>
+				</div>
 
-								<!--<div><div id="cy" ></div></div>-->
+								
 
 
 
