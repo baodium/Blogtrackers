@@ -390,7 +390,7 @@ $('#reportrange').data(
 								.find("td:nth-child(2)");
 
 						$.each($tds, function() {
-						console.log($(this).text());
+						//console.log($(this).text());
 						$('#blogpost').text($(this).text());
 						});
 

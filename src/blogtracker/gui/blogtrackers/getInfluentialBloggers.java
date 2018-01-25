@@ -186,7 +186,7 @@ public class getInfluentialBloggers extends UtilFunctions{
 
 					}
 				}
-				System.out.println("TopBlogger"+topFiveBloggers);
+//				System.out.println("TopBlogger"+topFiveBloggers);
 				conn.close();
 			}
 			return topFiveBloggers;

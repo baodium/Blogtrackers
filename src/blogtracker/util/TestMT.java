@@ -55,7 +55,7 @@ public class TestMT extends UtilFunctions implements Runnable {
 
 	@Override
 	public void run() {
-		System.out.println("Started");
+//		System.out.println("Started");
 		int calendarFiledIDX;
 
 		java.util.Date curStartDate = startDate;
@@ -196,7 +196,7 @@ public class TestMT extends UtilFunctions implements Runnable {
 		} catch (SQLException ex) {
 			Logger.getLogger(getGraphData.class.getName()).log(Level.SEVERE, null, ex);
 		}
-		System.out.println(graphPoints);
+//		System.out.println(graphPoints);
 		curSession.setAttribute("inflGraph"+incrValue, graphPoints);
 	}
 	public java.util.Date getLastDayOfMonth(int year, int month)

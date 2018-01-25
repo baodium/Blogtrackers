@@ -53,7 +53,7 @@ public class Datasource extends HttpServlet {
 			String selectedSites=trackerDialog.getSelectedSites(userName,(String) session.getAttribute("tracker"));
 
 			ArrayList<BeanAllSites> allSites=trackerDialog.getSiteNames(selectedSites);
-			System.out.println(allSites);
+//			System.out.println(allSites);
 			if(session.getAttribute("bsName")!=null)
 				session.removeAttribute("bsName");
 			session.setAttribute("allSepSites", allSites);
@@ -107,7 +107,7 @@ public class Datasource extends HttpServlet {
 			HttpSession session= request.getSession();
 
 			String searchText = request.getParameter("searchText");
-			System.out.println(searchText);
+//			System.out.println(searchText);
 			if(!searchText.trim().isEmpty()){
 				session.setAttribute("searched", "about "+searchText);
 				StringTokenizer st = new StringTokenizer(searchText, ",");

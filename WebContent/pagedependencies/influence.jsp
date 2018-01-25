@@ -67,7 +67,7 @@
 									.find("td:nth-child(2)");
 
 							$.each($tds, function() {
-								console.log($(this).text());
+								//console.log($(this).text());
 								$('#blogpostContent').text($(this).text());
 							});
 
@@ -151,7 +151,7 @@
 								y : parseInt(graph5[i].totalInfluence)
 							});
 						}
-						console.log("F%" + f5);
+						//console.log("F%" + f5);
 					}
 					var chart = new CanvasJS.Chart(
 							"chartContainer",

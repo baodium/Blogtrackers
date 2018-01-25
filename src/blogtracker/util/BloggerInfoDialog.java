@@ -348,7 +348,7 @@ public class BloggerInfoDialog extends UtilFunctions{
 					}
 				}
 			}
-			System.out.println("avg months Done");
+//			System.out.println("avg months Done");
 			return dps;
 		} catch (SQLException ex) {
 			List<ChartPoint> dps= new ArrayList<ChartPoint>();
@@ -367,7 +367,7 @@ public class BloggerInfoDialog extends UtilFunctions{
 			String querystr = "select distinct blogger from blogposts where "+selectedSites+" and blogger not like '' order by blogger limit 50";
 
 			ResultSet rset = stmt.executeQuery(querystr);
-			System.out.print(querystr);
+//			System.out.print(querystr);
 			while(rset.next())
 			{ 
 				String blogger=rset.getString("blogger");
@@ -396,7 +396,7 @@ public class BloggerInfoDialog extends UtilFunctions{
 
 			String querystr = "select distinct blogger from blogposts where blogger like '%"+term+"%' and blogger not like '' order by blogger limit 50";
 //			String querystr = "select distinct blogger from blogposts order by blogger limit 150";
-			System.out.println(querystr);
+//			System.out.println(querystr);
 			ResultSet rset = stmt.executeQuery(querystr);
 			while(rset.next())
 			{ 
@@ -491,7 +491,7 @@ public class BloggerInfoDialog extends UtilFunctions{
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		BloggerInfoDialog dialog= new BloggerInfoDialog();
-		System.out.println(dialog.getBloggerNames(""));
+//		System.out.println(dialog.getBloggerNames(""));
 
 	}
 

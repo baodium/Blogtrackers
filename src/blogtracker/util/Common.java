@@ -62,7 +62,7 @@ public class Common extends UtilFunctions
 			Date enddate = df.parse(d2);
 			long diff= enddate.getTime()-startdate.getTime();
 			int days = (int) (diff / (1000*60*60*24));
-			System.out.println(days);
+//			System.out.println(days);
 			if(days>=0 && days<=13){
 				scale="day";
 			}else if(days>=14 && days<=84){

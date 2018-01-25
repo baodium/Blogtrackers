@@ -162,7 +162,7 @@ public class getTagPost extends UtilFunctions
 
 				int id = rset.getInt("blogpost_id");
 				String title = rset.getString("title");
-				System.out.println("Title"+title);
+//				System.out.println("Title"+title);
 				posts.add(new BPost(id,title,"",""));
 			}
 			//System.out.println("Posts ================ "+posts);
@@ -178,21 +178,21 @@ public class getTagPost extends UtilFunctions
 	public ArrayList<String> newstepsfortag(String startDate, int threshold, String endDate, ArrayList<Integer> selectedsites)
 	{
 
-		System.out.println("inside newStepsForTags");
+//		System.out.println("inside newStepsForTags");
 		ArrayList<String> result = new ArrayList<String>();
 		int window = 1;
 		String tags = formTags(startDate, threshold, endDate, selectedsites, window);
-		System.out.println("Tags"+tags);
+//		System.out.println("Tags"+tags);
 		result.add(tags);
 		window = 2;
 		String ngrams = formTags(startDate, threshold, endDate, selectedsites, window);
-		System.out.println("Ngrams"+ngrams);
+//		System.out.println("Ngrams"+ngrams);
 		result.add(ngrams);
 		return result;
 	}
 	public String formTags(String startDate, int threshold, String endDate, ArrayList<Integer> selectedsites, int window)
 	{
-		System.out.println("inside form tags");
+//		System.out.println("inside form tags");
 		StringBuffer taghtml = new StringBuffer();
 		tags[] phrases = getngrampairs(startDate,endDate,selectedsites,window,threshold);
 		int limit = threshold;
@@ -243,12 +243,12 @@ public class getTagPost extends UtilFunctions
 			aa.add(80);
 	//		ArrayList<String> dp = gp.newstepsfortag("2010-01-01", 50, "2011-06-01", aa);
 			List<BPost> bp= gp.fillblogpost("2010-01-01", "2011-06-01", aa);
-			System.out.println(bp);
+//			System.out.println(bp);
 	
 		}
 	public tags[] getngrampairs(String startDate, String endDate,ArrayList<Integer> selectedsites,int window,int threshold)
 	{
-		System.out.println("Inside Ngram pairs");
+//		System.out.println("Inside Ngram pairs");
 		try {
 			loadConstants();
 			SEARCH_INDEX = hm.get("searchIndex");
@@ -277,7 +277,7 @@ public class getTagPost extends UtilFunctions
 
 	public String getPostsFromDB(String startDate,String endDate,ArrayList<Integer> selectedsites)
 	{
-		System.out.println("Inside Get Post from DB");
+//		System.out.println("Inside Get Post from DB");
 		Connection conn = this.getConn();
 		String selsitesQuery = getSelSitesQuery(selectedsites);
 		String queryStr = "select post from blogposts where "+selsitesQuery+" date >='"+startDate+"' and date<='"+endDate+"'";

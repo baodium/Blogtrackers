@@ -253,7 +253,7 @@ public class getGraphData extends UtilFunctions
 						{
 							SimpleDateFormat dateformat = new SimpleDateFormat();
 							dateformat.applyPattern("MMMM-yyyy");
-							System.out.println("Data Points"+rSet1.getObject(1).toString());
+//							System.out.println("Data Points"+rSet1.getObject(1).toString());
 							DataPoint dp = new DataPoint(dateformat.format(curStartDate), Integer.parseInt(rSet1.getObject(1).toString()), i, sdform.format(curEndDate),sdform.format(curStartDate));
 							dpoints.add(dp);
 						}

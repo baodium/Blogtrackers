@@ -109,8 +109,8 @@ public class searchBlogs extends UtilFunctions
             searchParser = new QueryParser("content", analyzer);
             Query searchQuery = searchParser.parse(query);
             Hits searchHits = newSearch.search(searchQuery);
-            System.out.println("Search query" + searchQuery);
-            System.out.println("Search Hits" + searchHits);
+//            System.out.println("Search query" + searchQuery);
+//            System.out.println("Search Hits" + searchHits);
             List<SearchResults> sresults = new ArrayList<SearchResults>();
             for(int i=0;i<searchHits.length();i++)
             {

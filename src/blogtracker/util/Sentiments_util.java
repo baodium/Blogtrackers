@@ -950,7 +950,7 @@ public class Sentiments_util extends UtilFunctions{
 			rs.next();
 			String query = rs.getString("query");
 			queryStr = "SELECT distinct blogger from blogtrackers.blogposts WHERE "+query;
-			System.out.println(queryStr);
+//			System.out.println(queryStr);
 			st = conn.createStatement();
 			rs = st.executeQuery(queryStr);
 			

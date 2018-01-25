@@ -64,7 +64,7 @@ public class KeywordTrendsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
-		System.out.println("lllll in post");
+//		System.out.println("lllll in post");
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session= request.getSession();
 		if((session.getAttribute("tracker")==null && request.getParameter("tracker")==null) &&
@@ -97,7 +97,7 @@ public class KeywordTrendsServlet extends HttpServlet {
 			{
 				String tags = request.getParameter("searchText");
 				session.setAttribute("tags",tags);
-				System.out.println("iiiiiiiii"+tags);
+//				System.out.println("iiiiiiiii"+tags);
 			}
 			if(request.getParameter("spanmonthly")==null && request.getParameter("spanyearly") ==null 
 					&& request.getParameter("spanweekly") ==null && request.getParameter("spandaily")==null 
@@ -719,9 +719,9 @@ public class KeywordTrendsServlet extends HttpServlet {
 					
 					// top 5% code
 					Map<String, Integer> netlist = new HashMap<String, Integer>();
-					System.out.println("lll"+kn.netlist.size());
+//					System.out.println("lll"+kn.netlist.size());
 					int size = (int) (0.05*kn.netlist.size());
-					System.out.println("lll"+size);
+//					System.out.println("lll"+size);
 					for (Map.Entry<String, Integer> entry : kn.netlist.entrySet()) {
 						  if (netlist.size() > size) break;
 						    netlist.put(entry.getKey(),entry.getValue());
@@ -732,9 +732,9 @@ public class KeywordTrendsServlet extends HttpServlet {
 					Map<String, Integer> idlist = new HashMap<String, Integer>();
 					int h=1;
 					for (Map.Entry<String, Integer> entry : netlist.entrySet()) {
-						System.out.println("kk"+entry.getKey()+"kk"+entry.getValue());
+//						System.out.println("kk"+entry.getKey()+"kk"+entry.getValue());
 						String[] parts = entry.getKey().split("~", 2);
-						System.out.println(" "+parts[0]+" "+parts[1]);
+//						System.out.println(" "+parts[0]+" "+parts[1]);
 						if(!idlist.containsKey(parts[0]))
 						{
 							idlist.put(parts[0], h++);

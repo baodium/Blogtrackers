@@ -7,6 +7,7 @@
 <%@page import="blogtracker.util.Common" %>
 <!DOCTYPE html>
 <%
+
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
 	String tracker_id = (null == session.getAttribute("tid")) ? "" : session.getAttribute("tid").toString();
@@ -35,7 +36,15 @@
 	   trackers = (ArrayList)session.getAttribute("trackers");
 	   //System.out.println(trackers.size());
     }catch(Exception e){}
+    
+   /*  if(session.getAttribute("tracker") == null)
+    { 
+   response.sendRedirect("index.jsp");
+   
+     } */ 
      %>
+   
+    
 
      
      

@@ -85,9 +85,9 @@ function googleTranslateElementInit() {
 			                	</div>
 							</div>
 
-							<div class="panel-body" style="min-height: 800px;">
+							<div class="panel-body" style="min-height: 580px;">
 							<div class="col-md-12">
-	<div id="mynetwork" style="background-color:#ffffff; min-height: 780px;"></div>
+	<div id="mynetwork" style="background-color:#ffffff; min-height: 560px;"></div>
 <script type="text/javascript">
    /*   var nodes = [
         {id: 0, label: "0", group: 'source'},
@@ -512,7 +512,7 @@ Entity
 				</div>
 				
 				<div style="position:absolute; top:10px;" class="col-md-12 text-center">
-				<button class="btn btn-primary  icon-screen-full legitRipple" style="position:absolute; z-index:99; top:5px ; right:40px;" id="toggle-btn2"></button>
+				<button class="btn btn-primary legitRipple" style="position:absolute; z-index:99; top:5px ; right:40px;" id="toggle-btn2"><i class="icon-screen-full"></i></button>
 				</div>
 
 								

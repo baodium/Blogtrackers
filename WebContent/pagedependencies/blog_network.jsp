@@ -361,14 +361,14 @@ $('#destroy').click(
 	entity = $('#entity').val();	
 	}
 	
-	console.log("Blog to Blog "+blog2blog);
+	/* console.log("Blog to Blog "+blog2blog);
 	console.log("Blogger to Blogger "+blog2blogger);
 	console.log("facebook "+facebook);
 	console.log("twitter "+twitter);
 	console.log("youtube "+youtube);
 	console.log("tumblr "+tumblr);
 	console.log("linkedin "+linkedin);
-	console.log("Entity "+entity);
+	console.log("Entity "+entity); */
 	
 	// start the ajax request to filter blog network
 	  $.post(app_url+'BlogNetwork',{
@@ -436,14 +436,14 @@ $('#destroy').click(
 		entity = "";	
 		}
 		
-		console.log("Blog to Blog "+blog2blog);
+		/* console.log("Blog to Blog "+blog2blog);
 		console.log("Blogger to Blogger "+blog2blogger);
 		console.log("facebook "+facebook);
 		console.log("twitter "+twitter);
 		console.log("youtube "+youtube);
 		console.log("tumblr "+tumblr);
 		console.log("linkedin "+linkedin);
-		console.log("Entity "+entity);
+		console.log("Entity "+entity); */
 		
 		// start the ajax request to filter blog network
 		  $.post(app_url+'BlogNetwork',{
@@ -481,7 +481,7 @@ $('#destroy').click(
 		}
 		
 		$('#toggle-btn2').click(function () {
-			screenfull.toggle($('#mainrealcontainer')[0]);
+			screenfull.toggle($('#mainrealcontainers')[0]);
 		});
 		
 		function fullscreenchange() {
