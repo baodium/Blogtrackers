@@ -51,7 +51,7 @@ public class Common extends UtilFunctions
 		}
 
 	}
-
+	
 	public String returnScale(List<String> aa){
 		String d1 = aa.get(0);
 		String d2 = aa.get(1);
