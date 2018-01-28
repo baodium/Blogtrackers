@@ -32,7 +32,7 @@ public class ExportJSON extends HttpServlet {
 	TrackerDialog tDialog = new TrackerDialog();
 	
 	public ExportJSON() {
-        super();
+		super();
     }
 
 	/**
@@ -42,7 +42,7 @@ public class ExportJSON extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		response.sendRedirect("data_presentation.jsp");
-
+		
 	}
 	
 	/**
