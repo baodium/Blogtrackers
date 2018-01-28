@@ -118,9 +118,9 @@ public class InfluenceServlet extends HttpServlet {
 			}
 		}
 
-		else if(request.getParameter("infl_option")!=null){
-			String scale=request.getParameter("infl_option");
-//			System.out.println(request.getParameter("infl_option"));
+		else if(request.getParameter("options")!=null){
+			String scale=request.getParameter("options");
+//			System.out.println(request.getParameter("infl_options"));
 
 			session.setAttribute("inflCalScale", scale);
 			if(session.getAttribute("datepicked")!=null && session.getAttribute("tracker")!=null){

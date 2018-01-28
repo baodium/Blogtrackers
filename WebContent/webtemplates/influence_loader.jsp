@@ -257,7 +257,7 @@ int trackerSize = mytrackers.size();
 
 							<div class="panel-body scroll" style="height: 350px">					
 								
-								<table data-intro="Select a blogger name to view additional blogger information" data-step="3" class="table datatable-basic">
+								<table data-intro="Select a blogger name to view additional blogger information" data-step="3" class="table ">
 						<thead>
 							<tr>
 								<th>Blogger</th>
@@ -269,14 +269,14 @@ int trackerSize = mytrackers.size();
 							</tr>
 						</thead>
 						<tbody>
-						<tr>
+					<!-- 	<tr>
 																			<td scope="row">Average</td>
 																			<td></td>
 																			<td>${topBScore}</td>
 																			<td class="hidden" width="0%"></td>
 								<td class="hidden" width="0%"></td>
 								<td class="hidden" width="0%">
-																		</tr>
+																		</tr> --!>
 							<c:set var="i" value="0" />
 																		<c:set var="eo" value="1" />
 

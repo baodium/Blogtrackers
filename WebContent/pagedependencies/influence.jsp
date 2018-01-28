@@ -487,7 +487,9 @@ $('#reportrange').data(
 				        }
 				    });
 				}
-				
+				function spanChanged() {
+					document.getElementById("pf_spanForm").submit();
+				}
 			</script>
 			<script>
 				$(document).ready(function() {

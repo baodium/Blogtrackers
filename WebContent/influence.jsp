@@ -81,6 +81,7 @@ function googleTranslateElementInit() {
 							</div>
 
 							<div class="panel-body">
+							<form name="pf_spanForm" id="pf_spanForm" action="InfluenceServlet" method="post">
 							<div class="col-lg-8 col-md-12 col-sm-12">
 										
 							<!--  <div class="chart-container">
@@ -88,25 +89,14 @@ function googleTranslateElementInit() {
 						</div>	-->
 						<div data-intro="Select a data point on the graph" data-step="4" class="demo-container">
 												<div id="chartContainer" style="height: 350px; width: 100%;"></div>
-												<form action="InfluenceServlet" method="post">
+												
 													<div data-intro="Switch between day, week, month and year" data-step="5" style="text-align: center; margin-bottom: 15px;">
-														<div class="btn-group" role="group"
-															aria-label="First group">
-															<span id="spanform">
-																<button type="submit" name="dayFreq"
-																	class="btn btn-default btn-sm">Day</button>
-																<button type="submit" name="weekFreq"
-																	class="btn btn-default btn-sm">Week</button>
-																<button type="submit" name="monthFreq"
-																	class="btn btn-default btn-sm">Month</button>
-																<button type="submit" name="yearFreq"
-																	class="btn btn-default btn-sm">Year</button>
-															</span>
-														</div>
+														<jsp:include page="spanchecker.jsp"></jsp:include>
 													</div>
-												</form>
+												
 											</div>
 								</div>
+								</form>
 							<div class="col-lg-4 col-md-12 col-sm-12">
 							
 							<div data-intro="Click on a blogger name to get additional blogger information" data-step="5" class="panel panel-default">
@@ -135,14 +125,14 @@ function googleTranslateElementInit() {
 							</tr>
 						</thead>
 						<tbody>
-						<tr>
+						<!-- <tr>
 																			<td scope="row">Average</td>
 																			<td></td>
 																			<td>${topBScore}</td>
 																			<td class="hidden" width="0%"></td>
 								<td class="hidden" width="0%"></td>
 								<td class="hidden" width="0%">
-																		</tr>
+																		</tr> --!>
 							<c:set var="i" value="0" />
 																		<c:set var="eo" value="1" />
 
