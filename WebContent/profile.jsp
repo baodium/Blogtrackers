@@ -172,7 +172,7 @@ function googleTranslateElementInit() {
 			                                </div>
 
 			                                <div class="form-group">
-				                                <input type="tel" name="phone_number" class="form-control" title="Invalid Phone Number" pattern="^[0-9\-\+\s\(\)]*$" placeholder="+5014196609" maxlength="14" value = "<%=userinfo.get(6)%>">
+				                                <input type="tel" name="phone_number" class="form-control" required="required" title="Invalid Phone Number" pattern="^[0-9\-\+\s\(\)]*$" placeholder="+15014196609" maxlength="14" value = "<%=userinfo.get(6)%>">
 			                                </div>
 										</div>
 									</div>

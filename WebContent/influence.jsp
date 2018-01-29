@@ -29,7 +29,7 @@
 					<li ><a href="trackerlist.jsp">Tracker List  </a></li>
 					<li><a href="edittracker.jsp" title="Edit <%=session.getAttribute("tracker")%> Tracker"><%=session.getAttribute("tracker")%></a></li>
 					<li><a href="analytics.jsp">Analytics</a></li>
-					<li class="active">Analytics</li>
+					<li class="active">Influence</li>
 				</ul>
 			<!-- 	<div class="heading-elements">
 				<div class="heading-btn-group">
@@ -88,7 +88,8 @@ function googleTranslateElementInit() {
 							<div class="chart" id="c3-line-regions-chart"></div>
 						</div>	-->
 						<div data-intro="Select a data point on the graph" data-step="4" class="demo-container">
-												<div id="chartContainer" style="height: 350px; width: 100%;"></div>
+												<div id="chartContainer" style="height: 350px; width: 100%;">
+												</div>
 												
 													<div data-intro="Switch between day, week, month and year" data-step="5" style="text-align: center; margin-bottom: 15px;">
 														<jsp:include page="spanchecker.jsp"></jsp:include>
@@ -132,7 +133,7 @@ function googleTranslateElementInit() {
 																			<td class="hidden" width="0%"></td>
 								<td class="hidden" width="0%"></td>
 								<td class="hidden" width="0%">
-																		</tr> --!>
+							</tr> -->
 							<c:set var="i" value="0" />
 																		<c:set var="eo" value="1" />
 
