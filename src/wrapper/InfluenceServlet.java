@@ -253,7 +253,7 @@ public class InfluenceServlet extends HttpServlet {
 			List<InfluentialBlogger> inflBloggerScore = infBlogger.getinflbloggers(0.6, 0.7, 0.3, startdate, enddate, selectedSites);
 			int topScores=0;
 
-			//////
+			
 			int topBScore=0;
 			if(inflBloggerScore.size()>0){
 				if(inflBloggerScore.size()>0 && inflBloggerScore.size()<=5){

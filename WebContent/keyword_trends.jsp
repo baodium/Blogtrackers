@@ -101,131 +101,12 @@
 							
 					<div class="col-lg-12 col-md-12 col-sm-12">
 										
-							<!-- <div class="chart-container">
-							<div class="chart" id="c3-line-regions-chart"></div>
-						</div>	-->
-																		<div data-intro="Click on a datapoint on the graph" data-step="4" class="demo-container">
+						<div data-intro="Click on a datapoint on the graph" data-step="4" class="demo-container">
 													<div id="chartContainer" style="height: 350px;"></div>
 													<div data-intro="Switch between day, week, month and year" data-step="5" style="text-align: center; margin-bottom: 15px;">
-														<form name="kt_spanform" id="kt_spanform" action="KeywordTrendsServlet"
-																method="post">
-														<%
-															Object span = (null == session.getAttribute("kt_span")) ? "" : session.getAttribute("kt_span");
-															if (span != null && (span.toString()).equalsIgnoreCase("month")) {
-														%>
 
-														<div class="btn-group colors" role="group"
-															aria-label="First group" data-toggle="buttons">
-															<label class="btn btn-default btn-sm"> <input
-																type="radio" name="options" value="day"
-																autocomplete="off" onchange="spanChanged()"> Day
-															</label> <label class="btn btn-default btn-sm"> <input
-																type="radio" name="options" value="week"
-																autocomplete="off" onchange="spanChanged()">
-																Week
-															</label> <label class="btn btn-default btn-sm active"> <input
-																type="radio" name="options" value="month"
-																autocomplete="off" checked onchange="spanChanged()">
-																Month
-															</label> <label class="btn btn-default btn-sm"> <input
-																type="radio" name="options" value="year"
-																autocomplete="off" onchange="spanChanged()">
-																Year
-															</label>
-														</div>
-														<%
-															} else if (span != null && (span.toString()).equalsIgnoreCase("day")) {
-														%>
-														<div class="btn-group colors" data-toggle="buttons">
-															<label class="btn btn-default btn-sm active"> <input
-																type="radio" name="options" value="day"
-																autocomplete="off" checked onchange="spanChanged()">
-																Day
-															</label> <label class="btn btn-default btn-sm"> <input
-																type="radio" name="options" value="week"
-																autocomplete="off" onchange="spanChanged()">
-																Week
-															</label> <label class="btn btn-default btn-sm"> <input
-																type="radio" name="options" value="month"
-																autocomplete="off" onchange="spanChanged()">
-																Month
-															</label> <label class="btn btn-default btn-sm"> <input
-																type="radio" name="options" value="year"
-																autocomplete="off" onchange="spanChanged()">
-																Year
-															</label>
-														</div>
-														<%
-															} else if (span != null && (span.toString()).equalsIgnoreCase("year")) {
-														%>
-														<div class="btn-group colors" data-toggle="buttons">
-															<label class="btn btn-default btn-sm"> <input
-																type="radio" name="options" value="day"
-																autocomplete="off" onchange="spanChanged()"> Day
-															</label> <label class="btn btn-default btn-sm"> <input
-																type="radio" name="options" value="week"
-																autocomplete="off" onchange="spanChanged()">
-																Week
-															</label> <label class="btn btn-default btn-sm"> <input
-																type="radio" name="options" value="month"
-																autocomplete="off" onchange="spanChanged()">
-																Month
-															</label> <label class="btn btn-default btn-sm active"> <input
-																type="radio" name="options" value="year"
-																autocomplete="off" checked onchange="spanChanged()">
-																Year
-															</label>
-														</div>
-														<%
-															} else if (span != null && (span.toString()).equalsIgnoreCase("week")) {
-														%>
 
-														<div class="btn-group colors" data-toggle="buttons">
-															<label class="btn btn-default btn-sm"> <input
-																type="radio" name="options" value="day"
-																autocomplete="off" onchange="spanChanged()"> Day
-															</label> <label class="btn btn-default btn-sm active"> <input
-																type="radio" name="options" value="week"
-																autocomplete="off" checked onchange="spanChanged()">
-																Week
-															</label> <label class="btn btn-default btn-sm"> <input
-																type="radio" name="options" value="month"
-																autocomplete="off" onchange="spanChanged()">
-																Month
-															</label> <label class="btn btn-default btn-sm"> <input
-																type="radio" name="options" value="year"
-																autocomplete="off" onchange="spanChanged()">
-																Year
-															</label>
-														</div>
-														<%
-															} else {
-														%>
-														<div class="btn-group colors" data-toggle="buttons">
-															<label class="btn btn-default btn-sm"> <input
-																type="radio" name="options" value="day"
-																autocomplete="off" onchange="spanChanged()"> Day
-															</label> <label class="btn btn-default btn-sm"> <input
-																type="radio" name="options" value="week"
-																autocomplete="off" onchange="spanChanged()">
-																Week
-															</label> <label class="btn btn-default btn-sm"> <input
-																type="radio" name="options" value="month"
-																autocomplete="off" onchange="spanChanged()">
-																Month
-															</label> <label class="btn btn-default btn-sm"> <input
-																type="radio" name="options" value="year"
-																autocomplete="off" onchange="spanChanged()">
-																Year
-															</label>
-														</div>
-
-														<%
-															}
-														%>
-													</form>
-
-														<!-- <div class="btn-group" role="group" aria-label="First group">
+														 <div class="btn-group" role="group" aria-label="First group">
 															<form name="spanform" id="spanform" action="KeywordTrendsServlet"
 																method="post">
 																<button type="submit" name="spandaily" value="daily"
@@ -237,7 +118,7 @@
 																<button type="submit" name="spanyearly" value="yearly"
 																	class="btn btn-default btn-sm">Year</button>
 															</form>
-														 </div> -->
+														 </div> 
 														<div id="chartpoint">
 															<form name="xyform" id="xyform"
 																action="KeywordTrendsServlet" method="post">
