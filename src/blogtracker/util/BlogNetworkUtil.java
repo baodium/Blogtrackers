@@ -211,7 +211,7 @@ public class BlogNetworkUtil extends UtilFunctions{
 			rs.next();
 			String query = rs.getString("query");
 			queryStr = "select blogsite_id,blogpost_id from blogtrackers.blogposts where date >=\'"+sqldate1+"\' and date<=\'"+sqldate2+"\' and "+query;
-			System.out.println("    "+queryStr);
+//			System.out.println("    "+queryStr);
 			st = conn.createStatement();
 			rs = st.executeQuery(queryStr);
 			HashMap<Integer,Integer> bp =new HashMap<Integer,Integer>();
@@ -228,7 +228,7 @@ public class BlogNetworkUtil extends UtilFunctions{
 			bp_ids = bp_ids+")";
 			
 			queryStr = "select blogpost_id, entity from blogtrackers.blogpost_entitysentiment where blogpost_id in "+bp_ids;
-			System.out.println("    "+queryStr);
+//			System.out.println("    "+queryStr);
 			st = conn.createStatement();
 			rs = st.executeQuery(queryStr);
 			

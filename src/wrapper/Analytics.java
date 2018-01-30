@@ -68,10 +68,10 @@ public class Analytics extends HttpServlet {
 			String[] trackerdetails = request.getParameter("tracker").split(",");
 			if(trackerdetails.length > 1)
 			{
-			System.out.println("Array more than one");
+//			System.out.println("Array more than one");
 			session.setAttribute("tracker", trackerdetails[0]);
 			session.setAttribute("edited_tracker",trackerdetails[1]);	
-			System.out.println(trackerdetails[1]);
+//			System.out.println(trackerdetails[1]);
 			}
 			else
 			{

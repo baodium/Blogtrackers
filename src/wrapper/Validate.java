@@ -25,6 +25,7 @@ import authentication.DBConnector;
 public class Validate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */

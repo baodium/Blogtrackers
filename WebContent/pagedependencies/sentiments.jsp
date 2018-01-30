@@ -432,6 +432,9 @@ $('#destroy').click(
    		 $(".loader").removeClass("hidden");
    			document.getElementById("trendtype").submit();
    		}
+   		function spanChanged() {
+			document.getElementById("pf_spanForm").submit();
+		}
    		
    	    
    </script>

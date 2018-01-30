@@ -71,9 +71,9 @@ public class getSiteTypes extends UtilFunctions
     {
         Connection conn = null;
         try{
-            System.out.println(stypename);
-            System.out.println(selectedsites.get(0));
-            System.out.println(selectedsites.get(1));
+//            System.out.println(stypename);
+//            System.out.println(selectedsites.get(0));
+//            System.out.println(selectedsites.get(1));
             conn = getConn();
             Statement stmt = conn.createStatement();
             String querystr = "select Type_name from sitetypes where Type_name = '"+stypename+"'";

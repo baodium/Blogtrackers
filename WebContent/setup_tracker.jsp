@@ -293,12 +293,14 @@
 		if(ref=="#finish"){
 			if(tracker==""){
 				$("#tracker-name").focus();
+				alert("Enter a tracker Name")
 				return false;
 			}
 			
 			var more_info = $("#additional-info").val();
 			if(more_info==""){
 				$("#additional-info").focus();
+				alert("Enter Additional Information");
 				return false;
 			}
 

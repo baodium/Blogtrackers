@@ -109,7 +109,7 @@ public class compViewer extends UtilFunctions
     public ArrayList<String> createTagCloud1(Date startDate, int threshold, Date endDate, int selFID)
     {
         SimpleDateFormat sdform = new SimpleDateFormat();
-        System.out.println("inside tag cloud 1");
+//        System.out.println("inside tag cloud 1");
         sdform.applyPattern("yyyy-MM-dd");
         String sdate = sdform.format(startDate);
         String edate = sdform.format(endDate);
@@ -130,7 +130,7 @@ public class compViewer extends UtilFunctions
     {
         //System.out.println("inside2");
         SimpleDateFormat sdform = new SimpleDateFormat();
-        System.out.println("inside tag cloud 2");
+//        System.out.println("inside tag cloud 2");
         sdform.applyPattern("yyyy-MM-dd");
         String sdate = sdform.format(startDate);
         String edate = sdform.format(endDate);

@@ -59,7 +59,7 @@ public class BlogNetwork extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println(" post  on net");
+//		System.out.println(" post  on net");
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session= request.getSession();
 		
@@ -69,13 +69,13 @@ public class BlogNetwork extends HttpServlet {
 		}
 		else
 		{
-			System.out.println("  inside else before");
+			//System.out.println("  inside else before");
 			// conditions for filtering the blog network
 			if(request.getParameter("blogtoblog") != null)
 			{
 			String blogtoblog = request.getParameter("blogtoblog");
 			session.setAttribute("blogtoblog", blogtoblog);
-			System.out.println(request.getParameter("blogtoblog"));	
+//			System.out.println(request.getParameter("blogtoblog"));	
 			}
 			if(request.getParameter("blogtoblog") == null)
 			{
@@ -85,7 +85,7 @@ public class BlogNetwork extends HttpServlet {
 			{
 			String blogtoblogger = request.getParameter("blogtoblogger");
 			session.setAttribute("blogtoblogger", blogtoblogger);	
-			System.out.println(request.getParameter("blogtoblogger"));
+//			System.out.println(request.getParameter("blogtoblogger"));
 			}
 			if(request.getParameter("blogtoblogger") == null)
 			{
@@ -95,7 +95,7 @@ public class BlogNetwork extends HttpServlet {
 			{
 			String facebook = request.getParameter("facebook");	
 			session.setAttribute("facebook", facebook);
-			System.out.println(request.getParameter("facebook"));	
+//			System.out.println(request.getParameter("facebook"));	
 			}
 			if(request.getParameter("facebook") == null)
 			{
@@ -105,7 +105,7 @@ public class BlogNetwork extends HttpServlet {
 			{
 			String linkedin = request.getParameter("linkedin");	
 			session.setAttribute("linkedin", linkedin);
-			System.out.println(request.getParameter("linkedin"));	
+//			System.out.println(request.getParameter("linkedin"));	
 			}
 			if(request.getParameter("linkedin") == null)
 			{
@@ -115,7 +115,7 @@ public class BlogNetwork extends HttpServlet {
 			{
 			String twitter = request.getParameter("twitter");	
 			session.setAttribute("twitter", twitter);
-			System.out.println(request.getParameter("twitter"));		
+//			System.out.println(request.getParameter("twitter"));		
 			}
 			if(request.getParameter("twitter") == null)
 			{
@@ -125,7 +125,7 @@ public class BlogNetwork extends HttpServlet {
 			{
 			String youtube = request.getParameter("youtube");	
 			session.setAttribute("youtube", youtube);
-			System.out.println(request.getParameter("youtube"));		
+//			System.out.println(request.getParameter("youtube"));		
 			}
 			if(request.getParameter("youtube") == null)
 			{
@@ -135,7 +135,7 @@ public class BlogNetwork extends HttpServlet {
 			{
 			String tumblr = request.getParameter("tumblr");	
 			session.setAttribute("tumblr", tumblr);
-			System.out.println(request.getParameter("tumblr"));		
+//			System.out.println(request.getParameter("tumblr"));		
 			}
 			if(request.getParameter("tumblr") == null)
 			{
@@ -145,7 +145,7 @@ public class BlogNetwork extends HttpServlet {
 			{
 			String entity = request.getParameter("entity");	
 			session.setAttribute("entity", entity);
-			System.out.println(request.getParameter("entity"));		
+//			System.out.println(request.getParameter("entity"));		
 			}
 			if(request.getParameter("entity") == null)
 			{
@@ -177,9 +177,9 @@ public class BlogNetwork extends HttpServlet {
 			if(request.getParameter("tracker")!=null )
 			{
 				String tracker = request.getParameter("tracker");
-				System.out.println(" before");
+//				System.out.println(" before");
 				session.setAttribute("tracker", tracker);	
-				System.out.println("Tracker Name for request" +tracker);
+//				System.out.println("Tracker Name for request" +tracker);
 							
 				//Saad's Code
 				String userName = (String) session.getAttribute("user");
@@ -189,7 +189,7 @@ public class BlogNetwork extends HttpServlet {
 					session.removeAttribute("bsName");
 				session.setAttribute("allSepSites", allSites);
 				//Ends here
-				System.out.println(" before cal");
+//				System.out.println(" before cal");
 				
 				
 				BlogNetworkUtil bg = new BlogNetworkUtil();
@@ -205,7 +205,7 @@ public class BlogNetwork extends HttpServlet {
 				session.setAttribute("datepicked", date);
 
 				//System.out.println("Filter Value"+filtervalue );
-				System.out.println("Date for Request "+date);
+				//System.out.println("Date for Request "+date);
 				// addition by adekunle blog network by date range
 				date = session.getAttribute("datepicked").toString();
 				String arr[] = date.split("-", 2);
@@ -242,7 +242,7 @@ public class BlogNetwork extends HttpServlet {
 				session.removeAttribute("bsName");
 			session.setAttribute("allSepSites", allSites);
 			//Ends here
-			System.out.println(" before cal");
+			//System.out.println(" before cal");
 			
 			BlogNetworkUtil bg = new BlogNetworkUtil();
 			HashMap<Integer,String> sn =bg.get_bn_sites(startdate, enddate, userName,tracker); //site id and names
@@ -519,8 +519,8 @@ public class BlogNetwork extends HttpServlet {
 			
 			session.setAttribute("nodes", nodes);
 			session.setAttribute("edges", edges);
-			System.out.println("print nodes"+nodes);
-			System.out.println("print edges"+edges);
+			//System.out.println("print nodes"+nodes);
+			//System.out.println("print edges"+edges);
 		}
 			
 			catch(Exception ex)
@@ -535,7 +535,7 @@ public class BlogNetwork extends HttpServlet {
 					try
 					{
 					String date = session.getAttribute("datepicked").toString();
-					System.out.println("Date for get " +session.getAttribute("datepicked"));	
+					//System.out.println("Date for get " +session.getAttribute("datepicked"));	
 					
 					
 					
@@ -575,7 +575,7 @@ public class BlogNetwork extends HttpServlet {
 					session.removeAttribute("bsName");
 				session.setAttribute("allSepSites", allSites);
 				//Ends here
-				System.out.println(" before cal");
+				//System.out.println(" before cal");
 				
 				BlogNetworkUtil bg = new BlogNetworkUtil();
 				HashMap<Integer,String> sn =bg.get_bn_sites(startdate, enddate, userName,tracker); //site id and names
@@ -850,8 +850,8 @@ public class BlogNetwork extends HttpServlet {
 				
 				session.setAttribute("nodes", nodes);
 				session.setAttribute("edges", edges);
-				System.out.println("print nodes"+nodes);
-				System.out.println("print edges"+edges);
+				//System.out.println("print nodes"+nodes);
+				//System.out.println("print edges"+edges);
 			}
 				
 				catch(Exception ex)

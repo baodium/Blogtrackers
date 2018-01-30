@@ -126,7 +126,7 @@ public class ExportJSON extends HttpServlet {
 		String d2 = aa.get(1);
 	    int recordsCount=exportJSONDialog.getCount(queryTracker,d1,d2);
 	    currentSession.setAttribute("records", recordsCount);
-		System.out.println(recordsCount);
+//		System.out.println(recordsCount);
 	}
 	
 	/**

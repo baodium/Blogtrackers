@@ -66,7 +66,7 @@ public class BlogSiteInfo extends UtilFunctions
 				DomainLink dm = new DomainLink(url,rank);
 				urllinks.add(dm);
 			}
-			System.out.println("Most links Done");
+//			System.out.println("Most links Done");
 			return urllinks;
 		} catch (SQLException ex) {
 			ex.printStackTrace();
@@ -151,7 +151,7 @@ public class BlogSiteInfo extends UtilFunctions
 				DataPoint dp = new DataPoint(days.get(key),daysmap.get(key),0,"","");
 				dps.add(dp);
 			}
-			System.out.println("Frequent Days Done");
+//			System.out.println("Frequent Days Done");
 			return dps;
 		} catch (SQLException ex) {
 			ex.printStackTrace();
@@ -163,7 +163,7 @@ public class BlogSiteInfo extends UtilFunctions
 	public static void main(String args[])
 	{
 		BlogSiteInfo info= new BlogSiteInfo();
-		System.out.println(info.getBlogLink(47));
+//		System.out.println(info.getBlogLink(47));
 
 
 	}
@@ -303,7 +303,7 @@ public class BlogSiteInfo extends UtilFunctions
 					}
 				}
 			}
-			System.out.println("avg months Done");
+//			System.out.println("avg months Done");
 			return dps;
 		} catch (SQLException ex) {
 			List<ChartPoint> dps= new ArrayList<ChartPoint>();
@@ -325,7 +325,7 @@ public class BlogSiteInfo extends UtilFunctions
 				DomainLink dm = new DomainLink(url,rank);
 				urllinks.add(dm);
 			}
-			System.out.println("Most Domains Done");
+//			System.out.println("Most Domains Done");
 			return urllinks;
 		} catch (SQLException ex) {
 			ex.printStackTrace();
@@ -376,7 +376,7 @@ public class BlogSiteInfo extends UtilFunctions
 				String edate = (i)+"-12-31";
 				//System.out.println(i + sdate + edate);
 				String query="SELECT sum(posemo) as pos, sum(anx) as anx, sum(anger) as ang, sum(sad) as sad FROM blogtrackers.liwc where blogpostid in ( select blogpost_id from blogposts where blogsite_id = "+siteID+") and date >= '"+sdate+"' and date<= '"+edate+"'";
-				System.out.println(query);
+//				System.out.println(query);
 				Statement stmt = conn.createStatement();
 				ResultSet rset = stmt.executeQuery(query);
 				while (rset.next())
@@ -393,7 +393,7 @@ public class BlogSiteInfo extends UtilFunctions
 
 			}
 			conn.close();
-			System.out.println("Senti Done");
+//			System.out.println("Senti Done");
 			return data;
 		}catch (Exception e) {
 			// TODO: handle exception

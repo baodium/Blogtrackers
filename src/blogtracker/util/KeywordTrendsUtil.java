@@ -257,7 +257,7 @@ public class KeywordTrendsUtil extends UtilFunctions{
 			Connection conn= getConn();
 			String queryStr = "select distinct entity from blogpost_entitysentiment where blogpost_id="+
 					id_list.get(i).get(0);	
-			System.out.println("oooo"+queryStr);
+//			System.out.println("oooo"+queryStr);
 			Statement st = conn.createStatement();
 			ResultSet rs = st.executeQuery(queryStr);
 			ArrayList<String> list = new ArrayList<String>();
@@ -307,7 +307,7 @@ public class KeywordTrendsUtil extends UtilFunctions{
 		            }
 		        } );
 		        for(Map.Entry<String, Integer> entry:list1){
-		            System.out.println(entry.getKey()+" ==== "+entry.getValue());
+//		            System.out.println(entry.getKey()+" ==== "+entry.getValue());
 		            kn1.netlist.put(entry.getKey(), entry.getValue());
 		        }
 		        //ends here top5%

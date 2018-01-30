@@ -111,7 +111,7 @@
 							data : title
 						}, function(data) {
 							var dataa = '${blogTitlePost}';
-							console.log("Dataaa" + dataa);
+							//console.log("Dataaa" + dataa);
 							location.reload();
 						});
 					}
@@ -138,7 +138,7 @@
 								var $row = $(this).closest("tr"), $tds = $row
 										.find("td:nth-child(2)");
 								$.each($tds, function() {
-									console.log($(this).text());
+									//console.log($(this).text());
 									$('#blogpost').text($(this).text());
 								});
 							});
@@ -310,7 +310,7 @@ $('#destroy').click(
 			data:{datepicked:datepicked,is_request:true},
 	        success: function(response)
 	        {	
-	        	 console.log(response);
+	        	 //console.log(response);
 	        	$("#body-result").html(response);
 	        }
 	    });

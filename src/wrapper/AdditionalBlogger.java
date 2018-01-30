@@ -78,7 +78,7 @@ public class AdditionalBlogger extends HttpServlet {
 			session.setAttribute("bloggerSentiments", bloggerSentiments);
 			session.setAttribute("bloggerLinks", bloggerLinks);
 			session.setAttribute("bloggerDomains", bloggerDomains);
-			System.out.println(bloggerDetails);
+//			System.out.println(bloggerDetails);
 		}
 		response.setContentType("text/html");
 		response.sendRedirect("additional_blogger_info.jsp");

@@ -378,7 +378,7 @@ public class Dashboard extends UtilFunctions
 			
 		    
 			queryStr ="select blogsite_id, blogpost_id,blogger, post from blogtrackers.blogposts where " + query ;
-			System.out.println(" "+queryStr);
+//			System.out.println(" "+queryStr);
 		    rs = st.executeQuery(queryStr);
 		    while(rs.next())
 		    {

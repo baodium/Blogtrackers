@@ -83,8 +83,8 @@ public class Sentiments extends HttpServlet {
 
 		}
 		else{
-			System.out.println(" post"+request.getParameter("aggr_norm"));
-			System.out.println(" post"+session.getAttribute("radio"));
+//			System.out.println(" post"+request.getParameter("aggr_norm"));
+//			System.out.println(" post"+session.getAttribute("radio"));
 			if(request.getParameter("tracker")!=null)
 			{
 				String tracker = request.getParameter("tracker");
@@ -110,7 +110,7 @@ public class Sentiments extends HttpServlet {
 				String userName = (String) session.getAttribute("user");
 				try {		
 					//session.setAttribute("datepicked", request.getParameter("datepicked"));
-					System.out.println(" inside main");
+//					System.out.println(" inside main");
 					String date =session.getAttribute("datepicked").toString();
 					String arr[] = date.split("-", 2);
 					String sdate1 = arr[0];   
@@ -446,7 +446,7 @@ public class Sentiments extends HttpServlet {
 			if(request.getParameter("xychange") != null)
 			{
 				
-				System.out.println(" inside xychange");
+//				System.out.println(" inside xychange");
 				String xyrec = request.getParameter("xychange");
 				String point[] = xyrec.split(",",2);
 				String x = point[0].replaceAll("x:", "");
@@ -516,7 +516,7 @@ public class Sentiments extends HttpServlet {
 							k.sort((o1, o2) -> o1.get(1).compareTo(o2.get(1)));
 							for(int g=0;g<k.size();g++)
 							{
-								System.out.println(" "+k.get(g).get(0)+" "+k.get(g).get(1));
+//								System.out.println(" "+k.get(g).get(0)+" "+k.get(g).get(1));
 							}
 							
 							titles=sr.get(i).titles;
@@ -583,18 +583,18 @@ public class Sentiments extends HttpServlet {
 					}
 					else if(session.getAttribute("radio")=="normalized" )
 					{
-						System.out.println(" inside normalized ");
+//						System.out.println(" inside normalized ");
 						ArrayList<ArrayList<Integer>> n_a_pos = (ArrayList<ArrayList<Integer>>) session.getAttribute("norm_aggr_pos");
 						ArrayList<ArrayList<Integer>> n_a_neg = (ArrayList<ArrayList<Integer>>) session.getAttribute("norm_aggr_neg");
 						
 						for(int i=0;i<sr.size(); i++)
 						{
-							System.out.println(" "+selecteddate+" "+sr.get(i).date);
+//							System.out.println(" "+selecteddate+" "+sr.get(i).date);
 							if(selecteddate.equals(sr.get(i).date)){
-								System.out.println(" pos "+n_a_pos.get(i).get(1)+" neg"+n_a_neg.get(i).get(1));
+//								System.out.println(" pos "+n_a_pos.get(i).get(1)+" neg"+n_a_neg.get(i).get(1));
 								if(sr.get(i).possenti.equals(n_a_pos.get(i).get(1)) ||sr.get(i).negsenti.equals(n_a_neg.get(i).get(1)))
 								{
-									System.out.println(" posss "+n_a_pos.get(i).get(1)+" negggg "+n_a_neg.get(i).get(1));
+//									System.out.println(" posss "+n_a_pos.get(i).get(1)+" negggg "+n_a_neg.get(i).get(1));
 								LinkedHashMap<String,ArrayList<Integer>> ls = sr.get(i).emo.get(sr.get(i).date);
 								ArrayList<ArrayList<Integer>> k = new ArrayList<ArrayList<Integer>>();
 								
@@ -619,7 +619,7 @@ public class Sentiments extends HttpServlet {
 										l.add(Integer.parseInt(entry.getKey()));
 										l.add(entry.getValue().get(25));
 										k.add(l);
-										System.out.println(" kk "+k.get(0).get(0)+" "+k.get(0).get(1));
+//										System.out.println(" kk "+k.get(0).get(0)+" "+k.get(0).get(1));
 									}
 								}
 								
@@ -628,7 +628,7 @@ public class Sentiments extends HttpServlet {
 								k.sort((o1, o2) -> o1.get(1).compareTo(o2.get(1)));
 								for(int g=0;g<k.size();g++)
 								{
-									System.out.println(" "+k.get(g).get(0)+" "+k.get(g).get(1));
+//									System.out.println(" "+k.get(g).get(0)+" "+k.get(g).get(1));
 								}
 								
 								titles=sr.get(i).titles;
@@ -696,8 +696,8 @@ public class Sentiments extends HttpServlet {
 					}
 					
 					session.setAttribute("names", names);
-					for(int i=0;i<names.size();i++)
-					System.out.println(" ddd"+names.get(i).get(0));
+					//for(int i=0;i<names.size();i++)
+					//System.out.println(" ddd"+names.get(i).get(0));
 					Sentiments_util s = new Sentiments_util();
 					String tracker = (String) session.getAttribute("tracker");
 					String userName = (String) session.getAttribute("user");
@@ -715,7 +715,7 @@ public class Sentiments extends HttpServlet {
 			}
 			if(request.getParameter("options")!=null && request.getParameter("options").equals("month") )
 			{
-				System.out.println(" inside spanmonth");
+//				System.out.println(" inside spanmonth");
 				if(session.getAttribute("datepicked")!=null && session.getAttribute("tracker")!=null){
 					String tracker = (String) session.getAttribute("tracker");
 					String userName = (String) session.getAttribute("user");
@@ -926,7 +926,7 @@ public class Sentiments extends HttpServlet {
 
 			if(request.getParameter("options")!=null && request.getParameter("options").equals("year"))
 			{
-				System.out.println(" inside span year");
+//				System.out.println(" inside span year");
 				if(session.getAttribute("datepicked")!=null && session.getAttribute("tracker")!=null){
 					String tracker = (String) session.getAttribute("tracker");
 					String userName = (String) session.getAttribute("user");
@@ -1137,7 +1137,7 @@ public class Sentiments extends HttpServlet {
 
 			if(request.getParameter("options")!=null && request.getParameter("options").equals("week"))
 			{
-				System.out.println(" inside span week");
+//				System.out.println(" inside span week");
 				if(session.getAttribute("datepicked")!=null && session.getAttribute("tracker")!=null){
 					String tracker = (String) session.getAttribute("tracker");
 					String userName = (String) session.getAttribute("user");
@@ -1347,7 +1347,7 @@ public class Sentiments extends HttpServlet {
 
 			if(request.getParameter("options")!=null && request.getParameter("options").equals("day"))
 			{
-				System.out.println(" inside span day");
+//				System.out.println(" inside span day");
 				if(session.getAttribute("datepicked")!=null && session.getAttribute("tracker")!=null){
 					String tracker = (String) session.getAttribute("tracker");
 					String userName = (String) session.getAttribute("user");
@@ -1560,9 +1560,9 @@ public class Sentiments extends HttpServlet {
 			
 			if(request.getParameter("aggr_norm")!=null && request.getParameter("aggr_norm").equals("aggregate")&&request.getParameter("go")==null)
 			{
-				System.out.println(" inside agg");
+//				System.out.println(" inside agg");
 				session.setAttribute("radio", "aggregate");
-				System.out.println("aggregate" );
+//				System.out.println("aggregate" );
 				if(st_spa.equals("year"))
 				{
 					
@@ -2031,7 +2031,7 @@ public class Sentiments extends HttpServlet {
 			else if(request.getParameter("aggr_norm")!=null && request.getParameter("aggr_norm").equals("normalized" )&& request.getParameter("go")==null)
 			{
 				
-					System.out.println("inside normalized" );
+//					System.out.println("inside normalized" );
 					session.setAttribute("radio","normalized");
 					DateFormat df = new SimpleDateFormat("yyyy-MM-dd"); 
 					Map<String, Object> config = new HashMap<String, Object>();
@@ -2071,7 +2071,7 @@ public class Sentiments extends HttpServlet {
 							td.add(Integer.parseInt(sr.get(i).possenti.toString()));
 							norm_aggr_pos.add(td);
 							i++;
-							System.out.println("ll "+Integer.parseInt(sr.get(i).possenti.toString())/sr.get(i).titles.size());
+//							System.out.println("ll "+Integer.parseInt(sr.get(i).possenti.toString())/sr.get(i).titles.size());
 							} catch (ParseException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
@@ -2142,7 +2142,7 @@ public class Sentiments extends HttpServlet {
 						ArrayList<ArrayList<Integer>> norm_aggr_pos =new ArrayList<ArrayList<Integer>>();  
 						ArrayList<ArrayList<Integer>> norm_aggr_neg =new ArrayList<ArrayList<Integer>>();
 
-						System.out.println(" inside month");
+//						System.out.println(" inside month");
 						Integer i = 0;
 						while(i<sr.size()) {
 							ArrayList<Integer> td = new ArrayList<Integer>();
@@ -2163,8 +2163,8 @@ public class Sentiments extends HttpServlet {
 							td.add(Integer.parseInt(sr.get(i).possenti.toString())/sr.get(i).titles.size());
 							td.add(Integer.parseInt(sr.get(i).possenti.toString()));
 							norm_aggr_pos.add(td);
-							System.out.println(" pos "+td.get(0)+" neg"+td.get(1));
-							System.out.println(" pos "+norm_aggr_pos.get(0).get(0)+" neg"+norm_aggr_pos.get(0).get(1));	
+//							System.out.println(" pos "+td.get(0)+" neg"+td.get(1));
+//							System.out.println(" pos "+norm_aggr_pos.get(0).get(0)+" neg"+norm_aggr_pos.get(0).get(1));	
 							i++;
 							} catch (ParseException e) {
 								// TODO Auto-generated catch block
@@ -2419,7 +2419,7 @@ public class Sentiments extends HttpServlet {
 			}
 			if(request.getParameter("go")!=null)
 			{
-				System.out.println(" inside go");
+//				System.out.println(" inside go");
 				if(session.getAttribute("datepicked")!=null && session.getAttribute("tracker")!=null
 						&& session.getAttribute("trendneg")!="" && session.getAttribute("trendpos")!="" && session.getAttribute("names")!=null){
 					String[] selectedpostid = request.getParameterValues("table_records");
@@ -2439,9 +2439,9 @@ public class Sentiments extends HttpServlet {
 					{
 						for(String item:names.get(i))
 						{
-						System.out.print(" loop        "+item );
+//						System.out.print(" loop        "+item );
 						}
-						System.out.println("");
+//						System.out.println("");
 					}
 					Map<String, Object> config = new HashMap<String, Object>();
 					//if you need pretty printing

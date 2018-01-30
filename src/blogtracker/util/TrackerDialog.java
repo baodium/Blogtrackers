@@ -62,8 +62,8 @@ public class TrackerDialog extends UtilFunctions{
 	rset.close();
 	stmt.close();
 	conn.close();
-	System.out.println(queryData);
-	System.out.println(username);
+//	System.out.println(queryData);
+//	System.out.println(username);
     return queryData;
     }
     catch(SQLException ex)
@@ -88,10 +88,10 @@ public class TrackerDialog extends UtilFunctions{
 			rset.close();
 			stmt.close();
 			conn.close();
-			System.out.println("I see This");
-			System.out.println(userName);
-			System.out.println(trackerName);
-			System.out.println(queryData);
+//			System.out.println("I see This");
+//			System.out.println(userName);
+//			System.out.println(trackerName);
+//			System.out.println(queryData);
 			return queryData;
 			
 			
@@ -112,7 +112,7 @@ public class TrackerDialog extends UtilFunctions{
 			{
 				String siteName = rset.getString("blogsite_name");
 				int siteID=rset.getInt("blogsite_id");
-				System.out.println(siteID + siteName);
+//				System.out.println(siteID + siteName);
 				BeanAllSites allSites= new BeanAllSites(siteName, siteID);
 				arrayList.add(allSites);
 			}

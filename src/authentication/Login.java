@@ -47,7 +47,7 @@ public class Login extends UtilFunctions{
 	{
 		if(isUserExists(iUserName))
 		{
-			System.out.println("duplicate user");
+//			System.out.println("duplicate user");
 
 		}
 		else
