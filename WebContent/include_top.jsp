@@ -131,10 +131,12 @@
 	</style>
 
 	<!-- Core JS files -->
+	
+	
 	<script type="text/javascript" src="assets/js/plugins/loaders/pace.min.js"></script>
-	<script type="text/javascript" src="assets/js/core/libraries/jquery.min.js"></script>
-	<script src="scripts/vendor.js"></script>
-	<script src="js/alchemy.js"></script>
+	 <script type="text/javascript" src="assets/js/core/libraries/jquery.min.js"></script> 
+	 	
+	
 	<script type="text/javascript" src="assets/js/core/libraries/bootstrap.min.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/loaders/blockui.min.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/ui/nicescroll.min.js"></script>
@@ -146,6 +148,7 @@
 <script type="text/javascript" src="assets/js/plugins/forms/validation/validate.min.js"></script>
 
 
+	
 <script type="text/javascript">
 $(window).load(function() {
 	$("#pageloader").addClass("hidden");
@@ -164,7 +167,7 @@ $(window).load(function() {
            var app_url ='${pageContext.request.contextPath}/'; 
       </script>
       
-      <script type="text/javascript" src="assets/js/pages/login_validation.js"></script>
+     <!--  <script type="text/javascript" src="assets/js/pages/login_validation.js"></script> -->
 	<!-- /theme JS files -->
 	       
 	       

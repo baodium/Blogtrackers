@@ -99,16 +99,7 @@
 								<div class="col-lg-12 col-md-12 col-sm-12" style="min-height:400px;">
 									<div class="alchemy" id="alchemy"></div>
 								</div>
-								<script type="text/javascript">
-
-									 alchemy.begin({
-												dataSource: "clusters.json",
-												nodeCaption: 'name',
-												nodeMouseOver: 'name',
-													 cluster: true,
-													 clusterColours: ["#1B9E77","#D95F02","#7570B3","#E7298A","#66A61E","#E6AB02"]})
-
-								 </script>
+								
 
 
 								</div>
