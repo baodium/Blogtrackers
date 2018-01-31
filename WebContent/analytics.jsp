@@ -520,6 +520,52 @@ function googleTranslateElementInit() {
 										</c:choose>
 					</div>
 					
+					
+					
+					<div class="col-md-4">
+					<c:choose>
+										<c:when test="${tracker != null}">
+											<a href="<%=request.getContextPath()%>/blog_clustering.jsp"> 
+										</c:when>
+										<c:when test="${tracker == null}">
+											<a href="<%=request.getContextPath()%>/blog_clustering.jsp.jsp"> 
+										</c:when>
+					</c:choose>
+						<div class="panel">
+							<div class="panel-body text-center">
+								<div class="icon-object border-success text-success"><i class="icon-share3"></i></div>
+								<h5 class="text-semibold">Blog Clustering</h5>
+								<p class="mb-15">Analyze Group of Network</p>
+								<c:choose>
+										<c:when test="${tracker != null}">
+											<a href="<%=request.getContextPath()%>/blog_clustering.jsp" class="btn bg-success legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Blog Clustering"> 
+										</c:when>
+										<c:when test="${tracker == null}">
+											<a href="<%=request.getContextPath()%>/blog_clustering.jsp" class="btn bg-success legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Blog Clustering"> 
+										</c:when>
+										</c:choose>
+								
+								View Blog Clusters
+								<c:choose>
+										<c:when test="${tracker != null}">
+				    	</a>
+				    	</c:when>
+				    		<c:when test="${tracker == null}">
+				    	</a>
+				    	</c:when>
+										</c:choose>
+							</div>
+						</div>
+						<c:choose>
+										<c:when test="${tracker != null}">
+				    	</a>
+				    	</c:when>
+				    		<c:when test="${tracker == null}">
+				    	</a>
+				    	</c:when>
+										</c:choose>
+					</div>
+					
 				</div>
 				<!-- /main charts -->
 
