@@ -78,7 +78,7 @@
 				<h4>
 					<a href="<%=request.getContextPath()%>/features.jsp"><i class="icon-home position-left"></i></a>
 					<span class="text-semibold">Home</span> 
-					<small class="display-block"><span>Welcome, </span><%=username %> <a href="trackerlist.jsp">Proceed to Tracker List</a>
+					<small class="display-block"><span>Welcome, </span><%=username %>. <a href="trackerlist.jsp">Proceed to Tracker List</a>
 				</h4>
 			</div>
 
@@ -210,10 +210,10 @@ function googleTranslateElementInit() {
 					<div class="col-md-4">
 						<div class="panel">
 							<div class="panel-body text-center">
-								<div class="icon-object border-warning text-warning"><i class="icon-info22"></i></div>
+								<div class="icon-object border-success text-success"><i class="icon-info22"></i></div>
 								<h5 class="text-semibold">Additional Blog Information</h5>
 								<p class="mb-15">Get Additional Blog Information</p>
-								<a href="#" class="btn bg-warning-400" data-toggle="modal" data-target="#additionalblog">Learn more</a>
+								<a href="#" class="btn bg-success-400" data-toggle="modal" data-target="#additionalblog">Learn more</a>
 							</div>
 						</div>
 					</div>
@@ -221,10 +221,10 @@ function googleTranslateElementInit() {
 					<div class="col-md-4">
 						<div class="panel">
 							<div class="panel-body text-center">
-								<div class="icon-object border-blue text-blue"><i class="icon-user"></i></div>
+								<div class="icon-object border-warning text-warning"><i class="icon-user"></i></div>
 								<h5 class="text-semibold">Additional Blogger Information</h5>
 								<p class="mb-15">Get Additional Blogger Information</p>
-								<a href="#" class="btn bg-blue" data-toggle="modal" data-target="#additionalblogger">Learn more</a>
+								<a href="#" class="btn bg-warning" data-toggle="modal" data-target="#additionalblogger">Learn more</a>
 							</div>
 						</div>
 					</div>
@@ -232,10 +232,10 @@ function googleTranslateElementInit() {
 						<div class="col-md-4">
 						<div class="panel">
 							<div class="panel-body text-center">
-								<div class="icon-object border-success text-success"><i class="icon-share3"></i></div>
+								<div class="icon-object border-blue text-blue"><i class="icon-share3"></i></div>
 								<h5 class="text-semibold">Blog Network</h5>
 								<p class="mb-15">Analyze network trend</p>
-								<a href="#" class="btn bg-success-400" data-toggle="modal" data-target="#blognetwork">Learn more</a>
+								<a href="#" class="btn bg-blue-400" data-toggle="modal" data-target="#blognetwork">Learn more</a>
 							</div>
 						</div>
 					</div>
@@ -501,9 +501,7 @@ mentioned in blogs during that time-period. </p>
 								
 
 								<h6 class="text-semibold">About Dashboard</h6>
-								<p>It gives the overview of the selected tracker. It displays the number of
-blogs, bloggers, blog posts, total positive and negative sentiments. It also displays
-blog sites' hosting location and language distribution.</p>
+								<p>The dashboard provides an overview of the selected tracker. It displays the number of blogs, bloggers, blog posts, total positive and negative sentiments. It also shows blog sites' hosting location and language distribution.</p>
 									</div>
 
 							<div class="modal-footer">
@@ -525,7 +523,7 @@ blog sites' hosting location and language distribution.</p>
 								
 
 								<h6 class="text-semibold">About Additional Blog Information</h6>
-								<p>It provides additional information about a blog. It gives a dayof-the-week
+								<p>This feature provides more in depth-details about the blog. It gives a between day and of
 average trend of a blog that helps in determining if the blog is a professional blog or a hobby blog. Also provided are monthly posting trend and
 sentiments for the past three years to determine the variation in activity and emotions.
 A list of URLs and domains mentioned in the blog is provided to know the source of
@@ -552,7 +550,7 @@ information.</p>
 								
 
 								<h6 class="text-semibold">About Additional Blogger Information</h6>
-								<p>It provides additional information about a blogger. It gives a dayof-the-week
+								<p>This feature provides more in depth-details about the blogger. It gives a between day and of
 average trend of a blogger that helps in determining if the blogger is a professional. Also provided are monthly posting trend and
 sentiments for the past three years to determine the variation in activity and emotions.
 A list of URLs and domains mentioned in the blog is provided to know the source of

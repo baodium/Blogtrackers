@@ -182,7 +182,7 @@ function googleTranslateElementInit() {
 							<div class="panel-body text-center">
 								<div class="icon-object border-warning text-warning"><i class="icon-comment"></i></div>
 								<h5 class="text-semibold">Posting Frequency</h5>
-								<p class="mb-15">Analyse the Posting Frequency of the Bloggers </p>
+								<p class="mb-15">Analyze the Posting Frequency of the Bloggers </p>
 								<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/PostingFrequency?tracker=${tracker}" class="btn bg-warning-400 legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Posting Frequency">
@@ -315,7 +315,7 @@ function googleTranslateElementInit() {
 							<div class="panel-body text-center">
 								<div class="icon-object border-warning text-warning"><i class="icon-split"></i></div>
 								<h5 class="text-semibold">Influence</h5>
-								<p class="mb-15">Analyse the Influence of Bloggers from Blogposts</p>
+								<p class="mb-15">Analyze the Influence of Bloggers from Blogposts</p>
 								<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/InfluenceServlet?tracker=${tracker}" class="btn bg-warning-400 legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Influence"> 

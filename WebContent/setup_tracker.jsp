@@ -128,9 +128,9 @@
 										
 							<div class="input-group content-group">
 								<div class="has-feedback has-feedback-left">
-									<input type="text" class="form-control input-xlg" id="keyword" onchange="reset_tracker();" required placeholder="Blog keyword">
+									<input type="text" class="form-control input-xlg" id="keyword" onchange="reset_tracker();" required placeholder="Enter a blog search keyword">
 									<div class="form-control-feedback">
-										<i class="icon-search4 text-muted text-size-base"></i>
+										<!-- <i class="icon-search4 text-muted text-size-base"></i> -->
 									</div>
 								</div>
 

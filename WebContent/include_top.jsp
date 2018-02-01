@@ -250,7 +250,7 @@ $(window).load(function() {
 					<ul class="dropdown-menu dropdown-menu-right">
 						<li><a href="<%=request.getContextPath()%>/profile"><i class="icon-user-plus"></i> My profile</a></li>
 						<li class="divider"></li>
-						<li><a target="_blank" onclick="alert('We are still working on the section')"><i class="icon-paperplane spinner"></i>Upgrade Plans</a></li>
+			<!-- 			<li><a target="_blank" onclick="alert('We are still working on the section')"><i class="icon-paperplane spinner"></i>Upgrade Plan</a></li> -->
 						<li><a href="<%=request.getContextPath()%>/features.jsp"><i class="icon-cog5"></i> Features</a></li>
 						<li><a href="<%=request.getContextPath()%>/help.jsp"><i class="icon-help"></i> Help</a></li>
 						<li><a href="<%=request.getContextPath()%>/logout"><i class="icon-switch2"></i> Logout</a></li>			
