@@ -73,9 +73,9 @@
 		<div class="page-header-content">
 			<div class="page-title">
 				<h4>
-					<i class="icon-arrow-left52 position-left"></i>
+					<a href="<%=request.getContextPath()%>/features.jsp"><i class="icon-arrow-left52 position-left"></i></a>
 					<span class="text-semibold">Help</span>
-					<small class="display-block"><span>How can we help? </span><%=username %>
+					<small class="display-block"><span>How can we help </span><%=username %>?
 				</h4>
 			</div>
 
@@ -108,7 +108,7 @@ function googleTranslateElementInit() {
 				<div class="panel panel-flat">
 					<div class="panel-body" style="font-size: 14px">
 								<h6 class="text-semibold">About Blogtrackers</h6>
-								<p class="content-group">Blogtrackers, a tool for tracking and analyzing blog activity. Built to review user behavior in the blogosphere, after a careful study of social scientists' requirement. These are some of the most frequently asked questions about blogging and publishing content online. For people starting out, there are so many new things to do and be aware of, that it’s difficult to get it right first time around. This is why asking questions, looking for examples and learning from people who have been there and done that makes sense at this stage.</p>
+								<p class="content-group">Blogtrackers, a tool for tracking and analyzing blog activity. Built to review user behavior in the blogosphere, after a careful study of social scientists' requirement. These are some of the most frequently asked questions about blogging and publishing content online. For people starting out, there are so many new things to do and be aware of, that it's difficult to get it right first time around. This is why asking questions, looking for examples and learning from people who have been there and done that makes sense at this stage.</p>
 
 								<h6 class="text-semibold">Frequently Asked Questions</h6>
 								<p class="content-group-lg"></p>

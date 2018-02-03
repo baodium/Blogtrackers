@@ -79,6 +79,8 @@
 
 <script type="text/javascript" src="dist/vis.js"></script>
     <link href="dist/vis-network.min.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="styles/vendor.css"/>
+	<link rel="stylesheet" href="assets/css/alchemy.css"/>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
 	<link href="assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
@@ -129,8 +131,12 @@
 	</style>
 
 	<!-- Core JS files -->
+	
+	
 	<script type="text/javascript" src="assets/js/plugins/loaders/pace.min.js"></script>
-	<script type="text/javascript" src="assets/js/core/libraries/jquery.min.js"></script>
+	 <script type="text/javascript" src="assets/js/core/libraries/jquery.min.js"></script> 
+	 	
+	
 	<script type="text/javascript" src="assets/js/core/libraries/bootstrap.min.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/loaders/blockui.min.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/ui/nicescroll.min.js"></script>
@@ -142,6 +148,7 @@
 <script type="text/javascript" src="assets/js/plugins/forms/validation/validate.min.js"></script>
 
 
+	
 <script type="text/javascript">
 $(window).load(function() {
 	$("#pageloader").addClass("hidden");
@@ -160,7 +167,7 @@ $(window).load(function() {
            var app_url ='${pageContext.request.contextPath}/'; 
       </script>
       
-      <script type="text/javascript" src="assets/js/pages/login_validation.js"></script>
+     <!--  <script type="text/javascript" src="assets/js/pages/login_validation.js"></script> -->
 	<!-- /theme JS files -->
 	       
 	       
@@ -243,7 +250,7 @@ $(window).load(function() {
 					<ul class="dropdown-menu dropdown-menu-right">
 						<li><a href="<%=request.getContextPath()%>/profile"><i class="icon-user-plus"></i> My profile</a></li>
 						<li class="divider"></li>
-						<li><a target="_blank" onclick="alert('We are still working on the section')"><i class="icon-paperplane spinner"></i>Upgrade Plans</a></li>
+			<!-- 			<li><a target="_blank" onclick="alert('We are still working on the section')"><i class="icon-paperplane spinner"></i>Upgrade Plan</a></li> -->
 						<li><a href="<%=request.getContextPath()%>/features.jsp"><i class="icon-cog5"></i> Features</a></li>
 						<li><a href="<%=request.getContextPath()%>/help.jsp"><i class="icon-help"></i> Help</a></li>
 						<li><a href="<%=request.getContextPath()%>/logout"><i class="icon-switch2"></i> Logout</a></li>			
