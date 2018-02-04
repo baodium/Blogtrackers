@@ -118,9 +118,9 @@ public class InfluenceServlet extends HttpServlet {
 			}
 		}
 
-		else if(request.getParameter("infl_option")!=null){
-			String scale=request.getParameter("infl_option");
-			System.out.println(request.getParameter("infl_option"));
+		else if(request.getParameter("options")!=null){
+			String scale=request.getParameter("options");
+//			System.out.println(request.getParameter("infl_options"));
 
 			session.setAttribute("inflCalScale", scale);
 			if(session.getAttribute("datepicked")!=null && session.getAttribute("tracker")!=null){
@@ -166,7 +166,7 @@ public class InfluenceServlet extends HttpServlet {
 
 		else if (request.getParameter("inflPost")!=null){
 			String incomingName = request.getParameter("inflPost");
-			System.out.println("onClick -"+incomingName);
+//			System.out.println("onClick -"+incomingName);
 			String type=(String) session.getAttribute("inflCalScale");
 			String extractedDate=incomingName.substring(0, 15);
 			String bloggerName=incomingName.substring(incomingName.lastIndexOf(')') + 2, incomingName.length());
@@ -215,7 +215,7 @@ public class InfluenceServlet extends HttpServlet {
 			String d2 = aa.get(1);
 
 			ArrayList<BeanTopKeywords> scatWordList=iflDialog.getTopKeywords(bloggerName,selectedSites,d1,d2); 
-			System.out.println(scatWordList);
+//			System.out.println(scatWordList);
 			session.setAttribute("scatWordList", scatWordList);
 		}
 
@@ -236,7 +236,7 @@ public class InfluenceServlet extends HttpServlet {
 		getInfluentialBlogPosts inflBlogPost= new getInfluentialBlogPosts();
 
 		try {
-			System.out.println(curScale);
+//			System.out.println(curScale);
 
 			Common common= new Common();
 			List<String> aa=common.returnDates(datePicked);
@@ -253,7 +253,7 @@ public class InfluenceServlet extends HttpServlet {
 			List<InfluentialBlogger> inflBloggerScore = infBlogger.getinflbloggers(0.6, 0.7, 0.3, startdate, enddate, selectedSites);
 			int topScores=0;
 
-			//////
+			
 			int topBScore=0;
 			if(inflBloggerScore.size()>0){
 				if(inflBloggerScore.size()>0 && inflBloggerScore.size()<=5){

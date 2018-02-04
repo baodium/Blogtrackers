@@ -128,7 +128,7 @@ public class PostingFrequency extends HttpServlet {
 
 		else if(request.getParameter("options")!=null){
 			String scale=request.getParameter("options");
-			System.out.println(request.getParameter("options"));
+//			System.out.println(request.getParameter("options"));
 
 			session.setAttribute("calScale", scale);
 			if(session.getAttribute("datepicked")!=null && session.getAttribute("tracker")!=null){
@@ -179,8 +179,8 @@ public class PostingFrequency extends HttpServlet {
 			}
 
 			newEndDate = df1.format(c.getTime()); 	
-			System.out.println("start date"+newStartDate);
-			System.out.println("end date"+newEndDate);
+//			System.out.println("start date"+newStartDate);
+//			System.out.println("end date"+newEndDate);
 
 			String userName = (String) session.getAttribute("user");
 			String trackerName = (String) session.getAttribute("tracker");
@@ -211,11 +211,11 @@ public class PostingFrequency extends HttpServlet {
 	 * @param session
 	 */
 	public void getRequestedData(String calScale, String selectedSites, String datePicked, HttpSession currentSession) {
-		System.out.println(datePicked);
+//		System.out.println(datePicked);
 		List<String> aa=common.returnDates(datePicked);
 		String d1 = aa.get(0);
 		String d2 = aa.get(1);
-		System.out.println(d1+" "+d2);
+//		System.out.println(d1+" "+d2);
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd"); 
 		Date startdate = null;
 		Date enddate=null;

@@ -15,10 +15,7 @@
 %>
 
  <jsp:include page="include_top.jsp"></jsp:include>
-<% ArrayList mytrackers = new ArrayList();
-mytrackers = (ArrayList)session.getAttribute("trackers");
-int trackerSize = mytrackers.size();
-%>
+
 	<!-- Page header -->
 	<div class="page-header mb-20">
 		<div class="page-header-content">
@@ -68,7 +65,7 @@ function googleTranslateElementInit() {
 			<div class="content-wrapper">
 
 				<!-- Main charts -->
-				<div class="row">
+				<div class="row" id="mainrealcontainers">
 				<div class="col-md-12" >
 						<div class="panel panel-primary">
 							<div class="panel-heading">
@@ -88,9 +85,9 @@ function googleTranslateElementInit() {
 			                	</div>
 							</div>
 
-							<div class="panel-body" style="min-height: 800px;">
+							<div class="panel-body" style="min-height: 580px;">
 							<div class="col-md-12">
-	<div id="mynetwork" style="background-color:#ffffff; min-height: 780px;"></div>
+	<div id="mynetwork" style="background-color:#ffffff; min-height: 560px;"></div>
 <script type="text/javascript">
    /*   var nodes = [
         {id: 0, label: "0", group: 'source'},
@@ -160,13 +157,13 @@ function googleTranslateElementInit() {
  
    var nodes = [
  	
- 	<c:forEach items="${nodes}" var="l" >
+ 	<c:forEach items="${nodes}" var="l">
      {id: ${l[0]}, label: "${l[1]}", group: '${l[2]}'},
      </c:forEach>
  ];
  
  var edges = [
- 	<c:forEach items="${edges}" var="l" >
+ 	<c:forEach items="${edges}" var="l">
      {from: ${l[0]}, to: ${l[1]}, ${l[2]}},
      </c:forEach>
  ]  
@@ -193,7 +190,14 @@ function googleTranslateElementInit() {
         groups: {
             diamonds: {
                 color: {background:'red',border:'white'},
-                shape: 'diamond'
+                shape: 'icon',
+                icon: {
+                    face: 'FontAwesome',
+                    code: '\uf0ac',
+                    size: 50,
+                    color: 'red',
+                    background:'white'
+                } 	
             },
             dotsWithLabel: {
                 label: "I'm a dot!",
@@ -205,7 +209,7 @@ function googleTranslateElementInit() {
                 shape: 'icon',
                 icon: {
                     face: 'FontAwesome',
-                    code: '\uf0c0',
+                    code: '\uf007',
                     size: 50,
                     color: 'orange'
                 }
@@ -282,7 +286,138 @@ function googleTranslateElementInit() {
 
 </script>
 </div>
-							<div style="position: absolute;  top:20px; display:none;" class="col-lg-3 col-md-3 col-sm-12 col-xs-12 features-tab">
+<%
+String blog2blog="",blog2blogchecked="", blogtoblogger="",blogtobloggerchecked = "", blognetwork="", blognetworkchecked = "", socialmedia="",socialmediachecked="";
+String facebook="",facebookchecked="",twitter="",twitterchecked="", linkedin="", linkedinchecked="",tumblr="",tumblrchecked="",youtube="",youtubechecked="",entity="",entitychecked="";
+// initialization of blogtoblog
+if(session.getAttribute("blogtoblog") == null && session.getAttribute("blogtoblog") == "")
+{
+blog2blog = "";
+blog2blogchecked = "";
+blognetwork="";
+blognetworkchecked="";
+}
+else if(session.getAttribute("blogtoblog") != null && session.getAttribute("blogtoblog") != "")
+{
+blog2blog = "checked";
+blog2blogchecked = "checked='checked'";
+blognetwork="checked";
+blognetworkchecked="checked='checked'";
+}
+
+// inititalization of blogtoblogger
+if(session.getAttribute("blogtoblogger") == null && session.getAttribute("blogtoblogger") == "")
+{
+blogtoblogger = "";
+blogtobloggerchecked = "";
+blognetwork="";
+blognetworkchecked="";
+}
+else if(session.getAttribute("blogtoblogger") != null && session.getAttribute("blogtoblogger") != "")
+{
+blogtoblogger = "checked";
+blogtobloggerchecked = "checked='checked'";
+blognetwork="checked";
+blognetworkchecked="checked='checked'";
+}
+
+//initialization of facebook
+if(session.getAttribute("facebook") == null && session.getAttribute("facebook") == "")
+{
+facebook = "";
+facebookchecked = "";
+socialmedia="";
+socialmediachecked="";
+}
+else if(session.getAttribute("facebook") != null && session.getAttribute("facebook") != "")
+{
+facebook = "checked";
+facebookchecked = "checked='checked'";
+socialmedia="checked";
+socialmediachecked="checked='checked'";
+}
+
+
+//initialization of twitter
+if(session.getAttribute("twitter") == null && session.getAttribute("twitter") == "")
+{
+twitter = "";
+twitterchecked = "";
+socialmedia="";
+socialmediachecked="";
+}
+else if(session.getAttribute("twitter") != null && session.getAttribute("twitter") != "")
+{
+twitter = "checked";
+twitterchecked = "checked='checked'";
+socialmedia="checked";
+socialmediachecked="checked='checked'";
+}
+
+//initialization of linkedin
+if(session.getAttribute("linkedin") == null && session.getAttribute("linkedin") == "")
+{
+linkedin = "";
+linkedinchecked = "";
+socialmedia="";
+socialmediachecked="";
+}
+else if(session.getAttribute("linkedin") != null && session.getAttribute("linkedin") != "")
+{
+linkedin = "checked";
+linkedinchecked = "checked='checked'";
+socialmedia="checked";
+socialmediachecked="checked='checked'";
+}
+
+//initialization of youtube
+if(session.getAttribute("youtube") == null && session.getAttribute("youtube") == "")
+{
+youtube = "";
+youtubechecked = "";
+socialmedia="";
+socialmediachecked="";
+}
+else if(session.getAttribute("youtube") != null && session.getAttribute("youtube") != "")
+{
+youtube = "checked";
+youtubechecked = "checked='checked'";
+socialmedia="checked";
+socialmediachecked="checked='checked'";
+}
+
+//initialization of tumblr
+if(session.getAttribute("tumblr") == null && session.getAttribute("tumblr") == "")
+{
+tumblr = "";
+tumblrchecked = "";
+socialmedia="";
+socialmediachecked="";
+}
+else if(session.getAttribute("tumblr") != null && session.getAttribute("tumblr") != "")
+{
+tumblr = "checked";
+tumblrchecked = "checked='checked'";
+socialmedia="checked";
+socialmediachecked="checked='checked'";
+}
+
+//initialization of entity
+if(session.getAttribute("entity") == null && session.getAttribute("entity") == "")
+{
+entity = "";
+entitychecked = "";
+}
+else if(session.getAttribute("entity") != null && session.getAttribute("entity") != "")
+{
+entity = "checked";
+entitychecked = "checked='checked'";
+}
+
+
+
+%>					
+<div style="position: absolute;  top:20px; display:none;" class="col-lg-3 col-md-3 col-sm-12 col-xs-12 features-tab">
 		<div class="panel panel-default">
 							<div class="panel-heading">
 								<h6 class="panel-title">Features<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
@@ -297,57 +432,90 @@ function googleTranslateElementInit() {
 
 							<div class="panel-body">
 <form method="POST">
-<div class="checkbox">
-<label><div class="checker"><span class="">
-<input type="checkbox" value="blogtoblog" id="blogtoblog" class="styled"></span></div>
+<div class="checkbox checkgroup">
+<label>
+<div class="checker checkgroupindi"><span class="<%=blognetwork %>">
+<input type="checkbox" value="blognetwork" <%=blognetworkchecked %> id="blognetwork" class="styled"></span>
+</div>
+ Blog Network
+</label>
+</div>
+
+<div class="checkall">
+<div class="checkbox checkboxcon">
+<label><div class="checker checkerindi"><span class="<%=blog2blog %>">
+<input type="checkbox" value="blogtoblog" <%=blog2blogchecked %> id="blogtoblog" class="styled"></span></div>
 Blog - Blog
 </label>
-	</div>
- <div class="checkbox">
-<label><div class="checker"><span class="">
-<input type="checkbox" value="blogtoblogger" id="blogtoblogger" class="styled"></span></div>
+</div>
+ <div class="checkbox checkboxcon">
+<label><div class="checker checkerindi"><span class="<%=blogtoblogger %>">
+<input type="checkbox" <%=blogtobloggerchecked %> value="blogtoblogger" id="blogtoblogger" class="styled"></span></div>
 Blog - Blogger
 </label>
-	</div>
-<div>Social Media</div>	
-<div class="checkbox">
-<label><div class="checker"><span class="">
-<input type="checkbox" value="facebook" id="facebook" class="styled"></span></div>
+</div>
+</div>
+<hr/>
+<div class="checkbox checkgroup">
+<label>
+<div class="checker checkgroupindi"><span class="<%=socialmedia %>">
+<input type="checkbox" value="socialmedia" id="socialmedia" <%=socialmediachecked %> class="styled"></span>
+</div>
+ Social Media
+</label>
+</div>
+
+<div class="checkall">
+<div class="checkbox checkboxcon">
+<label><div class="checker checkerindi"><span class="<%=facebook %>">
+<input type="checkbox" value="facebook" <%=facebookchecked %> id="facebook" class="styled"></span></div>
 Facebook
 </label>
 	</div>
-<div class="checkbox">
-<label><div class="checker"><span class="">
-<input type="checkbox" value="linkedin" id="facebook" class="styled"></span></div>
+<div class="checkbox checkboxcon">
+<label><div class="checker checkerindi"><span class="<%=linkedin %>">
+<input type="checkbox" value="linkedin" <%=linkedinchecked %> id="linkedin" class="styled"></span></div>
 LinkedIn
 </label>
 	</div>
-<div class="checkbox">
-<label><div class="checker"><span class="">
-<input type="checkbox" value="twitter" id="twitter" class="styled"></span></div>
+<div class="checkbox checkboxcon">
+<label><div class="checker checkerindi"><span class="<%=twitter %>">
+<input type="checkbox" value="twitter" <%=twitterchecked %> id="twitter" class="styled"></span></div>
 Twitter
 </label>
 	</div>
-<div class="checkbox">
-<label><div class="checker"><span class="">
-<input type="checkbox" value="youtube" id="youtube" class="styled"></span></div>
+<div class="checkbox checkboxcon">
+<label><div class="checker checkerindi"><span class="<%=youtube %>">
+<input type="checkbox" value="youtube" <%=youtube %> id="youtube" class="styled"></span></div>
 Youtube
 </label>
 	</div>
-	<div class="checkbox">
-<label><div class="checker"><span class="">
-<input type="checkbox" value="tumblr" id="tumblr" class="styled"></span></div>
-tumblr
+	<div class="checkbox checkboxcon">
+<label><div class="checker checkerindi"><span class="<%=tumblr %>">
+<input type="checkbox" value="tumblr" <%=tumblrchecked %> id="tumblr" class="styled"></span></div>
+Tumblr
 </label>
-	</div>		
+	</div>
+	</div>	
+<hr />	
+<div class="checkbox checkboxcon">
+<label><div class="checker checkerindi"><span class="<%=entity %>">
+<input type="checkbox" value="entity" <%=entitychecked %> id="entity" class="styled"></span></div>
+Entity
+</label>
+	</div>
 </form>
 
 							</div>
 						</div>
 
 				</div>
+				
+				<div style="position:absolute; top:10px;" class="col-md-12 text-center">
+				<button class="btn btn-primary legitRipple" style="position:absolute; z-index:99; top:5px ; right:40px;" id="toggle-btn2"><i class="icon-screen-full"></i></button>
+				</div>
 
-								<!--<div><div id="cy" ></div></div>-->
+								
 
 
 

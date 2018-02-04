@@ -75,7 +75,7 @@ public class AdditionalInfoServlet extends HttpServlet {
 			String siteID = arr[0];   
 			String siteName = arr[1];
 			session.setAttribute("bsName", siteName);
-			System.out.println(Integer.parseInt(siteID));
+//			System.out.println(Integer.parseInt(siteID));
 
 			BlogSiteInfo siteInfo= new BlogSiteInfo();
 			String siteUrl=siteInfo.getBlogLink(Integer.parseInt(siteID));

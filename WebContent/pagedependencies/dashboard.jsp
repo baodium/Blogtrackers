@@ -984,7 +984,7 @@ function main(o, data) {
   initialize(root);
   accumulate(root);
   layout(root);
-  console.log(root);
+  //console.log(root);
   display(root);
 
   if (window.parent !== window) {
@@ -1151,7 +1151,7 @@ function main(o, data) {
 if (window.location.hash === "") {
     d3.json("countries.json", function(err, res) {
         if (!err) {
-            console.log(res);
+           // console.log(res);
             var data = d3.nest().key(function(d) { return d.region; }).key(function(d) { return d.subregion; }).entries(res);
             main({title: ""}, {key: "${tracker}", values: data});
         }

@@ -11,7 +11,7 @@
 	<script type="text/javascript" src="assets/js/plugins/forms/validation/validate.min.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/extensions/cookie.js"></script>
 
-	<script type="text/javascript" src="assets/js/core/app.js"></script>
+	
 	<script type="text/javascript" src="assets/js/pages/wizard_steps.js"></script>
 
 

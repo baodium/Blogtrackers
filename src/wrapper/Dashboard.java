@@ -83,7 +83,7 @@ public class Dashboard extends HttpServlet {
 		c.setTime(date);
 		c.add(Calendar.DATE, -7);
 		date.setTime(c.getTime().getTime());
-		System.out.println(dateFormat.format(date)); //2014/08/06 15:59:48
+//		System.out.println(dateFormat.format(date)); //2014/08/06 15:59:48
 		blogtracker.util.Dashboard d = new blogtracker.util.Dashboard(userName,tracker);
 
 		int nblogs = d.getnblogs(userName,tracker);     // number of blogs varied from last week
@@ -115,7 +115,7 @@ public class Dashboard extends HttpServlet {
 		nlocation = d.getnlocation(date,userName,tracker);
 		
 		int result=0;
-		System.out.println("size = "+nlocation.size());
+//		System.out.println("size = "+nlocation.size());
 		for(int i = 0; i < nlocation.size(); i++)
 		{
 
@@ -125,12 +125,12 @@ public class Dashboard extends HttpServlet {
 		for(int i = 0; i < nlocation.size(); i++)
 		{
 			int x = (int)((float)(Integer.parseInt(nlocation.get(i).get(0)))/(float)(result)*100);
-			System.out.println("  "+x);
+//			System.out.println("  "+x);
 			nlocation.get(i).set(0,Integer.toString(x));
-			System.out.println("  "+nlocation.get(i).get(1));			
+//			System.out.println("  "+nlocation.get(i).get(1));			
 			nlocation.get(i).set(1, nlocation.get(i).get(1).replaceAll(".*,",""));
-			System.out.println("  "+nlocation.get(i).get(0));
-			System.out.println("  "+nlocation.get(i).get(1));
+//			System.out.println("  "+nlocation.get(i).get(0));
+//			System.out.println("  "+nlocation.get(i).get(1));
 			ArrayList<String> s = new ArrayList<String>();   //country names
 			s.add(nlocation.get(i).get(0));
 			s.add(nlocation.get(i).get(1));
@@ -184,14 +184,14 @@ public class Dashboard extends HttpServlet {
 
 
 		session.setAttribute("data", finaldata);
-		System.out.println("fd "+finaldata);  
+//		System.out.println("fd "+finaldata);  
 		
 		for(int i = 0; i < nlocation.size()-1; i++)
 		{
                	
                 nlocation.get(i).get(0);
                 nlocation.get(i).set(1, nlocation.get(i).get(1).replaceAll(".*,",""));
-                System.out.println("fd "+nlocation.get(i).get(1));
+//                System.out.println("fd "+nlocation.get(i).get(1));
   		} 
 		
 		ArrayList<ArrayList<String>> nlanguage = new ArrayList<ArrayList<String>>();
@@ -296,7 +296,7 @@ public class Dashboard extends HttpServlet {
 		for(int i=0;i<tree.size();i++)
 		{
 			
-			System.out.println(" "+tree.get(i).get(0)+" "+tree.get(i).get(1)+" "+tree.get(i).get(2)+" "+tree.get(i).get(3)+" ");
+//			System.out.println(" "+tree.get(i).get(0)+" "+tree.get(i).get(1)+" "+tree.get(i).get(2)+" "+tree.get(i).get(3)+" ");
 		}
 		session.setAttribute("tree", tree);
 		session.setAttribute("nlang", nl);
@@ -423,14 +423,14 @@ public class Dashboard extends HttpServlet {
 		}
 
 		session.setAttribute("data", finaldata);
-		System.out.println("fd "+finaldata);  
+//		System.out.println("fd "+finaldata);  
 		  
 		for(int i = 0; i < nlocation.size()-1; i++)
 		{
                	
                 nlocation.get(i).get(0);
                 nlocation.get(i).set(1, nlocation.get(i).get(1).replaceAll(".*,",""));
-                System.out.println("fs "+nlocation.get(i).get(1));
+//                System.out.println("fs "+nlocation.get(i).get(1));
   		}  
 		
 		ArrayList<ArrayList<String>> nlanguage = new ArrayList<ArrayList<String>>();
@@ -444,7 +444,7 @@ public class Dashboard extends HttpServlet {
 			nlg.add(t);
 		}
 		session.setAttribute("nlg", nlg);
-		System.out.println(" "+nlg.get(0).get(0)+" "+nlg.get(0).get(1));
+//		System.out.println(" "+nlg.get(0).get(0)+" "+nlg.get(0).get(1));
 		int sumlang=0;
 		ArrayList<String> nposts = new  ArrayList<String>();
 		for(int i=0; i<nlanguage.size();i++)
@@ -526,7 +526,7 @@ public class Dashboard extends HttpServlet {
 		for(int i=0;i<tree.size();i++)
 		{
 			
-			System.out.println("  "+tree.get(i).get(0)+" "+tree.get(i).get(1)+" "+tree.get(i).get(2)+" "+tree.get(i).get(3)+" ");
+//			System.out.println("  "+tree.get(i).get(0)+" "+tree.get(i).get(1)+" "+tree.get(i).get(2)+" "+tree.get(i).get(3)+" ");
 		}
 		session.setAttribute("tree", tree);
 		session.setAttribute("nlang", nl);

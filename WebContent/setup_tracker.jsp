@@ -128,9 +128,9 @@
 										
 							<div class="input-group content-group">
 								<div class="has-feedback has-feedback-left">
-									<input type="text" class="form-control input-xlg" id="keyword" onchange="reset_tracker();" required placeholder="Blog keyword">
+									<input type="text" class="form-control input-xlg" id="keyword" onchange="reset_tracker();" required placeholder="Enter a blog search keyword">
 									<div class="form-control-feedback">
-										<i class="icon-search4 text-muted text-size-base"></i>
+										<!-- <i class="icon-search4 text-muted text-size-base"></i> -->
 									</div>
 								</div>
 
@@ -210,7 +210,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>Additional information:</label>
-	                                    <textarea name="additional-info" id="additional-info" required rows="5" cols="5" placeholder="If you want to add a short description for your tracker, do it here." class="form-control"></textarea>
+	                                    <textarea name="additional-info" id="additional-info" required rows="5" cols="5" placeholder="Please enter a description for this tracker" class="form-control"></textarea>
                                     </div>
 								</div>
 							</div>
@@ -293,12 +293,14 @@
 		if(ref=="#finish"){
 			if(tracker==""){
 				$("#tracker-name").focus();
+				alert("Enter a tracker Name")
 				return false;
 			}
 			
 			var more_info = $("#additional-info").val();
 			if(more_info==""){
 				$("#additional-info").focus();
+				alert("Enter Additional Information");
 				return false;
 			}
 

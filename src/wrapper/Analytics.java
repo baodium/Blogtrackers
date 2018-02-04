@@ -23,7 +23,9 @@ import javax.servlet.http.HttpSession;
 
 import org.json.JSONArray;
 
+import authentication.DBConnector;
 import blogtracker.util.CountryCodes;
+import blogtracker.util.TrackerDialog;
 /**
  * Servlet implementation class Analytics
  * @author Adekunle
@@ -62,10 +64,27 @@ public class Analytics extends HttpServlet {
 		
 		if(request.getParameter("tracker")!=null)
 		{
-			String[] trackerdetails = request.getParameter("tracker").split(",");
 			
-			session.setAttribute("edited_tracker",trackerdetails[1]);
+			String[] trackerdetails = request.getParameter("tracker").split(",");
+			if(trackerdetails.length > 1)
+			{
+//			System.out.println("Array more than one");
 			session.setAttribute("tracker", trackerdetails[0]);
+			session.setAttribute("edited_tracker",trackerdetails[1]);	
+//			System.out.println(trackerdetails[1]);
+			}
+			else
+			{
+			String trackername = request.getParameter("tracker");
+			String trackerid=null;
+			String username = session.getAttribute("username").toString();
+			// we need to get tracker id here
+			TrackerDialog TrackerInstance = new TrackerDialog();
+			trackerid = TrackerInstance.getTrackerIDByName(username, trackername);
+			session.setAttribute("tracker", trackername);
+			session.setAttribute("edited_tracker",trackerid);
+			}
+			
 		}
         response.setContentType("text/html");
 		response.sendRedirect("analytics.jsp");

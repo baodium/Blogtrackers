@@ -166,7 +166,7 @@ public class Tracker extends HttpServlet {
 						 	ArrayList hd = (ArrayList)tracker.get(0);
 							String que = hd.get(0).toString();
 							
-							System.out.println(que+" here");
+//							System.out.println(que+" here");
 							String[] qt = que.split(",");
 							for(int j=0; j<qt.length; j++) {
 								if(!qt[j].equals("blogsite_id in \\(\\)")) {
@@ -216,7 +216,7 @@ public class Tracker extends HttpServlet {
 							 String que = hd.get(1).toString();
 							 
 							 String tid = tracker.get(0).toString();
-							System.out.println(que);
+//							System.out.println(que);
 							String[] qt = que.split(",");
 							for(int j=0; j<qt.length; j++) {
 								if(!qt[j].equals("blogsite_id in \\(\\)")) {

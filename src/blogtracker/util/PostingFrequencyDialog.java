@@ -49,7 +49,7 @@ public class PostingFrequencyDialog extends UtilFunctions{
 	}
 	public ArrayList<BeanTopKeywords> getTopKeywords(String startDate,String endDate,String selectedSites)
 	{
-		System.out.println("ArrayList<BeanTopKeywords> getTopKeywords");
+//		System.out.println("ArrayList<BeanTopKeywords> getTopKeywords");
 		ArrayList<BeanTopKeywords> keywords = new ArrayList<BeanTopKeywords>();
 		try {
 			Connection conn = getConn();
@@ -57,7 +57,7 @@ public class PostingFrequencyDialog extends UtilFunctions{
 			String queryStr="select term,frequency from blogtrackers.terms where blogsiteid in "+ selectedSites +" and date >= '"+startDate+"' AND date <= '"+endDate+"' group by term order by frequency desc limit 40;";
 			Statement stmt = conn.createStatement();
 			ResultSet rset = stmt.executeQuery(queryStr);
-			System.out.println("Query Eexecuted");
+//			System.out.println("Query Eexecuted");
 			while (rset.next())
 			{
 				String term = rset.getString("term");
@@ -78,13 +78,13 @@ public class PostingFrequencyDialog extends UtilFunctions{
 	public ArrayList<BeanBlogTitlePost> fillblogpost(String startDate,String endDate,String selectedSites)
 	{
 		try {
-			System.out.println("ArrayList<BeanBlogTitlePost> fillblogpost");
+//			System.out.println("ArrayList<BeanBlogTitlePost> fillblogpost");
 			String querystr = "select title,post from blogposts where "+selectedSites+" and date >= '"+startDate+"' AND date <= '"+endDate+"'";
 			Connection conn = getConn();
 			ArrayList<BeanBlogTitlePost> posts = new ArrayList<BeanBlogTitlePost>();
 			Statement stmt = conn.createStatement();
 			ResultSet rset = stmt.executeQuery(querystr);
-			System.out.println("Query Eexecuted");
+//			System.out.println("Query Eexecuted");
 			while(rset.next())
 			{   
 				String title = rset.getString("title");
@@ -123,7 +123,7 @@ public class PostingFrequencyDialog extends UtilFunctions{
 				int freq = rset.getInt("count");
 				float posSenti= rset.getFloat("PostiveTotal");
 				float negSenti= rset.getFloat("NegativeTotal");
-				System.out.println(negSenti +"  "+posSenti);
+//				System.out.println(negSenti +"  "+posSenti);
 				entities.add(new BeanTopEntities(entityName,type,freq,posSenti,negSenti));
 			}
 			rset.close();

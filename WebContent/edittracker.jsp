@@ -392,8 +392,8 @@ function googleTranslateElementInit() {
 						console.log(response);
 					$(that).find(".loading-bar").css({display:'none'});
                         $(that).find(".progress-bar").css({display: "block"});
-                        $(that).find(".progress-bar .initiated-text").html("The crawling for "+
-                           getLocation(JSON.parse(data).crawl_url).hostname+" is completed.");
+                        $(that).find(".progress-bar .initiated-text").html("The crawling has been initiated at  "+
+                           getLocation(JSON.parse(data).crawl_url).hostname+". We will notify you once it is completed.");
                     }).fail(function (jqXHR, textStatus) {
 						console.log(jqXHR);
                         console.log("Call failed: " + textStatus);

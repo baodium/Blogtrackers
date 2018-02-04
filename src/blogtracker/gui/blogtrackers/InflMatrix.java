@@ -122,7 +122,7 @@ public class InflMatrix extends UtilFunctions
 		for(int i=0;i<thresholdValue;i++)
 		{
 			infllist[i] = inflBloggerList[i].getBloggerName();
-			System.out.println("infl List"+inflBloggerList[i].getBloggerName()+""+inflBloggerList[i].getInfluenceScore());
+//			System.out.println("infl List"+inflBloggerList[i].getBloggerName()+""+inflBloggerList[i].getInfluenceScore());
 		}
 
 

@@ -148,7 +148,7 @@ function googleTranslateElementInit() {
 	                	</div>
 					</div>
 
-	                <div class="panel-body">
+	                <div data-intro="Update your personal information here" data-step="2" class="panel-body">
    
 	                	<form class="form-horizontal" action="<%=request.getContextPath()%>/profile" method="post" class="form-validate" >
 							<div class="form-group">
@@ -172,7 +172,7 @@ function googleTranslateElementInit() {
 			                                </div>
 
 			                                <div class="form-group">
-				                                <input type="tel" name="phone_number" class="form-control" placeholder="Phone Number" malength="12" value = "<%=userinfo.get(6)%>">
+				                                <input type="tel" name="phone_number" class="form-control" required="required" title="Invalid Phone Number" pattern="^[0-9\-\+\s\(\)]*$" placeholder="+15014196609" maxlength="14" value = "<%=userinfo.get(6)%>">
 			                                </div>
 										</div>
 									</div>
@@ -186,6 +186,7 @@ function googleTranslateElementInit() {
 										<div class="col-md-8">
 											<div class="form-group">
 				                                <input type="text" class="form-control" required="required" disabled name="username" placeholder="Username" value = "<%=userinfo.get(0)%>">
+				                                <small class="text-danger">Username cant be changed</small>
                                                                             <input type="hidden" class="form-control" required="required" name="username" placeholder="Username" value = "<%=userinfo.get(0)%>">
 			                                
                                                                                         </div>
@@ -222,7 +223,7 @@ function googleTranslateElementInit() {
 
 					</div>
 
-					<div class="col-lg-4">
+					<div data-intro="Update your profile picture" data-step="3" class="col-lg-4">
 
 						
 

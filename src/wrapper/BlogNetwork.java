@@ -59,7 +59,7 @@ public class BlogNetwork extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println(" post  on net");
+//		System.out.println(" post  on net");
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session= request.getSession();
 		
@@ -69,10 +69,87 @@ public class BlogNetwork extends HttpServlet {
 		}
 		else
 		{
-			System.out.println("  inside else before");
+			//System.out.println("  inside else before");
+			// conditions for filtering the blog network
 			if(request.getParameter("blogtoblog") != null)
 			{
-			System.out.println(request.getParameter("blogtoblog").toString());	
+			String blogtoblog = request.getParameter("blogtoblog");
+			session.setAttribute("blogtoblog", blogtoblog);
+//			System.out.println(request.getParameter("blogtoblog"));	
+			}
+			if(request.getParameter("blogtoblog") == null)
+			{
+			session.setAttribute("blogtoblog", "");	
+			}
+			if(request.getParameter("blogtoblogger") != null)
+			{
+			String blogtoblogger = request.getParameter("blogtoblogger");
+			session.setAttribute("blogtoblogger", blogtoblogger);	
+//			System.out.println(request.getParameter("blogtoblogger"));
+			}
+			if(request.getParameter("blogtoblogger") == null)
+			{
+			session.setAttribute("blogtoblogger", "");		
+			}
+			if(request.getParameter("facebook") != null)
+			{
+			String facebook = request.getParameter("facebook");	
+			session.setAttribute("facebook", facebook);
+//			System.out.println(request.getParameter("facebook"));	
+			}
+			if(request.getParameter("facebook") == null)
+			{
+			session.setAttribute("facebook","");	
+			}
+			if(request.getParameter("linkedin") != null)
+			{
+			String linkedin = request.getParameter("linkedin");	
+			session.setAttribute("linkedin", linkedin);
+//			System.out.println(request.getParameter("linkedin"));	
+			}
+			if(request.getParameter("linkedin") == null)
+			{
+			session.setAttribute("linkedin", "");	
+			}
+			if(request.getParameter("twitter") != null)
+			{
+			String twitter = request.getParameter("twitter");	
+			session.setAttribute("twitter", twitter);
+//			System.out.println(request.getParameter("twitter"));		
+			}
+			if(request.getParameter("twitter") == null)
+			{
+			session.setAttribute("twitter", "");		
+			}
+			if(request.getParameter("youtube") != null)
+			{
+			String youtube = request.getParameter("youtube");	
+			session.setAttribute("youtube", youtube);
+//			System.out.println(request.getParameter("youtube"));		
+			}
+			if(request.getParameter("youtube") == null)
+			{
+			session.setAttribute("youtube", "");		
+			}
+			if(request.getParameter("tumblr") != null)
+			{
+			String tumblr = request.getParameter("tumblr");	
+			session.setAttribute("tumblr", tumblr);
+//			System.out.println(request.getParameter("tumblr"));		
+			}
+			if(request.getParameter("tumblr") == null)
+			{
+			session.setAttribute("tumblr", "");		
+			}
+			if(request.getParameter("entity") != null)
+			{
+			String entity = request.getParameter("entity");	
+			session.setAttribute("entity", entity);
+//			System.out.println(request.getParameter("entity"));		
+			}
+			if(request.getParameter("entity") == null)
+			{
+			session.setAttribute("entity", "");		
 			}
 			// block of code for get parameter
 //				if(session.getAttribute("tracker") != null && request.getParameter("tracker")==null)
@@ -100,9 +177,9 @@ public class BlogNetwork extends HttpServlet {
 			if(request.getParameter("tracker")!=null )
 			{
 				String tracker = request.getParameter("tracker");
-				System.out.println(" before");
+//				System.out.println(" before");
 				session.setAttribute("tracker", tracker);	
-				System.out.println("Tracker Name for request" +tracker);
+//				System.out.println("Tracker Name for request" +tracker);
 							
 				//Saad's Code
 				String userName = (String) session.getAttribute("user");
@@ -112,7 +189,7 @@ public class BlogNetwork extends HttpServlet {
 					session.removeAttribute("bsName");
 				session.setAttribute("allSepSites", allSites);
 				//Ends here
-				System.out.println(" before cal");
+//				System.out.println(" before cal");
 				
 				
 				BlogNetworkUtil bg = new BlogNetworkUtil();
@@ -128,7 +205,7 @@ public class BlogNetwork extends HttpServlet {
 				session.setAttribute("datepicked", date);
 
 				//System.out.println("Filter Value"+filtervalue );
-				System.out.println("Date for Request "+date);
+				//System.out.println("Date for Request "+date);
 				// addition by adekunle blog network by date range
 				date = session.getAttribute("datepicked").toString();
 				String arr[] = date.split("-", 2);
@@ -165,7 +242,7 @@ public class BlogNetwork extends HttpServlet {
 				session.removeAttribute("bsName");
 			session.setAttribute("allSepSites", allSites);
 			//Ends here
-			System.out.println(" before cal");
+			//System.out.println(" before cal");
 			
 			BlogNetworkUtil bg = new BlogNetworkUtil();
 			HashMap<Integer,String> sn =bg.get_bn_sites(startdate, enddate, userName,tracker); //site id and names
@@ -176,6 +253,11 @@ public class BlogNetwork extends HttpServlet {
 			//creating blogger ids
 			ArrayList<ArrayList<String>> bid = new ArrayList<ArrayList<String>>();
 			int x=267;
+			// blogger name map
+			
+			//filter by blogger name
+			if(session.getAttribute("blogtoblogger") != null && session.getAttribute("blogtoblogger") != "")
+			{
 			for (Map.Entry<Integer,String> entry : bln.entrySet())
 			{
 				ArrayList<String> t = new ArrayList<String>();
@@ -185,6 +267,7 @@ public class BlogNetwork extends HttpServlet {
 				t.add(entry.getValue());  //blogger name
 				t.add("arrows:'to, from'");
 				bid.add(t);
+			}
 			}
 			
 			//creating media ids
@@ -243,7 +326,10 @@ public class BlogNetwork extends HttpServlet {
 				}
 				
 			}
-			
+			// control code for entities
+						// show entity if filter is on
+						if(session.getAttribute("entity") != null && session.getAttribute("entity") != "")
+						{
 			ArrayList<ArrayList<String>> entities = bg.get_bn_entity(startdate, enddate,userName,tracker);
 			for (int j=0;j<entities.size();j++)
 			{
@@ -255,7 +341,8 @@ public class BlogNetwork extends HttpServlet {
 				t.add("arrows:'from'");
 				en.add(t);
 			}
-		
+			}
+			// end of show entity filter
 			
 			
 			//creating nodes
@@ -268,7 +355,8 @@ public class BlogNetwork extends HttpServlet {
 				t.add("diamonds");
 				nodes.add(t);
 			}
-			
+			if(session.getAttribute("blogtoblogger") != null && session.getAttribute("blogtoblogger") != "")
+			{
 			for( int i=0;i<bid.size();i++)
 			{
 				ArrayList<String> t = new ArrayList<String>();
@@ -277,6 +365,10 @@ public class BlogNetwork extends HttpServlet {
 				t.add("icons");
 				nodes.add(t);
 			}
+			}	
+			// filter facebook
+			if(session.getAttribute("facebook") != null && session.getAttribute("facebook") != "")
+			{
 			for( int i=0;i<fb.size();i++)
 			{
 				ArrayList<String> t = new ArrayList<String>();
@@ -285,6 +377,11 @@ public class BlogNetwork extends HttpServlet {
 				t.add("facebook");
 				nodes.add(t);
 			}
+			}
+			// end of filter facebook
+			// start of filter twitter 
+			if(session.getAttribute("twitter") != null && session.getAttribute("twitter") != "")
+			{
 			for( int i=0;i<tw.size();i++)
 			{
 				ArrayList<String> t = new ArrayList<String>();
@@ -293,6 +390,12 @@ public class BlogNetwork extends HttpServlet {
 				t.add("twitter");
 				nodes.add(t);
 			}
+			}
+			// end of filter twitter
+			
+			// start of youtube filter
+			if(session.getAttribute("youtube") != null && session.getAttribute("youtube") != "")
+			{
 			for( int i=0;i<yt.size();i++)
 			{
 				ArrayList<String> t = new ArrayList<String>();
@@ -301,6 +404,11 @@ public class BlogNetwork extends HttpServlet {
 				t.add("youtube");
 				nodes.add(t);
 			}
+			}
+			// end of filter youtube
+			//start of filter linkedin
+			if(session.getAttribute("linkedin") != null && session.getAttribute("linkedin") != "")
+			{
 			for( int i=0;i<in.size();i++)
 			{
 				ArrayList<String> t = new ArrayList<String>();
@@ -309,6 +417,11 @@ public class BlogNetwork extends HttpServlet {
 				t.add("linkedin");
 				nodes.add(t);
 			}
+			}
+			// end of filter linkedin
+			// start of filter tumblr
+			if(session.getAttribute("tumblr") != null && session.getAttribute("tumblr") != "")
+			{
 			for( int i=0;i<tmb.size();i++)
 			{
 				ArrayList<String> t = new ArrayList<String>();
@@ -317,6 +430,8 @@ public class BlogNetwork extends HttpServlet {
 				t.add("tumblr");
 				nodes.add(t);
 			}
+			}
+			// end of filter tumblr
 			for( int i=0;i<en.size();i++)  //entity code for creating node
 			{
 				ArrayList<String> t = new ArrayList<String>();
@@ -404,8 +519,8 @@ public class BlogNetwork extends HttpServlet {
 			
 			session.setAttribute("nodes", nodes);
 			session.setAttribute("edges", edges);
-			System.out.println("print nodes"+nodes);
-			System.out.println("print edges"+edges);
+			//System.out.println("print nodes"+nodes);
+			//System.out.println("print edges"+edges);
 		}
 			
 			catch(Exception ex)
@@ -420,11 +535,10 @@ public class BlogNetwork extends HttpServlet {
 					try
 					{
 					String date = session.getAttribute("datepicked").toString();
-					System.out.println("Date for get"+session.getAttribute("datepicked"));	
-					//String filtervalue = request.getParameter("filtervalue");
-					//System.out.println("Filter " + filtervalue);
-					// addition by adekunle blognetwork search by date range
-//					PrintWriter pww = response.getWriter();
+					//System.out.println("Date for get " +session.getAttribute("datepicked"));	
+					
+					
+					
 					
 					date = session.getAttribute("datepicked").toString();
 					String arr[] = date.split("-", 2);
@@ -461,7 +575,7 @@ public class BlogNetwork extends HttpServlet {
 					session.removeAttribute("bsName");
 				session.setAttribute("allSepSites", allSites);
 				//Ends here
-				System.out.println(" before cal");
+				//System.out.println(" before cal");
 				
 				BlogNetworkUtil bg = new BlogNetworkUtil();
 				HashMap<Integer,String> sn =bg.get_bn_sites(startdate, enddate, userName,tracker); //site id and names
@@ -469,9 +583,13 @@ public class BlogNetwork extends HttpServlet {
 				int i=1;*/
 						
 				HashMap<Integer,String> bln =bg.get_bn_bloggers(userName,tracker); //site id and bloggers
+				
 				//creating blogger ids
 				ArrayList<ArrayList<String>> bid = new ArrayList<ArrayList<String>>();
 				int x=267;
+				// filter out the blog
+				if(session.getAttribute("blogtoblogger") != null && session.getAttribute("blogtoblogger") != "")
+				{
 				for (Map.Entry<Integer,String> entry : bln.entrySet())
 				{
 					ArrayList<String> t = new ArrayList<String>();
@@ -482,6 +600,8 @@ public class BlogNetwork extends HttpServlet {
 					t.add("arrows:'to, from'");
 					bid.add(t);
 				}
+				}
+				
 				
 				//creating media ids
 				HashMap<Integer,String> dn =bg.get_bn_medias(startdate, enddate,userName,tracker);  // site id and domain
@@ -540,6 +660,10 @@ public class BlogNetwork extends HttpServlet {
 					
 				}
 				
+				
+				// filter the entity node
+				if(session.getAttribute("entity") != null && session.getAttribute("entity") != "")
+				{
 				ArrayList<ArrayList<String>> entities = bg.get_bn_entity(startdate, enddate,userName,tracker);
 				for (int j=0;j<entities.size();j++)
 				{
@@ -551,9 +675,8 @@ public class BlogNetwork extends HttpServlet {
 					t.add("arrows:'from'");
 					en.add(t);
 				}
-			
-				
-				
+				}
+				// end of filter entity node
 				//creating nodes
 				ArrayList<ArrayList<String>> nodes = new ArrayList<ArrayList<String>>();
 				for (Map.Entry<Integer,String> entry : sn.entrySet())
@@ -565,6 +688,9 @@ public class BlogNetwork extends HttpServlet {
 					nodes.add(t);
 				}
 				
+				// filter for blogger
+				if(session.getAttribute("blogtoblogger") != null && session.getAttribute("blogtoblogger") != "")
+				{
 				for( int i=0;i<bid.size();i++)
 				{
 					ArrayList<String> t = new ArrayList<String>();
@@ -573,6 +699,12 @@ public class BlogNetwork extends HttpServlet {
 					t.add("icons");
 					nodes.add(t);
 				}
+				}
+				// end of filter for blogger
+				
+				// filter for facebook
+				if(session.getAttribute("facebook") != null && session.getAttribute("facebook") != "")
+				{
 				for( int i=0;i<fb.size();i++)
 				{
 					ArrayList<String> t = new ArrayList<String>();
@@ -581,6 +713,12 @@ public class BlogNetwork extends HttpServlet {
 					t.add("facebook");
 					nodes.add(t);
 				}
+				}
+				// end of filter facebook
+				
+				// filter for twitter
+				if(session.getAttribute("twitter") != null && session.getAttribute("twitter") != "")
+				{
 				for( int i=0;i<tw.size();i++)
 				{
 					ArrayList<String> t = new ArrayList<String>();
@@ -589,6 +727,10 @@ public class BlogNetwork extends HttpServlet {
 					t.add("twitter");
 					nodes.add(t);
 				}
+				}
+				// end of filter twitter
+				if(session.getAttribute("youtube") != null && session.getAttribute("youtube") != "")
+				{
 				for( int i=0;i<yt.size();i++)
 				{
 					ArrayList<String> t = new ArrayList<String>();
@@ -597,6 +739,9 @@ public class BlogNetwork extends HttpServlet {
 					t.add("youtube");
 					nodes.add(t);
 				}
+				}
+				if(session.getAttribute("linkedin") != null && session.getAttribute("linkedin") != "")
+				{
 				for( int i=0;i<in.size();i++)
 				{
 					ArrayList<String> t = new ArrayList<String>();
@@ -605,13 +750,17 @@ public class BlogNetwork extends HttpServlet {
 					t.add("linkedin");
 					nodes.add(t);
 				}
-				for( int i=0;i<tmb.size();i++)
+				}
+				if(session.getAttribute("tumblr") != null && session.getAttribute("tumblr") != "")
 				{
+				for( int i=0;i<tmb.size();i++)
+				{ 
 					ArrayList<String> t = new ArrayList<String>();
 					t.add(tmb.get(i).get(0));
 					t.add(tmb.get(i).get(2));
 					t.add("tumblr");
 					nodes.add(t);
+				}
 				}
 				for( int i=0;i<en.size();i++)  //entity code for creating node
 				{
@@ -701,8 +850,8 @@ public class BlogNetwork extends HttpServlet {
 				
 				session.setAttribute("nodes", nodes);
 				session.setAttribute("edges", edges);
-				System.out.println("print nodes"+nodes);
-				System.out.println("print edges"+edges);
+				//System.out.println("print nodes"+nodes);
+				//System.out.println("print edges"+edges);
 			}
 				
 				catch(Exception ex)

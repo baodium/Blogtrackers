@@ -416,7 +416,7 @@
 					          },
 							 select: function( event, ui ) {
 						        var blogger = ui.item.value;
-						        console.log(blogger);
+						        //console.log(blogger);
 						        $.ajax({
 						              url: app_url+'/AdditionalBlogger',
 						              method:'POST',
@@ -424,9 +424,9 @@
 						            	  blogger:blogger,get_detail:"true"
 						              },
 						              success: function( data ) {
-						            	  console.log(data);
+						            	  //console.log(data);
 						            	  var result= JSON.parse(data);
-						            	  console.log(result);
+						            	 // console.log(result);
 						            	  
 						            	  if(result.length>0){
 						            		  $("#blogger-name").html(result[0].author);

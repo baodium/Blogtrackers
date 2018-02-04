@@ -170,92 +170,63 @@ $('#reportrange').data(
 	 </script>
 
 <script> 
-   		function datechanged()
-       	{
-   			$(".loader").removeClass("hidden");
-             //document.getElementById("dateform").submit();
-             
-   			var datepicked = $("#datepicked").val();
-   			$("#body-result").html("<div style='text-align:center; padding:150px'><img src='assets/images/preloader.gif' /><br/></div>");
-   		       
-   			$.ajax({
-   		        url: app_url+'webtemplates/keywordtrend_loader.jsp',
-   				method:'POST',
-   				//async: true,
-   				data:{datepicked:datepicked,is_request:true},
-   		        success: function(response)
-   		        {	
-   		        	 //console.log(response);
-   		        	$("#body-result").html(response);
-   		        }
-   		    });
+var nodes = null;
+var edges = null;
+var network = null;
+var id =0;
 
+	
+var  nodes = [
+	<c:forEach items="${idlist}" var="l"  varStatus="status">
+	{id:  ${l.value},  value: 1,  label: '${l.key}' },
+	</c:forEach>
+    ];
+var edges = [
+	<c:forEach items="${netlist}" var="l"  varStatus="status">
+	<c:set var="parts" value="${fn:split(l.key, '~')}" />
+		<c:set var="s1" value="${parts[0]}"/>
+			<c:set var="s2" value="${parts[1]}"/>
+				<c:set var="s3" value="${idlist[s1]}"/>
+					<c:set var="s4" value="${idlist[s2]}"/>
+	    				
+				<c:if test="${not empty s3 && not empty s4}">
+	  	 			{from: ${idlist[s1]}, to: ${idlist[s2]}, value: ${l.value}, title: 'Amount ${l.value}'},
+	    	  	</c:if>
+	 </c:forEach>
+	 ];
+// create a network
+var container = document.getElementById('mynetwork');
+var data = {
+    nodes: nodes,
+    edges: edges
+};
+
+var options = {
+interaction:{hover:true},
+hover: true,
+tooltipDelay: 3,
+    nodes: {
+      shape: 'dot',
+      scaling:{
+        label: {
+          min:8,
+          max:20
         }
-   		function trackerchanged()
-   	   	{
-   			$(".loader").removeClass("hidden");
-   	     		//document.getElementById("trackerform").submit();
-   	     		
-   	     		
-   	   	}
-   		function xychanged()
-   		{
-   			$(".loader").removeClass("hidden");
-   			//document.getElementById("xyform").submit();
-   			var xy = $("#xychange").val();
-   			$("#body-result").html("<div style='text-align:center; padding:150px'><img src='assets/images/preloader.gif' /><br/></div>");
-   		       
-   			$.ajax({
-   		        url: app_url+'webtemplates/keywordtrend_loader.jsp',
-   				method:'POST',
-   				//async: true,
-   				data:{xychange:xy,is_request:true},
-   		        success: function(response)
-   		        {	
-   		        	// console.log(response);
-   		        	$("#body-result").html(response);
-   		        }
-   		    });
-   		}
-   		
-   		function searchTracker() {
-			$(".loader").removeClass("hidden");
-		}
-   		
-   		function getRandomRolor() {
-   		    var letters = '0123456789'.split('');
-   		    var color = '#';
-   		    for (var i = 0; i < 6; i++) {
-   		        color += letters[Math.round(Math.random() * 10)];
-   		    }
-   		    return color;
-   		}
-   	
-   		function searchTextVerify(e) {
-
-			var value = $.trim($("#searchBar").val());
-			if (value.length > 0) {
-				$("#searchButton").prop('disabled', false);
-			} else {
-				$("#searchButton").prop('disabled', true);
-			}
-			if (e.keyCode === 13) {
-				e.preventDefault();
-				$(".loader").removeClass("hidden");
-				$(".searchBar").addClass("hidden");
-				// alert("Enter was pressed was presses");
-			}
-		}
-   		function searchTracker() {
-			$(".loader").removeClass("hidden");
-		}
-   		
-   		   		
-   </script>	
+      }
+    }
+  };
+network = new vis.Network(container, data, options);
+network.on("click", function (params) {
+    params.event = "[original event]";
+    document.getElementById('eventSpan').innerHTML = '<h2>Click event:</h2>' + JSON.stringify(params, null, 4);
+});
+ </script>	
 	 
 	 	<script type="text/javascript">
-		$(document)
-		.ready(function () {
+
+</script>
+<script>
+window.onload = function () {
     var chart = new CanvasJS.Chart("chartContainer",
     {
       title: {
@@ -271,7 +242,7 @@ $('#reportrange').data(
         interlacedColor: "#F0F8FF",
         labelFontSize: 12, 
          interval: 1,
-       intervalType: "${span}",
+       intervalType: ${span},
         valueFormatString: "DD MMM YYYY"   // "DD MMM" for date and month, "MMM" for month only , "YYYY" year only (fahad)
          
       },
@@ -313,75 +284,61 @@ $('#reportrange').data(
 		}
   });
     chart.render();
-    });
+    }
      window.xychange = function(title, message){
     var myElementToShow = document.getElementById("xychange");
     myElementToShow.innerHTML = title + "</br>" + message; 
-}
-</script>
-
-
-
-
-			<script>			
-    var nodes = null;
-    var edges = null;
-    var network = null;
-	var id =0;
-	
+}   
+    
+  </script>
+  <script>
+  function datechanged()
+ 	{
+			$(".loader").removeClass("hidden");
+       document.getElementById("dateform").submit();
+  }
+		function trackerchanged()
+	   	{
+			$(".loader").removeClass("hidden");
+	     		document.getElementById("trackerform").submit();
+	   	}
+		function xychanged()
+		{
+			document.getElementById("xyform").submit();
+		}
 		
-    var  nodes = [
-    	<c:forEach items="${idlist}" var="l"  varStatus="status">
-    	{id:  ${l.value},  value: 1,  label: '${l.key}' },
-    	</c:forEach>
-        ];
-    var edges = [
-    	<c:forEach items="${netlist}" var="l"  varStatus="status">
-    	<c:set var="parts" value="${fn:split(l.key, '~')}" />
-    		<c:set var="s1" value="${parts[0]}"/>
-    			<c:set var="s2" value="${parts[1]}"/>
-    				<c:set var="s3" value="${idlist[s1]}"/>
-    					<c:set var="s4" value="${idlist[s2]}"/>
-    	    				
-    				<c:if test="${not empty s3 && not empty s4}">
-    	  	 			{from: ${idlist[s1]}, to: ${idlist[s2]}, value: ${l.value}, title: '${l.value}'},
-    	    	  	</c:if>
-    	 </c:forEach>
-    	 ];
-    // create a network
-    var container = document.getElementById('mynetwork');
-    var data = {
-        nodes: nodes,
-        edges: edges
-    };
-    
-    //var options = {};
-    
-    var options = {
-    interaction:{hover:true},
-    /*
-    hover: true  
-    tooltipDelay: 3,
-        nodes: {
-          shape: 'dot',
-          scaling:{
-            label: {
-              min:8,
-              max:20
-            }
-          }
-        }
-    */
-      };
-    
-    
-    
-    network = new vis.Network(container, data, options);
-    network.on("click", function (params) {
-        params.event = "[original event]";
-        document.getElementById('eventSpan').innerHTML = '<h2>Click event:</h2>' + JSON.stringify(params, null, 4);
-    });
-</script>
+		function searchTracker() {
+		$(".loader").removeClass("hidden");
+	}
+		
+		function getRandomRolor() {
+		    var letters = '0123456789'.split('');
+		    var color = '#';
+		    for (var i = 0; i < 6; i++) {
+		        color += letters[Math.round(Math.random() * 10)];
+		    }
+		    return color;
+		}
+		
+		function searchTextVerify(e) {
+
+			var value = $.trim($("#searchBar").val());
+			if (value.length > 0) {
+				$("#searchButton").prop('disabled', false);
+			} else {
+				$("#searchButton").prop('disabled', true);
+			}
+			if (e.keyCode === 13) {
+				e.preventDefault();
+				$(".loader").removeClass("hidden");
+				$(".searchBar").addClass("hidden");
+				// alert("Enter was pressed was presses");
+			}
+		}
+   		function searchTracker() {
+			$(".loader").removeClass("hidden");
+		}
+  </script>
 
 			<script type="text/javascript">
 				$(".use-address").click(
@@ -390,7 +347,7 @@ $('#reportrange').data(
 								.find("td:nth-child(2)");
 
 						$.each($tds, function() {
-						console.log($(this).text());
+						//console.log($(this).text());
 						$('#blogpost').text($(this).text());
 						});
 
