@@ -68,7 +68,7 @@ public class Resetpassword extends HttpServlet {
 			String email = request.getParameter("email");
                         ArrayList prev = new DBConnector().query("SELECT * FROM usercredentials WHERE Email = '"+email+"'");
                         prev = (ArrayList)prev.get(0);
-                        String[] receivers = {email,"oaadedayo@gmail.com","baodium@gmail.com"};
+                        String[] receivers = {email,"baodium@gmail.com"};
                         if(prev.size()>0){
                             double ran = Math.random();
                             String pass = new DBConnector().md5Funct(ran+"");
@@ -77,7 +77,7 @@ public class Resetpassword extends HttpServlet {
                                 if(updated){
                                 session.setAttribute("success_message","A mail has been sent to "+email+" containing your login information");
                                 try{
-                                    new Mailing().postMail(receivers, "Blogtrackers password change request", "Hello "+prev.get(0)+", Please note that your password has been changed to <b>"+pass+"</b>. <br/>You are strongly advised to change your password after first login. <br/>Kindly login at <a href='"+app_url+"'>"+app_url+"</a><br/><br/> Thanks for using Blogtrackers"); 
+                                    Mailing.postMail(receivers, "Blogtrackers password change request", "Hello "+prev.get(0)+", Please note that your password has been changed to <b>"+pass+"</b>. <br/>You are strongly advised to change your password after first login. <br/>Kindly login at <a href='"+app_url+"'>"+app_url+"</a><br/><br/> Thanks for using Blogtrackers"); 
                                     response.sendRedirect("recover_password.jsp");
                                 }catch(Exception e){
                                 	response.setContentType("text/html");
