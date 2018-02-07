@@ -658,7 +658,7 @@ content analysis and social network analysis.
                                     <div class="shop-label">-50%</div>
                                     <img src="assets/sponsor/nsf.jpg" alt="shop item" class="img-responsive center-block">
                                     <span class="shop-item-price">U.S. National Science
-Foundation</span>
+Foundation<br/><br/></span>
                                     
                                 </div>
                                 
@@ -669,7 +669,7 @@ Foundation</span>
                             <div class="shop-item-container-out">
                                 <div class="shop-item-container-in">
                                     <img src="assets/sponsor/oonr.jpg" alt="U.S. Office of Naval Research" class="img-responsive center-block">
-                                    <span class="shop-item-price">U.S. Office of Naval &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Research <br/></span> 
+                                    <span class="shop-item-price">U.S. Office of Naval &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Research <br/><br/></span> 
                                   
                                 </div>
 
@@ -707,7 +707,7 @@ Lab, U.S. Army Research Office</span>
                             <div class="shop-item-container-out">
                                 <div class="shop-item-container-in">
                                     <img src="assets/sponsor/aro.jpg" alt="U.S. Air Force Research" class="img-responsive center-block"><br/>
-                                    <span class="shop-item-price">U.S. Army Research Office</span>
+                                    <span class="shop-item-price">U.S. Army Research Office<br/></span>
                                     
                                 </div>
 
