@@ -210,7 +210,7 @@ $(window).load(function() {
 				<ul class="nav navbar-nav navbar-right">
 			<% if(username!=""){ %>
 			<li class="language-switch2" >
-				<button style="margin-top: -2px; text-transform:capitalize;" data-intro="Click here to create a new tracker" data-step="1" type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-plus2"></i></b> Setup a new tracker</button>
+				<button style="margin-top: 2px; text-transform:capitalize;" data-intro="Click here to create a new tracker" data-step="1" type="button" onclick="location.href='setup_tracker.jsp'" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple"><b><i class="icon-plus2"></i></b> Setup a new tracker</button>
 		        </li>
 			<li id="tourpage" class="language-switch2  hidden-md"><button style="border:2px solid #2196F3" type="button" href="javascript:void(0);" onclick="javascript:introJs().start();" class="btn btn-default legitRipple btn-labeled btn-rounded legitRipple" ><b><i class="icon-reading "></i></b> Tour Page</button></li>
 				<li style="display:none;" class="language-switch" data-intro="Select a tracker" data-step="1">
