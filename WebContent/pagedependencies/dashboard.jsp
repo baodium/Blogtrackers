@@ -14,10 +14,10 @@
 
 	<script type="text/javascript" src="assets/js/core/app.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/ui/ripple.min.js"></script>
-	<!--  <script
-					src="${pageContext.request.contextPath}/vendors/echarts/dist/echarts.min.js"></script>-->
+	  <script
+					src="${pageContext.request.contextPath}/vendors/echarts/dist/echarts.min.js"></script>
 				<script
-					src="${pageContext.request.contextPath}/vendors/echarts/map/js/world.js"></script>
+					src="${pageContext.request.contextPath}/vendors/echarts/map/js/world.js"></script> 
 	<script
 					src="${pageContext.request.contextPath}/vendors/fastclick/lib/fastclick.js"></script>
 				<!-- NProgress -->

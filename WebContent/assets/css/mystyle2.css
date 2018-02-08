@@ -552,7 +552,7 @@ background-color:#eeeded !important;
 {
 body
 {
-overflow-x:hidden;	
+overflow-x:hidden !important;	
 }	
 .page-container 
 {
