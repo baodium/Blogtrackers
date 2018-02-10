@@ -613,7 +613,7 @@ right:6% !important;
         {
         background:#eeeded !important;
         }
-        .node circle {
+       /*  .node circle {
   fill: #fff;
   stroke-width: 1.5px;
 }
@@ -627,4 +627,4 @@ svg text {
 .link {
   fill: none;
   stroke-width: 1px;
-}
+} */

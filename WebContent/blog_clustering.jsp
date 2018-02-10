@@ -23,7 +23,7 @@
 
  <jsp:include page="include_top.jsp"></jsp:include>
 
-
+<link rel="stylesheet" href="assets/css/alchemy.css"/>
 	<!-- Page header -->
 	<div class="page-header">
 		<div class="page-header-content">
