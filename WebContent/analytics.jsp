@@ -522,7 +522,7 @@ function googleTranslateElementInit() {
 					
 					
 					
-					<div class="col-md-4">
+					<!--  <div class="col-md-4">
 					<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/blog_clustering.jsp"> 
@@ -564,7 +564,7 @@ function googleTranslateElementInit() {
 				    	</a>
 				    	</c:when>
 										</c:choose>
-					</div>
+					</div> -->
 					
 				</div>
 				<!-- /main charts -->
