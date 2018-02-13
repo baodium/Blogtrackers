@@ -24,6 +24,8 @@ import java.util.regex.Pattern;
  */
 public class UtilFunctions
 {
+	
+	
     protected String getSelSitesQuery(ArrayList<Integer> selsites)
     {
         String selSitesQuery = "";
@@ -96,19 +98,12 @@ public class UtilFunctions
     {
         BufferedReader br = null;
         try {
-            //System.out.println(System.getProperty("user.dir"));
-            //C:\Users\BAODIUM\Documents\workspace_latest\workspace_latest\BT\src\authentication\blogtrackers.config
-        // ->deployment:
             br = new BufferedReader(new FileReader("C:/blogtrackers.config"));
-            //C:\Users\BAODIUM\Desktop\must read\OCAJP\Initial level\workspace_latest\workspace_latest\BT\src\authentication\blogtrackers.config
-        // -> localTesting    
-
-         //   br = new BufferedReader(new FileReader("C:/blogtrackers.config"));
+          
             String temp = "";
             while((temp = br.readLine())!=null)
             {
                 temp = temp.trim();
-                //System.out.println(temp);
                 if(temp.isEmpty()||temp.startsWith("//"))
                 {
                     continue;
@@ -116,19 +111,13 @@ public class UtilFunctions
                 else
                 {
                     String[] arr = temp.split("##");
-                    //System.out.println(arr[0]+" "+arr[1]);
                     if(arr.length==2)
                     {
                         hm.put(arr[0].trim(), arr[1].trim());
                     }
                 }
             }
-            //            if(hm.isEmpty())
-            //                return null;
-            //            else
-            //            {
-            //               return hm.get("dbConnection");
-            //            }
+          
         } catch (IOException ex) {
             Logger.getLogger(UtilFunctions.class.getName()).log(Level.SEVERE, null, ex);
         }finally {
@@ -138,7 +127,7 @@ public class UtilFunctions
                 Logger.getLogger(UtilFunctions.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        //        return null;
+     
     }
     protected String fixLinks(String post)
     {
@@ -150,7 +139,7 @@ public class UtilFunctions
             {
                 String posthalf1 = post.substring(0,end+1);
                 String posthalf2 = post.substring(end+1,post.length());
-                //System.out.println(posthalf);
+              
                 String  target = " target=\"_blank\" ";
                 post = posthalf1+target+posthalf2;
                 start = post.indexOf("<a href=\"",end);
@@ -169,30 +158,22 @@ public class UtilFunctions
                 start = post.indexOf("<img src=\"",end);
             }
         }
-        //System.out.println(post);
         return post;
     }
     protected Connection getConn()
     {
         try {
 
-           // loadConstants();//"jdbc:sqlserver://149.169.226.79:1433;instanceName=DMMLSERVER;databaseName=blogtrackers;SelectMethod=cursor;user=shamanth;password=shamanth123";//loadConstants();//"jdbc:sqlserver://localhost;instanceName=MSSQLSERVER;databaseName=blogtracker;user=test;password=test";
-            String constr = "jdbc:mysql://144.167.112.118:3306/blogtrackers?useSSL=false";//hm.get("dbConnection");
-            String username = "ukraine_super";//hm.get("dbUserName");
-            String password = "summer2014";//hm.get("dbPassword");
-//            System.out.println(username);
-/*
-            loadConstants();//"jdbc:sqlserver://149.169.226.79:1433;instanceName=DMMLSERVER;databaseName=blogtrackers;SelectMethod=cursor;user=shamanth;password=shamanth123";//loadConstants();//"jdbc:sqlserver://localhost;instanceName=MSSQLSERVER;databaseName=blogtracker;user=test;password=test";
+            loadConstants();
             String constr = hm.get("dbConnection");
             String username = hm.get("dbUserName");
             String password = hm.get("dbPassword");
-//            System.out.println(username);
-*/
+          
+
             if(constr!=null&&username!=null&&password!=null)
             {
                 try {
                     Class.forName("com.mysql.jdbc.Driver").newInstance();
-                    //                        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
                 } catch (InstantiationException ex) {
                     ex.printStackTrace();
                 } catch (IllegalAccessException ex) {
@@ -220,7 +201,7 @@ public class UtilFunctions
             {
                 post = rset.getString("post");
             }
-            //            System.out.println(post);
+            
             post = cleanpost(post);
             post = fixLinks(post);
             conn.close();
@@ -256,7 +237,7 @@ public class UtilFunctions
         {
             post = mstyle.replaceAll("");
         }
-        //System.out.println(post);
+
         return post;
     }
 }
