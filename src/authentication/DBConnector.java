@@ -26,6 +26,7 @@ public class DBConnector extends UtilFunctions {
 	public String current_user_type;
 	
 	public  DBConnector(){
+		Connection	con = getConn();
 	}
 	
 	public ArrayList query(String query){

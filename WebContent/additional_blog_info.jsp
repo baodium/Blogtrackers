@@ -11,6 +11,10 @@
 		response.sendRedirect("index.jsp");
 	}
         ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
+        if(session.getAttribute("tracker") == null || session.getAttribute("tracker") =="")
+        { 
+       		response.sendRedirect("trackerlist.jsp");
+        }
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -64,7 +68,7 @@
 				<!-- Main charts -->
 				<div class="row">
 				<div class="col-md-12">
-						<div class="panel panel-primary">
+						<div data-intro="Select a Blog Site to view the Additional Information" data-step="2" class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Blog Site Information <a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -148,7 +152,7 @@
 					</div>
 					</div>
 				<div class="col-md-6 col-sm-12 col-xs-12">
-						<div class="panel panel-primary">
+						<div data-intro="Shows the daily posting average of the blog" data-step="3" class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Daily Average<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -174,7 +178,7 @@
 					
 					
 					<div class="col-md-6 col-sm-12 col-xs-12">
-						<div class="panel panel-primary">
+						<div data-intro="Shows the monthly posting average of the blog" data-step="4" class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Monthly Average<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -208,7 +212,7 @@
 			      
 			      
 			      <div class="col-md-12 col-sm-12 col-xs-12">
-						<div class="panel panel-primary">
+						<div data-intro="Shows the average sentiment of the blog" data-step="5" class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Average sentiments<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
@@ -249,7 +253,7 @@
 					
 					
 						<div class="col-md-6 col-sm-12 col-xs-12">
-						<div class="panel panel-primary">
+						<div data-intro="Shows the list of domains in the blog" data-step="6" class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">List of Domains<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">

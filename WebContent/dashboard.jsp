@@ -98,6 +98,10 @@ else
      ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
     String tracker_id = (null == session.getAttribute("tid")) ? "" : session.getAttribute("tid").toString();
 	
+    if(session.getAttribute("tracker") == null || session.getAttribute("tracker") =="")
+    { 
+   		response.sendRedirect("trackerlist.jsp");
+    }
     
 %>
  <jsp:include page="include_top.jsp"></jsp:include>
