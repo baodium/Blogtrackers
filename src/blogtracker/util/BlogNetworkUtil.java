@@ -172,6 +172,14 @@ public class BlogNetworkUtil extends UtilFunctions{
 		return media;
 	}
 	
+	// get blog to blog connection 
+	public boolean BlogConnection(String username, String trackername)
+	{
+	Connection conn = getConn();
+	// get the blogsite id from trackers then compare with outlinks for a match
+	return false;	
+	}
+	
 	public HashMap<String,String> get_bn_media_category( String username, String trackername)
 	{
 		Connection conn= getConn();

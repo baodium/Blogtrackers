@@ -146,7 +146,7 @@ window.onload = function() {
 				y : parseInt(graph5[i].totalInfluence)
 			});
 		}
-		console.log("F%" + f5);
+		/* console.log("F%" + f5); */
 	}
 	var chart = new CanvasJS.Chart("chartContainer", {
 		title : {
@@ -321,7 +321,7 @@ $("#my_words").jQCloud(finalz);
 var valueinchart = $("#chartContainer").text();
 if(valueinchart !== "")
 {
- console.log("No Data available");	
+/*  console.log("No Data available");	 */
 }
 });			
 </script>
@@ -392,34 +392,34 @@ $('#reportrange')
 .on(
 'show.daterangepicker',
 function() {
-console
-		.log("show event fired");
+/* console
+		.log("show event fired"); */
 });
 $('#reportrange')
 .on(
 'hide.daterangepicker',
 function() {
-console
-		.log("hide event fired");
+/* console
+		.log("hide event fired"); */
 });
 $('#reportrange')
 .on(
 'apply.daterangepicker',
 function(ev, picker) {
-console
+/* console
 		.log("apply event fired, start/end dates are "
 				+ picker.startDate
 						.format('MMMM D, YYYY')
 				+ " to "
 				+ picker.endDate
-						.format('MMMM D, YYYY'));
+						.format('MMMM D, YYYY')); */
 });
 $('#reportrange')
 .on(
 'cancel.daterangepicker',
 function(ev, picker) {
-console
-		.log("cancel event fired");
+/* console
+		.log("cancel event fired"); */
 });
 $('#options1').click(
 function() {

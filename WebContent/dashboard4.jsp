@@ -107,12 +107,6 @@ else
 #chart {
   background: #fff;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  width:100% !important;
-}
-
-#chart svg:last-child
-{
-display:none;
 }
 
 .title {
@@ -131,19 +125,16 @@ text {
 }
 #chart svg
 {
-width:100%;
+width:150%;
 }
 .grandparent rect
 {
-  width:100% !important; 
-/*  max-width:900px; */
+/* width:100% !important; */
 }
 
 rect {
   fill: none;
-  
-  width:100% !important; 
-  /* max-width:900px;  */
+/*   width:100% !important; */
   stroke: #fff;
 }
 
@@ -296,8 +287,42 @@ function googleTranslateElementInit() {
 				                	</ul>
 			                	</div>
 							</div>
+							
 
 							<div class="panel-body" align="center">
+							<div class="col-md-3">
+
+								<!-- Available hours -->
+								<div class="panel text-center">
+									<div class="panel-body">
+										<div class="heading-elements">
+											<ul class="icons-list">
+						                		<li class="dropdown text-muted">
+						                			<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cog3"></i> <span class="caret"></span></a>
+													<ul class="dropdown-menu dropdown-menu-right">
+														<li><a href="#"><i class="icon-sync"></i> Update data</a></li>
+														<li><a href="#"><i class="icon-list-unordered"></i> Detailed log</a></li>
+														<li><a href="#"><i class="icon-pie5"></i> Statistics</a></li>
+														<li><a href="#"><i class="icon-cross3"></i> Clear list</a></li>
+													</ul>
+						                		</li>
+						                	</ul>
+					                	</div>
+
+					                	<!-- Progress counter -->
+										<div class="content-group-sm svg-center position-relative" id="hours-available-progress"><svg width="76" height="76"><g transform="translate(38,38)"><path class="d3-progress-background" d="M0,38A38,38 0 1,1 0,-38A38,38 0 1,1 0,38M0,36A36,36 0 1,0 0,-36A36,36 0 1,0 0,36Z" style="fill: rgb(238, 238, 238);"></path><path class="d3-progress-foreground" filter="url(#blur)" d="M2.326828918379971e-15,-38A38,38 0 1,1 -34.38342799370878,16.179613079472677L-32.57377388877674,15.328054496342538A36,36 0 1,0 2.204364238465236e-15,-36Z" style="fill: rgb(240, 98, 146); stroke: rgb(240, 98, 146);"></path><path class="d3-progress-front" d="M2.326828918379971e-15,-38A38,38 0 1,1 -34.38342799370878,16.179613079472677L-32.57377388877674,15.328054496342538A36,36 0 1,0 2.204364238465236e-15,-36Z" style="fill: rgb(240, 98, 146); fill-opacity: 1;"></path></g></svg><h2 class="mt-15 mb-5">68%</h2><i class="icon-watch text-pink-400 counter-icon" style="top: 22px"></i><div>Hours available</div><div class="text-size-small text-muted">64% average</div></div>
+										<!-- /progress counter -->
+
+
+										<!-- Bars -->
+										<div id="hours-available-bars"><svg width="492" height="40"><g width="492"><rect class="d3-random-bars" width="14.172839506172838" x="6.074074074074074" height="22" y="18" style="fill: rgb(236, 64, 122);"></rect><rect class="d3-random-bars" width="14.172839506172838" x="26.320987654320987" height="38" y="2" style="fill: rgb(236, 64, 122);"></rect><rect class="d3-random-bars" width="14.172839506172838" x="46.567901234567906" height="30" y="10" style="fill: rgb(236, 64, 122);"></rect><rect class="d3-random-bars" width="14.172839506172838" x="66.81481481481482" height="36" y="4" style="fill: rgb(236, 64, 122);"></rect><rect class="d3-random-bars" width="14.172839506172838" x="87.06172839506173" height="20" y="20" style="fill: rgb(236, 64, 122);"></rect><rect class="d3-random-bars" width="14.172839506172838" x="107.30864197530865" height="22" y="18" style="fill: rgb(236, 64, 122);"></rect><rect class="d3-random-bars" width="14.172839506172838" x="127.55555555555557" height="24" y="16" style="fill: rgb(236, 64, 122);"></rect><rect class="d3-random-bars" width="14.172839506172838" x="147.80246913580248" height="30" y="10" style="fill: rgb(236, 64, 122);"></rect><rect class="d3-random-bars" width="14.172839506172838" x="168.0493827160494" height="34" y="6" style="fill: rgb(236, 64, 122);"></rect><rect class="d3-random-bars" width="14.172839506172838" x="188.2962962962963" height="24" y="16" style="fill: rgb(236, 64, 122);"></rect><rect class="d3-random-bars" width="14.172839506172838" x="208.54320987654322" height="22" y="18" style="fill: rgb(236, 64, 122);"></rect><rect class="d3-random-bars" width="14.172839506172838" x="228.79012345679013" height="28" y="12" style="fill: rgb(236, 64, 122);"></rect><rect class="d3-random-bars" width="14.172839506172838" x="249.03703703703707" height="40" y="0" style="fill: rgb(236, 64, 122);"></rect><rect class="d3-random-bars" width="14.172839506172838" x="269.28395061728395" height="38" y="2" style="fill: rgb(236, 64, 122);"></rect><rect class="d3-random-bars" width="14.172839506172838" x="289.5308641975309" height="34" y="6" style="fill: rgb(236, 64, 122);"></rect><rect class="d3-random-bars" width="14.172839506172838" x="309.77777777777777" height="20" y="20" style="fill: rgb(236, 64, 122);"></rect><rect class="d3-random-bars" width="14.172839506172838" x="330.0246913580247" height="40" y="0" style="fill: rgb(236, 64, 122);"></rect><rect class="d3-random-bars" width="14.172839506172838" x="350.27160493827165" height="28" y="12" style="fill: rgb(236, 64, 122);"></rect><rect class="d3-random-bars" width="14.172839506172838" x="370.51851851851853" height="36" y="4" style="fill: rgb(236, 64, 122);"></rect><rect class="d3-random-bars" width="14.172839506172838" x="390.7654320987655" height="20" y="20" style="fill: rgb(236, 64, 122);"></rect><rect class="d3-random-bars" width="14.172839506172838" x="411.01234567901236" height="38" y="2" style="fill: rgb(236, 64, 122);"></rect><rect class="d3-random-bars" width="14.172839506172838" x="431.2592592592593" height="28" y="12" style="fill: rgb(236, 64, 122);"></rect><rect class="d3-random-bars" width="14.172839506172838" x="451.5061728395062" height="34" y="6" style="fill: rgb(236, 64, 122);"></rect><rect class="d3-random-bars" width="14.172839506172838" x="471.7530864197531" height="40" y="0" style="fill: rgb(236, 64, 122);"></rect></g></svg></div>
+										<!-- /bars -->
+
+									</div>
+								</div>
+								<!-- /available hours -->
+
+							</div>
 							<div class="col-md-1">
 
 </div>
@@ -339,6 +364,7 @@ function googleTranslateElementInit() {
 								<!-- /productivity goal -->
 
 							</div>
+							
 							
 								<div class="col-md-2">
 

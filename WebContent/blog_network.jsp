@@ -156,7 +156,6 @@ function googleTranslateElementInit() {
     ]   */
  
    var nodes = [
- 	
  	<c:forEach items="${nodes}" var="l">
      {id: ${l[0]}, label: "${l[1]}", group: '${l[2]}'},
      </c:forEach>

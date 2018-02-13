@@ -279,12 +279,8 @@ function googleTranslateElementInit() {
 						<table  data-intro="Click the check box" data-step="5"  id="sentitable" class="table datatable-basic bulk_action">
 						<thead>
 							<tr>
-							<th>
-							<!--  <label class="mylabel">
-  <input class="mycheckbox individualcheckbox" type='checkbox'>
-  <span class="myspan individualspan"></span></label>-->
-							<input type="checkbox" id="check-all" class="flat"></th>
-								<th>Select All</th>
+							<th></th>
+								<th>Blog Post</th>
 								
 								<th class="hidden" width="0%"></th>
 								<th class="hidden" width="0%"></th>

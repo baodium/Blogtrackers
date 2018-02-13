@@ -328,8 +328,8 @@ public class BlogNetwork extends HttpServlet {
 			}
 			// control code for entities
 						// show entity if filter is on
-						if(session.getAttribute("entity") != null && session.getAttribute("entity") != "")
-						{
+		if(session.getAttribute("entity") != null && session.getAttribute("entity") != "")
+			{
 			ArrayList<ArrayList<String>> entities = bg.get_bn_entity(startdate, enddate,userName,tracker);
 			for (int j=0;j<entities.size();j++)
 			{
@@ -500,13 +500,13 @@ public class BlogNetwork extends HttpServlet {
 				t.add(tmb.get(i).get(3));
 				edges.add(t);
 			}
-			for( int i=0;i<en.size();i++)  //entity code for creating edges
+			for( int i=0;i<en.size();i++)//entity code for creating edges
 			{
 				ArrayList<String> t = new ArrayList<String>();
 				t.add(en.get(i).get(0));
 				t.add(en.get(i).get(1));
 				edges.add(t);
-			}							//entity code end
+			}//entity code end
 			
 			for( int i=0;i<mid.size();i++)
 			{
@@ -673,6 +673,7 @@ public class BlogNetwork extends HttpServlet {
 					t.add(entities.get(j).get(0));  //blogsite id
 					t.add(entities.get(j).get(1));  //entity
 					t.add("arrows:'from'");
+					
 					en.add(t);
 				}
 				}
@@ -850,8 +851,8 @@ public class BlogNetwork extends HttpServlet {
 				
 				session.setAttribute("nodes", nodes);
 				session.setAttribute("edges", edges);
-				//System.out.println("print nodes"+nodes);
-				//System.out.println("print edges"+edges);
+				System.out.println("print nodes"+nodes);
+				System.out.println("print edges"+edges);
 			}
 				
 				catch(Exception ex)
