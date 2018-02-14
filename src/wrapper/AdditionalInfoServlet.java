@@ -44,6 +44,22 @@ public class AdditionalInfoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session= request.getSession();
+		if(session.getAttribute("tracker") != null)
+		{
+		String tracker = session.getAttribute("tracker").toString();
+		String userName = (String) session.getAttribute("user");
+		String selectedSites=trackerDialog.getSelectedSites(userName,tracker);
+		
+		ArrayList<JSONObject> brNameList = biDialog.getBloggerNames(selectedSites);
+		session.setAttribute("brNameList", brNameList);
+		
+		ArrayList<BeanAllSites> allSites=trackerDialog.getSiteNames(selectedSites);
+		if(session.getAttribute("bsName")!=null)
+			session.removeAttribute("bsName");
+		session.setAttribute("allSepSites", allSites);
+		 
+		}
 		response.setContentType("text/html");
 		response.sendRedirect("additional_blog_info.jsp");
 	}
@@ -68,15 +84,17 @@ public class AdditionalInfoServlet extends HttpServlet {
 			if(session.getAttribute("bsName")!=null)
 				session.removeAttribute("bsName");
 			session.setAttribute("allSepSites", allSites);
+			System.out.println(session.getAttribute("allSepSites"));
 		}
 		else if(request.getParameter("allsitesid")!=null){
+			
 			String siteiDName= request.getParameter("allsitesid");
 			String[] arr=siteiDName.split(",",2);
 			String siteID = arr[0];   
 			String siteName = arr[1];
 			session.setAttribute("bsName", siteName);
 //			System.out.println(Integer.parseInt(siteID));
-
+			System.out.println(request.getParameter("allsitesid"));
 			BlogSiteInfo siteInfo= new BlogSiteInfo();
 			String siteUrl=siteInfo.getBlogLink(Integer.parseInt(siteID));
 			int maxScore= siteInfo.getMaxScore(Integer.parseInt(siteID));

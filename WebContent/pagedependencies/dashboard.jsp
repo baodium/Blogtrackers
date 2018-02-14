@@ -838,7 +838,7 @@
           itemGap: 20,
           textStyle: {
             color: 'rgba(30,144,255,0.8)',
-            fontFamily: 'Ã¥Â¾Â®Ã¨Â½Â¯Ã©Â›Â…Ã©Â»Â‘',
+            fontFamily: '',
             fontSize: 35,
             fontWeight: 'bolder'
           }

@@ -175,7 +175,7 @@ function googleTranslateElementInit() {
 											<a href="<%=request.getContextPath()%>/PostingFrequency?tracker=${tracker}"> 
 										</c:when>
 										<c:when test="${tracker == null}">
-											<a href="<%=request.getContextPath()%>/posting_frequencey.jsp"> 
+											<a href="<%=request.getContextPath()%>/posting_frequency.jsp"> 
 										</c:when>
 					</c:choose>
 						<div class="panel">
@@ -188,7 +188,7 @@ function googleTranslateElementInit() {
 											<a href="<%=request.getContextPath()%>/PostingFrequency?tracker=${tracker}" class="btn bg-warning-400 legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Posting Frequency">
 										</c:when>
 										<c:when test="${tracker == null}">
-											<a href="<%=request.getContextPath()%>/posting_frequencey.jsp" class="btn bg-warning-400 legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Posting Frequency"> 
+											<a href="<%=request.getContextPath()%>/posting_frequency.jsp" class="btn bg-warning-400 legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Posting Frequency"> 
 										</c:when>
 										</c:choose>
 										View Posting Frequency 
