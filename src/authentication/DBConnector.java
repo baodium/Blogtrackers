@@ -32,9 +32,10 @@ public class DBConnector extends UtilFunctions {
 	public ArrayList query(String query){
 		ArrayList result=new ArrayList();  
 		java.sql.Statement stmt = null;
-		ResultSet rs = null;   
+		ResultSet rs = null; 
+		Connection con = null;
 		try{
-		Connection	con = getConn();
+			con = getConn();
 			stmt = con.prepareStatement(query);
 			rs = stmt.executeQuery(query); 
 			ResultSetMetaData rsmd = rs.getMetaData();
