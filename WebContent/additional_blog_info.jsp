@@ -10,11 +10,12 @@
 	if (username == null || username == "") {
 		response.sendRedirect("index.jsp");
 	}
+	else if(session.getAttribute("tracker") == null || session.getAttribute("tracker") =="")
+     { 
+    		response.sendRedirect("trackerlist.jsp");
+     }
         ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
-        if(session.getAttribute("tracker") == null || session.getAttribute("tracker") =="")
-        { 
-       		response.sendRedirect("trackerlist.jsp");
-        }
+       
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>

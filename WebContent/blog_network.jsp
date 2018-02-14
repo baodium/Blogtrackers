@@ -11,11 +11,12 @@
 	if (username == null || username == "") {
 		response.sendRedirect("index.jsp");
 	}
+	else if(session.getAttribute("tracker") == null || session.getAttribute("tracker") =="")
+     { 
+    		response.sendRedirect("trackerlist.jsp");
+     }
         ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
-        if(session.getAttribute("tracker") == null || session.getAttribute("tracker") =="")
-        { 
-       		response.sendRedirect("trackerlist.jsp");
-        }
+       
 %>
 
  <jsp:include page="include_top.jsp"></jsp:include>

@@ -17,14 +17,15 @@
 	if (username == null) {
 		response.sendRedirect("index.jsp");
 	}
+	else if(session.getAttribute("tracker") == null || session.getAttribute("tracker") =="")
+	{ 
+			response.sendRedirect("trackerlist.jsp");
+	}
 %>
 <% ArrayList mytrackers = new ArrayList();
 mytrackers = (ArrayList)session.getAttribute("trackers");
 int trackerSize = mytrackers.size();
-if(session.getAttribute("tracker") == null || session.getAttribute("tracker") =="")
-{ 
-		response.sendRedirect("trackerlist.jsp");
-}
+
     if(trackerSize == 0)
     {%>
     <c:redirect url="setup_tracker.jsp"/>	
