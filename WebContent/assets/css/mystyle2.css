@@ -628,3 +628,7 @@ svg text {
   fill: none;
   stroke-width: 1px;
 } 
+.navbar-inverse
+{
+background-color:#2A6ADF !important;	
+}

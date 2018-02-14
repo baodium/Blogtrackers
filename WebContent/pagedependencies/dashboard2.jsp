@@ -96,7 +96,17 @@
 	   
 	 	// D3 Bubble Chart 
 
-	 	var diameter = 600;
+	 	var diameter = 500;
+	 	
+	 	format = d3.format(",d"),
+	    dataSource = 0;
+
+	    var pack = d3.layout.pack()
+	    .size([diameter - 4, diameter - 4])
+	    .sort( function(a, b) {
+	        return -(a.value - b.value);
+	    })
+	    .value(function(d) { return d.size; });
 
 	 	var svg = d3.select('.bubble').append('svg')
 	 					.attr('width', diameter)

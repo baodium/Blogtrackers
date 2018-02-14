@@ -185,7 +185,7 @@ $(window).load(function() {
 		</div>
 		
 	<!-- Main navbar -->
-	<div class="navbar navbar-inverse" style="background-color:#2A6ADF">
+	<div class="navbar navbar-inverse">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="features.jsp"><span style="font-size:18px">Blogtrackers</span></a>
 						
