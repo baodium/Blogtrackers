@@ -31,7 +31,7 @@ if(session.getAttribute("tracker")==null && request.getParameter("tracker")==nul
 else
 {
 if(session.getAttribute("tree")!=""){
-	ArrayList<ArrayList<String>> tree =(ArrayList<ArrayList<String>>) session.getAttribute("tree");
+	ArrayList<ArrayList<String>> tree =(ArrayList<ArrayList<String>>)session.getAttribute("tree");
 	String str = "[\n";
 
 for(int i=0;i<tree.size();i++)
