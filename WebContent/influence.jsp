@@ -18,7 +18,12 @@
         
 %>
 
-
+<link rel="stylesheet" href="assets/css/icon/font-awesome.css">
+<link rel="stylesheet" href="assets/css/icon/et-line-font.css">
+ <link rel="shortcut icon" href="assets/img/logo/logo.png">
+        <link rel="apple-touch-icon" href="assets/img/logo/logo.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="assets/img/logo/logo.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="assets/img/logo/logo.png">
  <jsp:include page="include_top.jsp"></jsp:include>
 
 	<!-- Page header -->

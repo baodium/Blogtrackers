@@ -25,7 +25,7 @@ import java.util.regex.Pattern;
 public class UtilFunctions
 {
 	
-	
+	public Connection dbCon; 
     protected String getSelSitesQuery(ArrayList<Integer> selsites)
     {
         String selSitesQuery = "";
@@ -182,8 +182,8 @@ public class UtilFunctions
                     ex.printStackTrace();
                 }
             }
-            Connection conn = DriverManager.getConnection(constr,username,password);
-            return conn;
+            dbCon = DriverManager.getConnection(constr,username,password);
+            return dbCon;
         } catch (SQLException ex) {
             Logger.getLogger(UtilFunctions.class.getName()).log(Level.SEVERE, null, ex);
         }

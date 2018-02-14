@@ -11,7 +11,12 @@
 
 	<title>Blogtrackers  > Register</title>
 
-
+	<link rel="stylesheet" href="assets/css/icon/font-awesome.css">
+<link rel="stylesheet" href="assets/css/icon/et-line-font.css">
+ <link rel="shortcut icon" href="assets/img/logo/logo.png">
+        <link rel="apple-touch-icon" href="assets/img/logo/logo.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="assets/img/logo/logo.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="assets/img/logo/logo.png">
 	<!-- Global stylesheets -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
 	<link href="assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
