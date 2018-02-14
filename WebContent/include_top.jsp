@@ -37,11 +37,7 @@
 	   //System.out.println(trackers.size());
     }catch(Exception e){}
     
-   /*  if(session.getAttribute("tracker") == null)
-    { 
-   response.sendRedirect("index.jsp");
-   
-     } */ 
+      
      %>
    
     
