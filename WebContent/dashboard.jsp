@@ -594,6 +594,7 @@ function googleTranslateElementInit() {
   <jsp:include page="footer.jsp"></jsp:include>
 	<!-- /footer -->
 	
+	
 	<!-- Dependencies -->
   <jsp:include page="pagedependencies/dashboard.jsp"></jsp:include>
   <!-- End of Dependencies -->
