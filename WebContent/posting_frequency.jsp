@@ -27,12 +27,7 @@
        
 %>
 
-<link rel="stylesheet" href="assets/css/icon/font-awesome.css">
-<link rel="stylesheet" href="assets/css/icon/et-line-font.css">
- <link rel="shortcut icon" href="assets/img/logo/logo.png">
-        <link rel="apple-touch-icon" href="assets/img/logo/logo.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="assets/img/logo/logo.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="assets/img/logo/logo.png">s
+
  <jsp:include page="include_top.jsp"></jsp:include>
 
 	<!-- Page header -->
@@ -89,7 +84,7 @@ function googleTranslateElementInit() {
 								<h6 class="panel-title">Posting Frequency<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
 								<form name="dateform" id="dateform" method="post">
-									<div data-intro="Select a date range " data-step="2" id="reportrange" action="PostingFrequency">
+							<div data-intro="Select a date range " data-step="2" id="reportrange" action="PostingFrequency">
 									<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
 										<i class="icon-calendar3 position-left"></i> <span></span>  
 					<b class="caret"></b>
@@ -108,7 +103,7 @@ function googleTranslateElementInit() {
 							<div class="chart" id="c3-line-regions-chart"></div>
 						     </div>	-->
 							<div data-intro="Select a data point on the graph" data-step="3" class="demo-container">
-												<div id="chartContainer" style="height: 350px"></div>
+											<div id="chartContainer" style="height: 350px"></div>
 												<div data-intro="You can switch between day, weeek, month and year" data-step="4" style="text-align: center; margin-bottom: 15px;">
 													<jsp:include page="spanchecker.jsp"></jsp:include>
 												

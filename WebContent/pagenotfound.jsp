@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Site Under Maintenance</title>
+	<title>Page Not Found</title>
 
 	<!-- Global stylesheets -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
@@ -62,8 +62,8 @@
 
 				<!-- Error title -->
 				<div class="text-center content-group">
-					<h1 class="error-title" style="font-size:150px;">SITE UNDER MAINTENANCE</h1>
-					<h5>Please check back soon</h5>
+					<h1 class="error-title" style="font-size:150px;">PAGE NOT FOUND</h1>
+					<h5>The page you are looking for does not exist</h5>
 				</div>
 				<!-- /error title -->
 
@@ -72,7 +72,7 @@
 				<div class="row">
 					<div class="col-lg-4 col-lg-offset-4 col-sm-6 col-sm-offset-3">
 						<form action="#" class="main-search panel panel-body">
-						<!-- 	<div class="form-group has-feedback">
+							<!-- <div class="form-group has-feedback">
 								<input type="text" class="form-control input-lg" placeholder="Search...">
 								<div class="form-control-feedback">
 									<i class="icon-search4 text-size-large text-muted"></i>

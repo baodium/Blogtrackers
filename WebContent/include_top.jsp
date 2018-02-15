@@ -72,7 +72,10 @@
         }
 
 </style>
-
+  <link rel="shortcut icon" href="assets/img/logo/logo.png">
+        <link rel="apple-touch-icon" href="assets/img/logo/logo.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="assets/img/logo/logo.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="assets/img/logo/logo.png">
 <script type="text/javascript" src="dist/vis.js"></script>
     <link href="dist/vis-network.min.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="styles/vendor.css"/>
