@@ -632,3 +632,7 @@ svg text {
 {
 background-color:#2A6ADF !important;	
 }
+.daterangepicker select.yearselect
+{
+width:50%;	
+}
