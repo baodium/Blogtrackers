@@ -266,7 +266,7 @@ function googleTranslateElementInit() {
 <div class="col-md-12 col-sm-12 col-xs-12">
 						<div data-intro="This section displays the blog content" data-step="7" class="panel panel-default">
 							<div class="panel-heading">
-								<h6 class="panel-title">Blogpost Content<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<h6 class="panel-title">Blog Post Content<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
 									<ul class="icons-list">
 				                		<li><a data-action="collapse"></a></li>

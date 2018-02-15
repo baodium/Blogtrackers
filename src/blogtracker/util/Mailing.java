@@ -68,7 +68,7 @@ public static void postMail( String[] recipients, String subject, String message
 public static void main(String[] args)
 {
     String[] recipient = new String[1];
-   recipient[0] = "oaadedayo@gmail.com";
+   recipient[0] = "baodium@gmail.com";
     String subject = "test mail";
    String message = "This is a test message.";
        try {
