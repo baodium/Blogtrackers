@@ -24,18 +24,16 @@ import java.sql.ResultSet;
 public class DBConnector extends UtilFunctions {
 	public String current_user;
 	public String current_user_type;
-	
+	Connection	con = null;
 	public  DBConnector(){
-		Connection	con = getConn();
+		con = getConn();
 	}
 	
 	public ArrayList query(String query){
 		ArrayList result=new ArrayList();  
 		java.sql.Statement stmt = null;
 		ResultSet rs = null; 
-		Connection con = null;
 		try{
-			con = getConn();
 			stmt = con.prepareStatement(query);
 			rs = stmt.executeQuery(query); 
 			ResultSetMetaData rsmd = rs.getMetaData();
