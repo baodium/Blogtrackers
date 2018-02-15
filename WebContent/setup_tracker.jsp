@@ -59,12 +59,6 @@
 	
 %>
 
-<link rel="stylesheet" href="assets/css/icon/font-awesome.css">
-<link rel="stylesheet" href="assets/css/icon/et-line-font.css">
- <link rel="shortcut icon" href="assets/img/logo/logo.png">
-        <link rel="apple-touch-icon" href="assets/img/logo/logo.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="assets/img/logo/logo.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="assets/img/logo/logo.png">
  <jsp:include page="include_top.jsp"></jsp:include>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -258,6 +252,9 @@
 
 	<script>
 	
+	
+	
+	
 	<% if(!selected.equals("")){%>
 	populate_selected_trackers();
 	<%}%>
@@ -271,12 +268,37 @@
 			return false;
 		}
 		
+		$(document).ready(function(){
+			$('#next-click').click(function(){
+				var keyword = $("#keyword").val();
+				if(keyword === "")
+					{
+					
+					$('#next-click').css('pointer-events','none');
+					}
+			})
+			$('#tracker-setter-t-1').click(function(){
+				var keyword = $("#keyword").val();
+				if(keyword === "")
+					{
+					
+					$('#next-click').css('pointer-events','none');
+					}
+			})
+			$('#previous-click').click(function(){
+				
+				
+					$('#next-click').css('pointer-events','inherit');
+					
+			})
+		});
 		//console.log(tracker);
 		
 		//$("#result-set").html("<center><img src='assets/images/preloader.gif' /></center>");
 		//console.log(keyword);
-		if(keyword !="" && (searched==null || searched!="yes")){
+	 if(keyword !="" && (searched==null || searched!="yes")){
 			$("#result-set").html("<center><img src='assets/images/preloader.gif' /></center>");
+			
 			$('#next-click').attr('disabled',true);
 			$.ajax({
 		        url: app_url+'webtemplates/bloglist2.jsp',
