@@ -72,7 +72,10 @@
         }
 
 </style>
-
+  <link rel="shortcut icon" href="assets/img/logo/logo.png">
+        <link rel="apple-touch-icon" href="assets/img/logo/logo.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="assets/img/logo/logo.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="assets/img/logo/logo.png">
 <script type="text/javascript" src="dist/vis.js"></script>
     <link href="dist/vis-network.min.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="styles/vendor.css"/>
@@ -185,7 +188,7 @@ $(window).load(function() {
 		</div>
 		
 	<!-- Main navbar -->
-	<div class="navbar navbar-inverse" style="background-color:#2A6ADF">
+	<div class="navbar navbar-inverse">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="features.jsp"><span style="font-size:18px">Blogtrackers</span></a>
 						

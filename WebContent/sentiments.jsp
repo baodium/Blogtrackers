@@ -21,12 +21,7 @@
 	}
 %>
 
-<link rel="stylesheet" href="assets/css/icon/font-awesome.css">
-<link rel="stylesheet" href="assets/css/icon/et-line-font.css">
- <link rel="shortcut icon" href="assets/img/logo/logo.png">
-        <link rel="apple-touch-icon" href="assets/img/logo/logo.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="assets/img/logo/logo.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="assets/img/logo/logo.png">
+
  
  <jsp:include page="include_top.jsp"></jsp:include>
 <% ArrayList mytrackers = new ArrayList();
@@ -119,16 +114,18 @@ function googleTranslateElementInit() {
 						<div class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Timeline of Sentiments<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<div class="heading-elements">
 								<form name="dateform" id="dateform" method="post" action="">
 									<div class="heading-elements" data-intro="Select a daterange" data-step="2" id="reportrange" >
 									<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
 										<i class="icon-calendar3 position-left"></i> <span></span>  
-					
-									</button>
-									<input type="hidden" id="datepicked" name="datepicked"  onchange="datechanged()" /><b class="caret"></b>
+					<b class="caret"></b>	
+														</button>
+									<input type="hidden" id="datepicked" name="datepicked"  onchange="datechanged()" />
 									
 			                	</div>
 								</form>
+								</div>
 							</div>
 
 							<div class="panel-body">
