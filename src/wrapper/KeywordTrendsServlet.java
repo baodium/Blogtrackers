@@ -244,6 +244,10 @@ public class KeywordTrendsServlet extends HttpServlet {
 
 			if(request.getParameter("spanyearly")!=null)
 			{
+				session.setAttribute("spanyearly","active");
+				session.setAttribute("spanmonthly","");	
+				session.setAttribute("spanweekly","");
+				session.setAttribute("spandaily","");
 				if(session.getAttribute("datepicked")!=null && session.getAttribute("tracker")!=null
 						&& session.getAttribute("tags") !=null)
 				{
@@ -347,6 +351,10 @@ public class KeywordTrendsServlet extends HttpServlet {
 			}
 			if(request.getParameter("spanmonthly")!=null)
 			{
+			session.setAttribute("spanyearly","");
+			session.setAttribute("spanmonthly","active");	
+			session.setAttribute("spanweekly","");
+			session.setAttribute("spandaily","");
 				if(session.getAttribute("datepicked")!=null && session.getAttribute("tracker")!=null
 						&& session.getAttribute("tags") !=null)
 				{
@@ -448,6 +456,10 @@ public class KeywordTrendsServlet extends HttpServlet {
 			}
 			if(request.getParameter("spanweekly")!=null)
 			{
+				session.setAttribute("spanyearly","");
+				session.setAttribute("spanweekly","active");
+				session.setAttribute("spanmonthly","");
+				session.setAttribute("spandaily","");
 				if(session.getAttribute("datepicked")!=null && session.getAttribute("tracker")!=null
 						&& session.getAttribute("tags") !=null)
 				{
@@ -549,6 +561,10 @@ public class KeywordTrendsServlet extends HttpServlet {
 			}
 			if(request.getParameter("spandaily")!=null)
 			{
+				session.setAttribute("spanyearly","");
+				session.setAttribute("spanweekly","");
+				session.setAttribute("spanmonthly","");
+				session.setAttribute("spandaily","active");
 				if(session.getAttribute("datepicked")!=null && session.getAttribute("tracker")!=null 
 						&& session.getAttribute("tags") !=null)
 				{

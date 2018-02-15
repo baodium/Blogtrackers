@@ -34,7 +34,7 @@
 %>            
 				<div class="panel panel-flat">
 					<div class="panel-heading">
-						<h5 class="panel-title"><input type="checkbox" id="check-all" onclick="check_all();" >Blogs about "<%=keyword%>"</span></h5>
+						<h5 class="panel-title"><!--  <input type="checkbox" id="check-all" onclick="check_all();" >-->Blogs about "<%=keyword%>"</span></h5>
 						<div class="heading-elements">
 							<ul class="icons-list">
 		                		<li><a data-action="collapse"></a></li>
@@ -57,7 +57,7 @@
 											<img src="img/b.png" class="img-circle img-lg" alt="">
 										</div>										
 										<div class="media-body">
-											<h6 class="media-heading"><%=item.get(1) %> <input type="checkbox" onclick="select_blog()" class="blog-list" name="blog" style="float:right" value="<%=item.get(0) %>"  />
+											<h6 class="media-heading"><%=item.get(1).toString().toLowerCase() %> <input type="checkbox" onclick="select_blog()" class="blog-list" name="blog" style="float:right" value="<%=item.get(0) %>"  />
 											</h6>
 											<span class="text-muted"><%=item.get(2) %> post(s)</span>
 										</div>										

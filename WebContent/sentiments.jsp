@@ -142,8 +142,8 @@ function googleTranslateElementInit() {
 												<br />
 
 
-												<form name="pf_spanform" id="pf_spanform" action="Sentiments" method="post">
-                                                  <jsp:include page="spanchecker.jsp"></jsp:include>
+												<form name="st_spanform" id="st_spanform" action="Sentiments" method="post">
+                                                  <jsp:include page="spanchecker2.jsp"></jsp:include>
 												</form>
 
 
