@@ -23,6 +23,27 @@
        		response.sendRedirect("trackerlist.jsp");
         }
 	}
+	
+	if(session.getAttribute("spandaily") != null)
+	{
+		String spandaily = session.getAttribute("spandaily").toString();	
+	}
+	if(session.getAttribute("spanyearly") != null)
+	{
+		String spandaily = session.getAttribute("spanyearly").toString();	
+	}
+	if(session.getAttribute("spanmonthly") != null)
+	{
+		String spandaily = session.getAttribute("spanmonthly").toString();	
+	}
+	if(session.getAttribute("spanweekly") != null)
+	{
+		String spandaily = session.getAttribute("spanweekly").toString();	
+	}
+	if(session.getAttribute("spanweekly") == null && session.getAttribute("spanmonthly") == null && session.getAttribute("spanmonthly") == null && session.getAttribute("spandaily") == null)
+	{
+	String spandefault = "active";	
+	}
 %>
 
 
@@ -116,13 +137,13 @@
 															<form name="spanform" id="spanform" action="KeywordTrendsServlet"
 																method="post">
 																<button type="submit" name="spandaily" value="daily"
-																	id="addDataPoint" class="btn btn-default btn-sm">Day</button>
+																	id="addDataPoint" class="btn btn-default btn-sm ${spandaily}">Day</button>
 																<button type="submit" name="spanweekly" value="weekly"
-																	class="btn btn-default btn-sm">Week</button>
+																	class="btn btn-default btn-sm ${spanweekly}">Week</button>
 																<button type="submit" name="spanmonthly" value="monthly"
-																	class="btn btn-default btn-sm">Month</button>
+																	class="btn btn-default btn-sm ${spanmonthly} ${spandefault}">Month</button>
 																<button type="submit" name="spanyearly" value="yearly"
-																	class="btn btn-default btn-sm">Year</button>
+																	class="btn btn-default btn-sm ${spanyearly}">Year</button>
 															</form>
 														 </div> 
 														<div id="chartpoint">

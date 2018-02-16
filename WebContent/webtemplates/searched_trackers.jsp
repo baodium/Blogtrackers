@@ -58,7 +58,7 @@
 											<img src="img/b.png" class="img-circle img-lg" alt="">
 										</div>									
 										<div class="media-body">
-											<h6 class="media-heading"><%=item.get(1) %> <input type="checkbox" checked onclick="select_blog()" class="blog-list" name="blog" style="float:right" value="<%=item.get(0) %>"  />
+											<h6 class="media-heading"><%=item.get(1).toString().toLowerCase() %> <input type="checkbox" checked onclick="select_blog()" class="blog-list" name="blog" style="float:right" value="<%=item.get(0) %>"  />
 											</h6>
 											<span class="text-muted"><%=item.get(2) %> post(s)</span>
 										</div>	

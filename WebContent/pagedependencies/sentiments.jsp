@@ -30,7 +30,9 @@
 	});
 	   
    });
-   
+   function spanChanged() {
+		document.getElementById("st_spanForm").submit();
+	}
  
    </script>
 	<!-- FastClick -->
@@ -50,7 +52,96 @@
 								src="${pageContext.request.contextPath}/vendors/canvasjs/examples/bootbox.min.js"></script>
 
 							<script
+	
 								src="${pageContext.request.contextPath}/vendors/canvasjs/canvasjs.min.js"></script>
+								
+								
+<script type="text/javascript">
+  window.onload = function () {
+    var chart = new CanvasJS.Chart("chartContainer",
+    {
+      title: {
+        text: "Sentiments"
+      },
+      legend: {
+       horizontalAlign: "right", // "center" , "right" (fahad)
+       verticalAlign: "bottom",
+       fontSize: 25
+       },
+       animationEnabled: true,
+       axisX:{
+        
+        labelFontSize: 12, 
+         interval: 1,
+       intervalType: '${span}',
+        valueFormatString: "DD MMM YYYY"   // "DD MMM" for date and month, "MMM" for month only , "YYYY" year only (fahad)
+         
+      },
+      axisY:{
+        labelFontSize: 12
+      },
+       exportEnabled: true,
+        data: [
+            {
+          click: function(e){
+        	  $(".loader").removeClass("hidden");
+         xychange( "dataSeries Event => Type: "+ e.dataSeries.type+ ", dataPoint { x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y + " }");
+         $('#chartpoint input').val(" x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y).trigger('change');
+        },
+      
+        type: "line",
+        showInLegend: true,
+        legendMarkerType: "circle",
+        legendText: "Positive Sentiments",
+        color: "green",
+        fillOpacity: 0,
+        name : "Positve Sentiments",
+        dataPoints: //array
+        	${trendpos}     
+         
+      },
+      
+      { 
+          click: function(e){
+         xychange( "dataSeries Event => Type: "+ e.dataSeries.type+ ", dataPoint { x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y + " }");
+         $('#chartpoint input').val(" x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y).trigger('change');
+        
+        },
+      
+        type: "line",
+        showInLegend: true,
+        legendMarkerType: "circle",
+        legendText: "Negative Sentiments",
+        color: "red",
+        fillOpacity: 0,
+        name:"Negative Sentiments",
+        dataPoints: //array
+		${trendneg}
+        
+     }
+      ],
+      legend:{
+			cursor : "pointer",
+			itemclick : function(e) {
+			if (typeof (e.dataSeries.visible) === "undefined"
+					|| e.dataSeries.visible) {
+				e.dataSeries.visible = false;
+			} else {
+				e.dataSeries.visible = true;
+			}
+			chart.render();
+			}
+		}
+    });
+    chart.render();
+  }
+  window.xychange = function(title, message){
+    var myElementToShow = document.getElementById("xychange");
+    myElementToShow.innerHTML = title + "</br>" + message; 
+}
+
+	</script>
+	
 	<script>
         Chart.defaults.global.legend = {
         enabled: false
@@ -174,92 +265,7 @@
 
 </script>
 
-					<script type="text/javascript">
-  window.onload = function () {
-    var chart = new CanvasJS.Chart("chartContainer",
-    {
-      title: {
-        text: ""
-      },
-      legend: {
-       horizontalAlign: "right", // "center" , "right" (fahad)
-       verticalAlign: "bottom",
-       fontSize: 25
-       },
-       animationEnabled: true,
-       axisX:{
-        
-        labelFontSize: 12, 
-         interval: 1,
-       intervalType: '${span}',
-        valueFormatString: "DD MMM YYYY"   // "DD MMM" for date and month, "MMM" for month only , "YYYY" year only (fahad)
-         
-      },
-      axisY:{
-        labelFontSize: 12
-      },
-       exportEnabled: true,
-        data: [
-            {
-          click: function(e){
-        	  $(".loader").removeClass("hidden");
-         xychange( "dataSeries Event => Type: "+ e.dataSeries.type+ ", dataPoint { x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y + " }");
-         $('#chartpoint input').val(" x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y).trigger('change');
-        },
-      
-        type: "line",
-        showInLegend: true,
-        legendMarkerType: "circle",
-        legendText: "Positive Sentiments",
-        color: "green",
-        fillOpacity: 0,
-        name : "Positve Sentiments",
-        dataPoints: //array
-        	${trendpos}     
-         
-      },
-      
-      { 
-          click: function(e){
-         xychange( "dataSeries Event => Type: "+ e.dataSeries.type+ ", dataPoint { x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y + " }");
-         $('#chartpoint input').val(" x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y).trigger('change');
-        
-        },
-      
-        type: "line",
-        showInLegend: true,
-        legendMarkerType: "circle",
-        legendText: "Negative Sentiments",
-        color: "red",
-        fillOpacity: 0,
-        name:"Negative Sentiments",
-        dataPoints: //array
-		${trendneg}
-        
-     }
-      ],
-      legend : {
-			cursor : "pointer",
-			itemclick : function(e) {
-			if (typeof (e.dataSeries.visible) === "undefined"
-					|| e.dataSeries.visible) {
-				e.dataSeries.visible = false;
-			} else {
-				e.dataSeries.visible = true;
-			}
-			chart.render();
-			}
-		}
-    });
-    chart.render();
-  }
-  window.xychange = function(title, message){
-    var myElementToShow = document.getElementById("xychange");
-    myElementToShow.innerHTML = title + "</br>" + message; 
-}
-
-	</script>
-	
+					
 								
 	<script>
 						$(document)
@@ -432,9 +438,7 @@ $('#destroy').click(
    		 $(".loader").removeClass("hidden");
    			document.getElementById("trendtype").submit();
    		}
-   		function spanChanged() {
-			document.getElementById("pf_spanForm").submit();
-		}
+   		
    		
    	    
    </script>
