@@ -191,15 +191,9 @@
     		"name":"${v1[1]}","size":${v1[0]}
     	},
     	</c:forEach>
-
-
     ]
     };
     }
-
-  
-
-
     </script>
 						<script>
 
@@ -604,7 +598,6 @@ function main(o, data) {
   initialize(root);
   accumulate(root);
   layout(root);
-  //console.log(root);
   display(root);
 
   if (window.parent !== window) {
@@ -613,10 +606,12 @@ function main(o, data) {
   }
 
   function initialize(root) {
-    root.x = root.y = 0;
+    root.x = 0;
+    root.y = 0;
     root.dx = width;
     root.dy = height;
     root.depth = 0;
+    console.log()
   }
 
   // Aggregate the values for internal nodes. This is normally done by the
@@ -777,5 +772,7 @@ if (window.location.hash === "") {
         }
     });
 }
+
+
 
 </script>

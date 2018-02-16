@@ -55,16 +55,15 @@ public class DBConnector extends UtilFunctions {
 
 		} catch (SQLException ex) {
 			ex.printStackTrace();
-			result.add(0, "Err");          
+			result.add(0, "Err");     
+			
 		} 
-
 		return result;
 	}
 
 	
 
 	public boolean updateTable(String query){
-		Connection con = null;
 		java.sql.Statement stmt = null;
 		ResultSet rs = null;             
 		boolean donee;// =false;
