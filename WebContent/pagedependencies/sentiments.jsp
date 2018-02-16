@@ -31,7 +31,7 @@
 	   
    });
    function spanChanged() {
-		document.getElementById("st_spanForm").submit();
+		document.getElementById("st_spanform").submit();
 	}
  
    </script>
@@ -57,16 +57,53 @@
 								
 								
 <script type="text/javascript">
+
+
+
   window.onload = function () {
-    var chart = new CanvasJS.Chart("chartContainer",
+	  var trendpos, trendneg;
+	  
+	  // trend positive check
+	  <%
+	  if(session.getAttribute("trendpos") == null)
+	  {
+	  %>
+	  trendpos ="";
+	  <% 
+	  }
+	  else if(session.getAttribute("trendpos") != null)	
+	  {
+	  %>
+	  trendpos = ${trendpos};
+	  <% 
+	  }
+	  %>
+	  
+	  // trend negative check
+	  <%
+	  if(session.getAttribute("trendneg") == null)
+	  {
+	  %>
+	  trendneg ="";
+	  <% 
+	  }
+	  else if(session.getAttribute("trendneg") != null)	
+	  {
+	  %>
+	  trendneg = ${trendneg};
+	  <% 
+	  }
+	  %>
+   var chart = new CanvasJS.Chart("chartContainer",
     {
       title: {
-        text: "Sentiments"
+        text: "Sentiments",
+        	fontSize: 15
       },
       legend: {
        horizontalAlign: "right", // "center" , "right" (fahad)
        verticalAlign: "bottom",
-       fontSize: 25
+       fontSize: 12
        },
        animationEnabled: true,
        axisX:{
@@ -96,18 +133,14 @@
         color: "green",
         fillOpacity: 0,
         name : "Positve Sentiments",
-        dataPoints: //array
-        	${trendpos}     
+        dataPoints: trendpos    
          
       },
       
       { 
           click: function(e){
          xychange( "dataSeries Event => Type: "+ e.dataSeries.type+ ", dataPoint { x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y + " }");
-         $('#chartpoint input').val(" x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y).trigger('change');
-        
-        },
-      
+         $('#chartpoint input').val(" x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y).trigger('change');},
         type: "line",
         showInLegend: true,
         legendMarkerType: "circle",
@@ -115,12 +148,11 @@
         color: "red",
         fillOpacity: 0,
         name:"Negative Sentiments",
-        dataPoints: //array
-		${trendneg}
+        dataPoints: trendneg
         
      }
-      ],
-      legend:{
+      ]
+      /* legend:{
 			cursor : "pointer",
 			itemclick : function(e) {
 			if (typeof (e.dataSeries.visible) === "undefined"
@@ -131,7 +163,7 @@
 			}
 			chart.render();
 			}
-		}
+		} */
     });
     chart.render();
   }
@@ -143,6 +175,103 @@
 	</script>
 	
 	<script>
+	
+	   // Radar chart
+    var rad1, rad2, rad3, rad4, rad5, rad6;
+	   // rad 1
+     <%
+     if(session.getAttribute("radar") == null)
+     {	 
+     %>
+      rad1 = ""
+     <%
+     }
+     else if(session.getAttribute("radar") != null)
+     { 
+	  %>
+	  rad1  = ${radar};
+	  <% 
+     }
+	  %>
+	  // rad 2
+	  <%
+	     if(session.getAttribute("radar1") == null)
+	     {	 
+	     %>
+	      rad2 = ""
+	     <%
+	     }
+	     else if(session.getAttribute("radar1") != null)
+	     { 
+		  %>
+		  rad2  = ${radar1};
+		  <% 
+	     }
+		  %>
+		  
+		  // rad 3
+		  <%
+		  if(session.getAttribute("radar2") == null)
+		     {	 
+		     %>
+		      rad3 = ""
+		     <%
+		     }
+		     else if(session.getAttribute("radar2") != null)
+		     { 
+			  %>
+			  rad3  = ${radar2};
+			  <% 
+		     }
+			  %>
+			  
+			// rad 4
+			  <%
+			  if(session.getAttribute("radar3") == null)
+			     {	 
+			     %>
+			      rad4 = ""
+			     <%
+			     }
+			     else if(session.getAttribute("radar3") != null)
+			     { 
+				  %>
+				  rad4  = ${radar3};
+				  <% 
+			     }
+				  %>
+				  
+				// rad 5
+				  <%
+				  if(session.getAttribute("radar4") == null)
+				     {	 
+				     %>
+				      rad5 = ""
+				     <%
+				     }
+				     else if(session.getAttribute("radar4") != null)
+				     { 
+					  %>
+					  rad5  = ${radar4};
+					  <% 
+				     }
+					  %>
+					  
+					// rad 6
+					  <%
+					  if(session.getAttribute("radar5") == null)
+					     {	 
+					     %>
+					      rad6 = ""
+					     <%
+					     }
+					     else if(session.getAttribute("radar5") != null)
+					     { 
+						  %>
+						  rad6  = ${radar5};
+						  <% 
+					     }
+						  %>
         Chart.defaults.global.legend = {
         enabled: false
       };
@@ -169,12 +298,13 @@
         	}; 
       
       
-      // Radar chart
+   
+      
       var ctx = document.getElementById("canvasRadar");
       var data = {
         labels: ["Work", "Leisure", "Home", "Money", "Religion", "Death"],
        
-        datasets: ${radar}
+        datasets: rad1
     };
       var canvasRadar = new Chart(ctx, {
         type: 'radar',
@@ -186,7 +316,7 @@
       var ctx = document.getElementById("canvasRadar1");
       var data = {    		 
     	labels: ["Past focus", "Present focus", "Future focus"],
-        datasets:${radar1}
+        datasets:rad2
        };
 
 
@@ -201,7 +331,7 @@
       var ctx = document.getElementById("canvasRadar2");
       var data = {
         labels: ["Affiliation", "Achievement", "Power", "Reward focus", "Risk/prevention focus"],
-        datasets: ${radar2}
+        datasets: rad3
       };
 
       var canvasRadar2 = new Chart(ctx, {
@@ -214,7 +344,7 @@
       var ctx = document.getElementById("canvasRadar3");
       var data = {
         labels: ["Insight", "Cause", "Discrepancies", "Tentativeness", "Certainty", "Differentiation"],
-        datasets: ${radar3}
+        datasets: rad4
       };
 
       var canvasRadar3 = new Chart(ctx, {
@@ -226,7 +356,7 @@
       var ctx = document.getElementById("canvasRadar4");
       var data = {
         labels: ["Analytical Thinking", "Clout", "Authentic", "Emotional Tone"],
-        datasets: ${radar4}
+        datasets: rad5
       };
 
 
@@ -240,7 +370,7 @@
       var ctx = document.getElementById("canvasRadar5");
       var data = {
         labels: ["Positive emotion", "Negative emotion", "Anxiety", "Anger", "Sadness"],
-        datasets: ${radar5}
+        datasets: rad6
       };
 
       var canvasRadar5 = new Chart(ctx, {

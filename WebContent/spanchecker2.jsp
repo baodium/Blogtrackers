@@ -1,6 +1,6 @@
 
 <%
-	Object span = (null == session.getAttribute("calScale")) ? "" : session.getAttribute("calScale");
+	Object span = (null == session.getAttribute("st_span")) ? "" : session.getAttribute("st_span");
 	if (span != null && (span.toString()).equalsIgnoreCase("month")) {
 %>
 
@@ -70,7 +70,7 @@
 		value="day" autocomplete="off" onchange="spanChanged()"> Day
 	</label> <label class="btn btn-default btn-sm"> <input type="radio" name="options"
 		value="week" autocomplete="off" onchange="spanChanged()"> Week
-	</label> <label class="btn btn-default btn-sm"> <input type="radio" name="options"
+	</label> <label class="btn btn-default btn-sm active"> <input type="radio" name="options"
 		value="month" autocomplete="off" onchange="spanChanged()"> Month
 	</label> <label class="btn btn-default btn-sm"> <input type="radio" name="options"
 		value="year" autocomplete="off" onchange="spanChanged()"> Year

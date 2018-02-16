@@ -665,13 +665,13 @@ function main(o, data) {
         .data(d._children)
       .enter().append("g");
 
-    g.filter(function(d) { return d._children; })
+     g.filter(function(d) { return d._children; })
         .classed("children", true)
-        .on("click", transition);
+        .on("click", transition); 
 
-    var children = g.selectAll(".child")
+     var children = g.selectAll(".child")
         .data(function(d) { return d._children || [d]; })
-      .enter().append("g");
+      .enter().append("g"); 
 
     children.append("rect")
         .attr("class", "child")
