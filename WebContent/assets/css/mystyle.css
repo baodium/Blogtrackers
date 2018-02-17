@@ -541,6 +541,10 @@ background-color:#eeeded !important;
 /*Custom CSS for the stuff for look and feel*/
 @media screen and (min-width: 769px)
 {
+	body
+	{
+	overflow-x:hidden;
+	}
 .page-container
 {
 width:90% !important;
@@ -581,3 +585,7 @@ right:6% !important;
         {
         font-size:14px;
         }
+.navbar-inverse
+{
+background-color:#2A6ADF !important;	
+}

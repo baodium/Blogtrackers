@@ -18,8 +18,15 @@
 	if (username == null || username == "") {
 		response.sendRedirect("index.jsp");
 	}
+	else if(session.getAttribute("tracker") == null || session.getAttribute("tracker") == "")
+     { 
+    		response.sendRedirect("trackerlist.jsp");
+     }
         ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
+
+       
 %>
+
 
  <jsp:include page="include_top.jsp"></jsp:include>
 
@@ -77,7 +84,7 @@ function googleTranslateElementInit() {
 								<h6 class="panel-title">Posting Frequency<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
 								<form name="dateform" id="dateform" method="post">
-									<div data-intro="Select a date range " data-step="2" id="reportrange" action="PostingFrequency">
+							<div data-intro="Select a date range " data-step="2" id="reportrange" action="PostingFrequency">
 									<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
 										<i class="icon-calendar3 position-left"></i> <span></span>  
 					<b class="caret"></b>
@@ -96,7 +103,7 @@ function googleTranslateElementInit() {
 							<div class="chart" id="c3-line-regions-chart"></div>
 						     </div>	-->
 							<div data-intro="Select a data point on the graph" data-step="3" class="demo-container">
-												<div id="chartContainer" style="height: 350px"></div>
+											<div id="chartContainer" style="height: 350px"></div>
 												<div data-intro="You can switch between day, weeek, month and year" data-step="4" style="text-align: center; margin-bottom: 15px;">
 													<jsp:include page="spanchecker.jsp"></jsp:include>
 												
@@ -254,7 +261,7 @@ function googleTranslateElementInit() {
 <div class="col-md-12 col-sm-12 col-xs-12">
 						<div data-intro="This section displays the blog content" data-step="7" class="panel panel-default">
 							<div class="panel-heading">
-								<h6 class="panel-title">Blogpost Content<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<h6 class="panel-title">Blog Post Content<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
 									<ul class="icons-list">
 				                		<li><a data-action="collapse"></a></li>
@@ -327,7 +334,7 @@ function googleTranslateElementInit() {
 			                	</div>
 							</div>
 
-							<div class="panel-body scroll2">
+							<div class="panel-body scroll2" style="overflow-x:hidden;">
 						<table class="table datatable-basic" style="min-height:200px;">
 						<thead>
 							<tr>

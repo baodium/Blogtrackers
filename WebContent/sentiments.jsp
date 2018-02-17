@@ -13,8 +13,15 @@
 	if (username == null || username == "") {
 		response.sendRedirect("index.jsp");
 	}
-        ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
+	else{   ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
+        if(session.getAttribute("tracker") == null || session.getAttribute("tracker") =="")
+        { 
+       		response.sendRedirect("trackerlist.jsp");
+        }
+	}
 %>
+
+
  
  <jsp:include page="include_top.jsp"></jsp:include>
 <% ArrayList mytrackers = new ArrayList();
@@ -107,16 +114,18 @@ function googleTranslateElementInit() {
 						<div class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Timeline of Sentiments<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<div class="heading-elements">
 								<form name="dateform" id="dateform" method="post" action="">
 									<div class="heading-elements" data-intro="Select a daterange" data-step="2" id="reportrange" >
 									<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
 										<i class="icon-calendar3 position-left"></i> <span></span>  
-					
-									</button>
-									<input type="hidden" id="datepicked" name="datepicked"  onchange="datechanged()" /><b class="caret"></b>
+					<b class="caret"></b>	
+														</button>
+									<input type="hidden" id="datepicked" name="datepicked"  onchange="datechanged()" />
 									
 			                	</div>
 								</form>
+								</div>
 							</div>
 
 							<div class="panel-body">
@@ -133,8 +142,8 @@ function googleTranslateElementInit() {
 												<br />
 
 
-												<form name="pf_spanform" id="pf_spanform" action="Sentiments" method="post">
-                                                  <jsp:include page="spanchecker.jsp"></jsp:include>
+												<form name="st_spanform" id="st_spanform" action="Sentiments" method="post">
+                                                  <jsp:include page="spanchecker2.jsp"></jsp:include>
 												</form>
 
 
@@ -279,12 +288,8 @@ function googleTranslateElementInit() {
 						<table  data-intro="Click the check box" data-step="5"  id="sentitable" class="table datatable-basic bulk_action">
 						<thead>
 							<tr>
-							<th>
-							<!--  <label class="mylabel">
-  <input class="mycheckbox individualcheckbox" type='checkbox'>
-  <span class="myspan individualspan"></span></label>-->
-							<input type="checkbox" id="check-all" class="flat"></th>
-								<th>Select All</th>
+							<th></th>
+								<th>Blog Post</th>
 								
 								<th class="hidden" width="0%"></th>
 								<th class="hidden" width="0%"></th>

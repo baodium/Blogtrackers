@@ -368,7 +368,7 @@ int trackerSize = mytrackers.size();
 			                	</div>
 							</div>
 
-							<div class="panel-body scroll2">
+							<div class="panel-body scroll2" style="overflow-x:hidden;">
 						<table class="table datatable-basic" style="min-height:200px;">
 						<thead>
 							<tr>

@@ -17,10 +17,15 @@
 	if (username == null) {
 		response.sendRedirect("index.jsp");
 	}
+	else if(session.getAttribute("tracker") == null || session.getAttribute("tracker") =="")
+	{ 
+			response.sendRedirect("trackerlist.jsp");
+	}
 %>
 <% ArrayList mytrackers = new ArrayList();
 mytrackers = (ArrayList)session.getAttribute("trackers");
 int trackerSize = mytrackers.size();
+
     if(trackerSize == 0)
     {%>
     <c:redirect url="setup_tracker.jsp"/>	
@@ -74,13 +79,14 @@ function googleTranslateElementInit() {
 
 			<!-- Main content -->
 			<div class="content-wrapper">
+			
 
 				<!-- Main charts -->
 				<div class="row">
 				<div class="col-md-12">
 						<div class="panel panel-primary">
 							<div class="panel-heading">
-								<h6 class="panel-title">Export Data in JSON<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<h6 class="panel-title">Export Data in JSON <span style="color:white"> (Select a date range to get started)</span><a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 						<div class="heading-elements">		
 					<form name="dateform" id="dateform" method="post">
 									<div data-intro="Select a Date Range" data-step="2" id="reportrange">
@@ -105,7 +111,7 @@ function googleTranslateElementInit() {
 					                	</div>
 										<form action="ExportJSON" id="records" method="post">
 										<h1 class="no-margin">Export Data from your Current Tracker to JSON</h1>
-										Total Number Of Records Selected
+										Total Number Of Records Selected 
 										<input id="records" name="records" type="hidden" onchange="recordsChanged()" />
 										<c:if test="${records==null}">
 										<c:set var="records" scope="session" value="0" />

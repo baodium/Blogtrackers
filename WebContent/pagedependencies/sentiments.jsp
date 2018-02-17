@@ -30,7 +30,9 @@
 	});
 	   
    });
-   
+   function spanChanged() {
+		document.getElementById("st_spanform").submit();
+	}
  
    </script>
 	<!-- FastClick -->
@@ -50,141 +52,58 @@
 								src="${pageContext.request.contextPath}/vendors/canvasjs/examples/bootbox.min.js"></script>
 
 							<script
+	
 								src="${pageContext.request.contextPath}/vendors/canvasjs/canvasjs.min.js"></script>
-	<script>
-        Chart.defaults.global.legend = {
-        enabled: false
-      };
-        
-        var radarOptions = {
-
-        	    title: {
-        	        display: false,
-        	        text: 'Custom Chart Title'
-        	    },
-
-        	    scale: {
-        	        angleLines:{
-        	            lineWidth: 5
-        	        },
-        	        pointLabels:{
-        	            fontSize: 15,
-        	            fontColor: 'ff0000'
-        	        },
-
-        	    }
+								
+								
+<script type="text/javascript">
 
 
-        	}; 
-      
-      
-      // Radar chart
-      var ctx = document.getElementById("canvasRadar");
-      var data = {
-        labels: ["Work", "Leisure", "Home", "Money", "Religion", "Death"],
-       
-        datasets: ${radar}
-    };
-      var canvasRadar = new Chart(ctx, {
-        type: 'radar',
-        data: data,
-        options: radarOptions
-      });
-      
-    
-      var ctx = document.getElementById("canvasRadar1");
-      var data = {    		 
-    	labels: ["Past focus", "Present focus", "Future focus"],
-        datasets:${radar1}
-       };
 
-
-      var canvasRadar1 = new Chart(ctx, {
-        type: 'radar',
-        data: data,
-        
-        options: radarOptions
-      });
-      
-      
-      var ctx = document.getElementById("canvasRadar2");
-      var data = {
-        labels: ["Affiliation", "Achievement", "Power", "Reward focus", "Risk/prevention focus"],
-        datasets: ${radar2}
-      };
-
-      var canvasRadar2 = new Chart(ctx, {
-        type: 'radar',
-        data: data,
-        options: radarOptions
-      });
-      
-      
-      var ctx = document.getElementById("canvasRadar3");
-      var data = {
-        labels: ["Insight", "Cause", "Discrepancies", "Tentativeness", "Certainty", "Differentiation"],
-        datasets: ${radar3}
-      };
-
-      var canvasRadar3 = new Chart(ctx, {
-        type: 'radar',
-        data: data,
-        options: radarOptions
-      });
-      
-      var ctx = document.getElementById("canvasRadar4");
-      var data = {
-        labels: ["Analytical Thinking", "Clout", "Authentic", "Emotional Tone"],
-        datasets: ${radar4}
-      };
-
-
-      var canvasRadar4 = new Chart(ctx, {
-        type: 'radar',
-        data: data,
-        options: radarOptions
-      });
-      
-      
-      var ctx = document.getElementById("canvasRadar5");
-      var data = {
-        labels: ["Positive emotion", "Negative emotion", "Anxiety", "Anger", "Sadness"],
-        datasets: ${radar5}
-      };
-
-      var canvasRadar5 = new Chart(ctx, {
-        type: 'radar',
-        data: data,
-        options: radarOptions
-      });
-
-    
-      
-    </script>
-					<script>
-    $('button').on('click',function(e) {
-    if ($(this).hasClass('grid')) {
-        $('#container ul').removeClass('list').addClass('grid');
-    }
-    
-    else if ($(this).hasClass('list')) {
-        $('#container ul').removeClass('grid').addClass('list');
-    }
-});
-
-</script>
-
-					<script type="text/javascript">
   window.onload = function () {
-    var chart = new CanvasJS.Chart("chartContainer",
+	  var trendpos, trendneg;
+	  
+	  // trend positive check
+	  <%
+	  if(session.getAttribute("trendpos") == null)
+	  {
+	  %>
+	  trendpos ="";
+	  <% 
+	  }
+	  else if(session.getAttribute("trendpos") != null)	
+	  {
+	  %>
+	  trendpos = ${trendpos};
+	  <% 
+	  }
+	  %>
+	  
+	  // trend negative check
+	  <%
+	  if(session.getAttribute("trendneg") == null)
+	  {
+	  %>
+	  trendneg ="";
+	  <% 
+	  }
+	  else if(session.getAttribute("trendneg") != null)	
+	  {
+	  %>
+	  trendneg = ${trendneg};
+	  <% 
+	  }
+	  %>
+   var chart = new CanvasJS.Chart("chartContainer",
     {
       title: {
-        text: ""
+        text: "Sentiments",
+        	fontSize: 15
       },
       legend: {
        horizontalAlign: "right", // "center" , "right" (fahad)
        verticalAlign: "bottom",
-       fontSize: 25
+       fontSize: 12
        },
        animationEnabled: true,
        axisX:{
@@ -214,18 +133,14 @@
         color: "green",
         fillOpacity: 0,
         name : "Positve Sentiments",
-        dataPoints: //array
-        	${trendpos}     
+        dataPoints: trendpos    
          
       },
       
       { 
           click: function(e){
          xychange( "dataSeries Event => Type: "+ e.dataSeries.type+ ", dataPoint { x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y + " }");
-         $('#chartpoint input').val(" x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y).trigger('change');
-        
-        },
-      
+         $('#chartpoint input').val(" x:" + e.dataPoint.x + ", y: "+ e.dataPoint.y).trigger('change');},
         type: "line",
         showInLegend: true,
         legendMarkerType: "circle",
@@ -233,12 +148,11 @@
         color: "red",
         fillOpacity: 0,
         name:"Negative Sentiments",
-        dataPoints: //array
-		${trendneg}
+        dataPoints: trendneg
         
      }
-      ],
-      legend : {
+      ]
+      /* legend:{
 			cursor : "pointer",
 			itemclick : function(e) {
 			if (typeof (e.dataSeries.visible) === "undefined"
@@ -249,7 +163,7 @@
 			}
 			chart.render();
 			}
-		}
+		} */
     });
     chart.render();
   }
@@ -260,6 +174,228 @@
 
 	</script>
 	
+	<script>
+	
+	   // Radar chart
+    var rad1, rad2, rad3, rad4, rad5, rad6;
+	   // rad 1
+     <%
+     if(session.getAttribute("radar") == null)
+     {	 
+     %>
+      rad1 = ""
+     <%
+     }
+     else if(session.getAttribute("radar") != null)
+     { 
+	  %>
+	  rad1  = ${radar};
+	  <% 
+     }
+	  %>
+	  // rad 2
+	  <%
+	     if(session.getAttribute("radar1") == null)
+	     {	 
+	     %>
+	      rad2 = ""
+	     <%
+	     }
+	     else if(session.getAttribute("radar1") != null)
+	     { 
+		  %>
+		  rad2  = ${radar1};
+		  <% 
+	     }
+		  %>
+		  
+		  // rad 3
+		  <%
+		  if(session.getAttribute("radar2") == null)
+		     {	 
+		     %>
+		      rad3 = ""
+		     <%
+		     }
+		     else if(session.getAttribute("radar2") != null)
+		     { 
+			  %>
+			  rad3  = ${radar2};
+			  <% 
+		     }
+			  %>
+			  
+			// rad 4
+			  <%
+			  if(session.getAttribute("radar3") == null)
+			     {	 
+			     %>
+			      rad4 = ""
+			     <%
+			     }
+			     else if(session.getAttribute("radar3") != null)
+			     { 
+				  %>
+				  rad4  = ${radar3};
+				  <% 
+			     }
+				  %>
+				  
+				// rad 5
+				  <%
+				  if(session.getAttribute("radar4") == null)
+				     {	 
+				     %>
+				      rad5 = ""
+				     <%
+				     }
+				     else if(session.getAttribute("radar4") != null)
+				     { 
+					  %>
+					  rad5  = ${radar4};
+					  <% 
+				     }
+					  %>
+					  
+					// rad 6
+					  <%
+					  if(session.getAttribute("radar5") == null)
+					     {	 
+					     %>
+					      rad6 = ""
+					     <%
+					     }
+					     else if(session.getAttribute("radar5") != null)
+					     { 
+						  %>
+						  rad6  = ${radar5};
+						  <% 
+					     }
+						  %>
+        Chart.defaults.global.legend = {
+        enabled: false
+      };
+        
+        var radarOptions = {
+
+        	    title: {
+        	        display: false,
+        	        text: 'Custom Chart Title'
+        	    },
+
+        	    scale: {
+        	        angleLines:{
+        	            lineWidth: 5
+        	        },
+        	        pointLabels:{
+        	            fontSize: 15,
+        	            fontColor: 'ff0000'
+        	        },
+
+        	    }
+
+
+        	}; 
+      
+      
+   
+      
+      var ctx = document.getElementById("canvasRadar");
+      var data = {
+        labels: ["Work", "Leisure", "Home", "Money", "Religion", "Death"],
+       
+        datasets: rad1
+    };
+      var canvasRadar = new Chart(ctx, {
+        type: 'radar',
+        data: data,
+        options: radarOptions
+      });
+      
+    
+      var ctx = document.getElementById("canvasRadar1");
+      var data = {    		 
+    	labels: ["Past focus", "Present focus", "Future focus"],
+        datasets:rad2
+       };
+
+
+      var canvasRadar1 = new Chart(ctx, {
+        type: 'radar',
+        data: data,
+        
+        options: radarOptions
+      });
+      
+      
+      var ctx = document.getElementById("canvasRadar2");
+      var data = {
+        labels: ["Affiliation", "Achievement", "Power", "Reward focus", "Risk/prevention focus"],
+        datasets: rad3
+      };
+
+      var canvasRadar2 = new Chart(ctx, {
+        type: 'radar',
+        data: data,
+        options: radarOptions
+      });
+      
+      
+      var ctx = document.getElementById("canvasRadar3");
+      var data = {
+        labels: ["Insight", "Cause", "Discrepancies", "Tentativeness", "Certainty", "Differentiation"],
+        datasets: rad4
+      };
+
+      var canvasRadar3 = new Chart(ctx, {
+        type: 'radar',
+        data: data,
+        options: radarOptions
+      });
+      
+      var ctx = document.getElementById("canvasRadar4");
+      var data = {
+        labels: ["Analytical Thinking", "Clout", "Authentic", "Emotional Tone"],
+        datasets: rad5
+      };
+
+
+      var canvasRadar4 = new Chart(ctx, {
+        type: 'radar',
+        data: data,
+        options: radarOptions
+      });
+      
+      
+      var ctx = document.getElementById("canvasRadar5");
+      var data = {
+        labels: ["Positive emotion", "Negative emotion", "Anxiety", "Anger", "Sadness"],
+        datasets: rad6
+      };
+
+      var canvasRadar5 = new Chart(ctx, {
+        type: 'radar',
+        data: data,
+        options: radarOptions
+      });
+
+    
+      
+    </script>
+					<script>
+    $('button').on('click',function(e) {
+    if ($(this).hasClass('grid')) {
+        $('#container ul').removeClass('list').addClass('grid');
+    }
+    
+    else if ($(this).hasClass('list')) {
+        $('#container ul').removeClass('grid').addClass('list');
+    }
+});
+
+</script>
+
+					
 								
 	<script>
 						$(document)
@@ -327,34 +463,34 @@
 		.on(
 				'show.daterangepicker',
 				function() {
-					console
-							.log("show event fired");
+					/* console
+							.log("show event fired"); */
 				});
 $('#reportrange')
 		.on(
 				'hide.daterangepicker',
 				function() {
-					console
-							.log("hide event fired");
+					/* console
+							.log("hide event fired"); */
 				});
 $('#reportrange')
 		.on(
 				'apply.daterangepicker',
 				function(ev, picker) {
-					console
+					/* console
 							.log("apply event fired, start/end dates are "
 									+ picker.startDate
 											.format('MMMM D, YYYY')
 									+ " to "
 									+ picker.endDate
-											.format('MMMM D, YYYY'));
+											.format('MMMM D, YYYY')); */
 				});
 $('#reportrange')
 		.on(
 				'cancel.daterangepicker',
 				function(ev, picker) {
-					console
-							.log("cancel event fired");
+					/* console
+							.log("cancel event fired"); */
 				});
 $('#options1').click(
 		function() {
@@ -432,9 +568,7 @@ $('#destroy').click(
    		 $(".loader").removeClass("hidden");
    			document.getElementById("trendtype").submit();
    		}
-   		function spanChanged() {
-			document.getElementById("pf_spanForm").submit();
-		}
+   		
    		
    	    
    </script>

@@ -172,6 +172,73 @@ public class BlogNetworkUtil extends UtilFunctions{
 		return media;
 	}
 	
+	// get blog to blog connection 
+	public void BlogConnectionTracker(Date startdate, Date enddate, String username, String trackername)
+	{
+	Connection conn = getConn();
+	java.sql.Date sqldate1 = new java.sql.Date(startdate.getTime());
+	java.sql.Date sqldate2 = new java.sql.Date(enddate.getTime());
+	Statement st;
+	String query = "";
+	HashMap<Integer, String> BlogInTracker, BlogInOutLinks;
+	try {
+     //		System.out.println("was here");
+		String queryStr = "select query from trackers where userid=\'"+username+"\' and tracker_name=\'"+trackername+"\'";
+		st = conn.createStatement();
+		ResultSet rs = st.executeQuery(queryStr);
+		rs.next();
+		query = rs.getString("query"); 	
+		//System.out.println(query);
+		
+		
+		queryStr  = "select blogsite_url,blogsite_id from blogtrackers.blogsites where "+query;
+		st = conn.createStatement();
+		rs = st.executeQuery(queryStr);
+		// map the blog in tracker
+		BlogInTracker = new HashMap<>();
+		
+		while(rs.next())
+		{
+		String blogsiteurl = rs.getString("blogsite_url");
+		Integer blogsiteid = rs.getInt("blogsite_id");
+		BlogInTracker.put(blogsiteid,blogsiteurl);
+		System.out.println(blogsiteurl);
+		System.out.println(blogsiteid);
+		}
+		
+		System.out.println(BlogInTracker.get(123));
+		
+		queryStr  = "select domain,blogsite_id from blogtrackers.outlinks where "+query+" and domain in (\'"+BlogInTracker.get(123)+"\')";
+		st = conn.createStatement();
+		rs = st.executeQuery(queryStr);
+		// map the blog in tracker
+		BlogInOutLinks = new HashMap<>();
+		
+		while(rs.next())
+		{
+		String domain = rs.getString("domain");
+		Integer blogsiteid = rs.getInt("blogsite_id");
+		BlogInOutLinks.put(blogsiteid,domain);
+		System.out.println(domain);
+		System.out.println(blogsiteid);
+		}
+		
+		
+		
+		
+		rs.close();
+		st.close();
+		conn.close();
+	}
+	catch(SQLException e)
+	{
+		e.printStackTrace();	
+	}
+	//	System.out.println("was here now");
+	// get the blogsite id from trackers then compare with outlinks for a match
+	//return false;	
+	}
+	
 	public HashMap<String,String> get_bn_media_category( String username, String trackername)
 	{
 		Connection conn= getConn();

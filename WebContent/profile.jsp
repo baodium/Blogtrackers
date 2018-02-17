@@ -25,6 +25,7 @@
           //  response.sendRedirect("index.jsp");
         //}
 %>
+
   <jsp:include page="include_top.jsp"></jsp:include>
 	<!-- Page header -->
         <style>
@@ -152,7 +153,6 @@ function googleTranslateElementInit() {
    
 	                	<form class="form-horizontal" action="<%=request.getContextPath()%>/profile" method="post" class="form-validate" >
 							<div class="form-group">
-								<label class="col-lg-2 control-label">Profile</label>
 								<div class="col-lg-10">
 									<div class="row">
 										<div class="col-md-4">
@@ -168,7 +168,7 @@ function googleTranslateElementInit() {
 
 										<div class="col-md-8">
 											<div class="form-group">
-				                                <input type="email" name="email" class="form-control"  placeholder="Email" maxlength="40" required="required" value = "<%=userinfo.get(2)%>">
+				                                <input type="email" name="email" class="form-control"  placeholder="Email" maxlength="40" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" value = "<%=userinfo.get(2)%>">
 			                                </div>
 
 			                                <div class="form-group">
@@ -180,7 +180,6 @@ function googleTranslateElementInit() {
 							</div>
 
 							<div class="form-group">
-								<label class="col-lg-2 control-label">&nbsp;</label>
 								<div class="col-lg-10">
 									<div class="row">
 										<div class="col-md-8">

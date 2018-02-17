@@ -31,6 +31,8 @@
 		
 	}
 %>
+
+
  <jsp:include page="include_top.jsp"></jsp:include>
 
  <link rel="stylesheet" type="text/css"

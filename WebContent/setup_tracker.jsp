@@ -58,6 +58,7 @@
     //session.setAttribute("pre-selected-blogs", "");
 	
 %>
+
  <jsp:include page="include_top.jsp"></jsp:include>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -156,7 +157,7 @@
 											<img src="img/b.png" class="img-circle img-lg" alt="">
 										</div>									
 										<div class="media-body">
-											<h6 class="media-heading"><%=item.get(1) %> <input type="checkbox" <%=(selected_blog.contains(item.get(0))?"checked":"") %> onclick="select_blog()" class="blog-list" name="blog" style="float:right" value="<%=item.get(0) %>"  />
+											<h6 class="media-heading"><%=item.get(1).toString().toLowerCase() %> <input type="checkbox" <%=(selected_blog.contains(item.get(0))?"checked":"") %> onclick="select_blog()" class="blog-list" name="blog" style="float:right" value="<%=item.get(0) %>"  />
 											</h6>
 											<span class="text-muted"><%=item.get(2) %> post(s)</span>
 										</div>	
@@ -251,6 +252,9 @@
 
 	<script>
 	
+	
+	
+	
 	<% if(!selected.equals("")){%>
 	populate_selected_trackers();
 	<%}%>
@@ -264,12 +268,37 @@
 			return false;
 		}
 		
+		$(document).ready(function(){
+			$('#next-click').click(function(){
+				var keyword = $("#keyword").val();
+				if(keyword === "")
+					{
+					
+					$('#next-click').css('pointer-events','none');
+					}
+			})
+			$('#tracker-setter-t-1').click(function(){
+				var keyword = $("#keyword").val();
+				if(keyword === "")
+					{
+					
+					$('#next-click').css('pointer-events','none');
+					}
+			})
+			$('#previous-click').click(function(){
+				
+				
+					$('#next-click').css('pointer-events','inherit');
+					
+			})
+		});
 		//console.log(tracker);
 		
 		//$("#result-set").html("<center><img src='assets/images/preloader.gif' /></center>");
 		//console.log(keyword);
-		if(keyword !="" && (searched==null || searched!="yes")){
+	 if(keyword !="" && (searched==null || searched!="yes")){
 			$("#result-set").html("<center><img src='assets/images/preloader.gif' /></center>");
+			
 			$('#next-click').attr('disabled',true);
 			$.ajax({
 		        url: app_url+'webtemplates/bloglist2.jsp',
@@ -345,6 +374,9 @@
 		}
 	}
 	
+	// new methods for checking all blog
+	
+	
 	function select_blog(){
 		var blogs = $(".blog-list");
 		var selected='';
@@ -363,7 +395,7 @@
 		var selected = $("#all-selected-blogs").val();
 		selected = selected.substring(0,(selected.length-1));
 		$("#searched-trackers").html("<center><img src='assets/images/preloader.gif' /></center>");
-		console.log(selected);
+		//console.log(selected);
 		$.ajax({
 	        url: app_url+'webtemplates/searched_trackers.jsp',
 			method:'POST',

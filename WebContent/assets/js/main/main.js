@@ -250,7 +250,7 @@ $(document).ready(function() {
             slideSpeed : 1000,
             autoPlay : true,
             pagination: false,
-            items : 4, 
+            items : 5, 
         });
 
         $(".shop-control-next").on('click', function(){

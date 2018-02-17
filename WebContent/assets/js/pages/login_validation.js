@@ -143,7 +143,7 @@ $(function() {
         
         submitHandler: function(ev)
 			{
-			console.log("submitted");
+			//console.log("submitted");
                         $("#error_message-box").html('<img src="assets/images/loading.gif" >');
                        // return false;
                         $.ajax({
@@ -157,15 +157,15 @@ $(function() {
 						},
 						error: function(response)
 						{						
-							console.log(response);
+							//console.log(response);
                                                         $("#error_message-box").html('Invalid username/password');
 							//alert("An error occoured!");
 						},
 						success: function(response)
 						{       
-                            console.log(response);
+                           // console.log(response);
 							var login_status = response;//.responseText;
-                                                        console.log(login_status);
+                                                        // console.log(login_status);
 							if(login_status === "invalid"){
                                                                         $("#error_message-box").html('Invalid username/password');
 							}else if(login_status == "success"){
@@ -208,7 +208,7 @@ function verify(element){
 						},
 						error: function(response)
 						{						
-							console.log(response);
+							// console.log(response);
                                                         //$("#error_message-box").html('Invalid username/password');
 							//alert("An error occoured!");
 						},
@@ -217,7 +217,7 @@ function verify(element){
 							var status = response;//.responseText;
                                                         
 							if(status === "yes"){
-                                                            console.log(status);
+                                                            //console.log(status);
                                                             if(field==="username"){
                                                                  $("#user_exist").html('<span class="help-block text-danger"><i class="icon-cancel-circle2 position-left"></i> This username is already taken</span>');
                                                                  $("#user_exist").removeClass("validation-valid-label");
@@ -228,7 +228,7 @@ function verify(element){
                                                                  $("#email_exist").removeClass("validation-valid-label");
                                                             }
                                                         }else if(status === "no"){
-                                                            console.log(status);
+                                                          //  console.log(status);
                                                             if(field==="username"){
                                                                 $("#user_exist").html('');
                                                                 $("#user_exist").addClass("validation-valid-label").text("Available");

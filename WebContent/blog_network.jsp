@@ -11,8 +11,14 @@
 	if (username == null || username == "") {
 		response.sendRedirect("index.jsp");
 	}
+	else if(session.getAttribute("tracker") == null || session.getAttribute("tracker") =="")
+     { 
+    		response.sendRedirect("trackerlist.jsp");
+     }
         ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
+       
 %>
+
 
  <jsp:include page="include_top.jsp"></jsp:include>
 
@@ -156,7 +162,6 @@ function googleTranslateElementInit() {
     ]   */
  
    var nodes = [
- 	
  	<c:forEach items="${nodes}" var="l">
      {id: ${l[0]}, label: "${l[1]}", group: '${l[2]}'},
      </c:forEach>

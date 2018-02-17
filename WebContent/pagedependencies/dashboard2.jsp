@@ -14,10 +14,6 @@
 
 	<script type="text/javascript" src="assets/js/core/app.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/ui/ripple.min.js"></script>
-<<<<<<< HEAD
-=======
-	
->>>>>>> 2d3cba7da942dea3759be2cab75472543ed1b3b4
 	  <script
 					src="${pageContext.request.contextPath}/vendors/echarts/dist/echarts.min.js"></script>
 				<script
@@ -90,121 +86,67 @@
 </style>
    <script src="http://d3js.org/d3.v3.min.js"></script>
    
- <script>
+   <script>
+   (function() {
 
+	   // Fake JSON data
+	   var json = {"countries_msg_vol": {
+	     "CA": 170, "US": 393, "BB": 12, "CU": 9, "BR": 89, "MX": 192, "PY": 32, "UY": 9, "VE": 25, "BG": 42, "CZ": 12, "HU": 7, "RU": 184, "FI": 42, "GB": 162, "IT": 87, "ES": 65, "FR": 42, "DE": 102, "NL": 12, "CN": 92, "JP": 65, "KR": 87, "TW": 9, "IN": 98, "SG": 32, "ID": 4, "MY": 7, "VN": 8, "AU": 129, "NZ": 65, "GU": 11, "EG": 18, "LY": 4, "ZA": 76, "A1": 2, "Other": 254 
+	   }};
+	   
+	 	// D3 Bubble Chart 
 
-    var diameter = 500,
-    format = d3.format(",d"),
-    dataSource = 0;
+	 	var diameter = 500;
+	 	
+	 	format = d3.format(",d"),
+	    dataSource = 0;
 
-    var pack = d3.layout.pack()
-    .size([diameter - 4, diameter - 4])
-    .sort( function(a, b) {
-        return -(a.value - b.value);
-    })
-    .value(function(d) { return d.size; });
+	    var pack = d3.layout.pack()
+	    .size([diameter - 4, diameter - 4])
+	    .sort( function(a, b) {
+	        return -(a.value - b.value);
+	    })
+	    .value(function(d) { return d.size; });
 
-    var svg = d3.select(".bubble").append("svg")
-    .attr("width", diameter)
-    .attr("height", diameter);
+	 	var svg = d3.select('.bubble').append('svg')
+	 					.attr('width', diameter)
+	 					.attr('height', diameter);
 
-    var buttonData = [];
-    var buttonDiv = d3.select("body").append("svg")
-    .attr("width", diameter)
-    .attr("height", 50);
-    var buttons = buttonDiv.selectAll(".updateButton")
-    .data(buttonData)
-    .enter()
-    .append('g')
-    .attr("class", "updateButton")
-    .on("click", function(d, i) {
-    	dataSource = i;
-    	updateVis();
-    });
-    buttons.append("rect")
-    .attr("x", function(d, i) { return (i * 100) + 100; })
-    .attr("width", 98)
-    .attr("height", 25)
-    .attr("ry", 5)
-    .style("stroke", "#787878")
-    .style("fill", "tan");
-    buttons.append("text")
-    .attr("x", function(d, i) { return (i * 100) + (100 / 2) + 98; })
-    .attr("y", 12)
-    .attr("dy", "0.35em")
-    .style("text-anchor", "middle")
-    .style("font-size", "15px")
-    .text(function(d) { return d; });
+	 	var bubble = d3.layout.pack()
+	 				.size([diameter, diameter])
+	 				.value(function(d) {return d.size;})
+	          // .sort(function(a, b) {
+	 				// 	return -(a.value - b.value)
+	 				// }) 
+	 				.padding(3);
+	   
+	   // generate data with calculated layout values
+	   var nodes = bubble.nodes(processData(json))
+	 						.filter(function(d) { return !d.children; }); // filter out the outer bubble
+	  
+	   var vis = svg.selectAll('circle')
+	 					.data(nodes);
+	   
+	   vis.enter().append('circle')
+	 			.attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; })
+	 			.attr('r', function(d) { return d.r; })
+	 			.attr('class', function(d) { return d.className; });
+	   
+	   function processData(data) {
+	     var obj = data.countries_msg_vol;
 
-    var data = getData();
+	     var newDataSet = [];
 
-    var vis = svg.datum(data).selectAll(".node")
-    .data(pack.nodes)
-    .enter()
-    .append("g");
-
-    var titles = vis.append("title")
-    .attr("x", function(d) { return d.x; })
-    .attr("y", function(d) { return d.y; })
-    
-    .text(function(d) { return d.name +
-        (d.children ? "" : ": " + format(d.value)); });
-
-    var circles = vis.append("circle")
-    .attr("stroke", "white")
-    .style("fill", function(d) { return !d.children ? "#428bca" : "white"; })   
-    .attr("cx", function(d) { return d.x; })
-    .attr("cy", function(d) { return d.y; })
-    .attr("r", function(d) { return d.r; });
-
-    //updateVis();
-
-    function updateVis() {
-
-    if (dataSource == 0)
-        pack.value(function(d) { return d.size; });
-    if (dataSource == 1)
-        pack.value(function(d) { return 100; });
-    if (dataSource == 2)
-        pack.value(function(d) { return 1 +
-                 Math.floor(Math.random()*301); });
-    //pack.sort(null)
-
-    var data1 = pack.nodes(data);
-
-    titles.attr("x", function(d) { return d.x; })
-        .attr("y", function(d) { return d.y; })
-        .text(function(d) { return d.name +
-            (d.children ? "" : ": " + format(d.value)); });
-
-    circles.transition()
-        .duration(5000)
-        .attr("cx", function(d) { return d.x; })
-        .attr("cy", function(d) { return d.y; })
-        .attr("r", function(d) { return d.r; });
-    };
-
-
-    function getData() {
-    return {
-    "name": "",
-    "children": [
-    	<c:forEach var="v1" items="${nlg}">
-    	{
-    		"name":"${v1[1]}","size":${v1[0]}
-    	},
-    	</c:forEach>
-
-
-    ]
-    };
-    }
-
-  
-
-
-    </script>
-						<script>
+	     for(var prop in obj) {
+	       newDataSet.push({name: prop, className: prop.toLowerCase(), size: obj[prop]});
+	     }
+	     return {children: newDataSet};
+	   }
+	   
+	 })();
+   </script>		
+		
+		<script>
 
 		var sample_data = {${data}}
     $(document).ready(function(){
@@ -461,7 +403,7 @@
           itemGap: 20,
           textStyle: {
             color: 'rgba(30,144,255,0.8)',
-            fontFamily: '',
+            fontFamily: 'Ã¥Â¾Â®Ã¨Â½Â¯Ã©Â›Â…Ã©Â»Â‘',
             fontSize: 35,
             fontWeight: 'bolder'
           }
@@ -531,7 +473,7 @@
 window.addEventListener('message', function(e) {
     var opts = e.data.opts,
         data = e.data.data;
-		console.log()
+
     return main(opts, data);
 });
 
@@ -599,7 +541,6 @@ function main(o, data) {
     $("#chart").prepend("<p class='title'>" + opts.title + "</p>");
   }
   if (data instanceof Array) {
-	  console.log(rname);
     root = { key: rname, values: data };
   } else {
     root = data;
@@ -669,13 +610,13 @@ function main(o, data) {
         .data(d._children)
       .enter().append("g");
 
-     g.filter(function(d) { return d._children; })
+    g.filter(function(d) { return d._children; })
         .classed("children", true)
-        .on("click", transition); 
+        .on("click", transition);
 
-     var children = g.selectAll(".child")
+    var children = g.selectAll(".child")
         .data(function(d) { return d._children || [d]; })
-      .enter().append("g"); 
+      .enter().append("g");
 
     children.append("rect")
         .attr("class", "child")

@@ -713,7 +713,7 @@ public class Sentiments extends HttpServlet {
 
 
 			}
-			if(request.getParameter("options")!=null && request.getParameter("options").equals("month") )
+			if(request.getParameter("options")!= null && request.getParameter("options").equals("month") )
 			{
 //				System.out.println(" inside spanmonth");
 				if(session.getAttribute("datepicked")!=null && session.getAttribute("tracker")!=null){
@@ -722,7 +722,6 @@ public class Sentiments extends HttpServlet {
 					try{
 
 						session.setAttribute("st_span", "month");	
-
 						String date =session.getAttribute("datepicked").toString();
 						String arr[] = date.split("-", 2);
 						String sdate1 = arr[0];   

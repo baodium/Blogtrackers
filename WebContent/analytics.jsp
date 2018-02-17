@@ -20,6 +20,7 @@
         ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
 %>
 
+
   <jsp:include page="include_top.jsp"></jsp:include>
  <% ArrayList mytrackers = new ArrayList();
 mytrackers = (ArrayList) session.getAttribute("trackers");
@@ -126,7 +127,7 @@ function googleTranslateElementInit() {
 				
 				
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-4" data-intro="View Statistics such as Language Distribution" data-step="2">
 					<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/Dashboard?tracker=${tracker}"> 
@@ -169,13 +170,13 @@ function googleTranslateElementInit() {
 										</c:choose>
 					</div>
 					
-					<div class="col-md-4">
+					<div class="col-md-4" data-intro="Analyze the Posting Frequency of the Bloggers" data-step="3">
 					<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/PostingFrequency?tracker=${tracker}"> 
 										</c:when>
 										<c:when test="${tracker == null}">
-											<a href="<%=request.getContextPath()%>/posting_frequencey.jsp"> 
+											<a href="<%=request.getContextPath()%>/posting_frequency.jsp"> 
 										</c:when>
 					</c:choose>
 						<div class="panel">
@@ -188,7 +189,7 @@ function googleTranslateElementInit() {
 											<a href="<%=request.getContextPath()%>/PostingFrequency?tracker=${tracker}" class="btn bg-warning-400 legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Posting Frequency">
 										</c:when>
 										<c:when test="${tracker == null}">
-											<a href="<%=request.getContextPath()%>/posting_frequencey.jsp" class="btn bg-warning-400 legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Posting Frequency"> 
+											<a href="<%=request.getContextPath()%>/posting_frequency.jsp" class="btn bg-warning-400 legitRipple" data-popup="tooltip" title="" data-container="body" data-original-title="Posting Frequency"> 
 										</c:when>
 										</c:choose>
 										View Posting Frequency 
@@ -211,7 +212,7 @@ function googleTranslateElementInit() {
 				    	</c:when>
 										</c:choose>
 					</div>
-              <div class="col-md-4">
+              <div class="col-md-4" data-intro="Know the Trend of a Keyword" data-step="4">
               	<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/KeywordTrendsServlet?tracker=${tracker}"> 
@@ -253,7 +254,7 @@ function googleTranslateElementInit() {
 				    	</c:when>
 										</c:choose>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-4" data-intro="Analyze the Sentiment of the Blogposts in the Tracker" data-step="5">
 					<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/Sentiments?tracker=${tracker}"> 
@@ -302,7 +303,7 @@ function googleTranslateElementInit() {
 					
 					
 					
-					<div class="col-md-4">
+					<div class="col-md-4" data-intro="Analyze the Influence of Bloggers from Blogposts" data-step="6">
 					<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/InfluenceServlet?tracker=${tracker}"> 
@@ -345,7 +346,7 @@ function googleTranslateElementInit() {
 										</c:choose>
 					</div>
 					
-					<div class="col-md-4">
+					<div class="col-md-4" data-intro="Export Your Tracker Information as a JSON" data-step="7">
 					<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/ExportJSON?tracker=${tracker}"> 
@@ -387,7 +388,7 @@ function googleTranslateElementInit() {
 				    	</c:when>
 										</c:choose>
 					</div>
-<div class="col-md-4">
+<div class="col-md-4" data-intro="Get Additional Blog Information" data-step="8">
 					<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/AdditionalInfoServlet?tracker=${tracker}"> 
@@ -431,7 +432,7 @@ function googleTranslateElementInit() {
 										</c:choose>
 					</div>
 					
-					<div class="col-md-4">
+					<div class="col-md-4" data-intro="Get Additional Blogger Information" data-step="9">
 					<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/AdditionalBlogger?tracker=${tracker}"> 
@@ -476,7 +477,7 @@ function googleTranslateElementInit() {
 					</div>
 					
 					
-					<div class="col-md-4">
+					<div class="col-md-4" data-intro="Get Information About the Network" data-step="10">
 					<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/BlogNetwork?tracker=${tracker}"> 
@@ -522,7 +523,7 @@ function googleTranslateElementInit() {
 					
 					
 					
-					<div class="col-md-4">
+					<!--  <div class="col-md-4">
 					<c:choose>
 										<c:when test="${tracker != null}">
 											<a href="<%=request.getContextPath()%>/blog_clustering.jsp"> 
@@ -564,7 +565,7 @@ function googleTranslateElementInit() {
 				    	</a>
 				    	</c:when>
 										</c:choose>
-					</div>
+					</div> -->
 					
 				</div>
 				<!-- /main charts -->

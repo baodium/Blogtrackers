@@ -124,7 +124,7 @@ function googleTranslateElementInit() {
 				                                <dd>You need to first setup your tracker to track, then you can track the blog.</dd>
 
 				                                <dt class="text-size-small text-primary text-uppercase">3. What can I track?</dt>
-				                                <dd>You can track the keywork trends, sentiments, etc.</dd>
+				                                <dd>You can track the keyword trends, sentiments, etc.</dd>
 				                            </dl>
 			                            </div>
 									</div>

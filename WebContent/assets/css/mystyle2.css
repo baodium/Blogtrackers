@@ -550,6 +550,10 @@ background-color:#eeeded !important;
 }
 @media screen and (min-width: 769px)
 {
+body
+{
+overflow-x:hidden !important;	
+}	
 .page-container 
 {
 width:90% !important;
@@ -609,3 +613,37 @@ right:6% !important;
         {
         background:#eeeded !important;
         }
+        .node circle {
+  fill: #fff;
+  stroke-width: 1.5px;
+}
+.node {
+  font-size: 13px;
+}
+svg text {
+  font-size: 10px;
+  color:#000;
+}
+.link {
+  fill: none;
+  stroke-width: 1px;
+} 
+.navbar-inverse
+{
+background-color:#2A6ADF !important;	
+}
+.daterangepicker select.yearselect
+{
+width:50%;	
+}
+.blog-list
+{
+position:absolute;
+top:-3px;
+right:-5px;	
+}
+.media-heading
+{
+font-size:14px;
+/* max-height:21px; */	
+}
