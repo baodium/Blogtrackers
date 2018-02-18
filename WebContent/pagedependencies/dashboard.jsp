@@ -14,7 +14,7 @@
 
 	<script type="text/javascript" src="assets/js/core/app.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/ui/ripple.min.js"></script>
-	
+
 	  <script
 					src="${pageContext.request.contextPath}/vendors/echarts/dist/echarts.min.js"></script>
 				<script
@@ -522,7 +522,7 @@
 window.addEventListener('message', function(e) {
     var opts = e.data.opts,
         data = e.data.data;
-
+		console.log()
     return main(opts, data);
 });
 
@@ -590,6 +590,7 @@ function main(o, data) {
     $("#chart").prepend("<p class='title'>" + opts.title + "</p>");
   }
   if (data instanceof Array) {
+	  console.log(rname);
     root = { key: rname, values: data };
   } else {
     root = data;

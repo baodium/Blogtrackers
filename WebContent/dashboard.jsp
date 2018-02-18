@@ -536,32 +536,36 @@ function googleTranslateElementInit() {
 
 		                	</ul>
 	                	</div>
+	                	
 					</div>
-
-					<div class="panel-body">
+					
+					<div id="echart_mini_pie"></div>
 					<div id="chart"></div>
+					<div class="panel-body">
+					
 
 							<script type="text/javascript"
 								src="https://www.gstatic.com/charts/loader.js"></script>
 							<script type="text/javascript">
+							/*
       google.charts.load('current', {'packages':['treemap']});
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-        	['Tracker','Parent','value'],
-        	['${tracker}',null,0],
+        	['Tracker','Parent','value','value2'],
+        	['${tracker}',null,0,0],
         <c:forEach var="v1" items="${tree}">
         		<c:choose>
         			<c:when test="${empty v1[1]}">
-        				['${v1[2]}. ${v1[3]}','${v1[2]}',${v1[3]}],
+        				['${v1[2]}', '${v1[3]}',${v1[2]},${v1[3]}],
         			</c:when>
         			<c:otherwise>
         				<c:choose>
         					<c:when test="${v1[1] eq v1[2]}">
-								['${v1[1]}. ${v1[3]}','${v1[2]}',${v1[3]}],
+								['${v1[1]}', '${v1[3]}',${v1[2]},${v1[3]}],
  							</c:when>
 							<c:otherwise>
-								['${v1[1]} ${v1[3]}','${v1[2]}',${v1[3]}],
+								['${v1[1]}', '${v1[3]}',${v1[2]},${v1[3]}],
 							</c:otherwise>
 						</c:choose>
 					</c:otherwise>
@@ -581,8 +585,9 @@ function googleTranslateElementInit() {
         });
 
      }
+      */
     </script>
-											
+									
 					</div>
 					</div>
 				</div>
