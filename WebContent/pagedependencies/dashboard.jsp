@@ -14,10 +14,7 @@
 
 	<script type="text/javascript" src="assets/js/core/app.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/ui/ripple.min.js"></script>
-<<<<<<< HEAD
-=======
-	
->>>>>>> 2d3cba7da942dea3759be2cab75472543ed1b3b4
+
 	  <script
 					src="${pageContext.request.contextPath}/vendors/echarts/dist/echarts.min.js"></script>
 				<script

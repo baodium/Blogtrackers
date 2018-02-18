@@ -268,12 +268,33 @@ public class Tracker extends HttpServlet {
 		if(action.equals("crawl")) {
 			try {
 				String data = request.getParameter("data");
+				String url = request.getParameter("blog_url");
+				String keyword = request.getParameter("keyword");
 				String userid = (String) session.getAttribute("user");
+				String status = "pending";
+				DBConnector hn =  new DBConnector();
+				ArrayList ex = hn.query("SELECT * FROM blogsites WHERE blogsite_url = '"+url+"'");
+				//System.out.println(ex);
+				if(ex.size()>0) {
+					ex = hn.query("SELECT * FROM blog_refresh WHERE blogsite_url = '"+url+"'");
+						if(ex.size()<1) {
+							
+							hn.updateTable("INSERT INTO blog_refresh (userid,blogsite_url,keyword, status) VALUES('"+userid+"','"+url+"', '"+keyword+"', '"+status+"')");
+						}
+				}else {
+						ex = hn.query("SELECT * FROM crawler_pipelines WHERE blogsite_url = '"+url+"'");
+						if(ex.size()<1) {
+							
+				        	hn.updateTable("INSERT INTO crawler_pipelines (userid,blogsite_url,keyword, status) VALUES('"+userid+"','"+url+"', '"+keyword+"', '"+status+"')");
+						}	
+				}
+				/*
 				ArrayList df = new DBConnector().query("SELECT * FROM blogstocrawl");
 	        	int curr = df.size();
 	        	curr+=1;
 				String query="INSERT INTO blogstocrawl(id,userid,data) VALUES("+curr+",'"+userid+"', '"+data+"')";
 				boolean done = new DBConnector().updateTable(query);
+				*/
 				pww.write(data);
 			}catch(Exception ex) {
 				pww.write(ex+" error");

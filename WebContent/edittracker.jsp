@@ -1,8 +1,5 @@
 <%@page import="java.util.*"%>
 <%@page import="wrapper.*"%>
-
-
-
 <%
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
@@ -266,7 +263,7 @@ function googleTranslateElementInit() {
                             <label>&nbsp;Focus crawl by keyword(s)</label>
                             <input type="text" name="keyword" id="keyword" placeholder="Enter keyword">
                         </div>
-
+						<!--  
                         <div class="three wide field main-fields">
                             <label>&nbsp;Limit by pages</label>
                             <div class="ui selection dropdown">
@@ -283,6 +280,7 @@ function googleTranslateElementInit() {
                                 </div>
                             </div>
                         </div>
+                        -->
 
                         <div style="text-align: center"  class="two wide field main-fields">
                             <label>&nbsp;</label>
@@ -382,10 +380,12 @@ function googleTranslateElementInit() {
                     });
                     var data= $(this).serializeJSON();
 					//console.log(data);
+					var blog = $("#crawl_url").val();
+					var keyword = $("#keyword").val();
                     $.ajax({
                         type: "post",
-                        url:   app_url+'/setup_tracker',
-                        data:{data:data,action:"crawl"},
+                        url:   app_url+'setup_tracker',
+                        data:{data:data,action:"crawl",blog_url:blog,keyword:keyword},
           		      
                        // dataType: "json",
                        // contentType: "application/json",
