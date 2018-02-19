@@ -273,19 +273,23 @@ public class Tracker extends HttpServlet {
 				String userid = (String) session.getAttribute("user");
 				String status = "pending";
 				DBConnector hn =  new DBConnector();
-				ArrayList ex = hn.query("SELECT * FROM blogsites WHERE blogsite_url = '"+url+"'");
+				ArrayList ex = hn.query2("SELECT * FROM blogsites WHERE blogsite_url = '"+url+"'");
 				//System.out.println(ex);
 				if(ex.size()>0) {
-					ex = hn.query("SELECT * FROM blog_refresh WHERE blogsite_url = '"+url+"'");
+					ArrayList hd = (ArrayList)ex.get(0);
+					String blogsite_id = hd.get(0).toString();
+					String blogurl = hd.get(1).toString();
+					String blogname = hd.get(2).toString();
+					ex = hn.query2("SELECT * FROM blog_refresh WHERE blogsite_name = '"+url+"'");
 						if(ex.size()<1) {
 							
-							hn.updateTable("INSERT INTO blog_refresh (userid,blogsite_url,keyword, status) VALUES('"+userid+"','"+url+"', '"+keyword+"', '"+status+"')");
+							hn.updateTable2("INSERT INTO blog_refresh (blogsite_id, blogsite_name,keyword, status) VALUES('"+blogsite_id+"','"+blogurl+"','"+keyword+"', '"+status+"')");
 						}
 				}else {
-						ex = hn.query("SELECT * FROM crawler_pipelines WHERE blogsite_url = '"+url+"'");
+						ex = hn.query2("SELECT * FROM crawler_pipeline WHERE blogsite_name = '"+url+"'");
 						if(ex.size()<1) {
 							
-				        	hn.updateTable("INSERT INTO crawler_pipelines (userid,blogsite_url,keyword, status) VALUES('"+userid+"','"+url+"', '"+keyword+"', '"+status+"')");
+				        	hn.updateTable2("INSERT INTO crawler_pipeline (blogsite_name,crawl_keywords, status) VALUES('"+url+"', '"+keyword+"', '"+status+"')");
 						}	
 				}
 				/*
