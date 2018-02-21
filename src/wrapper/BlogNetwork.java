@@ -352,8 +352,11 @@ public class BlogNetwork extends HttpServlet {
 				ArrayList<String> t = new ArrayList<String>();
 				t.add(Integer.toString(entry.getKey()));
 				t.add(entry.getValue());
+				
 				t.add("diamonds");
+				
 				nodes.add(t);
+				
 			}
 			if(session.getAttribute("blogtoblogger") != null && session.getAttribute("blogtoblogger") != "")
 			{

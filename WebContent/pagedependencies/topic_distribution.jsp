@@ -54,98 +54,136 @@
 				<script
 					src="${pageContext.request.contextPath}/vendors/canvasjs/canvasjs.min.js"></script>
 					
-					<script>
-	$('.daterange-ranges').daterangepicker(
-        {
-            startDate: moment().subtract('days', 29),
-            endDate: moment(),
-            minDate: '01/01/2006',
-            maxDate: moment(),
-			showDropdowns: true,
-          showWeekNumbers: true,
-            dateLimit: { days: 30000 },
-            ranges: {
-                //'Today': [moment(), moment()],
-                //'Yesterday': [moment().subtract('days', 1), moment().subtract('days', 1)],
-				'Last Year': [moment().subtract('years', 1).startOf('year'), moment().subtract('years', 1).endOf('year')],
-				//'Last 7 Days': [moment().subtract('days', 6), moment()],
-                //'Last 30 Days': [moment().subtract('days', 29), moment()],
-                'This Year': [moment().startOf('year'), moment()]
-                //'Last Month': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')]
-            },
-            opens: 'left',
-            applyClass: 'btn-small bg-slate-600 btn-block',
-            cancelClass: 'btn-small btn-default btn-block',
-            format: 'MM/DD/YYYY',
-			locale: {
-            applyLabel: 'Submit',
-            cancelLabel: 'Clear',
-            fromLabel: 'From',
-            toLabel: 'To',
-            customRangeLabel: 'Custom',
-            daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-            monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-            firstDay: 1
-          }
-        },
-        function(start, end) {
-            $('.daterange-ranges span').html(start.format('MMMM D') + ' - ' + end.format('MMMM D'));
-        }
-    );
-
-    $('.daterange-ranges span').html(moment().subtract('days', 29).format('MMMM D') + ' - ' + moment().format('MMMM D'));
-	</script>
+<script>
+						$(document)
+						.ready(
+								function() {
+	var cb = function(start, end, label) {
+        //console.log(start.toISOString(), end.toISOString(), label);
+        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+        $('#reportrange input').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY')).trigger('change');
+      };
 	
-			<script type="text/javascript">
-					//window.onload = 
-						$(document).ready(function() {
-						var tabData1 = '${frequency}';
-						var finals = [];
-						if (tabData1.length != 0) {
-							tabData = JSON.parse(tabData1);
-							for (var i = 0; i < tabData.length; i++) {
-								var firstdate = tabData[i].startDate;
-								var res = firstdate.split('-');
-								finals.push({
-									x : new Date(res[0], res[1] - 1, res[2]),
-									y : parseInt(tabData[i].noofposts)
+      var optionSet1 =
+    	      {   startDate: moment().subtract('days', 29),
+    	          endDate: moment(),
+    	          minDate: '01/01/1947',
+    	          maxDate: moment(),
+    			  showDropdowns: true,
+    	          showWeekNumbers: true,
+    	          timePicker : false,
+				  timePickerIncrement : 1,
+				  timePicker12Hour : true,
+				       ranges: {
+    	              
+       	        'This Year' : [
+						moment()
+								.startOf('year'),
+						moment() ],
+				'Last Year' : [
+						moment()
+								.subtract(1,'year').startOf('year'),
+						moment().subtract(1,'year').endOf('year') ]
+				 /* 
+				  'Last Year': [moment().subtract('years', 1).startOf('year'), moment().subtract('years', 1).endOf('year')],
+					'This Year': [moment().startOf('year'), moment()]*/
+    	          },
+    	          opens: 'left',
+    	          applyClass: 'btn-small bg-slate-600 btn-block',
+    	          cancelClass: 'btn-small btn-default btn-block',
+    	          format: 'MM/DD/YYYY',
+    			  locale: {
+    	          applyLabel: 'Submit',
+    	          cancelLabel: 'Clear',
+    	          fromLabel: 'From',
+    	          toLabel: 'To',
+    	          customRangeLabel: 'Custom',
+    	          daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+    	          monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    	          firstDay: 1
+    	        }
+    	          
+    	      };
+    	    
+    	  
+	if('${datepicked}' == '')
+	{ 
+    $('#reportrange span').html(moment().subtract('days', 500).format('MMMM D') + ' - ' + moment().format('MMMM D'));
+    $('#reportrange').daterangepicker(optionSet1, cb);
+	}
+	
+	else{ 
+		$('#reportrange span').html('${datepicked}');
+		$('#reportrange').daterangepicker(optionSet1, cb);
+		$('#reportrange')
+		.on(
+				'show.daterangepicker',
+				function() {
+					//console.log("show event fired");
+				});
+$('#reportrange')
+		.on(
+				'hide.daterangepicker',
+				function() {
+					//console.log("hide event fired");
+				});
+$('#reportrange')
+		.on(
+				'apply.daterangepicker',
+				function(ev, picker) {
+					/* console
+							.log("apply event fired, start/end dates are "
+									+ picker.startDate
+											.format('MMMM D, YYYY')
+									+ " to "
+									+ picker.endDate
+											.format('MMMM D, YYYY')); */
+				});
+$('#reportrange')
+		.on(
+				'cancel.daterangepicker',
+				function(ev, picker) {
+					//console.log("cancel event fired");
+				});
+$('#options1').click(
+		function() {
+			$('#reportrange').data(
+					'daterangepicker')
+					.setOptions(
+							optionSet1,
+							cb);
+		});
+$('#options2').click(
+		function() {
+			$('#reportrange').data(
+					'daterangepicker')
+					.setOptions(
+							optionSet2,
+							cb);
+		});
+$('#destroy').click(
+		function() {
+			$('#reportrange').data(
+					'daterangepicker')
+					.remove();
+		});
+		}
 								});
-							}
+     // set attribute for the form 
+    $('#trackerform').attr("action","TopicDistributionUtil");
+    $('#dateform').attr("action","TopicDistributionUtil"); 
+	 </script>
+	<script type="text/javascript">
+	 	//alert("here");
+						function trackerchanged() {
+							$(".loader").removeClass("hidden");
+							document.getElementById("trackerform").submit();
 						}
-						var chart = new CanvasJS.Chart("chartContainer", {
-							title : {
-								text : ""
-							},
-							legend : {
-								horizontalAlign : "Right",
-								verticalAlign : "top",
-								fontSize : 15
-							},
-							animationEnabled : true,
-							axisX : {
-								interlacedColor : "#F0F8FF",
-								labelFontSize : 12,
-								interval : 1,
-								intervalType : "${calScale}",
-							},
-							axisY : {
-								labelFontSize : 12
-							},
-							exportEnabled : true,
-							data : [ {
-								click : function(e) {
-									$(".loader").removeClass("hidden");
-									alert(e.dataPoint.x);
-								},
-								type : "area",
-								showInLegend : true,
-								legendMarkerType : "circle",
-								legendText : "Topic Distribution",
-								color : "#96CA59",
-								fillOpacity : .2,
-								dataPoints : finals
-							} ]
-						});
-						chart.render();
-					});
+						function datechanged() {
+							//alert("date picked");//$(".loader").removeClass("hidden");
+							
+							document.getElementById("dateform").submit();
+						}
+						
+						
 </script>
