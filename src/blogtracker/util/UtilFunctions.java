@@ -189,6 +189,38 @@ public class UtilFunctions
         }
         return null;
     }
+    
+    protected Connection getConn2()
+    {
+        try {
+
+            loadConstants();
+            String constr = hm.get("dbConnection");
+            String username = hm.get("dbUserName");
+            String password = hm.get("dbPassword");
+            constr = constr.replace("blogtrackers", "actest");
+          
+
+            if(constr!=null&&username!=null&&password!=null)
+            {
+                try {
+                    Class.forName("com.mysql.jdbc.Driver").newInstance();
+                } catch (InstantiationException ex) {
+                    ex.printStackTrace();
+                } catch (IllegalAccessException ex) {
+                    ex.printStackTrace();
+                }catch (ClassNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            dbCon = DriverManager.getConnection(constr,username,password);
+            return dbCon;
+        } catch (SQLException ex) {
+            Logger.getLogger(UtilFunctions.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
     protected String getBlogPost(int postID)
     {
         try {

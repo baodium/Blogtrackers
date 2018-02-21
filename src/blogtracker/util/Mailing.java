@@ -37,7 +37,7 @@ public static void postMail( String[] recipients, String subject, String message
     Session session = Session.getDefaultInstance(props,new javax.mail.Authenticator(){
             @Override
     protected PasswordAuthentication getPasswordAuthentication() {
-    return new PasswordAuthentication("blogtrackerasu", "blogtracker");
+    return new PasswordAuthentication("blogtrackers", "CosmosIsSuchAGreatResearchLab!");
     }
     });
     session.setDebug(debug);
@@ -47,7 +47,7 @@ public static void postMail( String[] recipients, String subject, String message
     Message msg = new MimeMessage(session);
 
     // set the from and to address
-    InternetAddress addressFrom = new InternetAddress("blogtrackerasu@gmail.com");
+    InternetAddress addressFrom = new InternetAddress("blogtrackers@gmail.com");
     msg.setFrom(addressFrom);
 
     InternetAddress[] addressTo = new InternetAddress[recipients.length]; 
@@ -65,16 +65,4 @@ public static void postMail( String[] recipients, String subject, String message
     Transport.send(msg);
 }
 
-public static void main(String[] args)
-{
-    String[] recipient = new String[1];
-   recipient[0] = "baodium@gmail.com";
-    String subject = "test mail";
-   String message = "This is a test message.";
-       try {
-           Mailing.postMail(recipient, subject, message);
-       } catch (MessagingException ex) {
-           Logger.getLogger(Mailing.class.getName()).log(Level.SEVERE, null, ex);
-       }
- }
 }

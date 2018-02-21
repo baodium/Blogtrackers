@@ -112,7 +112,7 @@ try{
 										</div>
 										<span class="divider"></span>
 										<div class="heading-btn-group">
-										<center>
+									
 										
 											<% if(username!=""){ %>
 											<a href="#" onclick="favorIt('<%=tracker.get(0)%>');" class="btn btn-link btn-float has-text" title="Add to favourite"><i class="icon-stars text-primary"></i></a>								
@@ -144,7 +144,7 @@ try{
 											<a href="<%=request.getContextPath()%>/login"  class="btn btn-link btn-float has-text"  title="Add to tracker"><i class="icon-stack text-primary"></i></a>
 											
 											<% } %>
-										</center>
+										
 										</div>	
 												
 									</div>

@@ -31,9 +31,11 @@ public class DBConnector extends UtilFunctions {
 	
 	public ArrayList query(String query){
 		ArrayList result=new ArrayList();  
+		Connection con = null;    
 		java.sql.Statement stmt = null;
 		ResultSet rs = null; 
 		try{
+			con = getConn();
 			stmt = con.prepareStatement(query);
 			rs = stmt.executeQuery(query); 
 			ResultSetMetaData rsmd = rs.getMetaData();
@@ -55,21 +57,78 @@ public class DBConnector extends UtilFunctions {
 
 		} catch (SQLException ex) {
 			ex.printStackTrace();
-			result.add(0, "Err");          
+			result.add(0, "Err");     
+			
 		} 
-
 		return result;
 	}
 
 	
 
 	public boolean updateTable(String query){
-		Connection con = null;
 		java.sql.Statement stmt = null;
 		ResultSet rs = null;             
 		boolean donee;// =false;
 		try {
 			con = getConn();//getConection//DriverManager.getConnection(dbURL, username, password);
+			stmt = con.prepareStatement(query);
+			//stmt = con.prepareStatement(medication_query);
+			int done = stmt.executeUpdate(query);
+			//rs = stmt.executeQuery(query);
+			donee=true;
+			//rs.close();
+			stmt.close();
+			con.close();
+
+		} catch (SQLException ex) {
+			donee=false;    
+		} 
+		return donee;
+	}
+
+	
+	public ArrayList query2(String query){
+		ArrayList result=new ArrayList();  
+		Connection con = null;    
+		java.sql.Statement stmt = null;
+		ResultSet rs = null; 
+		try{
+			con = getConn2();
+			stmt = con.prepareStatement(query);
+			rs = stmt.executeQuery(query); 
+			ResultSetMetaData rsmd = rs.getMetaData();
+			int column_size = rsmd.getColumnCount();
+			int i=0;
+			while(rs.next()){
+				ArrayList output=new ArrayList();
+				int total=column_size;
+			
+				for(int j=1;j<=(total); j++ ){
+					output.add((j-1), rs.getString(j));
+				}
+				result.add(i,output);
+				i++;
+			}
+			rs.close();
+			stmt.close();
+			con.close();
+
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			result.add(0, "Err");     
+			
+		} 
+		return result;
+	}
+
+	
+
+	public boolean updateTable2(String query){
+		java.sql.Statement stmt = null;
+		ResultSet rs = null;             
+		boolean donee;// =false;
+		try {
+			con = getConn2();//getConection//DriverManager.getConnection(dbURL, username, password);
 			stmt = con.prepareStatement(query);
 			//stmt = con.prepareStatement(medication_query);
 			int done = stmt.executeUpdate(query);

@@ -14,7 +14,7 @@
 
 	<script type="text/javascript" src="assets/js/core/app.js"></script>
 	<script type="text/javascript" src="assets/js/plugins/ui/ripple.min.js"></script>
-	
+
 	  <script
 					src="${pageContext.request.contextPath}/vendors/echarts/dist/echarts.min.js"></script>
 				<script
@@ -191,15 +191,9 @@
     		"name":"${v1[1]}","size":${v1[0]}
     	},
     	</c:forEach>
-
-
     ]
     };
     }
-
-  
-
-
     </script>
 						<script>
 
@@ -528,7 +522,7 @@
 window.addEventListener('message', function(e) {
     var opts = e.data.opts,
         data = e.data.data;
-
+		console.log()
     return main(opts, data);
 });
 
@@ -596,6 +590,7 @@ function main(o, data) {
     $("#chart").prepend("<p class='title'>" + opts.title + "</p>");
   }
   if (data instanceof Array) {
+	  console.log(rname);
     root = { key: rname, values: data };
   } else {
     root = data;
@@ -604,7 +599,6 @@ function main(o, data) {
   initialize(root);
   accumulate(root);
   layout(root);
-  //console.log(root);
   display(root);
 
   if (window.parent !== window) {
@@ -613,10 +607,12 @@ function main(o, data) {
   }
 
   function initialize(root) {
-    root.x = root.y = 0;
+    root.x = 0;
+    root.y = 0;
     root.dx = width;
     root.dy = height;
     root.depth = 0;
+    console.log()
   }
 
   // Aggregate the values for internal nodes. This is normally done by the
@@ -777,5 +773,7 @@ if (window.location.hash === "") {
         }
     });
 }
+
+
 
 </script>
