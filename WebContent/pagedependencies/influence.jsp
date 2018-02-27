@@ -467,7 +467,7 @@ $('#reportrange').data(
 					$('[data-toggle="tooltip"]').tooltip();
 					
 					
-				});
+				});	
 				function spanChanged() {
 					document.getElementById("pf_spanForm").submit();
 				}

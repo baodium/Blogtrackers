@@ -14,6 +14,8 @@ import java.util.Date;
 
 public class TopicDistributionUtil extends UtilFunctions {
 
+	
+// fetches all 
 public void GetTopicAllTopics(Date startDate, Date endDate,String username, String trackername)
 {
 Connection conn = getConn();

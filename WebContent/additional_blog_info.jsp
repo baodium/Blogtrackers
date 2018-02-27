@@ -304,7 +304,7 @@
 					
 					
 					
-						<div class="col-md-6 col-sm-12 col-xs-12">
+						<div class="col-md-6 col-sm-12 col-xs-12" data-intro="Shows the list of URLs in the blog" data-step="7">
 						<div class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">List of URLs<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
