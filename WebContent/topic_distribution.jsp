@@ -13,11 +13,13 @@
 	if (username == null || username == "") {
 		response.sendRedirect("index.jsp");
 	}
-        ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
+	else
+	{    ArrayList userinfo = (ArrayList)session.getAttribute("userinfo");
         if(session.getAttribute("tracker") == null || session.getAttribute("tracker") =="")
         { 
        		response.sendRedirect("trackerlist.jsp");
         }
+	}
 %>
 
 
@@ -67,16 +69,33 @@
 							<div class="panel-heading">
 								<h6 class="panel-title">Topic Trends<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
-								<!--<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
-										<i class="icon-calendar3 position-left"></i> <span></span> <b class="caret"></b>
-									</button>-->
+								<form name="dateform" id="dateform" method="post">
+									<div data-intro="Select a date range " data-step="2" id="reportrange">
+									<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
+										<i class="icon-calendar3 position-left"></i> <span></span>  
+					<b class="caret"></b>
+									</button>
+									<input type="hidden" name="is_request" value="yes">
+									<input type="hidden" id="datepicked" name="datepicked"  onchange="datechanged()" />
+			                	</div>
+								</form>
+
 			                	</div>
 							</div>
 
 							<div class="panel-body">
 
-							<button onclick="transition()">
+							<button onclick="transition()" class="btn btn-primary"> View Transition</button>
 <script src="//d3js.org/d3.v4.min.js"></script>
+
+<style>
+#topicdis svg, #topicdis svg path
+{
+width:100%;
+}
+
+</style>
+<div id="topicdis">
 <script>
 
 var n = 20, // number of layers
@@ -113,7 +132,7 @@ var area = d3.area()
     .y0(function(d) { return y(d[0]); })
     .y1(function(d) { return y(d[1]); });
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#topicdis").append("svg")
     .attr("width", width)
     .attr("height", height);
 
@@ -156,6 +175,7 @@ function bumpLayer(n, matrix, layer) {
 }
 
 </script>
+</div>
 
 						
 							</div>

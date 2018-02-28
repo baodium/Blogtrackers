@@ -185,7 +185,7 @@ function googleTranslateElementInit() {
 										<div class="col-md-8">
 											<div class="form-group">
 				                                <input type="text" class="form-control" required="required" disabled name="username" placeholder="Username" value = "<%=userinfo.get(0)%>">
-				                                <small class="text-danger">Username cant be changed</small>
+				                                <small class="text-danger">Username cannot be changed</small>
                                                                             <input type="hidden" class="form-control" required="required" name="username" placeholder="Username" value = "<%=userinfo.get(0)%>">
 			                                
                                                                                         </div>

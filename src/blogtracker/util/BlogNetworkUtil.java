@@ -206,9 +206,9 @@ public class BlogNetworkUtil extends UtilFunctions{
 		System.out.println(blogsiteid);
 		}
 		
-		System.out.println(BlogInTracker.get(123));
+		System.out.println(BlogInTracker.get(56));
 		
-		queryStr  = "select domain,blogsite_id from blogtrackers.outlinks where "+query+" and domain in (\'"+BlogInTracker.get(123)+"\')";
+		queryStr  = "select domain,blogsite_id from blogtrackers.outlinks where "+query+" and domain like \'%"+BlogInTracker.get(60)+"%\'";
 		st = conn.createStatement();
 		rs = st.executeQuery(queryStr);
 		// map the blog in tracker

@@ -142,7 +142,7 @@ function googleTranslateElementInit() {
 							<div class="panel-body text-center">
 								<div class="icon-object border-warning text-warning"><i class="icon-comment"></i></div>
 								<h5 class="text-semibold">Posting Frequency</h5>
-								<p class="mb-15">Analyse the posting frequency</p>
+								<p class="mb-15">Analyze the posting frequency</p>
 								<a href="#" class="btn bg-warning-400" data-toggle="modal" data-target="#postingfrequency">Learn more</a>
 							</div>
 						</div>
@@ -184,7 +184,7 @@ function googleTranslateElementInit() {
 							<div class="panel-body text-center">
 								<div class="icon-object border-warning text-warning"><i class="icon-split"></i></div>
 								<h5 class="text-semibold">Influence</h5>
-								<p class="mb-15">Analyse the influence of text</p>
+								<p class="mb-15">Analyze the influence of text</p>
 								<a href="#" class="btn bg-warning-400" data-toggle="modal" data-target="#influence">Learn more</a>
 							</div>
 						</div>
@@ -524,10 +524,9 @@ mentioned in blogs during that time-period. </p>
 								
 
 								<h6 class="text-semibold">About Additional Blog Information</h6>
-								<p>This feature provides more in depth-details about the blog. It gives a between day and of
-average trend of a blog that helps in determining if the blog is a professional blog or a hobby blog. Also provided are monthly posting trend and
+								<p>This feature provides more in-depth details about a blog. It displays the average trend of a blog that helps in determining if the blog is a professional blog or a hobby blog. Also provided are monthly posting trends and
 sentiments for the past three years to determine the variation in activity and emotions.
-A list of URLs and domains mentioned in the blog is provided to know the source of
+A list of URLs and domains mentioned in the blog is provided to know the sources of
 information.</p>
 									</div>
 
@@ -551,10 +550,10 @@ information.</p>
 								
 
 								<h6 class="text-semibold">About Additional Blogger Information</h6>
-								<p>This feature provides more in depth-details about the blogger. It gives a between day and of
-average trend of a blogger that helps in determining if the blogger is a professional. Also provided are monthly posting trend and
+								<p>This feature provides more in-depth details about a blogger. It displays the
+average trend of a blogger that helps in determining if the blogger is a professional. Also provided are monthly posting trends and
 sentiments for the past three years to determine the variation in activity and emotions.
-A list of URLs and domains mentioned in the blog is provided to know the source of
+A list of URLs and domains mentioned in the blog is provided to know the sources of
 information.</p>
 									</div>
 

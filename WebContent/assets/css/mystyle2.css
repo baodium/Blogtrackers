@@ -639,11 +639,18 @@ width:50%;
 .blog-list
 {
 position:absolute;
-top:-3px;
-right:-5px;	
+top:-18px;
+right:-18px;	
 }
 .media-heading
 {
 font-size:14px;
+max-height: 21px;
+max-width:160px;
+overflow: hidden;
 /* max-height:21px; */	
+}
+.daterangepicker select.monthselect
+{
+width:60%;
 }

@@ -177,7 +177,7 @@ function googleTranslateElementInit() {
 					<div class="col-lg-3 col-md-3 eachtracker">
 							<div class="thumbnail">
 								<div class="thumb thumb-rounded">
-									<a href="<%=request.getContextPath()%>/setup_tracker.jsp"><img style="width:130px; height:130px; display:flow-root;" src="img/plus2.jpg" alt=""></a>
+									<a href="<%=request.getContextPath()%>/setup_tracker.jsp"><img style="width:130px; height:130px; display:-webkit-box;" src="img/plus2.jpg" alt=""></a>
 								</div>
 						    	<div class="caption text-center">
 						    		<h6 class="text-semibold no-margin"><a href="<%=request.getContextPath()%>/setup_tracker.jsp" >Add New Tracker</a> <small class="display-block" style="line-height: 1.25;">Click To Setup A New Tracker</small></h6>
