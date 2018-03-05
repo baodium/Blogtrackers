@@ -23,7 +23,7 @@
 
  <jsp:include page="include_top.jsp"></jsp:include>
 
-<link rel="stylesheet" href="assets/css/alchemy.css"/>
+
 	<!-- Page header -->
 	<div class="page-header">
 		<div class="page-header-content">
@@ -65,7 +65,7 @@
 						<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="panel panel-primary">
 							<div class="panel-heading">
-								<h6 class="panel-title">Hierachical Clusters<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+								<h6 class="panel-title"> Clusters<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
 									<ul class="icons-list">
 				                		<li><a data-action="collapse"></a></li>
@@ -76,44 +76,14 @@
 							</div>
 
 							<div class="panel-body">
-                          <div class="col-lg-12 col-md-12 col-sm-12 scroll2" style="min-height:800px;">
-                          <div id="container"></div>
-</div>
+                          <div id="clusterscatterplot" class="col-lg-12 col-md-12 col-sm-12" style="min-height:500px; width:95%;">
+                       
+							</div>
 							</div>
 						</div>
 					</div>
 
-					<div class="col-md-12">
-							<div class="panel panel-primary">
-								<div class="panel-heading">
-									<h6 class="panel-title">Blog Clusters<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
-									<div class="heading-elements">
-									<!--<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
-											<i class="icon-calendar3 position-left"></i> <span></span> <b class="caret"></b>
-										</button>-->
-													</div>
-								</div>
-
-								<div class="panel-body">
-
-								<div class="col-lg-12 col-md-12 col-sm-12" style="min-height:400px;">
-									<div class="alchemy" id="alchemy"></div>
-								</div>
-								
-
-
-								</div>
-
-
-
-
-
-
-
-
-								</div>
-						</div>
-
+				
 
 
 
