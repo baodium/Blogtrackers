@@ -25,18 +25,17 @@ import org.supercsv.prefs.CsvPreference;
 <%@page import="authentication.*"%>
 <%@page import="java.text.*"%>
 <%@page import="java.time.Month"%>
-
+<%-- 
 <%@page import="org.supercsv.io.CsvListWriter"%>
 <%@page import="org.supercsv.io.ICsvListWriter"%>
 <%@page import="org.supercsv.prefs.CsvPreference"%>
+--%>
 <%
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
 	ArrayList result = new ArrayList();
 	
-	 String path=application.getRealPath("/").replace('\\', '/')+"assets/demo_data/dashboard/";
-	 path = path.replace("build/", "");
-	 String filePath = path;//"c:/apache-tomcat/";
+	
 	 
 	if (username == null || username == "") {
 		response.sendRedirect("index.jsp");
@@ -120,14 +119,28 @@ import org.supercsv.prefs.CsvPreference;
 	}
 	
 	if(result != null && result.size()>0){ 
-			
-		    
+		try{
+		 String path=application.getRealPath("/").replace('\\', '/')+"assets/demo_data/dashboard/";
+		 path = path.replace("build/", "");
+		 String filePath = path;//"c:/apache-tomcat/";
+		 
+		   PrintWriter pw = new PrintWriter(new File(filePath+"test.csv"));
+	       StringBuilder sb = new StringBuilder();
+	       
+	       	sb.append("key");
+	       	sb.append(',');
+		    sb.append("value");
+		    sb.append(',');
+		    sb.append("date");
+		    sb.append('\n');
+	       
+		    /*
 		    final String[][] csvMatrix = new String[3][3];
 	        csvMatrix[0][0] = "key";
 	        csvMatrix[0][1] = "value";
 	        csvMatrix[0][2] = "date";
 	       
-
+			*/
 	       // writeCsv(csvMatrix);
 	        int k=1;
 			for(int i=0; i<result.size(); i++){
@@ -137,27 +150,45 @@ import org.supercsv.prefs.CsvPreference;
 				String datee =  blogs.get(2).toString();
 				String influence =  blogs.get(3).toString();
 				
+				title = title.replace("\"", "\"\"");
+				title = title.replace(",", " ");
+			
+			    sb.append(title);
+			    sb.append(',');
+			    sb.append(influence);
+			    sb.append(',');
+			    sb.append(datee);
+			    sb.append('\n');
+			   
+			    
+				/*
 				 csvMatrix[k][0] = title;
 			     csvMatrix[k][1] = influence;
 			     csvMatrix[k][2] = datee;
+			     */
 			       k++;
 			        
 			    
 				
 			}
 			
-		
+			pw.write(sb.toString());
+		    pw.close();
+		}catch(Exception e){}
+			
+		/*
 			    ICsvListWriter csvWriter = null;
 		        try {
 		            csvWriter = new CsvListWriter(new FileWriter(filePath+"test.csv"), 
-		                CsvPreference.STANDARD_PREFERENCE);
+		                null);
 		
 		            for (int i = 0; i < csvMatrix.length; i++) {
 		                csvWriter.write(csvMatrix[i]);
+		                System.out.println("Done");
 		            }
 		
 		        } catch (Exception e) {
-		            e.printStackTrace(); // TODO handle exception properly
+		           // e.printStackTrace(); // TODO handle exception properly
 		        } finally {
 		            try {
 		                csvWriter.close();
@@ -166,7 +197,7 @@ import org.supercsv.prefs.CsvPreference;
 		        }
 		
 	
-	    
+	    */
 		
 	}
 	
