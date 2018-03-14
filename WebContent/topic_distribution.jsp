@@ -2,14 +2,42 @@
     Document   : Topic Distribution
     Created on : 21-January-2018
     Author     : Adigun Adekunle
+    
+    import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.time.Month;
+
+import java.io.IOException;
+
+import org.supercsv.io.CsvListWriter;
+import org.supercsv.io.ICsvListWriter;
+import org.supercsv.prefs.CsvPreference;
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="java.util.*"%>
+<%@page import="java.io.File"%>
+<%@page import="java.io.PrintWriter"%>
+<%@page import="java.io.FileWriter"%>
+<%@page import="java.io.FileNotFoundException"%>
+<%@page import="blogtracker.util.*"%>
+<%@page import="authentication.*"%>
+<%@page import="java.text.*"%>
+<%@page import="java.time.Month"%>
+
+<%@page import="org.supercsv.io.CsvListWriter"%>
+<%@page import="org.supercsv.io.ICsvListWriter"%>
+<%@page import="org.supercsv.prefs.CsvPreference"%>
 <%
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
+	ArrayList result = new ArrayList();
+	
+	 String path=application.getRealPath("/").replace('\\', '/')+"assets/demo_data/dashboard/";
+	 path = path.replace("build/", "");
+	 String filePath = path;//"c:/apache-tomcat/";
+	 
 	if (username == null || username == "") {
 		response.sendRedirect("index.jsp");
 	}
@@ -20,6 +48,129 @@
        		response.sendRedirect("trackerlist.jsp");
         }
 	}
+	
+	
+	if(request.getParameter("tracker")!=null)
+	{
+	String tracker = request.getParameter("tracker");
+	String userName = (String) session.getAttribute("user");
+	//TopicDistributionUtil td = new TopicDistributionUtil();
+	
+	}
+	if(request.getParameter("datepicked") != null)
+	{
+		try
+		{
+		String date = request.getParameter("datepicked");
+		session.setAttribute("datepicked", date);
+		
+
+		//System.out.println("Filter Value"+filtervalue );
+		//System.out.println("Date for Request "+date);
+		// addition by adekunle blog network by date range
+		date = session.getAttribute("datepicked").toString();
+		String arr[] = date.split("-", 2);
+		String sdate1 = arr[0];   
+		String sdate2 = arr[1];
+		sdate2=sdate2.trim();  // date 2 will have space trim it
+		int mm1=Month.valueOf(sdate1.substring(0, sdate1.indexOf(' ')).toUpperCase()).getValue();
+		int mm2=Month.valueOf(sdate2.substring(0, sdate2.indexOf(' ')).toUpperCase()).getValue();
+
+		String tempdate[] = sdate1.split(" ", 3);
+		String dd=tempdate[1];
+		String year=tempdate[2];
+		String d1 = year+"-"+mm1+"-"+dd;
+		d1=d1.replace(" ", "");
+
+		String tempdate2[] = sdate2.split(" ", 3);
+		dd=tempdate2[1];
+		year=tempdate2[2];
+		String d2 = year+"-"+mm2+"-"+dd;
+		d2=d2.replace(" ", "");
+
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd"); 
+
+		Date startdate = df.parse(d1);
+		Date enddate = df.parse(d2);
+		
+		
+// initalize tracker name and user session
+	String tracker = (String) session.getAttribute("tracker");
+	String userName = (String) session.getAttribute("user");
+	//TopicDistributionUtil td = new TopicDistributionUtil();
+	//td.GetTopicAllTopics(startdate, enddate, userName, tracker);
+	//System.out.println(td);
+		String queryStr  = "select title,post,date,influence_score from blogtrackers.blogposts where date >='"+startdate+"' and date<='"+enddate+"'  ";
+		 result = new DBConnector().query(queryStr);
+		System.out.println(result);
+		
+		}
+		
+		catch(Exception e)
+		{
+			
+		}
+
+	}else{
+		try{
+		String queryStr  = "select title,post,date,influence_score from blogtrackers.blogposts LIMIT 20 ";
+		 result = new DBConnector().query(queryStr);
+		 System.out.println(result);
+		}catch(Exception e){}
+	}
+	
+	if(result != null && result.size()>0){ 
+			
+		    
+		    final String[][] csvMatrix = new String[3][3];
+	        csvMatrix[0][0] = "key";
+	        csvMatrix[0][1] = "value";
+	        csvMatrix[0][2] = "date";
+	       
+
+	       // writeCsv(csvMatrix);
+	        int k=1;
+			for(int i=0; i<result.size(); i++){
+				ArrayList blogs = (ArrayList)result.get(i);
+				
+				String title =  blogs.get(0).toString();
+				String datee =  blogs.get(2).toString();
+				String influence =  blogs.get(3).toString();
+				
+				 csvMatrix[k][0] = title;
+			     csvMatrix[k][1] = influence;
+			     csvMatrix[k][2] = datee;
+			       k++;
+			        
+			    
+				
+			}
+			
+		
+			    ICsvListWriter csvWriter = null;
+		        try {
+		            csvWriter = new CsvListWriter(new FileWriter(filePath+"test.csv"), 
+		                CsvPreference.STANDARD_PREFERENCE);
+		
+		            for (int i = 0; i < csvMatrix.length; i++) {
+		                csvWriter.write(csvMatrix[i]);
+		            }
+		
+		        } catch (Exception e) {
+		            e.printStackTrace(); // TODO handle exception properly
+		        } finally {
+		            try {
+		                csvWriter.close();
+		            } catch (Exception e) {
+		            }
+		        }
+		
+	
+	    
+		
+	}
+	
+	
 %>
 
 
@@ -87,7 +238,7 @@
 
 							
 
-<div class="chart-container">
+						<div class="chart-container">
 							<div class="chart" id="d3-streamgraph"></div>
 						</div>
 

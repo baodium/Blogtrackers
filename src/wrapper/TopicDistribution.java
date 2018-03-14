@@ -103,6 +103,7 @@ public class TopicDistribution extends HttpServlet {
 		String userName = (String) session.getAttribute("user");
 		TopicDistributionUtil td = new TopicDistributionUtil();
 		td.GetTopicAllTopics(startdate, enddate, userName, tracker);
+		//System.out.println(td);
 		
 			}
 			

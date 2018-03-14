@@ -131,8 +131,9 @@ $(function () {
 
         // Load data
         // ------------------------------
-
-        d3.csv("assets/demo_data/dashboard/traffic_sources.csv", function (error, data) {
+//assets/demo_data/dashboard/test.csv
+        //assets/demo_data/dashboard/traffic_sources.csv
+        d3.csv("assets/demo_data/dashboard/test.csv", function (error, data) {
 
             // Pull out values
             data.forEach(function (d) {

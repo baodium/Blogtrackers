@@ -172,8 +172,8 @@ $('#destroy').click(
 		}
 								});
      // set attribute for the form 
-    $('#trackerform').attr("action","TopicDistributionUtil");
-    $('#dateform').attr("action","TopicDistributionUtil"); 
+    $('#trackerform').attr("action","");//TopicDistributionUtil
+    $('#dateform').attr("action",""); 
 	 </script>
 	<script type="text/javascript">
 	 	//alert("here");
