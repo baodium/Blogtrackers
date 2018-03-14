@@ -99,9 +99,9 @@ import org.supercsv.prefs.CsvPreference;
 	//TopicDistributionUtil td = new TopicDistributionUtil();
 	//td.GetTopicAllTopics(startdate, enddate, userName, tracker);
 	//System.out.println(td);
-		String queryStr  = "select title,post,date,influence_score from blogtrackers.blogposts where date >='"+startdate+"' and date<='"+enddate+"'  ";
+		String queryStr  = "select title,date,influence_score from blogtrackers.blogposts where date >='"+startdate+"' and date<='"+enddate+"'  ";
 		 result = new DBConnector().query(queryStr);
-		System.out.println(result);
+		//System.out.println(result);
 		
 		}
 		
@@ -112,9 +112,9 @@ import org.supercsv.prefs.CsvPreference;
 
 	}else{
 		try{
-		String queryStr  = "select title,post,date,influence_score from blogtrackers.blogposts LIMIT 20 ";
+		String queryStr  = "select title,date,influence_score from blogtrackers.blogposts LIMIT 20 ";
 		 result = new DBConnector().query(queryStr);
-		 System.out.println(result);
+		 //System.out.println(result);
 		}catch(Exception e){}
 	}
 	
@@ -147,18 +147,34 @@ import org.supercsv.prefs.CsvPreference;
 				ArrayList blogs = (ArrayList)result.get(i);
 				
 				String title =  blogs.get(0).toString();
-				String datee =  blogs.get(2).toString();
-				String influence =  blogs.get(3).toString();
+				String datee =  blogs.get(1).toString();
+				String influence =  blogs.get(2).toString();
+				//System.out.println(datee);
+				String[] dt = datee.split(" ");
+				String[] dat = dt[0].split("-");
 				
+				String  date = "";
+				if(dat.length>2){
+					date = dat[2]+"/"+dat[1]+"/"+dat[0]+" "+"00:00";
+				}
 				title = title.replace("\"", "\"\"");
 				title = title.replace(",", " ");
 			
+				int inf = Integer.parseInt(influence);
 			    sb.append(title);
 			    sb.append(',');
-			    sb.append(influence);
+			    sb.append(inf);
 			    sb.append(',');
-			    sb.append(datee);
+			    sb.append(date);
 			    sb.append('\n');
+			    
+			    sb.append(title);
+			    sb.append(',');
+			    sb.append(inf);
+			    sb.append(',');
+			    sb.append((inf+inf));
+			    sb.append('\n');
+			    
 			   
 			    
 				/*
