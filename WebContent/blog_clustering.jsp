@@ -66,12 +66,18 @@
 						<div class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title"> Clusters<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
-								<div class="heading-elements">
-									<ul class="icons-list">
-				                		<li><a data-action="collapse"></a></li>
-				                		<li><a data-action="reload"></a></li>
+									<div class="heading-elements">
+								<form name="dateform" id="dateform" method="post">
+									<div data-intro="Select a date range " data-step="2" id="reportrange">
+									<button type="button" class="btn btn-primary daterange-ranges heading-btn text-semibold">
+										<i class="icon-calendar3 position-left"></i> <span></span>  
+					<b class="caret"></b>
+									</button>
+									<input type="hidden" name="is_request" value="yes">
+									<input type="hidden" id="datepicked" name="datepicked"  onchange="datechanged()" />
+			                	</div>
+								</form>
 
-				                	</ul>
 			                	</div>
 							</div>
 

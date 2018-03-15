@@ -31,7 +31,7 @@ if(session.getAttribute("tracker")==null && request.getParameter("tracker")==nul
 else
 {
 if(session.getAttribute("tree")!=""){
-	ArrayList<ArrayList<String>> tree =(ArrayList<ArrayList<String>>) session.getAttribute("tree");
+	ArrayList<ArrayList<String>> tree =(ArrayList<ArrayList<String>>)session.getAttribute("tree");
 	String str = "[\n";
 
 for(int i=0;i<tree.size();i++)
@@ -91,6 +91,10 @@ else
 	if (username == null || username == "") {
 		response.sendRedirect("index.jsp");
 	}
+	else if(session.getAttribute("tracker") == null || session.getAttribute("tracker") =="")
+    { 
+   		response.sendRedirect("trackerlist.jsp");
+    }
 	
 	session.setAttribute("pre-selected-blogs", "");
 	session.setAttribute("initiated_search_term", "");
@@ -99,9 +103,14 @@ else
     String tracker_id = (null == session.getAttribute("tid")) ? "" : session.getAttribute("tid").toString();
 	
     
+    
 %>
+
+
+        
+        
  <jsp:include page="include_top.jsp"></jsp:include>
- 
+
  <style>
 
 #chart {
@@ -348,7 +357,7 @@ function googleTranslateElementInit() {
 									
 
 					                	<!-- Progress counter -->
-										<div class="content-group-sm svg-center position-relative" id="hours-available-progress"><svg width="76" height="76"><g transform="translate(38,38)"><path class="d3-progress-background" d="M0,38A38,38 0 1,1 0,-38A38,38 0 1,1 0,38M0,36A36,36 0 1,0 0,-36A36,36 0 1,0 0,36Z" style="fill: rgb(240, 98, 146);"></path><path class="d3-progress-foreground" filter="url(#blur)" d="M2.326828918379971e-15,-38A38,38 0 1,1 -34.38342799370878,16.179613079472677L-32.57377388877674,15.328054496342538A36,36 0 1,0 2.204364238465236e-15,-36Z" style="fill: rgb(240, 98, 146); stroke: rgb(240, 98, 146);"></path><path class="d3-progress-front" d="M2.326828918379971e-15,-38A38,38 0 1,1 -34.38342799370878,16.179613079472677L-32.57377388877674,15.328054496342538A36,36 0 1,0 2.204364238465236e-15,-36Z" style="fill: rgb(240, 98, 146); fill-opacity: 1;"></path></g></svg><h2 class="mt-15 mb-5">${nblogposts}</h2><i class="icon-comment text-pink-400 counter-icon" style="top: 22px"></i><div>Blog post</div></div>
+										<div class="content-group-sm svg-center position-relative" id="hours-available-progress"><svg width="76" height="76"><g transform="translate(38,38)"><path class="d3-progress-background" d="M0,38A38,38 0 1,1 0,-38A38,38 0 1,1 0,38M0,36A36,36 0 1,0 0,-36A36,36 0 1,0 0,36Z" style="fill: rgb(240, 98, 146);"></path><path class="d3-progress-foreground" filter="url(#blur)" d="M2.326828918379971e-15,-38A38,38 0 1,1 -34.38342799370878,16.179613079472677L-32.57377388877674,15.328054496342538A36,36 0 1,0 2.204364238465236e-15,-36Z" style="fill: rgb(240, 98, 146); stroke: rgb(240, 98, 146);"></path><path class="d3-progress-front" d="M2.326828918379971e-15,-38A38,38 0 1,1 -34.38342799370878,16.179613079472677L-32.57377388877674,15.328054496342538A36,36 0 1,0 2.204364238465236e-15,-36Z" style="fill: rgb(240, 98, 146); fill-opacity: 1;"></path></g></svg><h2 class="mt-15 mb-5">${nblogposts}</h2><i class="icon-comment text-pink-400 counter-icon" style="top: 22px"></i><div>Blog posts</div></div>
 										<!-- /progress counter -->
 
 
@@ -497,7 +506,7 @@ function googleTranslateElementInit() {
 
     </thead>
     <tbody>
-						<c:forEach items="${nlg}" var="v1" begin="0" end="5">
+													<c:forEach items="${nlg}" var="v1" begin="0" end="5">
 														<tr>
 
 				<td class="fs15 fw700 text-left">${fn:toUpperCase(fn:substring(v1[1], 0, 1))}${fn:toLowerCase(fn:substring(v1[1], 1,fn:length(v1[1])))}</td>
@@ -527,32 +536,36 @@ function googleTranslateElementInit() {
 
 		                	</ul>
 	                	</div>
+	                	
 					</div>
-
-					<div class="panel-body">
+					
+					<div id="echart_mini_pie"></div>
 					<div id="chart"></div>
+					<div class="panel-body">
+					
 
 							<script type="text/javascript"
 								src="https://www.gstatic.com/charts/loader.js"></script>
 							<script type="text/javascript">
+							/*
       google.charts.load('current', {'packages':['treemap']});
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-        	['Tracker','Parent','value'],
-        	['${tracker}',null,0],
+        	['Tracker','Parent','value','value2'],
+        	['${tracker}',null,0,0],
         <c:forEach var="v1" items="${tree}">
         		<c:choose>
         			<c:when test="${empty v1[1]}">
-        				['${v1[2]}. ${v1[3]}','${v1[2]}',${v1[3]}],
+        				['${v1[2]}', '${v1[3]}',${v1[2]},${v1[3]}],
         			</c:when>
         			<c:otherwise>
         				<c:choose>
         					<c:when test="${v1[1] eq v1[2]}">
-								['${v1[1]}. ${v1[3]}','${v1[2]}',${v1[3]}],
+								['${v1[1]}', '${v1[3]}',${v1[2]},${v1[3]}],
  							</c:when>
 							<c:otherwise>
-								['${v1[1]} ${v1[3]}','${v1[2]}',${v1[3]}],
+								['${v1[1]}', '${v1[3]}',${v1[2]},${v1[3]}],
 							</c:otherwise>
 						</c:choose>
 					</c:otherwise>
@@ -572,8 +585,9 @@ function googleTranslateElementInit() {
         });
 
      }
+      */
     </script>
-											
+									
 					</div>
 					</div>
 				</div>
@@ -593,6 +607,7 @@ function googleTranslateElementInit() {
 	<!-- Footer -->
   <jsp:include page="footer.jsp"></jsp:include>
 	<!-- /footer -->
+	
 	
 	<!-- Dependencies -->
   <jsp:include page="pagedependencies/dashboard.jsp"></jsp:include>
