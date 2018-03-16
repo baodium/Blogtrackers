@@ -51,15 +51,17 @@ public class DBConnector extends UtilFunctions {
 				result.add(i,output);
 				i++;
 			}
-			rs.close();
-			stmt.close();
-			con.close();
-
+			
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 			result.add(0, "Err");     
 			
-		} 
+		}
+		finally {
+			rs.close();
+			stmt.close();
+			con.close();
+		}
 		return result;
 	}
 
