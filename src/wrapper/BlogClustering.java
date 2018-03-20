@@ -29,6 +29,7 @@ import authentication.DBConnector;
 import blogtracker.util.CountryCodes;
 import blogtracker.util.TopicDistributionUtil;
 import blogtracker.util.BlogClusteringUtil;
+import blogtracker.util.BlogClusteringUtil;
 import blogtracker.util.TrackerDialog;
 /*
  * Servlet Author Adigun Adekunle
@@ -108,10 +109,10 @@ public class BlogClustering extends HttpServlet  {
 	// initalize tracker name and user session
 		String tracker = (String) session.getAttribute("tracker");
 		String userName = (String) session.getAttribute("user");
-		//TopicDistributionUtil td = new TopicDistributionUtil();
-		//td.GetTopicAllTopics(startdate, enddate, userName, tracker);
+		BlogClusteringUtil td = new BlogClusteringUtil();
+		td.GetAllBlogPost(startdate, enddate, userName, tracker);
 		session.setAttribute("cluster1", "x: [1, 2, 3, 4, 5],y: [1, 6, 3, 6, 1],");
-		session.setAttribute("cluster2", "x: [1.5, 2.5, 3.5, 4.5, 5.5], y: [4, 1, 7, 1, 4],");
+		session.setAttribute("cluster2", "x: [1.5, 2.5, 3.5, 4.5, 5.5], y: [4, 1, 7, 1, 4],"); 
 			}
 			
 			catch(Exception e)
