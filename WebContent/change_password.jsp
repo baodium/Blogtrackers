@@ -11,19 +11,11 @@
 <%
 	Object username = (null == session.getAttribute("username")) ? "" : session.getAttribute("username");
 	Object email = (null == session.getAttribute("email")) ? "" : session.getAttribute("email");
+	
 	if (username == null || username == "") {
 		response.sendRedirect("index.jsp");
 	}
      
-	session.setAttribute("pre-selected-blogs", "");
-	session.setAttribute("initiated_search_term", "");
-	
-        //try{
-        ArrayList userinfo = new DBConnector().query("SELECT *  FROM usercredentials WHERE UserName='"+username+"'");          
-        userinfo = (ArrayList)userinfo.get(0);
-        //}catch(Exception e){
-          //  response.sendRedirect("index.jsp");
-        //}
 %>
 
   <jsp:include page="include_top.jsp"></jsp:include>
@@ -151,25 +143,26 @@ function googleTranslateElementInit() {
 
 	                <div data-intro="Change your password" data-step="2" class="panel-body">
    
-	                	<form class="form-horizontal" action="<%=request.getContextPath()%>/profile" method="post" class="form-validate" >
-							
+	                	<form class="form-horizontal" action="<%=request.getContextPath()%>/profile" id="change_password2" method="post" class="form-validate" >
+							<div id="invalid"></div>
 
 							<div class="form-group">
 								<div class="col-lg-10">
 									<div class="row">
 										<div class="col-md-10">
 											<div class="form-group">
-				                                <input type="text" class="form-control" required="required" name="oldpassword" maxlength="60" placeholder="Old Password (Enter temporary password)" />
+				                                <input type="text" class="form-control" required="required" onchange="verifypassword(this)" name="oldpassword" maxlength="60" id="old_password" required="required" placeholder="Old Password (Enter temporary password)" />
 				                                              
 			                                
                                               </div>
 
 			                                <div class="form-group">
-				                                <input type="text" name="newpassword" class="form-control" placeholder="New Password" maxlength="60" />
+			                               
+				                                <input type="text" name="password" required="required" id="password1" onchange="verifypassword(this)" class="form-control" placeholder="New Password" maxlength="60" />
 			                                </div>
 			                                
 			                                	                                <div class="form-group">
-				                                <input type="text" name="confirmpassword" class="form-control" placeholder="Confirm New Password" maxlength="60" />
+				                                <input type="text" id="password2" required="required" name="confirmpassword" onchange="verifypassword(this)" class="form-control" placeholder="Confirm New Password" maxlength="60" />
 			                                </div>
 										</div>
 
@@ -179,7 +172,7 @@ function googleTranslateElementInit() {
 							</div>
 <br/><br/>
 	                        <div class="text-left">
-	                        	<button type="submit" name="update" value="yes" class="btn btn-primary">Change Password <i class="icon-arrow-right14 position-right"></i></button>
+	                        	<button type="submit" name="update" value="change_password" id="submit" class="btn btn-primary">Change Password <i class="icon-arrow-right14 position-right"></i></button>
 	                        </div>
                         </form>
 				    </div>
@@ -200,81 +193,6 @@ function googleTranslateElementInit() {
 
 					</div>
 
-					<div data-intro="Update your profile picture" data-step="3" class="col-lg-4">
-
-						
-
-                                            
-                       <form class="form-horizontal" name="upload_form" enctype="multipart/form-data" action="fileupload.jsp" method="POST">
-						<!-- My messages -->
-						<div class="panel panel-flat">
-							
-							<!-- Area chart -->
-							<div id="messages-stats"></div>
-							<!-- /area chart -->
-
-							<!-- Tabs -->
-		                	<ul class="nav nav-lg nav-tabs nav-justified no-margin no-border-radius bg-primary-400 border-top border-top-indigo-300">
-							
-
-								<li>
-									<a href="#messages-fri" class="text-size-small text-uppercase" data-toggle="tab">
-										Profile Image
-									</a>
-								</li>
-							</ul>
-							<!-- /tabs -->
-
-
-							<!-- Tabs content -->
-					<div class="tab-content" style="text-align:center"><br/>
-						        <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                            <%
-                                                            String path=application.getRealPath("/").replace('\\', '/')+"profile_images/";
-                                                           
-                                                            String filename = path+userinfo.get(0).toString()+".jpg";
-                                                            String pimage = "assets/images/placeholder.jpg";
-                                                            File f = new File(filename);
-                                                            if(f.exists() && !f.isDirectory()) { 
-                                                                pimage = "profile_images/"+userinfo.get(0).toString()+".jpg";
-                                                            }
-                                                            //pimage = pimage.replace("build/", "");
-                                                            %>
-
-                                                                  <div class="fileinput-new thumbnail"  data-trigger="fileinput" >
-                                                                      <img class="img" src="<%=pimage%>" style="width:150px; height:150px" />
-                                                
-                                                                  </div>
-
-                                                            
-                                                                  <center>
-                                                                     <div class="fileinput-preview fileinput-exists thumbnail" style="max-width:151px; max-height:151px; text-align:center"></div>
-                 
-                                                                       </center>
-                                                                  <div >
-                                                                
-                                                                                              
-                                                                      <span class="btn btn-white btn-file" >
-
-                                                                          <span class="fileinput-new">Select</span>
-                                                                          <span class="fileinput-exists">Change</span>
-                                                                          <input type="file" name="userfile" accept="image/*">
-                                                                      </span>
-                                                                      <a href="#" class="btn btn-orange fileinput-exists" data-dismiss="fileinput">Remove</a>
-                                                                  </div>
-
-                                                                     </div>
-                                                                    <input type="hidden" class="form-control" required="required" name="username"  value = "<%=userinfo.get(0)%>">
-			                           
-                                                                    <input type="submit" name="upload_image" value="upload" class="btn btn-primary"><br/> <br/>              
-							<!-- /tabs content -->
-
-					</div>
-						<!-- /my messages -->
-                                                </form>
-
-						
-					</div>
 				</div>
 				<!-- /dashboard content -->
 
@@ -286,7 +204,9 @@ function googleTranslateElementInit() {
 
 	</div>
 	<!-- /page container -->
-
+<script>
+$("#submit").prop("disabled",true);
+</script>
 
 	<!-- Footer -->
   <jsp:include page="footer.jsp"></jsp:include>

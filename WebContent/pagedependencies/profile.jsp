@@ -37,4 +37,4 @@
 
 <script type="text/javascript" src="assets/js/core/app.js"></script>
 	
-	<script type="text/javascript" src="assets/js/pages/login_validation.js"></script>
+	<script type="text/javascript" src="assets/js/pages/login_validation.js?v=900"></script>
