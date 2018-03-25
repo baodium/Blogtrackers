@@ -7,6 +7,7 @@
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v7.0"/>
 	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/AbsoluteLayout.jar"/>
 	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/activation.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/ajt-2.9.jar"/>
 	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/apache-lucene.jar"/>
 	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/beansbinding-1.2.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/commons-beanutils-1.8.3.jar"/>
@@ -19,6 +20,7 @@
 	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/commons-lang-2.5-javadoc.jar"/>
 	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/commons-logging-1.1.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/commons-logging-1.1.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/commons-math-1.2.jar"/>
 	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/commons-pool-1.4.jar"/>
 	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/datepicker.jar"/>
 	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/ezmorph-1.0.6.jar"/>
@@ -30,6 +32,7 @@
 	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/htmllexer.jar"/>
 	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/htmlparser.jar"/>
 	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/iText-2.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/Jama-1.0.2.jar"/>
 	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/java-json.jar"/>
 	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/javax.json-1.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/javax.servlet.jsp.jstl-1.2.1.jar"/>
@@ -44,6 +47,7 @@
 	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/jta.jar"/>
 	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/junit.jar"/>
 	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/junit-3.8.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/libsvm.jar"/>
 	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/log4j-1.2.15.jar"/>
 	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/lucene-core-2.4.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/lucene-core-4.6.0.jar"/>
@@ -58,5 +62,6 @@
 	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/sqljdbc.jar"/>
 	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/sqljdbc4.jar"/>
 	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/standard-2.2.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/amadigun/Desktop/Blogtrackers/Blogtrackers/Blogtrackers/lib/weka.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
