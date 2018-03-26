@@ -167,8 +167,18 @@ public class DBConnector extends UtilFunctions {
 		return false;
 	}
         
-        public boolean usernameExists(String username){
+   public boolean usernameExists(String username){
 		String query="SELECT * FROM usercredentials WHERE UserName ='"+username+"' "; 
+		ArrayList<?> user_info= this.query(query);
+
+		if(user_info.size()>0){     
+			return true;
+		}  
+		return false;
+	}
+	
+	public boolean passwordExists(String username, String password){
+		String query="SELECT * FROM usercredentials WHERE UserName ='"+username+"' AND Password='"+password+"' "; 
 		ArrayList<?> user_info= this.query(query);
 
 		if(user_info.size()>0){     

@@ -51,7 +51,7 @@
        <script>
            var app_url ='${pageContext.request.contextPath}/'; 
         </script>
-	<script type="text/javascript" src="assets/js/pages/login_validation.js"></script>
+	<script type="text/javascript" src="assets/js/pages/login_validation.js?v=7888"></script>
 
 	<script type="text/javascript" src="assets/js/plugins/ui/ripple.min.js"></script>
         <!--<script type="text/javascript" src="assets/js/plugins/neon-login.js"></script>-->
@@ -139,7 +139,10 @@ overlay:true,
 		timer:false
 });
 	</script>
+<script>
 
+
+</script>
 	  <jsp:include page="footer.jsp"></jsp:include>
 
 </body>

@@ -47,7 +47,8 @@ public class Settings extends HttpServlet {
 	{
 		
                 String submitted = request.getParameter("update");
-		PrintWriter pww = response.getWriter();
+				PrintWriter pww = response.getWriter();
+				HttpSession session = request.getSession();
                 //pww.write(email+":"+username+":"+pass+":"+submitted);
                     if(submitted!=null && submitted.equals("yes")){	
                         String email = request.getParameter("email");
@@ -64,7 +65,29 @@ public class Settings extends HttpServlet {
 
                         response.setContentType("text/html");
                         response.sendRedirect("profile.jsp");
-                    }
+                    }else if(submitted!=null && submitted.equals("change_passord")){
+						String password = request.getParameter("password");
+						String username = (String)session.getAttribute("username");
+						
+						ArrayList<?> login = new DBConnector().login(username,password);
+						//if(s.verified)
+						if(login.size()>0)
+						{
+							String query_string ="UPDATE usercredentials SET Password = '"+password+"' WHERE UserName = '"+username+"'";
+	                        boolean inserted = new DBConnector().updateTable(query_string); 
+						
+			                
+						}else {
+							session.setAttribute("error_message","Old password in not correct");
+	                        
+						
+						}
+						
+						
+						response.setContentType("text/html");
+                        response.sendRedirect("change_password.jsp");
+                        
+					}
                
                  
                 

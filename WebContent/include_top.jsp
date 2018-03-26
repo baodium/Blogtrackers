@@ -130,7 +130,9 @@
 	</style>
 
 	<!-- Core JS files -->
-	
+	 <script>
+           var app_url ='${pageContext.request.contextPath}/'; 
+        </script>
 	
 	<script type="text/javascript" src="assets/js/plugins/loaders/pace.min.js"></script>
 	 <script type="text/javascript" src="assets/js/core/libraries/jquery.min.js"></script> 

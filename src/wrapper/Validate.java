@@ -53,6 +53,7 @@ public class Validate extends HttpServlet {
                 String validate = request.getParameter("validate");
                  
 		PrintWriter pww = response.getWriter();
+		HttpSession session= request.getSession();
 
 		if(validate.equals("yes")){			
                         boolean exist = false;
@@ -70,6 +71,20 @@ public class Validate extends HttpServlet {
 				response.setContentType("text/html");
 				pww.write("no");
 			}
+		}else if(validate.equals("password")){
+			boolean exist = false;
+			String username = (String)session.getAttribute("username");
+            exist = new DBConnector().passwordExists(username,value);
+                        
+			if(exist){	
+                response.setContentType("text/html");
+				pww.write("yes");
+                               
+			}else{
+				response.setContentType("text/html");
+				pww.write("no");
+			}
+			
 		}
 
 
