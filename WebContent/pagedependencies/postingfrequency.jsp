@@ -294,16 +294,16 @@ $('#destroy').click(
 			$(".loader").removeClass("hidden");
 			
 			
-		//document.getElementById("dateform").submit();
+		document.getElementById("dateform").submit();
 		
 		
-		var datepicked = $("#datepicked").val();
-		$("#body-result").html("<div style='text-align:center; padding:150px'><img src='assets/images/preloader.gif' /><br/></div>");
+		 var datepicked = $("#datepicked").val();
+		//$("#body-result").html("<div style='text-align:center; padding:150px'><img src='assets/images/preloader.gif' /><br/></div>"); */
 	       
         //var start = document.forms['dateform']['daterangepicker_start'].value;
         //var end = document.forms['dateform']['daterangepicker_end'].value;
        // console.log(datepicked); return false;
-		$.ajax({
+	/* 	$.ajax({
 	        url: app_url+'webtemplates/postingfrequencey_loader.jsp',
 			method:'POST',
 			//async: true,
@@ -313,7 +313,7 @@ $('#destroy').click(
 	        	 //console.log(response);
 	        	$("#body-result").html(response);
 	        }
-	    });
+	    }); */
 
 		
 		

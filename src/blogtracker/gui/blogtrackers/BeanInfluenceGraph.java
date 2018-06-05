@@ -14,7 +14,7 @@ public class BeanInfluenceGraph implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	int totalInfluence;
+	float totalInfluence;
 	String startDate;
 	/**
 	 * 
@@ -23,7 +23,7 @@ public class BeanInfluenceGraph implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public int getTotalInfluence() {
+	public float getTotalInfluence() {
 		return totalInfluence;
 	}
 	public void setTotalInfluence(int totalInfluence) {
@@ -40,7 +40,7 @@ public class BeanInfluenceGraph implements Serializable{
 	 * @param totalInfluence
 	 * @param startDate
 	 */
-	public BeanInfluenceGraph(int totalInfluence,String startDate) {
+	public BeanInfluenceGraph(float totalInfluence,String startDate) {
 		this.totalInfluence = totalInfluence;
 		this.startDate = startDate;
 	}

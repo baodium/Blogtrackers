@@ -149,7 +149,7 @@ public class InfluenceDialog extends UtilFunctions{
 					//adding chart fields.
 					if(calScale.equals("day")||calScale.equals("week"))
 					{
-						BeanInfluenceGraph dp = new BeanInfluenceGraph(Integer.parseInt(rSet1.getObject(1).toString()),sdform.format(curStartDate));
+						BeanInfluenceGraph dp = new BeanInfluenceGraph(Float.parseFloat(rSet1.getObject(1).toString()),sdform.format(curStartDate));
 						graphPoints.add(dp);
 					}
 					else
@@ -157,7 +157,7 @@ public class InfluenceDialog extends UtilFunctions{
 						{
 							SimpleDateFormat dateformat = new SimpleDateFormat();
 							dateformat.applyPattern("MMMM-yyyy");
-							BeanInfluenceGraph dp = new BeanInfluenceGraph( Integer.parseInt(rSet1.getObject(1).toString()),sdform.format(curStartDate));
+							BeanInfluenceGraph dp = new BeanInfluenceGraph( Float.parseFloat(rSet1.getObject(1).toString()),sdform.format(curStartDate));
 							graphPoints.add(dp);
 						}
 						else
@@ -165,7 +165,7 @@ public class InfluenceDialog extends UtilFunctions{
 							{
 								SimpleDateFormat dateformat = new SimpleDateFormat();
 								dateformat.applyPattern("yyyy");
-								BeanInfluenceGraph dp = new BeanInfluenceGraph( Integer.parseInt(rSet1.getObject(1).toString()),sdform.format(curStartDate));
+								BeanInfluenceGraph dp = new BeanInfluenceGraph( Float.parseFloat(rSet1.getObject(1).toString()),sdform.format(curStartDate));
 								graphPoints.add(dp);
 							}
 

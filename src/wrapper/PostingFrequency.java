@@ -196,11 +196,11 @@ public class PostingFrequency extends HttpServlet {
 
 		}
 		response.setContentType("text/html");
-		if(request.getParameter("is_request")!= null) {
-			request.getRequestDispatcher("../webtemplates/postingfrequencey_loader.jsp").include(request,response);
-		}else {
+//		if(request.getParameter("is_request")!= null) {
+//			request.getRequestDispatcher("../webtemplates/postingfrequencey_loader.jsp").include(request,response);
+//		}else {
 		 response.sendRedirect("posting_frequency.jsp");
-		}
+//		}
 	}
 
 

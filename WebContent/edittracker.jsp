@@ -180,14 +180,14 @@ function googleTranslateElementInit() {
    
 							</div>
 						</div>
-					<div class="panel panel-primary">
+					<!-- <div class="panel panel-primary">
 							<div class="panel-heading">
 								<h6 class="panel-title">Crawl New Blogs<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
 								<div class="heading-elements">
 									<ul class="icons-list">
 				                		<li><a data-action="collapse"></a></li>
 				                		<li><a data-action="reload"></a></li>
-<!--				                		<li><a data-action="close"></a></li>-->
+				                		<li><a data-action="close"></a></li>
 				                	</ul>
 			                	</div>
 							</div>
@@ -195,18 +195,18 @@ function googleTranslateElementInit() {
 							<div class="panel-body">
 						<div class="input textarea clearfix example1"></div>
 
-    <!--content-->
+    content
     <div class="ui padded segment">
 
-        <!--header-->
+        header
         <h3 class="ui block header">
             <i class="settings icon"></i> Automated Crawler
         </h3>
 
-        <!--crawler block-->
+        crawler block
         <div class="ui padded segment" id="crawler_block">
 
-            <!--<form class="ui form">
+            <form class="ui form">
 
                 <div class="fields">
                     <div class="one wide field">
@@ -237,7 +237,7 @@ function googleTranslateElementInit() {
                     </div>
 
                 </div>
-            </form>-->
+            </form>
             <div id="all-forms">
                 <form class="ui form">
                     <div class="fields ">
@@ -247,11 +247,11 @@ function googleTranslateElementInit() {
                             <input class="hidden-serial-input" type="hidden" name="serial_no" value=""/>
                         </div>
 
-                       <!-- <div class="two wide field">
+                       <div class="two wide field">
                             <label>Tracking Id</label>
                             <div class="ui label tracking-id" style="font-size: 1.22rem"></div>
                             <input class="hidden-tracking-id-input" type="hidden" name="tracking_id" value=""/>
-                        </div>-->
+                        </div>
 
 
                         <div class="four wide field main-fields">
@@ -263,7 +263,7 @@ function googleTranslateElementInit() {
                             <label>&nbsp;Focus crawl by keyword(s)</label>
                             <input type="text" name="keyword" id="keyword" placeholder="Enter keyword">
                         </div>
-						<!--  
+						 
                         <div class="three wide field main-fields">
                             <label>&nbsp;Limit by pages</label>
                             <div class="ui selection dropdown">
@@ -280,7 +280,7 @@ function googleTranslateElementInit() {
                                 </div>
                             </div>
                         </div>
-                        -->
+                       
 
                         <div style="text-align: center"  class="two wide field main-fields">
                             <label>&nbsp;</label>
@@ -295,7 +295,7 @@ function googleTranslateElementInit() {
                         </div>
 						
                         <div style="display:none" class="fourteen wide field progress-bar">
-                            <!--<label>&nbsp;</label>-->
+                            <label>&nbsp;</label>
                             <h5 class="initiated-text ui positive message" style="text-align: center;margin-top:16px">The Crawler for URL has been Initiated.</h5>
                         </div>
                         <div style="text-align: center" class="two wide field">
@@ -304,7 +304,7 @@ function googleTranslateElementInit() {
                         </div>
 
 
-                        <!--<div style="display:none" class="twelve wide field progress-bar">
+                        <div style="display:none" class="twelve wide field progress-bar">
                             <div class="ui blue progress" data-value="20" data-total="100" style="padding:3px">
                                 <div class="bar"></div>
                                 <div class="label percentage">0%</div>
@@ -312,7 +312,7 @@ function googleTranslateElementInit() {
                             <div class="three wide field">
                                 <button class="ui red button pauseButton" type="button">Remove</button>
                             </div>
-                        </div>-->
+                        </div>
 
 
                     </div>
@@ -324,16 +324,16 @@ function googleTranslateElementInit() {
         </div>
 
 
-        <!--Add crawler-->
+        Add crawler
         <button class="ui compact labeled icon button" id='addNewButton'>
             <i class="add icon"></i>Add crawler
         </button>
 
     </div>
-    <!--content end-->
+    content end
 
 </div>
-<!--wrapper end-->
+wrapper end
 
 
 <script>
@@ -532,7 +532,7 @@ function googleTranslateElementInit() {
 
 							
 						
-					</div>
+					</div> -->
 				<!-- /main charts -->
 
 

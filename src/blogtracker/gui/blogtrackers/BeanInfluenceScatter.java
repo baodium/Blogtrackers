@@ -9,8 +9,8 @@ package blogtracker.gui.blogtrackers;
  */
 public class BeanInfluenceScatter {
 	String bloggerName;
-	int influenceScore;
-	int activityScore;
+	float influenceScore;
+	float activityScore;
 	/**
 	 * 
 	 */
@@ -23,13 +23,13 @@ public class BeanInfluenceScatter {
 	public void setBloggerName(String bloggerName) {
 		this.bloggerName = bloggerName;
 	}
-	public int getInfluenceScore() {
+	public float getInfluenceScore() {
 		return influenceScore;
 	}
 	public void setInfluenceScore(int influenceScore) {
 		this.influenceScore = influenceScore;
 	}
-	public int getActivityScore() {
+	public float getActivityScore() {
 		return activityScore;
 	}
 	public void setActivityScore(int activityScore) {
@@ -40,7 +40,7 @@ public class BeanInfluenceScatter {
 	 * @param influenceScore
 	 * @param activityScore
 	 */
-	public BeanInfluenceScatter(String bloggerName, int influenceScore, int activityScore) {
+	public BeanInfluenceScatter(String bloggerName, float influenceScore, float activityScore) {
 		super();
 		this.bloggerName = bloggerName;
 		this.influenceScore = influenceScore;
